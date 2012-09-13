@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+*{margin:0;padding:0;}
+body {
+	font:13.34px helvetica,arial,freesans,clean,sans-serif;
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+pre {
+	margin:1em 0;
+	font-size:12px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:12px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:12px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+@media screen and (min-width: 768px) {
+    body {
+        width: 748px;
+        margin:10px auto;
+    }
+}
+</style>
+<title>Umeng Social iOS SDK 使用指南</title>
+</head>
+<body>
+<h1>Umeng Social iOS SDK 使用指南</h1>
+
+<h2>1. 申请友盟应用标识</h2>
+
+<p>   如果你之前已经在友盟注册了应用，获得了友盟的应用标识<code>UMENG_APPKEY</code>，可以继续使用之前获得<code>UMENG_APPKEY</code>。 <br/>
+   如果你尚未在友盟注册应用，你可以登陆你的账号，点击<strong>添加新应用</strong>，完成新应用填写之后，讲进入应用管理页面。在该页面就能得到<code>Appkey</code>。</p>
+
+<h2>2.友盟应用标识和分享平台的绑定</h2>
+
+<p>   获得appkey后，你还需要将你的应用和我们支持的分享平台注册时获取的appkey和appsecret绑定。如果你尚未在我们支持的分享平台注册你的应用，注册过程可以参考如下：</p>
+
+<p>新浪微博：<code>http://open.t.sina.com.cn -&gt; 我是开发者 -&gt; 创建新应用</code><br/>
+腾讯微博：<code>http://open.t.qq.com/ -&gt; 创建应用</code><br/>
+人人网： <code>http://dev.renren.com/ -&gt; 创建应用</code></p>
+
+<p>在各平台注册你的应用后，接下来你需要完成UMENG_APPKEY和你在我们支持的分享平台注册你的应用时获取的appkey和appsecret绑定。
+具体操作为：<code>开发工具-&gt;SNS分享-&gt;设置</code>。</p>
+
+<blockquote><p><strong>注意:</strong> 与微博有所区别，人人还需要开发者在其开放平台上，设置“应用根域名”信息才能正确显示授权页（因为人人在授权的过程中需要用到<code>callback url</code>参数），具体设置方法如下：登录人人开放平台，选择使用SNS分享服务的应用，把应用“基本信息”下的<code>应用根域名</code>设为<code>sns.whalecloud.com</code>即可。</p></blockquote>
+
+<h2>3.集成SDK</h2>
+
+<ol>
+<li><p>在Finder中，将<code>SocialSDK_Publishment/</code>文件夹拖拽到你的工程目录中,并在弹窗中，勾选相应的target。（<em><strong>请注意</strong></em>：如果你是升级友盟社会化分享SDK，请确保在操作前，彻底删除了旧版本中的所有文件）。</p></li>
+<li><p>添加相应Framework:<br/>
+-<code>MessageUI.Framework</code><br/>
+-<code>CoreLocation.Framework</code><br/>
+-<code>MapKit.Framework</code><br/>
+-<code>QuartzCore.Framework</code><br/>
+-<code>libSocialLibrary.a</code></p></li>
+</ol>
+
+
+<h2>4.在代码中使用SDK</h2>
+
+<ol>
+<li><p>在<code>SocialSDK_Publishment</code>内有4个头文件，其中<code>UMSocialService.h</code>是要类的基本头文件，引进头文件之后设置SDK的<code>UMENG_APPKEY</code>，例如下面在 AppDelegate 的didFinishLaunchingWithOptions 方法内添加如下代码：
+<code>[UMSocialService setAppKey:UMENG_APPKEY];</code></p></li>
+<li><p>初始化一个<code>UMSocialService</code>类的实例，调用该实例变量的方法。<br/>
+你可以对每个<code>UMSocialService</code>对象设置他的属性分享文字、分享图片等等，可以获取<code>UMSocialService</code>对象的评论个数、分享个数等属性，可以调用对象的弹出评论列表等方法，不同对象之间评论的内容也不相同。<br/>
+所以使用者需要保证不同对象这间保证唯一。区别不同<code>UMSocialService</code>对象是用他的<code>descriptor</code>属性，该类的唯一初始化方法<code>- initWithDescriptor:(NSString *)descriptor</code>就用这个属性。而你也可以对这个属性进行设置,就会相应地改变该对象所拥有的属性，和代表的评论列表等等。而<code>UMSocialService</code>的<code>umAccount</code>属性是应用内的对象都一样的，就是说在每处对用户授权或者解授权都会对整个应用进行影响。</p></li>
+<li><p>因为我们实现<code>UMSocialService</code>的每个网络请求都是异步的，所以得到数据之后要实现一些回调函数，才能得到数据，这些回调函数定义在<code>UMSocialDelegate.h</code>中的<code>UMSocialDelegate</code>。例如想要得到评论列表数据，调用<code>UMSocialService</code>的<code>requestCommentList</code>方法，然后实现<code>didFinishGetCommentListWithResponse:(NSDictionary *)response</code>函数，评论数据就在参数<code>response</code>中。</p></li>
+<li><p>除了<code>UMSocialService</code>的对象方法外，还有一些类方法，有一个<code>setUMSocialConfigDelegate</code>是设置实现了<code>UMSocialConfigDelegate</code>协议的对象，<code>UMSocialConfigDelegate</code>协议的方法是一些对所有<code>UMSocialService</code>对象进行设置，例如出现的sns平台，可以设置只有新浪微博、腾讯微博、人人网、豆瓣其中的某几个。</p></li>
+<li><p>我们还有一个公开的头文件<code>UMUIHelper.h</code>这里定义的一些方法，这个头文件是可以让开发者自己实现一个<code>UMUIHelper</code>类的分类，例如为<code>UMUIHepler(custom)</code>然后，覆盖头文件定义的函数，可以实现自定义的样式，例如可以自定义导航栏上返回按钮和一般按钮的样式。</p></li>
+<li><p>除了代码之后开发者还可以对使用到的xib文件进行修改，当然也可以自己替换用到的图片资源文件。</p></li>
+</ol>
+
+
+<h2>5.简单使用场景</h2>
+
+<pre><code>@interface TestSocialViewController : UIViewController
+{
+    UMSocialService *umSocialService;
+}
+@end
+
+@implementation SomeViewController
+- (void)viewDidLoad{
+    [super viewDidLoad];    
+    umSocialService = [[UMSocialService alloc] initWithDescriptor:@“descriptor”];   
+    umSocialServicesocialBar.center = CGPointMake(160, 390);    //socialBar继承自UIView，可以自己设置它的位置    
+    [self.view addSubview:umSocialBar.socialBar];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [umSocialService requestSocialInfomation];  //每次重新出现该view的时候重新获取一下umSocialService对象的属性
+}
+@end
+</code></pre>
+
+<h2>FAQ</h2>
+
+<h3>关于JSON解析库</h3>
+
+<p>本SDK中需要JSON解析库的支持，本SDK支持<code>JSONKit</code>,<code>SBJSON</code>,<code>yajl</code>,<code>Nextive JSON</code>,<code>NSJSONSerialization</code>,如果在项目中使用了这些JSON解析库的话，那么就不需要额外添加JSON解析库。如果您所选择的JSON解析库并不是这些的话，那么请添加其中任一一个，以保证SDK正常运作。</p>
+
+<h1></h1>
+
+<p>如果在使用中遇到任何问题，如果你需要帮助，请联系我们<a href="mailto:support.umeng.com">social-support@umeng.com</a></p>
+
+<p>友盟团队</br>
+<a href="http://www.umeng.com">http://www.umeng.com</a></p>
+</body>
+</html>

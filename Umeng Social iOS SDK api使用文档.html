@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+*{margin:0;padding:0;}
+body {
+	font:13.34px helvetica,arial,freesans,clean,sans-serif;
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+pre {
+	margin:1em 0;
+	font-size:12px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:12px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:12px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+@media screen and (min-width: 768px) {
+    body {
+        width: 748px;
+        margin:10px auto;
+    }
+}
+</style>
+<title>Umeng Social iOS SDK API 文档</title>
+</head>
+<body>
+<h1>Umeng Social iOS SDK API 文档</h1>
+
+<h3>1.必要API</h3>
+
+<blockquote><p>设置SDK使用的appKey，建议放在<code>AppDelegate</code>内的 didFinishLaunchingWithOptions 方法中。只需要对其设置一次。</p></blockquote>
+
+<pre><code>[UMSocialService setAppKey:@"your appkey"];
+</code></pre>
+
+<blockquote><p>初始化UMSocialService</p></blockquote>
+
+<pre><code>UMSocialService *socialService = [[UMSocialService alloc] initWithDescriptor:@"descriptor"];
+</code></pre>
+
+<h3>2.简单使用</h3>
+
+<p>简单的使用方法是直接把社会化操作栏，添加到想要显示的视图上。可以对一些<code>UMSocialService</code>对象的属性进行设置，也可以获取到对象的属性。例如我们初始化一个<code>UMSocialService</code>对象为<code>umSocialService</code>。</p>
+
+<pre><code>[self addSubView:umSocialService.socialBar];
+</code></pre>
+
+<blockquote><p>假如self是一个UIView，把操作栏添加到视图上。</p></blockquote>
+
+<pre><code>[umSocialService requestSocialInfomation];
+</code></pre>
+
+<blockquote><p>从服务器重新获取<code>umSocialService</code>对象的数据，并且自动刷新<code>socialBar</code>上的数字。</p></blockquote>
+
+<pre><code>umSocialService.shareText = text;
+umSocialService.shareImage = image;
+umSocialService.commentText = text;
+umSocialService.commentImage = image;
+</code></pre>
+
+<blockquote><p>设置<code>umSocialService</code>分享到各个微博平台的分享文字、图片，评论时候如果并分享时候加入到评论内容后的文字，和图片。</p></blockquote>
+
+<h3>3.使用部分页面</h3>
+
+<p>你可以只是用评论列表，或者分享列表，或者他们的编译页面。</p>
+
+<pre><code>UIViewConroller *commentListViewController = [umSocialService getSocialViewController:UMViewControllerCommentList];
+
+[umSocialService presentSocialViewController:UMViewControllerCommentList];
+</code></pre>
+
+<p>上面是得到评论列表的两种方式，第一种是得到评论列表的继承自UIViewController的对象，你可以对他push到你的UINavigationController中，第二种方式是直接弹出到当前的controller中。</p>
+
+<p>你可以用这样的方法得到或者弹出其他页面，不同页面代表的参数定义在下面的枚举变量中</p>
+
+<pre><code>typedef enum{
+    UMViewControllerCommentList,        //评论列表
+    UMViewControllerCommentEdit,        //评论编辑页
+    UMViewControllerShareList,          //分享列表页，包含sdk支持的所有sns平台
+    UMViewControllerShareEdit,          //分享编辑页
+    UMViewControllerAccount,            //分享账号设置页面
+    UMViewControllerOauth,              //oath授权页面
+    UMViewControllerLogin               //登录页面，登录的可选平台为sdk所支持的sns平台
+}UMViewControllerType;
+</code></pre>
+
+<p>而如果你要得到或者弹出sns编辑页面或者授权页面的话，还需要知道你要的sns平台类型，所以需要调用</p>
+
+<pre><code>[umSocialService getSocialViewController:UMViewControllerShareEdit withSnsType:UMShareToTypeSina];
+[umSocialService presentSocialViewController:UMViewControllerShareEdit withSnsType:UMShareToTypeSina];
+</code></pre>
+
+<p>在第二个参数中指定平台类型。</p>
+
+<h3>4.使用数据层接口</h3>
+
+<p>你可以直接使用底层接口，自己控制界面UI，例如直接发送内容到指定平台，这之前要你已经调用过授权页面，授权过的账户数据会保存在内存和缓存中，也可以直接发送评论内容和获取评论内容。</p>
+
+<pre><code>[umSocialService postSNSWithType:UMShareToTypeSina content:@"test" image:nil];
+</code></pre>
+
+<blockquote><p>直接发送内容到指定平台</p></blockquote>
+
+<pre><code>[umSocialService postCommentWithContent:@"test" image:nil location:nil];
+</code></pre>
+
+<blockquote><p>直接发送评论</p></blockquote>
+
+<pre><code>[umSocialService requestCommentList:(-1)];  //获取最新的评论数据用（-1），接下来的评论用上一条评论的时间戳
+</code></pre>
+
+<blockquote><p>直接获取评论数据</p></blockquote>
+
+<pre><code>[umSocialService addOrMinusLikeNumber];
+</code></pre>
+
+<blockquote><p>增加喜欢计数，或者取消喜欢。你可以把喜欢自定义为“顶”、“踩”，调用该接口如果用户没喜欢过的话会自己喜欢的状态为YES，计数器加1，如果喜欢过的喜欢状态变NO，计数器减1.</p></blockquote>
+
+<h3>5.实现回调接口</h3>
+
+<p>由于我们的网络发送和请求都是异步的，你可以实现协议的回调方法来获取数据和得到事件通知。而回调方法定义在<code>UMSocialDelegate</code>中的<code>UMSocialDelegate</code>协议中。
+例如在请求获取评论数据之后，需要实现<code>-(void)didFinishRequestCommentListWithResponse:(NSDictionary *)response;</code>方法，在<code>response</code>参数中得到评论数据.
+在<code>response</code>参数中<code>data</code>字段为返回数据，如果<code>st</code>为200，代表成功，<code>st</code>不为200的话会在<code>msg</code>字段表明错误原因。</p>
+
+<h3>6.对SDK进行一些设置</h3>
+
+<p>用<code>UMSocialService</code>的类方法<code>setUMSocialConfigDelegate</code>是设置实现了<code>UMSocialConfigDelegate</code>协议的对象，<code>UMSocialConfigDelegate</code>协议的方法是一些对所有<code>UMSocialService</code>对象进行设置，例如出现的sns平台，可以设置只有新浪微博、腾讯微博、人人网、豆瓣其中的某几个。</p>
+
+<h3>7.覆盖UMUIHelper方法设置自定义按钮</h3>
+
+<p>我们还有一个公开的头文件<code>UMUIHelper.h</code>这里定义的一些方法，这个头文件是可以让开发者自己实现一个<code>UMUIHelper</code>类的分类，例如为<code>UMUIHepler(custom)</code>然后，覆盖头文件定义的函数，可以实现自定义的样式，例如可以自定义导航栏上返回按钮和一般按钮的样式。</p>
+</body>
+</html>
