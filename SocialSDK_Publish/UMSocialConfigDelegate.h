@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @protocol UMSocialConfigDelegate <NSObject>
 
@@ -43,6 +44,6 @@
 /** deaultColor
  设置所有页面背景颜色，默认的颜色是[UIColor colorWithRed:0.22 green:0.24  blue:0.27 alpha:1.0]，如果想改变上面导航栏的颜色，可以换相应的图片
  */
-- (UIColor *)deaultColor; 
+- (UIColor *)defaultColor;
 
 @end
