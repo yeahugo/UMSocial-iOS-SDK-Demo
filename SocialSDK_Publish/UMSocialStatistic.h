@@ -19,11 +19,13 @@
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, copy) NSString *cuid;
 
++ (void)setAppKey:(NSString *)appKey;
+
++ (void)openLog:(BOOL)openLog;
+
 - (id)initWithIdentifier:(NSString *)identifier cuid:(NSString *)cuid;
 
 - (void)setUMSocialDelegate:(id <UMSocialDelegate>)delegate;
-
-- (void)requestSocialStatistic:(NSString *)cuid;
 
 - (void)postCommentWithContent:(NSString *)content location:(CLLocation *)location shareToSNSWithUsid:(NSDictionary *)shareToSNS;
 
