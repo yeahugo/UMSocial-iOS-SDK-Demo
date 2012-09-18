@@ -13,6 +13,7 @@
 #import "UMSocialCommentViewController.h"
 #import "UMStringMock.h"
 #import "UMSocialAccountViewController.h"
+#import "UMSocialStatViewController.h"
 
 @interface UMSocialDemoTableViewController ()
 
@@ -55,7 +56,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,9 +81,6 @@
     }
     if (indexPath.row == 4) {
         cell.textLabel.text = @"个人账号接口";
-    }
-    if (indexPath.row == 5) {
-        cell.textLabel.text = @"统计SDK";
     }
     // Configure the cell...
     
