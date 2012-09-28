@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UMSocialUIController.h"
-#import "UMSocialDataAPI.h"
+#import "UMSocialControllerService.h"
 
 typedef enum
 {
@@ -22,9 +21,11 @@ typedef enum
 @interface UMSocialAccountViewController : UITableViewController
 <
     UIActionSheetDelegate,
-    UMSocialDelegate
+        UMSocialDataDelegate
 >
 {
     UIActionSheet *_actionSheet;
+    UMSocialControllerService *_socialUIController;
+    UIActivityIndicatorView * _activityIndicatorView;
 }
 @end

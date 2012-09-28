@@ -48,11 +48,21 @@
     [super viewDidUnload];
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    for (int i = 0; i < [_descriptorArray count ]; i++) {
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:[_descriptorArray objectAtIndex:i]];
+        [socialData setUMSoicalDelegate:nil];
+    }
+
+    [super viewWillDisappear:animated];
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     if (_didSelectIndex != -1) {
         UMSocialTableViewCell *cell = (UMSocialTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_didSelectIndex inSection:0]];
-        [cell.socialController.socialData requestSocialData];
+        [cell.socialController.socialDataService.socialData requestSocialData];
         _didSelectIndex = -1;
     }
     [super viewWillAppear:animated];
@@ -88,14 +98,14 @@
     UMSocialTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:[_descriptorArray objectAtIndex:indexPath.row]];
-    UMSocialUIController *socialController = [[UMSocialUIController alloc] initWithUMSocialData:socialData];
-    [socialData setUMSoicalDelegate:cell];
+    UMSocialControllerService *socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
     [socialData release];
     if (cell == nil) {
         cell = [[UMSocialTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         [cell autorelease];
     }
-    [socialData setUMSoicalDelegate:cell];
+    [socialController.socialDataService.socialData setUMSoicalDelegate:cell];
+
     cell.socialController = socialController;
     cell.descriptor = [_descriptorArray objectAtIndex:indexPath.row];
     cell.tableViewController = self;

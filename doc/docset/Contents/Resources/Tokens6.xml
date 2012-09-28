@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/UMSocialEnum.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/UMSocialEnum</TokenIdentifier>
+			<Abstract type="html">此SDK中用到的一些枚举类型和常量字符串</Abstract>
+			<DeclaredIn>UMSocialEnum.h</DeclaredIn>
+			
+			<NodeRef refid="6"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

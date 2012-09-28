@@ -85,24 +85,24 @@
 {
     NSLog(@"self.descriptor is %@",self.descriptor);
 
-    NSString *likeText = [NSString stringWithFormat:@"喜欢 %d",[_socialController.socialData getNumber:UMSNumberLike]];
+    NSString *likeText = [NSString stringWithFormat:@"喜欢 %d",[_socialController.socialDataService.socialData getNumber:UMSNumberLike]];
     [_likeButton setTitle:likeText forState:UIControlStateNormal];
-    NSString *shareText = [NSString stringWithFormat:@"分享 %d",[_socialController.socialData getNumber:UMSNumberShare]];
+    NSString *shareText = [NSString stringWithFormat:@"分享 %d",[_socialController.socialDataService.socialData getNumber:UMSNumberShare]];
     [_shareButton setTitle:shareText forState:UIControlStateNormal];
-    NSString *commentText = [NSString stringWithFormat:@"评论 %d",[_socialController.socialData getNumber:UMSNumberComment]];
+    NSString *commentText = [NSString stringWithFormat:@"评论 %d",[_socialController.socialDataService.socialData getNumber:UMSNumberComment]];
     NSLog(@"commment text is %@",commentText);
     [_commentButton setTitle:commentText forState:UIControlStateNormal];
     [self changeLikeButtonImage];
     NSLog(@"_detailLabel.text is %@",_detailLabel.text);
-    _socialController.socialData.shareText = _detailLabel.text;
-    NSLog(@"share text is %@",_socialController.socialData.shareText);
-    _socialController.socialData.shareImage = _detailImageView.image;
+    _socialController.socialDataService.socialData.shareText = _detailLabel.text;
+    NSLog(@"share text is %@",_socialController.socialDataService.socialData.shareText);
+    _socialController.socialDataService.socialData.shareImage = _detailImageView.image;
     [super layoutSubviews];
 }
 
--(void)didFinishGetUMSocialResponse:(UMSResponseEntity *)response
+-(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
 {
-    if (response.responseType == UMSResponseGetSocialInformation) {
+    if (response.responseType == UMSResponseGetSocialData) {
         [self handleGetSocilaInformation:response];
     }
     else if (response.responseType == UMSResponseAddLike)
@@ -111,13 +111,13 @@
     }
 }
 
--(void)handleGetSocilaInformation:(UMSResponseEntity *)response
+-(void)handleGetSocilaInformation:(UMSocialResponseEntity *)response
 {
-    NSLog(@"socialbar's descriptor is %@",_socialController.socialData.identifier);
+    NSLog(@"socialbar's descriptor is %@",_socialController.socialDataService.socialData.identifier);
     NSLog(@"socialbar is %@",[_socialController description]);
-    int likeNum = [_socialController.socialData getNumber:UMSNumberLike];
-    int shareNum = [_socialController.socialData getNumber:UMSNumberShare];
-    int commentNum = [_socialController.socialData getNumber:UMSNumberComment];
+    int likeNum = [_socialController.socialDataService.socialData getNumber:UMSNumberLike];
+    int shareNum = [_socialController.socialDataService.socialData getNumber:UMSNumberShare];
+    int commentNum = [_socialController.socialDataService.socialData getNumber:UMSNumberComment];
     NSString *likeText = [NSString stringWithFormat:@"喜欢 %d",likeNum];
     [_likeButton setTitle:likeText forState:UIControlStateNormal];
     NSString *shareText = [NSString stringWithFormat:@"分享 %d",shareNum];
@@ -128,12 +128,12 @@
     [self changeLikeButtonImage];
 }
 
--(void)handleAddLike:(UMSResponseEntity *)response
+-(void)handleAddLike:(UMSocialResponseEntity *)response
 {
     int st = response.st;
     if (st == UMSResponseCodeSuccess) {
         [_likeButton setEnabled:YES];
-        int likeNum = [_socialController.socialData getNumber:UMSNumberLike];
+        int likeNum = [_socialController.socialDataService.socialData getNumber:UMSNumberLike];
         NSString *likeText = [NSString stringWithFormat:@"喜欢 %d",likeNum];
         [_likeButton setTitle:likeText forState:UIControlStateNormal];
         [self changeLikeButtonImage];
@@ -144,7 +144,8 @@
 {
     [_likeButton setEnabled:NO];
     self.tableViewController.didSelectIndex = self.index;
-    [_socialController addOrMinusLikeNumber];
+    [_socialController.socialDataService setUMSoicalDelegate:self];
+    [_socialController.socialDataService postAddLikeOrCancel];
 }
 
 
@@ -152,10 +153,9 @@
 {
     UIImage *bgImage = nil;
     UIImage *hlImage = nil;
-    if (_socialController.socialData.isLike == NO) {
+    if (_socialController.socialDataService.socialData.isLike == NO) {
         bgImage = [UIImage imageNamed:@"UMS_like_off.png"];
         hlImage = [UIImage imageNamed:@"UMS_like_off.png"];
-        
     }
     else {
         bgImage = [UIImage imageNamed:@"UMS_like_on.png"];
@@ -168,13 +168,15 @@
 -(void)pushShareList
 {
     self.tableViewController.didSelectIndex = self.index;
-    [_socialController presentShareList];
+    UINavigationController *shareListController = [_socialController getSocialShareListController];
+    [_tabelViewController presentModalViewController:shareListController animated:YES];
 }
 
 -(void)pushCommentList
 {
     self.tableViewController.didSelectIndex = self.index;
-    [_socialController presentCommentList];
+    UINavigationController *commentListController = [_socialController getSocialCommentListController];
+    [_tabelViewController presentModalViewController:commentListController animated:YES];
 }
 
 @end

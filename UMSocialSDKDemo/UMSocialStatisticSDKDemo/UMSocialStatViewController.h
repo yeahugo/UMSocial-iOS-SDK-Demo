@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UMSocialStatistic.h"
 
-@interface UMSocialStatViewController : UITableViewController<UMSocialDelegate>
+@interface UMSocialStatViewController : UITableViewController<UMSocialDataDelegate>
 {
     UMSocialStatistic *_socialStatistic;
     int count;

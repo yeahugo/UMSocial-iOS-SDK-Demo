@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/UMSocialData.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/UMSocialData</TokenIdentifier>
+			<Abstract type="html">一个UMSocialData对象标识一个分享资源，用一个identifier字符串作为标识，你可以为此对象设置分享内嵌文字、分享图片等，可以获取到对应的分享数、评论数。同时UMSocialData类方法用来设置appKey和打开log等全局设置。</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>
+			
+			<NodeRef refid="4"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialData/setIdentifier:</TokenIdentifier>
+			<Abstract type="html">   标识每个不同UMSocialData对象的字符串</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *identifier</Declaration>
+			
+			
+			<Anchor>//api/name/identifier</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialData/identifier</TokenIdentifier>
+			<Abstract type="html">   标识每个不同UMSocialData对象的字符串</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *identifier</Declaration>
+			
+			
+			<Anchor>//api/name/identifier</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialData/setShareText:</TokenIdentifier>
+			<Abstract type="html">分享的内嵌文字</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *shareText</Declaration>
+			
+			
+			<Anchor>//api/name/shareText</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialData/shareText</TokenIdentifier>
+			<Abstract type="html">分享的内嵌文字</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *shareText</Declaration>
+			
+			
+			<Anchor>//api/name/shareText</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialData/setCommentText:</TokenIdentifier>
+			<Abstract type="html">用于用户在评论并分享的时候，该字段内容会自动添加到评论的后面，分享到各个分享平台</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *commentText</Declaration>
+			
+			
+			<Anchor>//api/name/commentText</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialData/commentText</TokenIdentifier>
+			<Abstract type="html">用于用户在评论并分享的时候，该字段内容会自动添加到评论的后面，分享到各个分享平台</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *commentText</Declaration>
+			
+			
+			<Anchor>//api/name/commentText</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialData/setShareImage:</TokenIdentifier>
+			<Abstract type="html">分享的内嵌图片</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIImage *shareImage</Declaration>
+			
+			
+			<Anchor>//api/name/shareImage</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialData/shareImage</TokenIdentifier>
+			<Abstract type="html">分享的内嵌图片</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIImage *shareImage</Declaration>
+			
+			
+			<Anchor>//api/name/shareImage</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialData/setCommentImage:</TokenIdentifier>
+			<Abstract type="html">用于用户在评论并分享的时候，该字段内容会自动添加到评论中的图片，分享到各个分享平台</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIImage *commentImage</Declaration>
+			
+			
+			<Anchor>//api/name/commentImage</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialData/commentImage</TokenIdentifier>
+			<Abstract type="html">用于用户在评论并分享的时候，该字段内容会自动添加到评论中的图片，分享到各个分享平台</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIImage *commentImage</Declaration>
+			
+			
+			<Anchor>//api/name/commentImage</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialData/setIsLike:</TokenIdentifier>
+			<Abstract type="html">保存在本地记录是否喜欢</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isLike</Declaration>
+			
+			
+			<Anchor>//api/name/isLike</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialData/isLike</TokenIdentifier>
+			<Abstract type="html">保存在本地记录是否喜欢</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isLike</Declaration>
+			
+			
+			<Anchor>//api/name/isLike</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialData/setSocialAccount:</TokenIdentifier>
+			<Abstract type="html">保存在本地的用户微博账户信息,key是微博名，value是自定义的UMSocialResponseEntity对象</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSDictionary *socialAccount</Declaration>
+			
+			
+			<Anchor>//api/name/socialAccount</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialData/socialAccount</TokenIdentifier>
+			<Abstract type="html">保存在本地的用户微博账户信息,key是微博名，value是自定义的UMSocialResponseEntity对象</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSDictionary *socialAccount</Declaration>
+			
+			
+			<Anchor>//api/name/socialAccount</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/UMSocialData/setAppKey:</TokenIdentifier>
+			<Abstract type="html">设置app的友盟appKey，此appKey从友盟网站获取</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>+ (void)setAppKey:(NSString *)appKey</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>appKey</Name>
+					<Abstract type="html">友盟appKey</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setAppKey:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/UMSocialData/openLog:</TokenIdentifier>
+			<Abstract type="html">设置是否打开log输出，默认不打开，如果打开的话可以看到此sdk网络或者其他操作，有利于调试</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>+ (void)openLog:(BOOL)openLog</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>openLog</Name>
+					<Abstract type="html">是否打开log输出</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/openLog:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/UMSocialData/defaultData</TokenIdentifier>
+			<Abstract type="html">获取默认的UMSocialData对象，此对象的identifier为&quot;&quot;
+  </Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>+ (UMSocialData *)defaultData</Declaration>
+			
+			
+			<Anchor>//api/name/defaultData</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialData/initWithIdentifier:</TokenIdentifier>
+			<Abstract type="html">初始化一个UMSocialData对象</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithIdentifier:(NSString *)identifier</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>identifier</Name>
+					<Abstract type="html">一个UMSocialData对象的标识符，相同标识符的UMSocialData拥有相同的属性</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">return 初始化的UMSocialData对象</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithIdentifier:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialData/getNumber:</TokenIdentifier>
+			<Abstract type="html">获得该对象保存在本地的分享数、评论数或者喜欢数</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>- (NSInteger)getNumber:(UMSNumberType)numberType</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>numberType</Name>
+					<Abstract type="html">数目类型，分享、评论、喜欢分别为UMSNumberShare、UMSNumberComment、UMSNumberLike</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">各种动作的数目</Abstract></ReturnValue>
+			<Anchor>//api/name/getNumber:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialData/requestSocialData</TokenIdentifier>
+			<Abstract type="html">从服务器获取分享数、评论数、喜欢数等属性</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>- (void)requestSocialData</Declaration>
+			
+			
+			<Anchor>//api/name/requestSocialData</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialData/setUMSoicalDelegate:</TokenIdentifier>
+			<Abstract type="html">设置实现了UMSocialDataDelegate的对象</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>- (void)setUMSoicalDelegate:(id&lt;UMSocialDataDelegate&gt;)delegate</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>delegate</Name>
+					<Abstract type="html">实现了UMSocialDataDelegate的对象</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setUMSoicalDelegate:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

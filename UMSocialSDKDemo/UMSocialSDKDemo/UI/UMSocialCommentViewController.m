@@ -8,7 +8,7 @@
 
 #import "UMSocialCommentViewController.h"
 #import <CoreLocation/CoreLocation.h>
-#import "UMSnsAccountEntity.h"
+#import "UMSocialAccountEntity.h"
 #import "UMStringMock.h"
 
 @interface UMSocialCommentViewController ()
@@ -19,7 +19,6 @@
 
 -(void)dealloc
 {
-    [_socialAPI release];
     [_socialController release];
     [_commentTableView release];
     [_imageView release];
@@ -42,15 +41,12 @@
         [self.view addSubview:_imageView];
         
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"another"];
-        [socialData setUMSoicalDelegate:self];
-        _socialController = [[UMSocialUIController alloc] initWithUMSocialData:socialData];
+        _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
         
-        _socialController.socialData.commentText = textLabel.text;        //作为分享到微博内容"//"之后的文字
-        _socialController.socialData.commentImage = _imageView.image;
+        _socialController.socialDataService.socialData.commentText = textLabel.text;        //作为分享到微博内容"//"之后的文字
+        _socialController.socialDataService.socialData.commentImage = _imageView.image;
         
-        _socialAPI = [[UMSocialDataAPI alloc] initWithUMSocialData:socialData];
         [socialData release];
-//        [_socialAPI setUMSoicalDelegate:self];
         _commentTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 190, 320, 250)];
         _commentTableView.dataSource = self;
         _commentTableView.delegate = self;
@@ -74,7 +70,7 @@
 #pragma UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -90,15 +86,12 @@
         cell.textLabel.text = @"评论列表";
     }
     if (indexPath.row == 1) {
-        cell.textLabel.text = @"评论编辑";
-    }
-    if (indexPath.row == 2) {
         cell.textLabel.text = @"获取评论列表数据";
     }
-    if (indexPath.row == 3) {
+    if (indexPath.row == 2) {
         cell.textLabel.text = @"直接发送评论";
     }
-    if (indexPath.row == 4) {
+    if (indexPath.row == 3) {
         cell.textLabel.text = @"直接发送评论并分享到微博";
     }
     return cell;    
@@ -110,37 +103,33 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == 0) {
-        [_socialController presentCommentList];
+        UINavigationController *commentList = [_socialController getSocialCommentListController];
+        [self presentModalViewController:commentList animated:YES];
     }
     if (indexPath.row == 1) {
-        [_socialController presentCommentEdit];
+        [_socialController.socialDataService requestCommentList:(-1)];
     }
     if (indexPath.row == 2) {
-        [_socialAPI requestCommentList:(-1)];
+        [_socialController.socialDataService postCommentWithContent:[UMStringMock commentMockString]];
     }
     if (indexPath.row == 3) {
-        [_socialAPI postCommentWithContent:[UMStringMock commentMockString]];
-    }
-    if (indexPath.row == 4) {
         CLLocation *location = [[CLLocation alloc] initWithLatitude:30.0 longitude:108.0];
-        NSDictionary *snsDic = [UMSocialData getUMSocialAccount];
-        NSMutableArray *shareToSNSArray = [[NSMutableArray alloc] init];
+        NSDictionary *snsDic = _socialController.socialDataService.socialData.socialAccount;
+        NSMutableDictionary *shareToSNSDictionary = [[NSMutableDictionary alloc] init];
         for (id key in snsDic) {
             if (![key isEqualToString:@"defaultAccount"]&&![key isEqualToString:@"loginAccount"]) {
                 NSLog(@"key is %@",key);
-                UMSnsAccountEntity *snsAccount = (UMSnsAccountEntity *)[snsDic objectForKey:key];
-                NSNumber *shareToSns = [NSNumber numberWithInt:[snsAccount shareToType]];
-                [shareToSNSArray addObject:shareToSns];
+                [shareToSNSDictionary setObject:[[snsDic objectForKey:key] usid] forKey:key];
             }
         }
-        [_socialAPI postCommentWithContent:[UMStringMock commentMockString] location:location shareToSNS:shareToSNSArray];
+        [_socialController.socialDataService postCommentWithContent:[UMStringMock commentMockString] location:location shareToSNSWithUsid:shareToSNSDictionary];
         [location release];
-        [shareToSNSArray release];
+        [shareToSNSDictionary release];
     }
 }
 
 #pragma UMSocialDelegate
--(void)didFinishGetUMSocialResponse:(UMSResponseEntity *)response
+-(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"发送结果" message:@"成功" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
     if (response.st == UMSResponseCodeSuccess) {

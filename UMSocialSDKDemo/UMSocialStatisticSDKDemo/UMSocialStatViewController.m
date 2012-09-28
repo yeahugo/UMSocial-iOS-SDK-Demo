@@ -7,6 +7,7 @@
 //
 
 #import "UMSocialStatViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface UMSocialStatViewController ()
 
@@ -14,11 +15,18 @@
 
 @implementation UMSocialStatViewController
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [_socialStatistic setUMSocialDelegate:nil];
+    [super viewWillDisappear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     count  = 0;
-    _socialStatistic = [[UMSocialStatistic alloc] initWithIdentifier:@"test" cuid:@"123"];
+    _sentContinue = YES;
+    _socialStatistic = [[UMSocialStatistic alloc] initWithIdentifier:@"abc"];
     [_socialStatistic setUMSocialDelegate:self];
 }
 
@@ -50,7 +58,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     if (indexPath.row == 0) {
         cell.textLabel.text = @"发送评论";
@@ -71,43 +79,58 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     _sentContinue = YES;
-    
     if (indexPath.row == 0) {
-        NSString *commentString = [NSString stringWithFormat:@"test + %@",[[NSDate date] description]];
-        [_socialStatistic postCommentWithContent:commentString location:nil shareToSNSWithUsid:nil];
+        [self postComment];
     }
     if (indexPath.row == 1) {
-        [_socialStatistic addOrMinusLikeNumber];
+        [_socialStatistic postAddLikeOrCancel];
     }
     if (indexPath.row == 2) {
-        [_socialStatistic postSNSWithType:UMShareToTypeSina usid:@"shoujigavin8783" content:@"test" weiboId:@"124305058121693"];
+        [self postSNS];
     }
 }
 
+-(void)postSNS
+{
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:22.5 longitude:112];
+
+    NSString *snsString = [NSString stringWithFormat:@"test + %@",[[NSDate date] description]];
+    [_socialStatistic postSNSWithType:UMShareToTypeSina usid:@"shoujigavin8783" content:snsString weiboId:@"124305058121693" location:location];
+    [location release];
+}
+
+-(void)postComment
+{
+    NSString *commentString = [NSString stringWithFormat:@"test + %@",[[NSDate date] description]];
+    UIImage *image = [UIImage imageNamed:@"yinxing0.jpg"];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:22.5 longitude:112];
+    NSDictionary *shareToDic = [NSDictionary dictionaryWithObjectsAndKeys:@"123",UMShareToSina,nil];
+    [_socialStatistic postCommentWithContent:commentString image:image templateText:@"template" location:location shareToSNSWithUsid:shareToDic];
+    [location release];
+}
+
 #pragma mark - UMSocialDelegate
--(void)didFinishGetUMSocialResponse:(UMSResponseEntity *)response
+-(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
 {
     count ++;
     NSLog(@"finish getUmsoicalresponse!! count is %d",count);
     if (count == 10) {
         _sentContinue = NO;
-        count = 0;
         for (int i = 0; i<3; i++) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+            count = 0;
         }
     }
     if (_sentContinue == YES) {
         if (response.responseType == UMSResponseAddLike ) {
-            [_socialStatistic addOrMinusLikeNumber];
+            [_socialStatistic postAddLikeOrCancel];
         }
         if (response.responseType == UMSResponseAddComment ) {
-            NSString *snsString = [NSString stringWithFormat:@"test + %@",[[NSDate date] description]];
-            [_socialStatistic postCommentWithContent:snsString location:nil shareToSNSWithUsid:nil];
+            [self postComment];
         }
         if (response.responseType == UMSResponseShareToSNS) {
-            NSString *snsString = [NSString stringWithFormat:@"test + %@",[[NSDate date] description]];
-            [_socialStatistic postSNSWithType:UMShareToTypeTenc usid:nil content:snsString weiboId:nil];
+            [self postSNS];
         }        
     }
 }

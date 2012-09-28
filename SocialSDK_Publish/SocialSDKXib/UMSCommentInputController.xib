@@ -2,21 +2,21 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1296</int>
-		<string key="IBDocument.SystemVersion">11E2620</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
-		<string key="IBDocument.AppKitVersion">1138.47</string>
-		<string key="IBDocument.HIToolboxVersion">569.00</string>
+		<string key="IBDocument.SystemVersion">12C54</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
+		<string key="IBDocument.AppKitVersion">1187.34</string>
+		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1181</string>
+			<string key="NS.object.0">1498</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
-			<string>IBUITextView</string>
-			<string>IBUIButton</string>
-			<string>IBUIImageView</string>
-			<string>IBUIView</string>
 			<string>IBMKMapView</string>
 			<string>IBProxyObject</string>
+			<string>IBUIButton</string>
+			<string>IBUIImageView</string>
+			<string>IBUITextView</string>
+			<string>IBUIView</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -91,10 +91,50 @@
 											<string key="NSResourceName">UMS_comment_bar_background.png</string>
 										</object>
 									</object>
+									<object class="IBUIButton" id="633400960">
+										<reference key="NSNextResponder" ref="226037329"/>
+										<int key="NSvFlags">-2147483356</int>
+										<string key="NSFrame">{{94, 7}, {30, 30}}</string>
+										<reference key="NSSuperview" ref="226037329"/>
+										<reference key="NSWindow"/>
+										<string key="NSReuseIdentifierKey">_NS:9</string>
+										<bool key="IBUIOpaque">NO</bool>
+										<int key="IBUIContentMode">4</int>
+										<int key="IBUITag">1001</int>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<int key="IBUIContentHorizontalAlignment">0</int>
+										<int key="IBUIContentVerticalAlignment">0</int>
+										<double key="IBUIImageEdgeInsets.top">10</double>
+										<double key="IBUIImageEdgeInsets.bottom">0.0</double>
+										<double key="IBUIImageEdgeInsets.left">10</double>
+										<double key="IBUIImageEdgeInsets.right">0.0</double>
+										<reference key="IBUIHighlightedTitleColor" ref="842657342"/>
+										<object class="NSColor" key="IBUINormalTitleColor">
+											<int key="NSColorSpace">1</int>
+											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+										</object>
+										<object class="NSColor" key="IBUINormalTitleShadowColor" id="532529066">
+											<int key="NSColorSpace">3</int>
+											<bytes key="NSWhite">MC41AA</bytes>
+										</object>
+										<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="444349886">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">UMS_tencent_off.png</string>
+										</object>
+										<object class="IBUIFontDescription" key="IBUIFontDescription" id="872259642">
+											<int key="type">2</int>
+											<double key="pointSize">15</double>
+										</object>
+										<object class="NSFont" key="IBUIFont" id="139538037">
+											<string key="NSName">Helvetica-Bold</string>
+											<double key="NSSize">15</double>
+											<int key="NSfFlags">16</int>
+										</object>
+									</object>
 									<object class="IBUIButton" id="674481643">
 										<reference key="NSNextResponder" ref="226037329"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{0, 6}, {60, 37}}</string>
+										<string key="NSFrame">{{0, 5}, {60, 37}}</string>
 										<reference key="NSSuperview" ref="226037329"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="195867012"/>
@@ -108,19 +148,9 @@
 											<int key="NSColorSpace">1</int>
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
-										<object class="NSColor" key="IBUINormalTitleShadowColor" id="532529066">
-											<int key="NSColorSpace">3</int>
-											<bytes key="NSWhite">MC41AA</bytes>
-										</object>
-										<object class="IBUIFontDescription" key="IBUIFontDescription" id="872259642">
-											<int key="type">2</int>
-											<double key="pointSize">15</double>
-										</object>
-										<object class="NSFont" key="IBUIFont" id="413217489">
-											<string key="NSName">Helvetica-Bold</string>
-											<double key="NSSize">15</double>
-											<int key="NSfFlags">16</int>
-										</object>
+										<reference key="IBUINormalTitleShadowColor" ref="532529066"/>
+										<reference key="IBUIFontDescription" ref="872259642"/>
+										<reference key="IBUIFont" ref="139538037"/>
 									</object>
 									<object class="IBUIButton" id="287786808">
 										<reference key="NSNextResponder" ref="226037329"/>
@@ -146,12 +176,9 @@
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
 										<reference key="IBUINormalTitleShadowColor" ref="532529066"/>
-										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
-											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">UMS_tencent_off.png</string>
-										</object>
+										<reference key="IBUINormalBackgroundImage" ref="444349886"/>
 										<reference key="IBUIFontDescription" ref="872259642"/>
-										<reference key="IBUIFont" ref="413217489"/>
+										<reference key="IBUIFont" ref="139538037"/>
 									</object>
 									<object class="IBUIButton" id="195867012">
 										<reference key="NSNextResponder" ref="226037329"/>
@@ -182,7 +209,7 @@
 											<string key="NSResourceName">UMS_sina_off.png</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="872259642"/>
-										<reference key="IBUIFont" ref="413217489"/>
+										<reference key="IBUIFont" ref="139538037"/>
 									</object>
 									<object class="IBUIButton" id="1051468458">
 										<reference key="NSNextResponder" ref="226037329"/>
@@ -213,7 +240,7 @@
 											<string key="NSResourceName">UMS_renren_off.png</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="872259642"/>
-										<reference key="IBUIFont" ref="413217489"/>
+										<reference key="IBUIFont" ref="139538037"/>
 									</object>
 									<object class="IBUIButton" id="288272418">
 										<reference key="NSNextResponder" ref="226037329"/>
@@ -244,7 +271,7 @@
 											<string key="NSResourceName">UMS_douban_off.png</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="872259642"/>
-										<reference key="IBUIFont" ref="413217489"/>
+										<reference key="IBUIFont" ref="139538037"/>
 									</object>
 								</array>
 								<string key="NSFrame">{{0, 150}, {320, 50}}</string>
@@ -434,6 +461,14 @@
 					<int key="connectionID">23</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">shareToQzoneButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="633400960"/>
+					</object>
+					<int key="connectionID">51</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">actionToShareWithButton:</string>
 						<reference key="source" ref="287786808"/>
@@ -468,6 +503,15 @@
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">47</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">actionToShareWithButton:</string>
+						<reference key="source" ref="633400960"/>
+						<reference key="destination" ref="975951072"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">50</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -522,12 +566,13 @@
 						<int key="objectID">6</int>
 						<reference key="object" ref="226037329"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="674481643"/>
 							<reference ref="80112307"/>
 							<reference ref="288272418"/>
 							<reference ref="287786808"/>
 							<reference ref="195867012"/>
 							<reference ref="1051468458"/>
+							<reference ref="633400960"/>
+							<reference ref="674481643"/>
 						</array>
 						<reference key="parent" ref="86822696"/>
 					</object>
@@ -576,10 +621,15 @@
 						<reference key="object" ref="25450099"/>
 						<reference key="parent" ref="62848462"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">49</int>
+						<reference key="object" ref="633400960"/>
+						<reference key="parent" ref="226037329"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
-				<string key="-1.CustomClassName">UMSCommentInputController</string>
+				<string key="-1.CustomClassName">UMSCommentEditController</string>
 				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -603,18 +653,21 @@
 				<string key="34.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="2" key="34.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="49.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<real value="2" key="49.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
+				<real value="0.0" key="49.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">48</int>
+			<int key="maxID">51</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
-					<string key="className">UMSCommentInputController</string>
+					<string key="className">UMSCommentEditController</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="NSMutableDictionary" key="actions">
 						<string key="NS.key.0">actionToShareWithButton:</string>
@@ -634,6 +687,7 @@
 						<string key="mapButtonView">UIView</string>
 						<string key="mapView">MKMapView</string>
 						<string key="shareToDoubanButton">UIButton</string>
+						<string key="shareToQzoneButton">UIButton</string>
 						<string key="shareToRenrenButton">UIButton</string>
 						<string key="shareToSinaButton">UIButton</string>
 						<string key="shareToTencentButton">UIButton</string>
@@ -666,6 +720,10 @@
 							<string key="name">shareToDoubanButton</string>
 							<string key="candidateClassName">UIButton</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="shareToQzoneButton">
+							<string key="name">shareToQzoneButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="shareToRenrenButton">
 							<string key="name">shareToRenrenButton</string>
 							<string key="candidateClassName">UIButton</string>
@@ -693,7 +751,7 @@
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/UMSCommentInputController.h</string>
+						<string key="minorKey">./Classes/UMSCommentEditController.h</string>
 					</object>
 				</object>
 			</array>
@@ -713,6 +771,6 @@
 			<string key="UMS_sina_off.png">{58, 58}</string>
 			<string key="UMS_tencent_off.png">{58, 58}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1181</string>
+		<string key="IBCocoaTouchPluginVersion">1498</string>
 	</data>
 </archive>

@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "UMSocialDemoTableViewController.h"
+#import "UMSocialDemoTableController.h"
 #import "UMSocialData.h"
 
 @implementation AppDelegate
@@ -21,7 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [UMSocialData setAppKey:@"4fe11bd85270156dd8000014"];
-    UMSocialDemoTableViewController *demoViewController = [[UMSocialDemoTableViewController alloc] init];
+    UMSocialDemoTableController *demoViewController = [[UMSocialDemoTableController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:demoViewController];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.rootViewController= navigationController;

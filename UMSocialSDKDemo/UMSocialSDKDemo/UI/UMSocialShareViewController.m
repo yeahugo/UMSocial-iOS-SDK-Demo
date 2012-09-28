@@ -17,7 +17,6 @@
 
 -(void)dealloc
 {
-    [_socialDataAPI release];
     [_socialController release];
     [_actionSheet release];
     [_shareTableView release];
@@ -41,19 +40,19 @@
         [self.view addSubview:_imageView];
         
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"another"];
-        _socialDataAPI = [[UMSocialDataAPI alloc] initWithUMSocialData:socialData];
         
-        _socialDataAPI.socialData.shareText = textLabel.text;
-        _socialDataAPI.socialData.shareImage = _imageView.image;
+        socialData.shareText = textLabel.text;
+        socialData.shareImage = _imageView.image;
         
-        _socialController = [[UMSocialUIController alloc] initWithUMSocialData:socialData];
+        _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+        [_socialController setUMSocialUIDelegate:self];
         [socialData release];
         _shareTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 190, 320, 250)];
         _shareTableView.dataSource = self;
         _shareTableView.delegate = self;
         [self.view addSubview:_shareTableView];
         
-        _actionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",nil];
+        _actionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",@"QQ空间",nil];
     }
     return self;
 }
@@ -84,7 +83,7 @@
 #pragma UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 4;
 }
 
 
@@ -98,12 +97,15 @@
         [cell autorelease];
     }
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"图文分享";
+        cell.textLabel.text = @"分享列表";
     }
     if (indexPath.row == 1) {
-        cell.textLabel.text = @"授权";
+        cell.textLabel.text = @"图文分享";
     }
     if (indexPath.row == 2) {
+        cell.textLabel.text = @"授权";
+    }
+    if (indexPath.row == 3) {
         cell.textLabel.text = @"直接发送微博";
     }
     
@@ -115,38 +117,45 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    [_actionSheet setTitle:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
-    [_actionSheet showInView:self.view];
-    _actionSheet.delegate = self;
-    UMShareAction shareAction  = indexPath.row;
-    NSLog(@"tag is %d",_actionSheet.tag);
-    _actionSheet.tag = shareAction;
+    if (indexPath.row > 0) {
+        [_actionSheet setTitle:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
+        [_actionSheet showInView:self.view];
+        _actionSheet.delegate = self;
+        UMShareAction shareAction  = indexPath.row;
+        NSLog(@"tag is %d",_actionSheet.tag);
+        _actionSheet.tag = shareAction; 
+    }
+    else{
+         UINavigationController *shareListController = [_socialController getSocialShareListController];
+        [self presentModalViewController:shareListController animated:YES];
+    }
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"button index is %d",buttonIndex);
-    UMShareToType shareToType = buttonIndex;
-    if (buttonIndex >= UMShareToTypeCount) {
+    UMShareToType shareToType = buttonIndex + UMShareToTypeSina;
+    if (shareToType >= UMShareToTypeCount) {
         return;
     }
     if (actionSheet.tag == UMSharePostData) {
-        [_socialDataAPI.socialData setUMSoicalDelegate:self];
-        [_socialDataAPI postSNSWithType:shareToType usid:nil content:_socialDataAPI.socialData.shareText image:_imageView.image];
+        [_socialController.socialDataService setUMSoicalDelegate:self];
+        [_socialController.socialDataService postSNSWithType:buttonIndex usid:nil content:[UMStringMock commentMockString] image:nil location:nil];
         return;
     }
     
     else if(actionSheet.tag == UMShareEditPresent) {
-        [_socialController.socialData setUMSoicalDelegate:nil];
-        [_socialController presentShareEdit:shareToType];
+        [_socialController.socialDataService setUMSoicalDelegate:nil];
+        UINavigationController *shareEditController = [_socialController getSocialShareEditController:shareToType];
+        [self presentModalViewController:shareEditController animated:YES];
     }
     else if(actionSheet.tag == UMShareOauthPresent) {
-        UIViewController *oauthViewController = [UMSocialUIController getOauthViewController:shareToType];
+        UIViewController *oauthViewController = [_socialController getSocialOauthController:shareToType];
         [self presentModalViewController:oauthViewController animated:YES];
     }
 }
 
--(void)didFinishGetUMSocialResponse:(UMSResponseEntity *)response
+-(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
 {
     UIAlertView *alertView;
     if (response.responseType == UMSResponseShareToSNS) {
@@ -161,5 +170,19 @@
         [alertView show];
         [alertView release];   
     }
+}
+
+#pragma mark - UMSocialUIDelegate
+
+-(UITableViewCell *)customCellForShareListTableView
+{
+    UITableViewCell *weiXinCell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"weixinCell"] autorelease];
+    weiXinCell.textLabel.text = @"微信分享";
+    return weiXinCell;
+}
+
+-(void)didSelectShareListTableViewCell
+{
+    NSLog(@"分享到微信");
 }
 @end

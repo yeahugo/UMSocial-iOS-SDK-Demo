@@ -7,15 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "UMSocialService.h"
-#import "UMSocialUIController.h"
+#import "UMSocialControllerService.h"
 #import "UMSocialTableViewController.h"
 
-@interface UMSocialTableViewCell : UITableViewCell <UMSocialDelegate>
+@interface UMSocialTableViewCell : UITableViewCell <UMSocialDataDelegate>
 {
     int _index;
     NSString *_descriptor;
-    UMSocialUIController *_socialController;
+    UMSocialControllerService *_socialController;
     UILabel  *_detailLabel;
     UIButton *_likeButton;
     UIButton *_shareButton;
@@ -29,6 +28,6 @@
 @property (nonatomic, readonly) NSString *labelText;
 @property (nonatomic, readonly) UIImage *showImage;
 @property (nonatomic, assign) UMSocialTableViewController *tableViewController;
-@property (nonatomic, retain) UMSocialUIController *socialController;
+@property (nonatomic, retain) UMSocialControllerService *socialController;
 
 @end

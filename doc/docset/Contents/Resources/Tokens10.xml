@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/UMSocialDataDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/UMSocialDataDelegate</TokenIdentifier>
+			<Abstract type="html">进行网络请求之后的回调函数，你可以通过返回的UMSocialResponseEntity对象的responseType类型来对不同的请求来做处理。</Abstract>
+			<DeclaredIn>UMSocialDataDelegate.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/cl/UMSocialResponseEntity</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<NodeRef refid="10"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UMSocialDataDelegate/didFinishGetUMSocialDataResponse:</TokenIdentifier>
+			<Abstract type="html">进行网络请求之后得到的回调方法</Abstract>
+			<DeclaredIn>UMSocialDataDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>response</Name>
+					<Abstract type="html">回调返回一个UMSResponseEntity对象</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didFinishGetUMSocialDataResponse:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -1,0 +1,958 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>UMSocialControllerService Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">UMSocial_SDK </a></h1>
+				<a id="developerHome" href="../index.html">umeng</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">UMSocialControllerService Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/currentNavigationController">&nbsp;&nbsp;&nbsp;&nbsp;currentNavigationController</option>
+	
+	<option value="//api/name/socialDataService">&nbsp;&nbsp;&nbsp;&nbsp;socialDataService</option>
+	
+	<option value="//api/name/soicalData">&nbsp;&nbsp;&nbsp;&nbsp;soicalData</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/setSocialConfigDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;+ setSocialConfigDelegate:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/getSocialAccountController">&nbsp;&nbsp;&nbsp;&nbsp;- getSocialAccountController</option>
+	
+	<option value="//api/name/getSocialCommentListController">&nbsp;&nbsp;&nbsp;&nbsp;- getSocialCommentListController</option>
+	
+	<option value="//api/name/getSocialOauthController:">&nbsp;&nbsp;&nbsp;&nbsp;- getSocialOauthController:</option>
+	
+	<option value="//api/name/getSocialShareEditController:">&nbsp;&nbsp;&nbsp;&nbsp;- getSocialShareEditController:</option>
+	
+	<option value="//api/name/getSocialShareListController">&nbsp;&nbsp;&nbsp;&nbsp;- getSocialShareListController</option>
+	
+	<option value="//api/name/initWithUMSocialData:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithUMSocialData:</option>
+	
+	<option value="//api/name/setUMSocialUIDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;- setUMSocialUIDelegate:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_对象属性">对象属性</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_初始化方法和设置">初始化方法和设置</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_获得评论列表、分享列表等`UINavigationController`">获得评论列表、分享列表等`UINavigationController`</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentNavigationController">currentNavigationController</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/socialDataService">socialDataService</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/soicalData">soicalData</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSocialConfigDelegate:">setSocialConfigDelegate:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSocialAccountController">getSocialAccountController</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSocialCommentListController">getSocialCommentListController</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSocialOauthController:">getSocialOauthController:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSocialShareEditController:">getSocialShareEditController:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSocialShareListController">getSocialShareListController</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithUMSocialData:">initWithUMSocialData:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setUMSocialUIDelegate:">setUMSocialUIDelegate:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="UMSocialControllerService Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">UMSocialControllerService Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">UMSocialControllerService.h<br />UMSocialControllerService.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>用此类的方法可以得到分享的有关UI对象，例如分享列表、评论列表、分享编辑页、分享授权页、用户中心页面等。返回都是<code>UINavigationController</code>对象，建议把这个对象present到你要添加到的<code>UIViewController</code>上</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="对象属性" name="task_对象属性"></a>
+						<h3 class="subsubtitle task-title">对象属性</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/soicalData">&nbsp;&nbsp;soicalData</a></code>
+		<span class="tooltip"><p>与<code>UMSocialControllerService</code>对象对应的<a href="../Classes/UMSocialData.html"><code>UMSocialData</code></a>对象，可以通过该对象设置分享内嵌文字、图片，获取分享数等属性</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/socialDataService">&nbsp;&nbsp;socialDataService</a></code>
+		<span class="tooltip"><p>用<a href="../Classes/UMSocialDataService.html"><code>UMSocialDataService</code></a>对象，可以调用发送微博、评论等数据级的方法</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currentNavigationController">&nbsp;&nbsp;currentNavigationController</a></code>
+		<span class="tooltip"><p>当前返回的<code>UINavigationController</code>对象</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="初始化方法和设置" name="task_初始化方法和设置"></a>
+						<h3 class="subsubtitle task-title">初始化方法和设置</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithUMSocialData:">&ndash;&nbsp;initWithUMSocialData:</a></code>
+		<span class="tooltip"><p>初始化一个<code>UMSocialControllerService</code>对象</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setUMSocialUIDelegate:">&ndash;&nbsp;setUMSocialUIDelegate:</a></code>
+		<span class="tooltip"><p>设置实现了<a href="../Protocols/UMSocialUIDelegate.html"><code>UMSocialUIDelegate</code></a>的对象</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setSocialConfigDelegate:">+&nbsp;setSocialConfigDelegate:</a></code>
+		<span class="tooltip"><p>设置实现了<a href="../Protocols/UMSocialConfigDelegate.html"><code>UMSocialConfigDelegate</code></a>的对象，类方法，表示该对象对全部<code>UMSocialControllerService</code>对象起作用</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="获得评论列表、分享列表等`UINavigationController`" name="task_获得评论列表、分享列表等`UINavigationController`"></a>
+						<h3 class="subsubtitle task-title">获得评论列表、分享列表等`UINavigationController`</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getSocialShareListController">&ndash;&nbsp;getSocialShareListController</a></code>
+		<span class="tooltip"><p>分享列表页面，该列表出现的分享列表可以通过实现<a href="../Protocols/UMSocialConfigDelegate.html"><code>UMSocialConfigDelegate</code></a>的方法来自定义</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getSocialCommentListController">&ndash;&nbsp;getSocialCommentListController</a></code>
+		<span class="tooltip"><p>评论列表页面，评论列表页面包括各评论详情、评论编辑</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getSocialAccountController">&ndash;&nbsp;getSocialAccountController</a></code>
+		<span class="tooltip"><p>个人中心页面，该页面包括个人的各个微博授权信息</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getSocialShareEditController:">&ndash;&nbsp;getSocialShareEditController:</a></code>
+		<span class="tooltip"><p>分享编辑页面</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getSocialOauthController:">&ndash;&nbsp;getSocialOauthController:</a></code>
+		<span class="tooltip"><p>授权页面</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/currentNavigationController" title="currentNavigationController"></a>
+	<h3 class="subsubtitle method-title">currentNavigationController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>当前返回的<code>UINavigationController</code>对象</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) UINavigationController *currentNavigationController</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>当前返回的<code>UINavigationController</code>对象</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/socialDataService" title="socialDataService"></a>
+	<h3 class="subsubtitle method-title">socialDataService</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>用<a href="../Classes/UMSocialDataService.html"><code>UMSocialDataService</code></a>对象，可以调用发送微博、评论等数据级的方法</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) UMSocialDataService *socialDataService</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>用<a href="../Classes/UMSocialDataService.html"><code>UMSocialDataService</code></a>对象，可以调用发送微博、评论等数据级的方法</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/soicalData" title="soicalData"></a>
+	<h3 class="subsubtitle method-title">soicalData</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>与<code>UMSocialControllerService</code>对象对应的<a href="../Classes/UMSocialData.html"><code>UMSocialData</code></a>对象，可以通过该对象设置分享内嵌文字、图片，获取分享数等属性</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) UMSocialData *soicalData</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>与<code>UMSocialControllerService</code>对象对应的<a href="../Classes/UMSocialData.html"><code>UMSocialData</code></a>对象，可以通过该对象设置分享内嵌文字、图片，获取分享数等属性</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/setSocialConfigDelegate:" title="setSocialConfigDelegate:"></a>
+	<h3 class="subsubtitle method-title">setSocialConfigDelegate:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>设置实现了<a href="../Protocols/UMSocialConfigDelegate.html"><code>UMSocialConfigDelegate</code></a>的对象，类方法，表示该对象对全部<code>UMSocialControllerService</code>对象起作用</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setSocialConfigDelegate:(id&lt;UMSocialConfigDelegate&gt;)<em>delegate</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>delegate</em></dt>
+			<dd><p>实现了<a href="../Protocols/UMSocialConfigDelegate.html"><code>UMSocialConfigDelegate</code></a>的对象</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>设置实现了<a href="../Protocols/UMSocialConfigDelegate.html"><code>UMSocialConfigDelegate</code></a>的对象，类方法，表示该对象对全部<code>UMSocialControllerService</code>对象起作用</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/getSocialAccountController" title="getSocialAccountController"></a>
+	<h3 class="subsubtitle method-title">getSocialAccountController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>个人中心页面，该页面包括个人的各个微博授权信息</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UINavigationController *)getSocialAccountController</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>UINavigationController</code>对象</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>个人中心页面，该页面包括个人的各个微博授权信息</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getSocialCommentListController" title="getSocialCommentListController"></a>
+	<h3 class="subsubtitle method-title">getSocialCommentListController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>评论列表页面，评论列表页面包括各评论详情、评论编辑</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UINavigationController *)getSocialCommentListController</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>UINavigationController</code>对象</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>评论列表页面，评论列表页面包括各评论详情、评论编辑</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getSocialOauthController:" title="getSocialOauthController:"></a>
+	<h3 class="subsubtitle method-title">getSocialOauthController:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>授权页面</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UINavigationController *)getSocialOauthController:(UMShareToType)<em>shareToType</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>shareToType</em></dt>
+			<dd><p>要授权的微博平台</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>UINavigationController</code>对象</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>授权页面</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getSocialShareEditController:" title="getSocialShareEditController:"></a>
+	<h3 class="subsubtitle method-title">getSocialShareEditController:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>分享编辑页面</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UINavigationController *)getSocialShareEditController:(UMShareToType)<em>shareToType</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>shareToType</em></dt>
+			<dd><p>要编辑的微博平台</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>UINavigationController</code>对象</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>分享编辑页面</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getSocialShareListController" title="getSocialShareListController"></a>
+	<h3 class="subsubtitle method-title">getSocialShareListController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>分享列表页面，该列表出现的分享列表可以通过实现<a href="../Protocols/UMSocialConfigDelegate.html"><code>UMSocialConfigDelegate</code></a>的方法来自定义</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UINavigationController *)getSocialShareListController</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>UINavigationController</code>对象</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>分享列表页面，该列表出现的分享列表可以通过实现<a href="../Protocols/UMSocialConfigDelegate.html"><code>UMSocialConfigDelegate</code></a>的方法来自定义</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithUMSocialData:" title="initWithUMSocialData:"></a>
+	<h3 class="subsubtitle method-title">initWithUMSocialData:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>初始化一个<code>UMSocialControllerService</code>对象</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithUMSocialData:(UMSocialData *)<em>socialData</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>socialData</em></dt>
+			<dd><p><a href="../Classes/UMSocialData.html"><code>UMSocialData</code></a>对象</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>初始化对象</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>初始化一个<code>UMSocialControllerService</code>对象</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setUMSocialUIDelegate:" title="setUMSocialUIDelegate:"></a>
+	<h3 class="subsubtitle method-title">setUMSocialUIDelegate:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>设置实现了<a href="../Protocols/UMSocialUIDelegate.html"><code>UMSocialUIDelegate</code></a>的对象</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setUMSocialUIDelegate:(id&lt;UMSocialUIDelegate&gt;)<em>soicalUIDelegate</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>soicalUIDelegate</em></dt>
+			<dd><p>实现了<a href="../Protocols/UMSocialUIDelegate.html"><code>UMSocialUIDelegate</code></a>的对象</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>设置实现了<a href="../Protocols/UMSocialUIDelegate.html"><code>UMSocialUIDelegate</code></a>的对象</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2012 umeng. All rights reserved. (Last updated: 2012-09-28)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

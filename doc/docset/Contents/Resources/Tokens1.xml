@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/UMSocialAccountEntity.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/UMSocialAccountEntity</TokenIdentifier>
+			<Abstract type="html">自定义的用户微博账户对象，对象数据从授权账号所对应的微博平台获取</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialAccountEntity/setPlatformName:</TokenIdentifier>
+			<Abstract type="html">微博平台名称,例如&quot;sina&quot;、&quot;tencent&quot;,定义在UMSocialEnum.h</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *platformName</Declaration>
+			
+			
+			<Anchor>//api/name/platformName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialAccountEntity/platformName</TokenIdentifier>
+			<Abstract type="html">微博平台名称,例如&quot;sina&quot;、&quot;tencent&quot;,定义在UMSocialEnum.h</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *platformName</Declaration>
+			
+			
+			<Anchor>//api/name/platformName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialAccountEntity/setUserName:</TokenIdentifier>
+			<Abstract type="html">用户昵称</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *userName</Declaration>
+			
+			
+			<Anchor>//api/name/userName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialAccountEntity/userName</TokenIdentifier>
+			<Abstract type="html">用户昵称</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *userName</Declaration>
+			
+			
+			<Anchor>//api/name/userName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialAccountEntity/setUsid:</TokenIdentifier>
+			<Abstract type="html">用户在微博的id号</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *usid</Declaration>
+			
+			
+			<Anchor>//api/name/usid</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialAccountEntity/usid</TokenIdentifier>
+			<Abstract type="html">用户在微博的id号</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *usid</Declaration>
+			
+			
+			<Anchor>//api/name/usid</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialAccountEntity/setIconURL:</TokenIdentifier>
+			<Abstract type="html">用户微博头像的url</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *iconURL</Declaration>
+			
+			
+			<Anchor>//api/name/iconURL</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialAccountEntity/iconURL</TokenIdentifier>
+			<Abstract type="html">用户微博头像的url</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *iconURL</Declaration>
+			
+			
+			<Anchor>//api/name/iconURL</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialAccountEntity/setAccessToken:</TokenIdentifier>
+			<Abstract type="html">用户授权后得到的accessToken</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *accessToken</Declaration>
+			
+			
+			<Anchor>//api/name/accessToken</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialAccountEntity/accessToken</TokenIdentifier>
+			<Abstract type="html">用户授权后得到的accessToken</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *accessToken</Declaration>
+			
+			
+			<Anchor>//api/name/accessToken</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialAccountEntity/setProfileURL:</TokenIdentifier>
+			<Abstract type="html">用户微博网址url</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *profileURL</Declaration>
+			
+			
+			<Anchor>//api/name/profileURL</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialAccountEntity/profileURL</TokenIdentifier>
+			<Abstract type="html">用户微博网址url</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *profileURL</Declaration>
+			
+			
+			<Anchor>//api/name/profileURL</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialAccountEntity/setShareToType:</TokenIdentifier>
+			<Abstract type="html">微博平台类型</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) UMShareToType shareToType</Declaration>
+			
+			
+			<Anchor>//api/name/shareToType</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialAccountEntity/shareToType</TokenIdentifier>
+			<Abstract type="html">微博平台类型</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) UMShareToType shareToType</Declaration>
+			
+			
+			<Anchor>//api/name/shareToType</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialAccountEntity/setIsFirstOauth:</TokenIdentifier>
+			<Abstract type="html">是否首次授权，sdk内使用</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) BOOL isFirstOauth</Declaration>
+			
+			
+			<Anchor>//api/name/isFirstOauth</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialAccountEntity/isFirstOauth</TokenIdentifier>
+			<Abstract type="html">是否首次授权，sdk内使用</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) BOOL isFirstOauth</Declaration>
+			
+			
+			<Anchor>//api/name/isFirstOauth</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialAccountEntity/initWithPlatformName:</TokenIdentifier>
+			<Abstract type="html">初始化方法</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithPlatformName:(NSString *)platformName</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>platformName</Name>
+					<Abstract type="html">微博平台名</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">初始化对象</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithPlatformName:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -7,19 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UMSocialDataAPI.h"
-#import "UMSocialUIController.h"
+#import "UMSocialControllerService.h"
 
 @interface UMSocialCommentViewController : UIViewController
 <
     UITableViewDelegate,
     UITableViewDataSource,
-    UMSocialDelegate
+        UMSocialDataDelegate
 >
 {
     UITableView *_commentTableView;
-    UMSocialDataAPI *_socialAPI;
-    UMSocialUIController *_socialController;
+    UMSocialControllerService *_socialController;
     UIImageView *_imageView;
 }
 @end

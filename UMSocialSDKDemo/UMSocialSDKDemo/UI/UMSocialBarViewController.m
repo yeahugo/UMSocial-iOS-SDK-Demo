@@ -26,7 +26,7 @@
     self = [super initWithNibName:@"UMSocialBarViewController" bundle:nil];
     if (self) {
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:descriptor];
-        _socialBar = [[UMSocialBar alloc] initWithUMSocialData:socialData];
+        _socialBar = [[UMSocialBar alloc] initWithUMSocialData:socialData withViewController:self];
         [socialData release];
         _socialBar.socialData.shareText = text;
         _socialBar.socialData.shareImage = image;
@@ -72,7 +72,7 @@
     // e.g. self.myOutlet = nil;
 }
 
--(void)didFinishGetUMSocialResponse:(UMSResponseEntity *)response
+-(void)didFinishGetUMSocialResponse:(UMSocialResponseEntity *)response
 {
     NSLog(@"response is %@",response);
 }

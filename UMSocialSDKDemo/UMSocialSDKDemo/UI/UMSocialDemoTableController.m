@@ -6,20 +6,20 @@
 //  Copyright (c) 2012年 umeng. All rights reserved.
 //
 
-#import "UMSocialDemoTableViewController.h"
+#import "UMSocialDemoTableController.h"
 #import "UMSocialBarViewController.h"
 #import "UMSocialTableViewController.h"
 #import "UMSocialShareViewController.h"
 #import "UMSocialCommentViewController.h"
 #import "UMStringMock.h"
 #import "UMSocialAccountViewController.h"
-#import "UMSocialStatViewController.h"
+//#import "UMSocialStatViewController.h"
 
-@interface UMSocialDemoTableViewController ()
+@interface UMSocialDemoTableController ()
 
 @end
 
-@implementation UMSocialDemoTableViewController
+@implementation UMSocialDemoTableController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -82,6 +82,9 @@
     if (indexPath.row == 4) {
         cell.textLabel.text = @"个人账号接口";
     }
+    if (indexPath.row == 5) {
+        cell.textLabel.text = @"统计sdk";
+    }
     // Configure the cell...
     
     return cell;
@@ -117,19 +120,14 @@
         UMSocialAccountViewController *socialAccountViewController = [[[UMSocialAccountViewController alloc] initWithStyle:UITableViewStylePlain] autorelease];
         pushedViewController = socialAccountViewController;
     }
+//    if (indexPath.row == 5) {
+//        UMSocialStatViewController *socialStatViewController = [[[UMSocialStatViewController alloc] initWithStyle:UITableViewStylePlain] autorelease];
+//        pushedViewController = socialStatViewController;
+//    }
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.navigationController pushViewController:pushedViewController animated:YES];
 }
 
--(void)didFinishRequestCommentListWithResponse:(NSDictionary *)response
-{
-    NSLog(@"finishRequestCommentListWithResponse response is %@",response);
-}
-
--(void)didFinishLoginWithResponse:(NSDictionary *)response
-{
-    NSLog(@"finishLoginWithResponse response is %@",response);
-}
 
 @end

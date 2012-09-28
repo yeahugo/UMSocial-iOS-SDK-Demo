@@ -7,10 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UMSocialDelegate.h"
 
-@interface UMSocialDemoTableViewController : UITableViewController
-<
-    UMSocialDelegate
->
+@interface UMSocialDemoTableController : UITableViewController
 @end
