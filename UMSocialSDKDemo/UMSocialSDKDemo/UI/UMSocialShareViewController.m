@@ -83,7 +83,7 @@
 #pragma UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 3;
 }
 
 
@@ -103,9 +103,6 @@
         cell.textLabel.text = @"图文分享";
     }
     if (indexPath.row == 2) {
-        cell.textLabel.text = @"授权";
-    }
-    if (indexPath.row == 3) {
         cell.textLabel.text = @"直接发送微博";
     }
     
@@ -148,10 +145,6 @@
         [_socialController.socialDataService setUMSoicalDelegate:nil];
         UINavigationController *shareEditController = [_socialController getSocialShareEditController:shareToType];
         [self presentModalViewController:shareEditController animated:YES];
-    }
-    else if(actionSheet.tag == UMShareOauthPresent) {
-        UIViewController *oauthViewController = [_socialController getSocialOauthController:shareToType];
-        [self presentModalViewController:oauthViewController animated:YES];
     }
 }
 

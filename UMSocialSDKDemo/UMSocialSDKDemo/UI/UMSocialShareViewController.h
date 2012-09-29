@@ -11,8 +11,8 @@
 
 typedef enum
 {
+    UMShareList,
     UMShareEditPresent,
-    UMShareOauthPresent,
     UMSharePostData
 }UMShareAction;
 
