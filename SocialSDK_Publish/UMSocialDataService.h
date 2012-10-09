@@ -30,6 +30,11 @@
  */
 @property (nonatomic, readonly) UMSocialData *socialData;
 
+/**
+ 设置实现了`<UMSocialDataDelegate>`的对象
+ */
+@property (nonatomic, readonly) id <UMSocialDataDelegate> socialDataDelegate;
+
 ///---------------------------------------
 /// @name 对象初始化和设置方法
 ///---------------------------------------

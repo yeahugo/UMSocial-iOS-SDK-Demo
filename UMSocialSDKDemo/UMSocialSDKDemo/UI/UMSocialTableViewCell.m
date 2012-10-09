@@ -130,7 +130,7 @@
 
 -(void)handleAddLike:(UMSocialResponseEntity *)response
 {
-    int st = response.st;
+    int st = response.responseCode;
     if (st == UMSResponseCodeSuccess) {
         [_likeButton setEnabled:YES];
         int likeNum = [_socialController.socialDataService.socialData getNumber:UMSNumberLike];

@@ -139,7 +139,7 @@
 {
     NSLog(@"button index is %d",buttonIndex);
     UMShareToType shareToType = buttonIndex + UMShareToTypeSina;
-    if (buttonIndex >= UMShareToTypeCount) {
+    if (shareToType >= UMShareToTypeCount) {
         return;
     }
     if (actionSheet.tag == UMAccountOauth) {

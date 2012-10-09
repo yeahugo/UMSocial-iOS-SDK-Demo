@@ -5,7 +5,7 @@
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/cl/UMSocialBar</TokenIdentifier>
 			<Abstract type="html">一个集成了多个社会化功能的工具栏，可以查看并添加评论、分享到微博、添加喜欢、查看用户信息等功能。
-你要用一个identifier标示符字符串和添加到的UIViewController对象来初始化，然后可以自己添加到你要添加到的UIView上，并自定义其位置。也可以通过他的socialData属性来获取分享数等。</Abstract>
+你要用一个identifier标识符字符串和添加到的UIViewController对象来初始化，然后可以自己添加到你要添加到的UIView上，并自定义其位置。也可以通过他的socialData属性来获取分享数等。</Abstract>
 			<DeclaredIn>UMSocialBar.h</DeclaredIn>
 			
 			<NodeRef refid="2"/>

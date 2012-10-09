@@ -14,7 +14,7 @@
  */
 @interface UMSocialResponseEntity : NSObject<NSCoding>
 {
-    UMSResponseCode _st;                        //错误代号
+    UMSResponseCode _responseCode;                        //错误代号
     UMSResponse _responseType;
     NSString *_message;             //返回的错误消息
     NSDictionary *_data;            //返回数据
@@ -22,14 +22,14 @@
 }
 
 /**
- `UMSResponseCode`状态码
+ `UMSResponseCode`状态码,定义在`UMSocialEnum`
  
   @see `UMSocialEnum.h`
  */
-@property (nonatomic) UMSResponseCode st;
+@property (nonatomic) UMSResponseCode responseCode;
 
 /**
- 数据返回`UMSResponse`类型
+ 数据返回`UMSResponse`类型,定义在`UMSocialEnum`
  
  @see `UMSocialEnum.h`
  */

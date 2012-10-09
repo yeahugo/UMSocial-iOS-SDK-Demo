@@ -132,7 +132,7 @@
 -(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"发送结果" message:@"成功" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
-    if (response.st == UMSResponseCodeSuccess) {
+    if (response.responseCode == UMSResponseCodeSuccess) {
         [alertView show];
     }
     else

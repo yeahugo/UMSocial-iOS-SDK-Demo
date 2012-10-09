@@ -13,7 +13,6 @@
 #import "UMSocialCommentViewController.h"
 #import "UMStringMock.h"
 #import "UMSocialAccountViewController.h"
-//#import "UMSocialStatViewController.h"
 
 @interface UMSocialDemoTableController ()
 
@@ -120,10 +119,6 @@
         UMSocialAccountViewController *socialAccountViewController = [[[UMSocialAccountViewController alloc] initWithStyle:UITableViewStylePlain] autorelease];
         pushedViewController = socialAccountViewController;
     }
-//    if (indexPath.row == 5) {
-//        UMSocialStatViewController *socialStatViewController = [[[UMSocialStatViewController alloc] initWithStyle:UITableViewStylePlain] autorelease];
-//        pushedViewController = socialStatViewController;
-//    }
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.navigationController pushViewController:pushedViewController animated:YES];

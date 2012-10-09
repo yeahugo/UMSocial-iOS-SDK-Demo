@@ -8,6 +8,7 @@
 
 #import "UMSocialShareViewController.h"
 #import "UMStringMock.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface UMSocialShareViewController ()
 
@@ -72,6 +73,9 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+    if ([_socialController.socialDataService.socialDataDelegate isEqual:self]) {
+        [_socialController.socialDataService setUMSoicalDelegate:nil];
+    }
     [super viewWillDisappear:animated];
 }
 
@@ -137,7 +141,12 @@
     }
     if (actionSheet.tag == UMSharePostData) {
         [_socialController.socialDataService setUMSoicalDelegate:self];
-        [_socialController.socialDataService postSNSWithType:buttonIndex usid:nil content:[UMStringMock commentMockString] image:nil location:nil];
+        unsigned int dateInteger = [[NSDate date] timeIntervalSince1970];
+        int random = rand_r(&dateInteger)%10;
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:28+random longitude:107+random];
+        NSString *dateString = [[NSDate date] description];
+        NSString *shareContent = [NSString stringWithFormat:@"%@ %@",[UMStringMock commentMockString],dateString];
+        [_socialController.socialDataService postSNSWithType:shareToType usid:nil content:shareContent image:_imageView.image location:location];
         return;
     }
     
@@ -152,7 +161,7 @@
 {
     UIAlertView *alertView;
     if (response.responseType == UMSResponseShareToSNS) {
-        if (response.st == UMSResponseCodeSuccess) {
+        if (response.responseCode == UMSResponseCodeSuccess) {
             alertView = [[UIAlertView alloc] initWithTitle:@"成功" message:@"发送成功" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
         }
         else {

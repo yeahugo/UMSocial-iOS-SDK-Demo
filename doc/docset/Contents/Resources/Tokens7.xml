@@ -12,8 +12,8 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/UMSocialResponseEntity/setSt:</TokenIdentifier>
-			<Abstract type="html">UMSResponseCode状态码</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialResponseEntity/setResponseCode:</TokenIdentifier>
+			<Abstract type="html">UMSResponseCode状态码,定义在UMSocialEnum</Abstract>
 			<DeclaredIn>UMSocialResponseEntity.h</DeclaredIn>			
 			
 	<RelatedTokens>
@@ -21,15 +21,15 @@
 		
 	</RelatedTokens>
 	
-			<Declaration>@property (nonatomic) UMSResponseCode st</Declaration>
+			<Declaration>@property (nonatomic) UMSResponseCode responseCode</Declaration>
 			
 			
-			<Anchor>//api/name/st</Anchor>
+			<Anchor>//api/name/responseCode</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/UMSocialResponseEntity/st</TokenIdentifier>
-			<Abstract type="html">UMSResponseCode状态码</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialResponseEntity/responseCode</TokenIdentifier>
+			<Abstract type="html">UMSResponseCode状态码,定义在UMSocialEnum</Abstract>
 			<DeclaredIn>UMSocialResponseEntity.h</DeclaredIn>			
 			
 	<RelatedTokens>
@@ -37,15 +37,15 @@
 		
 	</RelatedTokens>
 	
-			<Declaration>@property (nonatomic) UMSResponseCode st</Declaration>
+			<Declaration>@property (nonatomic) UMSResponseCode responseCode</Declaration>
 			
 			
-			<Anchor>//api/name/st</Anchor>
+			<Anchor>//api/name/responseCode</Anchor>
 		</Token>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/UMSocialResponseEntity/setResponseType:</TokenIdentifier>
-			<Abstract type="html">数据返回UMSResponse类型</Abstract>
+			<Abstract type="html">数据返回UMSResponse类型,定义在UMSocialEnum</Abstract>
 			<DeclaredIn>UMSocialResponseEntity.h</DeclaredIn>			
 			
 	<RelatedTokens>
@@ -61,7 +61,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/UMSocialResponseEntity/responseType</TokenIdentifier>
-			<Abstract type="html">数据返回UMSResponse类型</Abstract>
+			<Abstract type="html">数据返回UMSResponse类型,定义在UMSocialEnum</Abstract>
 			<DeclaredIn>UMSocialResponseEntity.h</DeclaredIn>			
 			
 	<RelatedTokens>

@@ -34,6 +34,28 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialDataService/setSocialDataDelegate:</TokenIdentifier>
+			<Abstract type="html">设置实现了UMSocialDataDelegate的对象</Abstract>
+			<DeclaredIn>UMSocialDataService.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) id&lt;UMSocialDataDelegate&gt; socialDataDelegate</Declaration>
+			
+			
+			<Anchor>//api/name/socialDataDelegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialDataService/socialDataDelegate</TokenIdentifier>
+			<Abstract type="html">设置实现了UMSocialDataDelegate的对象</Abstract>
+			<DeclaredIn>UMSocialDataService.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) id&lt;UMSocialDataDelegate&gt; socialDataDelegate</Declaration>
+			
+			
+			<Anchor>//api/name/socialDataDelegate</Anchor>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/UMSocialDataService/initWithUMSocialData:</TokenIdentifier>
 			<Abstract type="html">初始化一个UMSocialDataService对象</Abstract>
 			<DeclaredIn>UMSocialDataService.h</DeclaredIn>			
