@@ -11,7 +11,8 @@
 
 @interface UMSocialBarViewController : UIViewController
 <
-        UMSocialDataDelegate
+    UMSocialDataDelegate,
+    UMSocialUIDelegate
 >
 {
     UMSocialBar *_socialBar;

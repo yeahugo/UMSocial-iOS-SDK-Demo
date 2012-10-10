@@ -26,7 +26,7 @@
     [super viewDidLoad];
     count  = 0;
     _sentContinue = YES;
-    _socialStatistic = [[UMSocialStatistic alloc] initWithIdentifier:@"test"];
+    _socialStatistic = [[UMSocialStatistic alloc] initWithIdentifier:@"test" cuid:@"678"];
     [_socialStatistic setUMSocialDelegate:self];
 }
 

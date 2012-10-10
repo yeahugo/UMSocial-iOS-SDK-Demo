@@ -30,10 +30,6 @@
  */
 @property (nonatomic, copy, readonly) NSString *identifier;
 
-/**
- 开发者自定义的用户id号，方便进行统计，可以为空
- */
-@property (nonatomic, copy) NSString *cuid;
 
 ///---------------------------------------
 /// @name 初始化和设置方法
@@ -43,10 +39,11 @@
  初始化对象
  
  @param identifier 标识一个`UMSocialStatistic`对象的标识符
+ @param cuid 开发者自定义的用户id号，方便进行统计，可以为空
  
- @return description
+ @return 初始化对象
  */
-- (id)initWithIdentifier:(NSString *)identifier;
+- (id)initWithIdentifier:(NSString *)identifier cuid:(NSString *)cuid;
 
 /**
  设置友盟的appKey
