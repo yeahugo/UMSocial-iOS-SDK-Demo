@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "UMSocialDemoTableController.h"
 #import "UMSocialData.h"
+#import "WXApi.h"
 
 @implementation AppDelegate
 
@@ -32,7 +33,41 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    //向微信注册
+    [WXApi registerApp:@"wxd9a39c7122aa6516"];
+
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return  [WXApi handleOpenURL:url delegate:self];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return  [WXApi handleOpenURL:url delegate:self];
+}
+
+-(void) onReq:(BaseReq*)req
+{
+    NSLog(@"req type is %d",req.type);
+}
+
+
+-(void) onResp:(BaseResp*)resp
+{
+    NSLog(@"req type is %d",resp.type);
+    if([resp isKindOfClass:[SendMessageToWXResp class]])
+    {
+        NSString *strTitle = [NSString stringWithFormat:@"微信发送结果"];
+        NSString *strMsg = [NSString stringWithFormat:@"微信发送消息结果:%d", resp.errCode];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

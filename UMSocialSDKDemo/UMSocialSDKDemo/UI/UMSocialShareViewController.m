@@ -9,6 +9,7 @@
 #import "UMSocialShareViewController.h"
 #import "UMStringMock.h"
 #import <CoreLocation/CoreLocation.h>
+#import "WXApi.h"
 
 @interface UMSocialShareViewController ()
 
@@ -180,11 +181,20 @@
 {
     UITableViewCell *weiXinCell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"weixinCell"] autorelease];
     weiXinCell.textLabel.text = @"微信分享";
+    weiXinCell.imageView.image = [UIImage imageNamed:@"UMS_sms"];
     return weiXinCell;
 }
 
 -(void)didSelectShareListTableViewCell
 {
+    if ([WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi]) {
+        SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+        req.bText = YES;
+        req.text = _socialController.soicalData.shareText;
+        req.scene = WXSceneSession;
+        
+        [WXApi sendReq:req];
+    }
     NSLog(@"分享到微信");
 }
 @end

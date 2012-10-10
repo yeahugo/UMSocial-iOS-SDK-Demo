@@ -166,6 +166,8 @@
 		D58D66C71615A35200D3F95A /* UMSocialDemoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58D66C61615A35200D3F95A /* UMSocialDemoTableController.m */; };
 		D58D66C91615A3F700D3F95A /* UMShareEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58D66C81615A3F700D3F95A /* UMShareEditViewController.xib */; };
 		D59B1821160880FC00D31B72 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D5743841160834B300C7AD07 /* JSONKit.m */; };
+		D5D92DCB1625161E004941D4 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D92DC71625161E004941D4 /* libWeChatSDK.a */; };
+		D5D92DCC1625161E004941D4 /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D92DC81625161E004941D4 /* libWeChatSDK_armv7_armv7s.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -351,6 +353,10 @@
 		D58D66C51615A35200D3F95A /* UMSocialDemoTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UMSocialDemoTableController.h; path = UI/UMSocialDemoTableController.h; sourceTree = "<group>"; };
 		D58D66C61615A35200D3F95A /* UMSocialDemoTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UMSocialDemoTableController.m; path = UI/UMSocialDemoTableController.m; sourceTree = "<group>"; };
 		D58D66C81615A3F700D3F95A /* UMShareEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMShareEditViewController.xib; sourceTree = "<group>"; };
+		D5D92DC71625161E004941D4 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		D5D92DC81625161E004941D4 /* libWeChatSDK_armv7_armv7s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK_armv7_armv7s.a; sourceTree = "<group>"; };
+		D5D92DC91625161E004941D4 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		D5D92DCA1625161E004941D4 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -366,6 +372,8 @@
 				D57436FB16082B1200C7AD07 /* UIKit.framework in Frameworks */,
 				D57436FD16082B1200C7AD07 /* Foundation.framework in Frameworks */,
 				D57436FF16082B1200C7AD07 /* CoreGraphics.framework in Frameworks */,
+				D5D92DCB1625161E004941D4 /* libWeChatSDK.a in Frameworks */,
+				D5D92DCC1625161E004941D4 /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,6 +633,7 @@
 		D574383F160834B300C7AD07 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D5D92DC61625161E004941D4 /* Wechat */,
 				D5743840160834B300C7AD07 /* JSONKit.h */,
 				D5743841160834B300C7AD07 /* JSONKit.m */,
 				D5743842160834B300C7AD07 /* UMStringMock.h */,
@@ -707,6 +716,17 @@
 				D58D66B51615A06F00D3F95A /* UMSocialControllerService.h */,
 			);
 			name = UIAPI;
+			sourceTree = "<group>";
+		};
+		D5D92DC61625161E004941D4 /* Wechat */ = {
+			isa = PBXGroup;
+			children = (
+				D5D92DC71625161E004941D4 /* libWeChatSDK.a */,
+				D5D92DC81625161E004941D4 /* libWeChatSDK_armv7_armv7s.a */,
+				D5D92DC91625161E004941D4 /* WXApi.h */,
+				D5D92DCA1625161E004941D4 /* WXApiObject.h */,
+			);
+			path = Wechat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1029,6 +1049,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../SocialSDK_Publish\"",
+					"\"$(SRCROOT)/UMSocialSDKDemo/Utils/Wechat\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1044,6 +1065,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../SocialSDK_Publish\"",
+					"\"$(SRCROOT)/UMSocialSDKDemo/Utils/Wechat\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
