@@ -26,7 +26,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>UMSocialSDK</string>
+			<string>UMSocialSDKDemo</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wxd9a39c7122aa6516</string>

@@ -34,41 +34,22 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/UMSocialStatistic/setCuid:</TokenIdentifier>
-			<Abstract type="html">开发者自定义的用户id号，方便进行统计，可以为空</Abstract>
-			<DeclaredIn>UMSocialStatistic.h</DeclaredIn>			
-			
-			<Declaration>@property (nonatomic, copy) NSString *cuid</Declaration>
-			
-			
-			<Anchor>//api/name/cuid</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/UMSocialStatistic/cuid</TokenIdentifier>
-			<Abstract type="html">开发者自定义的用户id号，方便进行统计，可以为空</Abstract>
-			<DeclaredIn>UMSocialStatistic.h</DeclaredIn>			
-			
-			<Declaration>@property (nonatomic, copy) NSString *cuid</Declaration>
-			
-			
-			<Anchor>//api/name/cuid</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/UMSocialStatistic/initWithIdentifier:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialStatistic/initWithIdentifier:cuid:</TokenIdentifier>
 			<Abstract type="html">初始化对象</Abstract>
 			<DeclaredIn>UMSocialStatistic.h</DeclaredIn>			
 			
-			<Declaration>- (id)initWithIdentifier:(NSString *)identifier</Declaration>
+			<Declaration>- (id)initWithIdentifier:(NSString *)identifier cuid:(NSString *)cuid</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>identifier</Name>
 					<Abstract type="html">标识一个UMSocialStatistic对象的标识符</Abstract>
+				</Parameter><Parameter>
+					<Name>cuid</Name>
+					<Abstract type="html">开发者自定义的用户id号，方便进行统计，可以为空</Abstract>
 				</Parameter>
 			</Parameters>
-			<ReturnValue><Abstract type="html">description</Abstract></ReturnValue>
-			<Anchor>//api/name/initWithIdentifier:</Anchor>
+			<ReturnValue><Abstract type="html">初始化对象</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithIdentifier:cuid:</Anchor>
 		</Token>
 		
 		<Token>
