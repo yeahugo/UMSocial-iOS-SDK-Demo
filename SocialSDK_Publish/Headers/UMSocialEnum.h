@@ -39,11 +39,11 @@ extern NSString *const UMShareToQzone;
  */
 typedef enum {
     UMShareToTypeNone = -1,
-    UMShareToTypeSina = 10,             //sina weibo
+    UMShareToTypeQzone = 10,
+    UMShareToTypeSina ,             //sina weibo
     UMShareToTypeTenc,                 //tencent weibo
     UMShareToTypeRenr,                 //renren
     UMShareToTypeDouban,               //douban
-    UMShareToTypeQzone,
     UMShareToTypeCount,                //count the number of sns,now is 15
     UMShareToTypeMail,
     UMShareToTypeSMS
@@ -87,11 +87,11 @@ typedef enum {
  
     typedef enum {
     UMShareToTypeNone = -1,
-    UMShareToTypeSina = 10,            //新浪微博
+    UMShareToTypeQzone = 10,            //QQ空间
+    UMShareToTypeSina ,                //新浪微博
     UMShareToTypeTenc,                 //腾讯微博
     UMShareToTypeRenr,                 //人人网
-    UMShareToTypeDouban,               //豆瓣
-    UMShareToTypeQzone,                //QQ空间
+    UMShareToTypeDouban,               //豆瓣    
     UMShareToTypeCount,                //用于得到当前分享平台个数
     UMShareToTypeMail,                 //邮件分享
     UMShareToTypeSMS                   //短信分享

@@ -56,8 +56,30 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/setCurrentNavigationController:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/setCurrentViewController:</TokenIdentifier>
 			<Abstract type="html">当前返回的UINavigationController对象</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) UIViewController *currentViewController</Declaration>
+			
+			
+			<Anchor>//api/name/currentViewController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialControllerService/currentViewController</TokenIdentifier>
+			<Abstract type="html">当前返回的UINavigationController对象</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) UIViewController *currentViewController</Declaration>
+			
+			
+			<Anchor>//api/name/currentViewController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/setCurrentNavigationController:</TokenIdentifier>
+			<Abstract type="html">当前返回的UIViewController对象</Abstract>
 			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
 			
 			<Declaration>@property (nonatomic, assign) UINavigationController *currentNavigationController</Declaration>
@@ -68,7 +90,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/UMSocialControllerService/currentNavigationController</TokenIdentifier>
-			<Abstract type="html">当前返回的UINavigationController对象</Abstract>
+			<Abstract type="html">当前返回的UIViewController对象</Abstract>
 			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
 			
 			<Declaration>@property (nonatomic, assign) UINavigationController *currentNavigationController</Declaration>
