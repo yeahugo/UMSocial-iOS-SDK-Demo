@@ -234,5 +234,21 @@
 			<Anchor>//api/name/requestUnBindToSns</Anchor>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialDataService/requestSnsInfomation:</TokenIdentifier>
+			<Abstract type="html">请求获取用户微博账号的详细数据,获取返回数据和其他方法一样，在UMSocialDataDelegate对象，数据部分是data属性，为NSDictionary类型</Abstract>
+			<DeclaredIn>UMSocialDataService.h</DeclaredIn>			
+			
+			<Declaration>- (void)requestSnsInfomation:(UMShareToType)shareToType</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>shareToType</Name>
+					<Abstract type="html">要获取微博信息的微博平台，此变量为枚举类型</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/requestSnsInfomation:</Anchor>
+		</Token>
+		
 	</File>
 </Tokens>

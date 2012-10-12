@@ -54,7 +54,7 @@
         _shareTableView.delegate = self;
         [self.view addSubview:_shareTableView];
         
-        _actionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",@"QQ空间",nil];
+        _actionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"QQ空间",@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",nil];
     }
     return self;
 }
@@ -136,7 +136,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"button index is %d",buttonIndex);
-    UMShareToType shareToType = buttonIndex + UMShareToTypeSina;
+    UMShareToType shareToType = buttonIndex + UMShareToTypeQzone;
     if (shareToType >= UMShareToTypeCount) {
         return;
     }

@@ -35,7 +35,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        _actionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",@"QQ空间",nil];
+        _actionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"QQ空间",@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",nil];
         
         // Custom initialization
     }
@@ -98,9 +98,12 @@
         cell.textLabel.text = @"解除绑定";
     }
     if (indexPath.row == 4) {
-        cell.textLabel.text = @"获取账户";
+        cell.textLabel.text = @"获取用户sns详细信息";
     }
     if (indexPath.row == 5) {
+        cell.textLabel.text = @"获取账户";
+    }
+    if (indexPath.row == 6) {
         cell.textLabel.text = @"用户中心";
     }
     return cell;
@@ -116,12 +119,13 @@
         [_socialUIController.socialDataService requestUnBindToSns];
         [_activityIndicatorView startAnimating];
     }
-    else if (indexPath.row == 4) {
+    else if (indexPath.row == 5) {
         [_socialUIController.socialDataService requestSocialAccount];
         [_activityIndicatorView startAnimating];
     }
-    else if (indexPath.row == 5) {
+    else if (indexPath.row == 6) {
         UINavigationController *accountViewController =[_socialUIController getSocialAccountController];
+//        [self.navigationController pushViewController:accountViewController.visibleViewController animated:YES];
         [self presentModalViewController:accountViewController animated:YES];
     }
     else
@@ -138,13 +142,14 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"button index is %d",buttonIndex);
-    UMShareToType shareToType = buttonIndex + UMShareToTypeSina;
+    UMShareToType shareToType = buttonIndex + UMShareToTypeQzone;
     if (shareToType >= UMShareToTypeCount) {
         return;
     }
     if (actionSheet.tag == UMAccountOauth) {
         UINavigationController *oauthController = [_socialUIController getSocialOauthController:shareToType];
         [self presentModalViewController:oauthController animated:YES];
+//        [self.navigationController pushViewController:oauthController.visibleViewController animated:YES];
     }
     else if (actionSheet.tag == UMAccountUnOauth) {
         [_socialUIController.socialDataService requestUnOauthWithType:shareToType];
@@ -154,6 +159,11 @@
         [_socialUIController.socialDataService requestBindToSnsWithType:shareToType];
         [_activityIndicatorView startAnimating];
     }
+    else if (actionSheet.tag == UMAccountSnsInfo){
+        [_socialUIController.socialDataService setUMSoicalDelegate:self];
+        [_socialUIController.socialDataService requestSnsInfomation:shareToType];
+        [_activityIndicatorView startAnimating];
+    }
 }
 
 #pragma mark - UMSocialDelegate
@@ -161,8 +171,7 @@
 -(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
 {
     NSLog(@"response is %@",response);
-
-    if (response.responseType == UMSResponseGetAccount) {
+    if (response.responseType == UMSResponseGetAccount || response.responseType == UMSResponseGetSnsInfo) {
         [_activityIndicatorView stopAnimating];
     }
 }

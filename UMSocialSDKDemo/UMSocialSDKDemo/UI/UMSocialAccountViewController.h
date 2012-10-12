@@ -14,7 +14,8 @@ typedef enum
     UMAccountOauth,
     UMAccountUnOauth,
     UMAccountBind,
-    UMAccountUnBind
+    UMAccountUnBind,
+    UMAccountSnsInfo
 }UMAccountAction;
 
 

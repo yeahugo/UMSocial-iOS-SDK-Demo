@@ -137,5 +137,13 @@
  */
 - (void)requestUnBindToSns;
 
+/**
+ 请求获取用户微博账号的详细数据,获取返回数据和其他方法一样，在<UMSocialDataDelegate>中的`didFinishGetUMSocialDataResponse`返回的`UMSocialResponseEntity`对象，数据部分是`data`属性，为`NSDictionary`类型
+ 
+ @param shareToType 要获取微博信息的微博平台，此变量为枚举类型
+ 
+ */
+- (void)requestSnsInfomation:(UMShareToType)shareToType;
+
 @end
 

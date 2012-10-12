@@ -40,7 +40,7 @@ extern NSString *const UMShareToQzone;
 typedef enum {
     UMShareToTypeNone = -1,
     UMShareToTypeQzone = 10,
-    UMShareToTypeSina ,             //sina weibo
+    UMShareToTypeSina ,                 //sina weibo
     UMShareToTypeTenc,                 //tencent weibo
     UMShareToTypeRenr,                 //renren
     UMShareToTypeDouban,               //douban
@@ -77,6 +77,7 @@ typedef enum {
     UMSResponseOauth,
     UMSResponseLogin,
     UMSResponseGetAccount,
+    UMSResponseGetSnsInfo
 } UMSResponse;
 
 
@@ -126,6 +127,7 @@ typedef enum {
     UMSResponseOauth,                   //授权一个微博账号
     UMSResponseLogin,                   //登录
     UMSResponseGetAccount,              //请求微博账号信息
+    UMSResponseGetSnsInfo,              //请求获取微博账号的详细信息
     } UMSResponse;
   
  ## 常量字符串 
