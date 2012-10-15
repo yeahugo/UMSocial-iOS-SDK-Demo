@@ -17,14 +17,7 @@
 
 @implementation UMSocialShareViewController
 
--(void)dealloc
-{
-    [_socialController release];
-    [_actionSheet release];
-    [_shareTableView release];
-    [_imageView release];
-    [super dealloc];
-}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,7 +27,6 @@
         textLabel.numberOfLines = 4;
         textLabel.text = [UMStringMock commentMockString];
         [self.view addSubview:textLabel];
-        [textLabel release];
         
         _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,90 , 150, 120)];
         NSString *imageName = [NSString stringWithFormat:@"yinxing%d.jpg",rand()%4];
@@ -48,7 +40,7 @@
         
         _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
         [_socialController setUMSocialUIDelegate:self];
-        [socialData release];
+
         _shareTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 190, 320, 250)];
         _shareTableView.dataSource = self;
         _shareTableView.delegate = self;
@@ -99,7 +91,6 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        [cell autorelease];
     }
     if (indexPath.row == 0) {
         cell.textLabel.text = @"分享列表";
@@ -128,7 +119,12 @@
         _actionSheet.tag = shareAction; 
     }
     else{
-         UINavigationController *shareListController = [_socialController getSocialShareListController];
+        //用局部变量的方式，你也可以用_socialController来得到分享列表
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test123"];
+        socialData.shareText = _socialController.socialDataService.socialData.shareText;
+        socialData.shareImage = _socialController.socialDataService.socialData.shareImage;
+        UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+         UINavigationController *shareListController = [socialControllerService getSocialShareListController];
         [self presentModalViewController:shareListController animated:YES];
     }
 }
@@ -147,7 +143,13 @@
         CLLocation *location = [[CLLocation alloc] initWithLatitude:28+random longitude:107+random];
         NSString *dateString = [[NSDate date] description];
         NSString *shareContent = [NSString stringWithFormat:@"%@ %@",[UMStringMock commentMockString],dateString];
-        [_socialController.socialDataService postSNSWithType:shareToType usid:nil content:shareContent image:_imageView.image location:location];
+        
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test112"];
+        socialData.shareText = shareContent;
+        UMSocialDataService *socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
+        [socialDataService setUMSoicalDelegate:self];
+        [socialDataService postSNSWithType:shareToType usid:nil content:shareContent image:_imageView.image location:location];
+        
         return;
     }
     
@@ -171,7 +173,6 @@
             
         }
         [alertView show];
-        [alertView release];   
     }
 }
 
@@ -179,7 +180,7 @@
 
 -(UITableViewCell *)customCellForShareListTableView
 {
-    UITableViewCell *weiXinCell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"weixinCell"] autorelease];
+    UITableViewCell *weiXinCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"weixinCell"];
     weiXinCell.textLabel.text = @"微信分享";
     weiXinCell.imageView.image = [UIImage imageNamed:@"UMS_sms"];
     return weiXinCell;
@@ -189,7 +190,7 @@
 {
     if ([WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi]) {
 
-        SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+        SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
         req.text = _socialController.soicalData.shareText;
         req.scene = WXSceneSession;
         req.bText = YES;

@@ -15,25 +15,17 @@
 
 @synthesize window = _window;
 
-- (void)dealloc
-{
-    [_window release];
-    [super dealloc];
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [UMSocialData setAppKey:@"4fe11bd85270156dd8000014"];
     UMSocialDemoTableController *demoViewController = [[UMSocialDemoTableController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:demoViewController];
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
     self.window.rootViewController= navigationController;
-    [navigationController release];
-    [demoViewController release];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
+    [UMSocialData openLog:YES];
     //向微信注册
     [WXApi registerApp:@"wxd9a39c7122aa6516"];
 
@@ -66,7 +58,6 @@
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
-        [alert release];
     }
 }
 

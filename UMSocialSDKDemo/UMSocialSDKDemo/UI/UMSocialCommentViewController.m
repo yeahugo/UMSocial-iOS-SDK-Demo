@@ -17,14 +17,6 @@
 
 @implementation UMSocialCommentViewController
 
--(void)dealloc
-{
-    [_socialController release];
-    [_commentTableView release];
-    [_imageView release];
-    [super dealloc];
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,7 +25,6 @@
         textLabel.numberOfLines = 4;
         textLabel.text = [UMStringMock commentMockString];
         [self.view addSubview:textLabel];
-        [textLabel release];
         
         _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,90 , 150, 120)];
         NSString *imageName = [NSString stringWithFormat:@"yinxing%d.jpg",rand()%4];
@@ -46,7 +37,6 @@
         _socialController.socialDataService.socialData.commentText = textLabel.text;        //作为分享到微博内容"//"之后的文字
         _socialController.socialDataService.socialData.commentImage = _imageView.image;
         
-        [socialData release];
         _commentTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 190, 320, 250)];
         _commentTableView.dataSource = self;
         _commentTableView.delegate = self;
@@ -80,7 +70,6 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        [cell autorelease];
     }
     if (indexPath.row == 0) {
         cell.textLabel.text = @"评论列表";
@@ -103,7 +92,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == 0) {
-        UINavigationController *commentList = [_socialController getSocialCommentListController];
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test1233"];
+        UMSocialControllerService * socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+        UINavigationController *commentList = [socialController getSocialCommentListController];
+//        UINavigationController *commentList = [_socialController getSocialCommentListController];
         [self presentModalViewController:commentList animated:YES];
     }
     if (indexPath.row == 1) {
@@ -122,9 +114,10 @@
                 [shareToSNSDictionary setObject:[[snsDic objectForKey:key] usid] forKey:key];
             }
         }
-        [_socialController.socialDataService postCommentWithContent:[UMStringMock commentMockString] location:location shareToSNSWithUsid:shareToSNSDictionary];
-        [location release];
-        [shareToSNSDictionary release];
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test1121"];
+        UMSocialDataService *socialDataService = [[ UMSocialDataService alloc] initWithUMSocialData:socialData];
+
+        [socialDataService postCommentWithContent:[UMStringMock commentMockString] image:_socialController.soicalData.commentImage templateText:_socialController.soicalData.commentText  location:location shareToSNSWithUsid:shareToSNSDictionary];
     }
 }
 
@@ -140,7 +133,6 @@
         alertView.message = @"失败";
     }
     [alertView show];
-    [alertView release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

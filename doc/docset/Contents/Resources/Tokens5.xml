@@ -132,15 +132,21 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/UMSocialDataService/postCommentWithContent:location:shareToSNSWithUsid:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialDataService/postCommentWithContent:image:templateText:location:shareToSNSWithUsid:</TokenIdentifier>
 			<Abstract type="html">发送评论</Abstract>
 			<DeclaredIn>UMSocialDataService.h</DeclaredIn>			
 			
-			<Declaration>- (void)postCommentWithContent:(NSString *)content location:(CLLocation *)location shareToSNSWithUsid:(NSDictionary *)shareToSNS</Declaration>
+			<Declaration>- (void)postCommentWithContent:(NSString *)content image:(UIImage *)image templateText:(NSString *)templateText location:(CLLocation *)location shareToSNSWithUsid:(NSDictionary *)shareToSNS</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>content</Name>
 					<Abstract type="html">评论的文字内容</Abstract>
+				</Parameter><Parameter>
+					<Name>image</Name>
+					<Abstract type="html">评论并发送到微博的图片</Abstract>
+				</Parameter><Parameter>
+					<Name>templateText</Name>
+					<Abstract type="html">评论并发送到微博跟在微博正文后面用//分隔的文字</Abstract>
 				</Parameter><Parameter>
 					<Name>location</Name>
 					<Abstract type="html">评论的地理位置信息</Abstract>
@@ -150,7 +156,7 @@
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/postCommentWithContent:location:shareToSNSWithUsid:</Anchor>
+			<Anchor>//api/name/postCommentWithContent:image:templateText:location:shareToSNSWithUsid:</Anchor>
 		</Token>
 		
 		<Token>

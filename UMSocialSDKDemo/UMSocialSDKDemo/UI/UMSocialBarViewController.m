@@ -15,12 +15,6 @@
 
 @implementation UMSocialBarViewController
 
--(void)dealloc
-{
-    [_socialBar release];
-    [_textLabel release];
-    [super dealloc];
-}
 
 -(id)initWithDescriptor:(NSString *)descriptor withText:(NSString *)text withImage:(UIImage *)image
 {
@@ -28,7 +22,6 @@
     if (self) {
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:descriptor];
         _socialBar = [[UMSocialBar alloc] initWithUMSocialData:socialData withViewController:self];
-        [socialData release];
         
         [_socialBar.socialControllerService setUMSocialUIDelegate:self];
         _socialBar.socialData.shareText = text;
@@ -45,7 +38,7 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 150, 320, 200)];
         imageView.image = image;
         [self.view addSubview:imageView];
-        [imageView release];
+
         // Custom initialization
     }
     return self;
@@ -83,7 +76,7 @@
 
 -(UITableViewCell *)customCellForShareListTableView
 {
-    UITableViewCell *weiXinCell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"weixinCell"] autorelease];
+    UITableViewCell *weiXinCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"weixinCell"];
     weiXinCell.textLabel.text = @"微信分享";
     weiXinCell.imageView.image = [UIImage imageNamed:@"UMS_sms"];
     return weiXinCell;
@@ -93,7 +86,7 @@
 {
     if ([WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi]) {
         
-        SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+        SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
         req.text = _socialBar.socialData.shareText;
         req.scene = WXSceneSession;
         req.bText = YES;

@@ -18,11 +18,6 @@
 
 @synthesize didSelectIndex = _didSelectIndex;
 
--(void)dealloc
-{
-    [_descriptorArray release];
-    [super dealloc];
-}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -99,10 +94,9 @@
 
     UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:[_descriptorArray objectAtIndex:indexPath.row]];
     UMSocialControllerService *socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
-    [socialData release];
+
     if (cell == nil) {
         cell = [[UMSocialTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        [cell autorelease];
     }
     [socialController.socialDataService.socialData setUMSoicalDelegate:cell];
 
@@ -110,7 +104,6 @@
     cell.descriptor = [_descriptorArray objectAtIndex:indexPath.row];
     cell.tableViewController = self;
     cell.index = indexPath.row;
-    [socialController autorelease];
     return cell;
 }
 
@@ -121,7 +114,6 @@
     UMSocialTableViewCell * umSeperateCell = (UMSocialTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     UMSocialBarViewController *barViewController = [[UMSocialBarViewController alloc] initWithDescriptor:[_descriptorArray objectAtIndex:indexPath.row] withText:[umSeperateCell labelText] withImage:[umSeperateCell showImage]];
     [self.navigationController pushViewController:barViewController animated:YES];
-    [barViewController release];
 }
 
 @end

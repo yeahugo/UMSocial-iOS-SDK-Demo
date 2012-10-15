@@ -16,14 +16,6 @@
 @synthesize socialController = _socialController;
 @synthesize index = _index;
 
--(void)dealloc
-{
-    [_descriptor release];
-    [_detailLabel release];
-    [_detailImageView release];
-    [_socialController release];
-    [super dealloc];
-}
 
 -(NSString *)labelText
 {

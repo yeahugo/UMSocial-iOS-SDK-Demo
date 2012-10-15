@@ -64,7 +64,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        [cell autorelease];
     }
     if (indexPath.row == 0) {
         cell.textLabel.text = @"操作栏";
@@ -100,23 +99,23 @@
     
     if (indexPath.row == 0) {
         NSString *imageName = [NSString stringWithFormat:@"yinxing%d.jpg",rand()%4];
-        UMSocialBarViewController *barViewController = [[[UMSocialBarViewController alloc] initWithDescriptor:@"test" withText:[UMStringMock commentMockString] withImage:[UIImage imageNamed:imageName]] autorelease];
+        UMSocialBarViewController *barViewController = [[UMSocialBarViewController alloc] initWithDescriptor:@"test" withText:[UMStringMock commentMockString] withImage:[UIImage imageNamed:imageName]] ;
         pushedViewController = barViewController;
     }
     if(indexPath.row == 1){
-        UMSocialTableViewController *separateViewController = [[[UMSocialTableViewController alloc] init] autorelease];
+        UMSocialTableViewController *separateViewController = [[UMSocialTableViewController alloc] init] ;
         pushedViewController = separateViewController;
     }
     if (indexPath.row == 2) {
-        UMSocialShareViewController *socialShareViewController = [[[UMSocialShareViewController alloc] initWithNibName:@"UMSocialShareViewController" bundle:nil] autorelease];
+        UMSocialShareViewController *socialShareViewController = [[UMSocialShareViewController alloc] initWithNibName:@"UMSocialShareViewController" bundle:nil] ;
         pushedViewController = socialShareViewController;
     }
     if (indexPath.row == 3) {
-        UIViewController *commentViewController = [[[UMSocialCommentViewController alloc] init] autorelease];
+        UIViewController *commentViewController = [[UMSocialCommentViewController alloc] init] ;
         pushedViewController = commentViewController;        
     }
     if (indexPath.row == 4) {
-        UMSocialAccountViewController *socialAccountViewController = [[[UMSocialAccountViewController alloc] initWithStyle:UITableViewStylePlain] autorelease];
+        UMSocialAccountViewController *socialAccountViewController = [[UMSocialAccountViewController alloc] initWithStyle:UITableViewStylePlain] ;
         pushedViewController = socialAccountViewController;
     }
 

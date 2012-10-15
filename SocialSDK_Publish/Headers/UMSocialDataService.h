@@ -84,11 +84,13 @@
  发送评论
  
  @param content 评论的文字内容
+ @param image 评论并发送到微博的图片
+ @param templateText 评论并发送到微博跟在微博正文后面用//分隔的文字
  @param location 评论的地理位置信息
  @param shareToSNS 评论并分享到微博平台，key为微博名，定义在`UMSocialEnum.h`中的`UMShareToSina`等，值为相应的usid
  
  */
-- (void)postCommentWithContent:(NSString *)content location:(CLLocation *)location shareToSNSWithUsid:(NSDictionary *)shareToSNS;
+-(void)postCommentWithContent:(NSString *)content image:(UIImage *)image templateText:(NSString *)templateText location:(CLLocation *)location shareToSNSWithUsid:(NSDictionary *)shareToSNS;
 
 /**
  获取评论

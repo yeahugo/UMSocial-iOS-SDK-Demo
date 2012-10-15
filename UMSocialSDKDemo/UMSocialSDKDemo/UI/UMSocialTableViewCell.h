@@ -19,15 +19,15 @@
     UIButton *_likeButton;
     UIButton *_shareButton;
     UIButton *_commentButton;
-    UMSocialTableViewController *_tabelViewController;
+    UMSocialTableViewController *__unsafe_unretained _tabelViewController;
     UIImageView *_detailImageView;
 }
 
 @property (nonatomic) int index;
 @property (nonatomic, copy) NSString *descriptor;
-@property (nonatomic, readonly) NSString *labelText;
-@property (nonatomic, readonly) UIImage *showImage;
-@property (nonatomic, assign) UMSocialTableViewController *tableViewController;
-@property (nonatomic, retain) UMSocialControllerService *socialController;
+@property (unsafe_unretained, nonatomic, readonly) NSString *labelText;
+@property (unsafe_unretained, nonatomic, readonly) UIImage *showImage;
+@property (nonatomic, unsafe_unretained) UMSocialTableViewController *tableViewController;
+@property (nonatomic, strong) UMSocialControllerService *socialController;
 
 @end

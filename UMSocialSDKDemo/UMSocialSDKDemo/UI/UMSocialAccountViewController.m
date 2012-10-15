@@ -25,11 +25,6 @@
     [super viewWillAppear:animated];
 }
 
--(void)dealloc
-{
-    [_actionSheet release];
-    [super dealloc];
-}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -50,7 +45,6 @@
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _activityIndicatorView.center = CGPointMake(160, 200);
     [self.view addSubview:_activityIndicatorView];
-    [socialData release];
 }
 
 - (void)viewDidUnload
@@ -83,7 +77,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] ;
     }
     if (indexPath.row == 0) {
         cell.textLabel.text = @"授权账户";
@@ -124,9 +118,13 @@
         [_activityIndicatorView startAnimating];
     }
     else if (indexPath.row == 6) {
-        UINavigationController *accountViewController =[_socialUIController getSocialAccountController];
-//        [self.navigationController pushViewController:accountViewController.visibleViewController animated:YES];
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test1231"];
+        UMSocialControllerService *socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+        UINavigationController *accountViewController =[socialController getSocialAccountController];
+
+//        UINavigationController *accountViewController =[_socialUIController getSocialAccountController];
         [self presentModalViewController:accountViewController animated:YES];
+        
     }
     else
     {
@@ -147,7 +145,10 @@
         return;
     }
     if (actionSheet.tag == UMAccountOauth) {
-        UINavigationController *oauthController = [_socialUIController getSocialOauthController:shareToType];
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test1231"];
+        UMSocialControllerService *socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+        UINavigationController *oauthController = [socialController getSocialOauthController:shareToType];
+//        UINavigationController *oauthController = [_socialUIController getSocialOauthController:shareToType];
         [self presentModalViewController:oauthController animated:YES];
 //        [self.navigationController pushViewController:oauthController.visibleViewController animated:YES];
     }
