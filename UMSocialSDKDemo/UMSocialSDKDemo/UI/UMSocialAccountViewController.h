@@ -22,7 +22,8 @@ typedef enum
 @interface UMSocialAccountViewController : UITableViewController
 <
     UIActionSheetDelegate,
-        UMSocialDataDelegate
+    UMSocialDataDelegate,
+    UMSocialUIDelegate
 >
 {
     UIActionSheet *_actionSheet;

@@ -147,6 +147,7 @@
     if (actionSheet.tag == UMAccountOauth) {
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test1231"];
         UMSocialControllerService *socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+        [socialController setUMSocialUIDelegate:self];
         UINavigationController *oauthController = [socialController getSocialOauthController:shareToType];
 //        UINavigationController *oauthController = [_socialUIController getSocialOauthController:shareToType];
         [self presentModalViewController:oauthController animated:YES];
@@ -175,6 +176,11 @@
     if (response.responseType == UMSResponseGetAccount || response.responseType == UMSResponseGetSnsInfo) {
         [_activityIndicatorView stopAnimating];
     }
+}
+
+-(void)didCloseUIViewController
+{
+    NSLog(@"授权完成");
 }
 
 @end

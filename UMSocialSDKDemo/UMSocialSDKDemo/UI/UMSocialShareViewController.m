@@ -124,6 +124,7 @@
         socialData.shareText = _socialController.socialDataService.socialData.shareText;
         socialData.shareImage = _socialController.socialDataService.socialData.shareImage;
         UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+        [socialControllerService setUMSocialUIDelegate:self];
          UINavigationController *shareListController = [socialControllerService getSocialShareListController];
         [self presentModalViewController:shareListController animated:YES];
     }
@@ -182,7 +183,7 @@
 {
     UITableViewCell *weiXinCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"weixinCell"];
     weiXinCell.textLabel.text = @"微信分享";
-    weiXinCell.imageView.image = [UIImage imageNamed:@"UMS_sms"];
+    weiXinCell.imageView.image = [UIImage imageNamed:@"weixin_icon"];
     return weiXinCell;
 }
 

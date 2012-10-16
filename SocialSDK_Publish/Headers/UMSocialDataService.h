@@ -72,6 +72,20 @@
  */
 - (void)postSNSWithType:(UMShareToType)shareType usid:(NSString *)usid content:(NSString *)content image:(UIImage *)image location:(CLLocation *)location;
 
+
+/**
+ 发送微博内容到多个微博平台
+ 
+ @param shareTypes 分享到的平台
+ @param usids     每个平台对应的usid,允许为空，为空的话取sdk记录的每个平台的usid
+ @param content   分享的文字内容
+ @param image     分享的图片
+ @param location  分享的地理位置信息
+ 
+ */
+- (void)postSNSWithType:(NSArray *)shareTypes usids:(NSArray *)usids content:(NSString *)content image:(UIImage *)image location:(CLLocation *)location;
+
+
 /**
  发送评论
  
