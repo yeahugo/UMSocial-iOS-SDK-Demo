@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "WXApi.h"
+#import "UMSocialControllerService.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,WXApiDelegate>
+@interface AppDelegate : UIResponder
+<
+    UIApplicationDelegate,
+    WXApiDelegate
+//,UMSocialConfigDelegate
+>
 
 @property (strong, nonatomic) UIWindow *window;
 

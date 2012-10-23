@@ -203,5 +203,16 @@
 			<Anchor>//api/name/initWithPlatformName:</Anchor>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialAccountEntity/description</TokenIdentifier>
+			<Abstract type="html">把各属性编码成NSString</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)description</Declaration>
+			
+			<ReturnValue><Abstract type="html">一个NSString对象</Abstract></ReturnValue>
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
 	</File>
 </Tokens>

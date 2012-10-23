@@ -143,13 +143,13 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/UMSocialResponseEntity/description</TokenIdentifier>
-			<Abstract type="html">把各属性编码成NSDictionary
+			<Abstract type="html">把各属性编码成NSString
   </Abstract>
 			<DeclaredIn>UMSocialResponseEntity.h</DeclaredIn>			
 			
-			<Declaration>- (NSDictionary *)description</Declaration>
+			<Declaration>- (NSString *)description</Declaration>
 			
-			<ReturnValue><Abstract type="html">一个NSDictionary对象</Abstract></ReturnValue>
+			<ReturnValue><Abstract type="html">一个NSString对象</Abstract></ReturnValue>
 			<Anchor>//api/name/description</Anchor>
 		</Token>
 		

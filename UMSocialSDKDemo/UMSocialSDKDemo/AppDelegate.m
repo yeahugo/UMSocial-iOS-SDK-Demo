@@ -11,13 +11,15 @@
 #import "UMSocialData.h"
 #import "WXApi.h"
 
+#define umeng_appkey @"507fcab25270157b37000010"
+
 @implementation AppDelegate
 
 @synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [UMSocialData setAppKey:@"4fe11bd85270156dd8000014"];
+    [UMSocialData setAppKey:umeng_appkey];
     UMSocialDemoTableController *demoViewController = [[UMSocialDemoTableController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:demoViewController];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
@@ -28,9 +30,16 @@
     [UMSocialData openLog:YES];
     //向微信注册
     [WXApi registerApp:@"wxd9a39c7122aa6516"];
-
+//    [UMSocialControllerService setSocialConfigDelegate:self];
     return YES;
 }
+
+//- (NSArray *)shareToPlatforms
+//{
+//    NSNumber *sinaNumber = [NSNumber numberWithInt:UMShareToTypeSina];
+//    NSArray *shareToArray = [NSArray arrayWithObjects:sinaNumber, nil];
+//    return shareToArray;
+//}
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {

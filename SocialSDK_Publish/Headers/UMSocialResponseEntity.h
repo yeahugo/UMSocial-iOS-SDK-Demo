@@ -43,7 +43,7 @@
 /**
  返回数据
  */
-@property (nonatomic, retain) NSDictionary *data;
+@property (nonatomic, assign) NSDictionary *data;
 
 /**
  客户端发送出现的错误
@@ -51,9 +51,9 @@
 @property (nonatomic, retain) NSError *error;
 
 /**
- 把各属性编码成NSDictionary
+ 把各属性编码成NSString
   
- @return 一个`NSDictionary`对象
+ @return 一个`NSString`对象
  */
--(NSDictionary *)description;
+-(NSString *)description;
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "UMSocialAccountViewController.h"
+#import "UMSocialAccountEntity.h"
 
 @interface UMSocialAccountViewController ()
 
@@ -180,6 +181,7 @@
 
 -(void)didCloseUIViewController
 {
+    NSLog(@"didCloseUIViewController account is %@ token is %@",(UMSocialAccountEntity *)[_socialUIController.soicalData.socialAccount objectForKey:@"sina"],[(UMSocialAccountEntity *)[_socialUIController.soicalData.socialAccount objectForKey:@"sina"] accessToken]);
     NSLog(@"授权完成");
 }
 

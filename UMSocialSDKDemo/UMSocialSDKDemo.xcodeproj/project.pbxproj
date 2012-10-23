@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D50FACF4162411E900441B8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50FACF3162411E900441B8B /* Default-568h@2x.png */; };
 		D50FACF6162412B000441B8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50FACF3162411E900441B8B /* Default-568h@2x.png */; };
 		D57436FB16082B1200C7AD07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FA16082B1200C7AD07 /* UIKit.framework */; };
 		D57436FD16082B1200C7AD07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FC16082B1200C7AD07 /* Foundation.framework */; };
@@ -148,22 +147,13 @@
 		D5743858160836C700C7AD07 /* yinxing1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D5743854160836C700C7AD07 /* yinxing1.jpg */; };
 		D5743859160836C700C7AD07 /* yinxing2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D5743855160836C700C7AD07 /* yinxing2.jpg */; };
 		D574385A160836C700C7AD07 /* yinxing3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D5743856160836C700C7AD07 /* yinxing3.jpg */; };
-		D5743863160837E800C7AD07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FA16082B1200C7AD07 /* UIKit.framework */; };
-		D5743864160837E800C7AD07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FC16082B1200C7AD07 /* Foundation.framework */; };
-		D5743865160837E800C7AD07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FE16082B1200C7AD07 /* CoreGraphics.framework */; };
-		D574386B160837E900C7AD07 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5743869160837E900C7AD07 /* InfoPlist.strings */; };
-		D574386D160837E900C7AD07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D574386C160837E900C7AD07 /* main.m */; };
-		D5743871160837E900C7AD07 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D5743870160837E900C7AD07 /* AppDelegate.m */; };
 		D574389B1608399000C7AD07 /* UMSocialLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D574389A1608399000C7AD07 /* UMSocialLibrary.a */; };
 		D57D91EA1616DC5600A92963 /* UMS_qzone_off.png in Resources */ = {isa = PBXBuildFile; fileRef = D57D91E71616DC5600A92963 /* UMS_qzone_off.png */; };
 		D57D91EB1616DC5600A92963 /* UMS_qzone_on.png in Resources */ = {isa = PBXBuildFile; fileRef = D57D91E81616DC5600A92963 /* UMS_qzone_on.png */; };
 		D57D91EC1616DC5600A92963 /* UMS_qzone.png in Resources */ = {isa = PBXBuildFile; fileRef = D57D91E91616DC5600A92963 /* UMS_qzone.png */; };
-		D5885D1F16255DE50040E5FF /* UMSocialStatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5885D1E16255DE50040E5FF /* UMSocialStatViewController.m */; };
-		D58D66BF1615A22300D3F95A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5743846160834F900C7AD07 /* CoreLocation.framework */; };
 		D58D66C71615A35200D3F95A /* UMSocialDemoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58D66C61615A35200D3F95A /* UMSocialDemoTableController.m */; };
 		D58D66C91615A3F700D3F95A /* UMShareEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58D66C81615A3F700D3F95A /* UMShareEditViewController.xib */; };
 		D5A3F9BF162C2BE700A98A3C /* weixin_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D5A3F9BE162C2BE700A98A3C /* weixin_icon.png */; };
-		D5A3F9C1162C2D6D00A98A3C /* UMSocialStatisticLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A3F9C0162C2D6D00A98A3C /* UMSocialStatisticLibrary.a */; };
 		D5ABFC25162BB35E0056F88D /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D5ABFC09162BB35E0056F88D /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D5ABFC26162BB35E0056F88D /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5ABFC0B162BB35E0056F88D /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D5ABFC27162BB35E0056F88D /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5ABFC0D162BB35E0056F88D /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -178,13 +168,6 @@
 		D5ABFC30162BB35E0056F88D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5ABFC21162BB35E0056F88D /* libWeChatSDK.a */; };
 		D5ABFC31162BB35E0056F88D /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5ABFC22162BB35E0056F88D /* libWeChatSDK_armv7_armv7s.a */; };
 		D5ABFC35162BB37B0056F88D /* UMStringMock.m in Sources */ = {isa = PBXBuildFile; fileRef = D5ABFC34162BB37B0056F88D /* UMStringMock.m */; };
-		D5ABFC36162BB57D0056F88D /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D5ABFC09162BB35E0056F88D /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D5ABFC37162BB57D0056F88D /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5ABFC0B162BB35E0056F88D /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D5ABFC38162BB57D0056F88D /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5ABFC0D162BB35E0056F88D /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D5ABFC39162BB57D0056F88D /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5ABFC0F162BB35E0056F88D /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D5ABFC3A162BB57D0056F88D /* AFJSONUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D5ABFC11162BB35E0056F88D /* AFJSONUtilities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D5ABFC3B162BB57D0056F88D /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5ABFC18162BB35E0056F88D /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D5ABFC3C162BB57D0056F88D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D5ABFC1F162BB35E0056F88D /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -338,13 +321,6 @@
 		D5743854160836C700C7AD07 /* yinxing1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yinxing1.jpg; sourceTree = "<group>"; };
 		D5743855160836C700C7AD07 /* yinxing2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yinxing2.jpg; sourceTree = "<group>"; };
 		D5743856160836C700C7AD07 /* yinxing3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yinxing3.jpg; sourceTree = "<group>"; };
-		D5743861160837E800C7AD07 /* UMSocialStatisticSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UMSocialStatisticSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5743868160837E900C7AD07 /* UMSocialStatisticSDKDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UMSocialStatisticSDKDemo-Info.plist"; sourceTree = "<group>"; };
-		D574386A160837E900C7AD07 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D574386C160837E900C7AD07 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D574386E160837E900C7AD07 /* UMSocialStatisticSDKDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UMSocialStatisticSDKDemo-Prefix.pch"; sourceTree = "<group>"; };
-		D574386F160837E900C7AD07 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		D5743870160837E900C7AD07 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D574389A1608399000C7AD07 /* UMSocialLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = UMSocialLibrary.a; path = ../SocialSDK_Publish/UMSocialLibrary.a; sourceTree = "<group>"; };
 		D57D91E71616DC5600A92963 /* UMS_qzone_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UMS_qzone_off.png; sourceTree = "<group>"; };
 		D57D91E81616DC5600A92963 /* UMS_qzone_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UMS_qzone_on.png; sourceTree = "<group>"; };
@@ -359,14 +335,10 @@
 		D5885D0E16252FCF0040E5FF /* UMUIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UMUIHelper.h; path = Headers/UMUIHelper.h; sourceTree = "<group>"; };
 		D5885D0F16252FDE0040E5FF /* UMSocialAccountEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UMSocialAccountEntity.h; path = Headers/UMSocialAccountEntity.h; sourceTree = "<group>"; };
 		D5885D1016252FDE0040E5FF /* UMSocialResponseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UMSocialResponseEntity.h; path = Headers/UMSocialResponseEntity.h; sourceTree = "<group>"; };
-		D5885D1116252FFA0040E5FF /* UMSocialStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UMSocialStatistic.h; path = ../../SocialSDK_Publish/Headers/UMSocialStatistic.h; sourceTree = "<group>"; };
-		D5885D1D16255DE50040E5FF /* UMSocialStatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialStatViewController.h; sourceTree = "<group>"; };
-		D5885D1E16255DE50040E5FF /* UMSocialStatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSocialStatViewController.m; sourceTree = "<group>"; };
 		D58D66C51615A35200D3F95A /* UMSocialDemoTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UMSocialDemoTableController.h; path = UI/UMSocialDemoTableController.h; sourceTree = "<group>"; };
 		D58D66C61615A35200D3F95A /* UMSocialDemoTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UMSocialDemoTableController.m; path = UI/UMSocialDemoTableController.m; sourceTree = "<group>"; };
 		D58D66C81615A3F700D3F95A /* UMShareEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMShareEditViewController.xib; sourceTree = "<group>"; };
 		D5A3F9BE162C2BE700A98A3C /* weixin_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weixin_icon.png; sourceTree = "<group>"; };
-		D5A3F9C0162C2D6D00A98A3C /* UMSocialStatisticLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = UMSocialStatisticLibrary.a; path = ../SocialSDK_Statistic_Publish/UMSocialStatisticLibrary.a; sourceTree = "<group>"; };
 		D5ABFC08162BB35E0056F88D /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		D5ABFC09162BB35E0056F88D /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		D5ABFC0A162BB35E0056F88D /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -416,25 +388,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D574385E160837E800C7AD07 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D5A3F9C1162C2D6D00A98A3C /* UMSocialStatisticLibrary.a in Frameworks */,
-				D58D66BF1615A22300D3F95A /* CoreLocation.framework in Frameworks */,
-				D5743863160837E800C7AD07 /* UIKit.framework in Frameworks */,
-				D5743864160837E800C7AD07 /* Foundation.framework in Frameworks */,
-				D5743865160837E800C7AD07 /* CoreGraphics.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		D57436EB16082B1200C7AD07 = {
 			isa = PBXGroup;
 			children = (
-				D5A3F9C0162C2D6D00A98A3C /* UMSocialStatisticLibrary.a */,
 				D50FACF3162411E900441B8B /* Default-568h@2x.png */,
 				D574389A1608399000C7AD07 /* UMSocialLibrary.a */,
 				D5743850160835A400C7AD07 /* QuartzCore.framework */,
@@ -443,7 +402,6 @@
 				D5743846160834F900C7AD07 /* CoreLocation.framework */,
 				D574372D1608346000C7AD07 /* SocialSDK_Publish */,
 				D574370016082B1200C7AD07 /* UMSocialSDKDemo */,
-				D5743866160837E800C7AD07 /* UMSocialStatisticSDKDemo */,
 				D57436F916082B1200C7AD07 /* Frameworks */,
 				D57436F716082B1200C7AD07 /* Products */,
 			);
@@ -453,7 +411,6 @@
 			isa = PBXGroup;
 			children = (
 				D57436F616082B1200C7AD07 /* UMSocialSDKDemo.app */,
-				D5743861160837E800C7AD07 /* UMSocialStatisticSDKDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -682,30 +639,6 @@
 			path = DemoImages;
 			sourceTree = "<group>";
 		};
-		D5743866160837E800C7AD07 /* UMSocialStatisticSDKDemo */ = {
-			isa = PBXGroup;
-			children = (
-				D5885D1D16255DE50040E5FF /* UMSocialStatViewController.h */,
-				D5885D1E16255DE50040E5FF /* UMSocialStatViewController.m */,
-				D5885D1116252FFA0040E5FF /* UMSocialStatistic.h */,
-				D574386F160837E900C7AD07 /* AppDelegate.h */,
-				D5743870160837E900C7AD07 /* AppDelegate.m */,
-				D5743867160837E900C7AD07 /* Supporting Files */,
-			);
-			path = UMSocialStatisticSDKDemo;
-			sourceTree = "<group>";
-		};
-		D5743867160837E900C7AD07 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D5743868160837E900C7AD07 /* UMSocialStatisticSDKDemo-Info.plist */,
-				D5743869160837E900C7AD07 /* InfoPlist.strings */,
-				D574386C160837E900C7AD07 /* main.m */,
-				D574386E160837E900C7AD07 /* UMSocialStatisticSDKDemo-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		D58D66BA1615A08600D3F95A /* Headers */ = {
 			isa = PBXGroup;
 			children = (
@@ -834,23 +767,6 @@
 			productReference = D57436F616082B1200C7AD07 /* UMSocialSDKDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D5743860160837E800C7AD07 /* UMSocialStatisticSDKDemo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D5743872160837E900C7AD07 /* Build configuration list for PBXNativeTarget "UMSocialStatisticSDKDemo" */;
-			buildPhases = (
-				D574385D160837E800C7AD07 /* Sources */,
-				D574385E160837E800C7AD07 /* Frameworks */,
-				D574385F160837E800C7AD07 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = UMSocialStatisticSDKDemo;
-			productName = UMSocialStatisticSDKDemo;
-			productReference = D5743861160837E800C7AD07 /* UMSocialStatisticSDKDemo.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -873,7 +789,6 @@
 			projectRoot = "";
 			targets = (
 				D57436F516082B1200C7AD07 /* UMSocialSDKDemo */,
-				D5743860160837E800C7AD07 /* UMSocialStatisticSDKDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -1016,15 +931,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D574385F160837E800C7AD07 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D574386B160837E900C7AD07 /* InfoPlist.strings in Resources */,
-				D50FACF4162411E900441B8B /* Default-568h@2x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1056,23 +962,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D574385D160837E800C7AD07 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D5ABFC36162BB57D0056F88D /* AFHTTPClient.m in Sources */,
-				D5ABFC37162BB57D0056F88D /* AFHTTPRequestOperation.m in Sources */,
-				D5ABFC38162BB57D0056F88D /* AFImageRequestOperation.m in Sources */,
-				D5ABFC39162BB57D0056F88D /* AFJSONRequestOperation.m in Sources */,
-				D5ABFC3A162BB57D0056F88D /* AFJSONUtilities.m in Sources */,
-				D5ABFC3B162BB57D0056F88D /* AFURLConnectionOperation.m in Sources */,
-				D5ABFC3C162BB57D0056F88D /* JSONKit.m in Sources */,
-				D574386D160837E900C7AD07 /* main.m in Sources */,
-				D5743871160837E900C7AD07 /* AppDelegate.m in Sources */,
-				D5885D1F16255DE50040E5FF /* UMSocialStatViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -1080,14 +969,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				D574370416082B1200C7AD07 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		D5743869160837E900C7AD07 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D574386A160837E900C7AD07 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1117,7 +998,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1137,7 +1018,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1184,42 +1065,6 @@
 			};
 			name = Release;
 		};
-		D5743873160837E900C7AD07 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UMSocialStatisticSDKDemo/UMSocialStatisticSDKDemo-Prefix.pch";
-				INFOPLIST_FILE = "UMSocialStatisticSDKDemo/UMSocialStatisticSDKDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../SocialSDK_Publish\"",
-					"\"$(SRCROOT)/../SocialSDK_Statistic_Publish\"",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		D5743874160837E900C7AD07 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UMSocialStatisticSDKDemo/UMSocialStatisticSDKDemo-Prefix.pch";
-				INFOPLIST_FILE = "UMSocialStatisticSDKDemo/UMSocialStatisticSDKDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../SocialSDK_Publish\"",
-					"\"$(SRCROOT)/../SocialSDK_Statistic_Publish\"",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1237,15 +1082,6 @@
 			buildConfigurations = (
 				D574370F16082B1200C7AD07 /* Debug */,
 				D574371016082B1200C7AD07 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D5743872160837E900C7AD07 /* Build configuration list for PBXNativeTarget "UMSocialStatisticSDKDemo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D5743873160837E900C7AD07 /* Debug */,
-				D5743874160837E900C7AD07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

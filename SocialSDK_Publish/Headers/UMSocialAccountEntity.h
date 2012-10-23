@@ -72,4 +72,12 @@
  @return 初始化对象
  */
 -(id)initWithPlatformName:(NSString *)platformName;
+
+/**
+ 把各属性编码成NSString
+ 
+ @return 一个`NSString`对象
+ */
+-(NSString *)description;
+
 @end
