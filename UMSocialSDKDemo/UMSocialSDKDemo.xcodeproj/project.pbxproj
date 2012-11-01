@@ -168,6 +168,8 @@
 		D5ABFC30162BB35E0056F88D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5ABFC21162BB35E0056F88D /* libWeChatSDK.a */; };
 		D5ABFC31162BB35E0056F88D /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5ABFC22162BB35E0056F88D /* libWeChatSDK_armv7_armv7s.a */; };
 		D5ABFC35162BB37B0056F88D /* UMStringMock.m in Sources */ = {isa = PBXBuildFile; fileRef = D5ABFC34162BB37B0056F88D /* UMStringMock.m */; };
+		D5F922631641399C00DBBD91 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F922621641399C00DBBD91 /* icon@2x.png */; };
+		D5F9226616413A8500DBBD91 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F9226516413A8500DBBD91 /* icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -368,6 +370,8 @@
 		D5ABFC24162BB35E0056F88D /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		D5ABFC33162BB37B0056F88D /* UMStringMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMStringMock.h; sourceTree = "<group>"; };
 		D5ABFC34162BB37B0056F88D /* UMStringMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMStringMock.m; sourceTree = "<group>"; };
+		D5F922621641399C00DBBD91 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		D5F9226516413A8500DBBD91 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,11 +399,11 @@
 			isa = PBXGroup;
 			children = (
 				D50FACF3162411E900441B8B /* Default-568h@2x.png */,
-				D574389A1608399000C7AD07 /* UMSocialLibrary.a */,
 				D5743850160835A400C7AD07 /* QuartzCore.framework */,
 				D574384A1608351300C7AD07 /* MessageUI.framework */,
 				D5743848160834FF00C7AD07 /* MapKit.framework */,
 				D5743846160834F900C7AD07 /* CoreLocation.framework */,
+				D574389A1608399000C7AD07 /* UMSocialLibrary.a */,
 				D574372D1608346000C7AD07 /* SocialSDK_Publish */,
 				D574370016082B1200C7AD07 /* UMSocialSDKDemo */,
 				D57436F916082B1200C7AD07 /* Frameworks */,
@@ -455,6 +459,8 @@
 		D574370116082B1200C7AD07 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D5F922621641399C00DBBD91 /* icon@2x.png */,
+				D5F9226516413A8500DBBD91 /* icon.png */,
 				D5743852160836C700C7AD07 /* DemoImages */,
 				D574370216082B1200C7AD07 /* UMSocialSDKDemo-Info.plist */,
 				D574370316082B1200C7AD07 /* InfoPlist.strings */,
@@ -773,7 +779,7 @@
 		D57436ED16082B1200C7AD07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = yeahugo;
 			};
 			buildConfigurationList = D57436F016082B1200C7AD07 /* Build configuration list for PBXProject "UMSocialSDKDemo" */;
@@ -928,6 +934,8 @@
 				D57D91EC1616DC5600A92963 /* UMS_qzone.png in Resources */,
 				D50FACF6162412B000441B8B /* Default-568h@2x.png in Resources */,
 				D5A3F9BF162C2BE700A98A3C /* weixin_icon.png in Resources */,
+				D5F922631641399C00DBBD91 /* icon@2x.png in Resources */,
+				D5F9226616413A8500DBBD91 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

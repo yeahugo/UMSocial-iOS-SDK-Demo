@@ -30,18 +30,6 @@
  */
 -(void)didFinishRefreshSocialData:(UMSocialResponseEntity *)response;
 
-/**
- 分享列表中第二个section最后一栏返回一个自定义的`UITableViewCell`对象，sdk会取该`UITableViewCell`对象的textLabel的text和imageView的image，分别作为该UITableViewCell的文字和图片
-  
- @return `UITableViewCell`对象
- */
--(UITableViewCell *)customCellForShareListTableView;
-
-/**
- 点击该自定义`UITableViewCell`后的回调操作
- 
- */
--(void)didSelectShareListTableViewCell;
 
 @end
 
@@ -82,6 +70,11 @@
  */
 @property (nonatomic, assign) UINavigationController *currentNavigationController;
 
+
+/**
+ 返回当前`<UMSocialUIDelegate>`对象
+ */
+@property (nonatomic, assign) id <UMSocialUIDelegate> soicalUIDelegate;
 
 ///---------------------------------------
 /// @name 初始化方法和设置
@@ -144,7 +137,7 @@
  
  @return `UINavigationController`对象
  */
-- (UINavigationController *)getSocialShareEditController:(UMShareToType)shareToType;
+- (UINavigationController *)getSocialShareEditController:(UMSocialSnsType)shareToType;
 
 /**
  授权页面，如果你要想得到授权完成之后的事件，你可以实现`UMSocialUIDelegate`里面的`-(void)didCloseUIViewController;`方法，当授权关闭页面会调用此方法。另外授权完成之后sdk会自动去取个人账户信息，你可以在回调函数里面去到刚刚授权的微博平台的账户信息。
@@ -153,7 +146,7 @@
  
  @return `UINavigationController`对象
  */
-- (UINavigationController *)getSocialOauthController:(UMShareToType)shareToType;
+- (UINavigationController *)getSocialOauthController:(UMSocialSnsType)shareToType;
 
 @end
 

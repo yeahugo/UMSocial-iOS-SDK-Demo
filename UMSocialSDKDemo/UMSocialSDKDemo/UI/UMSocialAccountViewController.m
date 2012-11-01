@@ -141,8 +141,8 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"button index is %d",buttonIndex);
-    UMShareToType shareToType = buttonIndex + UMShareToTypeQzone;
-    if (shareToType >= UMShareToTypeCount) {
+    UMSocialSnsType shareToType = buttonIndex + UMSocialSnsTypeQzone;
+    if (shareToType >= UMSocialSnsTypeCount) {
         return;
     }
     if (actionSheet.tag == UMAccountOauth) {

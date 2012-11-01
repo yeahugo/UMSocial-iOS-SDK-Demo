@@ -47,10 +47,12 @@
 ```
 回调地址为：http://sns.whalecloud.com/douban/callback
 ```
-**QQ空间** `http://open.qq.com/->创建应用`
+**QQ空间** `http://connect.qq.com/manage/ ->创建应用`
 
 ```
-选择应用管理->QQ空间平台信息 应用开发地址设置为：http://sns.whalecloud.com/qzone/callback
+设置回调地址的方法参见 
+http://wiki.opensns.qq.com/wiki/【QQ登录】回调地址常见问题及修改方法
+回调地址设置为 sns.whalecloud.com
 ```
 
 
@@ -64,7 +66,7 @@
 2. 添加到项目中：
     将`SocialSDK_Publish/`文件夹，拖到XCode项目中，并在弹窗中，勾选相应的target。
 
-![socialbar](http://dev.umeng.com/images/ios/socialSDK_publish.png "socialbar")
+![socialbar](./images/socialSDK_publish.png "socialbar")
 
 ###1.2.4 向工程中提那家依赖框架
 
@@ -74,17 +76,17 @@
 -`MapKit.Framework`  
 -`QuartzCore.Framework`  
 
-本SDK网络交互用到AFNetworking这个网络交互框架，因为考虑到app中也有可能用到这个框架，所以没有把AFNetworking的源代码打包到SDK的库里面，我们已经把它放在`SocialSDK_Publishment/frameworks/AFNetworking`里面。注意的是这个框架不支持arc，如果你的app使用arc的话需要如下操作：选择项目->Build Phases->Compile Sources,选择AFNetworking的文件双击文件在添加编译标志`-fno-objc-arc`.
+本SDK网络交互用到AFNetworking这个网络交互框架，因为考虑到app中也有可能用到这个框架，所以没有把AFNetworking的源代码打包到SDK的库里面，我们已经把它放在`SocialSDK_Publish/frameworks/AFNetworking`里面。注意的是这个框架不支持arc，如果你的app使用arc的话需要如下操作：选择项目->Build Phases->Compile Sources,选择AFNetworking的文件双击文件在添加编译标志`-fno-objc-arc`.
 
-本SDK中需要JSON解析库的支持，同样你可以直接使用`SocialSDK_Publishment/frameworks/JSONKit`，你也可以自己添加其他JSON解析库，例如`JSONKit`,`SBJSON`,`yajl`,`Nextive JSON`,`NSJSONSerialization`，同AFNetworking一样，`JSONKit`同样不支持arc，如果你的app使用arc，也需要和上面一样的操作。
+本SDK中需要JSON解析库的支持，同样你可以直接使用`SocialSDK_Publish/frameworks/JSONKit`，你也可以自己添加其他JSON解析库，例如`JSONKit`,`SBJSON`,`yajl`,`Nextive JSON`,`NSJSONSerialization`，同AFNetworking一样，`JSONKit`同样不支持arc，如果你的app使用arc，也需要和上面一样的操作。
 
-如果你需要集成微信分享，同样需要把微信的SDK集成进来，我们已经把它放在了`SocialSDK_Publishment/frameworks/Wechat`里面，而且你需要参照demo的写法，在分享里面中就出现了微信分享。
+如果你需要集成微信分享，同样需要把微信的SDK集成进来，我们已经把它放在了`SocialSDK_Publish/frameworks/Wechat`里面，而且你需要参照demo的写法，在分享里面中就出现了微信分享。
 
-![frameworks](http://dev.umeng.com/images/ios/social_frameworks.png "frameworks")
+![socialbar](./images/social_frameworks.png "socialbar")
 
 ###1.2.5 导入组件头文件并配置友盟应用标识
 
-在`SocialSDK_Publishment`内有4个头文件，其中`UMSocialService.h`是要类的基本头文件，引进头文件之后设置SDK的`UMENG_APPKEY`，例如下面在 AppDelegate 的`didFinishLaunchingWithOptions` 方法内添加如下代码：
+SDK的公开头文件在`SocialSDK_Publish/Headers`内，其中`UMSocialServiceData.h`是要类的基本头文件，引进头文件之后设置SDK的`UMENG_APPKEY`，例如下面在 AppDelegate 的didFinishLaunchingWithOptions 方法内添加如下代码：
 ```[UMSocialData setAppKey:UMENG_APPKEY];```
 
 ###1.2.6 把社会化组件加入您的应用
@@ -92,9 +94,9 @@
 上述步骤已把全部环境准备好，现在来着手将社会化组件加入APP吧！
 社会化组件的核心组件是“社会化操作栏”,如下图所示：
 
-![socialbar](http://dev.umeng.com/images/ios/socialBar_black.png "socialbar")
+![socialbar](./images/socialBar_black.png "socialbar")
 
-![socialbar](http://dev.umeng.com/images/ios/socialBar_white.png "socialbar")
+![socialbar](./images/socialBar_white.png "socialbar")
 
 这是个放置在APP底部的通用工具栏，它为用户提供了针对特定内容页的一站式社会化功能（评论、喜欢、分享、个人中心4个功能）。请注意，如果您需要单独使用某项功能，请您查看本文档的“开发指南”部分。
 
@@ -128,10 +130,11 @@
 
 同理，如果你要设置其他配置，实现`UMSocialConfigDelegate`的其他方法，具体可以参见api文档。
 
+
 ##1.3	验证集成效果
 
 注意：如果您希望社会化操作栏使用黑色主题，请将组件安装包中的SocialSDK_Publish/SocialSDKBarThemes/White这个主题目录删掉。编译运行一下吧，如果您现在能看到这样一个漂亮的“社会化操作栏”，评论、喜欢、分享、个人中心几个按钮功能都正常的话，恭喜您，您的APP已经插上了社交的翅膀！
-![socialbar](http://dev.umeng.com/images/ios/socialBar_black.png "socialbar")还有让人兴奋的东西 —— 您可以登录友盟主站，进入组件->社会化分享报表页，这里有您关心的所有社会化操作统计数据。注意事项：如果您希望单独使用友盟社会化组件提供的功能，或者希望更深层次的功能和UI定制，请移步至下一章节——“开发指南”部分。# 2. 开发指南
+![socialbar](./images/socialBar_black.png "socialbar")还有让人兴奋的东西 —— 您可以登录友盟主站，进入组件->社会化分享报表页，这里有您关心的所有社会化操作统计数据。注意事项：如果您希望单独使用友盟社会化组件提供的功能，或者希望更深层次的功能和UI定制，请移步至下一章节——“开发指南”部分。# 2. 开发指南
 ## 2.1 内容（Entity）
 ### 2.1.1 简介
 一个Entity就是你APP中的一个内容项。
@@ -149,7 +152,7 @@
 每个使用社会化组件的设备都会对应一个“用户”，但是组件会为您自动处理“用户”对象，您无需显式创建它。	用户信息分两部分：登录信息： APP内部展示给其他用户的个人信息。系统会将用户登录时选择的默认平台上的授权信息，作为用户的登录信息；授权信息：从各开放平台上获得的个人资料，如昵称、头像等。###2.2.2 用户中心（界面的接口）
 个人中心页面，个人中心页面，上面是登陆的微博账号，下面是各个已经授权的微博账号，包括我们支持的所有平台，可以对各个平台进行授权和解除授权。
 
-![socical_user_account](http://dev.umeng.com/images/ios/social_user_account.png "socical_user_account")
+![socialbar](./images/user_account.png "socical_user_account")
 
 实现的代码是
 
@@ -179,7 +182,7 @@ UINavigationController *accountViewController =[socialController getSocialAccoun
 ### 2.2.4 授权页面（带界面接口）
 sdk实现调用微博授权页面
 
-![social_oauth](http://dev.umeng.com/images/ios/social_oauth.png "socical_oauth")实现代码是
+![socialbar](./images/social_oauth.png "socical_oauth")实现代码是
 ```//如上对socialController进行初始化
 UINavigationController *oauthController = [socialController getSocialOauthController:shareToType];
 [self presentModalViewController:oauthController animated:YES];```
@@ -198,7 +201,7 @@ UINavigationController *oauthController = [socialController getSocialOauthContro
 
 分享列表页面
 
-![social_share_list](http://dev.umeng.com/images/ios/social_sharelist.png "socical_share_list")
+![socialbar](./images/social_sharelist.png "socical_share_list")
 
 实现代码是
 
@@ -213,7 +216,7 @@ UINavigationController *shareListController = [socialController getSocialShareLi
 
 分享微博编辑页面
 
-![social_shareedit](http://dev.umeng.com/images/ios/images/social_shareedit.png "social_share_edit")
+![socialbar](./images/social_shareedit.png "social_share_edit")
 
 ```
 //如上对socialController进行初始化
@@ -256,7 +259,7 @@ UINavigationController *shareEditController = [socialController getSocialShareEd
 
 评论列表
 
-![social_comment_list](http://dev.umeng.com/images/ios/social_commentlist.png "socical_comment_list")
+![socialbar](./images/social_commentlist.png "socical_comment_list")
 
 ```
 //如上对socialController进行初始化

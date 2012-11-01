@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "UMSocialControllerService.h"
+#import <CoreLocation/CoreLocation.h>
 
 typedef enum
 {
     UMShareList,
     UMShareEditPresent,
-    UMSharePostData
+    UMSharePostData,
+    UMSharePostMultiData
 }UMShareAction;
 
 @interface UMSocialShareViewController : UIViewController
@@ -29,5 +31,6 @@ typedef enum
     UMSocialControllerService *_socialController;
     UIActionSheet *_actionSheet;
     UIImageView *_imageView;
+    CLLocationManager *_locationManager;
 }
 @end

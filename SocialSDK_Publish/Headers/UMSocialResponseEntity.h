@@ -43,7 +43,7 @@
 /**
  返回数据
  */
-@property (nonatomic, assign) NSDictionary *data;
+@property (nonatomic, retain) NSDictionary *data;
 
 /**
  客户端发送出现的错误

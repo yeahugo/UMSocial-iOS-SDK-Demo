@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/UMSocialUIDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/UMSocialUIDelegate</TokenIdentifier>
+			<Abstract type="html">UMSocialControllerService对象用到的一些回调方法，可以对出现的分享列表进行设置，或者得到一些完成事件的回调方法。</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>
+			
+			<NodeRef refid="11"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UMSocialUIDelegate/didCloseUIViewController</TokenIdentifier>
+			<Abstract type="html">关闭当前页面之后</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>- (void)didCloseUIViewController</Declaration>
+			
+			
+			<Anchor>//api/name/didCloseUIViewController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UMSocialUIDelegate/didFinishRefreshSocialData:</TokenIdentifier>
+			<Abstract type="html">当发送评论或者分享完成之后会重新请求获取评论数、分享数等，获取这些数据之后的回调方法</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>- (void)didFinishRefreshSocialData:(UMSocialResponseEntity *)response</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>response</Name>
+					<Abstract type="html">返回UMSocialResponseEntity对象</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/didFinishRefreshSocialData:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -70,7 +70,7 @@
  @param location  分享的地理位置信息
  
  */
-- (void)postSNSWithType:(UMShareToType)shareType usid:(NSString *)usid content:(NSString *)content image:(UIImage *)image location:(CLLocation *)location;
+- (void)postSNSWithType:(UMSocialSnsType)shareType usid:(NSString *)usid content:(NSString *)content image:(UIImage *)image location:(CLLocation *)location;
 
 
 /**
@@ -137,7 +137,7 @@
  @param shareToType 要解除授权的微博平台，此变量为枚举类型
  
  */
-- (void)requestUnOauthWithType:(UMShareToType)shareToType;
+- (void)requestUnOauthWithType:(UMSocialSnsType)shareToType;
 
 /**
  请求绑定账号
@@ -145,7 +145,7 @@
  @param shareToType 要绑定账号的微博平台，此变量为枚举类型
  
  */
-- (void)requestBindToSnsWithType:(UMShareToType)shareToType;
+- (void)requestBindToSnsWithType:(UMSocialSnsType)shareToType;
 
 /**
  请求解除绑定账号
@@ -159,7 +159,15 @@
  @param shareToType 要获取微博信息的微博平台，此变量为枚举类型
  
  */
-- (void)requestSnsInfomation:(UMShareToType)shareToType;
+- (void)requestSnsInfomation:(UMSocialSnsType)shareToType;
+
+/**
+ 请求获取用户微博账号的朋友列表,获取返回数据和其他方法一样，在<UMSocialDataDelegate>中的`didFinishGetUMSocialDataResponse`返回的`UMSocialResponseEntity`对象，数据部分是`data`属性，为`NSDictionary`类型
+ 
+ @param shareToType 要获取微博信息的微博平台，此变量为枚举类型
+ 
+ */
+- (void)requestSnsFriends:(UMSocialSnsType)shareToType;
 
 @end
 

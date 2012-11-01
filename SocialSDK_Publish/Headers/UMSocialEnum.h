@@ -38,16 +38,16 @@ extern NSString *const UMShareToQzone;
  
  */
 typedef enum {
-    UMShareToTypeNone = -1,
-    UMShareToTypeQzone = 10,
-    UMShareToTypeSina ,                 //sina weibo
-    UMShareToTypeTenc,                 //tencent weibo
-    UMShareToTypeRenr,                 //renren
-    UMShareToTypeDouban,               //douban
-    UMShareToTypeCount,                //count the number of sns,now is 15
-    UMShareToTypeMail,
-    UMShareToTypeSMS
-} UMShareToType;
+    UMSocialSnsTypeNone = -1,
+    UMSocialSnsTypeQzone = 10,
+    UMSocialSnsTypeSina,                 //sina weibo
+    UMSocialSnsTypeTenc,                 //tencent weibo
+    UMSocialSnsTypeRenr,                 //renren
+    UMSocialSnsTypeDouban,               //douban
+    UMSocialSnsTypeCount,                //count the number of sns,now is 15
+    UMSocialSnsTypeEmail,
+    UMSocialSnsTypeSms
+} UMSocialSnsType;
 
 /**
  网络请求结果状态码
@@ -55,6 +55,7 @@ typedef enum {
  */
 typedef enum {
     UMSResponseCodeSuccess            = 200,
+    UMSResponseCodeBaned              = 505,
     UMSResponseCodeShareRepeated      = 5016,
     UMSResponseCodeGetNoUidFromOauth  = 5020,
     UMSResponseCodeAccessTokenExpired = 5027,
@@ -71,13 +72,15 @@ typedef enum {
     UMSResponseGetCommentList,
     UMSResponseGetSocialData,
     UMSResponseShareToSNS,
+    UMSResponseShareToMutilSNS,
     UMSResponseBinding,
     UMSResponseUnBinding,
     UMSResponseUnOauth,
     UMSResponseOauth,
     UMSResponseLogin,
     UMSResponseGetAccount,
-    UMSResponseGetSnsInfo
+    UMSResponseGetSnsInfo,
+    UMSResponseGetFriends
 } UMSResponse;
 
 
@@ -87,15 +90,15 @@ typedef enum {
  ## 分享平台类型 
  
     typedef enum {
-    UMShareToTypeNone = -1,
-    UMShareToTypeQzone = 10,            //QQ空间
-    UMShareToTypeSina ,                //新浪微博
-    UMShareToTypeTenc,                 //腾讯微博
-    UMShareToTypeRenr,                 //人人网
-    UMShareToTypeDouban,               //豆瓣    
-    UMShareToTypeCount,                //用于得到当前分享平台个数
-    UMShareToTypeMail,                 //邮件分享
-    UMShareToTypeSMS                   //短信分享
+    UMSocialSnsTypeNone = -1,
+    UMSocialSnsTypeQzone = 10,           //QQ空间
+    UMSocialSnsTypeSina ,                //新浪微博
+    UMSocialSnsTypeTenc,                 //腾讯微博
+    UMSocialSnsTypeRenr,                 //人人网
+    UMSocialSnsTypeDouban,               //豆瓣    
+    UMSocialSnsTypeCount,                //用于得到当前分享平台个数
+    UMSocialSnsTypeEmail,                //邮件分享
+    UMSocialSnsTypeSms                   //短信分享
     } UMShareToType;
  
  
