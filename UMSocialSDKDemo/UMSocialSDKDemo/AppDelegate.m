@@ -36,7 +36,7 @@
 
 //- (NSArray *)shareToPlatforms
 //{
-//    NSNumber *sinaNumber = [NSNumber numberWithInt:UMShareToTypeSina];
+//    NSNumber *sinaNumber = [NSNumber numberWithInt:UMSocialSnsTypeSina];
 //    NSArray *shareToArray = [NSArray arrayWithObjects:sinaNumber, nil];
 //    return shareToArray;
 //}
