@@ -153,6 +153,14 @@
 		D57D91EC1616DC5600A92963 /* UMS_qzone.png in Resources */ = {isa = PBXBuildFile; fileRef = D57D91E91616DC5600A92963 /* UMS_qzone.png */; };
 		D58D66C71615A35200D3F95A /* UMSocialDemoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58D66C61615A35200D3F95A /* UMSocialDemoTableController.m */; };
 		D58D66C91615A3F700D3F95A /* UMShareEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58D66C81615A3F700D3F95A /* UMShareEditViewController.xib */; };
+		D59CE10D16427EC10014AFB1 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D59CE10516427EC10014AFB1 /* blackArrow.png */; };
+		D59CE10E16427EC10014AFB1 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D59CE10616427EC10014AFB1 /* blackArrow@2x.png */; };
+		D59CE10F16427EC10014AFB1 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D59CE10716427EC10014AFB1 /* blueArrow.png */; };
+		D59CE11016427EC10014AFB1 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D59CE10816427EC10014AFB1 /* blueArrow@2x.png */; };
+		D59CE11116427EC10014AFB1 /* grayArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D59CE10916427EC10014AFB1 /* grayArrow.png */; };
+		D59CE11216427EC10014AFB1 /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D59CE10A16427EC10014AFB1 /* grayArrow@2x.png */; };
+		D59CE11316427EC10014AFB1 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D59CE10B16427EC10014AFB1 /* whiteArrow.png */; };
+		D59CE11416427EC10014AFB1 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D59CE10C16427EC10014AFB1 /* whiteArrow@2x.png */; };
 		D5A3F9BF162C2BE700A98A3C /* weixin_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D5A3F9BE162C2BE700A98A3C /* weixin_icon.png */; };
 		D5ABFC25162BB35E0056F88D /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D5ABFC09162BB35E0056F88D /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D5ABFC26162BB35E0056F88D /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5ABFC0B162BB35E0056F88D /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -340,6 +348,14 @@
 		D58D66C51615A35200D3F95A /* UMSocialDemoTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UMSocialDemoTableController.h; path = UI/UMSocialDemoTableController.h; sourceTree = "<group>"; };
 		D58D66C61615A35200D3F95A /* UMSocialDemoTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UMSocialDemoTableController.m; path = UI/UMSocialDemoTableController.m; sourceTree = "<group>"; };
 		D58D66C81615A3F700D3F95A /* UMShareEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMShareEditViewController.xib; sourceTree = "<group>"; };
+		D59CE10516427EC10014AFB1 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
+		D59CE10616427EC10014AFB1 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
+		D59CE10716427EC10014AFB1 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		D59CE10816427EC10014AFB1 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
+		D59CE10916427EC10014AFB1 /* grayArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayArrow.png; sourceTree = "<group>"; };
+		D59CE10A16427EC10014AFB1 /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
+		D59CE10B16427EC10014AFB1 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
+		D59CE10C16427EC10014AFB1 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		D5A3F9BE162C2BE700A98A3C /* weixin_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weixin_icon.png; sourceTree = "<group>"; };
 		D5ABFC08162BB35E0056F88D /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		D5ABFC09162BB35E0056F88D /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
@@ -511,6 +527,7 @@
 		D57437461608346000C7AD07 /* SocialSDKImage */ = {
 			isa = PBXGroup;
 			children = (
+				D59CE10416427EC10014AFB1 /* EGO */,
 				D57D91E71616DC5600A92963 /* UMS_qzone_off.png */,
 				D57D91E81616DC5600A92963 /* UMS_qzone_on.png */,
 				D57D91E91616DC5600A92963 /* UMS_qzone.png */,
@@ -684,6 +701,21 @@
 				D5885D0E16252FCF0040E5FF /* UMUIHelper.h */,
 			);
 			name = UIAPI;
+			sourceTree = "<group>";
+		};
+		D59CE10416427EC10014AFB1 /* EGO */ = {
+			isa = PBXGroup;
+			children = (
+				D59CE10516427EC10014AFB1 /* blackArrow.png */,
+				D59CE10616427EC10014AFB1 /* blackArrow@2x.png */,
+				D59CE10716427EC10014AFB1 /* blueArrow.png */,
+				D59CE10816427EC10014AFB1 /* blueArrow@2x.png */,
+				D59CE10916427EC10014AFB1 /* grayArrow.png */,
+				D59CE10A16427EC10014AFB1 /* grayArrow@2x.png */,
+				D59CE10B16427EC10014AFB1 /* whiteArrow.png */,
+				D59CE10C16427EC10014AFB1 /* whiteArrow@2x.png */,
+			);
+			path = EGO;
 			sourceTree = "<group>";
 		};
 		D5ABFC06162BB35E0056F88D /* frameworks */ = {
@@ -936,6 +968,14 @@
 				D5A3F9BF162C2BE700A98A3C /* weixin_icon.png in Resources */,
 				D5F922631641399C00DBBD91 /* icon@2x.png in Resources */,
 				D5F9226616413A8500DBBD91 /* icon.png in Resources */,
+				D59CE10D16427EC10014AFB1 /* blackArrow.png in Resources */,
+				D59CE10E16427EC10014AFB1 /* blackArrow@2x.png in Resources */,
+				D59CE10F16427EC10014AFB1 /* blueArrow.png in Resources */,
+				D59CE11016427EC10014AFB1 /* blueArrow@2x.png in Resources */,
+				D59CE11116427EC10014AFB1 /* grayArrow.png in Resources */,
+				D59CE11216427EC10014AFB1 /* grayArrow@2x.png in Resources */,
+				D59CE11316427EC10014AFB1 /* whiteArrow.png in Resources */,
+				D59CE11416427EC10014AFB1 /* whiteArrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

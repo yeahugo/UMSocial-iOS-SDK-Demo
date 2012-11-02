@@ -26,7 +26,6 @@
     [super viewWillAppear:animated];
 }
 
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -69,7 +68,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -96,9 +95,12 @@
         cell.textLabel.text = @"获取用户sns详细信息";
     }
     if (indexPath.row == 5) {
-        cell.textLabel.text = @"获取账户";
+        cell.textLabel.text = @"获取好友列表";
     }
     if (indexPath.row == 6) {
+        cell.textLabel.text = @"获取账户";
+    }
+    if (indexPath.row == 7) {
         cell.textLabel.text = @"用户中心";
     }
     return cell;
@@ -114,18 +116,18 @@
         [_socialUIController.socialDataService requestUnBindToSns];
         [_activityIndicatorView startAnimating];
     }
-    else if (indexPath.row == 5) {
+    else if (indexPath.row == 6) {
         [_socialUIController.socialDataService requestSocialAccount];
         [_activityIndicatorView startAnimating];
     }
-    else if (indexPath.row == 6) {
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test1231"];
-        UMSocialControllerService *socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
-        UINavigationController *accountViewController =[socialController getSocialAccountController];
-
+    else if (indexPath.row == 7) {
 //        UINavigationController *accountViewController =[_socialUIController getSocialAccountController];
-        [self presentModalViewController:accountViewController animated:YES];
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test321"];
+        UMSocialControllerService *socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
         
+        UINavigationController *accountViewController =[socialController getSocialAccountController];
+        
+        [self presentModalViewController:accountViewController animated:YES];
     }
     else
     {
@@ -146,13 +148,11 @@
         return;
     }
     if (actionSheet.tag == UMAccountOauth) {
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test1231"];
-        UMSocialControllerService *socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
-        [socialController setUMSocialUIDelegate:self];
-        UINavigationController *oauthController = [socialController getSocialOauthController:shareToType];
-//        UINavigationController *oauthController = [_socialUIController getSocialOauthController:shareToType];
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test12312"];
+        UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+        [socialControllerService setUMSocialUIDelegate:self];
+        UINavigationController *oauthController = [socialControllerService getSocialOauthController:shareToType];
         [self presentModalViewController:oauthController animated:YES];
-//        [self.navigationController pushViewController:oauthController.visibleViewController animated:YES];
     }
     else if (actionSheet.tag == UMAccountUnOauth) {
         [_socialUIController.socialDataService requestUnOauthWithType:shareToType];
@@ -167,22 +167,24 @@
         [_socialUIController.socialDataService requestSnsInfomation:shareToType];
         [_activityIndicatorView startAnimating];
     }
+    else if (actionSheet.tag == UMAccountFriend){
+        [_socialUIController.socialDataService setUMSoicalDelegate:self];
+        [_socialUIController.socialDataService requestSnsFriends:shareToType];
+        [_activityIndicatorView startAnimating];
+    }
 }
 
 #pragma mark - UMSocialDelegate
 
 -(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
 {
-    NSLog(@"response is %@",response);
-    if (response.responseType == UMSResponseGetAccount || response.responseType == UMSResponseGetSnsInfo) {
-        [_activityIndicatorView stopAnimating];
-    }
+    NSLog(@"social Account response is %@",response);
+    [_activityIndicatorView stopAnimating];
 }
 
 -(void)didCloseUIViewController
 {
-    NSLog(@"didCloseUIViewController account is %@ token is %@",(UMSocialAccountEntity *)[_socialUIController.soicalData.socialAccount objectForKey:@"sina"],[(UMSocialAccountEntity *)[_socialUIController.soicalData.socialAccount objectForKey:@"sina"] accessToken]);
-    NSLog(@"授权完成");
+    NSLog(@"didCloseUIViewController account is %@",(UMSocialAccountEntity *)[_socialUIController.soicalData.socialAccount objectForKey:@"sina"] );
 }
 
 @end

@@ -40,17 +40,47 @@
 
 <h2>组件使用</h2>
 
-<p>!<a href="./images/class_grath.png" title="class grath">类图</a></p>
+<p><img src="./images/class_grath.png"></p>
 
-<p>友盟社交组件主要有3个层次的接口，最底层的负责直接发送数据的<a href="Classes/UMSocialDataService.html"><code>UMSocialDataService</code></a>，利用此底层数据接口，创建的一些界面和操作，是<a href="Classes/UMSocialControllerService.html"><code>UMSocialControllerService</code></a>，集成这些界面API，创建了一个集成所有功能的工具栏<a href="Classes/UMSocialBar.html"><code>UMSocialBar</code></a>。</p>
+<table>
+<thead>
+<tr>
+<th>类       </th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Classes/UMSocialData.html"><code>UMSocialData</code></a></td>
+<td> 用于设置分享内嵌文字等，获取分享个数等</td>
+</tr>
+<tr>
+<td><a href="Classes/UMSocialDataService.html"><code>UMSocialDataService</code></a></td>
+<td> 底层的数据级接口</td>
+</tr>
+<tr>
+<td><a href="Classes/UMSocialControllerService.html"><code>UMSocialControllerService</code></a> </td>
+<td> 带界面的接口</td>
+</tr>
+<tr>
+<td><a href="Classes/UMSocialBar.html"><code>UMSocialBar</code></a> </td>
+<td> 社会化工具栏</td>
+</tr>
+<tr>
+<td><a href="Protocols/UMSocialDataDelegate.html"><code>UMSocialDataDelegate</code></a></td>
+<td> 发送数据、获取数据的回调协议</td>
+</tr>
+<tr>
+<td><a href="Protocols/UMSocialConfigDelegate.html"><code>UMSocialConfigDelegate</code></a></td>
+<td> 对界面级接口进行配置的协议</td>
+</tr>
+<tr>
+<td><a href="Classes/UMSocialEnum.html"><code>UMSocialEnum</code></a></td>
+<td> 一些枚举变量，和常量字符串等</td>
+</tr>
+</tbody>
+</table>
 
-<p><a href="Classes/UMSocialDataService.html"><code>UMSocialDataService</code></a>、<a href="Classes/UMSocialControllerService.html"><code>UMSocialControllerService</code></a>、<a href="Classes/UMSocialBar.html"><code>UMSocialBar</code></a>的创建都需要一个<a href="Classes/UMSocialData.html"><code>UMSocialData</code></a>对象，通过<a href="Classes/UMSocialData.html"><code>UMSocialData</code></a>，你可以对不同内容设置一个标示符字符串，并针对此内容设置不同的分享文字、图片，查看各自的分享数、评论数等。</p>
-
-<p><a href="Classes/UMSocialDataService.html"><code>UMSocialDataService</code></a>和<a href="Classes/UMSocialData.html"><code>UMSocialData</code></a>用到的一个<a href="Protocols/UMSocialDataDelegate.html"><code>UMSocialDataDelegate</code></a>的协议，可以利用此协议的方法得到网络请求成功与否，和想要请求的数据。</p>
-
-<p><a href="Classes/UMSocialControllerService.html"><code>UMSocialControllerService</code></a>用到的是<a href="Protocols/UMSocialUIDelegate.html"><code>UMSocialUIDelegate</code></a> 和<a href="Protocols/UMSocialConfigDelegate.html"><code>UMSocialConfigDelegate</code></a> 协议，分别可以对捕捉到一些界面操作，和对界面进行设置。</p>
-
-<p>上面几个类用到的一些枚举变量，和常量字符串，例如微博平台类型、错误类型等，定义在<a href="Classes/UMSocialEnum.html"><code>UMSocialEnum</code></a></p>
 
 <h2>组件功能</h2>
 

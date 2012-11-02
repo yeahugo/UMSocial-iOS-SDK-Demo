@@ -46,7 +46,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/intfm/UMSocialConfigDelegate/shouldShareSynchronous</TokenIdentifier>
-			<Abstract type="html">设置分享编辑页面是否等待完成之后再关闭页面还是立即关闭，默认等待分享完成之后再关闭</Abstract>
+			<Abstract type="html">设置分享编辑页面是否等待完成之后再关闭页面还是立即关闭，如果设置成YES，就是等待分享完成之后再关闭，否则立即关闭。默认等待分享完成之后再关闭。如果设置成立即关闭的话，需要用UMSocialDataServie的- (void)setUMSoicalDelegate:(id UMSocialDataDelegatedelegate;来设置回调对象来获取分享是否成功，如果回调对象的responseCode为UMSResponseCodeAccessTokenExpired的话是授权过期，新浪微博对于不同应用的过期时间不一样，这种情况下要利用sdk提供的授权页面需要重新授权。</Abstract>
 			<DeclaredIn>UMSocialConfigDelegate.h</DeclaredIn>			
 			
 			<Declaration>- (BOOL)shouldShareSynchronous</Declaration>
