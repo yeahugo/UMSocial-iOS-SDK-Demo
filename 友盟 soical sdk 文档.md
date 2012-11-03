@@ -76,9 +76,9 @@ http://wiki.opensns.qq.com/wiki/【QQ登录】回调地址常见问题及修改�
 -`MapKit.Framework`  
 -`QuartzCore.Framework`  
 
-本SDK网络交互用到AFNetworking这个网络交互框架，因为考虑到app中也有可能用到这个框架，所以没有把AFNetworking的源代码打包到SDK的库里面，我们已经把它放在`SocialSDK_Publish/frameworks/AFNetworking`里面。注意的是这个框架不支持arc，如果你的app使用arc的话需要如下操作：选择项目->Build Phases->Compile Sources,选择AFNetworking的文件双击文件在添加编译标志`-fno-objc-arc`.
+本SDK网络交互用到AFNetworking这个网络交互框架，因为考虑到app中也有可能用到这个框架，所以没有把AFNetworking的源代码打包到SDK的库里面，我们已经把它放在`SocialSDK_Publish/frameworks/AFNetworking`里面。
 
-本SDK中需要JSON解析库的支持，同样你可以直接使用`SocialSDK_Publish/frameworks/JSONKit`，你也可以自己添加其他JSON解析库，例如`JSONKit`,`SBJSON`,`yajl`,`Nextive JSON`,`NSJSONSerialization`，同AFNetworking一样，`JSONKit`同样不支持arc，如果你的app使用arc，也需要和上面一样的操作。
+本SDK使用了`JSONKit`的解析库，由于`JSONKit`不支持arc，如果你的app使用arc，如果你的app使用arc的话需要如下操作：选择项目->Build Phases->Compile Sources,选择`JSONKit`的文件双击文件在添加编译标志-fno-objc-arc。
 
 如果你需要集成微信分享，同样需要把微信的SDK集成进来，我们已经把它放在了`SocialSDK_Publish/frameworks/Wechat`里面，而且你需要参照demo的写法，在分享里面中就出现了微信分享。
 
