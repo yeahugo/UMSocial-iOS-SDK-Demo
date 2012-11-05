@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D50FACF6162412B000441B8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50FACF3162411E900441B8B /* Default-568h@2x.png */; };
+		D5468C0616478DFC00BB51B4 /* UMS_qzone_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5468C0316478DFC00BB51B4 /* UMS_qzone_off@2x.png */; };
+		D5468C0716478DFC00BB51B4 /* UMS_qzone_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5468C0416478DFC00BB51B4 /* UMS_qzone_on@2x.png */; };
+		D5468C0816478DFC00BB51B4 /* UMS_qzone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5468C0516478DFC00BB51B4 /* UMS_qzone@2x.png */; };
 		D57436FB16082B1200C7AD07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FA16082B1200C7AD07 /* UIKit.framework */; };
 		D57436FD16082B1200C7AD07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FC16082B1200C7AD07 /* Foundation.framework */; };
 		D57436FF16082B1200C7AD07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FE16082B1200C7AD07 /* CoreGraphics.framework */; };
@@ -153,6 +156,7 @@
 		D57D91EC1616DC5600A92963 /* UMS_qzone.png in Resources */ = {isa = PBXBuildFile; fileRef = D57D91E91616DC5600A92963 /* UMS_qzone.png */; };
 		D58D66C71615A35200D3F95A /* UMSocialDemoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58D66C61615A35200D3F95A /* UMSocialDemoTableController.m */; };
 		D58D66C91615A3F700D3F95A /* UMShareEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58D66C81615A3F700D3F95A /* UMShareEditViewController.xib */; };
+		D59762E316476F2A0066D1E8 /* weixin_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D59762E216476F2A0066D1E8 /* weixin_icon@2x.png */; };
 		D59CE10D16427EC10014AFB1 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D59CE10516427EC10014AFB1 /* blackArrow.png */; };
 		D59CE10E16427EC10014AFB1 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D59CE10616427EC10014AFB1 /* blackArrow@2x.png */; };
 		D59CE10F16427EC10014AFB1 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D59CE10716427EC10014AFB1 /* blueArrow.png */; };
@@ -181,6 +185,9 @@
 
 /* Begin PBXFileReference section */
 		D50FACF3162411E900441B8B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D5468C0316478DFC00BB51B4 /* UMS_qzone_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UMS_qzone_off@2x.png"; sourceTree = "<group>"; };
+		D5468C0416478DFC00BB51B4 /* UMS_qzone_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UMS_qzone_on@2x.png"; sourceTree = "<group>"; };
+		D5468C0516478DFC00BB51B4 /* UMS_qzone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UMS_qzone@2x.png"; sourceTree = "<group>"; };
 		D57436F616082B1200C7AD07 /* UMSocialSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UMSocialSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57436FA16082B1200C7AD07 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D57436FC16082B1200C7AD07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -347,6 +354,7 @@
 		D58D66C51615A35200D3F95A /* UMSocialDemoTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UMSocialDemoTableController.h; path = UI/UMSocialDemoTableController.h; sourceTree = "<group>"; };
 		D58D66C61615A35200D3F95A /* UMSocialDemoTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UMSocialDemoTableController.m; path = UI/UMSocialDemoTableController.m; sourceTree = "<group>"; };
 		D58D66C81615A3F700D3F95A /* UMShareEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMShareEditViewController.xib; sourceTree = "<group>"; };
+		D59762E216476F2A0066D1E8 /* weixin_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weixin_icon@2x.png"; sourceTree = "<group>"; };
 		D59CE10516427EC10014AFB1 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		D59CE10616427EC10014AFB1 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
 		D59CE10716427EC10014AFB1 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
@@ -528,6 +536,9 @@
 				D57D91E71616DC5600A92963 /* UMS_qzone_off.png */,
 				D57D91E81616DC5600A92963 /* UMS_qzone_on.png */,
 				D57D91E91616DC5600A92963 /* UMS_qzone.png */,
+				D5468C0316478DFC00BB51B4 /* UMS_qzone_off@2x.png */,
+				D5468C0416478DFC00BB51B4 /* UMS_qzone_on@2x.png */,
+				D5468C0516478DFC00BB51B4 /* UMS_qzone@2x.png */,
 				D57437471608346000C7AD07 /* UMS_account_bg@2x.png */,
 				D57437481608346000C7AD07 /* UMS_cancel_location_normal.png */,
 				D57437491608346000C7AD07 /* UMS_cancel_location_normal@2x.png */,
@@ -650,6 +661,7 @@
 		D5743852160836C700C7AD07 /* DemoImages */ = {
 			isa = PBXGroup;
 			children = (
+				D59762E216476F2A0066D1E8 /* weixin_icon@2x.png */,
 				D5A3F9BE162C2BE700A98A3C /* weixin_icon.png */,
 				D5743853160836C700C7AD07 /* yinxing0.jpg */,
 				D5743854160836C700C7AD07 /* yinxing1.jpg */,
@@ -971,6 +983,10 @@
 				D59CE11216427EC10014AFB1 /* grayArrow@2x.png in Resources */,
 				D59CE11316427EC10014AFB1 /* whiteArrow.png in Resources */,
 				D59CE11416427EC10014AFB1 /* whiteArrow@2x.png in Resources */,
+				D59762E316476F2A0066D1E8 /* weixin_icon@2x.png in Resources */,
+				D5468C0616478DFC00BB51B4 /* UMS_qzone_off@2x.png in Resources */,
+				D5468C0716478DFC00BB51B4 /* UMS_qzone_on@2x.png in Resources */,
+				D5468C0816478DFC00BB51B4 /* UMS_qzone@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
