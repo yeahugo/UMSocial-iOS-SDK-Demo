@@ -124,7 +124,7 @@
 {
     UMSocialTableViewCell * umSeperateCell = (UMSocialTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     UMSocialBarViewController *barViewController = [[UMSocialBarViewController alloc] initWithDescriptor:[_descriptorArray objectAtIndex:indexPath.row] withText:[umSeperateCell labelText] withImage:[umSeperateCell showImage]];
-    [self.navigationController pushViewController:barViewController animated:YES];
+    [self.navigationController pushViewController:barViewController animated:YES];  
 }
 
 @end
