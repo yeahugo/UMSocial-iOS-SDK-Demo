@@ -19,12 +19,12 @@
 /** 
  设置显示的sns平台类型
  
- @param 由NSNumber组成的NSArray，可以选的有新浪微博、腾讯微博、人人网、豆瓣。我们分别用`UMShareToTypeSina`、`UMShareToTypeTenc`、`UMShareToTypeRenr`、`UMShareToTypeDouban`，、`UMShareToTypeQzone`然后分别初始化成NSNumber，再组成NSArray
+ @param 由NSNumber组成的NSArray，可以选的有新浪微博、腾讯微博、人人网、豆瓣。我们分别用`UMSocialSnsTypeSina`、`UMSocialSnsTypeTenc`、`UMSocialSnsTypeRenr`、`UMSocialSnsTypeDouban`，、`UMSocialSnsTypeQzone`然后分别初始化成NSNumber，再组成NSArray
  */
 - (NSArray *)shareToPlatforms;
 
 /** 
- 设置评论页面是否出现分享按钮,默认为出现,出现的平台默认为4个，可以用shareToPlatforms设置
+ 设置评论页面是否出现分享按钮,默认为出现所有支持的平台，可以用shareToPlatforms设置
 
  */
 - (BOOL)shouldCommentWithShare;
@@ -36,7 +36,7 @@
 - (BOOL)shouldCommentWithLocation;
 
 /**
- 设置分享编辑页面是否等待完成之后再关闭页面还是立即关闭，默认等待分享完成之后再关闭
+ 设置分享编辑页面是否等待完成之后再关闭页面还是立即关闭，如果设置成YES，就是等待分享完成之后再关闭，否则立即关闭。默认等待分享完成之后再关闭。如果设置成立即关闭的话，需要用`UMSocialDataServie`的`- (void)setUMSoicalDelegate:(id <UMSocialDataDelegate>)delegate;`来设置回调对象来获取分享是否成功，如果回调对象的`responseCode`为`UMSResponseCodeAccessTokenExpired`的话是授权过期，新浪微博对于不同应用的过期时间不一样，这种情况下要利用sdk提供的授权页面需要重新授权。
  
  */
 - (BOOL)shouldShareSynchronous;

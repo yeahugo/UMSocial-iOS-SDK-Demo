@@ -16,13 +16,13 @@
 @implementation UMSocialAccountViewController
 
 -(void)viewWillDisappear:(BOOL)animated{
-    [_socialUIController.socialDataService setUMSoicalDelegate:nil];
+    [_socialUIController.socialDataService setUMSocialDelegate:nil];
     [super viewWillDisappear:animated];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [_socialUIController.socialDataService setUMSoicalDelegate:self];
+    [_socialUIController.socialDataService setUMSocialDelegate:self];
     [super viewWillAppear:animated];
 }
 
@@ -150,7 +150,7 @@
     if (actionSheet.tag == UMAccountOauth) {
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test12312"];
         UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
-        [socialControllerService setUMSocialUIDelegate:self];
+        socialControllerService.soicalUIDelegate = self;
         UINavigationController *oauthController = [socialControllerService getSocialOauthController:shareToType];
         [self presentModalViewController:oauthController animated:YES];
     }
@@ -163,12 +163,12 @@
         [_activityIndicatorView startAnimating];
     }
     else if (actionSheet.tag == UMAccountSnsInfo){
-        [_socialUIController.socialDataService setUMSoicalDelegate:self];
+        [_socialUIController.socialDataService setUMSocialDelegate:self];
         [_socialUIController.socialDataService requestSnsInfomation:shareToType];
         [_activityIndicatorView startAnimating];
     }
     else if (actionSheet.tag == UMAccountFriend){
-        [_socialUIController.socialDataService setUMSoicalDelegate:self];
+        [_socialUIController.socialDataService setUMSocialDelegate:self];
         [_socialUIController.socialDataService requestSnsFriends:shareToType];
         [_activityIndicatorView startAnimating];
     }

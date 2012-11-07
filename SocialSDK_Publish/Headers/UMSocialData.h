@@ -129,7 +129,7 @@ typedef enum{
 - (void)requestSocialData;
 
 /**
- 设置实现了`<UMSocialDataDelegate>`的对象
+ 设置实现了`<UMSocialDataDelegate>`的对象，如果在此视图设置了delegate，离开此视图的时候要设置为nil
  
  @param delegate 实现了`<UMSocialDataDelegate>`的对象
  

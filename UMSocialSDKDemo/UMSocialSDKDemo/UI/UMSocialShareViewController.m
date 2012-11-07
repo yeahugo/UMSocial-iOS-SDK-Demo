@@ -38,7 +38,7 @@
         socialData.shareImage = _imageView.image;
         
         _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
-        [_socialController setUMSocialUIDelegate:self];
+        _socialController.soicalUIDelegate = self;
 
         _shareTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 190, 320, 250)];
         _shareTableView.dataSource = self;
@@ -66,7 +66,7 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     if ([_socialController.socialDataService.socialDataDelegate isEqual:self]) {
-        [_socialController.socialDataService setUMSoicalDelegate:nil];
+        [_socialController.socialDataService setUMSocialDelegate:nil];
     }
     [super viewWillDisappear:animated];
 }
@@ -123,7 +123,7 @@
         socialData.shareText = _socialController.socialDataService.socialData.shareText;
         socialData.shareImage = _socialController.socialDataService.socialData.shareImage;
         UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
-        [socialControllerService setUMSocialUIDelegate:self];
+        socialControllerService.soicalUIDelegate = self;
          UINavigationController *shareListController = [socialControllerService getSocialShareListController];
         [self presentModalViewController:shareListController animated:YES];
     }
@@ -137,7 +137,7 @@
         return;
     }
     if (actionSheet.tag == UMSharePostData) {
-        [_socialController.socialDataService setUMSoicalDelegate:self];
+        [_socialController.socialDataService setUMSocialDelegate:self];
         unsigned int dateInteger = [[NSDate date] timeIntervalSince1970];
         int random = rand_r(&dateInteger)%10;
         CLLocation *location = [[CLLocation alloc] initWithLatitude:28+random longitude:107+random];
@@ -147,14 +147,14 @@
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test112"];
         socialData.shareText = shareContent;
         UMSocialDataService *socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
-        [socialDataService setUMSoicalDelegate:self];
+        [socialDataService setUMSocialDelegate:self];
         [socialDataService postSNSWithType:shareToType usid:nil content:shareContent image:_imageView.image location:location];
         
         return;
     }
     
     else if(actionSheet.tag == UMShareEditPresent) {
-        [_socialController.socialDataService setUMSoicalDelegate:nil];
+        [_socialController.socialDataService setUMSocialDelegate:nil];
         UINavigationController *shareEditController = [_socialController getSocialShareEditController:shareToType];
         [self presentModalViewController:shareEditController animated:YES];
     }

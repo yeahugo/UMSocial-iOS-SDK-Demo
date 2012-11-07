@@ -24,7 +24,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/intfm/UMSocialConfigDelegate/shouldCommentWithShare</TokenIdentifier>
-			<Abstract type="html">设置评论页面是否出现分享按钮,默认为出现,出现的平台默认为4个，可以用shareToPlatforms设置</Abstract>
+			<Abstract type="html">设置评论页面是否出现分享按钮,默认为出现所有支持的平台，可以用shareToPlatforms设置</Abstract>
 			<DeclaredIn>UMSocialConfigDelegate.h</DeclaredIn>			
 			
 			<Declaration>- (BOOL)shouldCommentWithShare</Declaration>

@@ -30,6 +30,11 @@
  */
 -(void)didFinishRefreshSocialData:(UMSocialResponseEntity *)response;
 
+/**
+ 当授权完成，并且从服务器获取到账户信息之后的回调方法
+
+ */
+-(void)didFinishOauthAndGetAccount:(UMSocialResponseEntity *)response;
 
 @end
 
@@ -72,7 +77,7 @@
 
 
 /**
- 返回当前`<UMSocialUIDelegate>`对象
+ 当前`<UMSocialUIDelegate>`对象,此对象可以获取到授权完成，关闭页面等状态，详情看`UMSocialUIDelegate`的定义
  */
 @property (nonatomic, assign) id <UMSocialUIDelegate> soicalUIDelegate;
 
@@ -88,14 +93,6 @@
  @return 初始化对象
  */
 - (id)initWithUMSocialData:(UMSocialData *)socialData;
-
-/**
- 设置实现了`<UMSocialUIDelegate>`的对象
- 
- @param soicalUIDelegate 实现了`<UMSocialUIDelegate>`的对象
- 
- */
-- (void)setUMSocialUIDelegate:(id <UMSocialUIDelegate>)soicalUIDelegate;
 
 /**
  设置实现了`<UMSocialConfigDelegate>`的对象，类方法，表示该对象对全部`UMSocialControllerService`对象起作用

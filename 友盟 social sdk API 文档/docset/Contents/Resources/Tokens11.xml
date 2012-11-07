@@ -38,5 +38,16 @@
 			<Anchor>//api/name/didFinishRefreshSocialData:</Anchor>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UMSocialUIDelegate/didFinishOauthAndGetAccount:</TokenIdentifier>
+			<Abstract type="html">当授权完成，并且从服务器获取到账户信息之后的回调方法</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>- (void)didFinishOauthAndGetAccount:(UMSocialResponseEntity *)response</Declaration>
+			
+			
+			<Anchor>//api/name/didFinishOauthAndGetAccount:</Anchor>
+		</Token>
+		
 	</File>
 </Tokens>

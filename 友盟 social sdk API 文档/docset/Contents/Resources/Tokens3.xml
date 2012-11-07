@@ -101,7 +101,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/setSoicalUIDelegate:</TokenIdentifier>
-			<Abstract type="html">返回当前UMSocialUIDelegate对象</Abstract>
+			<Abstract type="html">当前UMSocialUIDelegate的定义</Abstract>
 			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
 			
 			<Declaration>@property (nonatomic, assign) id&lt;UMSocialUIDelegate&gt; soicalUIDelegate</Declaration>
@@ -112,7 +112,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/UMSocialControllerService/soicalUIDelegate</TokenIdentifier>
-			<Abstract type="html">返回当前UMSocialUIDelegate对象</Abstract>
+			<Abstract type="html">当前UMSocialUIDelegate的定义</Abstract>
 			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
 			
 			<Declaration>@property (nonatomic, assign) id&lt;UMSocialUIDelegate&gt; soicalUIDelegate</Declaration>
@@ -135,22 +135,6 @@
 			</Parameters>
 			<ReturnValue><Abstract type="html">初始化对象</Abstract></ReturnValue>
 			<Anchor>//api/name/initWithUMSocialData:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/setUMSocialUIDelegate:</TokenIdentifier>
-			<Abstract type="html">设置实现了UMSocialUIDelegate的对象</Abstract>
-			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
-			
-			<Declaration>- (void)setUMSocialUIDelegate:(id&lt;UMSocialUIDelegate&gt;)soicalUIDelegate</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>soicalUIDelegate</Name>
-					<Abstract type="html">实现了UMSocialUIDelegate的对象</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/setUMSocialUIDelegate:</Anchor>
 		</Token>
 		
 		<Token>

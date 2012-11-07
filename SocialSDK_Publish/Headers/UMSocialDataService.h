@@ -48,13 +48,13 @@
  */
 - (id)initWithUMSocialData:(UMSocialData *)socialData;
 
-/**
- 设置实现了`<UMSocialDataDelegate>`的对象
+/*!
+ 设置实现了`<UMSocialDataDelegate>`的对象， 如果在此视图设置了delegate，离开此视图的时候要设置为nil
  
  @param delegate 实现了`<UMSocialDataDelegate>`的对象
  
  */
-- (void)setUMSoicalDelegate:(id <UMSocialDataDelegate>)delegate;
+- (void)setUMSocialDelegate:(id <UMSocialDataDelegate>)delegate;
 
 ///---------------------------------------
 /// @name 发送评论、分享、喜欢的网络请求

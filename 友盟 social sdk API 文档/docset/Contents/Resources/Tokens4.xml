@@ -254,7 +254,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/UMSocialData/setUMSoicalDelegate:</TokenIdentifier>
-			<Abstract type="html">设置实现了UMSocialDataDelegate的对象</Abstract>
+			<Abstract type="html">设置实现了UMSocialDataDelegate的对象，如果在此视图设置了delegate，离开此视图的时候要设置为nil</Abstract>
 			<DeclaredIn>UMSocialData.h</DeclaredIn>			
 			
 			<Declaration>- (void)setUMSoicalDelegate:(id&lt;UMSocialDataDelegate&gt;)delegate</Declaration>

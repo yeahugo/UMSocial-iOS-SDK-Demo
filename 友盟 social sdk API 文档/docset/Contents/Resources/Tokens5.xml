@@ -72,11 +72,11 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/UMSocialDataService/setUMSoicalDelegate:</TokenIdentifier>
-			<Abstract type="html">设置实现了UMSocialDataDelegate的对象</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialDataService/setUMSocialDelegate:</TokenIdentifier>
+			<Abstract type="html">设置实现了UMSocialDataDelegate的对象， 如果在此视图设置了delegate，离开此视图的时候要设置为nil</Abstract>
 			<DeclaredIn>UMSocialDataService.h</DeclaredIn>			
 			
-			<Declaration>- (void)setUMSoicalDelegate:(id&lt;UMSocialDataDelegate&gt;)delegate</Declaration>
+			<Declaration>- (void)setUMSocialDelegate:(id&lt;UMSocialDataDelegate&gt;)delegate</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>delegate</Name>
@@ -84,7 +84,7 @@
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/setUMSoicalDelegate:</Anchor>
+			<Anchor>//api/name/setUMSocialDelegate:</Anchor>
 		</Token>
 		
 		<Token>

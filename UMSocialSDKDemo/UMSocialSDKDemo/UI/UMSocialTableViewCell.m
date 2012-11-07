@@ -136,7 +136,7 @@
 {
     [_likeButton setEnabled:NO];
     self.tableViewController.didSelectIndex = self.index;
-    [_socialController.socialDataService setUMSoicalDelegate:self];
+    [_socialController.socialDataService setUMSocialDelegate:self];
     [_socialController.socialDataService postAddLikeOrCancel];
 }
 

@@ -99,7 +99,7 @@ typedef enum {
     UMSocialSnsTypeCount,                //用于得到当前分享平台个数
     UMSocialSnsTypeEmail,                //邮件分享
     UMSocialSnsTypeSms                   //短信分享
-    } UMShareToType;
+    } UMSocialSnsType;
  
  
  
