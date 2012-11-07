@@ -49,10 +49,20 @@
 ```
 **QQ空间** `http://connect.qq.com/manage/ ->创建应用`
 
+![alt text](http://github.umeng.com/zhangliyong/socialshare/wiki/apply.png "Title")
+
 ```
-设置回调地址的方法参见 
-http://wiki.opensns.qq.com/wiki/【QQ登录】回调地址常见问题及修改方法
-回调地址设置为 sns.whalecloud.com
+回调地址设置方法: http://wiki.opensns.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91%E5%9B%9E%E8%B0%83%E5%9C%B0%E5%9D%80%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95
+
+在设置回调地址页面中使用范围中网站是必选的，移动应用可选。 
+
+回调地址设置为：sns.whalecloud.com
+
+设置完之后，还要对两个API进行申请， 到此链接下进行申请(http://wiki.opensns.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91API%E6%96%87%E6%A1%A3)： 
+
+注意：如果Log的Error Code为 100030，用户没有对该api进行授权，或用户在腾讯侧删除了该api的权限。请用户重新走登录、授权流程，对该api进行授权。
+
+因为API没有申请，请按上面要求进行申请。
 ```
 
 
