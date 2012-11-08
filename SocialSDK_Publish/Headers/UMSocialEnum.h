@@ -77,7 +77,6 @@ typedef enum {
     UMSResponseUnBinding,
     UMSResponseUnOauth,
     UMSResponseOauth,
-    UMSResponseLogin,
     UMSResponseGetAccount,
     UMSResponseGetSnsInfo,
     UMSResponseGetFriends
@@ -103,8 +102,7 @@ typedef enum {
  
  
  
- ## 网络请求结果状态码 
- 
+ ## 网络请求结果状态码
  
     typedef enum {
     UMSResponseCodeSuccess            = 200,        //成功
@@ -114,6 +112,7 @@ typedef enum {
     UMSResponseCodeNetworkError       = 5050        //网络错误
     } UMSResponseCode;
  
+    这里列举的错误码是sdk会处理的错误码，更多的错误码请见集成文档的附录
  
  
  ## 网络请求返回类型 
@@ -128,9 +127,9 @@ typedef enum {
     UMSResponseUnBinding,               //解除绑定的登录账号
     UMSResponseUnOauth,                 //解除一个微博账号的授权
     UMSResponseOauth,                   //授权一个微博账号
-    UMSResponseLogin,                   //登录
     UMSResponseGetAccount,              //请求微博账号信息
     UMSResponseGetSnsInfo,              //请求获取微博账号的详细信息
+    UMSResponseGetFriends               //获取好友列表
     } UMSResponse;
   
  ## 常量字符串 

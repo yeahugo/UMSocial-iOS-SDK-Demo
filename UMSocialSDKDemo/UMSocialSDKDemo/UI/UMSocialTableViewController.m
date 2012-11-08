@@ -16,8 +16,6 @@
 
 @implementation UMSocialTableViewController
 
-@synthesize didSelectIndex = _didSelectIndex;
-
 -(void)dealloc
 {
     //这里必须把delegate设置为nil，否则网络回调函数因为delegate被释放了会crash
@@ -31,7 +29,6 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        _didSelectIndex = -1;
         _descriptorArray = [[NSMutableArray alloc] init];
         _socialControllerDictionary = [[NSMutableDictionary alloc] init];
         for (int i = 0; i < 12; i++) {
@@ -59,11 +56,6 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    if (_didSelectIndex != -1) {
-        UMSocialTableViewCell *cell = (UMSocialTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_didSelectIndex inSection:0]];
-        [cell.socialController.socialDataService.socialData requestSocialData];
-        _didSelectIndex = -1;
-    }
     [super viewWillAppear:animated];
 }
 

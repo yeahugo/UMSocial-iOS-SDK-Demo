@@ -19,6 +19,7 @@
 						<NodeRef refid="6"/>
 						<NodeRef refid="7"/>
 						<NodeRef refid="8"/>
+						<NodeRef refid="9"/>
 						
 					</Subnodes>
 				</Node>
@@ -29,9 +30,9 @@
 					<Name>Protocols</Name>
 					<Path>index.html</Path>
 					<Subnodes>
-						<NodeRef refid="9"/>
 						<NodeRef refid="10"/>
 						<NodeRef refid="11"/>
+						<NodeRef refid="12"/>
 						
 					</Subnodes>
 				</Node>
@@ -73,17 +74,21 @@
 			<Name>UMSocialStatistic</Name>
 			<Path>Classes/UMSocialStatistic.html</Path>
 		</Node>
-		
-		
 		<Node id="9">
+			<Name>UMUIHelper</Name>
+			<Path>Classes/UMUIHelper.html</Path>
+		</Node>
+		
+		
+		<Node id="10">
 			<Name>UMSocialConfigDelegate</Name>
 			<Path>Protocols/UMSocialConfigDelegate.html</Path>
 		</Node>
-		<Node id="10">
+		<Node id="11">
 			<Name>UMSocialDataDelegate</Name>
 			<Path>Protocols/UMSocialDataDelegate.html</Path>
 		</Node>
-		<Node id="11">
+		<Node id="12">
 			<Name>UMSocialUIDelegate</Name>
 			<Path>Protocols/UMSocialUIDelegate.html</Path>
 		</Node>

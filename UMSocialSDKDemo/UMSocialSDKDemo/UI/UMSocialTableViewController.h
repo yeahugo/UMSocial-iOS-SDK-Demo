@@ -11,8 +11,6 @@
 @interface UMSocialTableViewController : UITableViewController
 {
     NSMutableArray *_descriptorArray;
-    int _didSelectIndex;
     NSMutableDictionary *_socialControllerDictionary;
 }
-@property (nonatomic) int didSelectIndex;
 @end

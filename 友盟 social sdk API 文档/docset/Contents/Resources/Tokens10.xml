@@ -1,35 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/UMSocialDataDelegate.html">
+	<File path="Protocols/UMSocialConfigDelegate.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/UMSocialDataDelegate</TokenIdentifier>
-			<Abstract type="html">进行网络请求之后的回调函数，你可以通过返回的UMSocialResponseEntity对象的responseType类型来对不同的请求来做处理。</Abstract>
-			<DeclaredIn>UMSocialDataDelegate.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/UMSocialConfigDelegate</TokenIdentifier>
+			<Abstract type="html">在UI层的api中进行的一些设置，例如出现的分享平台等。</Abstract>
+			<DeclaredIn>UMSocialConfigDelegate.h</DeclaredIn>
 			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/cl/UMSocialResponseEntity</TokenIdentifier>
-		
-	</RelatedTokens>
-	
 			<NodeRef refid="10"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/UMSocialDataDelegate/didFinishGetUMSocialDataResponse:</TokenIdentifier>
-			<Abstract type="html">进行网络请求之后得到的回调方法</Abstract>
-			<DeclaredIn>UMSocialDataDelegate.h</DeclaredIn>			
+			<TokenIdentifier>//apple_ref/occ/intfm/UMSocialConfigDelegate/shareToPlatforms</TokenIdentifier>
+			<Abstract type="html">设置显示的sns平台类型</Abstract>
+			<DeclaredIn>UMSocialConfigDelegate.h</DeclaredIn>			
 			
-			<Declaration>- (void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>response</Name>
-					<Abstract type="html">回调返回一个UMSResponseEntity对象</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (NSArray *)shareToPlatforms</Declaration>
 			
-			<Anchor>//api/name/didFinishGetUMSocialDataResponse:</Anchor>
+			
+			<Anchor>//api/name/shareToPlatforms</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UMSocialConfigDelegate/shouldCommentWithShare</TokenIdentifier>
+			<Abstract type="html">设置评论页面是否出现分享按钮,默认为出现所有支持的平台，可以用shareToPlatforms设置</Abstract>
+			<DeclaredIn>UMSocialConfigDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)shouldCommentWithShare</Declaration>
+			
+			
+			<Anchor>//api/name/shouldCommentWithShare</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UMSocialConfigDelegate/shouldCommentWithLocation</TokenIdentifier>
+			<Abstract type="html">设置评论页面是否出现分享地理位置信息的按钮，默认出现</Abstract>
+			<DeclaredIn>UMSocialConfigDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)shouldCommentWithLocation</Declaration>
+			
+			
+			<Anchor>//api/name/shouldCommentWithLocation</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UMSocialConfigDelegate/shouldShareSynchronous</TokenIdentifier>
+			<Abstract type="html">设置分享编辑页面是否等待完成之后再关闭页面还是立即关闭，如果设置成YES，就是等待分享完成之后再关闭，否则立即关闭。默认等待分享完成之后再关闭。如果设置成立即关闭的话，需要用UMSocialDataServie的- (void)setUMSoicalDelegate:(id UMSocialDataDelegatedelegate;来设置回调对象来获取分享是否成功，如果回调对象的responseCode为UMSResponseCodeAccessTokenExpired的话是授权过期，新浪微博对于不同应用的过期时间不一样，这种情况下要利用sdk提供的授权页面需要重新授权。</Abstract>
+			<DeclaredIn>UMSocialConfigDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)shouldShareSynchronous</Declaration>
+			
+			
+			<Anchor>//api/name/shouldShareSynchronous</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UMSocialConfigDelegate/defaultColor</TokenIdentifier>
+			<Abstract type="html">设置所有页面背景颜色，默认的颜色是[UIColor colorWithRed:0.22 green:0.24  blue:0.27 alpha:1.0]，如果想改变上面导航栏的颜色，可以换相应的图片</Abstract>
+			<DeclaredIn>UMSocialConfigDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (UIColor *)defaultColor</Declaration>
+			
+			
+			<Anchor>//api/name/defaultColor</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UMSocialConfigDelegate/customCellForShareListTableView</TokenIdentifier>
+			<Abstract type="html">分享列表中第二个section最后一栏返回一个自定义的UITableViewCell对象，sdk会取该UITableViewCell对象的textLabel的text和imageView的image，分别作为该UITableViewCell的文字和图片</Abstract>
+			<DeclaredIn>UMSocialConfigDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (UITableViewCell *)customCellForShareListTableView</Declaration>
+			
+			<ReturnValue><Abstract type="html">UITableViewCell对象</Abstract></ReturnValue>
+			<Anchor>//api/name/customCellForShareListTableView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UMSocialConfigDelegate/didSelectShareListTableViewCell</TokenIdentifier>
+			<Abstract type="html">点击该自定义UITableViewCell后的回调操作</Abstract>
+			<DeclaredIn>UMSocialConfigDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (void)didSelectShareListTableViewCell</Declaration>
+			
+			
+			<Anchor>//api/name/didSelectShareListTableViewCell</Anchor>
 		</Token>
 		
 	</File>

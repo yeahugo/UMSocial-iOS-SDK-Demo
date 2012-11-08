@@ -135,7 +135,6 @@
 -(void)addLike
 {
     [_likeButton setEnabled:NO];
-    self.tableViewController.didSelectIndex = self.index;
     [_socialController.socialDataService setUMSocialDelegate:self];
     [_socialController.socialDataService postAddLikeOrCancel];
 }
@@ -159,16 +158,21 @@
 
 -(void)pushShareList
 {
-    self.tableViewController.didSelectIndex = self.index;
+    self.socialController.soicalUIDelegate = self;
     UINavigationController *shareListController = [_socialController getSocialShareListController];
     [_tabelViewController presentModalViewController:shareListController animated:YES];
 }
 
 -(void)pushCommentList
 {
-    self.tableViewController.didSelectIndex = self.index;
+    self.socialController.soicalUIDelegate = self;
     UINavigationController *commentListController = [_socialController getSocialCommentListController];
     [_tabelViewController presentModalViewController:commentListController animated:YES];
 }
 
+-(void)didFinishRefreshSocialData:(UMSocialResponseEntity *)response
+{
+    NSLog(@"didFinishRefreshSocialData in UMSocialTableViewCell!!");
+    [self handleGetSocilaInformation:response];
+}
 @end

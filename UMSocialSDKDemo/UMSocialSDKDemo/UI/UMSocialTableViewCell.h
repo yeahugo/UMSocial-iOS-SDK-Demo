@@ -10,7 +10,7 @@
 #import "UMSocialControllerService.h"
 #import "UMSocialTableViewController.h"
 
-@interface UMSocialTableViewCell : UITableViewCell <UMSocialDataDelegate>
+@interface UMSocialTableViewCell : UITableViewCell <UMSocialDataDelegate,UMSocialUIDelegate>
 {
     int _index;
     NSString *_descriptor;

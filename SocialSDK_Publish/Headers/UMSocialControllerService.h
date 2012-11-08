@@ -33,6 +33,7 @@
 /**
  当授权完成，并且从服务器获取到账户信息之后的回调方法
 
+ @param response 返回`UMSocialResponseEntity`对象
  */
 -(void)didFinishOauthAndGetAccount:(UMSocialResponseEntity *)response;
 

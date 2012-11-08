@@ -10,6 +10,7 @@
 #import "UMSocialDemoTableController.h"
 #import "UMSocialData.h"
 #import "WXApi.h"
+#import "UMUIHelper.h"
 
 #define umeng_appkey @"507fcab25270157b37000010"
 
