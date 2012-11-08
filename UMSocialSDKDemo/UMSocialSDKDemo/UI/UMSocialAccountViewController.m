@@ -86,10 +86,10 @@
         cell.textLabel.text = @"解授权";
     }
     if (indexPath.row == 2) {
-        cell.textLabel.text = @"绑定";
+        cell.textLabel.text = @"登录";
     }
     if (indexPath.row == 3) {
-        cell.textLabel.text = @"解除绑定";
+        cell.textLabel.text = @"解除登录";
     }
     if (indexPath.row == 4) {
         cell.textLabel.text = @"获取用户sns详细信息";
