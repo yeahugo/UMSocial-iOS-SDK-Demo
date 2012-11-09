@@ -20,12 +20,6 @@
     [super viewWillDisappear:animated];
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [_socialUIController.socialDataService setUMSocialDelegate:self];
-    [super viewWillAppear:animated];
-}
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -185,6 +179,8 @@
 -(void)didCloseUIViewController
 {
     NSLog(@"didCloseUIViewController account is %@",(UMSocialAccountEntity *)[_socialUIController.soicalData.socialAccount objectForKey:@"sina"] );
+    [_socialUIController.socialDataService setUMSocialDelegate:self];
+    [_socialUIController.socialDataService postSNSWithType:UMSocialSnsTypeSina usid:nil content:@"test" image:nil location:nil];
 }
 
 @end
