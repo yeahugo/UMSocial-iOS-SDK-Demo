@@ -79,7 +79,7 @@
 #pragma UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 4;
 }
 
 
@@ -100,6 +100,9 @@
     if (indexPath.row == 2) {
         cell.textLabel.text = @"直接发送微博";
     }
+    if (indexPath.row == 3) {
+        cell.textLabel.text = @"直接发送到多个微博";
+    }
     
     return cell;    
 }
@@ -109,13 +112,39 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    if (indexPath.row > 0) {
+    if (indexPath.row > 0 && indexPath.row < UMSharePostMultiData) {
         [_actionSheet setTitle:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
         [_actionSheet showInView:self.view];
         _actionSheet.delegate = self;
         UMShareAction shareAction  = indexPath.row;
         NSLog(@"tag is %d",_actionSheet.tag);
         _actionSheet.tag = shareAction; 
+    }
+    else if(indexPath.row == UMSharePostMultiData){
+        NSDictionary *socialDic =  _socialController.soicalData.socialAccount;
+        NSMutableArray *allSnsArray = [[NSMutableArray alloc] init];
+        for (id type in socialDic) {
+            if ([type isEqual:@"defaultAccount"] || [type isEqual:@"loginAccount"]) {
+                continue;
+            }
+            [allSnsArray addObject:type];
+        }
+        unsigned int dateInteger = [[NSDate date] timeIntervalSince1970];
+        int random = rand_r(&dateInteger)%10;
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:28+random longitude:107+random];
+        
+        NSString *shareContent = [NSString stringWithFormat:@"%@+%d",_socialController.soicalData.shareText,random];
+        
+        //        NSArray *usidArray = [NSArray arrayWithObjects:@"2575014582111",@"shoujigavin8783",@"233646522",nil];
+        //        NSArray *shareTypesArray = [NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,nil];
+        if (allSnsArray.count != 0) {
+            [_socialController.socialDataService postSNSWithType:allSnsArray usids:nil  content:shareContent image:_socialController.soicalData.shareImage location:location];
+        }
+        else
+        {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"没有授权sns账号" message:@"请先授权一个sns账号" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+            [alertView show];
+        }
     }
     else{
         //用局部变量的方式，你也可以用_socialController来得到分享列表
@@ -137,7 +166,6 @@
         return;
     }
     if (actionSheet.tag == UMSharePostData) {
-        [_socialController.socialDataService setUMSocialDelegate:self];
         unsigned int dateInteger = [[NSDate date] timeIntervalSince1970];
         int random = rand_r(&dateInteger)%10;
         CLLocation *location = [[CLLocation alloc] initWithLatitude:28+random longitude:107+random];
