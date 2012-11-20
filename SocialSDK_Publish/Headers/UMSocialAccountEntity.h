@@ -80,4 +80,21 @@
  */
 -(NSString *)description;
 
+/**
+ 把UMSocialSnsType类型转换成UMShareToSina、UMShareToTencent等平台名的字符串
+ 
+ @param socialSnsType 平台枚举变量
+ 
+ @return 平台名字符串
+ */
++(NSString *)getSnsPlatformString:(UMSocialSnsType)socialSnsType;
+
+/**
+ 把UMShareToSina、UMShareToTencent等平台名的字符串转换成平台枚举变量
+ 
+ @param socialSnsString 平台名字符串
+ 
+ @return 平台枚举变量
+ */
++(UMSocialSnsType)getSnsPlatformType:(NSString *)socialSnsString;
 @end

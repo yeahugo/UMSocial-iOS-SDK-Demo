@@ -29,7 +29,8 @@ typedef enum
 {
     UITableView *_shareTableView;
     UMSocialControllerService *_socialController;
-    UIActionSheet *_actionSheet;
+    UIActionSheet *_editActionSheet;
+    UIActionSheet *_dataActionSheet;
     UIImageView *_imageView;
     CLLocationManager *_locationManager;
 }

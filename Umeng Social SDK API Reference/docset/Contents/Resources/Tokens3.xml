@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/UMSocialControllerService.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/UMSocialControllerService</TokenIdentifier>
+			<Abstract type="html">用此类的方法可以得到分享的有关UI对象，例如分享列表、评论列表、分享编辑页、分享授权页、用户中心页面等。返回都是UINavigationController对象，建议把这个对象present到你要添加到的UIViewController上</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/setSoicalData:</TokenIdentifier>
+			<Abstract type="html">与UMSocialControllerService对象对应的UMSocialData对象，可以通过该对象设置分享内嵌文字、图片，获取分享数等属性</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) UMSocialData *soicalData</Declaration>
+			
+			
+			<Anchor>//api/name/soicalData</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialControllerService/soicalData</TokenIdentifier>
+			<Abstract type="html">与UMSocialControllerService对象对应的UMSocialData对象，可以通过该对象设置分享内嵌文字、图片，获取分享数等属性</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) UMSocialData *soicalData</Declaration>
+			
+			
+			<Anchor>//api/name/soicalData</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/setSocialDataService:</TokenIdentifier>
+			<Abstract type="html">用UMSocialDataService对象，可以调用发送微博、评论等数据级的方法</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) UMSocialDataService *socialDataService</Declaration>
+			
+			
+			<Anchor>//api/name/socialDataService</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialControllerService/socialDataService</TokenIdentifier>
+			<Abstract type="html">用UMSocialDataService对象，可以调用发送微博、评论等数据级的方法</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) UMSocialDataService *socialDataService</Declaration>
+			
+			
+			<Anchor>//api/name/socialDataService</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/setCurrentViewController:</TokenIdentifier>
+			<Abstract type="html">当前返回的UINavigationController对象</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) UIViewController *currentViewController</Declaration>
+			
+			
+			<Anchor>//api/name/currentViewController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialControllerService/currentViewController</TokenIdentifier>
+			<Abstract type="html">当前返回的UINavigationController对象</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) UIViewController *currentViewController</Declaration>
+			
+			
+			<Anchor>//api/name/currentViewController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/setCurrentNavigationController:</TokenIdentifier>
+			<Abstract type="html">当前返回的UIViewController对象</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) UINavigationController *currentNavigationController</Declaration>
+			
+			
+			<Anchor>//api/name/currentNavigationController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialControllerService/currentNavigationController</TokenIdentifier>
+			<Abstract type="html">当前返回的UIViewController对象</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) UINavigationController *currentNavigationController</Declaration>
+			
+			
+			<Anchor>//api/name/currentNavigationController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/setSoicalUIDelegate:</TokenIdentifier>
+			<Abstract type="html">当前UMSocialUIDelegate的定义</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) id&lt;UMSocialUIDelegate&gt; soicalUIDelegate</Declaration>
+			
+			
+			<Anchor>//api/name/soicalUIDelegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialControllerService/soicalUIDelegate</TokenIdentifier>
+			<Abstract type="html">当前UMSocialUIDelegate的定义</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) id&lt;UMSocialUIDelegate&gt; soicalUIDelegate</Declaration>
+			
+			
+			<Anchor>//api/name/soicalUIDelegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/initWithUMSocialData:</TokenIdentifier>
+			<Abstract type="html">初始化一个UMSocialControllerService对象</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithUMSocialData:(UMSocialData *)socialData</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>socialData</Name>
+					<Abstract type="html">UMSocialData对象</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">初始化对象</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithUMSocialData:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/UMSocialControllerService/setSocialConfigDelegate:</TokenIdentifier>
+			<Abstract type="html">设置实现了UMSocialConfigDelegate的对象，类方法，表示该对象对全部UMSocialControllerService对象起作用</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>+ (void)setSocialConfigDelegate:(id&lt;UMSocialConfigDelegate&gt;)delegate</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>delegate</Name>
+					<Abstract type="html">实现了UMSocialConfigDelegate的对象</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setSocialConfigDelegate:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/getSocialShareListController</TokenIdentifier>
+			<Abstract type="html">分享列表页面，该列表出现的分享列表可以通过实现UMSocialConfigDelegate的方法来自定义</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>- (UINavigationController *)getSocialShareListController</Declaration>
+			
+			<ReturnValue><Abstract type="html">UINavigationController对象</Abstract></ReturnValue>
+			<Anchor>//api/name/getSocialShareListController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/getSocialCommentListController</TokenIdentifier>
+			<Abstract type="html">评论列表页面，评论列表页面包括各评论详情、评论编辑</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>- (UINavigationController *)getSocialCommentListController</Declaration>
+			
+			<ReturnValue><Abstract type="html">UINavigationController对象</Abstract></ReturnValue>
+			<Anchor>//api/name/getSocialCommentListController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/getSocialAccountController</TokenIdentifier>
+			<Abstract type="html">个人中心页面，该页面包括个人的各个微博授权信息</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>- (UINavigationController *)getSocialAccountController</Declaration>
+			
+			<ReturnValue><Abstract type="html">UINavigationController对象</Abstract></ReturnValue>
+			<Anchor>//api/name/getSocialAccountController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/getSocialShareEditController:</TokenIdentifier>
+			<Abstract type="html">分享编辑页面</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>- (UINavigationController *)getSocialShareEditController:(UMSocialSnsType)shareToType</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>shareToType</Name>
+					<Abstract type="html">要编辑的微博平台,并支持UMSocialSnsTypeEmail和UMSocialSnsTypeSms返回编辑Email页面和短信页面，不支持邮箱或者短信的设备分别返回nil</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">UINavigationController对象</Abstract></ReturnValue>
+			<Anchor>//api/name/getSocialShareEditController:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/getSocialOauthController:</TokenIdentifier>
+			<Abstract type="html">授权页面，如果你要想得到授权完成之后的事件，你可以实现UMSocialUIDelegatedidCloseUIViewController;`方法，当授权关闭页面会调用此方法。另外授权完成之后sdk会自动去取个人账户信息，你可以在回调函数里面去到刚刚授权的微博平台的账户信息。</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>- (UINavigationController *)getSocialOauthController:(UMSocialSnsType)shareToType</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>shareToType</Name>
+					<Abstract type="html">要授权的微博平台</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">UINavigationController对象</Abstract></ReturnValue>
+			<Anchor>//api/name/getSocialOauthController:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

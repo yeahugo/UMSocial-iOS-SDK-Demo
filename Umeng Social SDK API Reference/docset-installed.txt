@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/yeahugo/Library/Developer/Shared/Documentation/DocSets/com.umeng.umsocial_sdk.UMSocial_SDK.docset
+Time: 2012-11-20 06:52:56 +0000

@@ -131,7 +131,7 @@
 /**
  分享编辑页面
  
- @param shareToType 要编辑的微博平台
+ @param shareToType 要编辑的微博平台,并支持UMSocialSnsTypeEmail和UMSocialSnsTypeSms返回编辑Email页面和短信页面，不支持邮箱或者短信的设备分别返回nil
  
  @return `UINavigationController`对象
  */

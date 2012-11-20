@@ -12,7 +12,7 @@
 /**
  返回的状态对象，可以通过此对象获取返回类型、返回结果、返回数据等。
  */
-@interface UMSocialResponseEntity : NSObject<NSCoding>
+@interface UMSocialResponseEntity : NSObject
 {
     UMSResponseCode _responseCode;                        //错误代号
     UMSResponse _responseType;

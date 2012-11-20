@@ -9,6 +9,7 @@
 #import "UMSocialShareViewController.h"
 #import "UMStringMock.h"
 #import <CoreLocation/CoreLocation.h>
+#import <MessageUI/MessageUI.h>
 
 @interface UMSocialShareViewController ()
 
@@ -45,7 +46,11 @@
         _shareTableView.delegate = self;
         [self.view addSubview:_shareTableView];
         
-        _actionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"QQ空间",@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",nil];
+        _editActionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"QQ空间",@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",@"邮箱分享",@"短信分享",nil];
+        _editActionSheet.tag = UMShareEditPresent;
+        _dataActionSheet = [[UIActionSheet alloc] initWithTitle:@"直接发送微博" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"QQ空间",@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",nil];
+        _dataActionSheet.tag = UMSharePostData;
+
     }
     return self;
 }
@@ -112,14 +117,15 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    if (indexPath.row > 0 && indexPath.row < UMSharePostMultiData) {
-        [_actionSheet setTitle:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
-        [_actionSheet showInView:self.view];
-        _actionSheet.delegate = self;
-        UMShareAction shareAction  = indexPath.row;
-        NSLog(@"tag is %d",_actionSheet.tag);
-        _actionSheet.tag = shareAction; 
+    if (indexPath.row == UMShareEditPresent) {
+        [_editActionSheet showInView:self.view];
+        _editActionSheet.delegate = self;
     }
+    else if(indexPath.row == UMSharePostData){
+        [_dataActionSheet showInView:self.view];
+        _dataActionSheet.delegate = self;
+    }
+
     else if(indexPath.row == UMSharePostMultiData){
         NSDictionary *socialDic =  _socialController.soicalData.socialAccount;
         NSMutableArray *allSnsArray = [[NSMutableArray alloc] init];
@@ -135,8 +141,6 @@
         
         NSString *shareContent = [NSString stringWithFormat:@"%@+%d",_socialController.soicalData.shareText,random];
         
-        //        NSArray *usidArray = [NSArray arrayWithObjects:@"2575014582111",@"shoujigavin8783",@"233646522",nil];
-        //        NSArray *shareTypesArray = [NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,nil];
         if (allSnsArray.count != 0) {
             [_socialController.socialDataService postSNSWithType:allSnsArray usids:nil  content:shareContent image:_socialController.soicalData.shareImage location:location];
         }
@@ -163,31 +167,45 @@
     NSLog(@"button index is %d",buttonIndex);
     UMSocialSnsType shareToType = buttonIndex + UMSocialSnsTypeQzone;
     if (shareToType >= UMSocialSnsTypeCount) {
+        if (actionSheet.tag == UMShareEditPresent) {
+            shareToType = shareToType + 1;
+            if (shareToType == UMSocialSnsTypeSms && ![MFMessageComposeViewController canSendText]) {
+                UIAlertView * servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"该设备不支持短信功能" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                [servicesDisabledAlert show];
+            }
+            if (shareToType == UMSocialSnsTypeEmail && ![MFMailComposeViewController canSendMail]) {
+                UIAlertView *servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"邮件功能未开启" message:@"您当前设备的邮件服务处于未启用状态，若想通过邮件分享，请到设置中设置邮件服务后，再进行分享" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                [servicesDisabledAlert show];
+            }
+            else if(shareToType <= UMSocialSnsTypeSms){
+                UINavigationController *shareEditController = [_socialController getSocialShareEditController:shareToType];
+                if (shareEditController != nil) {
+                    [self presentModalViewController:shareEditController animated:YES];
+                }
+            }
+        }
         return;
     }
     if (actionSheet.tag == UMSharePostData) {
-        unsigned int dateInteger = [[NSDate date] timeIntervalSince1970];
-        int random = rand_r(&dateInteger)%10;
-        CLLocation *location = [[CLLocation alloc] initWithLatitude:28+random longitude:107+random];
+        //        unsigned int dateInteger = [[NSDate date] timeIntervalSince1970];
+        //        int random = rand_r(&dateInteger)%10;
+        
+        CLLocation *location = _locationManager.location;
+        NSLog(@"location is %@",location);
+        
+        //        CLLocation *location = [[CLLocation alloc] initWithLatitude:28+random longitude:107+random];
         NSString *dateString = [[NSDate date] description];
         NSString *shareContent = [NSString stringWithFormat:@"%@ %@",[UMStringMock commentMockString],dateString];
-        
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test112"];
-        socialData.shareText = shareContent;
-        UMSocialDataService *socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
-        [socialDataService setUMSocialDelegate:self];
-        [socialDataService postSNSWithType:shareToType usid:nil content:shareContent image:_imageView.image location:location];
-        
+        [_socialController.socialDataService postSNSWithType:shareToType usid:nil content:shareContent image:_imageView.image location:location];
+        //        [location release];
         return;
     }
-    
     else if(actionSheet.tag == UMShareEditPresent) {
-        [_socialController.socialDataService setUMSocialDelegate:nil];
+        [_socialController.socialDataService setUMSocialDelegate:self];
         UINavigationController *shareEditController = [_socialController getSocialShareEditController:shareToType];
         [self presentModalViewController:shareEditController animated:YES];
     }
 }
-
 -(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
 {
     UIAlertView *alertView;

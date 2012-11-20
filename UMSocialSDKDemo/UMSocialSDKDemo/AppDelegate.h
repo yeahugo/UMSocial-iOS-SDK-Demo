@@ -15,6 +15,7 @@
     UIApplicationDelegate,
     WXApiDelegate
     ,UMSocialConfigDelegate
+    ,UIActionSheetDelegate
 >
 
 @property (strong, nonatomic) UIWindow *window;

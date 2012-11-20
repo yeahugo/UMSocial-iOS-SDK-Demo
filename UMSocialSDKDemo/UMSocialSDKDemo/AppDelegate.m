@@ -54,11 +54,23 @@
 
 -(void)didSelectShareListTableViewCell
 {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"分享到微信" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"分享到会话",@"分享到朋友圈",nil];
+    [actionSheet showInView:self.window.rootViewController.view];
+
+    NSLog(@"分享到微信");
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 2) {
+        return;
+    }
+    
     if ([WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi]) {
         
         SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
         req.text = @"test";
-        req.scene = WXSceneSession;
+        
         req.bText = YES;
         
         /*下面实现图片分享，只能分享文字或者分享图片，或者分享url，里面带有图片缩略图和描述文字
@@ -73,9 +85,18 @@
          req.bText = NO;
          */
         
+        if (buttonIndex == 0) {
+            req.scene = WXSceneSession;
+        }
+        if (buttonIndex == 1) {
+            req.scene = WXSceneTimeline;
+        }
         [WXApi sendReq:req];
     }
-    NSLog(@"分享到微信");
+    else{
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的设备没有安装微信" delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
+        [alertView show];
+    }
 }
 
 
