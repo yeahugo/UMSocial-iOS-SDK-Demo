@@ -34,6 +34,28 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialData/setTitle:</TokenIdentifier>
+			<Abstract type="html">不同UMSocialData对象的title，在报表会根据看到分享操作对应的title</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *title</Declaration>
+			
+			
+			<Anchor>//api/name/title</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialData/title</TokenIdentifier>
+			<Abstract type="html">不同UMSocialData对象的title，在报表会根据看到分享操作对应的title</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *title</Declaration>
+			
+			
+			<Anchor>//api/name/title</Anchor>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/UMSocialData/setShareText:</TokenIdentifier>
 			<Abstract type="html">分享的内嵌文字</Abstract>
 			<DeclaredIn>UMSocialData.h</DeclaredIn>			
@@ -223,6 +245,25 @@
 			</Parameters>
 			<ReturnValue><Abstract type="html">return 初始化的UMSocialData对象</Abstract></ReturnValue>
 			<Anchor>//api/name/initWithIdentifier:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialData/initWithIdentifier:withTitle:</TokenIdentifier>
+			<Abstract type="html">初始化一个UMSocialData对象</Abstract>
+			<DeclaredIn>UMSocialData.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithIdentifier:(NSString *)identifier withTitle:(NSString *)title</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>identifier</Name>
+					<Abstract type="html">一个UMSocialData对象的标识符，相同标识符的UMSocialData拥有相同的属性</Abstract>
+				</Parameter><Parameter>
+					<Name>title</Name>
+					<Abstract type="html">对每个对象的描述，在报表端显示分享、评论等操作对应的title</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">return 初始化的UMSocialData对象</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithIdentifier:withTitle:</Anchor>
 		</Token>
 		
 		<Token>

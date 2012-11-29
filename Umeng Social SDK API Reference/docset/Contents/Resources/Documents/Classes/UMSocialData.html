@@ -54,6 +54,8 @@
 	
 	<option value="//api/name/socialAccount">&nbsp;&nbsp;&nbsp;&nbsp;socialAccount</option>
 	
+	<option value="//api/name/title">&nbsp;&nbsp;&nbsp;&nbsp;title</option>
+	
 	
 	
 	
@@ -73,6 +75,8 @@
 	<option value="//api/name/getNumber:">&nbsp;&nbsp;&nbsp;&nbsp;- getNumber:</option>
 	
 	<option value="//api/name/initWithIdentifier:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithIdentifier:</option>
+	
+	<option value="//api/name/initWithIdentifier:withTitle:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithIdentifier:withTitle:</option>
 	
 	<option value="//api/name/requestSocialData">&nbsp;&nbsp;&nbsp;&nbsp;- requestSocialData</option>
 	
@@ -122,6 +126,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/socialAccount">socialAccount</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/title">title</a></span></li>
+	
 </ul></li>
 
 
@@ -143,6 +149,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getNumber:">getNumber:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithIdentifier:">initWithIdentifier:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithIdentifier:withTitle:">initWithIdentifier:withTitle:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requestSocialData">requestSocialData</a></span></li>
 	
@@ -205,6 +213,13 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/identifier">&nbsp;&nbsp;identifier</a></code>
 		<span class="tooltip"><p>   标识每个不同<code>UMSocialData</code>对象的字符串</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/title">&nbsp;&nbsp;title</a></code>
+		<span class="tooltip"><p>不同<code>UMSocialData</code>对象的title，在报表会根据看到分享操作对应的title</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -290,6 +305,13 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithIdentifier:">&ndash;&nbsp;initWithIdentifier:</a></code>
+		<span class="tooltip"><p>初始化一个<code>UMSocialData</code>对象</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithIdentifier:withTitle:">&ndash;&nbsp;initWithIdentifier:withTitle:</a></code>
 		<span class="tooltip"><p>初始化一个<code>UMSocialData</code>对象</p></span>
 	</span>
 	
@@ -615,6 +637,47 @@
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/title" title="title"></a>
+	<h3 class="subsubtitle method-title">title</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>不同<code>UMSocialData</code>对象的title，在报表会根据看到分享操作对应的title</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *title</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>不同<code>UMSocialData</code>对象的title，在报表会根据看到分享操作对应的title</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialData.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -887,6 +950,67 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/initWithIdentifier:withTitle:" title="initWithIdentifier:withTitle:"></a>
+	<h3 class="subsubtitle method-title">initWithIdentifier:withTitle:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>初始化一个<code>UMSocialData</code>对象</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithIdentifier:(NSString *)<em>identifier</em> withTitle:(NSString *)<em>title</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>identifier</em></dt>
+			<dd><p>一个<code>UMSocialData</code>对象的标识符，相同标识符的<code>UMSocialData</code>拥有相同的属性</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>title</em></dt>
+			<dd><p>对每个对象的描述，在报表端显示分享、评论等操作对应的<a href="#//api/name/title">title</a></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>return 初始化的<code>UMSocialData</code>对象</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>初始化一个<code>UMSocialData</code>对象</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialData.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/requestSocialData" title="requestSocialData"></a>
 	<h3 class="subsubtitle method-title">requestSocialData</h3>
 	
@@ -991,7 +1115,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 umeng. All rights reserved. (Last updated: 2012-11-20)</span><br />
+						<p><span class="copyright">&copy; 2012 umeng. All rights reserved. (Last updated: 2012-11-29)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

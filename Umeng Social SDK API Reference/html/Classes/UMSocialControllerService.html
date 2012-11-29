@@ -44,9 +44,9 @@
 	
 	<option value="//api/name/currentViewController">&nbsp;&nbsp;&nbsp;&nbsp;currentViewController</option>
 	
-	<option value="//api/name/socialDataService">&nbsp;&nbsp;&nbsp;&nbsp;socialDataService</option>
+	<option value="//api/name/socialData">&nbsp;&nbsp;&nbsp;&nbsp;socialData</option>
 	
-	<option value="//api/name/soicalData">&nbsp;&nbsp;&nbsp;&nbsp;soicalData</option>
+	<option value="//api/name/socialDataService">&nbsp;&nbsp;&nbsp;&nbsp;socialDataService</option>
 	
 	<option value="//api/name/soicalUIDelegate">&nbsp;&nbsp;&nbsp;&nbsp;soicalUIDelegate</option>
 	
@@ -65,6 +65,8 @@
 	<option value="//api/name/getSocialAccountController">&nbsp;&nbsp;&nbsp;&nbsp;- getSocialAccountController</option>
 	
 	<option value="//api/name/getSocialCommentListController">&nbsp;&nbsp;&nbsp;&nbsp;- getSocialCommentListController</option>
+	
+	<option value="//api/name/getSocialLoginController">&nbsp;&nbsp;&nbsp;&nbsp;- getSocialLoginController</option>
 	
 	<option value="//api/name/getSocialOauthController:">&nbsp;&nbsp;&nbsp;&nbsp;- getSocialOauthController:</option>
 	
@@ -108,9 +110,9 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentViewController">currentViewController</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/socialDataService">socialDataService</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/socialData">socialData</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/soicalData">soicalData</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/socialDataService">socialDataService</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/soicalUIDelegate">soicalUIDelegate</a></span></li>
 	
@@ -131,6 +133,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSocialAccountController">getSocialAccountController</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSocialCommentListController">getSocialCommentListController</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSocialLoginController">getSocialLoginController</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSocialOauthController:">getSocialOauthController:</a></span></li>
 	
@@ -195,7 +199,7 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/soicalData">&nbsp;&nbsp;soicalData</a></code>
+		<code><a href="#//api/name/socialData">&nbsp;&nbsp;socialData</a></code>
 		<span class="tooltip"><p>与<code>UMSocialControllerService</code>对象对应的<a href="../Classes/UMSocialData.html"><code>UMSocialData</code></a>对象，可以通过该对象设置分享内嵌文字、图片，获取分享数等属性</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
@@ -290,6 +294,13 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/getSocialOauthController:">&ndash;&nbsp;getSocialOauthController:</a></code>
 		<span class="tooltip"><p>授权页面，如果你要想得到授权完成之后的事件，你可以实现<a href="../Protocols/UMSocialUIDelegate.html"><code>UMSocialUIDelegate</code></a>里面的<code>-(void)didCloseUIViewController;</code>方法，当授权关闭页面会调用此方法。另外授权完成之后sdk会自动去取个人账户信息，你可以在回调函数里面去到刚刚授权的微博平台的账户信息。</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getSocialLoginController">&ndash;&nbsp;getSocialLoginController</a></code>
+		<span class="tooltip"><p>登录页面,出现你配置出现的所有sns平台，授权之后设置为sdk的登录账号。使用评论功能时会取此登录账号的昵称和头像。</p></span>
 	</span>
 	
 	
@@ -389,6 +400,47 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/socialData" title="socialData"></a>
+	<h3 class="subsubtitle method-title">socialData</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>与<code>UMSocialControllerService</code>对象对应的<a href="../Classes/UMSocialData.html"><code>UMSocialData</code></a>对象，可以通过该对象设置分享内嵌文字、图片，获取分享数等属性</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) UMSocialData *socialData</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>与<code>UMSocialControllerService</code>对象对应的<a href="../Classes/UMSocialData.html"><code>UMSocialData</code></a>对象，可以通过该对象设置分享内嵌文字、图片，获取分享数等属性</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/socialDataService" title="socialDataService"></a>
 	<h3 class="subsubtitle method-title">socialDataService</h3>
 	
@@ -413,47 +465,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>用<a href="../Classes/UMSocialDataService.html"><code>UMSocialDataService</code></a>对象，可以调用发送微博、评论等数据级的方法</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/soicalData" title="soicalData"></a>
-	<h3 class="subsubtitle method-title">soicalData</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>与<code>UMSocialControllerService</code>对象对应的<a href="../Classes/UMSocialData.html"><code>UMSocialData</code></a>对象，可以通过该对象设置分享内嵌文字、图片，获取分享数等属性</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) UMSocialData *soicalData</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>与<code>UMSocialControllerService</code>对象对应的<a href="../Classes/UMSocialData.html"><code>UMSocialData</code></a>对象，可以通过该对象设置分享内嵌文字、图片，获取分享数等属性</p>
 	</div>
 	
 	
@@ -654,6 +665,52 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>评论列表页面，评论列表页面包括各评论详情、评论编辑</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getSocialLoginController" title="getSocialLoginController"></a>
+	<h3 class="subsubtitle method-title">getSocialLoginController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>登录页面,出现你配置出现的所有sns平台，授权之后设置为sdk的登录账号。使用评论功能时会取此登录账号的昵称和头像。</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UINavigationController *)getSocialLoginController</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>UINavigationController</code>对象</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>登录页面,出现你配置出现的所有sns平台，授权之后设置为sdk的登录账号。使用评论功能时会取此登录账号的昵称和头像。</p>
 	</div>
 	
 	
@@ -897,7 +954,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 umeng. All rights reserved. (Last updated: 2012-11-20)</span><br />
+						<p><span class="copyright">&copy; 2012 umeng. All rights reserved. (Last updated: 2012-11-29)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

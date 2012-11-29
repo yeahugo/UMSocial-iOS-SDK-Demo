@@ -18,8 +18,19 @@
 			
 			<Declaration>- (NSArray *)shareToPlatforms</Declaration>
 			
-			
+			<ReturnValue><Abstract type="html">由NSNumber组成的NSArray，可以选的有新浪微博、腾讯微博、人人网、豆瓣。我们分别用UMSocialSnsTypeSina、UMSocialSnsTypeTenc、UMSocialSnsTypeRenr、UMSocialSnsTypeDouban，、UMSocialSnsTypeQzone然后分别初始化成NSNumber，再组成NSArray</Abstract></ReturnValue>
 			<Anchor>//api/name/shareToPlatforms</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UMSocialConfigDelegate/followSnsUids</TokenIdentifier>
+			<Abstract type="html">设置官方微博账号,设置之后可以在授权页面有关注微博的选项，默认勾选，授权之后用户即关注官方微博，仅支持新浪微博和腾讯微博</Abstract>
+			<DeclaredIn>UMSocialConfigDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (NSDictionary *)followSnsUids</Declaration>
+			
+			<ReturnValue><Abstract type="html">腾讯微博和新浪微博的key分别是UMShareToSina和UMShareToTenc,值分别是官方微博的uid</Abstract></ReturnValue>
+			<Anchor>//api/name/followSnsUids</Anchor>
 		</Token>
 		
 		<Token>
@@ -64,6 +75,17 @@
 			
 			
 			<Anchor>//api/name/defaultColor</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/UMSocialConfigDelegate/supportedInterfaceOrientationsForUMSocialSDK</TokenIdentifier>
+			<Abstract type="html">设置sdk所有页面需要支持屏幕方向.在ios6的设备上，这个设置需要和应用的Info.plist的支持方向相一致，否则不生效</Abstract>
+			<DeclaredIn>UMSocialConfigDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (NSUInteger)supportedInterfaceOrientationsForUMSocialSDK</Declaration>
+			
+			<ReturnValue><Abstract type="html">一个bit map（位掩码），ios 6定义的UIInterfaceOrientationMask</Abstract></ReturnValue>
+			<Anchor>//api/name/supportedInterfaceOrientationsForUMSocialSDK</Anchor>
 		</Token>
 		
 		<Token>

@@ -24,6 +24,7 @@ typedef enum{
 @interface UMSocialData : NSObject
 {
     NSString   *_identifier;
+    NSString   *_title;
 }
 
 ///---------------------------------------
@@ -35,6 +36,12 @@ typedef enum{
  
  */
 @property (nonatomic, copy) NSString *identifier;
+
+/**
+ 不同`UMSocialData`对象的title，在报表会根据看到分享操作对应的title
+ 
+ */
+@property (nonatomic, copy) NSString *title;
 
 /**
  分享的内嵌文字
@@ -103,7 +110,6 @@ typedef enum{
 /// @name 对象方法
 ///---------------------------------------
 
-
 /**
  初始化一个`UMSocialData`对象
  
@@ -112,6 +118,17 @@ typedef enum{
  @return return 初始化的`UMSocialData`对象
  */
 - (id)initWithIdentifier:(NSString *)identifier;
+
+/**
+ 初始化一个`UMSocialData`对象
+ 
+ @param identifier 一个`UMSocialData`对象的标识符，相同标识符的`UMSocialData`拥有相同的属性
+ 
+ @param title 对每个对象的描述，在报表端显示分享、评论等操作对应的title
+ 
+ @return return 初始化的`UMSocialData`对象
+ */
+- (id)initWithIdentifier:(NSString *)identifier withTitle:(NSString *)title;
 
 /**
  获得该对象保存在本地的分享数、评论数或者喜欢数

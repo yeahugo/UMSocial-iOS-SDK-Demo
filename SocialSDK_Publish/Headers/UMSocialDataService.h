@@ -169,5 +169,15 @@
  */
 - (void)requestSnsFriends:(UMSocialSnsType)shareToType;
 
+/**
+ 请求添加关注
+ 
+ @param shareToType 要添加关注的微博平台，目前添加关注功能只支持新浪微博和腾讯微博
+ 
+ @param usids 被关注的usid号
+ 
+ */
+- (void)requestAddFollow:(UMSocialSnsType)shareToType followedUsid:(NSArray *)usids;
+
 @end
 

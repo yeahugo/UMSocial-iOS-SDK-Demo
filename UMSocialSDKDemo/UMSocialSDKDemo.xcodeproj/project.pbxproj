@@ -13,6 +13,14 @@
 		D5468C0616478DFC00BB51B4 /* UMS_qzone_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5468C0316478DFC00BB51B4 /* UMS_qzone_off@2x.png */; };
 		D5468C0716478DFC00BB51B4 /* UMS_qzone_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5468C0416478DFC00BB51B4 /* UMS_qzone_on@2x.png */; };
 		D5468C0816478DFC00BB51B4 /* UMS_qzone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5468C0516478DFC00BB51B4 /* UMS_qzone@2x.png */; };
+		D54B404B16673A3A0067D02D /* UMS_add_friend_off.png in Resources */ = {isa = PBXBuildFile; fileRef = D54B404516673A3A0067D02D /* UMS_add_friend_off.png */; };
+		D54B404C16673A3A0067D02D /* UMS_add_friend_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D54B404616673A3A0067D02D /* UMS_add_friend_off@2x.png */; };
+		D54B404D16673A3A0067D02D /* UMS_add_friend_on.png in Resources */ = {isa = PBXBuildFile; fileRef = D54B404716673A3A0067D02D /* UMS_add_friend_on.png */; };
+		D54B404E16673A3A0067D02D /* UMS_add_friend_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D54B404816673A3A0067D02D /* UMS_add_friend_on@2x.png */; };
+		D54B404F16673A3A0067D02D /* UMS_delete_image_button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = D54B404916673A3A0067D02D /* UMS_delete_image_button_normal.png */; };
+		D54B405016673A3A0067D02D /* UMS_delete_image_button_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D54B404A16673A3A0067D02D /* UMS_delete_image_button_normal@2x.png */; };
+		D54B405416673EAB0067D02D /* UMSCommentInputControlleriPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D54B405216673EAB0067D02D /* UMSCommentInputControlleriPad.xib */; };
+		D54B405516673EAB0067D02D /* UMShareEditViewControlleriPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D54B405316673EAB0067D02D /* UMShareEditViewControlleriPad.xib */; };
 		D57436FB16082B1200C7AD07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FA16082B1200C7AD07 /* UIKit.framework */; };
 		D57436FD16082B1200C7AD07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FC16082B1200C7AD07 /* Foundation.framework */; };
 		D57436FF16082B1200C7AD07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FE16082B1200C7AD07 /* CoreGraphics.framework */; };
@@ -191,6 +199,14 @@
 		D5468C0316478DFC00BB51B4 /* UMS_qzone_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UMS_qzone_off@2x.png"; sourceTree = "<group>"; };
 		D5468C0416478DFC00BB51B4 /* UMS_qzone_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UMS_qzone_on@2x.png"; sourceTree = "<group>"; };
 		D5468C0516478DFC00BB51B4 /* UMS_qzone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UMS_qzone@2x.png"; sourceTree = "<group>"; };
+		D54B404516673A3A0067D02D /* UMS_add_friend_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UMS_add_friend_off.png; sourceTree = "<group>"; };
+		D54B404616673A3A0067D02D /* UMS_add_friend_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UMS_add_friend_off@2x.png"; sourceTree = "<group>"; };
+		D54B404716673A3A0067D02D /* UMS_add_friend_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UMS_add_friend_on.png; sourceTree = "<group>"; };
+		D54B404816673A3A0067D02D /* UMS_add_friend_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UMS_add_friend_on@2x.png"; sourceTree = "<group>"; };
+		D54B404916673A3A0067D02D /* UMS_delete_image_button_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UMS_delete_image_button_normal.png; sourceTree = "<group>"; };
+		D54B404A16673A3A0067D02D /* UMS_delete_image_button_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UMS_delete_image_button_normal@2x.png"; sourceTree = "<group>"; };
+		D54B405216673EAB0067D02D /* UMSCommentInputControlleriPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSCommentInputControlleriPad.xib; sourceTree = "<group>"; };
+		D54B405316673EAB0067D02D /* UMShareEditViewControlleriPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMShareEditViewControlleriPad.xib; sourceTree = "<group>"; };
 		D57436F616082B1200C7AD07 /* UMSocialSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UMSocialSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57436FA16082B1200C7AD07 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D57436FC16082B1200C7AD07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -538,6 +554,12 @@
 			isa = PBXGroup;
 			children = (
 				D59CE10416427EC10014AFB1 /* EGO */,
+				D54B404516673A3A0067D02D /* UMS_add_friend_off.png */,
+				D54B404616673A3A0067D02D /* UMS_add_friend_off@2x.png */,
+				D54B404716673A3A0067D02D /* UMS_add_friend_on.png */,
+				D54B404816673A3A0067D02D /* UMS_add_friend_on@2x.png */,
+				D54B404916673A3A0067D02D /* UMS_delete_image_button_normal.png */,
+				D54B404A16673A3A0067D02D /* UMS_delete_image_button_normal@2x.png */,
 				D57D91E71616DC5600A92963 /* UMS_qzone_off.png */,
 				D57D91E81616DC5600A92963 /* UMS_qzone_on.png */,
 				D57D91E91616DC5600A92963 /* UMS_qzone.png */,
@@ -654,6 +676,8 @@
 		D57437AE1608346000C7AD07 /* SocialSDKXib */ = {
 			isa = PBXGroup;
 			children = (
+				D54B405216673EAB0067D02D /* UMSCommentInputControlleriPad.xib */,
+				D54B405316673EAB0067D02D /* UMShareEditViewControlleriPad.xib */,
 				D58D66C81615A3F700D3F95A /* UMShareEditViewController.xib */,
 				D57437AF1608346000C7AD07 /* UMSCommentDetailController.xib */,
 				D57437B01608346000C7AD07 /* UMSCommentInputController.xib */,
@@ -991,6 +1015,14 @@
 				D5468C0616478DFC00BB51B4 /* UMS_qzone_off@2x.png in Resources */,
 				D5468C0716478DFC00BB51B4 /* UMS_qzone_on@2x.png in Resources */,
 				D5468C0816478DFC00BB51B4 /* UMS_qzone@2x.png in Resources */,
+				D54B404B16673A3A0067D02D /* UMS_add_friend_off.png in Resources */,
+				D54B404C16673A3A0067D02D /* UMS_add_friend_off@2x.png in Resources */,
+				D54B404D16673A3A0067D02D /* UMS_add_friend_on.png in Resources */,
+				D54B404E16673A3A0067D02D /* UMS_add_friend_on@2x.png in Resources */,
+				D54B404F16673A3A0067D02D /* UMS_delete_image_button_normal.png in Resources */,
+				D54B405016673A3A0067D02D /* UMS_delete_image_button_normal@2x.png in Resources */,
+				D54B405416673EAB0067D02D /* UMSCommentInputControlleriPad.xib in Resources */,
+				D54B405516673EAB0067D02D /* UMShareEditViewControlleriPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1096,6 +1128,7 @@
 				GCC_PREFIX_HEADER = "UMSocialSDKDemo/UMSocialSDKDemo-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = "UMSocialSDKDemo/UMSocialSDKDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../SocialSDK_Publish\"",
@@ -1103,6 +1136,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1116,6 +1150,7 @@
 				GCC_PREFIX_HEADER = "UMSocialSDKDemo/UMSocialSDKDemo-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = "UMSocialSDKDemo/UMSocialSDKDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../SocialSDK_Publish\"",
@@ -1123,6 +1158,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

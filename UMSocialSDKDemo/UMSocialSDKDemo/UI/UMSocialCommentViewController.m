@@ -117,7 +117,7 @@
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test1121"];
         UMSocialDataService *socialDataService = [[ UMSocialDataService alloc] initWithUMSocialData:socialData];
 
-        [socialDataService postCommentWithContent:[UMStringMock commentMockString] image:_socialController.soicalData.commentImage templateText:_socialController.soicalData.commentText  location:location shareToSNSWithUsid:shareToSNSDictionary];
+        [socialDataService postCommentWithContent:[UMStringMock commentMockString] image:_socialController.socialData.commentImage templateText:_socialController.socialData.commentText  location:location shareToSNSWithUsid:shareToSNSDictionary];
     }
 }
 

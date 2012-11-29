@@ -127,7 +127,7 @@
     }
 
     else if(indexPath.row == UMSharePostMultiData){
-        NSDictionary *socialDic =  _socialController.soicalData.socialAccount;
+        NSDictionary *socialDic =  _socialController.socialData.socialAccount;
         NSMutableArray *allSnsArray = [[NSMutableArray alloc] init];
         for (id type in socialDic) {
             if ([type isEqual:@"defaultAccount"] || [type isEqual:@"loginAccount"]) {
@@ -139,10 +139,10 @@
         int random = rand_r(&dateInteger)%10;
         CLLocation *location = [[CLLocation alloc] initWithLatitude:28+random longitude:107+random];
         
-        NSString *shareContent = [NSString stringWithFormat:@"%@+%d",_socialController.soicalData.shareText,random];
+        NSString *shareContent = [NSString stringWithFormat:@"%@+%d",_socialController.socialData.shareText,random];
         
         if (allSnsArray.count != 0) {
-            [_socialController.socialDataService postSNSWithType:allSnsArray usids:nil  content:shareContent image:_socialController.soicalData.shareImage location:location];
+            [_socialController.socialDataService postSNSWithType:allSnsArray usids:nil  content:shareContent image:_socialController.socialData.shareImage location:location];
         }
         else
         {

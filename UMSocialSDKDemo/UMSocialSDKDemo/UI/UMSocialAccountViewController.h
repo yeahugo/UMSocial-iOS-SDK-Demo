@@ -16,7 +16,8 @@ typedef enum
     UMAccountBind,
     UMAccountUnBind,
     UMAccountSnsInfo,
-    UMAccountFriend
+    UMAccountFriend,
+    UMAccountAddFollow
 }UMAccountAction;
 
 
@@ -28,7 +29,12 @@ typedef enum
 >
 {
     UIActionSheet *_actionSheet;
+    UMSocialData *_socialData;
     UMSocialControllerService *_socialUIController;
     UIActivityIndicatorView * _activityIndicatorView;
+    UMSocialSnsType _selectOauthType;
+    
+    UILabel *_nickNameLabel;
+    UILabel *_accessTokenLable;
 }
 @end

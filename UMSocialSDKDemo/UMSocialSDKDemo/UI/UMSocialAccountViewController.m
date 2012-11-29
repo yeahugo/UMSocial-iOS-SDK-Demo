@@ -20,6 +20,12 @@
     [super viewWillDisappear:animated];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [_socialUIController.socialDataService setUMSocialDelegate:self];
+    [super viewWillAppear:animated];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -34,11 +40,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test"];
-    _socialUIController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+    _socialData = [UMSocialData defaultData];
+    _socialUIController = [[UMSocialControllerService alloc] initWithUMSocialData:_socialData];
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _activityIndicatorView.center = CGPointMake(160, 200);
     [self.view addSubview:_activityIndicatorView];
+    
+    _nickNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 360, 300, 20)];
+    _nickNameLabel.text = @"授权账号昵称";
+    _nickNameLabel.font = [UIFont systemFontOfSize:9];
+    [self.view addSubview:_nickNameLabel];
+    _accessTokenLable = [[UILabel alloc] initWithFrame:CGRectMake(200, 380, 300, 20)];
+    _accessTokenLable.font = [UIFont systemFontOfSize:9];
+    _accessTokenLable.text = @"授权账号token";
+    [self.view addSubview:_accessTokenLable];
 }
 
 - (void)viewDidUnload
@@ -62,7 +77,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,10 +95,10 @@
         cell.textLabel.text = @"解授权";
     }
     if (indexPath.row == 2) {
-        cell.textLabel.text = @"登录";
+        cell.textLabel.text = @"绑定";
     }
     if (indexPath.row == 3) {
-        cell.textLabel.text = @"解除登录";
+        cell.textLabel.text = @"解除绑定";
     }
     if (indexPath.row == 4) {
         cell.textLabel.text = @"获取用户sns详细信息";
@@ -92,10 +107,16 @@
         cell.textLabel.text = @"获取好友列表";
     }
     if (indexPath.row == 6) {
-        cell.textLabel.text = @"获取账户";
+        cell.textLabel.text = @"添加关注";
     }
     if (indexPath.row == 7) {
+        cell.textLabel.text = @"获取账户";
+    }
+    if (indexPath.row == 8) {
         cell.textLabel.text = @"用户中心";
+    }
+    if (indexPath.row == 9) {
+        cell.textLabel.text = @"登录";
     }
     return cell;
 }
@@ -110,25 +131,32 @@
         [_socialUIController.socialDataService requestUnBindToSns];
         [_activityIndicatorView startAnimating];
     }
-    else if (indexPath.row == 6) {
+    else if (indexPath.row == 7) {
         [_socialUIController.socialDataService requestSocialAccount];
         [_activityIndicatorView startAnimating];
     }
-    else if (indexPath.row == 7) {
-//        UINavigationController *accountViewController =[_socialUIController getSocialAccountController];
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test321"];
+    else if (indexPath.row == 8) {
+        //        UINavigationController *accountViewController =[_socialUIController getSocialAccountController];
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test321" withTitle:nil];
         UMSocialControllerService *socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+        socialController.soicalUIDelegate = self;
+        //        [socialController setUMSocialUIDelegate:self];
         
         UINavigationController *accountViewController =[socialController getSocialAccountController];
         
         [self presentModalViewController:accountViewController animated:YES];
+    }
+    else if(indexPath.row == 9){
+        UINavigationController *loginViewController = [_socialUIController getSocialLoginController];
+        _socialUIController.soicalUIDelegate = self;
+        [self presentModalViewController:loginViewController animated:YES];
     }
     else
     {
         [_actionSheet setTitle:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
         [_actionSheet showInView:self.view];
         UMAccountAction accountAction  = indexPath.row;
-        _actionSheet.tag = accountAction;    
+        _actionSheet.tag = accountAction;
     }
 }
 
@@ -142,8 +170,10 @@
         return;
     }
     if (actionSheet.tag == UMAccountOauth) {
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test12312"];
-        UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+        _selectOauthType = shareToType;
+        
+        UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:_socialData];
+        
         socialControllerService.soicalUIDelegate = self;
         UINavigationController *oauthController = [socialControllerService getSocialOauthController:shareToType];
         [self presentModalViewController:oauthController animated:YES];
@@ -166,6 +196,11 @@
         [_socialUIController.socialDataService requestSnsFriends:shareToType];
         [_activityIndicatorView startAnimating];
     }
+    else if (actionSheet.tag == UMAccountAddFollow){
+        [_socialUIController.socialDataService setUMSocialDelegate:self];
+        [_socialUIController.socialDataService requestAddFollow:shareToType followedUsid:[NSArray arrayWithObjects:@"1920318374", nil]];
+        [_activityIndicatorView startAnimating];
+    }
 }
 
 #pragma mark - UMSocialDelegate
@@ -173,14 +208,27 @@
 -(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
 {
     NSLog(@"social Account response is %@",response);
+    
     [_activityIndicatorView stopAnimating];
+}
+
+-(void)didFinishOauthAndGetAccount:(UMSocialResponseEntity *)response
+{
+    UMSocialAccountEntity *account = (UMSocialAccountEntity *)[_socialUIController.socialData.socialAccount objectForKey:[UMSocialAccountEntity getSnsPlatformString:_selectOauthType]];
+    if (account.userName != nil && account.userName.length > 0) {
+        _nickNameLabel.text = @"nickNameSuccess";
+    }
+    if (account.accessToken != nil&& account.accessToken.length > 0) {
+        _accessTokenLable.text = @"accessTokenSuccess";
+    }
+    NSLog(@"didFinishOauthAndGetAccount response is %@",response);
 }
 
 -(void)didCloseUIViewController
 {
-    NSLog(@"didCloseUIViewController account is %@",(UMSocialAccountEntity *)[_socialUIController.soicalData.socialAccount objectForKey:@"sina"] );
-    [_socialUIController.socialDataService setUMSocialDelegate:self];
-    [_socialUIController.socialDataService postSNSWithType:UMSocialSnsTypeSina usid:nil content:@"test" image:nil location:nil];
+    //    [_socialUIController.socialDataService setUMSocialDelegate:self];
+    //    [_socialUIController.socialDataService postSNSWithType:UMSocialSnsTypeSina usid:nil content:@"test" image:nil location:nil];
+    NSLog(@"didCloseUIViewController account is %@",(UMSocialAccountEntity *)[_socialUIController.socialData.socialAccount objectForKey:@"sina"] );
 }
 
 @end

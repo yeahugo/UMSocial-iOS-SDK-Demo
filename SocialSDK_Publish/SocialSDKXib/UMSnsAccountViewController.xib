@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1536</int>
 		<string key="IBDocument.SystemVersion">12C60</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
 		<string key="IBDocument.AppKitVersion">1187.34</string>
 		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1926</string>
+			<string key="NS.object.0">1930</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -44,7 +44,6 @@
 						<string key="NSFrame">{{0, 185}, {320, 275}}</string>
 						<string key="NSBounds">{{0, 2}, {320, 275}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor" id="578212514">
 							<int key="NSColorSpace">3</int>
@@ -267,12 +266,12 @@
 					</object>
 					<object class="IBUIView" id="164015861">
 						<reference key="NSNextResponder" ref="744488859"/>
-						<int key="NSvFlags">256</int>
+						<int key="NSvFlags">272</int>
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUIImageView" id="313677272">
 								<reference key="NSNextResponder" ref="164015861"/>
-								<int key="NSvFlags">260</int>
-								<string key="NSFrame">{{-6, -8}, {187, 308}}</string>
+								<int key="NSvFlags">276</int>
+								<string key="NSFrame">{{0, -8}, {187, 327}}</string>
 								<reference key="NSSuperview" ref="164015861"/>
 								<reference key="NSNextKeyView" ref="447431414"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -374,7 +373,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{214, 6}, {320, 21}}</string>
 						<reference key="NSSuperview" ref="744488859"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -692,6 +690,6 @@
 			<string key="NS.key.0">UMS_account_bg@2x.png</string>
 			<string key="NS.object.0">{18, 344}</string>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">1926</string>
+		<string key="IBCocoaTouchPluginVersion">1930</string>
 	</data>
 </archive>

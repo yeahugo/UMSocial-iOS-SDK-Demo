@@ -12,25 +12,25 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/setSoicalData:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/setSocialData:</TokenIdentifier>
 			<Abstract type="html">与UMSocialControllerService对象对应的UMSocialData对象，可以通过该对象设置分享内嵌文字、图片，获取分享数等属性</Abstract>
 			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) UMSocialData *soicalData</Declaration>
+			<Declaration>@property (nonatomic, readonly) UMSocialData *socialData</Declaration>
 			
 			
-			<Anchor>//api/name/soicalData</Anchor>
+			<Anchor>//api/name/socialData</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/UMSocialControllerService/soicalData</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialControllerService/socialData</TokenIdentifier>
 			<Abstract type="html">与UMSocialControllerService对象对应的UMSocialData对象，可以通过该对象设置分享内嵌文字、图片，获取分享数等属性</Abstract>
 			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) UMSocialData *soicalData</Declaration>
+			<Declaration>@property (nonatomic, readonly) UMSocialData *socialData</Declaration>
 			
 			
-			<Anchor>//api/name/soicalData</Anchor>
+			<Anchor>//api/name/socialData</Anchor>
 		</Token>
 		
 		<Token>
@@ -216,6 +216,17 @@
 			</Parameters>
 			<ReturnValue><Abstract type="html">UINavigationController对象</Abstract></ReturnValue>
 			<Anchor>//api/name/getSocialOauthController:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/getSocialLoginController</TokenIdentifier>
+			<Abstract type="html">登录页面,出现你配置出现的所有sns平台，授权之后设置为sdk的登录账号。使用评论功能时会取此登录账号的昵称和头像。</Abstract>
+			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
+			
+			<Declaration>- (UINavigationController *)getSocialLoginController</Declaration>
+			
+			<ReturnValue><Abstract type="html">UINavigationController对象</Abstract></ReturnValue>
+			<Anchor>//api/name/getSocialLoginController</Anchor>
 		</Token>
 		
 	</File>

@@ -300,5 +300,24 @@
 			<Anchor>//api/name/requestSnsFriends:</Anchor>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialDataService/requestAddFollow:followedUsid:</TokenIdentifier>
+			<Abstract type="html">请求添加关注</Abstract>
+			<DeclaredIn>UMSocialDataService.h</DeclaredIn>			
+			
+			<Declaration>- (void)requestAddFollow:(UMSocialSnsType)shareToType followedUsid:(NSArray *)usids</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>shareToType</Name>
+					<Abstract type="html">要添加关注的微博平台，目前添加关注功能只支持新浪微博和腾讯微博</Abstract>
+				</Parameter><Parameter>
+					<Name>usids</Name>
+					<Abstract type="html">被关注的usid号</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/requestAddFollow:followedUsid:</Anchor>
+		</Token>
+		
 	</File>
 </Tokens>

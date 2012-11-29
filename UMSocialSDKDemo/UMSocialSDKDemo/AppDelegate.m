@@ -35,6 +35,17 @@
     return YES;
 }
 
+-(NSUInteger)supportedInterfaceOrientationsForUMSocialSDK
+{
+    return UIInterfaceOrientationMaskAllButUpsideDown;
+}
+
+-(NSDictionary *)followSnsUids
+{
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"1920318374",UMShareToSina,nil];
+    return dictionary;
+}
+
 //- (NSArray *)shareToPlatforms
 //{
 //    NSNumber *sinaNumber = [NSNumber numberWithInt:UMSocialSnsTypeSina];

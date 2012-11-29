@@ -97,4 +97,23 @@
  @return 平台枚举变量
  */
 +(UMSocialSnsType)getSnsPlatformType:(NSString *)socialSnsString;
+
+
+/**
+ 把配置平台的次序号转换成平台名
+ 
+ @param snsIndex 使用的平台顺序，使用的平台配置在UMSocialConfigDelegate,例如`- (NSArray *)shareToPlatforms;`返回的是UMSocialSnsTypeSina和UMSocialSnsTypeTenc,UMSocialSnsTypeSina就是0，UMSocialSnsTypeTenc就是1
+ 
+ @return 平台名字符串
+ */
++(NSString *)getSnsPlatformStringFromIndex:(NSInteger)snsIndex;
+
+/**
+ 把配置平台的次序号转换成平台枚举名
+ 
+ @param snsIndex 使用的平台顺序，使用的平台配置在UMSocialConfigDelegate,例如`- (NSArray *)shareToPlatforms;`返回的是UMSocialSnsTypeSina和UMSocialSnsTypeTenc,UMSocialSnsTypeSina就是0，UMSocialSnsTypeTenc就是1
+ 
+ @return 平台枚举名
+ */
++(UMSocialSnsType )getSnsPlatformTypeFromIndex:(NSInteger)snsIndex;
 @end

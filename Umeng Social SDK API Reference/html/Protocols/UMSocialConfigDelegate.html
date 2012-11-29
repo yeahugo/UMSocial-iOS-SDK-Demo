@@ -50,6 +50,8 @@
 	
 	<option value="//api/name/didSelectShareListTableViewCell">&nbsp;&nbsp;&nbsp;&nbsp;- didSelectShareListTableViewCell</option>
 	
+	<option value="//api/name/followSnsUids">&nbsp;&nbsp;&nbsp;&nbsp;- followSnsUids</option>
+	
 	<option value="//api/name/shareToPlatforms">&nbsp;&nbsp;&nbsp;&nbsp;- shareToPlatforms</option>
 	
 	<option value="//api/name/shouldCommentWithLocation">&nbsp;&nbsp;&nbsp;&nbsp;- shouldCommentWithLocation</option>
@@ -57,6 +59,8 @@
 	<option value="//api/name/shouldCommentWithShare">&nbsp;&nbsp;&nbsp;&nbsp;- shouldCommentWithShare</option>
 	
 	<option value="//api/name/shouldShareSynchronous">&nbsp;&nbsp;&nbsp;&nbsp;- shouldShareSynchronous</option>
+	
+	<option value="//api/name/supportedInterfaceOrientationsForUMSocialSDK">&nbsp;&nbsp;&nbsp;&nbsp;- supportedInterfaceOrientationsForUMSocialSDK</option>
 	
 	
 	
@@ -92,6 +96,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didSelectShareListTableViewCell">didSelectShareListTableViewCell</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/followSnsUids">followSnsUids</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shareToPlatforms">shareToPlatforms</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shouldCommentWithLocation">shouldCommentWithLocation</a></span></li>
@@ -99,6 +105,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shouldCommentWithShare">shouldCommentWithShare</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shouldShareSynchronous">shouldShareSynchronous</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/supportedInterfaceOrientationsForUMSocialSDK">supportedInterfaceOrientationsForUMSocialSDK</a></span></li>
 	
 </ul></li>
 
@@ -162,6 +170,13 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/followSnsUids">&ndash;&nbsp;followSnsUids</a></code>
+		<span class="tooltip"><p>设置官方微博账号,设置之后可以在授权页面有关注微博的选项，默认勾选，授权之后用户即关注官方微博，仅支持新浪微博和腾讯微博</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/shouldCommentWithShare">&ndash;&nbsp;shouldCommentWithShare</a></code>
 		<span class="tooltip"><p>设置评论页面是否出现分享按钮,默认为出现所有支持的平台，可以用shareToPlatforms设置</p></span>
 	</span>
@@ -185,6 +200,13 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/defaultColor">&ndash;&nbsp;defaultColor</a></code>
 		<span class="tooltip"><p>设置所有页面背景颜色，默认的颜色是[UIColor colorWithRed:0.22 green:0.24  blue:0.27 alpha:1.0]，如果想改变上面导航栏的颜色，可以换相应的图片</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/supportedInterfaceOrientationsForUMSocialSDK">&ndash;&nbsp;supportedInterfaceOrientationsForUMSocialSDK</a></code>
+		<span class="tooltip"><p>设置sdk所有页面需要支持屏幕方向.在ios6的设备上，这个设置需要和应用的Info.plist的支持方向相一致，否则不生效</p></span>
 	</span>
 	
 	
@@ -348,6 +370,52 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/followSnsUids" title="followSnsUids"></a>
+	<h3 class="subsubtitle method-title">followSnsUids</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>设置官方微博账号,设置之后可以在授权页面有关注微博的选项，默认勾选，授权之后用户即关注官方微博，仅支持新浪微博和腾讯微博</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)followSnsUids</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>腾讯微博和新浪微博的key分别是<code>UMShareToSina</code>和<code>UMShareToTenc</code>,值分别是官方微博的uid</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>设置官方微博账号,设置之后可以在授权页面有关注微博的选项，默认勾选，授权之后用户即关注官方微博，仅支持新浪微博和腾讯微博</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialConfigDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/shareToPlatforms" title="shareToPlatforms"></a>
 	<h3 class="subsubtitle method-title">shareToPlatforms</h3>
 	
@@ -365,6 +433,11 @@
 	
 	
 	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>由NSNumber组成的NSArray，可以选的有新浪微博、腾讯微博、人人网、豆瓣。我们分别用<code>UMSocialSnsTypeSina</code>、<code>UMSocialSnsTypeTenc</code>、<code>UMSocialSnsTypeRenr</code>、<code>UMSocialSnsTypeDouban</code>，、<code>UMSocialSnsTypeQzone</code>然后分别初始化成NSNumber，再组成NSArray</p>
+	</div>
+	
 	
 	
 	
@@ -372,8 +445,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>设置显示的sns平台类型</p>
-
-<p>@param 由NSNumber组成的NSArray，可以选的有新浪微博、腾讯微博、人人网、豆瓣。我们分别用<code>UMSocialSnsTypeSina</code>、<code>UMSocialSnsTypeTenc</code>、<code>UMSocialSnsTypeRenr</code>、<code>UMSocialSnsTypeDouban</code>，、<code>UMSocialSnsTypeQzone</code>然后分别初始化成NSNumber，再组成NSArray</p>
 	</div>
 	
 	
@@ -513,6 +584,52 @@
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/supportedInterfaceOrientationsForUMSocialSDK" title="supportedInterfaceOrientationsForUMSocialSDK"></a>
+	<h3 class="subsubtitle method-title">supportedInterfaceOrientationsForUMSocialSDK</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>设置sdk所有页面需要支持屏幕方向.在ios6的设备上，这个设置需要和应用的Info.plist的支持方向相一致，否则不生效</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSUInteger)supportedInterfaceOrientationsForUMSocialSDK</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>一个bit map（位掩码），ios 6定义的<code>UIInterfaceOrientationMask</code></p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>设置sdk所有页面需要支持屏幕方向.在ios6的设备上，这个设置需要和应用的Info.plist的支持方向相一致，否则不生效</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialConfigDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -526,7 +643,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 umeng. All rights reserved. (Last updated: 2012-11-20)</span><br />
+						<p><span class="copyright">&copy; 2012 umeng. All rights reserved. (Last updated: 2012-11-29)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

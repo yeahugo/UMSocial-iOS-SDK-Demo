@@ -100,24 +100,5 @@
 			<Anchor>//api/name/customShareListCell:</Anchor>
 		</Token>
 		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/UMUIHelper/customShareListCellSelectedLayer:position:</TokenIdentifier>
-			<Abstract type="html">自定义分享列表选中的样式cell</Abstract>
-			<DeclaredIn>UMUIHelper.h</DeclaredIn>			
-			
-			<Declaration>+ (void)customShareListCellSelectedLayer:(UITableViewCell *)cell position:(UMSCGroupedCellPosition)position</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>cell</Name>
-					<Abstract type="html">分享列表的UITableViewCell</Abstract>
-				</Parameter><Parameter>
-					<Name>position</Name>
-					<Abstract type="html">位置</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/customShareListCellSelectedLayer:position:</Anchor>
-		</Token>
-		
 	</File>
 </Tokens>

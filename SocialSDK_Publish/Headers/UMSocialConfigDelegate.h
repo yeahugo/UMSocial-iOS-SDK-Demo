@@ -19,9 +19,17 @@
 /** 
  设置显示的sns平台类型
  
- @param 由NSNumber组成的NSArray，可以选的有新浪微博、腾讯微博、人人网、豆瓣。我们分别用`UMSocialSnsTypeSina`、`UMSocialSnsTypeTenc`、`UMSocialSnsTypeRenr`、`UMSocialSnsTypeDouban`，、`UMSocialSnsTypeQzone`然后分别初始化成NSNumber，再组成NSArray
+ @return 由NSNumber组成的NSArray，可以选的有新浪微博、腾讯微博、人人网、豆瓣。我们分别用`UMSocialSnsTypeSina`、`UMSocialSnsTypeTenc`、`UMSocialSnsTypeRenr`、`UMSocialSnsTypeDouban`，、`UMSocialSnsTypeQzone`然后分别初始化成NSNumber，再组成NSArray
  */
 - (NSArray *)shareToPlatforms;
+
+
+/**
+ 设置官方微博账号,设置之后可以在授权页面有关注微博的选项，默认勾选，授权之后用户即关注官方微博，仅支持新浪微博和腾讯微博
+ 
+ @return  腾讯微博和新浪微博的key分别是`UMShareToSina`和`UMShareToTenc`,值分别是官方微博的uid
+ */
+-(NSDictionary *)followSnsUids;
 
 /** 
  设置评论页面是否出现分享按钮,默认为出现所有支持的平台，可以用shareToPlatforms设置
@@ -45,6 +53,13 @@
  设置所有页面背景颜色，默认的颜色是[UIColor colorWithRed:0.22 green:0.24  blue:0.27 alpha:1.0]，如果想改变上面导航栏的颜色，可以换相应的图片
  */
 - (UIColor *)defaultColor;
+
+/**
+ 设置sdk所有页面需要支持屏幕方向.在ios6的设备上，这个设置需要和应用的Info.plist的支持方向相一致，否则不生效
+ 
+ @return 一个bit map（位掩码），ios 6定义的`UIInterfaceOrientationMask`
+ */
+- (NSUInteger)supportedInterfaceOrientationsForUMSocialSDK;
 
 
 /**

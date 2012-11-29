@@ -59,7 +59,7 @@
 /**
  与`UMSocialControllerService`对象对应的`UMSocialData`对象，可以通过该对象设置分享内嵌文字、图片，获取分享数等属性
  */
-@property (nonatomic, readonly) UMSocialData *soicalData;
+@property (nonatomic, readonly) UMSocialData *socialData;
 
 /**
  用`UMSocialDataService`对象，可以调用发送微博、评论等数据级的方法
@@ -146,6 +146,12 @@
  */
 - (UINavigationController *)getSocialOauthController:(UMSocialSnsType)shareToType;
 
+/**
+ 登录页面,出现你配置出现的所有sns平台，授权之后设置为sdk的登录账号。使用评论功能时会取此登录账号的昵称和头像。
+ 
+ @return `UINavigationController`对象
+ */
+- (UINavigationController *)getSocialLoginController;
 @end
 
 

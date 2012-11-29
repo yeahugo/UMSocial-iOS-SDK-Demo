@@ -246,5 +246,37 @@
 			<Anchor>//api/name/getSnsPlatformType:</Anchor>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/UMSocialAccountEntity/getSnsPlatformStringFromIndex:</TokenIdentifier>
+			<Abstract type="html">把配置平台的次序号转换成平台名</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>+ (NSString *)getSnsPlatformStringFromIndex:(NSInteger)snsIndex</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>snsIndex</Name>
+					<Abstract type="html">使用的平台顺序，使用的平台配置在UMSocialConfigDelegate,例如- (NSArray *)shareToPlatforms;返回的是UMSocialSnsTypeSina和UMSocialSnsTypeTenc,UMSocialSnsTypeSina就是0，UMSocialSnsTypeTenc就是1</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">平台名字符串</Abstract></ReturnValue>
+			<Anchor>//api/name/getSnsPlatformStringFromIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/UMSocialAccountEntity/getSnsPlatformTypeFromIndex:</TokenIdentifier>
+			<Abstract type="html">把配置平台的次序号转换成平台枚举名</Abstract>
+			<DeclaredIn>UMSocialAccountEntity.h</DeclaredIn>			
+			
+			<Declaration>+ (UMSocialSnsType)getSnsPlatformTypeFromIndex:(NSInteger)snsIndex</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>snsIndex</Name>
+					<Abstract type="html">使用的平台顺序，使用的平台配置在UMSocialConfigDelegate,例如- (NSArray *)shareToPlatforms;返回的是UMSocialSnsTypeSina和UMSocialSnsTypeTenc,UMSocialSnsTypeSina就是0，UMSocialSnsTypeTenc就是1</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">平台枚举名</Abstract></ReturnValue>
+			<Anchor>//api/name/getSnsPlatformTypeFromIndex:</Anchor>
+		</Token>
+		
 	</File>
 </Tokens>

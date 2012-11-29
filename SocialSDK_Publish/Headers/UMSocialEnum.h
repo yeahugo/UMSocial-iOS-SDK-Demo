@@ -79,7 +79,8 @@ typedef enum {
     UMSResponseOauth,
     UMSResponseGetAccount,
     UMSResponseGetSnsInfo,
-    UMSResponseGetFriends
+    UMSResponseGetFriends,
+    UMSResponseAddFollow
 } UMSResponse;
 
 
