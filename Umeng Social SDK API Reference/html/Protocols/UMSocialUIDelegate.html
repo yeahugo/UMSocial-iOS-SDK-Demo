@@ -44,11 +44,9 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/didCloseUIViewController">&nbsp;&nbsp;&nbsp;&nbsp;- didCloseUIViewController</option>
+	<option value="//api/name/didCloseUIViewController:">&nbsp;&nbsp;&nbsp;&nbsp;- didCloseUIViewController:</option>
 	
-	<option value="//api/name/didFinishOauthAndGetAccount:">&nbsp;&nbsp;&nbsp;&nbsp;- didFinishOauthAndGetAccount:</option>
-	
-	<option value="//api/name/didFinishRefreshSocialData:">&nbsp;&nbsp;&nbsp;&nbsp;- didFinishRefreshSocialData:</option>
+	<option value="//api/name/didFinishGetUMSocialDataInViewController:">&nbsp;&nbsp;&nbsp;&nbsp;- didFinishGetUMSocialDataInViewController:</option>
 	
 	
 	
@@ -78,11 +76,9 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didCloseUIViewController">didCloseUIViewController</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didCloseUIViewController:">didCloseUIViewController:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didFinishOauthAndGetAccount:">didFinishOauthAndGetAccount:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didFinishRefreshSocialData:">didFinishRefreshSocialData:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didFinishGetUMSocialDataInViewController:">didFinishGetUMSocialDataInViewController:</a></span></li>
 	
 </ul></li>
 
@@ -139,22 +135,15 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/didCloseUIViewController">&ndash;&nbsp;didCloseUIViewController</a></code>
+		<code><a href="#//api/name/didCloseUIViewController:">&ndash;&nbsp;didCloseUIViewController:</a></code>
 		<span class="tooltip"><p>关闭当前页面之后</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/didFinishRefreshSocialData:">&ndash;&nbsp;didFinishRefreshSocialData:</a></code>
-		<span class="tooltip"><p>当发送评论或者分享完成之后会重新请求获取评论数、分享数等，获取这些数据之后的回调方法</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/didFinishOauthAndGetAccount:">&ndash;&nbsp;didFinishOauthAndGetAccount:</a></code>
-		<span class="tooltip"><p>当授权完成，并且从服务器获取到账户信息之后的回调方法</p></span>
+		<code><a href="#//api/name/didFinishGetUMSocialDataInViewController:">&ndash;&nbsp;didFinishGetUMSocialDataInViewController:</a></code>
+		<span class="tooltip"><p>各个页面执行授权完成、分享完成、或者评论完成时的回调函数</p></span>
 	</span>
 	
 	
@@ -176,8 +165,8 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/didCloseUIViewController" title="didCloseUIViewController"></a>
-	<h3 class="subsubtitle method-title">didCloseUIViewController</h3>
+	<a name="//api/name/didCloseUIViewController:" title="didCloseUIViewController:"></a>
+	<h3 class="subsubtitle method-title">didCloseUIViewController:</h3>
 	
 	
 	
@@ -187,9 +176,19 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)didCloseUIViewController</code></div>
+	<div class="method-subsection method-declaration"><code>- (void)didCloseUIViewController:(UMSViewControllerType)<em>fromViewControllerType</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>fromViewControllerType</em></dt>
+			<dd><p>关闭的页面类型</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -217,18 +216,18 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/didFinishOauthAndGetAccount:" title="didFinishOauthAndGetAccount:"></a>
-	<h3 class="subsubtitle method-title">didFinishOauthAndGetAccount:</h3>
+	<a name="//api/name/didFinishGetUMSocialDataInViewController:" title="didFinishGetUMSocialDataInViewController:"></a>
+	<h3 class="subsubtitle method-title">didFinishGetUMSocialDataInViewController:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>当授权完成，并且从服务器获取到账户信息之后的回调方法</p>
+		<p>各个页面执行授权完成、分享完成、或者评论完成时的回调函数</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)didFinishOauthAndGetAccount:(UMSocialResponseEntity *)<em>response</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)<em>response</em></code></div>
 
     
 	
@@ -237,7 +236,7 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>response</em></dt>
-			<dd><p>返回<a href="../Classes/UMSocialResponseEntity.html"><code>UMSocialResponseEntity</code></a>对象</p></dd>
+			<dd><p>返回<a href="../Classes/UMSocialResponseEntity.html"><code>UMSocialResponseEntity</code></a>对象，<a href="../Classes/UMSocialResponseEntity.html"><code>UMSocialResponseEntity</code></a>里面的viewControllerType属性可以获得页面类型</p></dd>
 		</dl>
 		
 	</div>
@@ -250,58 +249,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>当授权完成，并且从服务器获取到账户信息之后的回调方法</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/didFinishRefreshSocialData:" title="didFinishRefreshSocialData:"></a>
-	<h3 class="subsubtitle method-title">didFinishRefreshSocialData:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>当发送评论或者分享完成之后会重新请求获取评论数、分享数等，获取这些数据之后的回调方法</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)didFinishRefreshSocialData:(UMSocialResponseEntity *)<em>response</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>response</em></dt>
-			<dd><p>返回<a href="../Classes/UMSocialResponseEntity.html"><code>UMSocialResponseEntity</code></a>对象</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>当发送评论或者分享完成之后会重新请求获取评论数、分享数等，获取这些数据之后的回调方法</p>
+		<p>各个页面执行授权完成、分享完成、或者评论完成时的回调函数</p>
 	</div>
 	
 	
@@ -331,7 +279,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 umeng. All rights reserved. (Last updated: 2012-11-29)</span><br />
+						<p><span class="copyright">&copy; 2012 umeng. All rights reserved. (Last updated: 2012-12-01)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

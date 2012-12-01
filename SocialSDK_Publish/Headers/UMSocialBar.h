@@ -9,6 +9,40 @@
 #import "UMSocialControllerService.h"
 
 /**
+ 分享平台
+ 
+ */
+typedef enum {
+    UMSButtonTypeAddComment = 1,              //添加评论
+    UMSButtonTypeShareToSNS,                  //分享到微博
+    UMSButtonTypeAddLike,                     //添加喜欢
+    UMSButtonTypeDisLike,                     //取消喜欢
+} UMSButtonType;
+
+typedef enum {
+    UMSButtonTypeMaskAddComment = (1 << UMSButtonTypeAddComment),   //添加评论
+    UMSButtonTypeMaskShareToSNS = (1 << UMSButtonTypeShareToSNS),   //分享到微博
+    UMSButtonTypeMaskAddLike = (1 << UMSButtonTypeAddLike),         //添加喜欢
+    UMSButtonTypeMaskDisLike = (1 << UMSButtonTypeDisLike),         //取消喜欢
+    UMSButtonTypeMaskCommentAndShare = (UMSButtonTypeMaskAddComment | UMSButtonTypeMaskShareToSNS),                               //评论并分享
+    UMSButtonTypeMaskAll = (UMSButtonTypeAddLike | UMSButtonTypeAddComment | UMSButtonTypeShareToSNS),                                   //喜欢、评论、分享
+} UMSButtonTypeMask;
+
+/**
+ `UMSocialControllerService`对象用到的一些回调方法，可以对出现的分享列表进行设置，或者得到一些完成事件的回调方法。
+ */
+@protocol UMSocialBarDelegate <NSObject>
+
+/**
+ 各个页面执行授权完成、分享完成、或者评论完成时的回调函数
+ 
+ @param actionType 操作类型，返回是评论、分享微博或者喜欢
+ */
+-(void)didFinishUpdateBarNumber:(UMSButtonTypeMask)actionTypeMask;
+
+@end
+
+/**
  一个集成了多个社会化功能的工具栏，可以查看并添加评论、分享到微博、添加喜欢、查看用户信息等功能。
  你要用一个identifier标识符字符串和添加到的`UIViewController`对象来初始化，然后可以自己添加到你要添加到的`UIView`上，并自定义其位置。也可以通过他的socialData属性来获取分享数等。
  
@@ -22,6 +56,7 @@
     UMSocialData *_socialData;
     UMSocialControllerService *_socialControllerService;
     UIViewController *_presentingViewController;
+    id<UMSocialBarDelegate> _socialBarDelegate;
 }
 
 ///---------------------------------------
@@ -43,6 +78,8 @@
  */
 @property (nonatomic, assign) UIViewController *presentingViewController;
 
+@property (nonatomic, assign) id<UMSocialBarDelegate> socialBarDelegate;
+
 ///---------------------------------------
 /// @name 初始化方法
 ///---------------------------------------
@@ -61,5 +98,5 @@
  更新`UMSocialBar`按钮上的数字
  
  */
-- (void)updateButtonNumber;
+- (UMSButtonTypeMask)updateButtonNumber;
 @end

@@ -102,7 +102,7 @@
 			<Abstract type="html">更新UMSocialBar按钮上的数字</Abstract>
 			<DeclaredIn>UMSocialBar.h</DeclaredIn>			
 			
-			<Declaration>- (void)updateButtonNumber</Declaration>
+			<Declaration>- (UMSButtonTypeMask)updateButtonNumber</Declaration>
 			
 			
 			<Anchor>//api/name/updateButtonNumber</Anchor>
@@ -125,19 +125,19 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/UMSocialBar/didFinishRefreshSocialData:</TokenIdentifier>
-			<Abstract type="html">当发送评论或者分享完成之后会重新请求获取评论数、分享数等，获取这些数据之后的回调方法</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialBar/didFinishGetUMSocialDataInViewController:</TokenIdentifier>
+			<Abstract type="html">各个页面执行授权完成、分享完成、或者评论完成时的回调函数</Abstract>
 			<DeclaredIn>UMSocialBar.m</DeclaredIn>			
 			
-			<Declaration>- (void)didFinishRefreshSocialData:(UMSocialResponseEntity *)response</Declaration>
+			<Declaration>- (void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>response</Name>
-					<Abstract type="html">返回UMSocialResponseEntity对象</Abstract>
+					<Abstract type="html">返回UMSocialResponseEntity里面的viewControllerType属性可以获得页面类型</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/didFinishRefreshSocialData:</Anchor>
+			<Anchor>//api/name/didFinishGetUMSocialDataInViewController:</Anchor>
 		</Token>
 		
 	</File>

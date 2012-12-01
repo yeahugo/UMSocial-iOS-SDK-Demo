@@ -76,6 +76,38 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UMSocialResponseEntity/setViewControllerType:</TokenIdentifier>
+			<Abstract type="html">数据返回UMViewControllerType类型,定义在UMSocialEnum,如果是UI的回调函数，表示回调函数所在的页面</Abstract>
+			<DeclaredIn>UMSocialResponseEntity.h</DeclaredIn>			
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/cl/UMSocialEnum</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic) UMSViewControllerType viewControllerType</Declaration>
+			
+			
+			<Anchor>//api/name/viewControllerType</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UMSocialResponseEntity/viewControllerType</TokenIdentifier>
+			<Abstract type="html">数据返回UMViewControllerType类型,定义在UMSocialEnum,如果是UI的回调函数，表示回调函数所在的页面</Abstract>
+			<DeclaredIn>UMSocialResponseEntity.h</DeclaredIn>			
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/cl/UMSocialEnum</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic) UMSViewControllerType viewControllerType</Declaration>
+			
+			
+			<Anchor>//api/name/viewControllerType</Anchor>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/UMSocialResponseEntity/setMessage:</TokenIdentifier>
 			<Abstract type="html">错误原因</Abstract>
 			<DeclaredIn>UMSocialResponseEntity.h</DeclaredIn>			

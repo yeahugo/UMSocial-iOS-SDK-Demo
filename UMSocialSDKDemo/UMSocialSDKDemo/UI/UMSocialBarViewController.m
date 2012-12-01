@@ -21,7 +21,7 @@
     if (self) {
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:descriptor withTitle:@"socialSDKTitle"];
         _socialBar = [[UMSocialBar alloc] initWithUMSocialData:socialData withViewController:self];
-        
+        _socialBar.socialBarDelegate = self;
         _socialBar.socialData.shareText = text;
         _socialBar.socialData.shareImage = image;
         _socialBar.socialData.commentImage = image;
@@ -68,6 +68,11 @@
 -(void)didFinishGetUMSocialResponse:(UMSocialResponseEntity *)response
 {
     NSLog(@"response is %@",response);
+}
+
+-(void)didFinishUpdateBarNumber:(UMSButtonTypeMask)actionTypeMask
+{
+    NSLog(@"didFinishUpdateBarNumber is %d",actionTypeMask);
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

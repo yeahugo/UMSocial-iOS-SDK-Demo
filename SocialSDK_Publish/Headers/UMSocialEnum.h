@@ -83,6 +83,20 @@ typedef enum {
     UMSResponseAddFollow
 } UMSResponse;
 
+/**
+ 页面类型
+ 
+ */
+typedef enum{
+    UMSViewControllerCommentList,        //评论列表
+    UMSViewControllerCommentEdit,        //评论编辑页
+    UMSViewControllerShareList,          //分享列表页，包含sdk支持的所有sns平台
+    UMSViewControllerShareEdit,          //分享编辑页
+    UMSViewControllerAccount,            //分享账号设置页面
+    UMSViewControllerOauth,              //oath授权页面
+    UMSViewControllerLogin,              //登录页面，登录的可选平台为sdk所支持的sns平台
+    UMSViewControllerFriendList          //好友列表页面
+}UMSViewControllerType;
 
 /**
  此SDK中用到的一些枚举类型和常量字符串
@@ -133,7 +147,21 @@ typedef enum {
     UMSResponseGetFriends               //获取好友列表
     } UMSResponse;
   
- ## 常量字符串 
+ ## 页面类型
+ 
+    typedef enum{
+    UMSViewControllerCommentList,        //评论列表
+    UMSViewControllerCommentEdit,        //评论编辑页
+    UMSViewControllerShareList,          //分享列表页，包含sdk支持的所有sns平台
+    UMSViewControllerShareEdit,          //分享编辑页
+    UMSViewControllerAccount,            //分享账号设置页面
+    UMSViewControllerOauth,              //oath授权页面
+    UMSViewControllerLogin,              //登录页面，登录的可选平台为sdk所支持的sns平台
+    UMSViewControllerFriendList          //好友列表页面
+    }UMSViewControllerType;
+
+ 
+ ## 常量字符串
  
  主要用于代表不同的微博平台名，例如`UMShareToSina`定义为"sina"，避免开发者使用sdk时候写错
  

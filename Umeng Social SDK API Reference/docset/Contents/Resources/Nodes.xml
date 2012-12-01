@@ -33,6 +33,7 @@
 						<NodeRef refid="10"/>
 						<NodeRef refid="11"/>
 						<NodeRef refid="12"/>
+						<NodeRef refid="13"/>
 						
 					</Subnodes>
 				</Node>
@@ -81,14 +82,18 @@
 		
 		
 		<Node id="10">
+			<Name>UMSocialBarDelegate</Name>
+			<Path>Protocols/UMSocialBarDelegate.html</Path>
+		</Node>
+		<Node id="11">
 			<Name>UMSocialConfigDelegate</Name>
 			<Path>Protocols/UMSocialConfigDelegate.html</Path>
 		</Node>
-		<Node id="11">
+		<Node id="12">
 			<Name>UMSocialDataDelegate</Name>
 			<Path>Protocols/UMSocialDataDelegate.html</Path>
 		</Node>
-		<Node id="12">
+		<Node id="13">
 			<Name>UMSocialUIDelegate</Name>
 			<Path>Protocols/UMSocialUIDelegate.html</Path>
 		</Node>

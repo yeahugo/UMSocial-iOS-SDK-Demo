@@ -15,7 +15,8 @@
 @interface UMSocialResponseEntity : NSObject
 {
     UMSResponseCode _responseCode;                        //错误代号
-    UMSResponse _responseType;
+    UMSResponse _responseType;                            //返回的数据类型
+    UMSViewControllerType _viewControllerType;     //返回的操作页面
     NSString *_message;             //返回的错误消息
     NSDictionary *_data;            //返回数据
     NSError *_error;
@@ -34,6 +35,13 @@
  @see `UMSocialEnum.h`
  */
 @property (nonatomic) UMSResponse responseType;
+
+/**
+ 数据返回`UMViewControllerType`类型,定义在`UMSocialEnum`,如果是UI的回调函数，表示回调函数所在的页面
+ 
+ @see `UMSocialEnum.h`
+ */
+@property (nonatomic) UMSViewControllerType viewControllerType;
 
 /**
  错误原因

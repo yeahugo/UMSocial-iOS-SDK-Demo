@@ -17,8 +17,6 @@
  */
 @protocol UMSocialDataDelegate <NSObject>
 
-@optional
-
 /**
  进行网络请求之后得到的回调方法
  

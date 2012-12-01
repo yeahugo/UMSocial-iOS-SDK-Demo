@@ -20,22 +20,17 @@
 /**
  关闭当前页面之后
  
- */
--(void)didCloseUIViewController;
-
-/**
- 当发送评论或者分享完成之后会重新请求获取评论数、分享数等，获取这些数据之后的回调方法
+ @param fromViewControllerType 关闭的页面类型
  
- @param response 返回`UMSocialResponseEntity`对象
  */
--(void)didFinishRefreshSocialData:(UMSocialResponseEntity *)response;
+-(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType;
 
 /**
- 当授权完成，并且从服务器获取到账户信息之后的回调方法
-
- @param response 返回`UMSocialResponseEntity`对象
+ 各个页面执行授权完成、分享完成、或者评论完成时的回调函数
+ 
+ @param response 返回`UMSocialResponseEntity`对象，`UMSocialResponseEntity`里面的viewControllerType属性可以获得页面类型
  */
--(void)didFinishOauthAndGetAccount:(UMSocialResponseEntity *)response;
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response;
 
 @end
 
@@ -138,7 +133,7 @@
 - (UINavigationController *)getSocialShareEditController:(UMSocialSnsType)shareToType;
 
 /**
- 授权页面，如果你要想得到授权完成之后的事件，你可以实现`UMSocialUIDelegate`里面的`-(void)didCloseUIViewController;`方法，当授权关闭页面会调用此方法。另外授权完成之后sdk会自动去取个人账户信息，你可以在回调函数里面去到刚刚授权的微博平台的账户信息。
+ 授权页面，如果你要想得到授权完成之后的事件，你可以实现`UMSocialUIDelegate`里面的`-(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType;`方法，当授权关闭页面会调用此方法。另外授权完成之后sdk会自动去取个人账户信息，你可以在回调函数里面去到刚刚授权的微博平台的账户信息。
  
  @param shareToType 要授权的微博平台
  

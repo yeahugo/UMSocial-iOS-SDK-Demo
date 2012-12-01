@@ -204,7 +204,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/UMSocialControllerService/getSocialOauthController:</TokenIdentifier>
-			<Abstract type="html">授权页面，如果你要想得到授权完成之后的事件，你可以实现UMSocialUIDelegatedidCloseUIViewController;`方法，当授权关闭页面会调用此方法。另外授权完成之后sdk会自动去取个人账户信息，你可以在回调函数里面去到刚刚授权的微博平台的账户信息。</Abstract>
+			<Abstract type="html">授权页面，如果你要想得到授权完成之后的事件，你可以实现UMSocialUIDelegatefromViewControllerType;`方法，当授权关闭页面会调用此方法。另外授权完成之后sdk会自动去取个人账户信息，你可以在回调函数里面去到刚刚授权的微博平台的账户信息。</Abstract>
 			<DeclaredIn>UMSocialControllerService.h</DeclaredIn>			
 			
 			<Declaration>- (UINavigationController *)getSocialOauthController:(UMSocialSnsType)shareToType</Declaration>

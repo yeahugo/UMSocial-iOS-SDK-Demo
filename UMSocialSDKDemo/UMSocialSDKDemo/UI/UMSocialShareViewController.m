@@ -202,6 +202,7 @@
     }
     else if(actionSheet.tag == UMShareEditPresent) {
         [_socialController.socialDataService setUMSocialDelegate:self];
+        _socialController.soicalUIDelegate = self;
         UINavigationController *shareEditController = [_socialController getSocialShareEditController:shareToType];
         [self presentModalViewController:shareEditController animated:YES];
     }
@@ -222,4 +223,14 @@
     }
 }
 
+#pragma mark - UMSocialUIDelegate
+-(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType
+{
+    NSLog(@"didCloseUIViewController with type is %d",fromViewControllerType);
+}
+
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);
+}
 @end
