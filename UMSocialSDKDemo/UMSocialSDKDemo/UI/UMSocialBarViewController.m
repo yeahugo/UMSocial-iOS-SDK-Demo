@@ -19,7 +19,7 @@
 {
     self = [super initWithNibName:@"UMSocialBarViewController" bundle:nil];
     if (self) {
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:descriptor];
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:descriptor withTitle:@"socialSDKTitle"];
         _socialBar = [[UMSocialBar alloc] initWithUMSocialData:socialData withViewController:self];
         
         _socialBar.socialData.shareText = text;
@@ -72,7 +72,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 @end
