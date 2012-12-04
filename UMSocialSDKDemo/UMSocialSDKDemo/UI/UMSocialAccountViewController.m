@@ -2,8 +2,8 @@
 //  UMSocialAccountViewController.m
 //  SocialSDK
 //
-//  Created by yeahugo on 12-9-7.
-//
+//  Created by Jiahuan Ye on 12-9-7.
+//  Copyright (c) 2012年 Umeng. All rights reserved.
 //
 
 #import "UMSocialAccountViewController.h"
@@ -212,23 +212,23 @@
     [_activityIndicatorView stopAnimating];
 }
 
--(void)didFinishOauthAndGetAccount:(UMSocialResponseEntity *)response
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
-    UMSocialAccountEntity *account = (UMSocialAccountEntity *)[_socialUIController.socialData.socialAccount objectForKey:[UMSocialAccountEntity getSnsPlatformString:_selectOauthType]];
-    if (account.userName != nil && account.userName.length > 0) {
-        _nickNameLabel.text = @"nickNameSuccess";
+    if (response.viewControllerType == UMSViewControllerOauth) {
+        UMSocialAccountEntity *account = (UMSocialAccountEntity *)[_socialUIController.socialData.socialAccount objectForKey:[UMSocialAccountEntity getSnsPlatformString:_selectOauthType]];
+        if (account.userName != nil && account.userName.length > 0) {
+            _nickNameLabel.text = @"nickNameSuccess";
+        }
+        if (account.accessToken != nil&& account.accessToken.length > 0) {
+            _accessTokenLable.text = @"accessTokenSuccess";
+        }
+        NSLog(@"didFinishOauthAndGetAccount response is %@",response);
     }
-    if (account.accessToken != nil&& account.accessToken.length > 0) {
-        _accessTokenLable.text = @"accessTokenSuccess";
-    }
-    NSLog(@"didFinishOauthAndGetAccount response is %@",response);
 }
 
--(void)didCloseUIViewController
+-(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType
 {
-    //    [_socialUIController.socialDataService setUMSocialDelegate:self];
-    //    [_socialUIController.socialDataService postSNSWithType:UMSocialSnsTypeSina usid:nil content:@"test" image:nil location:nil];
-    NSLog(@"didCloseUIViewController account is %@",(UMSocialAccountEntity *)[_socialUIController.socialData.socialAccount objectForKey:@"sina"] );
+    NSLog(@"didCloseUIViewController from %d",fromViewControllerType);
 }
 
 @end

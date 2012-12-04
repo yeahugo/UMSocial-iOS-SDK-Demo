@@ -2,8 +2,8 @@
 //  UMUIHelper.h
 //  SocialSDK
 //
-//  Created by Aladdin Zhang on 5/9/12.
-//  Copyright (c) 2012 innovation-works. All rights reserved.
+//  Created by Jiahuan Ye on 5/9/12.
+//  Copyright (c) 2012年 Umeng. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -81,15 +81,5 @@ typedef enum{
  
  */
 + (void) customShareListCell:(UITableViewCell*)cell;
-
-/**
- 自定义分享列表选中的样式cell
- 
- @param cell 分享列表的UITableViewCell
- 
- @param position 位置
- */
-+ (void) customShareListCellSelectedLayer:(UITableViewCell*)cell
-                                 position:(UMSCGroupedCellPosition)position;
 
 @end

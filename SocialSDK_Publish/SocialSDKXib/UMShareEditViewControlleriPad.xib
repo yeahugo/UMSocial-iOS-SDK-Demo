@@ -83,10 +83,6 @@
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">UMS_comment_bar_background.png</string>
-								</object>
 							</object>
 							<object class="IBUIButton" id="256681358">
 								<reference key="NSNextResponder" ref="897695717"/>
@@ -360,7 +356,6 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="UMS_comment_bar_background.png">{4, 93}</string>
 			<string key="UMS_umeng_share_at.png">{20, 23}</string>
 			<string key="UMS_umeng_share_emotion.png">{20, 23}</string>
 		</dictionary>

@@ -2,8 +2,8 @@
 //  UMSocialEnum.h
 //  SocialSDK
 //
-//  Created by yeahugo on 12-9-25.
-//
+//  Created by Jiahuan Ye on 12-9-25.
+//  Copyright (c) 2012年 Umeng. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -2,8 +2,8 @@
 //  UMSocialShareViewController.m
 //  SocialSDK
 //
-//  Created by jiahuan ye on 12-8-22.
-//  Copyright (c) 2012年 umeng. All rights reserved.
+//  Created by Jiahuan Ye on 12-8-22.
+//  Copyright (c) 2012年 Umeng. All rights reserved.
 //
 
 #import "UMSocialShareViewController.h"

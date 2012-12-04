@@ -2,8 +2,8 @@
 //  UMSocialUIController.h
 //  SocialSDK
 //
-//  Created by yeahugo on 12-9-12.
-//
+//  Created by Jiahuan Ye on 12-9-12.
+//  Copyright (c) 2012年 Umeng. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,7 +11,7 @@
 #import "UMSocialConfigDelegate.h"
 
 /**
- `UMSocialControllerService`对象用到的一些回调方法，可以对出现的分享列表进行设置，或者得到一些完成事件的回调方法。
+ `UMSocialControllerService`对象用到的一些回调方法，包括分享完成、授权完成、评论完成等事件，和关闭授权页面、分享页面、评论页面等事件。
  */
 @protocol UMSocialUIDelegate <NSObject>
 

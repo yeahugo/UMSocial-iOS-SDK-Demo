@@ -2,8 +2,8 @@
 //  UMSocialBar.h
 //  SocialSDK
 //
-//  Created by yeahugo on 12-9-13.
-//
+//  Created by Jiahuan Ye on 12-9-13.
+//  Copyright (c) 2012年 Umeng. All rights reserved.
 //
 #import "UMSocialData.h"
 #import "UMSocialControllerService.h"
