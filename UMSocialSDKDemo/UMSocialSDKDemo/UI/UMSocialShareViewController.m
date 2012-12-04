@@ -231,6 +231,8 @@
 
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
-    NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);
+    if (response.viewControllerType == UMSViewControllerShareEdit) {
+        NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);        
+    }
 }
 @end
