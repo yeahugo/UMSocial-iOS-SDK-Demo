@@ -21,7 +21,7 @@
     //这里必须把delegate设置为nil，否则网络回调函数因为delegate被释放了会crash
     for (id key in _socialControllerDictionary) {
         UMSocialControllerService *socialController = [_socialControllerDictionary objectForKey:key];
-        [socialController.socialDataService.socialData setUMSoicalDelegate:nil];
+        [socialController.socialDataService setUMSocialDelegate:nil];
     }
 }
 
@@ -90,7 +90,7 @@
 
     NSString *identifierString = [_descriptorArray objectAtIndex:indexPath.row];
     UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:identifierString];
-    UMSocialControllerService *socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+    UMSocialControllerServiceComment *socialController = [[UMSocialControllerServiceComment alloc] initWithUMSocialData:socialData];
     
     //放在_socialControllerDictionary 是为了离开时候把各个对象的代理设置为nil
     if ([_socialControllerDictionary objectForKey:identifierString] == nil) {
@@ -101,7 +101,7 @@
         cell = [[UMSocialTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    [socialController.socialDataService.socialData setUMSoicalDelegate:cell];
+    [socialController.socialDataService setUMSocialDelegate:cell];
 
     cell.socialController = socialController;
     cell.descriptor = [_descriptorArray objectAtIndex:indexPath.row];

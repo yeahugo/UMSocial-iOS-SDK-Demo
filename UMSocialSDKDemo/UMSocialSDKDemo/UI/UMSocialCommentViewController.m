@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "UMSocialAccountEntity.h"
 #import "UMStringMock.h"
+#import "UMSocialControllerServiceComment.h"
 
 @interface UMSocialCommentViewController ()
 
@@ -93,9 +94,8 @@
     
     if (indexPath.row == 0) {
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test1233"];
-        UMSocialControllerService * socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
-        UINavigationController *commentList = [socialController getSocialCommentListController];
-//        UINavigationController *commentList = [_socialController getSocialCommentListController];
+        UMSocialControllerServiceComment * socialControllerComment = [[UMSocialControllerServiceComment alloc] initWithUMSocialData:socialData];
+        UINavigationController *commentList = [socialControllerComment getSocialCommentListController];
         [self presentModalViewController:commentList animated:YES];
     }
     if (indexPath.row == 1) {

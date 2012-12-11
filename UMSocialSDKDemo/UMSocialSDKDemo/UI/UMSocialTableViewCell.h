@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UMSocialControllerService.h"
+#import "UMSocialControllerServiceComment.h"
 #import "UMSocialTableViewController.h"
 
 @interface UMSocialTableViewCell : UITableViewCell <UMSocialDataDelegate,UMSocialUIDelegate>
 {
     int _index;
     NSString *_descriptor;
-    UMSocialControllerService *_socialController;
+    UMSocialControllerServiceComment *_socialController;
     UILabel  *_detailLabel;
     UIButton *_likeButton;
     UIButton *_shareButton;

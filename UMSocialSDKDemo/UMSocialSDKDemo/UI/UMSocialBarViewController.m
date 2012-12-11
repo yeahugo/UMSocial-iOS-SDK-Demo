@@ -14,6 +14,10 @@
 
 @implementation UMSocialBarViewController
 
+-(void)dealloc
+{
+    _socialBar.socialBarDelegate = nil;
+}
 
 -(id)initWithDescriptor:(NSString *)descriptor withText:(NSString *)text withImage:(UIImage *)image
 {
@@ -26,6 +30,12 @@
         _socialBar.socialData.shareImage = image;
         _socialBar.socialData.commentImage = image;
         _socialBar.socialData.commentText = text;
+        
+        //下面这个设置为NO，分享列表出现短信、邮箱不需要登录
+//        _socialBar.socialControllerService.shareNeedLogin = NO;
+        //设置个人中心页面也不需要登录，默认需要。如果你单独使用UMSocialControllerService则默认不需要
+//        _socialBar.socialControllerService.userCenterNeedLogin =NO;
+
         [self.view addSubview:_socialBar];
         _socialBar.center = CGPointMake(160, 390);
         _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 150)];

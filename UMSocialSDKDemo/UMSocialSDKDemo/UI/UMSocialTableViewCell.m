@@ -160,14 +160,14 @@
 {
     self.socialController.soicalUIDelegate = self;
     UINavigationController *shareListController = [_socialController getSocialShareListController];
-    [_tabelViewController performSelector:@selector(presentModalViewController:animated:) withObject:shareListController];
+    [_tabelViewController presentViewController:shareListController animated:YES completion:nil];
 }
 
 -(void)pushCommentList
 {
     self.socialController.soicalUIDelegate = self;
     UINavigationController *commentListController = [_socialController getSocialCommentListController];
-    [_tabelViewController performSelector:@selector(presentModalViewController:animated:) withObject:commentListController];
+    [_tabelViewController presentViewController:commentListController animated:YES completion:nil];
 }
 
 -(void)didFinishRefreshSocialData:(UMSocialResponseEntity *)response

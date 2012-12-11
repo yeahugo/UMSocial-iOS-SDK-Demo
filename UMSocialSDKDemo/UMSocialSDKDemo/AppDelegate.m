@@ -59,7 +59,7 @@
 {
     UITableViewCell *weiXinCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"weixinCell"] ;
     weiXinCell.textLabel.text = @"微信分享";
-    weiXinCell.imageView.image = [UIImage imageNamed:@"weixin_icon"];
+    weiXinCell.imageView.image = [UIImage imageNamed:@"UMSocialSDKResources.bundle/UMS_weixin_icon.png"];
     return weiXinCell;
 }
 
