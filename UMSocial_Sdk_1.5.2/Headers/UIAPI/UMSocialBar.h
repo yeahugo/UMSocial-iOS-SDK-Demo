@@ -6,27 +6,8 @@
 //  Copyright (c) umeng.com All rights reserved.
 //
 #import "UMSocialData.h"
-#import "UMSocialControllerService.h"
-
-/**
- 分享平台
- 
- */
-typedef enum {
-    UMSButtonTypeAddComment = 1,              //添加评论
-    UMSButtonTypeShareToSNS,                  //分享到微博
-    UMSButtonTypeAddLike,                     //添加喜欢
-    UMSButtonTypeDisLike,                     //取消喜欢
-} UMSButtonType;
-
-typedef enum {
-    UMSButtonTypeMaskAddComment = (1 << UMSButtonTypeAddComment),   //添加评论
-    UMSButtonTypeMaskShareToSNS = (1 << UMSButtonTypeShareToSNS),   //分享到微博
-    UMSButtonTypeMaskAddLike = (1 << UMSButtonTypeAddLike),         //添加喜欢
-    UMSButtonTypeMaskDisLike = (1 << UMSButtonTypeDisLike),         //取消喜欢
-    UMSButtonTypeMaskCommentAndShare = (UMSButtonTypeMaskAddComment | UMSButtonTypeMaskShareToSNS),                               //评论并分享
-    UMSButtonTypeMaskAll = (UMSButtonTypeAddLike | UMSButtonTypeAddComment | UMSButtonTypeShareToSNS),                                   //喜欢、评论、分享
-} UMSButtonTypeMask;
+#import "UMSocialControllerServiceComment.h"
+#import "UMSocialBarView.h"
 
 /**
  `UMSocialControllerService`对象用到的一些回调方法，可以对出现的分享列表进行设置，或者得到一些完成事件的回调方法。
@@ -54,9 +35,10 @@ typedef enum {
 >
 {
     UMSocialData *_socialData;
-    UMSocialControllerService *_socialControllerService;
+    UMSocialControllerServiceComment *_socialControllerService;
     UIViewController *_presentingViewController;
     id<UMSocialBarDelegate> _socialBarDelegate;
+    UMSocialBarView *_socialBarView;
 }
 
 ///---------------------------------------
@@ -80,6 +62,8 @@ typedef enum {
 
 @property (nonatomic, assign) id<UMSocialBarDelegate> socialBarDelegate;
 
+@property (nonatomic, retain) UMSocialBarView *socialBarView;
+
 ///---------------------------------------
 /// @name 初始化方法
 ///---------------------------------------
@@ -94,9 +78,4 @@ typedef enum {
  */
 - (id)initWithUMSocialData:(UMSocialData *)socialData withViewController:(UIViewController *)viewController;
 
-/**
- 更新`UMSocialBar`按钮上的数字
- 
- */
-- (UMSButtonTypeMask)updateButtonNumber;
 @end

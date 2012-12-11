@@ -44,6 +44,7 @@
 		D5743858160836C700C7AD07 /* yinxing1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D5743854160836C700C7AD07 /* yinxing1.jpg */; };
 		D5743859160836C700C7AD07 /* yinxing2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D5743855160836C700C7AD07 /* yinxing2.jpg */; };
 		D574385A160836C700C7AD07 /* yinxing3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D5743856160836C700C7AD07 /* yinxing3.jpg */; };
+		D5787998167790BA00EB5FF2 /* UMSocialBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5787997167790BA00EB5FF2 /* UMSocialBarView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D58D66C71615A35200D3F95A /* UMSocialDemoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58D66C61615A35200D3F95A /* UMSocialDemoTableController.m */; };
 		D59762E316476F2A0066D1E8 /* weixin_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D59762E216476F2A0066D1E8 /* weixin_icon@2x.png */; };
 		D5A3F9BF162C2BE700A98A3C /* weixin_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D5A3F9BE162C2BE700A98A3C /* weixin_icon.png */; };
@@ -118,6 +119,8 @@
 		D5743854160836C700C7AD07 /* yinxing1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yinxing1.jpg; sourceTree = "<group>"; };
 		D5743855160836C700C7AD07 /* yinxing2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yinxing2.jpg; sourceTree = "<group>"; };
 		D5743856160836C700C7AD07 /* yinxing3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yinxing3.jpg; sourceTree = "<group>"; };
+		D5787996167790BA00EB5FF2 /* UMSocialBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialBarView.h; sourceTree = "<group>"; };
+		D5787997167790BA00EB5FF2 /* UMSocialBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSocialBarView.m; sourceTree = "<group>"; };
 		D58D66C51615A35200D3F95A /* UMSocialDemoTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UMSocialDemoTableController.h; path = UI/UMSocialDemoTableController.h; sourceTree = "<group>"; };
 		D58D66C61615A35200D3F95A /* UMSocialDemoTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UMSocialDemoTableController.m; path = UI/UMSocialDemoTableController.m; sourceTree = "<group>"; };
 		D59762E216476F2A0066D1E8 /* weixin_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weixin_icon@2x.png"; sourceTree = "<group>"; };
@@ -237,6 +240,8 @@
 		D5741DCB1676CBC6002A92C6 /* UIAPI */ = {
 			isa = PBXGroup;
 			children = (
+				D5787996167790BA00EB5FF2 /* UMSocialBarView.h */,
+				D5787997167790BA00EB5FF2 /* UMSocialBarView.m */,
 				D5741DCC1676CBC6002A92C6 /* UMSocialBar.h */,
 				D5741DCD1676CBC6002A92C6 /* UMSocialConfigDelegate.h */,
 				D5741DCE1676CBC6002A92C6 /* UMSocialControllerService.h */,
@@ -457,6 +462,7 @@
 				D5741DDC1676CBC6002A92C6 /* AFHTTPClient.m in Sources */,
 				D5741DDD1676CBC6002A92C6 /* AFHTTPRequestOperation.m in Sources */,
 				D5741DDE1676CBC6002A92C6 /* AFURLConnectionOperation.m in Sources */,
+				D5787998167790BA00EB5FF2 /* UMSocialBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,8 +541,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../UMSocial_Sdk_1.5.1/frameworks/Wechat\"",
-					"\"$(SRCROOT)/../UMSocial_Sdk_1.5.1\"",
 					"\"$(SRCROOT)/../UMSocial_Sdk_1.5.2/frameworks/Wechat\"",
 					"\"$(SRCROOT)/../UMSocial_Sdk_1.5.2\"",
 				);
@@ -560,8 +564,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../UMSocial_Sdk_1.5.1/frameworks/Wechat\"",
-					"\"$(SRCROOT)/../UMSocial_Sdk_1.5.1\"",
 					"\"$(SRCROOT)/../UMSocial_Sdk_1.5.2/frameworks/Wechat\"",
 					"\"$(SRCROOT)/../UMSocial_Sdk_1.5.2\"",
 				);

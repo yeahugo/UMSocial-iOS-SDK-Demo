@@ -37,7 +37,7 @@
 //        _socialBar.socialControllerService.userCenterNeedLogin =NO;
 
         [self.view addSubview:_socialBar];
-        _socialBar.center = CGPointMake(160, 390);
+        _socialBar.center = CGPointMake(160, 391);
         _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 150)];
         _textLabel.numberOfLines = 4;
         _textLabel.text = text;
