@@ -3,13 +3,14 @@
 //  SocialSDK
 //
 //  Created by Jiahuan Ye on 12-8-22.
-//  Copyright (c) 2012年 Umeng. All rights reserved.
+//  Copyright (c) umeng.com All rights reserved.
 //
 
 #import "UMSocialShareViewController.h"
 #import "UMStringMock.h"
-#import <CoreLocation/CoreLocation.h>
+#import "WXApi.h"
 #import <MessageUI/MessageUI.h>
+#import "UMSocialMacroDefine.h"
 
 @interface UMSocialShareViewController ()
 
@@ -17,7 +18,19 @@
 
 @implementation UMSocialShareViewController
 
-
+-(void)dealloc
+{
+    if ([_socialController.socialDataService.socialDataDelegate isEqual:self]) {
+        [_socialController.socialDataService setUMSocialDelegate:nil];
+    }
+    SAFE_ARC_RELEASE(_socialController);
+    SAFE_ARC_RELEASE(_editActionSheet);
+    SAFE_ARC_RELEASE(_dataActionSheet);
+    SAFE_ARC_RELEASE(_shareTableView);
+    SAFE_ARC_RELEASE(_imageView);
+    SAFE_ARC_RELEASE(_locationManager);
+    SAFE_ARC_SUPER_DEALLOC();
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,20 +40,21 @@
         textLabel.numberOfLines = 4;
         textLabel.text = [UMStringMock commentMockString];
         [self.view addSubview:textLabel];
+        SAFE_ARC_RELEASE(textLabel);
         
         _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,90 , 150, 120)];
         NSString *imageName = [NSString stringWithFormat:@"yinxing%d.jpg",rand()%4];
         _imageView.image = [UIImage imageNamed:imageName];
         [self.view addSubview:_imageView];
         
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"another"];
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
         
         socialData.shareText = textLabel.text;
         socialData.shareImage = _imageView.image;
         
         _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
         _socialController.soicalUIDelegate = self;
-
+        SAFE_ARC_RELEASE(socialData);
         _shareTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 190, 320, 250)];
         _shareTableView.dataSource = self;
         _shareTableView.delegate = self;
@@ -50,7 +64,6 @@
         _editActionSheet.tag = UMShareEditPresent;
         _dataActionSheet = [[UIActionSheet alloc] initWithTitle:@"直接发送微博" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"QQ空间",@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",nil];
         _dataActionSheet.tag = UMSharePostData;
-
     }
     return self;
 }
@@ -58,7 +71,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    _locationManager = [[CLLocationManager alloc] init];
+    [_locationManager startUpdatingLocation];
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"test" message:@"test" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [alertView show];
 }
 
 - (void)viewDidUnload
@@ -70,9 +86,6 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    if ([_socialController.socialDataService.socialDataDelegate isEqual:self]) {
-        [_socialController.socialDataService setUMSocialDelegate:nil];
-    }
     [super viewWillDisappear:animated];
 }
 
@@ -95,6 +108,7 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        SAFE_ARC_AUTORELEASE(cell);
     }
     if (indexPath.row == 0) {
         cell.textLabel.text = @"分享列表";
@@ -103,10 +117,10 @@
         cell.textLabel.text = @"图文分享";
     }
     if (indexPath.row == 2) {
-        cell.textLabel.text = @"直接发送微博";
+        cell.textLabel.text = @"直接发送到单个微博平台";
     }
     if (indexPath.row == 3) {
-        cell.textLabel.text = @"直接发送到多个微博";
+        cell.textLabel.text = @"直接发送到多个微博平台";
     }
     
     return cell;    
@@ -125,8 +139,7 @@
         [_dataActionSheet showInView:self.view];
         _dataActionSheet.delegate = self;
     }
-
-    else if(indexPath.row == UMSharePostMultiData){
+    else if (indexPath.row == UMSharePostMultiData) {
         NSDictionary *socialDic =  _socialController.socialData.socialAccount;
         NSMutableArray *allSnsArray = [[NSMutableArray alloc] init];
         for (id type in socialDic) {
@@ -136,28 +149,18 @@
             [allSnsArray addObject:type];
         }
         unsigned int dateInteger = [[NSDate date] timeIntervalSince1970];
-        int random = rand_r(&dateInteger)%10;
+        int random = rand_r(&dateInteger)%10;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
         CLLocation *location = [[CLLocation alloc] initWithLatitude:28+random longitude:107+random];
-        
+
         NSString *shareContent = [NSString stringWithFormat:@"%@+%d",_socialController.socialData.shareText,random];
         
-        if (allSnsArray.count != 0) {
-            [_socialController.socialDataService postSNSWithType:allSnsArray usids:nil  content:shareContent image:_socialController.socialData.shareImage location:location];
-        }
-        else
-        {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"没有授权sns账号" message:@"请先授权一个sns账号" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
-            [alertView show];
-        }
+        [_socialController.socialDataService setUMSocialDelegate:self];
+        [_socialController.socialDataService postSNSWithType:allSnsArray usids:nil  content:shareContent image:_socialController.socialData.shareImage location:location];
+        SAFE_ARC_RELEASE(location);
+        SAFE_ARC_RELEASE(allSnsArray);
     }
     else{
-        //用局部变量的方式，你也可以用_socialController来得到分享列表
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test123"];
-        socialData.shareText = _socialController.socialDataService.socialData.shareText;
-        socialData.shareImage = _socialController.socialDataService.socialData.shareImage;
-        UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
-        socialControllerService.soicalUIDelegate = self;
-         UINavigationController *shareListController = [socialControllerService getSocialShareListController];
+         UINavigationController *shareListController = [_socialController getSocialShareListController];
         [self presentModalViewController:shareListController animated:YES];
     }
 }
@@ -172,54 +175,71 @@
             if (shareToType == UMSocialSnsTypeSms && ![MFMessageComposeViewController canSendText]) {
                 UIAlertView * servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"该设备不支持短信功能" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 [servicesDisabledAlert show];
+                SAFE_ARC_RELEASE(servicesDisabledAlert);
             }
             if (shareToType == UMSocialSnsTypeEmail && ![MFMailComposeViewController canSendMail]) {
                 UIAlertView *servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"邮件功能未开启" message:@"您当前设备的邮件服务处于未启用状态，若想通过邮件分享，请到设置中设置邮件服务后，再进行分享" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 [servicesDisabledAlert show];
+                SAFE_ARC_RELEASE(servicesDisabledAlert);
             }
             else if(shareToType <= UMSocialSnsTypeSms){
                 UINavigationController *shareEditController = [_socialController getSocialShareEditController:shareToType];
                 if (shareEditController != nil) {
                     [self presentModalViewController:shareEditController animated:YES];
-                }
+                }            
             }
         }
         return;
     }
     if (actionSheet.tag == UMSharePostData) {
-        //        unsigned int dateInteger = [[NSDate date] timeIntervalSince1970];
-        //        int random = rand_r(&dateInteger)%10;
         
         CLLocation *location = _locationManager.location;
         NSLog(@"location is %@",location);
         
-        //        CLLocation *location = [[CLLocation alloc] initWithLatitude:28+random longitude:107+random];
         NSString *dateString = [[NSDate date] description];
         NSString *shareContent = [NSString stringWithFormat:@"%@ %@",[UMStringMock commentMockString],dateString];
+        [_socialController.socialDataService setUMSocialDelegate:self];
         [_socialController.socialDataService postSNSWithType:shareToType usid:nil content:shareContent image:_imageView.image location:location];
-        //        [location release];
         return;
     }
     else if(actionSheet.tag == UMShareEditPresent) {
-        [_socialController.socialDataService setUMSocialDelegate:self];
-        _socialController.soicalUIDelegate = self;
-        UINavigationController *shareEditController = [_socialController getSocialShareEditController:shareToType];
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test321" withTitle:nil];
+        UMSocialControllerService *socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+        socialController.soicalUIDelegate = self;
+        socialController.socialData.shareText = [UMStringMock commentMockString];
+        socialController.socialData.shareImage = _imageView.image;
+        [socialController.socialDataService setUMSocialDelegate:self];
+        UINavigationController *shareEditController = [socialController getSocialShareEditController:shareToType];
+        SAFE_ARC_RELEASE(socialController);
+        SAFE_ARC_RELEASE(socialData);
         [self presentModalViewController:shareEditController animated:YES];
     }
 }
+
 -(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
 {
+    NSLog(@"response is %@",response);
     UIAlertView *alertView;
-    if (response.responseType == UMSResponseShareToSNS) {
-        if (response.responseCode == UMSResponseCodeSuccess) {
-            alertView = [[UIAlertView alloc] initWithTitle:@"成功" message:@"发送成功" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+    if (response.responseCode == UMSResponseCodeSuccess) {
+        if (response.responseType == UMSResponseShareToSNS) {
+            if (response.responseCode == UMSResponseCodeSuccess) {
+                alertView = [[UIAlertView alloc] initWithTitle:@"成功" message:@"亲，您刚才调用的是数据级的发送微博接口，如果要获取发送状态需要像这样实现回调方法~" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+                [alertView show];
+                SAFE_ARC_RELEASE(alertView);
+            }
         }
-        else {
-            NSString *msg = response.message;
-            alertView = [[UIAlertView alloc] initWithTitle:@"失败" message:msg delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
-            
-        }
+        if (response.responseType == UMSResponseShareToMutilSNS) {
+            if (response.responseCode == UMSResponseCodeSuccess) {
+                alertView = [[UIAlertView alloc] initWithTitle:@"成功" message:@"亲，您刚才调用的是发送到多个微博平台的数据级接口，如果要获取发送状态需要像这样实现回调方法~" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+                [alertView show];
+                SAFE_ARC_RELEASE(alertView);
+            }
+        }        
+    }
+    else {
+        alertView = [[UIAlertView alloc] initWithTitle:@"失败" message:@"亲，您刚才调用的发送微博接口发送失败了，具体原因请看到回调方法里面的responseCode和message~" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
         [alertView show];
+        SAFE_ARC_RELEASE(alertView);
     }
 }
 
@@ -231,8 +251,7 @@
 
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
-    if (response.viewControllerType == UMSViewControllerShareEdit) {
-        NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);        
-    }
+    NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);
 }
+
 @end

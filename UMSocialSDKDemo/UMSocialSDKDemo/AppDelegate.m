@@ -10,7 +10,6 @@
 #import "UMSocialDemoTableController.h"
 #import "UMSocialData.h"
 #import "WXApi.h"
-#import "UMUIHelper.h"
 
 #define umeng_appkey @"507fcab25270157b37000010"
 
@@ -48,8 +47,7 @@
 
 //- (NSArray *)shareToPlatforms
 //{
-//    NSNumber *sinaNumber = [NSNumber numberWithInt:UMSocialSnsTypeSina];
-//    NSArray *shareToArray = [NSArray arrayWithObjects:sinaNumber, nil];
+//    NSArray *shareToArray = [NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToEmail,UMShareToSms,nil];
 //    return shareToArray;
 //}
 
@@ -63,10 +61,10 @@
     return weiXinCell;
 }
 
--(void)didSelectShareListTableViewCell
+-(void)didSelectShareListTableViewCell:(UITableView *)tableView
 {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"分享到微信" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"分享到会话",@"分享到朋友圈",nil];
-    [actionSheet showInView:self.window.rootViewController.view];
+    [actionSheet showInView:tableView];
 
     NSLog(@"分享到微信");
 }

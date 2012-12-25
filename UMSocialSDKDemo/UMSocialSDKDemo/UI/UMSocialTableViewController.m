@@ -3,12 +3,13 @@
 //  SocialSDK
 //
 //  Created by Jiahuan Ye on 12-8-21.
-//  Copyright (c) 2012年 Umeng. All rights reserved.
+//  Copyright (c) umeng.com All rights reserved.
 //
 
 #import "UMSocialTableViewController.h"
 #import "UMSocialTableViewCell.h"
 #import "UMSocialBarViewController.h"
+#import "UMSocialMacroDefine.h"
 
 @interface UMSocialTableViewController ()
 
@@ -18,11 +19,14 @@
 
 -(void)dealloc
 {
+    SAFE_ARC_RELEASE(_descriptorArray);
     //这里必须把delegate设置为nil，否则网络回调函数因为delegate被释放了会crash
     for (id key in _socialControllerDictionary) {
         UMSocialControllerService *socialController = [_socialControllerDictionary objectForKey:key];
         [socialController.socialDataService setUMSocialDelegate:nil];
     }
+    SAFE_ARC_RELEASE(_socialControllerDictionary);
+    SAFE_ARC_SUPER_DEALLOC();
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -61,7 +65,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 #pragma mark - Table view data source
@@ -89,8 +93,9 @@
     UMSocialTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     NSString *identifierString = [_descriptorArray objectAtIndex:indexPath.row];
-    UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:identifierString];
+    UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:identifierString withTitle:nil];
     UMSocialControllerServiceComment *socialController = [[UMSocialControllerServiceComment alloc] initWithUMSocialData:socialData];
+    SAFE_ARC_RELEASE(socialData);
     
     //放在_socialControllerDictionary 是为了离开时候把各个对象的代理设置为nil
     if ([_socialControllerDictionary objectForKey:identifierString] == nil) {
@@ -99,6 +104,7 @@
     
     if (cell == nil) {
         cell = [[UMSocialTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        SAFE_ARC_AUTORELEASE(cell);
     }
     
     [socialController.socialDataService setUMSocialDelegate:cell];
@@ -106,7 +112,7 @@
     cell.socialController = socialController;
     cell.descriptor = [_descriptorArray objectAtIndex:indexPath.row];
     cell.tableViewController = self;
-    cell.index = indexPath.row;
+    SAFE_ARC_RELEASE(socialController);
     return cell;
 }
 
@@ -116,7 +122,8 @@
 {
     UMSocialTableViewCell * umSeperateCell = (UMSocialTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     UMSocialBarViewController *barViewController = [[UMSocialBarViewController alloc] initWithDescriptor:[_descriptorArray objectAtIndex:indexPath.row] withText:[umSeperateCell labelText] withImage:[umSeperateCell showImage]];
-    [self.navigationController pushViewController:barViewController animated:YES];  
+    [self.navigationController pushViewController:barViewController animated:YES];
+    SAFE_ARC_RELEASE(barViewController);
 }
 
 @end

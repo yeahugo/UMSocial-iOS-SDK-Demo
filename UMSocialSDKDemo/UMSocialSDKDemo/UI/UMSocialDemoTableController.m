@@ -3,7 +3,7 @@
 //  SocialSDK
 //
 //  Created by Jiahuan Ye on 12-8-21.
-//  Copyright (c) 2012年 Umeng. All rights reserved.
+//  Copyright (c) umeng.com All rights reserved.
 //
 
 #import "UMSocialDemoTableController.h"
@@ -13,6 +13,7 @@
 #import "UMSocialCommentViewController.h"
 #import "UMStringMock.h"
 #import "UMSocialAccountViewController.h"
+#import "UMSocialMacroDefine.h"
 
 @interface UMSocialDemoTableController ()
 
@@ -64,6 +65,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        SAFE_ARC_AUTORELEASE(cell);
     }
     if (indexPath.row == 0) {
         cell.textLabel.text = @"操作栏";
@@ -80,13 +82,11 @@
     if (indexPath.row == 4) {
         cell.textLabel.text = @"个人账号接口";
     }
-    if (indexPath.row == 5) {
-        cell.textLabel.text = @"统计sdk";
-    }
     // Configure the cell...
     
     return cell;
 }
+
 
 
 #pragma mark - Table view delegate
@@ -95,32 +95,34 @@
 {
     UIViewController *pushedViewController = nil;
 
-    
     if (indexPath.row == 0) {
         NSString *imageName = [NSString stringWithFormat:@"yinxing%d.jpg",rand()%4];
         UMSocialBarViewController *barViewController = [[UMSocialBarViewController alloc] initWithDescriptor:@"test" withText:[UMStringMock commentMockString] withImage:[UIImage imageNamed:imageName]] ;
+        SAFE_ARC_AUTORELEASE(barViewController);
         pushedViewController = barViewController;
     }
     if(indexPath.row == 1){
-        UMSocialTableViewController *separateViewController = [[UMSocialTableViewController alloc] init] ;
+        UMSocialTableViewController *separateViewController = [[UMSocialTableViewController alloc] init];
+        SAFE_ARC_AUTORELEASE(separateViewController);
         pushedViewController = separateViewController;
     }
     if (indexPath.row == 2) {
-        UMSocialShareViewController *socialShareViewController = [[UMSocialShareViewController alloc] initWithNibName:@"UMSocialShareViewController" bundle:nil] ;
+        UMSocialShareViewController *socialShareViewController = [[UMSocialShareViewController alloc] initWithNibName:@"UMSocialShareViewController" bundle:nil];
+        SAFE_ARC_AUTORELEASE(socialShareViewController);
         pushedViewController = socialShareViewController;
     }
     if (indexPath.row == 3) {
         UIViewController *commentViewController = [[UMSocialCommentViewController alloc] init] ;
-        pushedViewController = commentViewController;        
+        SAFE_ARC_AUTORELEASE(commentViewController);
+        pushedViewController = commentViewController;
     }
     if (indexPath.row == 4) {
-        UMSocialAccountViewController *socialAccountViewController = [[UMSocialAccountViewController alloc] initWithStyle:UITableViewStylePlain] ;
+        UMSocialAccountViewController *socialAccountViewController = [[UMSocialAccountViewController alloc] initWithStyle:UITableViewStylePlain];
+        SAFE_ARC_AUTORELEASE(socialAccountViewController);
         pushedViewController = socialAccountViewController;
     }
-
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.navigationController pushViewController:pushedViewController animated:YES];
 }
-
-
 @end

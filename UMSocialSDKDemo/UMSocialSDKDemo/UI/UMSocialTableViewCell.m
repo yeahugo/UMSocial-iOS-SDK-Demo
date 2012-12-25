@@ -3,19 +3,28 @@
 //  SocialSDK
 //
 //  Created by Jiahuan Ye on 12-8-21.
-//  Copyright (c) 2012年 Umeng. All rights reserved.
+//  Copyright (c) umeng.com All rights reserved.
 //
 
 #import "UMSocialTableViewCell.h"
 #import "UMStringMock.h"
+#import "UMSocialMacroDefine.h"
 
 @implementation UMSocialTableViewCell
 
 @synthesize descriptor = _descriptor;
 @synthesize tableViewController =_tabelViewController;
 @synthesize socialController = _socialController;
-@synthesize index = _index;
+//@synthesize index = _index;
 
+-(void)dealloc
+{
+    SAFE_ARC_RELEASE(_descriptor);
+    SAFE_ARC_RELEASE(_detailLabel);
+    SAFE_ARC_RELEASE(_detailImageView);
+    SAFE_ARC_RELEASE(_socialController);
+    SAFE_ARC_SUPER_DEALLOC();
+}
 
 -(NSString *)labelText
 {
@@ -123,8 +132,8 @@
 -(void)handleAddLike:(UMSocialResponseEntity *)response
 {
     int st = response.responseCode;
+    [_likeButton setEnabled:YES];
     if (st == UMSResponseCodeSuccess) {
-        [_likeButton setEnabled:YES];
         int likeNum = [_socialController.socialDataService.socialData getNumber:UMSNumberLike];
         NSString *likeText = [NSString stringWithFormat:@"喜欢 %d",likeNum];
         [_likeButton setTitle:likeText forState:UIControlStateNormal];
@@ -158,21 +167,28 @@
 
 -(void)pushShareList
 {
-    self.socialController.soicalUIDelegate = self;
+    NSLog(@"self.socialController is %@",self.socialController);
+    [self.socialController setSoicalUIDelegate:self];
     UINavigationController *shareListController = [_socialController getSocialShareListController];
-    [_tabelViewController presentViewController:shareListController animated:YES completion:nil];
+    [_tabelViewController presentModalViewController:shareListController animated:YES];
+}
+
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    if (response.viewControllerType == UMSViewControllerShareEdit) {
+        [self.socialController.socialDataService setUMSocialDelegate:self];
+        [self.socialController.socialDataService requestSocialData];
+    }
+    if (response.viewControllerType == UMSViewControllerCommentEdit) {
+        [self handleGetSocilaInformation:response];
+    }
 }
 
 -(void)pushCommentList
 {
-    self.socialController.soicalUIDelegate = self;
+    [self.socialController setSoicalUIDelegate:self];
     UINavigationController *commentListController = [_socialController getSocialCommentListController];
-    [_tabelViewController presentViewController:commentListController animated:YES completion:nil];
+    [_tabelViewController presentModalViewController:commentListController animated:YES];
 }
 
--(void)didFinishRefreshSocialData:(UMSocialResponseEntity *)response
-{
-    NSLog(@"didFinishRefreshSocialData in UMSocialTableViewCell!!");
-    [self handleGetSocilaInformation:response];
-}
 @end

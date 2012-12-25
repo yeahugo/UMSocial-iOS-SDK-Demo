@@ -3,7 +3,7 @@
 //  SocialSDK
 //
 //  Created by Jiahuan Ye on 12-8-21.
-//  Copyright (c) 2012年 Umeng. All rights reserved.
+//  Copyright (c) umeng.com All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,7 +12,7 @@
 
 @interface UMSocialTableViewCell : UITableViewCell <UMSocialDataDelegate,UMSocialUIDelegate>
 {
-    int _index;
+//    int _index;
     NSString *_descriptor;
     UMSocialControllerServiceComment *_socialController;
     UILabel  *_detailLabel;
@@ -23,11 +23,12 @@
     UIImageView *_detailImageView;
 }
 
-@property (nonatomic) int index;
+//@property (nonatomic) int index;
 @property (nonatomic, copy) NSString *descriptor;
-@property (unsafe_unretained, nonatomic, readonly) NSString *labelText;
-@property (unsafe_unretained, nonatomic, readonly) UIImage *showImage;
+@property (nonatomic, readonly) NSString *labelText;
+@property (nonatomic, readonly) UIImage *showImage;
 @property (nonatomic, unsafe_unretained) UMSocialTableViewController *tableViewController;
-@property (nonatomic, strong) UMSocialControllerService *socialController;
+
+@property (nonatomic, retain) UMSocialControllerService *socialController;
 
 @end

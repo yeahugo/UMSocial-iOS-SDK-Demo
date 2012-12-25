@@ -3,7 +3,7 @@
 //  SocialSDK
 //
 //  Created by Jiahuan Ye on 12-9-1.
-//  Copyright (c) 2012年 Umeng. All rights reserved.
+//  Copyright (c) umeng.com All rights reserved.
 //
 
 #import "UMSocialCommentViewController.h"
@@ -11,12 +11,21 @@
 #import "UMSocialAccountEntity.h"
 #import "UMStringMock.h"
 #import "UMSocialControllerServiceComment.h"
+#import "UMSocialMacroDefine.h"
 
 @interface UMSocialCommentViewController ()
 
 @end
 
 @implementation UMSocialCommentViewController
+
+-(void)dealloc
+{
+    SAFE_ARC_RELEASE(_socialController);
+    SAFE_ARC_RELEASE(_commentTableView);
+    SAFE_ARC_RELEASE(_imageView);
+    SAFE_ARC_SUPER_DEALLOC();
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,18 +35,20 @@
         textLabel.numberOfLines = 4;
         textLabel.text = [UMStringMock commentMockString];
         [self.view addSubview:textLabel];
+        SAFE_ARC_RELEASE(textLabel);
         
         _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,90 , 150, 120)];
         NSString *imageName = [NSString stringWithFormat:@"yinxing%d.jpg",rand()%4];
         _imageView.image = [UIImage imageNamed:imageName];
         [self.view addSubview:_imageView];
         
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"another"];
-        _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
+        _socialController = [[UMSocialControllerServiceComment alloc] initWithUMSocialData:socialData];
         
         _socialController.socialDataService.socialData.commentText = textLabel.text;        //作为分享到微博内容"//"之后的文字
         _socialController.socialDataService.socialData.commentImage = _imageView.image;
         
+        SAFE_ARC_RELEASE(socialData);
         _commentTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 190, 320, 250)];
         _commentTableView.dataSource = self;
         _commentTableView.delegate = self;
@@ -71,6 +82,7 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        SAFE_ARC_AUTORELEASE(cell);
     }
     if (indexPath.row == 0) {
         cell.textLabel.text = @"评论列表";
@@ -93,9 +105,12 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == 0) {
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test1233"];
-        UMSocialControllerServiceComment * socialControllerComment = [[UMSocialControllerServiceComment alloc] initWithUMSocialData:socialData];
-        UINavigationController *commentList = [socialControllerComment getSocialCommentListController];
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
+        UMSocialControllerServiceComment *socialController = [[UMSocialControllerServiceComment alloc] initWithUMSocialData:socialData];
+        socialController.commentNeedLogin = NO;
+        SAFE_ARC_RELEASE(socialData);
+        UINavigationController *commentList = [_socialController getSocialCommentListController];
+        SAFE_ARC_RELEASE(socialController);
         [self presentModalViewController:commentList animated:YES];
     }
     if (indexPath.row == 1) {
@@ -114,10 +129,9 @@
                 [shareToSNSDictionary setObject:[[snsDic objectForKey:key] usid] forKey:key];
             }
         }
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test1121"];
-        UMSocialDataService *socialDataService = [[ UMSocialDataService alloc] initWithUMSocialData:socialData];
-
-        [socialDataService postCommentWithContent:[UMStringMock commentMockString] image:_socialController.socialData.commentImage templateText:_socialController.socialData.commentText  location:location shareToSNSWithUsid:shareToSNSDictionary];
+        [_socialController.socialDataService postCommentWithContent:[UMStringMock commentMockString] image:_socialController.socialData.commentImage templateText:_socialController.socialData.commentText  location:location shareToSNSWithUsid:shareToSNSDictionary];
+        SAFE_ARC_RELEASE(location);
+        SAFE_ARC_RELEASE(shareToSNSDictionary);
     }
 }
 
@@ -133,6 +147,7 @@
         alertView.message = @"失败";
     }
     [alertView show];
+    SAFE_ARC_RELEASE(alertView);
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
