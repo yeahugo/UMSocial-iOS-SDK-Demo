@@ -73,8 +73,6 @@
     [super viewDidLoad];
     _locationManager = [[CLLocationManager alloc] init];
     [_locationManager startUpdatingLocation];
-//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"test" message:@"test" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//    [alertView show];
 }
 
 - (void)viewDidUnload
@@ -203,15 +201,7 @@
         return;
     }
     else if(actionSheet.tag == UMShareEditPresent) {
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test321" withTitle:nil];
-        UMSocialControllerService *socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
-        socialController.soicalUIDelegate = self;
-        socialController.socialData.shareText = [UMStringMock commentMockString];
-        socialController.socialData.shareImage = _imageView.image;
-        [socialController.socialDataService setUMSocialDelegate:self];
-        UINavigationController *shareEditController = [socialController getSocialShareEditController:shareToType];
-        SAFE_ARC_RELEASE(socialController);
-        SAFE_ARC_RELEASE(socialData);
+        UINavigationController *shareEditController = [_socialController getSocialShareEditController:shareToType];
         [self presentModalViewController:shareEditController animated:YES];
     }
 }

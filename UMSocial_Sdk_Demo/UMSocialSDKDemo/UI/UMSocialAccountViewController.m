@@ -47,7 +47,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test"];
     _socialData = [UMSocialData defaultData];
     _socialUIController = [[UMSocialControllerService alloc] initWithUMSocialData:_socialData];
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -145,16 +144,7 @@
         [_activityIndicatorView startAnimating];
     }
     else if (indexPath.row == 8) {
-//        UINavigationController *accountViewController =[_socialUIController getSocialAccountController];
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test321" withTitle:nil];
-        UMSocialControllerService *socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
-        socialController.soicalUIDelegate = self;
-//        [socialController setUMSocialUIDelegate:self];
-        
-        SAFE_ARC_RELEASE(socialData);
-        
-        UINavigationController *accountViewController =[socialController getSocialAccountController];
-        SAFE_ARC_RELEASE(socialController);
+        UINavigationController *accountViewController =[_socialUIController getSocialAccountController];
         
         [self presentModalViewController:accountViewController animated:YES];
     }
@@ -184,12 +174,8 @@
     if (actionSheet.tag == UMAccountOauth) {
         _selectOauthType = shareToType;
         
-        UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:_socialData];
-        
-        socialControllerService.soicalUIDelegate = self;
-        UINavigationController *oauthController = [socialControllerService getSocialOauthController:shareToType];
+        UINavigationController *oauthController = [_socialUIController getSocialOauthController:shareToType];
         [self presentModalViewController:oauthController animated:YES];
-        SAFE_ARC_RELEASE(socialControllerService);
     }
     else if (actionSheet.tag == UMAccountUnOauth) {
         [_socialUIController.socialDataService requestUnOauthWithType:shareToType];

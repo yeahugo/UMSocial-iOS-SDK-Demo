@@ -44,7 +44,7 @@
         
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
         _socialController = [[UMSocialControllerServiceComment alloc] initWithUMSocialData:socialData];
-        
+        _socialController.commentNeedLogin = YES;
         _socialController.socialDataService.socialData.commentText = textLabel.text;        //作为分享到微博内容"//"之后的文字
         _socialController.socialDataService.socialData.commentImage = _imageView.image;
         
@@ -105,12 +105,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == 0) {
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
-        UMSocialControllerServiceComment *socialController = [[UMSocialControllerServiceComment alloc] initWithUMSocialData:socialData];
-        socialController.commentNeedLogin = NO;
-        SAFE_ARC_RELEASE(socialData);
         UINavigationController *commentList = [_socialController getSocialCommentListController];
-        SAFE_ARC_RELEASE(socialController);
         [self presentModalViewController:commentList animated:YES];
     }
     if (indexPath.row == 1) {
