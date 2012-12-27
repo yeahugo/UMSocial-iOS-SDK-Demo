@@ -102,10 +102,10 @@
     if ([_commentButton.titleLabel.text intValue] != [socialData getNumber:UMSNumberComment]) {
         [_commentButton setTitle:[NSString stringWithFormat:@"%d", [socialData getNumber:UMSNumberComment]]
                         forState:UIControlStateNormal];
-        actionTypeMask = actionTypeMask | UMSButtonTypeAddComment;
+        actionTypeMask = actionTypeMask | UMSButtonTypeMaskAddComment;
     }
     if ([_shareButton.titleLabel.text intValue] != shareCount) {
-        actionTypeMask = actionTypeMask | UMSButtonTypeShareToSNS;
+        actionTypeMask = actionTypeMask | UMSButtonTypeMaskShareToSNS;
         [_shareButton setTitle:[NSString stringWithFormat:@"%d",[socialData getNumber:UMSNumberShare]] forState:UIControlStateNormal];
     }
     if ([_likeButton.titleLabel.text intValue] != [socialData getNumber:UMSNumberLike]) {
