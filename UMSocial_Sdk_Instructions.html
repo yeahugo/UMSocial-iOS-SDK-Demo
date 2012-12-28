@@ -299,9 +299,17 @@ pre {
 <body>
 <h1><strong>iOS Social SDK使用指南</strong></h1>
 
-<h1>1.快速集成指南</h1>
+<p> <font color="red">重要通知：原“SNS分享组件”已全面升级，并更名为“友盟社会化组件”。除原有功能外，新组件还支持分享至QQ空间、豆瓣、微信等新功能，并新增了“登录”、“评论”、“喜欢”等社会化功能。</font></p>
 
-<h2>1.1 产品概述</h2>
+<h3><a href="#product_guide" style="text-decoration:none">1. 产品概述</a></h3>
+
+<h3><a href="#quick_guide" style="text-decoration:none">2. 快速集成指南</a></h3>
+
+<h3><a href="#develop_guide" style="text-decoration:none">3. 开发指南</a></h3>
+
+<h3><a href="#error_code" style="text-decoration:none">4. 附录</a></h3>
+
+<h2><a name="product_guide" style="color:black">1.产品概述</a></h2>
 
 <p>友盟社会化分享服务帮助你为你的用户提供社会化分享功能，连接用户和他的社会关系，方便他们分享在你的应用中的精彩体验。</p>
 
@@ -313,23 +321,22 @@ pre {
 </ol>
 
 
-<h2>1.2 集成步骤</h2>
+<h2><a name="quick_guide" style="color:black">2.快速集成指南</a></h2>
 
 <p>社会化组件iOS版<a href="http://v.youku.com/v_show/id_XNDg4MTQ2MDMy.html">集成视频</a>，请将播放器的清晰度切换为超清。</p>
 
-<h3>1.2.1 申请友盟应用标识</h3>
+<h3>2.1 申请友盟应用标识</h3>
 
 <p>   如果你之前已经在友盟注册了应用，获得了<code>UMENG_APPKEY</code>，可以继续使用之前获得<code>UMENG_APPKEY</code>。 <br/>
    如果你尚未在友盟注册应用，你可以登录你的账号，点击<strong>添加新应用</strong>，完成新应用填写之后，讲进入应用管理页面。在该页面就能得到<code>Appkey</code>。</p>
 
-<h3>1.2.2 绑定友盟应用标识与各开放平台</h3>
+<h3>2.2 <a name="biding_config" style="color:black">绑定友盟应用标识与各开放平台</a></h3>
 
-<pre><code> 获得appkey后，你还需要将你的应用和我们支持的分享平台注册时获取的appkey和appsecret进行绑定。由于QQ空间、新浪微博、腾讯微博、人人网、豆瓣各个平台注册app的方法很有可能有变化，你可以参考我们线上版本的开发文档有关各个平台注册方法：
-</code></pre>
+<p>   获得appkey后，你还需要将你的应用和我们支持的分享平台注册时获取的appkey和appsecret进行绑定。由于QQ空间、新浪微博、腾讯微博、人人网、豆瓣各个平台注册app的方法很有可能有变化，你可以参考我们线上版本的开发文档有关各个平台注册方法：</p>
 
 <p> <a href="http://dev.umeng.com/doc/document_social_ios.html" title="开发文档">iOS Social SDK 在线文档</a></p>
 
-<h3>1.2.3 向工程中添加社会化组件安装包</h3>
+<h3>2.3 向工程中添加社会化组件安装包</h3>
 
 <ol>
 <li>在Finder中，将<code>UMSocial_Sdk_x.x.x/</code>(x.x.x是具体版本号）文件夹拖拽到你的工程目录中（<em><strong>请注意</strong></em>：如果你是升级友盟社会化分享SDK，请确保在操作前，彻底删除了旧版本中的所有文件）。</li>
@@ -341,7 +348,7 @@ pre {
 <blockquote><p><strong>注意：</strong>
 <code>UMSocial_Sdk_x.x.x/</code>文件夹内有两个lib文件，一个<code>UMSocialLibrary.a</code>和<code>UMSocialCommentLibrary.a</code>,后者是提供评论的界面和社会化操作栏的功能，如果你仅用分享的功能的话，使用前者即可，你可以在你的Xcode工程内把<code>UMSocialCommentLibrary.a</code>删除。这个lib对应的头文件是<code>UMSocialBar.h</code>和<code>UMSocialControllerServiceComment.h</code>，你也可以删除。</p></blockquote>
 
-<h3>1.2.4 向工程中添加依赖框架</h3>
+<h3>2.4 向工程中添加依赖框架</h3>
 
 <p>添加相应Framework:<br/>
 -<code>MessageUI.Framework</code><br/>
@@ -357,13 +364,13 @@ pre {
 
 <p><img src="http://dev.umeng.com/images/ios/social_frameworks.png" title="socialbar" alt="socialbar" /></p>
 
-<h3>1.2.5 导入组件头文件并配置友盟应用标识</h3>
+<h3>2.5 导入组件头文件并配置友盟应用标识</h3>
 
 <p>1.引入头文件。SDK的公开头文件在<code>UMSocial_Sdk_x.x.x/Headers</code>内，其中<code>UMSocialData.h</code>是SDK的必须头文件，如果你要实现数据级功能需要引入<code>UMSocialDataService.h</code>,如果你要SDK界面级的功能需要<code>UMSocialControllerService.h</code>，如果要操作栏需要<code>UMSocialBar.h</code>。比较简单地，在调用SDK的代码文件中增加<code>#import "UMSocialBar.h</code>，会引入SDK所有公开头文件。
 2.设置SDK的<code>UMENG_APPKEY</code>，例如下面在 <code>AppDelegate</code>文件<code>#import "UMSocialData.h"</code>然后在<code>didFinishLaunchingWithOptions</code>方法内添加如下代码：
 <code>[UMSocialData setAppKey:UMENG_APPKEY];</code></p>
 
-<h3>1.2.6 把社会化组件加入您的应用</h3>
+<h3>2.6 把社会化组件加入您的应用</h3>
 
 <p>上述步骤已把全部环境准备好，现在来着手将社会化组件加入APP吧！
 社会化组件的核心组件是“社会化操作栏”,如下图所示：</p>
@@ -389,11 +396,11 @@ pre {
 }  
 </code></pre>
 
-<h3>1.2.7相关配置</h3>
+<h3>2.7相关配置</h3>
 
 <p>如果你不想出现我们支持的所有微博平台，例如只要新浪微博和腾讯微博，可以自己指定在AppDelegate 的<code>didFinishLaunchingWithOptions</code> 方法内添加如下代码：
 <code>
-[UMsocialControllerServiceService setSocialConfigDelegate:self];
+[UMsocialControllerService setSocialConfigDelegate:self];
 </code>
 并且实现<code>UMSocialConfigDelegate</code>的<code>shareToPlatforms</code>方法</p>
 
@@ -406,7 +413,7 @@ pre {
 
 <p>同理，如果你要设置其他配置，实现<code>UMSocialConfigDelegate</code>的其他方法，具体可以参见api文档。</p>
 
-<h2>1.3  验证集成效果</h2>
+<h3>2.8 验证集成效果</h3>
 
 <p>编译运行一下吧，如果您现在能看到这样一个漂亮的“社会化操作栏”，评论、喜欢、分享、个人中心几个按钮功能都正常的话，恭喜您，您的APP已经插上了社交的翅膀！</p>
 
@@ -416,31 +423,31 @@ pre {
 
 <p>注意事项：如果您希望单独使用友盟社会化组件提供的功能，或者希望更深层次的功能和UI定制，请移步至下一章节——“开发指南”部分。</p>
 
-<h1>2.开发指南</h1>
+<h2><a name="develop_guide" style="color:black">3.开发指南</a></h2>
 
-<h2>2.1 内容（Entity）</h2>
+<h3>3.1 内容（Entity）</h3>
 
-<h3>2.1.1 简介</h3>
+<h4>3.1.1 简介</h4>
 
 <p>一个Entity就是你APP中的一个内容项。
 通篇的文档和代码中，我们都会用Entity来指代。这仅仅是个通用术语，来指代程序中可以浏览、分享、评论、喜欢的任何东西。通常它会对应你APP中的一个内容项。
 这些Entity必须要与一个唯一identifier相对应。如果可能，建议您使用http url来指定Entity的key。</p>
 
-<h3>2.1.2 相关方法说明</h3>
+<h4>3.1.2 相关方法说明</h4>
 
 <p>一个<code>UMSocialData</code>对象标识一个分享资源，用一个identifier字符串作为标识，你可以为此对象设置分享内嵌文字、分享图片等，可以获取到对应的分享数、评论数。
 初始化方法为<code>- (id)initWithIdentifier:(NSString *)identifier</code>。</p>
 
-<h2>2.2 用户</h2>
+<h3>3.2 用户</h3>
 
-<h3>2.2.1 简介</h3>
+<h4>3.2.1 简介</h4>
 
 <p>每个使用社会化组件的设备都会对应一个“用户”，但是组件会为您自动处理“用户”对象，您无需显式创建它。
     用户信息分两部分：
 登录信息： APP内部展示给其他用户的个人信息。系统会将用户登录时选择的默认平台上的授权信息，作为用户的登录信息；
 授权信息：从各开放平台上获得的个人资料，如昵称、头像等。</p>
 
-<h3>2.2.2 用户中心（界面级接口）</h3>
+<h4>3.2.2 用户中心（界面级接口）</h4>
 
 <p>个人中心页面，个人中心页面，上面是绑定一个微博账号作为SDK的登录账号，简称为登录账号，下面是各个已经授权的微博账号，包括我们支持的所有平台，可以对各个平台进行授权和解除授权。</p>
 
@@ -448,12 +455,12 @@ pre {
 
 <p>实现的代码是</p>
 
-<pre><code>UMsocialControllerServiceService *socialControllerService = [[UMsocialControllerServiceService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+<pre><code>UMsocialControllerService *socialControllerService = [[UMsocialControllerService alloc] initWithUMSocialData:[UMSocialData defaultData]];
 UINavigationController *accountViewController =[socialControllerService getSocialAccountController];
 [self presentModalViewController:accountViewController animated:YES];
 </code></pre>
 
-<h3>2.2.3 获取用户微博账号信息（数据级的接口）</h3>
+<h4>3.2.3 获取用户微博账号信息（数据级的接口）</h4>
 
 <p>获取用户微博基本信息的接口</p>
 
@@ -475,7 +482,7 @@ UINavigationController *accountViewController =[socialControllerService getSocia
 
 <p>如果想获取各个微博账号详细的信息，可以调用<code>UMSocialDataService</code>的<code>- (void)requestSnsInfomation:(UMShareToType)shareToType;</code>方法。同样在回调方法来得到用户微博数据。</p>
 
-<h3>2.2.4 授权页面（界面级接口）</h3>
+<h4>3.2.4 授权页面（界面级接口）</h4>
 
 <p>sdk实现调用微博授权页面</p>
 
@@ -501,7 +508,7 @@ UINavigationController *oauthController = [socialControllerService getSocialOaut
 }
 </code></pre>
 
-<h3>2.2.5 其他用户操作 （数据级接口）</h3>
+<h4>3.2.5 其他用户操作 （数据级接口）</h4>
 
 <p>实现解除授权</p>
 
@@ -540,13 +547,13 @@ UINavigationController *oauthController = [socialControllerService getSocialOaut
 [socialControllerService requestAddFollow:shareToType followedUsid:[NSArray arrayWithObjects:@"1920318374", nil]];
 </code></pre>
 
-<h2>2.3 活动（社会化操作）</h2>
+<h3>3.3 活动（社会化操作）</h3>
 
 <p>活动就是用户的操作，操作方法目前有4类： 分享、评论、 喜欢、浏览。下面逐步介绍各项功能。</p>
 
-<h2>2.4 分享</h2>
+<h3>3.4 分享</h3>
 
-<h3>2.4.1 界面级的接口</h3>
+<h4>3.4.1 界面级的接口</h4>
 
 <p>分享列表页面</p>
 
@@ -555,7 +562,7 @@ UINavigationController *oauthController = [socialControllerService getSocialOaut
 <p>实现代码是</p>
 
 <pre><code>UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test"];
-UMsocialControllerServiceService *socialControllerService = [[UMsocialControllerServiceService alloc] initWithUMSocialData:socialData];
+UMsocialControllerService *socialControllerService = [[UMsocialControllerService alloc] initWithUMSocialData:socialData];
 UINavigationController *shareListController = [socialControllerService getSocialShareListController];
 [self presentModalViewController:shareListController animated:YES];
 </code></pre>
@@ -591,7 +598,7 @@ UINavigationController *shareEditController = [socialControllerService getSocial
 }
 </code></pre>
 
-<h3>2.4.2 数据级接口</h3>
+<h4>3.4.2 数据级接口</h4>
 
 <p>直接发送微博到对应的微博平台</p>
 
@@ -622,16 +629,16 @@ UINavigationController *shareEditController = [socialControllerService getSocial
 <pre><code>[socialControllerService.socialDataService.socialData getNumber:UMSNumberShare];
 </code></pre>
 
-<h3>2.4.3 分享常见错误</h3>
+<h4>3.4.3 分享常见错误</h4>
 
 <p>在回调方法<code>-(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
 </code>中的<code>response</code>中的<code>responseCode</code>和<code>message</code>可以得到返回状态码，和错误消息。</p>
 
 <p>注意如果<code>responseCode</code>为<code>5027</code>的话，<code>message</code>是<code>Sina access token expired, please do oauth(rebind account) again</code>,表示授权过期，需要重新打开授权页面进行授权。</p>
 
-<h2>2.5 评论</h2>
+<h3>3.5 评论</h3>
 
-<h3>2.5.1 界面级接口</h3>
+<h4>3.5.1 界面级接口</h4>
 
 <p>用到评论的界面级功能，需要使用<code>UMSocialCommentLibrary.a</code>,对应的头文件是<code>UMSocialControllerServiceComment.h</code>。</p>
 
@@ -650,7 +657,7 @@ socialControllerComment.socialData.commentText = @"评论内嵌文字";
 socialControllerComment.socilaData.commentImage = [UIImage imageNamed:@"icon.png"];
 </code></p>
 
-<h3>2.5.2 数据级接口</h3>
+<h4>3.5.2 数据级接口</h4>
 
 <p>评论的数据级接口不需要<code>UMSocialCommentLibrary.a</code>。获取最近的评论数据：</p>
 
@@ -687,9 +694,9 @@ NSDictionary *shareToSNS = [NSDictionary dictionaryWithObjectsAndKeys:@"weiboid"
 <pre><code>[socialControllerService.socialDataService.socialData getNumber:UMSNumberComment]
 </code></pre>
 
-<h2>2.6 喜欢</h2>
+<h3>3.6 喜欢</h3>
 
-<h3>2.6.1.不带界面的接口</h3>
+<h4>3.6.1.不带界面的接口</h4>
 
 <p>发送一个喜欢的请求，或者如果已经喜欢过的话，发送取消喜欢的请求</p>
 
@@ -712,7 +719,9 @@ NSDictionary *shareToSNS = [NSDictionary dictionaryWithObjectsAndKeys:@"weiboid"
 <pre><code>[socialControllerService.socialDataService.socialData getNumber:UMSNumberLike]
 </code></pre>
 
-<h2>3 错误代码含义</h2>
+<h2><a name="error_code" style="color:black">4.附录</a></h2>
+
+<h3>4.1常见错误代码含义</h3>
 
 <table>
 <thead>
@@ -794,7 +803,7 @@ NSDictionary *shareToSNS = [NSDictionary dictionaryWithObjectsAndKeys:@"weiboid"
 </table>
 
 
-<p>分享错误代码</p>
+<h3>4.2分享错误代码</h3>
 
 <table>
 <thead>
@@ -868,7 +877,7 @@ NSDictionary *shareToSNS = [NSDictionary dictionaryWithObjectsAndKeys:@"weiboid"
 </table>
 
 
-<h2>技术支持</h2>
+<h3>4.3技术支持</h3>
 
 <p>请发邮件至social-support@umeng.com，我们会尽快回复您。</p>
 </body>
