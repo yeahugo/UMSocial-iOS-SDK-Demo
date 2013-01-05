@@ -309,7 +309,7 @@ pre {
 
 <h3><a href="#error_code" style="text-decoration:none">4. 附录</a></h3>
 
-<h2><a name="product_guide" style="color:black">1.产品概述</a></h2>
+<h2><a name="product_guide" id="product_guide" style="color:black">1.产品概述</a></h2>
 
 <p>友盟社会化分享服务帮助你为你的用户提供社会化分享功能，连接用户和他的社会关系，方便他们分享在你的应用中的精彩体验。</p>
 
@@ -321,7 +321,7 @@ pre {
 </ol>
 
 
-<h2><a name="quick_guide" style="color:black">2.快速集成指南</a></h2>
+<h2><a name="quick_guide" id="quick_guide" style="color:black">2.快速集成指南</a></h2>
 
 <p>社会化组件iOS版<a href="http://v.youku.com/v_show/id_XNDg4MTQ2MDMy.html">集成视频</a>，请将播放器的清晰度切换为超清。</p>
 
@@ -400,7 +400,7 @@ pre {
 
 <p>如果你不想出现我们支持的所有微博平台，例如只要新浪微博和腾讯微博，可以自己指定在AppDelegate 的<code>didFinishLaunchingWithOptions</code> 方法内添加如下代码：
 <code>
-[UMsocialControllerService setSocialConfigDelegate:self];
+[UMSocialControllerService setSocialConfigDelegate:self];
 </code>
 并且实现<code>UMSocialConfigDelegate</code>的<code>shareToPlatforms</code>方法</p>
 
@@ -423,7 +423,7 @@ pre {
 
 <p>注意事项：如果您希望单独使用友盟社会化组件提供的功能，或者希望更深层次的功能和UI定制，请移步至下一章节——“开发指南”部分。</p>
 
-<h2><a name="develop_guide" style="color:black">3.开发指南</a></h2>
+<h2><a name="develop_guide" id="develop_guide" style="color:black">3.开发指南</a></h2>
 
 <h3>3.1 内容（Entity）</h3>
 
@@ -455,7 +455,7 @@ pre {
 
 <p>实现的代码是</p>
 
-<pre><code>UMsocialControllerService *socialControllerService = [[UMsocialControllerService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+<pre><code>UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:[UMSocialData defaultData]];
 UINavigationController *accountViewController =[socialControllerService getSocialAccountController];
 [self presentModalViewController:accountViewController animated:YES];
 </code></pre>
@@ -562,7 +562,7 @@ UINavigationController *oauthController = [socialControllerService getSocialOaut
 <p>实现代码是</p>
 
 <pre><code>UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test"];
-UMsocialControllerService *socialControllerService = [[UMsocialControllerService alloc] initWithUMSocialData:socialData];
+UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
 UINavigationController *shareListController = [socialControllerService getSocialShareListController];
 [self presentModalViewController:shareListController animated:YES];
 </code></pre>
@@ -719,7 +719,7 @@ NSDictionary *shareToSNS = [NSDictionary dictionaryWithObjectsAndKeys:@"weiboid"
 <pre><code>[socialControllerService.socialDataService.socialData getNumber:UMSNumberLike]
 </code></pre>
 
-<h2><a name="error_code" style="color:black">4.附录</a></h2>
+<h2><a name="error_code" id="error_code" style="color:black">4.附录</a></h2>
 
 <h3>4.1常见错误代码含义</h3>
 

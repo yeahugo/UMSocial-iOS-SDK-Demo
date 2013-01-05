@@ -124,7 +124,7 @@
         cell.textLabel.text = @"用户中心";
     }
     if (indexPath.row == 9) {
-        cell.textLabel.text = @"登录";
+        cell.textLabel.text = @"登录页面";
     }
     return cell;
 }
@@ -173,7 +173,7 @@
     }
     if (actionSheet.tag == UMAccountOauth) {
         _selectOauthType = shareToType;
-        
+        _socialUIController.soicalUIDelegate = self;
         UINavigationController *oauthController = [_socialUIController getSocialOauthController:shareToType];
         [self presentModalViewController:oauthController animated:YES];
     }

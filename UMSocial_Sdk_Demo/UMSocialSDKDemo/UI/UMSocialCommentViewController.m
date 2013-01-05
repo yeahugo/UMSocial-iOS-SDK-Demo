@@ -21,9 +21,11 @@
 
 -(void)dealloc
 {
+    [_socialController.socialDataService setUMSocialDelegate:nil];
     SAFE_ARC_RELEASE(_socialController);
     SAFE_ARC_RELEASE(_commentTableView);
     SAFE_ARC_RELEASE(_imageView);
+    SAFE_ARC_RELEASE(_activityIndicatorView);
     SAFE_ARC_SUPER_DEALLOC();
 }
 
@@ -44,7 +46,7 @@
         
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
         _socialController = [[UMSocialControllerServiceComment alloc] initWithUMSocialData:socialData];
-        _socialController.commentNeedLogin = YES;
+//        _socialController.commentNeedLogin = YES;
         _socialController.socialDataService.socialData.commentText = textLabel.text;        //作为分享到微博内容"//"之后的文字
         _socialController.socialDataService.socialData.commentImage = _imageView.image;
         
@@ -59,6 +61,10 @@
 
 - (void)viewDidLoad
 {
+    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    _activityIndicatorView.center = CGPointMake(160, 150);
+    [self.view addSubview:_activityIndicatorView];
+
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -109,12 +115,20 @@
         [self presentModalViewController:commentList animated:YES];
     }
     if (indexPath.row == 1) {
+        [_activityIndicatorView startAnimating];
+        
+        [_socialController.socialDataService setUMSocialDelegate:self];
         [_socialController.socialDataService requestCommentList:(-1)];
     }
     if (indexPath.row == 2) {
+        [_activityIndicatorView startAnimating];
+        
+        [_socialController.socialDataService setUMSocialDelegate:self];
         [_socialController.socialDataService postCommentWithContent:[UMStringMock commentMockString]];
     }
     if (indexPath.row == 3) {
+        [_activityIndicatorView startAnimating];
+        
         CLLocation *location = [[CLLocation alloc] initWithLatitude:30.0 longitude:108.0];
         NSDictionary *snsDic = _socialController.socialDataService.socialData.socialAccount;
         NSMutableDictionary *shareToSNSDictionary = [[NSMutableDictionary alloc] init];
@@ -124,6 +138,7 @@
                 [shareToSNSDictionary setObject:[[snsDic objectForKey:key] usid] forKey:key];
             }
         }
+        [_socialController.socialDataService setUMSocialDelegate:self];
         [_socialController.socialDataService postCommentWithContent:[UMStringMock commentMockString] image:_socialController.socialData.commentImage templateText:_socialController.socialData.commentText  location:location shareToSNSWithUsid:shareToSNSDictionary];
         SAFE_ARC_RELEASE(location);
         SAFE_ARC_RELEASE(shareToSNSDictionary);
@@ -133,14 +148,26 @@
 #pragma UMSocialDelegate
 -(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"发送结果" message:@"成功" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+    NSString *title = nil;
+    NSString *message = nil;
+    [_activityIndicatorView stopAnimating];
     if (response.responseCode == UMSResponseCodeSuccess) {
-        [alertView show];
+        if (response.responseType == UMSResponseAddComment) {
+            title = @"成功";
+            message = @"亲，您刚才调用的是发送评论的数据级接口，如果要获取发送结果，要像demo这样实现回调方法~";
+            
+        }
+        if (response.responseType == UMSResponseGetCommentList) {
+            title = @"成功";
+            message = @"亲，您刚才调用的是获取评论的数据级接口，如果要获取发送结果，要像demo这样实现回调方法,数据在respose的data里面~";
+        }        
     }
     else
     {
-        alertView.message = @"失败";
+        title = @"失败";
+        message = @"亲，您刚才调用的接口失败了，具体原因请看到回调方法response对象的responseCode和message~";
     }
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
     [alertView show];
     SAFE_ARC_RELEASE(alertView);
 }

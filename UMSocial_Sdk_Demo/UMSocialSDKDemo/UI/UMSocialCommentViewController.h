@@ -19,5 +19,6 @@
     UITableView *_commentTableView;
     UMSocialControllerServiceComment *_socialController;
     UIImageView *_imageView;
+    UIActivityIndicatorView * _activityIndicatorView;
 }
 @end

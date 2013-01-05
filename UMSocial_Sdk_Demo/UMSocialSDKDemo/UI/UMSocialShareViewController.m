@@ -20,15 +20,14 @@
 
 -(void)dealloc
 {
-    if ([_socialController.socialDataService.socialDataDelegate isEqual:self]) {
-        [_socialController.socialDataService setUMSocialDelegate:nil];
-    }
+    [_socialController.socialDataService setUMSocialDelegate:nil];
     SAFE_ARC_RELEASE(_socialController);
     SAFE_ARC_RELEASE(_editActionSheet);
     SAFE_ARC_RELEASE(_dataActionSheet);
     SAFE_ARC_RELEASE(_shareTableView);
     SAFE_ARC_RELEASE(_imageView);
     SAFE_ARC_RELEASE(_locationManager);
+    SAFE_ARC_RELEASE(_activityIndicatorView);
     SAFE_ARC_SUPER_DEALLOC();
 }
 
@@ -40,7 +39,7 @@
         textLabel.numberOfLines = 4;
         textLabel.text = [UMStringMock commentMockString];
         [self.view addSubview:textLabel];
-        SAFE_ARC_RELEASE(textLabel);
+        
         
         _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,90 , 150, 120)];
         NSString *imageName = [NSString stringWithFormat:@"yinxing%d.jpg",rand()%4];
@@ -51,6 +50,7 @@
         
         socialData.shareText = textLabel.text;
         socialData.shareImage = _imageView.image;
+        SAFE_ARC_RELEASE(textLabel);
         
         _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
         _socialController.soicalUIDelegate = self;
@@ -71,6 +71,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    _activityIndicatorView.center = CGPointMake(160, 150);
+    [self.view addSubview:_activityIndicatorView];
     _locationManager = [[CLLocationManager alloc] init];
     [_locationManager startUpdatingLocation];
 }
@@ -138,6 +142,8 @@
         _dataActionSheet.delegate = self;
     }
     else if (indexPath.row == UMSharePostMultiData) {
+        [_activityIndicatorView startAnimating];
+        
         NSDictionary *socialDic =  _socialController.socialData.socialAccount;
         NSMutableArray *allSnsArray = [[NSMutableArray alloc] init];
         for (id type in socialDic) {
@@ -190,6 +196,7 @@
         return;
     }
     if (actionSheet.tag == UMSharePostData) {
+        [_activityIndicatorView startAnimating];
         
         CLLocation *location = _locationManager.location;
         NSLog(@"location is %@",location);
@@ -210,24 +217,25 @@
 {
     NSLog(@"response is %@",response);
     UIAlertView *alertView;
+    [_activityIndicatorView stopAnimating];
     if (response.responseCode == UMSResponseCodeSuccess) {
         if (response.responseType == UMSResponseShareToSNS) {
             if (response.responseCode == UMSResponseCodeSuccess) {
-                alertView = [[UIAlertView alloc] initWithTitle:@"成功" message:@"亲，您刚才调用的是数据级的发送微博接口，如果要获取发送状态需要像这样实现回调方法~" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+                alertView = [[UIAlertView alloc] initWithTitle:@"成功" message:@"亲，您刚才调用的是数据级的发送微博接口，如果要获取发送状态需要像demo这样实现回调方法~" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
                 [alertView show];
                 SAFE_ARC_RELEASE(alertView);
             }
         }
         if (response.responseType == UMSResponseShareToMutilSNS) {
             if (response.responseCode == UMSResponseCodeSuccess) {
-                alertView = [[UIAlertView alloc] initWithTitle:@"成功" message:@"亲，您刚才调用的是发送到多个微博平台的数据级接口，如果要获取发送状态需要像这样实现回调方法~" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+                alertView = [[UIAlertView alloc] initWithTitle:@"成功" message:@"亲，您刚才调用的是发送到多个微博平台的数据级接口，如果要获取发送状态需要像demo这样实现回调方法~" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
                 [alertView show];
                 SAFE_ARC_RELEASE(alertView);
             }
         }        
     }
     else {
-        alertView = [[UIAlertView alloc] initWithTitle:@"失败" message:@"亲，您刚才调用的发送微博接口发送失败了，具体原因请看到回调方法里面的responseCode和message~" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+        alertView = [[UIAlertView alloc] initWithTitle:@"失败" message:@"亲，您刚才调用的发送微博接口发送失败了，具体原因请看到回调方法response对象的responseCode和message~" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
         [alertView show];
         SAFE_ARC_RELEASE(alertView);
     }

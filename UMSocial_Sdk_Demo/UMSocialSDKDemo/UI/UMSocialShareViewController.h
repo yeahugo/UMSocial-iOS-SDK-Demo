@@ -33,5 +33,6 @@ typedef enum
     UIActionSheet *_dataActionSheet;
     UIImageView *_imageView;
     CLLocationManager *_locationManager;
+    UIActivityIndicatorView * _activityIndicatorView;
 }
 @end

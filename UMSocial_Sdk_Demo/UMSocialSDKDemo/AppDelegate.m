@@ -34,25 +34,35 @@
     return YES;
 }
 
--(NSUInteger)supportedInterfaceOrientationsForUMSocialSDK
+//设置Social SDK所支持的屏幕方向，返回的是ios6 定义的UIInterfaceOrientationMask
+/*
+- (NSUInteger)supportedInterfaceOrientationsForUMSocialSDK
 {
-    return UIInterfaceOrientationMaskAllButUpsideDown;
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 60000
+    return UIInterfaceOrientationMaskPortrait;
+#else
+    return 1 << UIInterfaceOrientationPortrait;
+#endif
 }
+*/
 
+//设置官方微博，只支持新浪微博和腾讯微博
 -(NSDictionary *)followSnsUids
 {
     NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"1920318374",UMShareToSina,nil];
     return dictionary;
 }
 
-//- (NSArray *)shareToPlatforms
-//{
-//    NSArray *shareToArray = [NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToEmail,UMShareToSms,nil];
-//    return shareToArray;
-//}
+//设置出现的sns平台
+/*
+- (NSArray *)shareToPlatforms
+{
+    NSArray *shareToArray = [NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToEmail,UMShareToSms,nil];
+    return shareToArray;
+}
+ */
 
 #pragma mark - UMSocialConfigDelegate
-
 -(UITableViewCell *)customCellForShareListTableView
 {
     UITableViewCell *weiXinCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"weixinCell"] ;
