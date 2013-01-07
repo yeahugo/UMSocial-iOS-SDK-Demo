@@ -54,13 +54,16 @@
 }
 
 //设置出现的sns平台
-/*
-- (NSArray *)shareToPlatforms
-{
-    NSArray *shareToArray = [NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToEmail,UMShareToSms,nil];
-    return shareToArray;
-}
- */
+//- (NSArray *)shareToPlatforms
+//{
+//    NSArray *shareToArray = [NSArray arrayWithObjects:UMShareToSina,
+//                             UMShareToTencent,
+//                             UMShareToEmail,
+//                             UMShareToSms,
+//                             nil];
+//    return shareToArray;
+//}
+
 
 #pragma mark - UMSocialConfigDelegate
 -(UITableViewCell *)customCellForShareListTableView

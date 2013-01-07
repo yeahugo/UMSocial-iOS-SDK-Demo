@@ -55,7 +55,7 @@
 - (UIColor *)defaultColor;
 
 /**
- 设置sdk所有页面需要支持屏幕方向.在ios6的设备上，这个设置需要和应用的Info.plist的支持方向相一致，否则不生效
+ 设置sdk所有页面需要支持屏幕方向.
  
  @return 一个bit map（位掩码），ios 6定义的`UIInterfaceOrientationMask`
  */
