@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UMSocialSnsPlatform.h"
 #import <UIKit/UIKit.h>
+#import "UMSocialData.h"
 
 /**
  在UI层的api中进行的一些设置，例如出现的分享平台等。
@@ -15,6 +17,12 @@
 @protocol UMSocialConfigDelegate <NSObject>
 
 @optional
+
+
+-(UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName;
+
+
+-(void)didSelectSnsPlatformWithSnsName:(NSString *)snsName showController:(UIViewController *)showViewController withSocialData:(UMSocialData *)socialData;
 
 /** 
  设置显示的sns平台类型
@@ -60,19 +68,5 @@
  @return 一个bit map（位掩码），ios 6定义的`UIInterfaceOrientationMask`
  */
 - (NSUInteger)supportedInterfaceOrientationsForUMSocialSDK;
-
-
-/**
- 分享列表中第二个section最后一栏返回一个自定义的`UITableViewCell`对象，sdk会取该`UITableViewCell`对象的textLabel的text和imageView的image，分别作为该UITableViewCell的文字和图片
- 
- @return `UITableViewCell`对象
- */
--(UITableViewCell *)customCellForShareListTableView;
-
-/**
- 点击该自定义`UITableViewCell`后的回调操作
- 
- */
--(void)didSelectShareListTableViewCell:(UITableView *)tableView;
 
 @end

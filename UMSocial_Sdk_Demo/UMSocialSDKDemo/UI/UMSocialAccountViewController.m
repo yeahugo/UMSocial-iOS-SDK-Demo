@@ -9,6 +9,8 @@
 #import "UMSocialAccountViewController.h"
 #import "UMSocialAccountEntity.h"
 #import "UMSocialMacroDefine.h"
+#import "UMSocialSnsPlatformManager.h"
+#import "UMSocialAccountManager.h"
 
 @interface UMSocialAccountViewController ()
 
@@ -84,7 +86,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return 14;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -118,13 +120,25 @@
         cell.textLabel.text = @"添加关注";
     }
     if (indexPath.row == 7) {
-        cell.textLabel.text = @"获取账户";
+        cell.textLabel.text = @"取消游客登录";
     }
     if (indexPath.row == 8) {
-        cell.textLabel.text = @"用户中心";
+        cell.textLabel.text = @"获取账户";
     }
     if (indexPath.row == 9) {
+        cell.textLabel.text = @"用户中心";
+    }
+    if (indexPath.row == 10) {
+        cell.textLabel.text = @"sns设置页面";
+    }
+    if (indexPath.row == 11) {
+        cell.textLabel.text = @"登录信息页面";
+    }
+    if (indexPath.row == 12) {
         cell.textLabel.text = @"登录页面";
+    }
+    if (indexPath.row == 13) {
+        cell.textLabel.text = @"增加自定义账号";
     }
     return cell;
 }
@@ -139,19 +153,39 @@
         [_socialUIController.socialDataService requestUnBindToSns];
         [_activityIndicatorView startAnimating];
     }
-    else if (indexPath.row == 7) {
+    else if (indexPath.row == 7){
+        [UMSocialAccountManager setIsLoginWithAnonymous:NO];
+    }
+    else if (indexPath.row == 8) {
         [_socialUIController.socialDataService requestSocialAccount];
         [_activityIndicatorView startAnimating];
     }
-    else if (indexPath.row == 8) {
+    else if (indexPath.row == 9) {
         UINavigationController *accountViewController =[_socialUIController getSocialAccountController];
         
         [self presentModalViewController:accountViewController animated:YES];
     }
-    else if(indexPath.row == 9){
+    else if (indexPath.row == 10) {
+        UINavigationController *accountViewController =[_socialUIController getSnsAccountController];
+        
+        [self presentModalViewController:accountViewController animated:YES];
+    }
+    else if (indexPath.row == 11) {
+        UINavigationController *accountViewController =[_socialUIController getLoginAccountController];
+        
+        [self presentModalViewController:accountViewController animated:YES];
+    }
+    else if(indexPath.row == 12){
         UINavigationController *loginViewController = [_socialUIController getSocialLoginController];
-        _socialUIController.soicalUIDelegate = self;
+        _socialUIController.socialUIDelegate = self;
         [self presentModalViewController:loginViewController animated:YES];
+    }
+    else if (indexPath.row == 13){
+        UMSocialCustomAccount *customAccoutn = [[UMSocialCustomAccount alloc] initWithUserName:@"testName"];
+        customAccoutn.usid = @"123";
+        customAccoutn.customData = [NSDictionary dictionaryWithObject:@"level1" forKey:@"level"];
+        [UMSocialAccountManager addCustomAccount:customAccoutn];
+        SAFE_ARC_RELEASE(customAccoutn);
     }
     else
     {
@@ -168,12 +202,12 @@
 {
     NSLog(@"button index is %d",buttonIndex);
     UMSocialSnsType shareToType = buttonIndex + UMSocialSnsTypeQzone;
-    if (shareToType >= UMSocialSnsTypeCount) {
+    if (shareToType >= UMSocialSnsTypeEmail) {
         return;
     }
     if (actionSheet.tag == UMAccountOauth) {
         _selectOauthType = shareToType;
-        _socialUIController.soicalUIDelegate = self;
+        _socialUIController.socialUIDelegate = self;
         UINavigationController *oauthController = [_socialUIController getSocialOauthController:shareToType];
         [self presentModalViewController:oauthController animated:YES];
     }
@@ -215,7 +249,7 @@
 {
     NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);
     if (response.viewControllerType == UMSViewControllerOauth) {
-        UMSocialAccountEntity *account = (UMSocialAccountEntity *)[_socialUIController.socialData.socialAccount objectForKey:[UMSocialAccountEntity getSnsPlatformString:_selectOauthType]];
+        UMSocialAccountEntity *account = (UMSocialAccountEntity *)[_socialUIController.socialData.socialAccount objectForKey:[UMSocialSnsPlatformManager getSnsPlatformString:_selectOauthType]];
         if (account.userName != nil && account.userName.length > 0) {
             _nickNameLabel.text = @"nickNameSuccess";
         }

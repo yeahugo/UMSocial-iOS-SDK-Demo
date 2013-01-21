@@ -13,9 +13,10 @@
 typedef enum
 {
     UMShareList,
+    UMShareIconActionSheet,
     UMShareEditPresent,
     UMSharePostData,
-    UMSharePostMultiData
+    UMSharePostMultiData,
 }UMShareAction;
 
 @interface UMSocialShareViewController : UIViewController

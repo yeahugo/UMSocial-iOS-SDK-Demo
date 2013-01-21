@@ -11,6 +11,8 @@
 #import "WXApi.h"
 #import <MessageUI/MessageUI.h>
 #import "UMSocialMacroDefine.h"
+#import "UMSocialSnsService.h"
+#import "AppDelegate.h"
 
 @interface UMSocialShareViewController ()
 
@@ -53,7 +55,7 @@
         SAFE_ARC_RELEASE(textLabel);
         
         _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
-        _socialController.soicalUIDelegate = self;
+        _socialController.socialUIDelegate = self;
         SAFE_ARC_RELEASE(socialData);
         _shareTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 190, 320, 250)];
         _shareTableView.dataSource = self;
@@ -99,7 +101,7 @@
 #pragma UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 5;
 }
 
 
@@ -113,15 +115,18 @@
         SAFE_ARC_AUTORELEASE(cell);
     }
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"分享列表";
+        cell.textLabel.text = @"传统分享列表";
     }
     if (indexPath.row == 1) {
-        cell.textLabel.text = @"图文分享";
+        cell.textLabel.text = @"新分享列表";
     }
     if (indexPath.row == 2) {
-        cell.textLabel.text = @"直接发送到单个微博平台";
+        cell.textLabel.text = @"图文分享";
     }
     if (indexPath.row == 3) {
+        cell.textLabel.text = @"直接发送到单个微博平台";
+    }
+    if (indexPath.row == 4) {
         cell.textLabel.text = @"直接发送到多个微博平台";
     }
     
@@ -133,9 +138,18 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+    if (indexPath.row == UMShareList){
+        UINavigationController *shareListController = [_socialController getSocialShareListController];
+        [self presentModalViewController:shareListController animated:YES];
+    }
     if (indexPath.row == UMShareEditPresent) {
         [_editActionSheet showInView:self.view];
         _editActionSheet.delegate = self;
+    }
+    else if (indexPath.row == UMShareIconActionSheet) {
+//        UMSocialIconActionSheet *actionSheet = [_socialController getSocialIconActionSheetInController:self];
+//        [actionSheet showInView:self.view];
+        [UMSocialSnsService showSnsIconSheetView:self appKey:useAppkey shareText:[UMStringMock commentMockString] shareImage:nil shareToSnsStrings:nil delegate:self];
     }
     else if(indexPath.row == UMSharePostData){
         [_dataActionSheet showInView:self.view];
@@ -163,17 +177,13 @@
         SAFE_ARC_RELEASE(location);
         SAFE_ARC_RELEASE(allSnsArray);
     }
-    else{
-         UINavigationController *shareListController = [_socialController getSocialShareListController];
-        [self presentModalViewController:shareListController animated:YES];
-    }
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"button index is %d",buttonIndex);
     UMSocialSnsType shareToType = buttonIndex + UMSocialSnsTypeQzone;
-    if (shareToType >= UMSocialSnsTypeCount) {
+    if (shareToType >= UMSocialSnsTypeEmail) {
         if (actionSheet.tag == UMShareEditPresent) {
             shareToType = shareToType + 1;
             if (shareToType == UMSocialSnsTypeSms && ![MFMessageComposeViewController canSendText]) {
@@ -185,12 +195,6 @@
                 UIAlertView *servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"邮件功能未开启" message:@"您当前设备的邮件服务处于未启用状态，若想通过邮件分享，请到设置中设置邮件服务后，再进行分享" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 [servicesDisabledAlert show];
                 SAFE_ARC_RELEASE(servicesDisabledAlert);
-            }
-            else if(shareToType <= UMSocialSnsTypeSms){
-                UINavigationController *shareEditController = [_socialController getSocialShareEditController:shareToType];
-                if (shareEditController != nil) {
-                    [self presentModalViewController:shareEditController animated:YES];
-                }            
             }
         }
         return;

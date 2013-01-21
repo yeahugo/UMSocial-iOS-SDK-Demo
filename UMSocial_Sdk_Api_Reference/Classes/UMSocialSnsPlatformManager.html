@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>UMSocialControllerServiceComment Class Reference</title>
+		<title>UMSocialSnsPlatformManager Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">UMSocialControllerServiceComment Class Reference</h1>
+				<h1 class="hideInXcode">UMSocialSnsPlatformManager Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -38,13 +38,15 @@
 	
 	
 	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/getSnsPlatformString:">&nbsp;&nbsp;&nbsp;&nbsp;+ getSnsPlatformString:</option>
+	
+	<option value="//api/name/getSnsPlatformStringFromIndex:">&nbsp;&nbsp;&nbsp;&nbsp;+ getSnsPlatformStringFromIndex:</option>
+	
+	<option value="//api/name/getSnsPlatformType:">&nbsp;&nbsp;&nbsp;&nbsp;+ getSnsPlatformType:</option>
 	
 	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/getSocialCommentListController">&nbsp;&nbsp;&nbsp;&nbsp;- getSocialCommentListController</option>
-	
-	<option value="//api/name/initWithUMSocialData:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithUMSocialData:</option>
 	
 	
 	
@@ -68,22 +70,24 @@
 
 
 
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSocialCommentListController">getSocialCommentListController</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSnsPlatformString:">getSnsPlatformString:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithUMSocialData:">initWithUMSocialData:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSnsPlatformStringFromIndex:">getSnsPlatformStringFromIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSnsPlatformType:">getSnsPlatformType:</a></span></li>
 	
 </ul></li>
+
+
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="UMSocialControllerServiceComment Class Reference" name="top"></a>
+				<a title="UMSocialSnsPlatformManager Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -92,7 +96,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">UMSocialControllerServiceComment Class Reference</h1>
+						<h1 class="title title-header">UMSocialSnsPlatformManager Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -100,10 +104,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="../Classes/UMSocialControllerService.html">UMSocialControllerService</a> : NSObject</td>
+	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">UMSocialControllerServiceComment.h<br />UMSocialControllerServiceComment.m</td>
+	<td class="specification-value">UMSocialSnsPlatformManager.h<br />UMSocialSnsPlatformManager.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -123,15 +127,22 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithUMSocialData:">&ndash;&nbsp;initWithUMSocialData:</a></code>
-		<span class="tooltip"><p>初始化一个<code>UMSocialControllerService</code>对象</p></span>
+		<code><a href="#//api/name/getSnsPlatformString:">+&nbsp;getSnsPlatformString:</a></code>
+		<span class="tooltip"><p>把UMSocialSnsType类型转换成UMShareToSina、UMShareToTencent等平台名的字符串</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/getSocialCommentListController">&ndash;&nbsp;getSocialCommentListController</a></code>
-		<span class="tooltip"><p>评论列表页面，评论列表页面包括各评论详情、评论编辑</p></span>
+		<code><a href="#//api/name/getSnsPlatformType:">+&nbsp;getSnsPlatformType:</a></code>
+		<span class="tooltip"><p>把UMShareToSina、UMShareToTencent等平台名的字符串转换成平台枚举变量</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getSnsPlatformStringFromIndex:">+&nbsp;getSnsPlatformStringFromIndex:</a></code>
+		<span class="tooltip"><p>把配置平台的次序号转换成平台名</p></span>
 	</span>
 	
 	
@@ -146,66 +157,23 @@
 					
 					
 					
-					
-					
 					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/getSocialCommentListController" title="getSocialCommentListController"></a>
-	<h3 class="subsubtitle method-title">getSocialCommentListController</h3>
+	<a name="//api/name/getSnsPlatformString:" title="getSnsPlatformString:"></a>
+	<h3 class="subsubtitle method-title">getSnsPlatformString:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>评论列表页面，评论列表页面包括各评论详情、评论编辑</p>
+		<p>把UMSocialSnsType类型转换成UMShareToSina、UMShareToTencent等平台名的字符串</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (UINavigationController *)getSocialCommentListController</code></div>
-
-    
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p><code>UINavigationController</code>对象</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialControllerServiceComment.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithUMSocialData:" title="initWithUMSocialData:"></a>
-	<h3 class="subsubtitle method-title">initWithUMSocialData:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>初始化一个<code>UMSocialControllerService</code>对象</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (id)initWithUMSocialData:(UMSocialData *)<em>socialData</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (NSString *)getSnsPlatformString:(UMSocialSnsType)<em>socialSnsType</em></code></div>
 
     
 	
@@ -213,8 +181,8 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>socialData</em></dt>
-			<dd><p><a href="../Classes/UMSocialData.html"><code>UMSocialData</code></a>对象</p></dd>
+			<dt><em>socialSnsType</em></dt>
+			<dd><p>平台枚举变量</p></dd>
 		</dl>
 		
 	</div>
@@ -223,7 +191,7 @@
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>初始化对象</p>
+		<p>平台名字符串</p>
 	</div>
 	
 	
@@ -238,13 +206,117 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+		<code class="declared-in-ref">UMSocialSnsPlatformManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getSnsPlatformStringFromIndex:" title="getSnsPlatformStringFromIndex:"></a>
+	<h3 class="subsubtitle method-title">getSnsPlatformStringFromIndex:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>把配置平台的次序号转换成平台名</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)getSnsPlatformStringFromIndex:(int)<em>snsIndex</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>snsIndex</em></dt>
+			<dd><p>使用的平台顺序，使用的平台配置在<a href="../Protocols/UMSocialConfigDelegate.html">UMSocialConfigDelegate</a>,例如<code>- (NSArray *)shareToPlatforms;</code>返回的是UMSocialSnsTypeSina和UMSocialSnsTypeTenc,UMSocialSnsTypeSina就是0，UMSocialSnsTypeTenc就是1</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>平台名字符串</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialSnsPlatformManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getSnsPlatformType:" title="getSnsPlatformType:"></a>
+	<h3 class="subsubtitle method-title">getSnsPlatformType:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>把UMShareToSina、UMShareToTencent等平台名的字符串转换成平台枚举变量</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (UMSocialSnsType)getSnsPlatformType:(NSString *)<em>socialSnsString</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>socialSnsString</em></dt>
+			<dd><p>平台名字符串</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>平台枚举变量</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialSnsPlatformManager.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 					</div>
+					
+					
 					
 					
 				</div>

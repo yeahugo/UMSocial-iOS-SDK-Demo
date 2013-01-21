@@ -55,17 +55,6 @@
 	
 	
 	
-	<option value="class_methods">Class Methods</option>
-	
-	<option value="//api/name/getSnsPlatformString:">&nbsp;&nbsp;&nbsp;&nbsp;+ getSnsPlatformString:</option>
-	
-	<option value="//api/name/getSnsPlatformStringFromIndex:">&nbsp;&nbsp;&nbsp;&nbsp;+ getSnsPlatformStringFromIndex:</option>
-	
-	<option value="//api/name/getSnsPlatformType:">&nbsp;&nbsp;&nbsp;&nbsp;+ getSnsPlatformType:</option>
-	
-	<option value="//api/name/getSnsPlatformTypeFromIndex:">&nbsp;&nbsp;&nbsp;&nbsp;+ getSnsPlatformTypeFromIndex:</option>
-	
-	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
@@ -117,18 +106,6 @@
 </ul></li>
 
 
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSnsPlatformString:">getSnsPlatformString:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSnsPlatformStringFromIndex:">getSnsPlatformStringFromIndex:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSnsPlatformType:">getSnsPlatformType:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSnsPlatformTypeFromIndex:">getSnsPlatformTypeFromIndex:</a></span></li>
-	
-</ul></li>
 
 
 
@@ -182,7 +159,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>自定义的用户微博账户对象，对象数据从授权账号所对应的微博平台获取</p>
+						<p>用户微博账户对象，对象数据从授权账号所对应的微博平台获取</p>
 					</div>
 					
 					
@@ -223,34 +200,6 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/description">&ndash;&nbsp;description</a></code>
 		<span class="tooltip"><p>把各属性编码成NSString</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/getSnsPlatformString:">+&nbsp;getSnsPlatformString:</a></code>
-		<span class="tooltip"><p>把UMSocialSnsType类型转换成UMShareToSina、UMShareToTencent等平台名的字符串</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/getSnsPlatformType:">+&nbsp;getSnsPlatformType:</a></code>
-		<span class="tooltip"><p>把UMShareToSina、UMShareToTencent等平台名的字符串转换成平台枚举变量</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/getSnsPlatformStringFromIndex:">+&nbsp;getSnsPlatformStringFromIndex:</a></code>
-		<span class="tooltip"><p>把配置平台的次序号转换成平台名</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/getSnsPlatformTypeFromIndex:">+&nbsp;getSnsPlatformTypeFromIndex:</a></code>
-		<span class="tooltip"><p>把配置平台的次序号转换成平台枚举名</p></span>
 	</span>
 	
 	
@@ -537,216 +486,6 @@
 					
 					
 					
-					<div class="section section-methods">
-						<a title="Class Methods" name="class_methods"></a>
-						<h2 class="subtitle subtitle-methods">Class Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/getSnsPlatformString:" title="getSnsPlatformString:"></a>
-	<h3 class="subsubtitle method-title">getSnsPlatformString:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>把UMSocialSnsType类型转换成UMShareToSina、UMShareToTencent等平台名的字符串</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (NSString *)getSnsPlatformString:(UMSocialSnsType)<em>socialSnsType</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>socialSnsType</em></dt>
-			<dd><p>平台枚举变量</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>平台名字符串</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialAccountEntity.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/getSnsPlatformStringFromIndex:" title="getSnsPlatformStringFromIndex:"></a>
-	<h3 class="subsubtitle method-title">getSnsPlatformStringFromIndex:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>把配置平台的次序号转换成平台名</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (NSString *)getSnsPlatformStringFromIndex:(int)<em>snsIndex</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>snsIndex</em></dt>
-			<dd><p>使用的平台顺序，使用的平台配置在<a href="../Protocols/UMSocialConfigDelegate.html">UMSocialConfigDelegate</a>,例如<code>- (NSArray *)shareToPlatforms;</code>返回的是UMSocialSnsTypeSina和UMSocialSnsTypeTenc,UMSocialSnsTypeSina就是0，UMSocialSnsTypeTenc就是1</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>平台名字符串</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialAccountEntity.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/getSnsPlatformType:" title="getSnsPlatformType:"></a>
-	<h3 class="subsubtitle method-title">getSnsPlatformType:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>把UMShareToSina、UMShareToTencent等平台名的字符串转换成平台枚举变量</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (UMSocialSnsType)getSnsPlatformType:(NSString *)<em>socialSnsString</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>socialSnsString</em></dt>
-			<dd><p>平台名字符串</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>平台枚举变量</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialAccountEntity.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/getSnsPlatformTypeFromIndex:" title="getSnsPlatformTypeFromIndex:"></a>
-	<h3 class="subsubtitle method-title">getSnsPlatformTypeFromIndex:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>把配置平台的次序号转换成平台枚举名</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (UMSocialSnsType)getSnsPlatformTypeFromIndex:(NSInteger)<em>snsIndex</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>snsIndex</em></dt>
-			<dd><p>使用的平台顺序，使用的平台配置在<a href="../Protocols/UMSocialConfigDelegate.html">UMSocialConfigDelegate</a>,例如<code>- (NSArray *)shareToPlatforms;</code>返回的是UMSocialSnsTypeSina和UMSocialSnsTypeTenc,UMSocialSnsTypeSina就是0，UMSocialSnsTypeTenc就是1</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>平台枚举名</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialAccountEntity.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
-					
 					
 					
 					<div class="section section-methods">
@@ -930,7 +669,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-01-07)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-01-21)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

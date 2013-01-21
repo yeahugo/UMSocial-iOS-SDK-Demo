@@ -10,8 +10,24 @@
 #import "UMSocialDemoTableController.h"
 #import "UMSocialData.h"
 #import "WXApi.h"
+#import "UMSocialUIHelper.h"
 
-#define umeng_appkey @"507fcab25270157b37000010"
+@implementation UMSocialUIHelper(UMSocial)
+
++(void) customNavBackButton:(UIButton *)button WithTitle:(NSString *)title
+{
+    button.frame = CGRectMake(0, 0, 50, 30);
+    UIImage * normalImage = [UIImage imageNamed:@"UMS_nav_back_button_normal"];
+    UIImage * tapImage = [UIImage imageNamed:@"UMS_nav_back_button_tap"];
+    [button titleLabel].font = [UIFont boldSystemFontOfSize:20];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitle:title forState:UIControlStateHighlighted];
+    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 6, 0, 0)];
+    [button setBackgroundImage:[normalImage stretchableImageWithLeftCapWidth:16 topCapHeight:10] forState:UIControlStateNormal];
+    [button setBackgroundImage:[tapImage stretchableImageWithLeftCapWidth:16 topCapHeight:10] forState:UIControlStateHighlighted];
+}
+
+@end
 
 @implementation AppDelegate
 
@@ -19,7 +35,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [UMSocialData setAppKey:umeng_appkey];
+    [UMSocialData setAppKey:useAppkey];
     UMSocialDemoTableController *demoViewController = [[UMSocialDemoTableController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:demoViewController];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;

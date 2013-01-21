@@ -10,7 +10,7 @@
 #import "UMSocialEnum.h"
 
 /**
- 自定义的用户微博账户对象，对象数据从授权账号所对应的微博平台获取
+ 用户微博账户对象，对象数据从授权账号所对应的微博平台获取
  */
 @interface UMSocialAccountEntity : NSObject<NSCoding>
 {
@@ -79,41 +79,4 @@
  @return 一个`NSString`对象
  */
 -(NSString *)description;
-
-/**
- 把UMSocialSnsType类型转换成UMShareToSina、UMShareToTencent等平台名的字符串
- 
- @param socialSnsType 平台枚举变量
- 
- @return 平台名字符串
- */
-+(NSString *)getSnsPlatformString:(UMSocialSnsType)socialSnsType;
-
-/**
- 把UMShareToSina、UMShareToTencent等平台名的字符串转换成平台枚举变量
- 
- @param socialSnsString 平台名字符串
- 
- @return 平台枚举变量
- */
-+(UMSocialSnsType)getSnsPlatformType:(NSString *)socialSnsString;
-
-
-/**
- 把配置平台的次序号转换成平台名
- 
- @param snsIndex 使用的平台顺序，使用的平台配置在UMSocialConfigDelegate,例如`- (NSArray *)shareToPlatforms;`返回的是UMSocialSnsTypeSina和UMSocialSnsTypeTenc,UMSocialSnsTypeSina就是0，UMSocialSnsTypeTenc就是1
- 
- @return 平台名字符串
- */
-+(NSString *)getSnsPlatformStringFromIndex:(NSInteger)snsIndex;
-
-/**
- 把配置平台的次序号转换成平台枚举名
- 
- @param snsIndex 使用的平台顺序，使用的平台配置在UMSocialConfigDelegate,例如`- (NSArray *)shareToPlatforms;`返回的是UMSocialSnsTypeSina和UMSocialSnsTypeTenc,UMSocialSnsTypeSina就是0，UMSocialSnsTypeTenc就是1
- 
- @return 平台枚举名
- */
-+(UMSocialSnsType )getSnsPlatformTypeFromIndex:(NSInteger)snsIndex;
 @end

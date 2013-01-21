@@ -44,11 +44,7 @@
 	
 	<option value="//api/name/currentViewController">&nbsp;&nbsp;&nbsp;&nbsp;currentViewController</option>
 	
-	<option value="//api/name/shareNeedLogin">&nbsp;&nbsp;&nbsp;&nbsp;shareNeedLogin</option>
-	
 	<option value="//api/name/socialDataService">&nbsp;&nbsp;&nbsp;&nbsp;socialDataService</option>
-	
-	<option value="//api/name/userCenterNeedLogin">&nbsp;&nbsp;&nbsp;&nbsp;userCenterNeedLogin</option>
 	
 	
 	
@@ -61,6 +57,10 @@
 	
 	
 	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/getLoginAccountController">&nbsp;&nbsp;&nbsp;&nbsp;- getLoginAccountController</option>
+	
+	<option value="//api/name/getSnsAccountController">&nbsp;&nbsp;&nbsp;&nbsp;- getSnsAccountController</option>
 	
 	<option value="//api/name/getSocialAccountController">&nbsp;&nbsp;&nbsp;&nbsp;- getSocialAccountController</option>
 	
@@ -76,7 +76,7 @@
 	
 	<option value="//api/name/socialData">&nbsp;&nbsp;&nbsp;&nbsp;- socialData</option>
 	
-	<option value="//api/name/soicalUIDelegate">&nbsp;&nbsp;&nbsp;&nbsp;- soicalUIDelegate</option>
+	<option value="//api/name/socialUIDelegate">&nbsp;&nbsp;&nbsp;&nbsp;- socialUIDelegate</option>
 	
 	
 	
@@ -108,11 +108,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentViewController">currentViewController</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shareNeedLogin">shareNeedLogin</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/socialDataService">socialDataService</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/userCenterNeedLogin">userCenterNeedLogin</a></span></li>
 	
 </ul></li>
 
@@ -128,6 +124,10 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getLoginAccountController">getLoginAccountController</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSnsAccountController">getSnsAccountController</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSocialAccountController">getSocialAccountController</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSocialLoginController">getSocialLoginController</a></span></li>
@@ -142,7 +142,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/socialData">socialData</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/soicalUIDelegate">soicalUIDelegate</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/socialUIDelegate">socialUIDelegate</a></span></li>
 	
 </ul></li>
 
@@ -206,7 +206,7 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/soicalUIDelegate">&ndash;&nbsp;soicalUIDelegate</a></code>
+		<code><a href="#//api/name/socialUIDelegate">&ndash;&nbsp;socialUIDelegate</a></code>
 		<span class="tooltip"><p>当前<a href="../Protocols/UMSocialUIDelegate.html"><code>UMSocialUIDelegate</code></a>对象,此对象可以获取到授权完成，关闭页面等状态，详情看<a href="../Protocols/UMSocialUIDelegate.html"><code>UMSocialUIDelegate</code></a>的定义</p></span>
 	</span>
 	
@@ -228,7 +228,7 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getSocialAccountController">&ndash;&nbsp;getSocialAccountController</a></code>
-		<span class="tooltip"><p>个人中心页面，该页面包括个人的各个微博授权信息</p></span>
+		<span class="tooltip"><p>个人中心页面，该页面包括用户各个微博授权信息和选择的登录账号</p></span>
 	</span>
 	
 	
@@ -250,6 +250,20 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/getSocialLoginController">&ndash;&nbsp;getSocialLoginController</a></code>
 		<span class="tooltip"><p>登录页面,出现你配置出现的所有sns平台，授权之后设置为sdk的登录账号。使用评论功能时会取此登录账号的昵称和头像。</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getSnsAccountController">&ndash;&nbsp;getSnsAccountController</a></code>
+		<span class="tooltip"><p>sns账号设置页面，该页面包括个人的各个微博授权信息</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getLoginAccountController">&ndash;&nbsp;getLoginAccountController</a></code>
+		<span class="tooltip"><p>登录账号页面，该页面包括个人选择的绑定账号的用户名和头像，如果没有登录的话可以点击登录</p></span>
 	</span>
 	
 	
@@ -286,20 +300,6 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/currentNavigationController">&nbsp;&nbsp;currentNavigationController</a></code>
 		<span class="tooltip"><p>当前返回的<code>UIViewController</code>对象</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/shareNeedLogin">&nbsp;&nbsp;shareNeedLogin</a></code>
-		<span class="tooltip"><p>弹出分享列表页面，设置是否需要登录才可以看到邮箱、短信和自定义单元格，默认不需要（登录即绑定一个授权账号作为评论系统的昵称和头像）。</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/userCenterNeedLogin">&nbsp;&nbsp;userCenterNeedLogin</a></code>
-		<span class="tooltip"><p>进入个人中心页面，是否需要登录的设置，如果不需要登录，没有登录下进入个人中心就不会显示登录账号，否则没有登录情况下先到登录页面再到个人中心。</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -389,42 +389,6 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/shareNeedLogin" title="shareNeedLogin"></a>
-	<h3 class="subsubtitle method-title">shareNeedLogin</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>弹出分享列表页面，设置是否需要登录才可以看到邮箱、短信和自定义单元格，默认不需要（登录即绑定一个授权账号作为评论系统的昵称和头像）。</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL shareNeedLogin</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/socialDataService" title="socialDataService"></a>
 	<h3 class="subsubtitle method-title">socialDataService</h3>
 	
@@ -437,42 +401,6 @@
     
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) UMSocialDataService *socialDataService</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/userCenterNeedLogin" title="userCenterNeedLogin"></a>
-	<h3 class="subsubtitle method-title">userCenterNeedLogin</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>进入个人中心页面，是否需要登录的设置，如果不需要登录，没有登录下进入个人中心就不会显示登录账号，否则没有登录情况下先到登录页面再到个人中心。</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL userCenterNeedLogin</code></div>
 
     
 	
@@ -559,13 +487,95 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/getLoginAccountController" title="getLoginAccountController"></a>
+	<h3 class="subsubtitle method-title">getLoginAccountController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>登录账号页面，该页面包括个人选择的绑定账号的用户名和头像，如果没有登录的话可以点击登录</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UINavigationController *)getLoginAccountController</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>UINavigationController</code>对象</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getSnsAccountController" title="getSnsAccountController"></a>
+	<h3 class="subsubtitle method-title">getSnsAccountController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>sns账号设置页面，该页面包括个人的各个微博授权信息</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UINavigationController *)getSnsAccountController</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>UINavigationController</code>对象</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/getSocialAccountController" title="getSocialAccountController"></a>
 	<h3 class="subsubtitle method-title">getSocialAccountController</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>个人中心页面，该页面包括个人的各个微博授权信息</p>
+		<p>个人中心页面，该页面包括用户各个微博授权信息和选择的登录账号</p>
 	</div>		
 	
     
@@ -871,8 +881,8 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/soicalUIDelegate" title="soicalUIDelegate"></a>
-	<h3 class="subsubtitle method-title">soicalUIDelegate</h3>
+	<a name="//api/name/socialUIDelegate" title="socialUIDelegate"></a>
+	<h3 class="subsubtitle method-title">socialUIDelegate</h3>
 	
 	
 	
@@ -882,7 +892,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id&lt;UMSocialUIDelegate&gt;)soicalUIDelegate</code></div>
+	<div class="method-subsection method-declaration"><code>- (id&lt;UMSocialUIDelegate&gt;)socialUIDelegate</code></div>
 
     
 	
@@ -919,7 +929,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-01-07)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-01-21)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

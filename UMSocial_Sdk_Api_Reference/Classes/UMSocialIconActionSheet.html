@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>UMSocialControllerServiceComment Class Reference</title>
+		<title>UMSocialIconActionSheet Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">UMSocialControllerServiceComment Class Reference</h1>
+				<h1 class="hideInXcode">UMSocialIconActionSheet Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -36,15 +36,13 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/actionSheetHandler">&nbsp;&nbsp;&nbsp;&nbsp;actionSheetHandler</option>
 	
 	
 	
 	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/getSocialCommentListController">&nbsp;&nbsp;&nbsp;&nbsp;- getSocialCommentListController</option>
-	
-	<option value="//api/name/initWithUMSocialData:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithUMSocialData:</option>
 	
 	
 	
@@ -66,24 +64,22 @@
 
 
 
-
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSocialCommentListController">getSocialCommentListController</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithUMSocialData:">initWithUMSocialData:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/actionSheetHandler">actionSheetHandler</a></span></li>
 	
 </ul></li>
+
+
+
+
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="UMSocialControllerServiceComment Class Reference" name="top"></a>
+				<a title="UMSocialIconActionSheet Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -92,7 +88,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">UMSocialControllerServiceComment Class Reference</h1>
+						<h1 class="title title-header">UMSocialIconActionSheet Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -100,10 +96,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="../Classes/UMSocialControllerService.html">UMSocialControllerService</a> : NSObject</td>
+	<td class="specification-value">UIView</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">UMSocialControllerServiceComment.h<br />UMSocialControllerServiceComment.m</td>
+	<td class="specification-value">UMSocialIconActionSheet.h<br />UMSocialIconActionSheet.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -123,17 +119,10 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithUMSocialData:">&ndash;&nbsp;initWithUMSocialData:</a></code>
-		<span class="tooltip"><p>初始化一个<code>UMSocialControllerService</code>对象</p></span>
+		<code><a href="#//api/name/actionSheetHandler">&nbsp;&nbsp;actionSheetHandler</a></code>
+		<span class="tooltip"><p>处理点击每一项之后的处理器对象</p></span>
 	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/getSocialCommentListController">&ndash;&nbsp;getSocialCommentListController</a></code>
-		<span class="tooltip"><p>评论列表页面，评论列表页面包括各评论详情、评论编辑</p></span>
-	</span>
-	
+	<span class="task-item-suffix">property</span>
 	
 </li>
 						</ul>
@@ -144,36 +133,27 @@
 					
 					
 					
-					
-					
-					
-					
 					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/getSocialCommentListController" title="getSocialCommentListController"></a>
-	<h3 class="subsubtitle method-title">getSocialCommentListController</h3>
+	<a name="//api/name/actionSheetHandler" title="actionSheetHandler"></a>
+	<h3 class="subsubtitle method-title">actionSheetHandler</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>评论列表页面，评论列表页面包括各评论详情、评论编辑</p>
+		<p>处理点击每一项之后的处理器对象</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (UINavigationController *)getSocialCommentListController</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) UMIconActionSheetButtonClickHandler actionSheetHandler</code></div>
 
     
 	
 	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p><code>UINavigationController</code>对象</p>
-	</div>
 	
 	
 	
@@ -187,64 +167,17 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialControllerServiceComment.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithUMSocialData:" title="initWithUMSocialData:"></a>
-	<h3 class="subsubtitle method-title">initWithUMSocialData:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>初始化一个<code>UMSocialControllerService</code>对象</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (id)initWithUMSocialData:(UMSocialData *)<em>socialData</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>socialData</em></dt>
-			<dd><p><a href="../Classes/UMSocialData.html"><code>UMSocialData</code></a>对象</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>初始化对象</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+		<code class="declared-in-ref">UMSocialIconActionSheet.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 					</div>
+					
+					
+					
+					
 					
 					
 				</div>

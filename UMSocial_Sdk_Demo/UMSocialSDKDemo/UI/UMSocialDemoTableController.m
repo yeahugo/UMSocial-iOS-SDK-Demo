@@ -74,7 +74,7 @@
         cell.textLabel.text = @"操作栏分拆接口";
     }
     if (indexPath.row == 2) {
-        cell.textLabel.text = @"分享微博接口";
+        cell.textLabel.text = @"分享微博基础接口";
     }
     if (indexPath.row == 3) {
         cell.textLabel.text = @"评论接口";

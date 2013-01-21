@@ -18,6 +18,15 @@
 @optional
 
 /**
+ 关闭当前页面之前
+ 
+ @param fromViewControllerType 关闭的页面类型
+ 
+ */
+-(void)willCloseUIViewController:(UMSViewControllerType)fromViewControllerType;
+
+
+/**
  关闭当前页面之后
  
  @param fromViewControllerType 关闭的页面类型
@@ -39,16 +48,13 @@
  */
 
 @class UMSUIHandler;
+@class UMSocialIconActionSheet;
 @interface UMSocialControllerService : NSObject
 {
     UMSocialDataService     *_socialDataService;
     UMSUIHandler            *_socialUIHandler;
     UINavigationController  *_currentNavigationController;
     UIViewController        *_currentViewController;
-    
-    @protected
-    BOOL                    _shareNeedLogin;
-    BOOL                    _userCenterNeedLogin;
 }
 
 ///---------------------------------------
@@ -81,17 +87,18 @@
 /**
  当前`<UMSocialUIDelegate>`对象,此对象可以获取到授权完成，关闭页面等状态，详情看`UMSocialUIDelegate`的定义
  */
-@property (nonatomic, assign) id <UMSocialUIDelegate> soicalUIDelegate;
+@property (nonatomic, assign) id <UMSocialUIDelegate> socialUIDelegate;
 
-/**
- 弹出分享列表页面，设置是否需要登录才可以看到邮箱、短信和自定义单元格，默认不需要（登录即绑定一个授权账号作为评论系统的昵称和头像）。
- */
-@property (nonatomic, assign) BOOL shareNeedLogin;
+///**
+// 弹出分享列表页面，设置是否需要登录才可以看到邮箱、短信和自定义单元格，默认不需要（登录即绑定一个授权账号作为评论系统的昵称和头像）。
+// */
+//@property (nonatomic, assign) BOOL shareNeedLogin;
 
-/**
-进入个人中心页面，是否需要登录的设置，如果不需要登录，没有登录下进入个人中心就不会显示登录账号，否则没有登录情况下先到登录页面再到个人中心。
- */
-@property (nonatomic, assign) BOOL userCenterNeedLogin;
+///**
+//进入个人中心页面，是否需要登录的设置，如果不需要登录，没有登录下进入个人中心就不会显示登录账号，否则没有登录情况下先到登录页面再到个人中心。
+// */
+//@property (nonatomic, assign) BOOL userCenterNeedLogin;
+
 
 ///---------------------------------------
 /// @name 初始化方法和设置
@@ -126,11 +133,26 @@
 - (UINavigationController *)getSocialShareListController;
 
 /**
- 个人中心页面，该页面包括个人的各个微博授权信息
+ 个人中心页面，该页面包括用户各个微博授权信息和选择的登录账号
  
  @return `UINavigationController`对象
  */
 - (UINavigationController *)getSocialAccountController;
+
+
+/**
+ sns账号设置页面，该页面包括个人的各个微博授权信息
+ 
+ @return `UINavigationController`对象
+ */
+- (UINavigationController *)getSnsAccountController;
+
+/**
+ 登录账号页面，该页面包括个人选择的绑定账号的用户名和头像，如果没有登录的话可以点击登录
+ 
+ @return `UINavigationController`对象
+ */
+- (UINavigationController *)getLoginAccountController;
 
 /**
  分享编辑页面
@@ -157,6 +179,8 @@
  */
 - (UINavigationController *)getSocialLoginController;
 
+
+- (UMSocialIconActionSheet *)getSocialIconActionSheetInController:(UIViewController *)controller;
 @end
 
 

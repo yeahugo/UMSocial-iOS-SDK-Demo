@@ -44,6 +44,21 @@ extern NSString *const UMShareToEmail;
 extern NSString *const UMShareToSms;
 
 /**
+ 微信
+ */
+extern NSString *const UMShareToWeixin;
+
+/**
+ Facebook
+ */
+extern NSString *const UMShareToFacebook;
+
+/**
+ Twitter
+ */
+extern NSString *const UMShareToTwitter;
+
+/**
  分享平台
  
  */
@@ -54,7 +69,6 @@ typedef enum {
     UMSocialSnsTypeTenc,                 //tencent weibo
     UMSocialSnsTypeRenr,                 //renren
     UMSocialSnsTypeDouban,               //douban
-    UMSocialSnsTypeCount,                //count the number of sns,now is 15
     UMSocialSnsTypeEmail,
     UMSocialSnsTypeSms
 } UMSocialSnsType;
@@ -90,7 +104,8 @@ typedef enum {
     UMSResponseGetAccount,
     UMSResponseGetSnsInfo,
     UMSResponseGetFriends,
-    UMSResponseAddFollow
+    UMSResponseAddFollow,
+    UMSResponseAddCustomAccount
 } UMSResponse;
 
 /**
@@ -102,7 +117,9 @@ typedef enum{
     UMSViewControllerCommentEdit,        //评论编辑页
     UMSViewControllerShareList,          //分享列表页，包含sdk支持的所有sns平台
     UMSViewControllerShareEdit,          //分享编辑页
-    UMSViewControllerAccount,            //分享账号设置页面
+    UMSViewControllerAccount,            //个人中心页面
+    UMSViewControllerSnsAccount,         //sns账号设置页面
+    UMSViewControllerLoginAccount,       //登录账号页面
     UMSViewControllerOauth,              //oath授权页面
     UMSViewControllerLogin,              //登录页面，登录的可选平台为sdk所支持的sns平台
     UMSViewControllerFriendList          //好友列表页面

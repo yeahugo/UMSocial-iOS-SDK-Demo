@@ -168,7 +168,7 @@
 -(void)pushShareList
 {
     NSLog(@"self.socialController is %@",self.socialController);
-    [self.socialController setSoicalUIDelegate:self];
+    [self.socialController setSocialUIDelegate:self];
     UINavigationController *shareListController = [_socialController getSocialShareListController];
     [_tabelViewController presentModalViewController:shareListController animated:YES];
 }
@@ -186,7 +186,7 @@
 
 -(void)pushCommentList
 {
-    [self.socialController setSoicalUIDelegate:self];
+    [self.socialController setSocialUIDelegate:self];
     UINavigationController *commentListController = [_socialController getSocialCommentListController];
     [_tabelViewController presentModalViewController:commentListController animated:YES];
 }
