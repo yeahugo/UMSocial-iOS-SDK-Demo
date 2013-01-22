@@ -35,7 +35,6 @@
 	@synchronized(self) {
 		if (_instance == nil) {            
 			_instance = [[self alloc] init];
-            UMLog(@"NSString *const SLServiceTypeFacebook is %@",SLServiceTypeFacebook);
             NSBundle *socialSupportBundle = [NSBundle bundleWithPath:@"/System/Library/Frameworks/Social.framework"];
             [socialSupportBundle load];
             if (socialSupportBundle == nil) {
@@ -102,7 +101,7 @@
         customSnsPlatform.protocolName = snsName;
         customSnsPlatform.imageName = @"UMSocialSDKResources.bundle/UMS_wechart_on.png";
         customSnsPlatform.imageOnName = @"UMSocialSDKResources.bundle/UMS_wechart_on.png";
-        customSnsPlatform.displayName = @"微信分享";
+        customSnsPlatform.snsName = @"微信分享";
         customSnsPlatform.loginName = @"微信账号";
         customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
             UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"分享到微信" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"分享到会话",@"分享到朋友圈",nil];
@@ -114,7 +113,7 @@
         customSnsPlatform.protocolName = snsName;
         customSnsPlatform.imageName = @"UMSocialSDKResources.bundle/UMS_facebook_on.png";
         customSnsPlatform.imageOnName = @"UMS_facebook_on.png";
-        customSnsPlatform.displayName = @"Facebook";
+        customSnsPlatform.snsName = @"Facebook";
         customSnsPlatform.shareToType = UMSocialSnsTypeSms + 1;
         
         customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
@@ -151,7 +150,7 @@
         customSnsPlatform.protocolName = snsName;
         customSnsPlatform.imageName = @"UMSocialSDKResources.bundle/UMS_twitter_on.png";
         customSnsPlatform.imageOnName = @"UMSocialSDKResources.bundle/UMS_twitter_on.png";
-        customSnsPlatform.displayName = @"Twitter";
+        customSnsPlatform.snsName = @"Twitter";
         customSnsPlatform.shareToType = UMSocialSnsTypeSms + 2;
         customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
 

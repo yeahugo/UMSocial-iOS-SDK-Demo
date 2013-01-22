@@ -33,9 +33,6 @@
 		D574385A160836C700C7AD07 /* yinxing3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D5743856160836C700C7AD07 /* yinxing3.jpg */; };
 		D58D66C71615A35200D3F95A /* UMSocialDemoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58D66C61615A35200D3F95A /* UMSocialDemoTableController.m */; };
 		D59762E316476F2A0066D1E8 /* weixin_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D59762E216476F2A0066D1E8 /* weixin_icon@2x.png */; };
-		D59CCFF416A92D0300409A04 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D59CCFC716A92D0300409A04 /* AFHTTPClient.m */; };
-		D59CCFF516A92D0300409A04 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D59CCFC916A92D0300409A04 /* AFHTTPRequestOperation.m */; };
-		D59CCFF616A92D0300409A04 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D59CCFCB16A92D0300409A04 /* AFURLConnectionOperation.m */; };
 		D59CCFF716A92D0300409A04 /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D59CCFCD16A92D0300409A04 /* libWeChatSDK_armv7_armv7s.a */; };
 		D59CCFFA16A92D0300409A04 /* UMSocialBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D59CCFE116A92D0300409A04 /* UMSocialBarView.m */; };
 		D59CCFFC16A92D0300409A04 /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D59CCFEA16A92D0300409A04 /* UMSCommentDetailController.xib */; };
@@ -98,12 +95,6 @@
 		D58D66C51615A35200D3F95A /* UMSocialDemoTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UMSocialDemoTableController.h; path = UI/UMSocialDemoTableController.h; sourceTree = "<group>"; };
 		D58D66C61615A35200D3F95A /* UMSocialDemoTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UMSocialDemoTableController.m; path = UI/UMSocialDemoTableController.m; sourceTree = "<group>"; };
 		D59762E216476F2A0066D1E8 /* weixin_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weixin_icon@2x.png"; sourceTree = "<group>"; };
-		D59CCFC616A92D0300409A04 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
-		D59CCFC716A92D0300409A04 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
-		D59CCFC816A92D0300409A04 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
-		D59CCFC916A92D0300409A04 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
-		D59CCFCA16A92D0300409A04 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
-		D59CCFCB16A92D0300409A04 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
 		D59CCFCD16A92D0300409A04 /* libWeChatSDK_armv7_armv7s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK_armv7_armv7s.a; sourceTree = "<group>"; };
 		D59CCFCE16A92D0300409A04 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		D59CCFCF16A92D0300409A04 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
@@ -275,23 +266,9 @@
 		D59CCFC416A92D0300409A04 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D59CCFC516A92D0300409A04 /* AFNetworking */,
 				D59CCFCC16A92D0300409A04 /* Wechat */,
 			);
 			path = frameworks;
-			sourceTree = "<group>";
-		};
-		D59CCFC516A92D0300409A04 /* AFNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				D59CCFC616A92D0300409A04 /* AFHTTPClient.h */,
-				D59CCFC716A92D0300409A04 /* AFHTTPClient.m */,
-				D59CCFC816A92D0300409A04 /* AFHTTPRequestOperation.h */,
-				D59CCFC916A92D0300409A04 /* AFHTTPRequestOperation.m */,
-				D59CCFCA16A92D0300409A04 /* AFURLConnectionOperation.h */,
-				D59CCFCB16A92D0300409A04 /* AFURLConnectionOperation.m */,
-			);
-			path = AFNetworking;
 			sourceTree = "<group>";
 		};
 		D59CCFCC16A92D0300409A04 /* Wechat */ = {
@@ -477,9 +454,6 @@
 				D58D66C71615A35200D3F95A /* UMSocialDemoTableController.m in Sources */,
 				D5EF898A166DF18900B2068D /* UMStringMock.m in Sources */,
 				D5EF898C166DF1AF00B2068D /* main.m in Sources */,
-				D59CCFF416A92D0300409A04 /* AFHTTPClient.m in Sources */,
-				D59CCFF516A92D0300409A04 /* AFHTTPRequestOperation.m in Sources */,
-				D59CCFF616A92D0300409A04 /* AFURLConnectionOperation.m in Sources */,
 				D59CCFFA16A92D0300409A04 /* UMSocialBarView.m in Sources */,
 				D5157CAF16AD266C00E6854D /* UMSocialSnsService.m in Sources */,
 				D566048D16AD2DA600440915 /* UMSocialIconActionSheet.m in Sources */,
@@ -522,7 +496,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -542,7 +516,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

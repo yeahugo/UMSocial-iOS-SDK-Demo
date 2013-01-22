@@ -18,7 +18,7 @@ typedef void (^UMSocialSnsPlatformClickHandler)(UIViewController *presentingCont
 	NSString	*_protocolName;			// sina tentcent renren douban
 	NSString	*_oauthBaseURLString;	//
 	NSString	*_oauthCallBackPath;
-	NSString	*_displayName;			// 编辑显示名称
+	NSString	*_snsName;			// 编辑显示名称
     NSString    *_loginName;            // 登陆显示名称
     NSString    *_imageName;            // icon的图片名
     NSString    *_imageOffName;         // 没有绑定的图片名
@@ -30,7 +30,7 @@ typedef void (^UMSocialSnsPlatformClickHandler)(UIViewController *presentingCont
 @property (nonatomic, copy) NSString	*protocolName;
 @property (nonatomic, copy) NSString	*oauthBaseURLString;
 @property (nonatomic, copy) NSString	*oauthCallBackPath;
-@property (nonatomic, copy) NSString	*displayName;
+@property (nonatomic, copy) NSString	*snsName;
 @property (nonatomic, copy) NSString    *loginName;
 @property (nonatomic, assign) UMSocialSnsType shareToType;
 

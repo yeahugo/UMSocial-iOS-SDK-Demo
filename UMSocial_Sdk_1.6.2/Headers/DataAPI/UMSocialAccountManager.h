@@ -49,7 +49,7 @@ extern NSString *const UMSCustomAccountGenderFeMale;
 #pragma query api
 + (BOOL)isLogin;
 + (BOOL)isLoginWithSnsAccount;
-+ (BOOL)isOauthWithPlatform:(UMSocialSnsType)platform;
++ (BOOL)isOauthWithPlatform:(NSString *)platformType;
 
 + (BOOL)isLoginWithAnonymous;
 
