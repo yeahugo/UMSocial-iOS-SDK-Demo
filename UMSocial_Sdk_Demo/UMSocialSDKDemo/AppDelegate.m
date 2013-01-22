@@ -12,29 +12,15 @@
 #import "WXApi.h"
 #import "UMSocialUIHelper.h"
 
-@implementation UMSocialUIHelper(UMSocial)
-
-+(void) customNavBackButton:(UIButton *)button WithTitle:(NSString *)title
-{
-    button.frame = CGRectMake(0, 0, 50, 30);
-    UIImage * normalImage = [UIImage imageNamed:@"UMS_nav_back_button_normal"];
-    UIImage * tapImage = [UIImage imageNamed:@"UMS_nav_back_button_tap"];
-    [button titleLabel].font = [UIFont boldSystemFontOfSize:20];
-    [button setTitle:title forState:UIControlStateNormal];
-    [button setTitle:title forState:UIControlStateHighlighted];
-    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 6, 0, 0)];
-    [button setBackgroundImage:[normalImage stretchableImageWithLeftCapWidth:16 topCapHeight:10] forState:UIControlStateNormal];
-    [button setBackgroundImage:[tapImage stretchableImageWithLeftCapWidth:16 topCapHeight:10] forState:UIControlStateHighlighted];
-}
-
-@end
-
 @implementation AppDelegate
 
 @synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSBundle *adSupportBundle = [NSBundle bundleWithPath:@"/System/Library/Frameworks/Social.framework"];
+    [adSupportBundle load];
+
     [UMSocialData setAppKey:useAppkey];
     UMSocialDemoTableController *demoViewController = [[UMSocialDemoTableController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:demoViewController];
@@ -70,15 +56,11 @@
 }
 
 //设置出现的sns平台
-//- (NSArray *)shareToPlatforms
-//{
-//    NSArray *shareToArray = [NSArray arrayWithObjects:UMShareToSina,
-//                             UMShareToTencent,
-//                             UMShareToEmail,
-//                             UMShareToSms,
-//                             nil];
-//    return shareToArray;
-//}
+- (NSArray *)shareToPlatforms
+{
+    NSArray *shareToArray = @[UMShareToWeixin,UMShareToSina];
+    return shareToArray;
+}
 
 
 #pragma mark - UMSocialConfigDelegate

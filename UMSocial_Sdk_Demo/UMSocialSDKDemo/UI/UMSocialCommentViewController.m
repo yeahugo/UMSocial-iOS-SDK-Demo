@@ -128,7 +128,7 @@
     if (indexPath.row == 3) {
         [_activityIndicatorView startAnimating];
         
-        CLLocation *location = [[CLLocation alloc] initWithLatitude:30.0 longitude:108.0];
+        CLLocation *location = [[NSClassFromString(@"CLLocation") alloc] initWithLatitude:30.0 longitude:108.0];
         NSDictionary *snsDic = _socialController.socialDataService.socialData.socialAccount;
         NSMutableDictionary *shareToSNSDictionary = [[NSMutableDictionary alloc] init];
         for (id key in snsDic) {

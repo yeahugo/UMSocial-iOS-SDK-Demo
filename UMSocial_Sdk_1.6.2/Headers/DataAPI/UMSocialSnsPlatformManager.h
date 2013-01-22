@@ -13,12 +13,14 @@
 {
     NSMutableDictionary *_allSnsPlatformDictionary;
     NSMutableDictionary *_snsPlatformDictionary;
-    NSArray *allConfigArray;
+    NSArray *_allConfigArray;
+    NSArray *_allConfigArrayValues;
 }
 
 @property (nonatomic, retain) NSMutableDictionary * allSnsPlatformDictionary;
 @property (nonatomic, retain) NSMutableDictionary * snsPlatformDictionary;
 @property (nonatomic, readonly) NSArray *allConfigArray;
+@property (nonatomic, readonly) NSArray *allConfigArrayValues;
 
 + (UMSocialSnsPlatformManager *)sharedInstance;
 

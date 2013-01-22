@@ -9,10 +9,10 @@
 #import "UMSocialShareViewController.h"
 #import "UMStringMock.h"
 #import "WXApi.h"
-#import <MessageUI/MessageUI.h>
 #import "UMSocialMacroDefine.h"
 #import "UMSocialSnsService.h"
 #import "AppDelegate.h"
+#import "UMSocialSnsPlatformManager.h"
 
 @interface UMSocialShareViewController ()
 
@@ -77,7 +77,7 @@
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _activityIndicatorView.center = CGPointMake(160, 150);
     [self.view addSubview:_activityIndicatorView];
-    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager = [[NSClassFromString(@"CLLocationManager") alloc] init];
     [_locationManager startUpdatingLocation];
 }
 
@@ -147,8 +147,6 @@
         _editActionSheet.delegate = self;
     }
     else if (indexPath.row == UMShareIconActionSheet) {
-//        UMSocialIconActionSheet *actionSheet = [_socialController getSocialIconActionSheetInController:self];
-//        [actionSheet showInView:self.view];
         [UMSocialSnsService showSnsIconSheetView:self appKey:useAppkey shareText:[UMStringMock commentMockString] shareImage:nil shareToSnsStrings:nil delegate:self];
     }
     else if(indexPath.row == UMSharePostData){
@@ -168,7 +166,7 @@
         }
         unsigned int dateInteger = [[NSDate date] timeIntervalSince1970];
         int random = rand_r(&dateInteger)%10;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-        CLLocation *location = [[CLLocation alloc] initWithLatitude:28+random longitude:107+random];
+        CLLocation *location = [[NSClassFromString(@"CLLocation") alloc] initWithLatitude:28+random longitude:107+random];
 
         NSString *shareContent = [NSString stringWithFormat:@"%@+%d",_socialController.socialData.shareText,random];
         
@@ -183,21 +181,11 @@
 {
     NSLog(@"button index is %d",buttonIndex);
     UMSocialSnsType shareToType = buttonIndex + UMSocialSnsTypeQzone;
-    if (shareToType >= UMSocialSnsTypeEmail) {
-        if (actionSheet.tag == UMShareEditPresent) {
-            shareToType = shareToType + 1;
-            if (shareToType == UMSocialSnsTypeSms && ![MFMessageComposeViewController canSendText]) {
-                UIAlertView * servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"该设备不支持短信功能" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-                [servicesDisabledAlert show];
-                SAFE_ARC_RELEASE(servicesDisabledAlert);
-            }
-            if (shareToType == UMSocialSnsTypeEmail && ![MFMailComposeViewController canSendMail]) {
-                UIAlertView *servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"邮件功能未开启" message:@"您当前设备的邮件服务处于未启用状态，若想通过邮件分享，请到设置中设置邮件服务后，再进行分享" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-                [servicesDisabledAlert show];
-                SAFE_ARC_RELEASE(servicesDisabledAlert);
-            }
-        }
-        return;
+    if (actionSheet.tag == UMShareEditPresent) {
+        UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:[UMSocialSnsPlatformManager getSnsPlatformString:shareToType]];
+        
+        snsPlatform.snsClickHandler(self,_socialController,YES);
+
     }
     if (actionSheet.tag == UMSharePostData) {
         [_activityIndicatorView startAnimating];
@@ -210,10 +198,6 @@
         [_socialController.socialDataService setUMSocialDelegate:self];
         [_socialController.socialDataService postSNSWithType:shareToType usid:nil content:shareContent image:_imageView.image location:location];
         return;
-    }
-    else if(actionSheet.tag == UMShareEditPresent) {
-        UINavigationController *shareEditController = [_socialController getSocialShareEditController:shareToType];
-        [self presentModalViewController:shareEditController animated:YES];
     }
 }
 

@@ -13,13 +13,13 @@
 #import "UMSocialSnsPlatformManager.h"
 #import "WXApi.h"
 
-#ifdef SOCIAL_EXTERN
 #import <Social/Social.h>
-#endif
+
+//extern NSString *const SLServiceTypeFacebook;
 
 @implementation UMSocialSnsService
-
-#define GM_TAG        1002
+#define SLServiceTypeFacebook @"com.apple.social.facebook"
+#define SLServiceTypeTwitter @"com.apple.social.twitter"
 
 -(void)dealloc
 {
@@ -33,8 +33,14 @@
 	static UMSocialSnsService *_instance = nil;
     
 	@synchronized(self) {
-		if (_instance == nil) {
+		if (_instance == nil) {            
 			_instance = [[self alloc] init];
+            UMLog(@"NSString *const SLServiceTypeFacebook is %@",SLServiceTypeFacebook);
+            NSBundle *socialSupportBundle = [NSBundle bundleWithPath:@"/System/Library/Frameworks/Social.framework"];
+            [socialSupportBundle load];
+            if (socialSupportBundle == nil) {
+                NSLog(@"you need to use iOS SDK 6.0 to use social framework!");
+            }
 		}
 	}
     
@@ -60,18 +66,8 @@
     _socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
     _socialControllerService.socialUIDelegate = delegate;
     if (snsStrings == nil) {
-        
-        NSArray *allSnsArray = [UMSocialSnsPlatformManager sharedInstance].allConfigArray;
-        NSMutableArray *snsStringArray = [[NSMutableArray alloc] init];
-        for (int i = 0; i < allSnsArray.count; i++) {
-            for (int j = 0; j < [[allSnsArray objectAtIndex:i] count]; j++) {
-                NSArray *snsArray = [allSnsArray objectAtIndex:i];
-                [snsStringArray addObject:[snsArray objectAtIndex:j]];
-            }
-        }
-        
-        snsStrings = [NSArray arrayWithArray:snsStringArray];
-        SAFE_ARC_RELEASE(snsStringArray);
+        NSArray *allSnsArray = [UMSocialSnsPlatformManager sharedInstance].allConfigArrayValues;
+        snsStrings = [NSArray arrayWithArray:allSnsArray];
     }
     [UMSocialControllerService setSocialConfigDelegate:self];
     _snsArray = [[NSMutableArray alloc ] initWithArray:snsStrings];
@@ -123,16 +119,15 @@
         
         customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
             
-#ifdef SOCIAL_EXTERN
-            if([SLComposeViewController class] != nil)
+            if([NSClassFromString(@"SLComposeViewController") class] != nil)
             {
-                if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-                    SLComposeViewController *slcomposeViewController =  [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+                if ([NSClassFromString(@"SLComposeViewController") isAvailableForServiceType:SLServiceTypeFacebook]) {
+                    SLComposeViewController *slcomposeViewController =  [NSClassFromString(@"SLComposeViewController") composeViewControllerForServiceType:SLServiceTypeFacebook];
                     if (socialControllerService != nil) {
                         [slcomposeViewController setInitialText:socialControllerService.socialData.shareText];
                         [slcomposeViewController addImage:socialControllerService.socialData.shareImage];
                         slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
-                            NSLog(@"%d",result);
+//                            NSLog(@"%d",result);
                         };
                     }
                     [presentingController presentModalViewController:slcomposeViewController animated:YES];
@@ -148,8 +143,8 @@
                 [osAlert show];
                 SAFE_ARC_RELEASE(osAlert);
             }
-#endif
         };
+         
     }
     else if ([snsName isEqualToString:UMShareToTwitter])
     {
@@ -160,15 +155,14 @@
         customSnsPlatform.shareToType = UMSocialSnsTypeSms + 2;
         customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
 
-#ifdef SOCIAL_EXTERN
-            if([SLComposeViewController class] != nil){
-                if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
-                    SLComposeViewController *slcomposeViewController =  [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+            if([NSClassFromString(@"SLComposeViewController") class] != nil){
+                if ([NSClassFromString(@"SLComposeViewController") isAvailableForServiceType:SLServiceTypeTwitter]) {
+                    SLComposeViewController *slcomposeViewController =  [NSClassFromString(@"SLComposeViewController") composeViewControllerForServiceType:SLServiceTypeTwitter];
                     if (socialControllerService != nil) {
                         [slcomposeViewController setInitialText:socialControllerService.socialData.shareText];
                         [slcomposeViewController addImage:socialControllerService.socialData.shareImage];
                         slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
-                            NSLog(@"%d",result);
+//                            NSLog(@"%d",result);
                         };
                     }
                     [presentingController presentModalViewController:slcomposeViewController animated:YES];
@@ -184,7 +178,6 @@
                 [osAlert show];
                 SAFE_ARC_RELEASE(osAlert);
             }
-#endif
         };
     }
     SAFE_ARC_AUTORELEASE(customSnsPlatform);
@@ -193,7 +186,6 @@
 
 -(void)didSelectSLComposeViewController:(NSString *)snsName showController:(UIViewController *)showViewController withSocialData:(UMSocialData *)socialData
 {
-#ifdef SOCIAL_EXTERN    
     NSString *slServiceType = nil;
     NSString *slName = nil;
     if ([snsName isEqualToString:UMShareToFacebook]) {
@@ -205,10 +197,10 @@
         slName = @"Twitter";
     }
 
-    if([SLComposeViewController class] != nil)
+    if([NSClassFromString(@"SLComposeViewController") class] != nil)
     {
-        if ([SLComposeViewController isAvailableForServiceType:slServiceType]) {
-            SLComposeViewController *slcomposeViewController =  [SLComposeViewController composeViewControllerForServiceType:slServiceType];
+        if ([NSClassFromString(@"SLComposeViewController") isAvailableForServiceType:slServiceType]) {
+            SLComposeViewController *slcomposeViewController =  [NSClassFromString(@"SLComposeViewController") composeViewControllerForServiceType:slServiceType];
             if (socialData != nil) {
                 [slcomposeViewController setInitialText:socialData.shareText];
                 [slcomposeViewController addImage:socialData.shareImage];                
@@ -226,7 +218,6 @@
         [osAlert show];
         SAFE_ARC_RELEASE(osAlert);
     }
-#endif
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
