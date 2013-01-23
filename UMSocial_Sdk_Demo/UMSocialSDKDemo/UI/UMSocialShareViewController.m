@@ -121,7 +121,7 @@
         cell.textLabel.text = @"新分享列表";
     }
     if (indexPath.row == 2) {
-        cell.textLabel.text = @"图文分享";
+        cell.textLabel.text = @"分享编辑页面接口";
     }
     if (indexPath.row == 3) {
         cell.textLabel.text = @"直接发送到单个微博平台";

@@ -35,11 +35,6 @@
 	@synchronized(self) {
 		if (_instance == nil) {            
 			_instance = [[self alloc] init];
-            NSBundle *socialSupportBundle = [NSBundle bundleWithPath:@"/System/Library/Frameworks/Social.framework"];
-            [socialSupportBundle load];
-            if (socialSupportBundle == nil) {
-                NSLog(@"you need to use iOS SDK 6.0 to use social framework!");
-            }
 		}
 	}
     

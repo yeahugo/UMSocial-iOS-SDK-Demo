@@ -89,17 +89,6 @@
  */
 @property (nonatomic, assign) id <UMSocialUIDelegate> socialUIDelegate;
 
-///**
-// 弹出分享列表页面，设置是否需要登录才可以看到邮箱、短信和自定义单元格，默认不需要（登录即绑定一个授权账号作为评论系统的昵称和头像）。
-// */
-//@property (nonatomic, assign) BOOL shareNeedLogin;
-
-///**
-//进入个人中心页面，是否需要登录的设置，如果不需要登录，没有登录下进入个人中心就不会显示登录账号，否则没有登录情况下先到登录页面再到个人中心。
-// */
-//@property (nonatomic, assign) BOOL userCenterNeedLogin;
-
-
 ///---------------------------------------
 /// @name 初始化方法和设置
 ///---------------------------------------
