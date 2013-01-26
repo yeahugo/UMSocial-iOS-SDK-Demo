@@ -11,13 +11,13 @@
 
 typedef enum
 {
+    UMAccountSnsAccount,
+    UMAccountSocialAccount,
+    UMAccountLoginAccount,
+    UMAccountSocialLogin,
     UMAccountOauth,
     UMAccountUnOauth,
-    UMAccountBind,
-    UMAccountUnBind,
-    UMAccountSnsInfo,
-    UMAccountFriend,
-    UMAccountAddFollow
+    UMAccountAddCustomAccount
 }UMAccountAction;
 
 

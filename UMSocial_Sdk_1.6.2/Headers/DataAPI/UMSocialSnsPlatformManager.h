@@ -9,21 +9,43 @@
 #import <Foundation/Foundation.h>
 #import "UMSocialSnsPlatform.h"
 
+/*
+ Sns平台类管理者类
+ */
 @interface UMSocialSnsPlatformManager : NSObject
 {
     NSMutableDictionary *_allSnsPlatformDictionary;
     NSMutableDictionary *_snsPlatformDictionary;
-    NSArray *_allConfigArray;
-    NSArray *_allConfigArrayValues;
+    NSArray *_allSnsArray;
+    NSArray *_allSnsValuesArray;
+    NSArray *_socialSnsArray;
 }
 
-@property (nonatomic, retain) NSMutableDictionary * allSnsPlatformDictionary;
-@property (nonatomic, retain) NSMutableDictionary * snsPlatformDictionary;
-@property (nonatomic, readonly) NSArray *allConfigArray;
-@property (nonatomic, readonly) NSArray *allConfigArrayValues;
+/**
+ sns平台配置数组，此数组可由调用者配置，可以在数组内嵌套数组设置分享列表页面多个分组
+ */
+@property (nonatomic, readonly) NSArray *allSnsArray;
+
+/**
+ sns平台配置数组，此数组由allSnsArray转换，只包含平台名作为元素
+ */
+@property (nonatomic, readonly) NSArray *allSnsValuesArray;
+
+/**
+ sns平台配置数组，此数组内只有social的云端sns分享平台名，云端分享的平台有新浪微博、腾讯微博、人人网、QQ空间
+、豆瓣。
+ */
+@property (nonatomic, readonly) NSArray *socialSnsArray;
 
 + (UMSocialSnsPlatformManager *)sharedInstance;
 
+/**
+ 根据平台名，返回平台对象
+ 
+ @param platformName sns平台名
+ 
+ @return UMSocialSnsPlatform 平台对象
+ */
 +(UMSocialSnsPlatform *)getSocialPlatformWithName:(NSString *)snsName;
 
 /**

@@ -9,6 +9,7 @@
 #import "UMSocialBarViewController.h"
 #import "WXApi.h"
 #import "UMSocialMacroDefine.h"
+#import "UMStringMock.h"
 
 @interface UMSocialBarViewController ()
 
@@ -24,16 +25,20 @@
     SAFE_ARC_SUPER_DEALLOC();
 }
 
+- (id)init
+{
+    NSString *imageName = [NSString stringWithFormat:@"yinxing%d.jpg",rand()%4];
+    UIImage *image = [UIImage imageNamed:imageName];
+    return [self initWithDescriptor:@"test" withText:[UMStringMock commentMockString] withImage:image];
+}
+
+
 -(id)initWithDescriptor:(NSString *)descriptor withText:(NSString *)text withImage:(UIImage *)image
 {
     self = [super initWithNibName:@"UMSocialBarViewController" bundle:nil];
     if (self) {
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:descriptor withTitle:@"socialBarTest"];
         _socialBar = [[UMSocialBar alloc] initWithUMSocialData:socialData withViewController:self];
-        //下面这个设置为NO，分享列表出现短信、邮箱不需要登录
-//        _socialBar.socialControllerService.shareNeedLogin = NO;
-        //设置个人中心页面也不需要登录，默认需要。如果你单独使用UMSocialControllerService则默认不需要
-//        _socialBar.socialControllerService.userCenterNeedLogin =NO;
         _socialBar.socialBarDelegate = self;
         _socialBar.socialBarView.themeColor = UMSBarColorBlack;
         SAFE_ARC_RELEASE(socialData);
@@ -43,7 +48,8 @@
         _socialBar.socialData.commentImage = image;
         _socialBar.socialData.commentText = text;
         [self.view addSubview:_socialBar];
-        _socialBar.center = CGPointMake(160, 391);
+        CGRect rect = [[UIApplication sharedApplication] keyWindow].bounds;
+        _socialBar.center = CGPointMake(160, rect.size.height - 94);
         _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 150)];
         _textLabel.numberOfLines = 4;
         _textLabel.text = text;

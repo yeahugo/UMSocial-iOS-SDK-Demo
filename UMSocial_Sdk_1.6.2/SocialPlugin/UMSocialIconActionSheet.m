@@ -52,7 +52,7 @@
         for (int i = 0 ; i < items.count ; i++) {
             NSString *snsName = items[i];
             UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
-            NSString *snsDisplayName = snsPlatform.snsName;
+            NSString *snsDisplayName = snsPlatform.displayName;
             
             UILabel *snsNamelabel = [[UILabel alloc] initWithFrame:CGRectMake(startX + deltaX * (i%numPerRow) + (deltaX-buttonWidth)/2, startY + (i/numPerRow)*deltaY + 60, 55, 20)];
             snsNamelabel.textAlignment = UITextAlignmentCenter;
@@ -62,7 +62,7 @@
             [snsNamelabel setText:snsDisplayName];
             [self addSubview:snsNamelabel];
             
-            UIImage *snsImage = [UIImage imageNamed:snsPlatform.imageOnName];
+            UIImage *snsImage = [UIImage imageNamed:snsPlatform.bigImageName];
             UIButton *snsButton = [UIButton buttonWithType:UIButtonTypeCustom];
             [snsButton setBackgroundImage:snsImage forState:UIControlStateNormal];
             snsButton.frame = CGRectMake(startX + deltaX * (i%numPerRow) + (deltaX-buttonWidth)/2, startY + (i/numPerRow)*deltaY , buttonWidth, buttonHeight);

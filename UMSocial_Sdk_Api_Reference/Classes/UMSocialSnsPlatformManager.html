@@ -46,7 +46,18 @@
 	
 	<option value="//api/name/getSnsPlatformType:">&nbsp;&nbsp;&nbsp;&nbsp;+ getSnsPlatformType:</option>
 	
+	<option value="//api/name/getSocialPlatformWithName:">&nbsp;&nbsp;&nbsp;&nbsp;+ getSocialPlatformWithName:</option>
 	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/allSnsArray">&nbsp;&nbsp;&nbsp;&nbsp;- allSnsArray</option>
+	
+	<option value="//api/name/allSnsValuesArray">&nbsp;&nbsp;&nbsp;&nbsp;- allSnsValuesArray</option>
+	
+	<option value="//api/name/socialSnsArray">&nbsp;&nbsp;&nbsp;&nbsp;- socialSnsArray</option>
 	
 	
 	
@@ -78,9 +89,21 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSnsPlatformType:">getSnsPlatformType:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getSocialPlatformWithName:">getSocialPlatformWithName:</a></span></li>
+	
 </ul></li>
 
 
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/allSnsArray">allSnsArray</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/allSnsValuesArray">allSnsValuesArray</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/socialSnsArray">socialSnsArray</a></span></li>
+	
+</ul></li>
 
 
 			</ul>
@@ -127,6 +150,13 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
+		<code><a href="#//api/name/getSocialPlatformWithName:">+&nbsp;getSocialPlatformWithName:</a></code>
+		<span class="tooltip"><p>根据平台名，返回平台对象</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/getSnsPlatformString:">+&nbsp;getSnsPlatformString:</a></code>
 		<span class="tooltip"><p>把UMSocialSnsType类型转换成UMShareToSina、UMShareToTencent等平台名的字符串</p></span>
 	</span>
@@ -136,6 +166,28 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/getSnsPlatformType:">+&nbsp;getSnsPlatformType:</a></code>
 		<span class="tooltip"><p>把UMShareToSina、UMShareToTencent等平台名的字符串转换成平台枚举变量</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/socialSnsArray">&ndash;&nbsp;socialSnsArray</a></code>
+		<span class="tooltip"><p>sns平台配置数组，此数组内只有social的云端sns分享平台名，云端分享的平台有新浪微博、腾讯微博、人人网、QQ空间
+、豆瓣。</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/allSnsArray">&ndash;&nbsp;allSnsArray</a></code>
+		<span class="tooltip"><p>sns平台配置数组，此数组可由调用者配置，可以在数组内嵌套数组设置分享列表页面多个分组</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/allSnsValuesArray">&ndash;&nbsp;allSnsValuesArray</a></code>
+		<span class="tooltip"><p>sns平台配置数组，此数组由allSnsArray转换，只包含平台名作为元素</p></span>
 	</span>
 	
 	
@@ -314,9 +366,175 @@
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/getSocialPlatformWithName:" title="getSocialPlatformWithName:"></a>
+	<h3 class="subsubtitle method-title">getSocialPlatformWithName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>根据平台名，返回平台对象</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (UMSocialSnsPlatform *)getSocialPlatformWithName:(NSString *)<em>snsName</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>platformName</em></dt>
+			<dd><p>sns平台名</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><a href="../Classes/UMSocialSnsPlatform.html">UMSocialSnsPlatform</a> 平台对象</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialSnsPlatformManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/allSnsArray" title="allSnsArray"></a>
+	<h3 class="subsubtitle method-title">allSnsArray</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>sns平台配置数组，此数组可由调用者配置，可以在数组内嵌套数组设置分享列表页面多个分组</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)allSnsArray</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialSnsPlatformManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/allSnsValuesArray" title="allSnsValuesArray"></a>
+	<h3 class="subsubtitle method-title">allSnsValuesArray</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>sns平台配置数组，此数组由allSnsArray转换，只包含平台名作为元素</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)allSnsValuesArray</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialSnsPlatformManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/socialSnsArray" title="socialSnsArray"></a>
+	<h3 class="subsubtitle method-title">socialSnsArray</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>sns平台配置数组，此数组内只有social的云端sns分享平台名，云端分享的平台有新浪微博、腾讯微博、人人网、QQ空间
+、豆瓣。</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)socialSnsArray</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialSnsPlatformManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
 					
 					
 				</div>
@@ -329,7 +547,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-01-23)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-01-26)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

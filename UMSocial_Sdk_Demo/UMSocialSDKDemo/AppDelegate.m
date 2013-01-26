@@ -7,10 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import "UMSocialDemoTableController.h"
+#import "UMSocialTabBarController.h"
 #import "UMSocialData.h"
 #import "WXApi.h"
-#import "UMSocialUIHelper.h"
 
 @implementation AppDelegate
 
@@ -18,17 +17,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSBundle *adSupportBundle = [NSBundle bundleWithPath:@"/System/Library/Frameworks/Social.framework"];
-    [adSupportBundle load];
-
-    [UMSocialData setAppKey:useAppkey];
-    UMSocialDemoTableController *demoViewController = [[UMSocialDemoTableController alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:demoViewController];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
-    self.window.rootViewController= navigationController;
-    // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+
+    [UMSocialData setAppKey:useAppkey];
+    UMSocialTabBarController *tabViewController = [[UMSocialTabBarController alloc] init];
+    self.window.rootViewController = tabViewController;
     [UMSocialData openLog:YES];
     //向微信注册
     [WXApi registerApp:@"wxd9a39c7122aa6516"];
@@ -51,14 +46,15 @@
 //设置官方微博，只支持新浪微博和腾讯微博
 -(NSDictionary *)followSnsUids
 {
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"1920318374",UMShareToSina,nil];
+    //这个uid是一个叫“SDK是一只猫”的微博用户
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"2937537507",UMShareToSina,nil];
     return dictionary;
 }
 
 //设置出现的sns平台
 - (NSArray *)shareToPlatforms
 {
-    NSArray *shareToArray = @[UMShareToWeixin,UMShareToSina,UMShareToQzone,UMShareToTencent];
+    NSArray *shareToArray = @[@[UMShareToWeixin,UMShareToSina,UMShareToQzone,UMShareToTencent],@[UMShareToEmail,UMShareToSms]];
     return shareToArray;
 }
 

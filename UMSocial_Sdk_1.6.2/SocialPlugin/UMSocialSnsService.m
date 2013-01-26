@@ -15,8 +15,6 @@
 
 #import <Social/Social.h>
 
-//extern NSString *const SLServiceTypeFacebook;
-
 @implementation UMSocialSnsService
 #define SLServiceTypeFacebook @"com.apple.social.facebook"
 #define SLServiceTypeTwitter @"com.apple.social.twitter"
@@ -60,7 +58,7 @@
     _socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
     _socialControllerService.socialUIDelegate = delegate;
     if (snsStrings == nil) {
-        NSArray *allSnsArray = [UMSocialSnsPlatformManager sharedInstance].allConfigArrayValues;
+        NSArray *allSnsArray = [UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray;
         snsStrings = [NSArray arrayWithArray:allSnsArray];
     }
     [UMSocialControllerService setSocialConfigDelegate:self];
@@ -91,12 +89,11 @@
 
 -(UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName
 {
-    UMSocialSnsPlatform *customSnsPlatform = [[UMSocialSnsPlatform alloc] init];
+    UMSocialSnsPlatform *customSnsPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:snsName];
     if ([snsName isEqualToString:UMShareToWeixin]) {
-        customSnsPlatform.protocolName = snsName;
-        customSnsPlatform.imageName = @"UMSocialSDKResources.bundle/UMS_wechart_on.png";
-        customSnsPlatform.imageOnName = @"UMSocialSDKResources.bundle/UMS_wechart_on.png";
-        customSnsPlatform.snsName = @"微信分享";
+        customSnsPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_weixin_icon";
+        customSnsPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_weixin_on.png";
+        customSnsPlatform.displayName = @"微信分享";
         customSnsPlatform.loginName = @"微信账号";
         customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
             UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"分享到微信" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"分享到会话",@"分享到朋友圈",nil];
@@ -105,10 +102,9 @@
         };
     }
     else if ([snsName isEqualToString:UMShareToFacebook]) {
-        customSnsPlatform.protocolName = snsName;
-        customSnsPlatform.imageName = @"UMSocialSDKResources.bundle/UMS_facebook_on.png";
-        customSnsPlatform.imageOnName = @"UMS_facebook_on.png";
-        customSnsPlatform.snsName = @"Facebook";
+        customSnsPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_facebook_icon";
+        customSnsPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_facebook_on.png";
+        customSnsPlatform.displayName = @"Facebook";
         customSnsPlatform.shareToType = UMSocialSnsTypeSms + 1;
         
         customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
@@ -121,7 +117,6 @@
                         [slcomposeViewController setInitialText:socialControllerService.socialData.shareText];
                         [slcomposeViewController addImage:socialControllerService.socialData.shareImage];
                         slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
-//                            NSLog(@"%d",result);
                         };
                     }
                     [presentingController presentModalViewController:slcomposeViewController animated:YES];
@@ -142,10 +137,9 @@
     }
     else if ([snsName isEqualToString:UMShareToTwitter])
     {
-        customSnsPlatform.protocolName = snsName;
-        customSnsPlatform.imageName = @"UMSocialSDKResources.bundle/UMS_twitter_on.png";
-        customSnsPlatform.imageOnName = @"UMSocialSDKResources.bundle/UMS_twitter_on.png";
-        customSnsPlatform.snsName = @"Twitter";
+        customSnsPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_twitter_icon";
+        customSnsPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_twitter_on.png";
+        customSnsPlatform.displayName = @"Twitter";
         customSnsPlatform.shareToType = UMSocialSnsTypeSms + 2;
         customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
 
@@ -156,7 +150,6 @@
                         [slcomposeViewController setInitialText:socialControllerService.socialData.shareText];
                         [slcomposeViewController addImage:socialControllerService.socialData.shareImage];
                         slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
-//                            NSLog(@"%d",result);
                         };
                     }
                     [presentingController presentModalViewController:slcomposeViewController animated:YES];

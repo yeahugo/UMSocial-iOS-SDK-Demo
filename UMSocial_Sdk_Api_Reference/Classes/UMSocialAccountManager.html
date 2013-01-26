@@ -32,10 +32,27 @@
 	
 	
 	
+	<option value="tasks">Tasks</option>
 	
 	
 	
 	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/addCustomAccount:">&nbsp;&nbsp;&nbsp;&nbsp;+ addCustomAccount:</option>
+	
+	<option value="//api/name/isLogin">&nbsp;&nbsp;&nbsp;&nbsp;+ isLogin</option>
+	
+	<option value="//api/name/isLoginWithAnonymous">&nbsp;&nbsp;&nbsp;&nbsp;+ isLoginWithAnonymous</option>
+	
+	<option value="//api/name/isLoginWithSnsAccount">&nbsp;&nbsp;&nbsp;&nbsp;+ isLoginWithSnsAccount</option>
+	
+	<option value="//api/name/isOauthWithPlatform:">&nbsp;&nbsp;&nbsp;&nbsp;+ isOauthWithPlatform:</option>
+	
+	<option value="//api/name/setIsLoginWithAnonymous:">&nbsp;&nbsp;&nbsp;&nbsp;+ setIsLoginWithAnonymous:</option>
 	
 	
 	
@@ -53,11 +70,31 @@
 
 
 
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
 
 
 
 
 
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addCustomAccount:">addCustomAccount:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isLogin">isLogin</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isLoginWithAnonymous">isLoginWithAnonymous</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isLoginWithSnsAccount">isLoginWithSnsAccount</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isOauthWithPlatform:">isOauthWithPlatform:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setIsLoginWithAnonymous:">setIsLoginWithAnonymous:</a></span></li>
+	
+</ul></li>
 
 
 
@@ -103,11 +140,309 @@
 					
 					
 					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addCustomAccount:">+&nbsp;addCustomAccount:</a></code>
+		<span class="tooltip"><p>添加自有账号到友盟的账号体系，一般是用户在使用自有账号登录之后，再利用此方法上传账号，然后利用我们评论和个人中心的接口就会显示自有账号的昵称和头像等信息</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isLogin">+&nbsp;isLogin</a></code>
+		<span class="tooltip"><p>判断是否登录，此登录包括以游客身份登录，如果已经登录评论编辑页面点击发送就不会提示登录。</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isLoginWithSnsAccount">+&nbsp;isLoginWithSnsAccount</a></code>
+		<span class="tooltip"><p>判断是否用sns账号来登录，即绑定一个sns账号作为登录账号，如果是的话，个人中心页面上半部分和评论列表即显示此用户名、头像。</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isOauthWithPlatform:">+&nbsp;isOauthWithPlatform:</a></code>
+		<span class="tooltip"><p>判断是否授权此sns平台。</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isLoginWithAnonymous">+&nbsp;isLoginWithAnonymous</a></code>
+		<span class="tooltip"><p>账号管理，可以添加开发者应用的自有账号到友盟的账号体系，查询此sns平台是否授权等。</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setIsLoginWithAnonymous:">+&nbsp;setIsLoginWithAnonymous:</a></code>
+		<span class="tooltip"><p>账号管理，可以添加开发者应用的自有账号到友盟的账号体系，查询此sns平台是否授权等。</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
 					
 					
 					
 					
 					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addCustomAccount:" title="addCustomAccount:"></a>
+	<h3 class="subsubtitle method-title">addCustomAccount:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>添加自有账号到友盟的账号体系，一般是用户在使用自有账号登录之后，再利用此方法上传账号，然后利用我们评论和个人中心的接口就会显示自有账号的昵称和头像等信息</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)addCustomAccount:(UMSocialCustomAccount *)<em>customAccount</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>customAccount</em></dt>
+			<dd><p>自有账号对象</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialAccountManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isLogin" title="isLogin"></a>
+	<h3 class="subsubtitle method-title">isLogin</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>判断是否登录，此登录包括以游客身份登录，如果已经登录评论编辑页面点击发送就不会提示登录。</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isLogin</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialAccountManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isLoginWithAnonymous" title="isLoginWithAnonymous"></a>
+	<h3 class="subsubtitle method-title">isLoginWithAnonymous</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>账号管理，可以添加开发者应用的自有账号到友盟的账号体系，查询此sns平台是否授权等。</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isLoginWithAnonymous</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialAccountManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isLoginWithSnsAccount" title="isLoginWithSnsAccount"></a>
+	<h3 class="subsubtitle method-title">isLoginWithSnsAccount</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>判断是否用sns账号来登录，即绑定一个sns账号作为登录账号，如果是的话，个人中心页面上半部分和评论列表即显示此用户名、头像。</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isLoginWithSnsAccount</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialAccountManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isOauthWithPlatform:" title="isOauthWithPlatform:"></a>
+	<h3 class="subsubtitle method-title">isOauthWithPlatform:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>判断是否授权此sns平台。</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isOauthWithPlatform:(NSString *)<em>platformType</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>platformType</em></dt>
+			<dd><p>sns平台名，定义在<code></code>UMSocialEnum<code>.h</code></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialAccountManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setIsLoginWithAnonymous:" title="setIsLoginWithAnonymous:"></a>
+	<h3 class="subsubtitle method-title">setIsLoginWithAnonymous:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>账号管理，可以添加开发者应用的自有账号到友盟的账号体系，查询此sns平台是否授权等。</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setIsLoginWithAnonymous:(BOOL)<em>anonymous</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialAccountManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
 					
 					
 					
@@ -122,7 +457,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-01-23)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-01-26)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

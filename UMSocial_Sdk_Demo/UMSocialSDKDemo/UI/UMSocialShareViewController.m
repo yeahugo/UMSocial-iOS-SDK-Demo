@@ -143,7 +143,7 @@
         [self presentModalViewController:shareListController animated:YES];
     }
     if (indexPath.row == UMShareEditPresent) {
-        [_editActionSheet showInView:self.view];
+        [_editActionSheet showInView:self.tabBarController.tabBar];
         _editActionSheet.delegate = self;
     }
     else if (indexPath.row == UMShareIconActionSheet) {
@@ -154,8 +154,6 @@
         _dataActionSheet.delegate = self;
     }
     else if (indexPath.row == UMSharePostMultiData) {
-        [_activityIndicatorView startAnimating];
-        
         NSDictionary *socialDic =  _socialController.socialData.socialAccount;
         NSMutableArray *allSnsArray = [[NSMutableArray alloc] init];
         for (id type in socialDic) {
@@ -179,7 +177,9 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"button index is %d",buttonIndex);
+    if (buttonIndex + 1 >= actionSheet.numberOfButtons) {
+        return;
+    }
     UMSocialSnsType shareToType = buttonIndex + UMSocialSnsTypeQzone;
     if (actionSheet.tag == UMShareEditPresent) {
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:[UMSocialSnsPlatformManager getSnsPlatformString:shareToType]];
