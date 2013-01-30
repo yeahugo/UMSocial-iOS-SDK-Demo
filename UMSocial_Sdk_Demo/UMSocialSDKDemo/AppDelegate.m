@@ -54,7 +54,7 @@
 //设置出现的sns平台
 - (NSArray *)shareToPlatforms
 {
-    NSArray *shareToArray = @[@[UMShareToWeixin,UMShareToSina,UMShareToQzone,UMShareToTencent],@[UMShareToEmail,UMShareToSms]];
+    NSArray *shareToArray = @[@[UMShareToWeixin,UMShareToSina,UMShareToQzone,UMShareToTencent],@[UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter]];
     return shareToArray;
 }
 
