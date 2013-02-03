@@ -47,21 +47,20 @@
  用此类的方法可以得到分享的有关UI对象，例如分享列表、评论列表、分享编辑页、分享授权页、个人中心页面等。返回都是`UINavigationController`对象，建议把这个对象present到你要添加到的`UIViewController`上
  */
 
-@class UMSUIHandler;
 @class UMSocialIconActionSheet;
 @interface UMSocialControllerService : NSObject
 {
+    id <UMSocialUIDelegate> _socialUIDelegate;
     UMSocialDataService     *_socialDataService;
-    UMSUIHandler            *_socialUIHandler;
     UINavigationController  *_currentNavigationController;
     UIViewController        *_currentViewController;
+    UMSocialSnsPlatform     *_currentSnsPlatform;
+    UMSViewControllerType     _nextViewController;
+    UMSViewControllerType _currentViewControllerType;
+    UIColor *_defaultColor;
 }
 
-///---------------------------------------
-/// @name 对象属性
-///---------------------------------------
-
-@property (nonatomic, assign) UMSUIHandler *socialUIHandler;
+@property (nonatomic, retain) UIColor *defaultColor;
 
 /**
  与`UMSocialControllerService`对象对应的`UMSocialData`对象，可以通过该对象设置分享内嵌文字、图片，获取分享数等属性
@@ -88,6 +87,13 @@
  当前`<UMSocialUIDelegate>`对象,此对象可以获取到授权完成，关闭页面等状态，详情看`UMSocialUIDelegate`的定义
  */
 @property (nonatomic, assign) id <UMSocialUIDelegate> socialUIDelegate;
+
+/**
+ 当前sns平台对象
+ */
+@property (nonatomic, retain) UMSocialSnsPlatform *currentSnsPlatform;
+
+@property (nonatomic, assign) UMSViewControllerType nextViewController;
 
 ///---------------------------------------
 /// @name 初始化方法和设置
@@ -170,6 +176,9 @@
 
 
 - (UMSocialIconActionSheet *)getSocialIconActionSheetInController:(UIViewController *)controller;
+
+-(UIViewController *)getSocialViewController:(UMSViewControllerType)viewControllerType withSnsType:(UMSocialSnsType)shareToType;
+
 @end
 
 

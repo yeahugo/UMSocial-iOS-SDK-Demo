@@ -52,7 +52,8 @@
 -(void)setSocialDataWithController:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage shareToSnsStrings:(NSArray *)snsStrings delegate:(id <UMSocialUIDelegate>)delegate
 {
     _presentingViewController = controller;
-    UMSocialData *socialData = [UMSocialData defaultData];
+    [UMSocialData setAppKey:appKey];
+    UMSocialData *socialData = [UMSocialData defaultData];    
     socialData.shareText = shareText;
     socialData.shareImage = shareImage;
     _socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
@@ -117,6 +118,7 @@
                         [slcomposeViewController setInitialText:socialControllerService.socialData.shareText];
                         [slcomposeViewController addImage:socialControllerService.socialData.shareImage];
                         slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
+                            [presentingController dismissModalViewControllerAnimated:YES];
                         };
                     }
                     [presentingController presentModalViewController:slcomposeViewController animated:YES];
@@ -150,6 +152,8 @@
                         [slcomposeViewController setInitialText:socialControllerService.socialData.shareText];
                         [slcomposeViewController addImage:socialControllerService.socialData.shareImage];
                         slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
+                            [presentingController.presentingViewController dismissModalViewControllerAnimated:YES];
+//                            [presentingController dismissModalViewControllerAnimated:YES];
                         };
                     }
                     [presentingController presentModalViewController:slcomposeViewController animated:YES];

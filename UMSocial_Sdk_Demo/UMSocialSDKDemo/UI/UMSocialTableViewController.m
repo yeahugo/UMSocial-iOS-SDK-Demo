@@ -8,7 +8,6 @@
 
 #import "UMSocialTableViewController.h"
 #import "UMSocialTableViewCell.h"
-#import "UMSocialBarViewController.h"
 #import "UMSocialMacroDefine.h"
 
 @interface UMSocialTableViewController ()
@@ -120,10 +119,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UMSocialTableViewCell * umSeperateCell = (UMSocialTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-    UMSocialBarViewController *barViewController = [[UMSocialBarViewController alloc] initWithDescriptor:[_descriptorArray objectAtIndex:indexPath.row] withText:[umSeperateCell labelText] withImage:[umSeperateCell showImage]];
-    [self.navigationController pushViewController:barViewController animated:YES];
-    SAFE_ARC_RELEASE(barViewController);
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
 @end

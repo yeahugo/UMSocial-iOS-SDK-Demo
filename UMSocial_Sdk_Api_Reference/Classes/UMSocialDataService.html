@@ -59,9 +59,9 @@
 	
 	<option value="//api/name/postCommentWithContent:image:templateText:location:shareToSNSWithUsid:">&nbsp;&nbsp;&nbsp;&nbsp;- postCommentWithContent:image:templateText:location:shareToSNSWithUsid:</option>
 	
-	<option value="//api/name/postSNSWithType:usid:content:image:location:">&nbsp;&nbsp;&nbsp;&nbsp;- postSNSWithType:usid:content:image:location:</option>
+	<option value="//api/name/postSNSWithType:content:image:location:">&nbsp;&nbsp;&nbsp;&nbsp;- postSNSWithType:content:image:location:</option>
 	
-	<option value="//api/name/postSNSWithType:usids:content:image:location:">&nbsp;&nbsp;&nbsp;&nbsp;- postSNSWithType:usids:content:image:location:</option>
+	<option value="//api/name/postSNSWithTypes:content:image:location:">&nbsp;&nbsp;&nbsp;&nbsp;- postSNSWithTypes:content:image:location:</option>
 	
 	<option value="//api/name/requestAddFollow:followedUsid:">&nbsp;&nbsp;&nbsp;&nbsp;- requestAddFollow:followedUsid:</option>
 	
@@ -131,9 +131,9 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postCommentWithContent:image:templateText:location:shareToSNSWithUsid:">postCommentWithContent:image:templateText:location:shareToSNSWithUsid:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postSNSWithType:usid:content:image:location:">postSNSWithType:usid:content:image:location:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postSNSWithType:content:image:location:">postSNSWithType:content:image:location:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postSNSWithType:usids:content:image:location:">postSNSWithType:usids:content:image:location:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postSNSWithTypes:content:image:location:">postSNSWithTypes:content:image:location:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requestAddFollow:followedUsid:">requestAddFollow:followedUsid:</a></span></li>
 	
@@ -240,15 +240,15 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/postSNSWithType:usids:content:image:location:">&ndash;&nbsp;postSNSWithType:usids:content:image:location:</a></code>
-		<span class="tooltip"><p>发送微博内容到多个微博平台</p></span>
+		<code><a href="#//api/name/postSNSWithType:content:image:location:">&ndash;&nbsp;postSNSWithType:content:image:location:</a></code>
+		<span class="tooltip"><p>发送微博内容到微博平台</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/postSNSWithType:usid:content:image:location:">&ndash;&nbsp;postSNSWithType:usid:content:image:location:</a></code>
-		<span class="tooltip"><p>发送微博内容到微博平台</p></span>
+		<code><a href="#//api/name/postSNSWithTypes:content:image:location:">&ndash;&nbsp;postSNSWithTypes:content:image:location:</a></code>
+		<span class="tooltip"><p>发送微博内容到多个微博平台</p></span>
 	</span>
 	
 	
@@ -646,8 +646,8 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/postSNSWithType:usid:content:image:location:" title="postSNSWithType:usid:content:image:location:"></a>
-	<h3 class="subsubtitle method-title">postSNSWithType:usid:content:image:location:</h3>
+	<a name="//api/name/postSNSWithType:content:image:location:" title="postSNSWithType:content:image:location:"></a>
+	<h3 class="subsubtitle method-title">postSNSWithType:content:image:location:</h3>
 	
 	
 	
@@ -657,7 +657,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)postSNSWithType:(UMSocialSnsType)<em>shareType</em> usid:(NSString *)<em>usid</em> content:(NSString *)<em>content</em> image:(UIImage *)<em>image</em> location:(CLLocation *)<em>location</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)postSNSWithType:(UMSocialSnsType)<em>shareType</em> content:(NSString *)<em>content</em> image:(UIImage *)<em>image</em> location:(CLLocation *)<em>location</em></code></div>
 
     
 	
@@ -667,11 +667,6 @@
 		<dl class="argument-def parameter-def">
 			<dt><em>shareType</em></dt>
 			<dd><p>分享到的平台，为枚举变量类型</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>usid</em></dt>
-			<dd><p>分享的usid，如果设置为nil的话，自动用本平台已经授权的usid</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -712,8 +707,8 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/postSNSWithType:usids:content:image:location:" title="postSNSWithType:usids:content:image:location:"></a>
-	<h3 class="subsubtitle method-title">postSNSWithType:usids:content:image:location:</h3>
+	<a name="//api/name/postSNSWithTypes:content:image:location:" title="postSNSWithTypes:content:image:location:"></a>
+	<h3 class="subsubtitle method-title">postSNSWithTypes:content:image:location:</h3>
 	
 	
 	
@@ -723,7 +718,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)postSNSWithType:(NSArray *)<em>shareTypes</em> usids:(NSArray *)<em>usids</em> content:(NSString *)<em>content</em> image:(UIImage *)<em>image</em> location:(CLLocation *)<em>location</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)postSNSWithTypes:(NSArray *)<em>shareTypes</em> content:(NSString *)<em>content</em> image:(UIImage *)<em>image</em> location:(CLLocation *)<em>location</em></code></div>
 
     
 	
@@ -733,11 +728,6 @@
 		<dl class="argument-def parameter-def">
 			<dt><em>shareTypes</em></dt>
 			<dd><p>分享到的平台</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>usids</em></dt>
-			<dd><p>每个平台对应的usid,允许为空，为空的话取sdk记录的每个平台的usid</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -1266,7 +1256,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-01-26)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-02-03)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

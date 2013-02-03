@@ -70,26 +70,24 @@
  发送微博内容到微博平台
  
  @param shareType 分享到的平台，为枚举变量类型
- @param usid      分享的usid，如果设置为nil的话，自动用本平台已经授权的usid
  @param content   分享的文字内容
  @param image     分享的图片
  @param location  分享的地理位置信息
  
  */
-- (void)postSNSWithType:(UMSocialSnsType)shareType usid:(NSString *)usid content:(NSString *)content image:(UIImage *)image location:(CLLocation *)location;
+- (void)postSNSWithType:(UMSocialSnsType)shareType content:(NSString *)content image:(UIImage *)image location:(CLLocation *)location;
 
 
 /**
  发送微博内容到多个微博平台
  
  @param shareTypes 分享到的平台
- @param usids     每个平台对应的usid,允许为空，为空的话取sdk记录的每个平台的usid
  @param content   分享的文字内容
  @param image     分享的图片
  @param location  分享的地理位置信息
  
  */
-- (void)postSNSWithType:(NSArray *)shareTypes usids:(NSArray *)usids content:(NSString *)content image:(UIImage *)image location:(CLLocation *)location;
+- (void)postSNSWithTypes:(NSArray *)shareTypes content:(NSString *)content image:(UIImage *)image location:(CLLocation *)location;
 
 
 /**

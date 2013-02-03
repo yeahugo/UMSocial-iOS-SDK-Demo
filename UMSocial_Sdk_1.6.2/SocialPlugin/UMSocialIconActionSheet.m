@@ -107,7 +107,7 @@
     
     [UIView animateWithDuration:0.3
                           delay:0.0
-                        options:UIViewAnimationCurveEaseOut
+                        options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
                          self.center = CGPointMake(showView.frame.size.width/2, showView.frame.size.height - self.frame.size.height/2);
                      } completion:^(BOOL finished) {

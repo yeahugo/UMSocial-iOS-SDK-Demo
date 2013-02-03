@@ -50,7 +50,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _socialData = [UMSocialData defaultData];
+    _socialData = [[UMSocialData alloc] initWithIdentifier:@"abc"];
     _socialUIController = [[UMSocialControllerService alloc] initWithUMSocialData:_socialData];
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _activityIndicatorView.center = CGPointMake(160, 200);

@@ -75,7 +75,7 @@ extern NSString *const UMSCustomAccountGenderFeMale;
 + (BOOL)isLoginWithAnonymous;
 
 /**
- 
+ 账号管理，可以添加开发者应用的自有账号到友盟的账号体系，查询此sns平台是否授权等。
  */
 + (void)setIsLoginWithAnonymous:(BOOL)anonymous;
 

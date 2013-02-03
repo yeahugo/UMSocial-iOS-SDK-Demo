@@ -48,15 +48,15 @@
         _imageView.image = [UIImage imageNamed:imageName];
         [self.view addSubview:_imageView];
         
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
+//        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
         
-        socialData.shareText = textLabel.text;
-        socialData.shareImage = _imageView.image;
+//        socialData.shareText = textLabel.text;
+//        socialData.shareImage = _imageView.image;
         SAFE_ARC_RELEASE(textLabel);
         
-        _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
-        _socialController.socialUIDelegate = self;
-        SAFE_ARC_RELEASE(socialData);
+//        _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+//        _socialController.socialUIDelegate = self;
+//        SAFE_ARC_RELEASE(socialData);
         _shareTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 190, 320, 250)];
         _shareTableView.dataSource = self;
         _shareTableView.delegate = self;
@@ -169,10 +169,21 @@
         NSString *shareContent = [NSString stringWithFormat:@"%@+%d",_socialController.socialData.shareText,random];
         
         [_socialController.socialDataService setUMSocialDelegate:self];
-        [_socialController.socialDataService postSNSWithTypes:allSnsArray  content:shareContent image:_socialController.socialData.shareImage location:location];
+        [_socialController.socialDataService postSNSWithType:allSnsArray usids:nil  content:shareContent image:_socialController.socialData.shareImage location:location];
         SAFE_ARC_RELEASE(location);
         SAFE_ARC_RELEASE(allSnsArray);
     }
+<<<<<<< Updated upstream
+=======
+    else{
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"abc"];
+        UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+         UINavigationController *shareListController = [socialControllerService getSocialShareListController];
+        [self presentModalViewController:shareListController animated:YES];
+        SAFE_ARC_RELEASE(socialData);
+        SAFE_ARC_RELEASE(socialControllerService);
+    }
+>>>>>>> Stashed changes
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -198,7 +209,7 @@
         NSString *dateString = [[NSDate date] description];
         NSString *shareContent = [NSString stringWithFormat:@"%@ %@",[UMStringMock commentMockString],dateString];
         [_socialController.socialDataService setUMSocialDelegate:self];
-        [_socialController.socialDataService postSNSWithType:shareToType content:shareContent image:_imageView.image location:location];
+        [_socialController.socialDataService postSNSWithType:shareToType usid:nil content:shareContent image:_imageView.image location:location];
         return;
     }
 }
