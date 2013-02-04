@@ -122,6 +122,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == UMAccountUnOauth) {
+        [_socialUIController.socialDataService setUMSocialDelegate:self];
         [_socialUIController.socialDataService requestUnBindToSns];
         [_activityIndicatorView startAnimating];
     }
@@ -202,7 +203,6 @@
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
     NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);
-
 }
 
 -(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType

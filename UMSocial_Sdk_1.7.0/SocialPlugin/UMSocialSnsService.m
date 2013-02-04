@@ -126,7 +126,7 @@
                     [presentingController presentModalViewController:slcomposeViewController animated:YES];
                 }
                 else{
-                    UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[NSString stringWithFormat:@"您的Facebook账号尚未登录，请在系统设置中登录"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"账号未登录" message:[NSString stringWithFormat:@"您的Facebook账号尚未登录，请在系统设置中登录"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                     [loginAlert show];
                     SAFE_ARC_RELEASE(loginAlert);
                 }
@@ -160,7 +160,7 @@
                     [presentingController presentModalViewController:slcomposeViewController animated:YES];
                 }
                 else{
-                    UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[NSString stringWithFormat:@"您的Twitter账号尚未登录，请在系统设置中登录"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"账号未登录" message:[NSString stringWithFormat:@"您的Twitter账号尚未登录，请在系统设置中登录"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                     [loginAlert show];
                     SAFE_ARC_RELEASE(loginAlert);
                 }                
