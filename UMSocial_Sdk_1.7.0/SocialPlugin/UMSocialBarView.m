@@ -91,6 +91,12 @@
 //更新操作栏上的数字
 -(UMSButtonTypeMask)updateButtonNumber:(UMSocialResponseEntity *)response
 {
+    _statusLabel.alpha = 0.0;
+    _commentButton.alpha = 1.0;
+    _shareButton.alpha = 1.0;
+    _accountButton.alpha = 1.0;
+    _likeButton.alpha = 1.0;
+    
     UMSButtonTypeMask actionTypeMask = 0;
     UMSocialBar *socialBar = (UMSocialBar *)self.socialBarActionDelegate;
     UMSocialData *socialData = socialBar.socialData;

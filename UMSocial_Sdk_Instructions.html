@@ -380,7 +380,7 @@ pre {
 
 <p>在你要出现分享列表的地方<code>#import "UMSocialSnsService.h"</code>并调用 <code>UMSocialSnsService</code>的这个方法：</p>
 
-<pre><code>+(void)presentSnsController:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage shareToSnsStrings:(NSArray *)snsStrings delegate:(id &lt;UMSocialUIDelegate&gt;)delegate;
+<pre><code>+(void)presentSnsController:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage shareToSnsNames:(NSArray *)snsNames delegate:(id &lt;UMSocialUIDelegate&gt;)delegate;
 </code></pre>
 
 <p>即会弹出一个分享列表页面</p>
@@ -401,7 +401,7 @@ pre {
 </tr>
 <tr>
 <td>appKey</td>
-<td>友盟appKey</td>
+<td>友盟appKey，如果你在其他地方用<code>UMSocialData</code>设置了appKey，这里也可以传nil</td>
 </tr>
 <tr>
 <td>shareText</td>
@@ -412,8 +412,8 @@ pre {
 <td>分享编辑页面的内嵌图片，用户可以删除</td>
 </tr>
 <tr>
-<td>snsStrings</td>
-<td>定义列表出现的sns平台，由SDK中定义好的平台名字符串组成的数组，可以定义列表视图中分组中的每个列表项，例如传入的数组是<code>@[@[UMShareToSina,UMShareToTencent],@[UMShareToWeixin]];</code>上面分组是新浪微博、腾讯微博、下面分组是微信。如果设为nil的话出现所有平台</td>
+<td>snsNames</td>
+<td>定义列表出现的sns平台，由SDK中定义好的平台名字符串组成的数组，可以定义列表视图中分组中的每个列表项，例如传入的数组是<code>@[@[UMShareToSina,UMShareToTencent],@[UMShareToWechart]];</code>上面分组是新浪微博、腾讯微博、下面分组是微信。如果设为nil的话出现所有平台</td>
 </tr>
 <tr>
 <td>delegate</td>

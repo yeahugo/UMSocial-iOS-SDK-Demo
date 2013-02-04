@@ -84,6 +84,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [_socialBar.socialControllerService.socialDataService requestSocialData];
     [super viewWillAppear:animated];
 }
 

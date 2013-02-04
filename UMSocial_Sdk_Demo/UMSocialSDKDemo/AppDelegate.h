@@ -11,9 +11,6 @@
 #import "UMSocialControllerService.h"
 
 #define useAppkey @"507fcab25270157b37000010"
-//#define useAppkey @"50f4f1285270157e53000059"
-//#define useAppkey @"4fe11bd85270156dd8000014"
-
 
 @interface AppDelegate : UIResponder
 <
