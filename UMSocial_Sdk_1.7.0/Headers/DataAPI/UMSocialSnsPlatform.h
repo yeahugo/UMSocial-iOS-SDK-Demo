@@ -85,6 +85,10 @@ typedef void (^UMSocialSnsPlatformClickHandler)(UIViewController *presentingCont
  */
 @property(nonatomic, copy) UMSocialSnsPlatformClickHandler snsClickHandler;
 
-
+/**
+ 初始化方法
+ 
+ @param platformName 作为该对象标识的平台名
+ */
 -(id)initWithPlatformName:(NSString *)platformName;
 @end

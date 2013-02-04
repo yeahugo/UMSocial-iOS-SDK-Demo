@@ -46,7 +46,7 @@ extern NSString *const UMShareToSms;
 /**
  微信
  */
-extern NSString *const UMShareToWeixin;
+extern NSString *const UMShareToWechart;
 
 /**
  Facebook
@@ -197,6 +197,9 @@ typedef enum{
     NSString *const UMShareToRenren;    //人人网
     NSString *const UMShareToDouban;    //豆瓣
     NSString *const UMShareToQzone;     //QQ空间
+    NSString *const UMShareToWechart;   //微信
+    NSString *const UMShareToFacebook;  //Facebook
+    NSString *const UMShareToTwitter;   //Twitter
  */
 
 @interface UMSocialEnum : NSObject

@@ -75,7 +75,7 @@ extern NSString *const UMSCustomAccountGenderFeMale;
 + (BOOL)isLoginWithAnonymous;
 
 /**
- 账号管理，可以添加开发者应用的自有账号到友盟的账号体系，查询此sns平台是否授权等。
+ 设置是否已经以游客身份来登录，如果以游客身份登录，评论会显示匿名和使用默认头像，如果没有使用游客身份，会弹出登录界面，选择一个sns平台作为登录账号之后再评论。
  */
 + (void)setIsLoginWithAnonymous:(BOOL)anonymous;
 

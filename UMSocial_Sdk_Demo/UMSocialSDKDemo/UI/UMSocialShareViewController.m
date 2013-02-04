@@ -13,6 +13,7 @@
 #import "UMSocialSnsService.h"
 #import "AppDelegate.h"
 #import "UMSocialSnsPlatformManager.h"
+#import "UMSocialIconActionSheet.h"
 
 @interface UMSocialShareViewController ()
 
@@ -142,6 +143,9 @@
     if (indexPath.row == UMShareList){
         UINavigationController *shareListController = [_socialController getSocialShareListController];
         [self presentModalViewController:shareListController animated:YES];
+        /*或者用快速分享接口
+        [UMSocialSnsService presentSnsController:self appKey:useAppkey shareText:[UMStringMock commentMockString] shareImage:nil shareToSnsStrings:nil delegate:nil];
+         */
     }
     //分享编辑页面
     if (indexPath.row == UMShareEditPresent) {
@@ -150,7 +154,12 @@
     }
     //分享列表页面新样式
     else if (indexPath.row == UMShareIconActionSheet) {
-        [UMSocialSnsService showSnsIconSheetView:self appKey:useAppkey shareText:[UMStringMock commentMockString] shareImage:nil shareToSnsStrings:nil delegate:self];
+        UMSocialIconActionSheet *snsIconSheet = (UMSocialIconActionSheet *)[_socialController getSocialIconActionSheetInController:self];
+        [snsIconSheet showInView:self.view];
+
+        /*或者用快速分享接口
+        [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:[UMStringMock commentMockString] shareImage:nil shareToSnsStrings:nil delegate:self];
+         */
     }
     //直接发送分享的数据级接口
     else if(indexPath.row == UMSharePostData){

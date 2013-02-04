@@ -25,10 +25,24 @@ typedef void (^UMIconActionSheetButtonClickHandler)(UMSocialSnsType snsType);
  */
 @property(nonatomic,copy) UMIconActionSheetButtonClickHandler actionSheetHandler;
 
-
+/**
+ 初始化方法
+ 
+ @param items 显示每个小格对象数组，数组中的对象要求是`UMSocialSnsPlatform`类型
+ @param handler 处理点击之后的block处理对象
+ */
 -(id)initWithItems:(NSArray *)items withButtonHandler:(void (^)(UMSocialSnsType snsType))handler;
 
+/**
+ 讲自己自下往上弹出来
+ 
+ @param showView 在此父UIView自下往上弹出来的
+ */
 -(void)showInView:(UIView *)showView;
 
+/**
+ 将自己移除
+ 
+*/
 -(void)dismiss;
 @end

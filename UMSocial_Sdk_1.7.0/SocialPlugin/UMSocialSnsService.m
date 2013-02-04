@@ -44,7 +44,7 @@
     [[UMSocialSnsService sharedInstance] presentSnsController:controller appKey:appKey shareText:shareText shareImage:shareImage shareToSnsStrings:snsStrings delegate:delegate];
 }
 
-+(void)showSnsIconSheetView:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage shareToSnsStrings:(NSArray *)snsStrings delegate:(id <UMSocialUIDelegate>)delegate
++(void)presentSnsIconSheetView:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage shareToSnsStrings:(NSArray *)snsStrings delegate:(id <UMSocialUIDelegate>)delegate
 {
     [[UMSocialSnsService sharedInstance] showSnsIconSheetView:controller appKey:appKey shareText:shareText shareImage:shareImage shareToSnsStrings:snsStrings delegate:delegate];
 }
@@ -52,8 +52,10 @@
 -(void)setSocialDataWithController:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage shareToSnsStrings:(NSArray *)snsStrings delegate:(id <UMSocialUIDelegate>)delegate
 {
     _presentingViewController = controller;
-    [UMSocialData setAppKey:appKey];
-    UMSocialData *socialData = [UMSocialData defaultData];    
+    if (appKey != nil) {
+        [UMSocialData setAppKey:appKey];        
+    }
+    UMSocialData *socialData = [UMSocialData defaultData];
     socialData.shareText = shareText;
     socialData.shareImage = shareImage;
     _socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
@@ -91,9 +93,9 @@
 -(UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName
 {
     UMSocialSnsPlatform *customSnsPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:snsName];
-    if ([snsName isEqualToString:UMShareToWeixin]) {
-        customSnsPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_weixin_icon";
-        customSnsPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_weixin_on.png";
+    if ([snsName isEqualToString:UMShareToWechart]) {
+        customSnsPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_wechart_icon";
+        customSnsPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_wechart_on.png";
         customSnsPlatform.displayName = @"微信分享";
         customSnsPlatform.loginName = @"微信账号";
         customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
