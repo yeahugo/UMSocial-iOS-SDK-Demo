@@ -153,7 +153,6 @@
                         [slcomposeViewController addImage:socialControllerService.socialData.shareImage];
                         slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
                             [presentingController.presentingViewController dismissModalViewControllerAnimated:YES];
-//                            [presentingController dismissModalViewControllerAnimated:YES];
                         };
                     }
                     [presentingController presentModalViewController:slcomposeViewController animated:YES];
