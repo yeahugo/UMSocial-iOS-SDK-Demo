@@ -55,15 +55,7 @@
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _activityIndicatorView.center = CGPointMake(160, 200);
     [self.view addSubview:_activityIndicatorView];
-    
-    _nickNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 360, 300, 20)];
-    _nickNameLabel.text = @"授权账号昵称";
-    _nickNameLabel.font = [UIFont systemFontOfSize:9];
-    [self.view addSubview:_nickNameLabel];
-    _accessTokenLable = [[UILabel alloc] initWithFrame:CGRectMake(200, 380, 300, 20)];
-    _accessTokenLable.font = [UIFont systemFontOfSize:9];
-    _accessTokenLable.text = @"授权账号token";
-    [self.view addSubview:_accessTokenLable];
+    _socialUIController.socialUIDelegate = self;
 }
 
 - (void)viewDidUnload
@@ -152,7 +144,6 @@
     
     else if(indexPath.row == UMAccountSocialLogin){
         UINavigationController *loginViewController = [_socialUIController getSocialLoginController];
-        _socialUIController.socialUIDelegate = self;
         [self presentModalViewController:loginViewController animated:YES];
     }
     else if (indexPath.row == UMAccountAddCustomAccount){
@@ -182,7 +173,7 @@
     }
     if (actionSheet.tag == UMAccountOauth) {
         _selectOauthType = shareToType;
-        _socialUIController.socialUIDelegate = self;
+        
         UINavigationController *oauthController = [_socialUIController getSocialOauthController:shareToType];
         [self presentModalViewController:oauthController animated:YES];
     }
@@ -211,21 +202,12 @@
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
     NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);
-    if (response.viewControllerType == UMSViewControllerOauth) {
-        UMSocialAccountEntity *account = (UMSocialAccountEntity *)[_socialUIController.socialData.socialAccount objectForKey:[UMSocialSnsPlatformManager getSnsPlatformString:_selectOauthType]];
-        if (account.userName != nil && account.userName.length > 0) {
-            _nickNameLabel.text = @"nickNameSuccess";
-        }
-        if (account.accessToken != nil&& account.accessToken.length > 0) {
-            _accessTokenLable.text = @"accessTokenSuccess";
-        }
-    }
+
 }
 
 -(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType
 {
-    NSLog(@"fromViewControllerType is %d",fromViewControllerType);
-    NSLog(@"didCloseUIViewController account is %@",(UMSocialAccountEntity *)[_socialUIController.socialData.socialAccount objectForKey:@"sina"] );
+    NSLog(@"didCloseUIViewController from %d!!",fromViewControllerType);
 }
 
 @end

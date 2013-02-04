@@ -33,8 +33,5 @@ typedef enum
     UMSocialControllerService *_socialUIController;
     UIActivityIndicatorView * _activityIndicatorView;
     UMSocialSnsType _selectOauthType;
-    
-    UILabel *_nickNameLabel;
-    UILabel *_accessTokenLable;
 }
 @end

@@ -138,21 +138,26 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+    //分享列表页面
     if (indexPath.row == UMShareList){
         UINavigationController *shareListController = [_socialController getSocialShareListController];
         [self presentModalViewController:shareListController animated:YES];
     }
+    //分享编辑页面
     if (indexPath.row == UMShareEditPresent) {
         [_editActionSheet showInView:self.tabBarController.tabBar];
         _editActionSheet.delegate = self;
     }
+    //分享列表页面新样式
     else if (indexPath.row == UMShareIconActionSheet) {
         [UMSocialSnsService showSnsIconSheetView:self appKey:useAppkey shareText:[UMStringMock commentMockString] shareImage:nil shareToSnsStrings:nil delegate:self];
     }
+    //直接发送分享的数据级接口
     else if(indexPath.row == UMSharePostData){
         [_dataActionSheet showInView:self.view];
         _dataActionSheet.delegate = self;
     }
+    //一键分享到多个平台的数据级接口
     else if (indexPath.row == UMSharePostMultiData) {
         NSDictionary *socialDic =  _socialController.socialData.socialAccount;
         NSMutableArray *allSnsArray = [[NSMutableArray alloc] init];
