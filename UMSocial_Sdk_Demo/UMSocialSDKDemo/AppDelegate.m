@@ -52,69 +52,11 @@
 }
 
 //设置出现的sns平台
-//- (NSArray *)shareToPlatforms
-//{
-//    NSArray *shareToArray = @[@[UMShareToWeixin,UMShareToSina,UMShareToQzone,UMShareToTencent],@[UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter]];
-//    return shareToArray;
-//}
-
-
-#pragma mark - UMSocialConfigDelegate
--(UITableViewCell *)customCellForShareListTableView
+- (NSArray *)shareToPlatforms
 {
-    UITableViewCell *weiXinCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"weixinCell"] ;
-    weiXinCell.textLabel.text = @"微信分享";
-    weiXinCell.imageView.image = [UIImage imageNamed:@"UMSocialSDKResources.bundle/UMS_weixin_icon.png"];
-    return weiXinCell;
+    NSArray *shareToArray = @[@[UMShareToWechat,UMShareToSina,UMShareToQzone,UMShareToTencent],@[UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter]];
+    return shareToArray;
 }
-
--(void)didSelectShareListTableViewCell:(UITableView *)tableView
-{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"分享到微信" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"分享到会话",@"分享到朋友圈",nil];
-    [actionSheet showInView:tableView];
-
-    NSLog(@"分享到微信");
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 2) {
-        return;
-    }
-    
-    if ([WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi]) {
-        
-        SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
-        req.text = @"test";
-        
-        req.bText = YES;
-        
-        /*下面实现图片分享，只能分享文字或者分享图片，或者分享url，里面带有图片缩略图和描述文字
-         WXMediaMessage * message = [WXMediaMessage message];
-         WXImageObject *ext = [WXImageObject object];
-         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"yinxing0" ofType:@"jpg"];
-         ext.imageData = [NSData dataWithContentsOfFile:filePath] ;
-         
-         message.mediaObject = ext;
-         [message setThumbImage:[UIImage imageNamed:@"yinxing0"]];
-         req.message = message;
-         req.bText = NO;
-         */
-        
-        if (buttonIndex == 0) {
-            req.scene = WXSceneSession;
-        }
-        if (buttonIndex == 1) {
-            req.scene = WXSceneTimeline;
-        }
-        [WXApi sendReq:req];
-    }
-    else{
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的设备没有安装微信" delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
-        [alertView show];
-    }
-}
-
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
@@ -137,13 +79,32 @@
     NSLog(@"req type is %d",resp.type);
     if([resp isKindOfClass:[SendMessageToWXResp class]])
     {
-        NSString *strTitle = [NSString stringWithFormat:@"微信发送结果"];
-        NSString *strMsg = [NSString stringWithFormat:@"微信发送消息结果:%d", resp.errCode];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        NSString * message = nil;
+        message = [NSString stringWithFormat:@"%d",resp.errCode];
+        if (resp.errCode == WXSuccess) {
+            message = @"成功";
+        }
+        else if (resp.errCode == WXErrCodeCommon) {
+            message = @"其他";
+        }
+        else if (resp.errCode == WXErrCodeUserCancel) {
+            message = @"用户取消";
+        }
+        else if (resp.errCode == WXErrCodeSentFail) {
+            message = @"发送失败";
+        }
+        else if (resp.errCode == WXErrCodeAuthDeny)
+        {
+            message = @"授权失败";
+        }
+        else if (resp.errCode == WXErrCodeUnsupport){
+            message = @"不支持";
+        }
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"微信分享结果" message:message delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+        [alertView show];
     }
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

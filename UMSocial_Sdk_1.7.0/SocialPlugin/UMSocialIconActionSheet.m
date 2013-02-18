@@ -16,79 +16,90 @@
 
 -(void)dealloc
 {
+    SAFE_ARC_RELEASE(_snsNames);
     SAFE_ARC_BLOCK_RELEASE(_actionSheetHandler);
     SAFE_ARC_SUPER_DEALLOC();
 }
 
 -(id)initWithItems:(NSArray *)items withButtonHandler:(void (^)(UMSocialSnsType snsType))handler
 {
-    
-    float deltaY = 100.0;
+    self = [super initWithFrame:CGRectMake(0, 0, 200, 200)];
+    if (self) {
+        self.backgroundColor = [UIColor clearColor];
+        self.snsNames = items;
+        self.actionSheetHandler = handler;
+    }
+    return self;
+}
+
+-(void)drawRect:(CGRect)rect
+{
+    float deltaY = 85.0;
     float startX = 20.0;
-    float startY = 30.0;
+    float startY = 20.0;
     float buttonWidth = 57;
     float buttonHeight = 57;
     
-    int numPerRow = 4;  //如果你把numPerRow改为3，即每行显示3个，需要把startX改为25 
+    int numPerRow = 4;  //如果你把numPerRow改为3，即每行显示3个，需要把startX改为25
     
     CGRect fullFrame = [[UIApplication sharedApplication] keyWindow].bounds;
     
     float deltaX = (fullFrame.size.width - 2*startX)/numPerRow;
-
-    float height = 70 + ceil((float)items.count/numPerRow) * deltaY;
-    CGRect frame = CGRectMake(0, fullFrame.size.height - height,fullFrame.size.width ,height );
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.actionSheetHandler = handler;
-        UIImage * backgroundImage = [UIImage imageNamed:@"UMSocialSDKResources.bundle/UMS_actionsheet_panel"];
-        backgroundImage = [backgroundImage stretchableImageWithLeftCapWidth:0 topCapHeight:30];
-
-        UIImageView *actionSheetBackground = [[UIImageView alloc] initWithImage:backgroundImage];
-        actionSheetBackground.image = backgroundImage;
-        actionSheetBackground.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-        [self addSubview:actionSheetBackground];
-        SAFE_ARC_RELEASE(actionSheetBackground);
     
-        for (int i = 0 ; i < items.count ; i++) {
-            NSString *snsName = items[i];
-            UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
-            NSString *snsDisplayName = snsPlatform.displayName;
-            
-            UILabel *snsNamelabel = [[UILabel alloc] initWithFrame:CGRectMake(startX + deltaX * (i%numPerRow) + (deltaX-buttonWidth)/2, startY + (i/numPerRow)*deltaY + 60, 55, 20)];
-            snsNamelabel.textAlignment = UITextAlignmentCenter;
-            [snsNamelabel setBackgroundColor:[UIColor clearColor]];
-            [snsNamelabel setTextColor:[UIColor whiteColor]];
-            [snsNamelabel setFont:[UIFont systemFontOfSize:12]];
-            [snsNamelabel setText:snsDisplayName];
-            [self addSubview:snsNamelabel];
-            
-            UIImage *snsImage = [UIImage imageNamed:snsPlatform.bigImageName];
-            UIButton *snsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [snsButton setBackgroundImage:snsImage forState:UIControlStateNormal];
-            snsButton.frame = CGRectMake(startX + deltaX * (i%numPerRow) + (deltaX-buttonWidth)/2, startY + (i/numPerRow)*deltaY , buttonWidth, buttonHeight);
-            snsButton.tag = snsPlatform.shareToType;
-            [snsButton addTarget:self action:@selector(actionToSnsButton:) forControlEvents:UIControlEventTouchUpInside];
-            [self addSubview:snsButton];
-            SAFE_ARC_RELEASE(snsNamelabel);
-        }
+    float height = 150 + ceil((float)self.snsNames.count/numPerRow) * deltaY;
+    CGRect frame = CGRectMake(0, fullFrame.size.height - height,fullFrame.size.width ,height );
+    self.frame = frame;
+    
+
+    UIImage * backgroundImage = [UIImage imageNamed:@"UMSocialSDKResources.bundle/UMS_actionsheet_panel"];
+    backgroundImage = [backgroundImage stretchableImageWithLeftCapWidth:0 topCapHeight:30];
+    
+    UIImageView *actionSheetBackground = [[UIImageView alloc] initWithImage:backgroundImage];
+    actionSheetBackground.image = backgroundImage;
+    actionSheetBackground.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+    [self addSubview:actionSheetBackground];
+    SAFE_ARC_RELEASE(actionSheetBackground);
+    
+    for (int i = 0 ; i < self.snsNames.count ; i++) {
+        NSString *snsName = self.snsNames[i];
+        UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
+        NSString *snsDisplayName = snsPlatform.displayName;
         
-        UIImage *image = [UIImage imageNamed:@"UMSocialSDKResources.bundle/UMS_actionsheet_button"];
-        image = [image stretchableImageWithLeftCapWidth:(int)(image.size.width)>>1 topCapHeight:0];
+        UILabel *snsNamelabel = [[UILabel alloc] initWithFrame:CGRectMake(startX + deltaX * (i%numPerRow) + (deltaX-buttonWidth)/2, startY + (i/numPerRow)*deltaY + 60, 55, 20)];
+        snsNamelabel.textAlignment = UITextAlignmentCenter;
+        [snsNamelabel setBackgroundColor:[UIColor clearColor]];
+        [snsNamelabel setTextColor:[UIColor whiteColor]];
+        [snsNamelabel setFont:[UIFont systemFontOfSize:12]];
+        [snsNamelabel setText:snsDisplayName];
+        [self addSubview:snsNamelabel];
         
-        UIImage *selectImage = [UIImage imageNamed:@"UMSocialSDKResources.bundle/UMS_actionsheet_button_selected"];
-        selectImage = [selectImage stretchableImageWithLeftCapWidth:(int)(image.size.width)>>1 topCapHeight:0];
-        
-        UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        cancelButton.frame = CGRectMake(0, 0, 200, 40);
-        cancelButton.center = CGPointMake(self.frame.size.width/2,frame.size.height - 30);
-        [cancelButton setBackgroundImage:image forState:UIControlStateNormal];
-        [cancelButton setBackgroundImage:selectImage forState:UIControlStateSelected];
-        
-        [cancelButton setTitle:@"取  消" forState:UIControlStateNormal];
-        [cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:cancelButton];
+        UIImage *snsImage = [UIImage imageNamed:snsPlatform.bigImageName];
+        UIButton *snsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [snsButton setBackgroundImage:snsImage forState:UIControlStateNormal];
+        snsButton.frame = CGRectMake(startX + deltaX * (i%numPerRow) + (deltaX-buttonWidth)/2, startY + (i/numPerRow)*deltaY , buttonWidth, buttonHeight);
+        snsButton.tag = snsPlatform.shareToType;
+        [snsButton addTarget:self action:@selector(actionToSnsButton:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:snsButton];
+        SAFE_ARC_RELEASE(snsNamelabel);
     }
-    return self;
+    
+    UIImage *image = [UIImage imageNamed:@"UMSocialSDKResources.bundle/UMS_actionsheet_button"];
+    image = [image stretchableImageWithLeftCapWidth:(int)(image.size.width)>>1 topCapHeight:0];
+    
+    UIImage *selectImage = [UIImage imageNamed:@"UMSocialSDKResources.bundle/UMS_actionsheet_button_selected"];
+    selectImage = [selectImage stretchableImageWithLeftCapWidth:(int)(image.size.width)>>1 topCapHeight:0];
+    
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    cancelButton.frame = CGRectMake(0, 0, 200, 40);
+    cancelButton.center = CGPointMake(self.frame.size.width/2,self.frame.size.height - 105);
+    [cancelButton setBackgroundImage:image forState:UIControlStateNormal];
+    [cancelButton setBackgroundImage:selectImage forState:UIControlStateSelected];
+    
+    [cancelButton setTitle:@"取  消" forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:cancelButton];
+     
+    [super drawRect:self.frame];
 }
 
 -(void)actionToSnsButton:(UIButton *)snsButton
@@ -102,14 +113,14 @@
 {
     if ([self superview] == nil) {
         [showView addSubview:self];
-        self.center = CGPointMake(showView.frame.size.width/2, showView.frame.size.height + self.frame.size.height/2);
+        self.center = CGPointMake(showView.frame.size.width/2, showView.frame.size.height + self.frame.size.height/2 );
     }
     
     [UIView animateWithDuration:0.3
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
-                         self.center = CGPointMake(showView.frame.size.width/2, showView.frame.size.height - self.frame.size.height/2);
+                         self.center = CGPointMake(showView.frame.size.width/2, showView.frame.size.height - self.frame.size.height/2 );
                      } completion:^(BOOL finished) {
                      }];
 }
@@ -126,14 +137,14 @@
 }
 
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
+//- (id)initWithFrame:(CGRect)frame
+//{
+//    self = [super initWithFrame:frame];
+//    if (self) {
+//        // Initialization code
+//    }
+//    return self;
+//}
 
 /*
 // Only override drawRect: if you perform custom drawing.

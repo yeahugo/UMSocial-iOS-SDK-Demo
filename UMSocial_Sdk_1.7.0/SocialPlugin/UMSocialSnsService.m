@@ -22,6 +22,7 @@
 -(void)dealloc
 {
     SAFE_ARC_RELEASE(_socialControllerService);
+    _socialControllerService = nil;
     SAFE_ARC_RELEASE(_snsArray);
     SAFE_ARC_SUPER_DEALLOC();
 }
@@ -49,7 +50,7 @@
     [[UMSocialSnsService sharedInstance] showSnsIconSheetView:controller appKey:appKey shareText:shareText shareImage:shareImage shareToSnsStrings:snsNames delegate:delegate];
 }
 
--(void)setSocialDataWithController:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage shareToSnsStrings:(NSArray *)snsStrings delegate:(id <UMSocialUIDelegate>)delegate
+-(void)setSocialDataWithController:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage delegate:(id <UMSocialUIDelegate>)delegate
 {
     _presentingViewController = controller;
     if (appKey != nil) {
@@ -60,27 +61,24 @@
     socialData.shareImage = shareImage;
     _socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
     _socialControllerService.socialUIDelegate = delegate;
-    if (snsStrings == nil) {
-        NSArray *allSnsArray = [UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray;
-        snsStrings = [NSArray arrayWithArray:allSnsArray];
-    }
-    [UMSocialControllerService setSocialConfigDelegate:self];
-    _snsArray = [[NSMutableArray alloc ] initWithArray:snsStrings];
 }
 
 -(void)presentSnsController:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage shareToSnsStrings:(NSArray *)snsStrings delegate:(id <UMSocialUIDelegate>)delegate
 {
-    [self setSocialDataWithController:controller appKey:appKey shareText:shareText shareImage:shareImage shareToSnsStrings:snsStrings delegate:delegate];
+    [self setSocialDataWithController:controller appKey:appKey shareText:shareText shareImage:shareImage delegate:delegate];
     UINavigationController *snsListController = [_socialControllerService getSocialShareListController];
+    [snsListController.visibleViewController performSelector:@selector(setAllSnsArray:) withObject:snsStrings];
     [_presentingViewController presentModalViewController:snsListController animated:YES];
 }
 
 -(void)showSnsIconSheetView:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage shareToSnsStrings:(NSArray *)snsStrings delegate:(id <UMSocialUIDelegate>)delegate
 {
-    [self setSocialDataWithController:controller appKey:appKey shareText:shareText shareImage:shareImage shareToSnsStrings:snsStrings delegate:delegate];
+    [self setSocialDataWithController:controller appKey:appKey shareText:shareText shareImage:shareImage delegate:delegate];
 
     UMSocialIconActionSheet *snsIconSheet = (UMSocialIconActionSheet *)[_socialControllerService getSocialIconActionSheetInController:controller];
-    
+    if (snsStrings != nil) {
+        [snsIconSheet setSnsNames:snsStrings];        
+    }
     [snsIconSheet showInView:controller.view];
 }
 
@@ -93,14 +91,15 @@
 -(UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName
 {
     UMSocialSnsPlatform *customSnsPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:snsName];
-    if ([snsName isEqualToString:UMShareToWechart]) {
+    if ([snsName isEqualToString:UMShareToWechat]) {
         customSnsPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_wechart_icon";
         customSnsPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_wechart_on.png";
-        customSnsPlatform.displayName = @"微信分享";
+        customSnsPlatform.displayName = @"微信";
         customSnsPlatform.loginName = @"微信账号";
         customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
-            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"分享到微信" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"分享到会话",@"分享到朋友圈",nil];
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"分享到微信" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"分享到个人",@"分享到朋友圈",nil];
             [actionSheet showInView:presentingController.view];
+            _socialControllerService = socialControllerService;
             SAFE_ARC_RELEASE(actionSheet);
         };
     }
@@ -219,10 +218,9 @@
     }
     
     if ([WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi]) {
-        
+    
         SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
-        req.text = @"test";
-        
+        req.text = _socialControllerService.socialData.shareText;
         req.bText = YES;
         
         /*下面实现图片分享，只能分享文字或者分享图片，或者分享url，里面带有图片缩略图和描述文字

@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 #import "UMSocialSnsPlatformManager.h"
 #import "UMSocialIconActionSheet.h"
+#import "UMSocialAccountManager.h"
 
 @interface UMSocialShareViewController ()
 
@@ -34,47 +35,38 @@
     SAFE_ARC_SUPER_DEALLOC();
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
-        textLabel.numberOfLines = 4;
-        textLabel.text = [UMStringMock commentMockString];
-        [self.view addSubview:textLabel];
-        
-        
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,90 , 150, 120)];
-        NSString *imageName = [NSString stringWithFormat:@"yinxing%d.jpg",rand()%4];
-        _imageView.image = [UIImage imageNamed:imageName];
-        [self.view addSubview:_imageView];
-        
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
-        
-        socialData.shareText = textLabel.text;
-        socialData.shareImage = _imageView.image;
-        SAFE_ARC_RELEASE(textLabel);
-        
-        _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
-        _socialController.socialUIDelegate = self;
-        SAFE_ARC_RELEASE(socialData);
-        _shareTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 190, 320, 250)];
-        _shareTableView.dataSource = self;
-        _shareTableView.delegate = self;
-        [self.view addSubview:_shareTableView];
-        
-        _editActionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"QQ空间",@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",@"邮箱分享",@"短信分享",nil];
-        _editActionSheet.tag = UMShareEditPresent;
-        _dataActionSheet = [[UIActionSheet alloc] initWithTitle:@"直接发送微博" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"QQ空间",@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",nil];
-        _dataActionSheet.tag = UMSharePostData;
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    textLabel.numberOfLines = 4;
+    textLabel.text = [UMStringMock commentMockString];
+    [self.view addSubview:textLabel];
     
+    _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,90 , 150, 120)];
+    NSString *imageName = [NSString stringWithFormat:@"yinxing%d.jpg",rand()%4];
+    _imageView.image = [UIImage imageNamed:imageName];
+    [self.view addSubview:_imageView];
+    
+    UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
+    
+    socialData.shareText = textLabel.text;
+    socialData.shareImage = _imageView.image;
+    SAFE_ARC_RELEASE(textLabel);
+    
+    _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+    _socialController.socialUIDelegate = self;
+    SAFE_ARC_RELEASE(socialData);
+    _shareTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 190, 320, 220)];
+    _shareTableView.dataSource = self;
+    _shareTableView.delegate = self;
+    [self.view addSubview:_shareTableView];
+    
+    _editActionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"QQ空间",@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",@"邮箱分享",@"短信分享",nil];
+    _editActionSheet.tag = UMShareEditPresent;
+    _dataActionSheet = [[UIActionSheet alloc] initWithTitle:@"直接发送微博" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"QQ空间",@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",nil];
+    _dataActionSheet.tag = UMSharePostData;
+
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _activityIndicatorView.center = CGPointMake(160, 150);
     [self.view addSubview:_activityIndicatorView];
@@ -141,15 +133,16 @@
 
     //分享列表页面
     if (indexPath.row == UMShareList){
+
         UINavigationController *shareListController = [_socialController getSocialShareListController];
         [self presentModalViewController:shareListController animated:YES];
-        /*或者用快速分享接口
-        [UMSocialSnsService presentSnsController:self appKey:useAppkey shareText:[UMStringMock commentMockString] shareImage:nil shareToSnsStrings:nil delegate:nil];
-         */
+        /*或者用快速分享接口 */
+//        [UMSocialSnsService presentSnsController:self appKey:useAppkey shareText:[UMStringMock commentMockString] shareImage:nil shareToSnsNames:@[UMShareToSina,UMShareToTencent] delegate:nil];
+        
     }
     //分享编辑页面
     if (indexPath.row == UMShareEditPresent) {
-        [_editActionSheet showInView:self.tabBarController.tabBar];
+        [_editActionSheet showFromTabBar:self.tabBarController.tabBar];
         _editActionSheet.delegate = self;
     }
     //分享列表页面新样式
@@ -157,18 +150,19 @@
         UMSocialIconActionSheet *snsIconSheet = (UMSocialIconActionSheet *)[_socialController getSocialIconActionSheetInController:self];
         [snsIconSheet showInView:self.view];
 
-        /*或者用快速分享接口
-        [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:[UMStringMock commentMockString] shareImage:nil shareToSnsStrings:nil delegate:self];
-         */
+        /*或者用快速分享接口*/
+//        [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:[UMStringMock commentMockString] shareImage:nil shareToSnsNames:@[UMShareToSina,UMShareToTencent] delegate:nil];
+        
     }
     //直接发送分享的数据级接口
     else if(indexPath.row == UMSharePostData){
-        [_dataActionSheet showInView:self.view];
+        [_dataActionSheet showFromTabBar:self.tabBarController.tabBar];
         _dataActionSheet.delegate = self;
     }
     //一键分享到多个平台的数据级接口
     else if (indexPath.row == UMSharePostMultiData) {
         NSDictionary *socialDic =  _socialController.socialData.socialAccount;
+        
         NSMutableArray *allSnsArray = [[NSMutableArray alloc] init];
         for (id type in socialDic) {
             if ([type isEqual:@"defaultAccount"] || [type isEqual:@"loginAccount"]) {
@@ -178,13 +172,19 @@
         }
         unsigned int dateInteger = [[NSDate date] timeIntervalSince1970];
         int random = rand_r(&dateInteger)%10;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-        CLLocation *location = [[NSClassFromString(@"CLLocation") alloc] initWithLatitude:28+random longitude:107+random];
 
         NSString *shareContent = [NSString stringWithFormat:@"%@+%d",_socialController.socialData.shareText,random];
         
+        if (allSnsArray.count == 0) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"没有授权账号" message:@"请先授权一个sns账号才能分享" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+            [alertView show];
+            SAFE_ARC_RELEASE(alertView);
+            SAFE_ARC_RELEASE(allSnsArray);
+            return;
+        }
+        
         [_socialController.socialDataService setUMSocialDelegate:self];
-        [_socialController.socialDataService postSNSWithTypes:allSnsArray  content:shareContent image:_socialController.socialData.shareImage location:location];
-        SAFE_ARC_RELEASE(location);
+        [_socialController.socialDataService postSNSWithTypes:allSnsArray  content:shareContent image:_socialController.socialData.shareImage location:nil];
         SAFE_ARC_RELEASE(allSnsArray);
     }
 }
@@ -198,6 +198,7 @@
     
     //分享编辑页面的接口
     if (actionSheet.tag == UMShareEditPresent) {
+        
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:[UMSocialSnsPlatformManager getSnsPlatformString:shareToType]];
         
         snsPlatform.snsClickHandler(self,_socialController,YES);
@@ -207,7 +208,7 @@
         [_activityIndicatorView startAnimating];
         
         CLLocation *location = _locationManager.location;
-        NSLog(@"location is %@",location);
+//        NSLog(@"location is %@",location);
         
         NSString *dateString = [[NSDate date] description];
         NSString *shareContent = [NSString stringWithFormat:@"%@ %@",[UMStringMock commentMockString],dateString];

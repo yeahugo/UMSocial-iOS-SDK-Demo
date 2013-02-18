@@ -17,7 +17,11 @@ typedef void (^UMIconActionSheetButtonClickHandler)(UMSocialSnsType snsType);
 @interface UMSocialIconActionSheet : UIView
 {
     UMIconActionSheetButtonClickHandler _actionSheetHandler;
+    NSArray *_snsNames;
 }
+
+
+@property (nonatomic, retain) NSArray *snsNames;
 
 /**
  处理点击每一项之后的处理器对象
@@ -28,7 +32,7 @@ typedef void (^UMIconActionSheetButtonClickHandler)(UMSocialSnsType snsType);
 /**
  初始化方法
  
- @param items 显示每个小格对象数组，数组中的对象要求是`UMSocialSnsPlatform`类型
+ @param snsNames 每小格对应的sns平台名，在`UMSocialEnum.h`定义
  @param handler 处理点击之后的block处理对象
  */
 -(id)initWithItems:(NSArray *)items withButtonHandler:(void (^)(UMSocialSnsType snsType))handler;

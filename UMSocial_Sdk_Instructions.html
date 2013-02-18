@@ -337,7 +337,7 @@ pre {
 
 <p><a href="#faq_usercenter" style="text-decoration:none">6. 个人中心页面上面的登录账号和下面的授权账号有什么关系？</a></p>
 
-<p><a href="#faq_wechart" style="text-decoration:none">7. 如何集成微信？</a></p></blockquote>
+<p><a href="#faq_wechat" style="text-decoration:none">7. 如何集成微信？</a></p></blockquote>
 
 <h3><a href="#error_code" style="text-decoration:none">5. 附录</a></h3>
 
@@ -413,7 +413,7 @@ pre {
 </tr>
 <tr>
 <td>snsNames</td>
-<td>定义列表出现的sns平台，由SDK中定义好的平台名字符串组成的数组，可以定义列表视图中分组中的每个列表项，例如传入的数组是<code>@[@[UMShareToSina,UMShareToTencent],@[UMShareToWechart]];</code>上面分组是新浪微博、腾讯微博、下面分组是微信。如果设为nil的话出现所有平台</td>
+<td>定义列表出现的sns平台，由SDK中定义好的平台名字符串组成的数组，可以定义列表视图中分组中的每个列表项，例如传入的数组是<code>@[@[UMShareToSina,UMShareToTencent],@[UMShareToWechat]];</code>上面分组是新浪微博、腾讯微博、下面分组是微信。如果设为nil的话出现所有平台</td>
 </tr>
 <tr>
 <td>delegate</td>
@@ -732,11 +732,11 @@ NSDictionary *shareToSNS = [NSDictionary dictionaryWithObjectsAndKeys:@"weiboid"
 <code>
 [UMSocialControllerService setSocialConfigDelegate:self];
 </code>
-并且实现<code>UMSocialConfigDelegate</code>的<code>shareToPlatforms</code>方法，数组里的字符串定义在<code>UMSocialEnum.h</code>，可以使用的分享平台包括新浪微博<code>UMShareToSina</code>、腾讯微博<code>UMShareToTencent</code>、QQ空间<code>UMShareToQzone</code>、人人网<code>UMShareToRenren</code>、豆瓣<code>UMShareToDouban</code>、微信<code>UMShareToWechart</code>、Facebook<code>UMShareToFacebook</code>、Twitter<code>UMShareToTwitter</code>、邮箱<code>UMShareToEmail</code>、短信<code>UMShareToSms</code>。</p>
+并且实现<code>UMSocialConfigDelegate</code>的<code>shareToPlatforms</code>方法，数组里的字符串定义在<code>UMSocialEnum.h</code>，可以使用的分享平台包括新浪微博<code>UMShareToSina</code>、腾讯微博<code>UMShareToTencent</code>、QQ空间<code>UMShareToQzone</code>、人人网<code>UMShareToRenren</code>、豆瓣<code>UMShareToDouban</code>、微信<code>UMShareToWechat</code>、Facebook<code>UMShareToFacebook</code>、Twitter<code>UMShareToTwitter</code>、邮箱<code>UMShareToEmail</code>、短信<code>UMShareToSms</code>。</p>
 
 <pre><code>- (NSArray *)shareToPlatforms
 {
-    NSArray *shareToArray = @[@[UMShareToQzone,UMShareToWechart,UMShareToSina,UMShareToTencent],@[UMShareToEmail,UMShareToSms]];
+    NSArray *shareToArray = @[@[UMShareToQzone,UMShareToWechat,UMShareToSina,UMShareToTencent],@[UMShareToEmail,UMShareToSms]];
     return shareToArray;
 }
 </code></pre>
@@ -798,7 +798,7 @@ NSDictionary *shareToSNS = [NSDictionary dictionaryWithObjectsAndKeys:@"weiboid"
 </ol>
 
 
-<h3>7. <a name="faq_wechart" id="faq_wechart" style="color:black">如何集成微信？</a></h3>
+<h3>7. <a name="faq_wechat" id="faq_wechat" style="color:black">如何集成微信？</a></h3>
 
 <p>因为当前微信还不能通过网站的开放接口来分享给微信好友，所以我们只能利用微信的iOS SDK来做分享。使用我们当前版本的SDK集成微信的方式，步骤如下：
 1. 在微信网站注册，得到微信开发者id，并在<code>AppDelegate</code>引入头文件<code>#import "WXApi.h"</code>，然后注册，例如<code>[WXApi registerApp:@"wxd9a39c7122aa6516"];</code>.

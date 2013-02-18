@@ -32,10 +32,10 @@
 @property (nonatomic, readonly) NSArray *allSnsValuesArray;
 
 /**
- sns平台配置数组，此数组内只有social的云端sns分享平台名，云端分享的平台有新浪微博、腾讯微博、人人网、QQ空间
-、豆瓣。
+ sns平台配置数组，此数组内只有social的云端sns分享平台名，云端分享的平台有新浪微博、腾讯微博、人人网、QQ空间、豆瓣。
  */
 @property (nonatomic, readonly) NSArray *socialSnsArray;
+
 
 + (UMSocialSnsPlatformManager *)sharedInstance;
 
