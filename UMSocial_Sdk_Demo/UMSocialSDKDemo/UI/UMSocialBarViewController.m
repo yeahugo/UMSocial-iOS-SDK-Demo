@@ -55,11 +55,11 @@
         _textLabel.text = text;
         [self.view addSubview:_textLabel];
         
-        UIButton *chageSocialBarButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [chageSocialBarButton setFrame:CGRectMake(70, 100, 180, 50)];
-        [chageSocialBarButton setTitle:@"更改操作栏的identifier" forState:UIControlStateNormal];
-        [chageSocialBarButton addTarget:self action:@selector(changeSocialBarIdentifier:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:chageSocialBarButton];
+//        UIButton *chageSocialBarButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//        [chageSocialBarButton setFrame:CGRectMake(70, 100, 180, 50)];
+//        [chageSocialBarButton setTitle:@"更改操作栏的identifier" forState:UIControlStateNormal];
+//        [chageSocialBarButton addTarget:self action:@selector(changeSocialBarIdentifier:) forControlEvents:UIControlEventTouchUpInside];
+//        [self.view addSubview:chageSocialBarButton];
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 150, 320, 200)];
         imageView.image = image;
@@ -100,10 +100,10 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
-}
+//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+//{
+//    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+//}
 
 #pragma mark - UMSocialBarDelegate
 -(void)didFinishUpdateBarNumber:(UMSButtonTypeMask)actionTypeMask

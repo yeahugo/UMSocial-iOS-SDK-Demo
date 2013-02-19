@@ -174,7 +174,13 @@
  */
 - (UINavigationController *)getSocialLoginController;
 
-
+/**
+ 获取用以sns各平台icon平铺来展示的分享列表页面对象
+ 
+ @param controller 弹出的分享列表页面，点击sns平台icon之后，出现的分享页面或者授权页面所在的UIViewController
+ 
+ @return 分享列表页面
+ */
 - (UMSocialIconActionSheet *)getSocialIconActionSheetInController:(UIViewController *)controller;
 
 -(UIViewController *)getSocialViewController:(UMSViewControllerType)viewControllerType withSnsType:(UMSocialSnsType)shareToType;

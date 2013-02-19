@@ -27,35 +27,7 @@
     [UMSocialData openLog:YES];
     //向微信注册
     [WXApi registerApp:@"wxd9a39c7122aa6516"];
-    [UMSocialControllerService setSocialConfigDelegate:self];
     return YES;
-}
-
-//设置Social SDK所支持的屏幕方向，返回的是ios6 定义的UIInterfaceOrientationMask
-/*
-- (NSUInteger)supportedInterfaceOrientationsForUMSocialSDK
-{
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 60000
-    return UIInterfaceOrientationMaskPortrait;
-#else
-    return 1 << UIInterfaceOrientationPortrait;
-#endif
-}
-*/
-
-//设置官方微博，只支持新浪微博和腾讯微博
--(NSDictionary *)followSnsUids
-{
-    //这个uid是一个叫“SDK是一只猫”的微博用户
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"2937537507",UMShareToSina,nil];
-    return dictionary;
-}
-
-//设置出现的sns平台
-- (NSArray *)shareToPlatforms
-{
-    NSArray *shareToArray = @[@[UMShareToWechat,UMShareToSina,UMShareToQzone,UMShareToTencent],@[UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter]];
-    return shareToArray;
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url

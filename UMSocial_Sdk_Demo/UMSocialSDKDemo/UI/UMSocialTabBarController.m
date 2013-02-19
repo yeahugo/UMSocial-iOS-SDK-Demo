@@ -13,6 +13,7 @@
 #import "UMSocialAccountViewController.h"
 #import "UMSocialBarViewController.h"
 #import "UMSocialTableViewController.h"
+#import "UMSocialConfigViewController.h"
 
 @implementation UMSocialTabBarController
 
@@ -34,18 +35,30 @@
     barViewController.title = @"操作栏";
     barViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_bar"];
     
-    UMSocialTableViewController *tableViewController = [[UMSocialTableViewController alloc] init];
-    tableViewController.title = @"操作栏分拆接口";
-    tableViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_mutilBar"];
+    UMSocialConfigViewController *configController = [[UMSocialConfigViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    configController.title = @"设置";
+    configController.tabBarItem.image = [UIImage imageNamed:@"UMS_settings"];
     
-    [self setViewControllers:[NSArray arrayWithObjects:shareViewController,accountViewController,commentViewController,barViewController,tableViewController,nil]];
+    
+//    UMSocialTableViewController *tableViewController = [[UMSocialTableViewController alloc] init];
+//    tableViewController.title = @"操作栏分拆接口";
+//    tableViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_mutilBar"];
+    
+    [self setViewControllers:[NSArray arrayWithObjects:shareViewController,accountViewController,commentViewController,barViewController,configController,nil]];
     SAFE_ARC_AUTORELEASE(shareViewController);
     SAFE_ARC_AUTORELEASE(accountViewController);
     SAFE_ARC_AUTORELEASE(commentViewController);
     SAFE_ARC_AUTORELEASE(barViewController);
-    SAFE_ARC_AUTORELEASE(tableViewController);
+    SAFE_ARC_AUTORELEASE(configController);
     
     [super viewDidLoad];
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    UMSocialConfigViewController *configViewController = [self.viewControllers objectAtIndex:4];
+//    UMLog(@"support orientations is %d",configViewController.supportOrientationMask);
+    return configViewController.supportOrientationMask;
 }
 
 @end

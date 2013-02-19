@@ -70,7 +70,7 @@ extern NSString *const UMSCustomAccountGenderFeMale;
 + (BOOL)isOauthWithPlatform:(NSString *)platformType;
 
 /**
- 账号管理，可以添加开发者应用的自有账号到友盟的账号体系，查询此sns平台是否授权等。
+ 判断是否以游客身份登录。游客身份的过程是用户进入登录页面，并且选以游客身份登录，如果用户选择其他平台登录或者没有进入登录页面都是非游客身份登录。
  */
 + (BOOL)isLoginWithAnonymous;
 

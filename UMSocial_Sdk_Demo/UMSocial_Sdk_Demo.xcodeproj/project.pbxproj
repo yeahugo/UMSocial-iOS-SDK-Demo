@@ -22,6 +22,8 @@
 		D50552EE16BF7E7D00D5F191 /* UMSocial_Sdk_Comment_1.7.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D50552E016BF7E7D00D5F191 /* UMSocial_Sdk_Comment_1.7.0.a */; };
 		D50552EF16BF7E7D00D5F191 /* UMSocialSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D50552E116BF7E7D00D5F191 /* UMSocialSDKResources.bundle */; };
 		D50BFD7A164B9B5C00E3967D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50BFD79164B9B5C00E3967D /* MobileCoreServices.framework */; };
+		D518A99916D39A5100893507 /* UMS_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D518A99816D39A5100893507 /* UMS_settings@2x.png */; };
+		D518A99C16D39A7700893507 /* UMSocialConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D518A99B16D39A7700893507 /* UMSocialConfigViewController.m */; };
 		D57436FB16082B1200C7AD07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FA16082B1200C7AD07 /* UIKit.framework */; };
 		D57436FD16082B1200C7AD07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FC16082B1200C7AD07 /* Foundation.framework */; };
 		D57436FF16082B1200C7AD07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FE16082B1200C7AD07 /* CoreGraphics.framework */; };
@@ -92,6 +94,9 @@
 		D50552E116BF7E7D00D5F191 /* UMSocialSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResources.bundle; sourceTree = "<group>"; };
 		D50BFD76164B9B5400E3967D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D50BFD79164B9B5C00E3967D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		D518A99816D39A5100893507 /* UMS_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UMS_settings@2x.png"; sourceTree = "<group>"; };
+		D518A99A16D39A7700893507 /* UMSocialConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UMSocialConfigViewController.h; path = UI/UMSocialConfigViewController.h; sourceTree = "<group>"; };
+		D518A99B16D39A7700893507 /* UMSocialConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UMSocialConfigViewController.m; path = UI/UMSocialConfigViewController.m; sourceTree = "<group>"; };
 		D57436F616082B1200C7AD07 /* UMSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UMSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57436FA16082B1200C7AD07 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D57436FC16082B1200C7AD07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -324,6 +329,7 @@
 		D5743852160836C700C7AD07 /* DemoImages */ = {
 			isa = PBXGroup;
 			children = (
+				D518A99816D39A5100893507 /* UMS_settings@2x.png */,
 				D580B33216B3BB7100BF3481 /* UMS_account@2x.png */,
 				D580B33316B3BB7100BF3481 /* UMS_bar@2x.png */,
 				D580B33416B3BB7100BF3481 /* UMS_comment@2x.png */,
@@ -340,6 +346,8 @@
 		D5EF897C166DF04300B2068D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D518A99A16D39A7700893507 /* UMSocialConfigViewController.h */,
+				D518A99B16D39A7700893507 /* UMSocialConfigViewController.m */,
 				D580B31116B3B73A00BF3481 /* UMSocialTabBarController.h */,
 				D580B31216B3B73A00BF3481 /* UMSocialTabBarController.m */,
 				D5EF8988166DF18800B2068D /* UMStringMock.h */,
@@ -438,6 +446,7 @@
 				D50552EB16BF7E7D00D5F191 /* UMSnsAccountViewController.xib in Resources */,
 				D50552EC16BF7E7D00D5F191 /* UMSShareListController.xib in Resources */,
 				D50552EF16BF7E7D00D5F191 /* UMSocialSDKResources.bundle in Resources */,
+				D518A99916D39A5100893507 /* UMS_settings@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +470,7 @@
 				D50552E316BF7E7D00D5F191 /* UMSocialBarView.m in Sources */,
 				D50552E416BF7E7D00D5F191 /* UMSocialIconActionSheet.m in Sources */,
 				D50552E516BF7E7D00D5F191 /* UMSocialSnsService.m in Sources */,
+				D518A99C16D39A7700893507 /* UMSocialConfigViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

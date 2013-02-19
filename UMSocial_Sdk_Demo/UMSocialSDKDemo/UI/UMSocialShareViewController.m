@@ -26,8 +26,6 @@
 {
     [_socialController.socialDataService setUMSocialDelegate:nil];
     SAFE_ARC_RELEASE(_socialController);
-    SAFE_ARC_RELEASE(_editActionSheet);
-    SAFE_ARC_RELEASE(_dataActionSheet);
     SAFE_ARC_RELEASE(_shareTableView);
     SAFE_ARC_RELEASE(_imageView);
     SAFE_ARC_RELEASE(_locationManager);
@@ -61,11 +59,6 @@
     _shareTableView.dataSource = self;
     _shareTableView.delegate = self;
     [self.view addSubview:_shareTableView];
-    
-    _editActionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"QQ空间",@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",@"邮箱分享",@"短信分享",nil];
-    _editActionSheet.tag = UMShareEditPresent;
-    _dataActionSheet = [[UIActionSheet alloc] initWithTitle:@"直接发送微博" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"QQ空间",@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",nil];
-    _dataActionSheet.tag = UMSharePostData;
 
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _activityIndicatorView.center = CGPointMake(160, 150);
@@ -86,10 +79,6 @@
     [super viewWillDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
-}
 
 #pragma UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -142,8 +131,17 @@
     }
     //分享编辑页面
     if (indexPath.row == UMShareEditPresent) {
-        [_editActionSheet showFromTabBar:self.tabBarController.tabBar];
-        _editActionSheet.delegate = self;
+        UIActionSheet * editActionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+        editActionSheet.tag = UMShareEditPresent;
+        for (NSString *snsName in [UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray) {
+            UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
+            [editActionSheet addButtonWithTitle:snsPlatform.displayName];
+        }
+        [editActionSheet addButtonWithTitle:@"取消"];
+        editActionSheet.cancelButtonIndex = editActionSheet.numberOfButtons - 1;
+        [editActionSheet showFromTabBar:self.tabBarController.tabBar];
+        editActionSheet.delegate = self;
+        SAFE_ARC_RELEASE(editActionSheet);
     }
     //分享列表页面新样式
     else if (indexPath.row == UMShareIconActionSheet) {
@@ -156,8 +154,18 @@
     }
     //直接发送分享的数据级接口
     else if(indexPath.row == UMSharePostData){
-        [_dataActionSheet showFromTabBar:self.tabBarController.tabBar];
-        _dataActionSheet.delegate = self;
+        UIActionSheet * dataActionSheet = [[UIActionSheet alloc] initWithTitle:@"直接发送微博" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+        for (NSString *snsName in [UMSocialSnsPlatformManager sharedInstance].socialSnsArray) {
+            UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
+            [dataActionSheet addButtonWithTitle:snsPlatform.displayName];
+        }
+        [dataActionSheet addButtonWithTitle:@"取消"];
+        dataActionSheet.cancelButtonIndex = dataActionSheet.numberOfButtons - 1;
+        dataActionSheet.tag = UMSharePostData;
+        
+        [dataActionSheet showFromTabBar:self.tabBarController.tabBar];
+        dataActionSheet.delegate = self;
+        SAFE_ARC_RELEASE(dataActionSheet);
     }
     //一键分享到多个平台的数据级接口
     else if (indexPath.row == UMSharePostMultiData) {
@@ -191,15 +199,15 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex + 1 >= actionSheet.numberOfButtons) {
+    if (buttonIndex + 1 >= actionSheet.numberOfButtons ) {
         return;
     }
     UMSocialSnsType shareToType = buttonIndex + UMSocialSnsTypeQzone;
     
     //分享编辑页面的接口
     if (actionSheet.tag == UMShareEditPresent) {
-        
-        UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:[UMSocialSnsPlatformManager getSnsPlatformString:shareToType]];
+        NSString *snaName = [[UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray objectAtIndex:buttonIndex];
+        UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snaName];
         
         snsPlatform.snsClickHandler(self,_socialController,YES);
     }
@@ -207,9 +215,7 @@
     if (actionSheet.tag == UMSharePostData) {
         [_activityIndicatorView startAnimating];
         
-        CLLocation *location = _locationManager.location;
-//        NSLog(@"location is %@",location);
-        
+        CLLocation *location = _locationManager.location;        
         NSString *dateString = [[NSDate date] description];
         NSString *shareContent = [NSString stringWithFormat:@"%@ %@",[UMStringMock commentMockString],dateString];
         [_socialController.socialDataService setUMSocialDelegate:self];
