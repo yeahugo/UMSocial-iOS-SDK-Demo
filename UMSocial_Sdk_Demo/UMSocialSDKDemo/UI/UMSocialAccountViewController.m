@@ -30,7 +30,6 @@
 }
 -(void)dealloc
 {
-    SAFE_ARC_RELEASE(_actionSheet);
     SAFE_ARC_RELEASE(_socialUIController);
     SAFE_ARC_SUPER_DEALLOC();
 }
@@ -39,10 +38,6 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        _actionSheet = [[UIActionSheet alloc] initWithTitle:@"授权" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"QQ空间",@"新浪微博",@"腾讯微博",@"人人网",@"豆瓣",nil];
-//        _actionSheet.cancelButtonIndex = 5;
-        
-        // Custom initialization
     }
     return self;
 }
@@ -74,7 +69,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -151,10 +146,18 @@
     }
     else if(indexPath.row == UMAccountOauth)
     {
-        [_actionSheet setTitle:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
-        [_actionSheet showFromTabBar:self.tabBarController.tabBar];
+        UIActionSheet *oauthActionSheet = [[UIActionSheet alloc] initWithTitle:@"授权" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+        
+        for (NSString *snsName in [UMSocialSnsPlatformManager sharedInstance].socialSnsArray) {
+            UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
+            [oauthActionSheet addButtonWithTitle:snsPlatform.displayName];
+        }
+        
+        [oauthActionSheet addButtonWithTitle:@"取消"];
+        oauthActionSheet.cancelButtonIndex = oauthActionSheet.numberOfButtons - 1;
+        [oauthActionSheet showFromTabBar:self.tabBarController.tabBar];
         UMAccountAction accountAction  = indexPath.row;
-        _actionSheet.tag = accountAction;    
+        oauthActionSheet.tag = accountAction;    
     }
 }
 
@@ -163,14 +166,15 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"button index is %d",buttonIndex);
-    UMSocialSnsType shareToType = buttonIndex + UMSocialSnsTypeQzone;
-    if (shareToType >= UMSocialSnsTypeEmail) {
+    
+    if (buttonIndex >= actionSheet.numberOfButtons - 1) {
         return;
     }
     if (actionSheet.tag == UMAccountOauth) {
-        _selectOauthType = shareToType;
+        NSString *snaName = [[UMSocialSnsPlatformManager sharedInstance].socialSnsArray objectAtIndex:buttonIndex];
+        UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snaName];
         
-        UINavigationController *oauthController = [_socialUIController getSocialOauthController:shareToType];
+        UINavigationController *oauthController = [_socialUIController getSocialOauthController:snsPlatform.shareToType];
         [self presentModalViewController:oauthController animated:YES];
     }
 }
@@ -197,6 +201,7 @@
 
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
+    NSLog(@"socialData is %@",_socialUIController.socialData.socialAccount);
     NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);
 }
 

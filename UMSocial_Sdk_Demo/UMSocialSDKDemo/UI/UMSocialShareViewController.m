@@ -202,7 +202,6 @@
     if (buttonIndex + 1 >= actionSheet.numberOfButtons ) {
         return;
     }
-    UMSocialSnsType shareToType = buttonIndex + UMSocialSnsTypeQzone;
     
     //分享编辑页面的接口
     if (actionSheet.tag == UMShareEditPresent) {
@@ -215,11 +214,14 @@
     if (actionSheet.tag == UMSharePostData) {
         [_activityIndicatorView startAnimating];
         
+        NSString *snaName = [[UMSocialSnsPlatformManager sharedInstance].socialSnsArray objectAtIndex:buttonIndex];
+        UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snaName];
+        
         CLLocation *location = _locationManager.location;        
         NSString *dateString = [[NSDate date] description];
         NSString *shareContent = [NSString stringWithFormat:@"%@ %@",[UMStringMock commentMockString],dateString];
         [_socialController.socialDataService setUMSocialDelegate:self];
-        [_socialController.socialDataService postSNSWithType:shareToType content:shareContent image:_imageView.image location:location];
+        [_socialController.socialDataService postSNSWithType:snsPlatform.shareToType content:shareContent image:_imageView.image location:location];
         return;
     }
 }

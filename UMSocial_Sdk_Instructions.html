@@ -327,17 +327,17 @@ pre {
 
 <blockquote><p><a href="#social_config" style="text-decoration:none">1. 分享列表页面或者登录页面，如何不显示不想要的sns平台或者增加平台？</a></p>
 
-<p><a href="#faq_orientation" style="text-decoration:none">2. 如何指定页面支持的某一屏幕方向？</a></p>
+<p><a href="#faq_wechat" style="text-decoration:none">2. 如何集成微信？</a></p>
 
-<p><a href="#faq_debug" style="text-decoration:none">3. 如何处理SDK出现的错误？</a></p>
+<p><a href="#faq_orientation" style="text-decoration:none">3. 如何指定页面支持的某一屏幕方向？</a></p>
 
-<p><a href="#faq_oauth" style="text-decoration:none">4. 如何判断用户有没有授权到一个微博平台？</a></p>
+<p><a href="#faq_debug" style="text-decoration:none">4. 如何处理SDK出现的错误？</a></p>
 
-<p><a href="#faq_identifer" style="text-decoration:none">5. 初始化<code>UMSocialData</code>用到的<code>identifier</code>代表什么意思？</a></p>
+<p><a href="#faq_oauth" style="text-decoration:none">5. 如何判断用户有没有授权到一个微博平台？</a></p>
 
 <p><a href="#faq_usercenter" style="text-decoration:none">6. 个人中心页面上面的登录账号和下面的授权账号有什么关系？</a></p>
 
-<p><a href="#faq_wechat" style="text-decoration:none">7. 如何集成微信？</a></p></blockquote>
+<p><a href="#faq_identifer" style="text-decoration:none">7. 初始化<code>UMSocialData</code>用到的<code>identifier</code>代表什么意思？</a></p></blockquote>
 
 <h3><a href="#error_code" style="text-decoration:none">5. 附录</a></h3>
 
@@ -417,7 +417,7 @@ pre {
 </tr>
 <tr>
 <td>delegate</td>
-<td>实现分享状态回调方法的对象</td>
+<td>实现分享状态回调方法的对象，如果你不需要回调的话，可以设为<code>nil</code></td>
 </tr>
 </tbody>
 </table>
@@ -446,6 +446,8 @@ pre {
     [self.view addSubview:socialBar];
 }  
 </code></pre>
+
+<p>3.我们提供了黑色和白色两套主题，默认是黑色，下面可以将其修改成白色<code>socialBar.socialBarView.themeColor = UMSBarColorWhite;</code>。如果想修改操作栏的按钮样式和响应事件等，可以直接修改<code>UMSocialBarView.m</code>的源代码。</p>
 
 <h3>3.2 <a name="social_user" id="social_user" style="color:black">用户账号</a></h3>
 
@@ -749,56 +751,18 @@ NSDictionary *shareToSNS = [NSDictionary dictionaryWithObjectsAndKeys:@"weiboid"
 <pre><code>-(UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName
 {
     UMSocialSnsPlatform *customSnsPlatform = nil;
-    if ([snsName isEqualToString:@"weixin"]) {
-        //分享到微信
+        if ([snsName isEqualToString:@"weixin"]) {
+        customSnsPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_wechart_icon"; /*指定大图*/
+        customSnsPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_wechart_on.png"; /*指定小图*/ 
+        customSnsPlatform.displayName = @"微信";    /*指定显示名称*/ 
+        customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
+            NSLog(@"点击微信！");
+        };
     }
     return customSnsPlatform;
 </code></pre>
 
-<h3>2. <a name="faq_orientation" id="faq_orientation" style="color:black">如何指定页面支持的某一屏幕方向？</a></h3>
-
-<p>如果你想指定sdk相关的页面支持某一方向，首先设置实现<code>&lt;UMSocialConfigDelegate&gt;</code>的回调对象<code>[UMSocialControllerService setSocialConfigDelegate:self];</code>，然后实现回调方法<code>- (NSUInteger)supportedInterfaceOrientationsForUMSocialSDK</code>，返回的是iOS6定义的<code>UIInterfaceOrientationMask</code>类型，例如指定屏幕支持全部方向：</p>
-
-<pre><code>- (NSUInteger)supportedInterfaceOrientationsForUMSocialSDK
-{
-    return UIInterfaceOrientationMaskAll;
-}
-</code></pre>
-
-<h3>3. <a name="faq_debug" id="faq_debug" style="color:black">如何处理SDK出现的错误？</a></h3>
-
-<p>由于社会化组件功能需要依赖新浪微博、腾讯微博、QQ空间、人人网和友盟服务器的服务，和微信等SDK的功能，还有SDK本身也在不断地改进升级，出现各种错误在所难免。</p>
-
-<ol>
-<li><p>不管出现什么错误，为了方便看到错误原因，都可以先打开log，<code>[UMSocialData openLog:YES];</code>。在log的输出中，我们可以看到每次网络请求状态，如果是失败的话，可以看到状态码，失败原因，还有每次网络请求的url。</p></li>
-<li><p>如果是分享失败的话，除了已知错误，例如授权过期会自动处理之外，其他错误界面上都只会弹出对话框显示“由于网络原因，信息发送失败”，而分享失败的原因，你可以通过在log中看到，或者在回调方法里的<code>responseCode</code>和<code>message</code>得到错误码和错误原因。错误的原因主要有以下几种：</p>
-
-<blockquote><p>a.和平台设置相关的原因，例如QQ空间需要开通相应的权限、没有通过新浪微博审核通过的应用，需要添加测试用户等。</p>
-
-<p>b.各平台定义的发送方式错误，例如新浪微博和腾讯微博返回发送微博太频繁。</p></blockquote></li>
-<li><p>如果是sdk出现crash等异常，可以发送邮件到social-support@umeng.com，我们会尽快回复您。</p></li>
-</ol>
-
-
-<h3>4. <a name="faq_oauth" id="faq_oauth" style="color:black">如何判断用户有没有授权到一个微博平台</a></h3>
-
-<p>如果利用SDK授权用户，我们会把用户的授权信息保存在SDK本地，你可利用<code>UMSocialAccountManager</code>,的类方法<code>+ (BOOL)isOauthWithPlatform:(NSString *)platformName;</code>,传入在<code>UMSocialEnum.h</code>定义的平台名，就可以返回是否已经授权。例如<code>[UMSocialAccountManager isOauthWithPlatform:UMShareToSina];</code>就能返回是否已经授权新浪微博。</p>
-
-<h3>5. <a name="faq_identifer" id="faq_identifier" style="color:black">初始化<code>UMSocialData</code>用到的<code>identifier</code>代表什么意思？</a></h3>
-
-<p>调用数据级接口和界面级接口需要一个<code>UMSocialData</code>对象，一个<code>UMSocialData</code>对象标识一个分享资源，而<code>UMSocialData</code>对象用一个<code>identifier</code>字符串来初始化并标识这个对象，你可以为此对象设置分享内嵌文字、分享图片等，可以在SDK获取到对应的分享数。也可以在后台报表，很清楚地看到每个分享资源的分享次数，和每个用户在分享次数。如果你用了评论和喜欢功能，也可以在SDK得到评论、喜欢数字和在报表看到相应的评论、喜欢行为和次数。</p>
-
-<h3>6. <a name="faq_usercenter" id="faq_usercenter" style="color:black">个人中心页面上面的登录账号和下面的授权账号有什么关系？</a></h3>
-
-<ol>
-<li>个人中上半部分是登录账号、下半部分是授权账号。所谓登录账号，即我们SDK讲一个sns的授权账号作为绑定账号，我们在评论时候就会使用此登录账号的用户名和头像。下半部分就是各个sns平台的授权信息，可以显示每个平台是否授权和昵称。</li>
-<li>用户即使在下面解授权，也不会影响到上面的登录状态，而如果你需要解除登录，可以调用我们的数据级接口。</li>
-<li>如果你不想出现个人中心上面部分，只想要下面的授权信息，可以调用<code>UMSocialControllerService</code>的<code>- (UINavigationController *)getSnsAccountController;</code>方法。</li>
-<li>如果你想设置个人中心出现哪些sns平台，请参见问题1，即那里设置的出现平台就会影响到个人中心出现的平台和登录页面出现的平台。</li>
-</ol>
-
-
-<h3>7. <a name="faq_wechat" id="faq_wechat" style="color:black">如何集成微信？</a></h3>
+<h3>2. <a name="faq_wechat" id="faq_wechat" style="color:black">如何集成微信？</a></h3>
 
 <p>因为当前微信还不能通过网站的开放接口来分享给微信好友，所以我们只能利用微信的iOS SDK来做分享。使用我们当前版本的SDK集成微信的方式，步骤如下：
 1. 在微信网站注册，得到微信开发者id，并在<code>AppDelegate</code>引入头文件<code>#import "WXApi.h"</code>，然后注册，例如<code>[WXApi registerApp:@"wxd9a39c7122aa6516"];</code>.
@@ -825,6 +789,49 @@ NSDictionary *shareToSNS = [NSDictionary dictionaryWithObjectsAndKeys:@"weiboid"
 </code></pre>
 
 <p>最后需要添加URL scheme，在Xcode4中，选择你的工程设置项，选中“TARGETS”一栏，在“info”标签栏的“URL type“添加“URL scheme”为你所注册的应用程序id。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。见 <a href="http://open.weixin.qq.com/document/gettingstart/ios/?lang=zh_CN" title="微信集成文档">微信使用指南</a> 介绍。</p>
+
+<h3>3. <a name="faq_orientation" id="faq_orientation" style="color:black">如何指定页面支持的某一屏幕方向？</a></h3>
+
+<p>如果你想指定sdk相关的页面支持某一方向，首先设置实现<code>&lt;UMSocialConfigDelegate&gt;</code>的回调对象<code>[UMSocialControllerService setSocialConfigDelegate:self];</code>，然后实现回调方法<code>- (NSUInteger)supportedInterfaceOrientationsForUMSocialSDK</code>，返回的是iOS6定义的<code>UIInterfaceOrientationMask</code>类型，例如指定屏幕支持全部方向：</p>
+
+<pre><code>- (NSUInteger)supportedInterfaceOrientationsForUMSocialSDK
+{
+    return UIInterfaceOrientationMaskAll;
+}
+</code></pre>
+
+<h3>4. <a name="faq_debug" id="faq_debug" style="color:black">如何处理SDK出现的错误？</a></h3>
+
+<p>由于社会化组件功能需要依赖新浪微博、腾讯微博、QQ空间、人人网和友盟服务器的服务，和微信等SDK的功能，还有SDK本身也在不断地改进升级，出现各种错误在所难免。</p>
+
+<ol>
+<li><p>不管出现什么错误，为了方便看到错误原因，都可以先打开log，<code>[UMSocialData openLog:YES];</code>。在log的输出中，我们可以看到每次网络请求状态，如果是失败的话，可以看到状态码，失败原因，还有每次网络请求的url。</p></li>
+<li><p>如果是分享失败的话，除了已知错误，例如授权过期会自动处理之外，其他错误界面上都只会弹出对话框显示“由于网络原因，信息发送失败”，而分享失败的原因，你可以通过在log中看到，或者在回调方法里的<code>responseCode</code>和<code>message</code>得到错误码和错误原因。错误的原因主要有以下几种：</p>
+
+<blockquote><p>a.和平台设置相关的原因，例如QQ空间需要开通相应的权限、没有通过新浪微博审核通过的应用，需要添加测试用户等。</p>
+
+<p>b.各平台定义的发送方式错误，例如新浪微博和腾讯微博返回发送微博太频繁。</p></blockquote></li>
+<li><p>如果是sdk出现crash等异常，可以发送邮件到social-support@umeng.com，我们会尽快回复您。</p></li>
+</ol>
+
+
+<h3>5. <a name="faq_oauth" id="faq_oauth" style="color:black">如何判断用户有没有授权到一个微博平台</a></h3>
+
+<p>如果利用SDK授权用户，我们会把用户的授权信息保存在SDK本地，你可利用<code>UMSocialAccountManager</code>,的类方法<code>+ (BOOL)isOauthWithPlatform:(NSString *)platformName;</code>,传入在<code>UMSocialEnum.h</code>定义的平台名，就可以返回是否已经授权。例如<code>[UMSocialAccountManager isOauthWithPlatform:UMShareToSina];</code>就能返回是否已经授权新浪微博。</p>
+
+<h3>6. <a name="faq_usercenter" id="faq_usercenter" style="color:black">个人中心页面上面的登录账号和下面的授权账号有什么关系？</a></h3>
+
+<ol>
+<li>个人中上半部分是登录账号、下半部分是授权账号。所谓登录账号，即我们SDK讲一个sns的授权账号作为绑定账号，我们在评论时候就会使用此登录账号的用户名和头像。下半部分就是各个sns平台的授权信息，可以显示每个平台是否授权和昵称。</li>
+<li>用户即使在下面解授权，也不会影响到上面的登录状态，而如果你需要解除登录，可以调用我们的数据级接口。</li>
+<li>如果你不想出现个人中心上面部分，只想要下面的授权信息，可以调用<code>UMSocialControllerService</code>的<code>- (UINavigationController *)getSnsAccountController;</code>方法。</li>
+<li>如果你想设置个人中心出现哪些sns平台，请参见问题1，即那里设置的出现平台就会影响到个人中心出现的平台和登录页面出现的平台。</li>
+</ol>
+
+
+<h3>7. <a name="faq_identifer" id="faq_identifier" style="color:black">初始化<code>UMSocialData</code>用到的<code>identifier</code>代表什么意思？</a></h3>
+
+<p>调用数据级接口和界面级接口需要一个<code>UMSocialData</code>对象，一个<code>UMSocialData</code>对象标识一个分享资源，而<code>UMSocialData</code>对象用一个<code>identifier</code>字符串来初始化并标识这个对象，你可以为此对象设置分享内嵌文字、分享图片等，可以在SDK获取到对应的分享数。也可以在后台报表，很清楚地看到每个分享资源的分享次数，和每个用户在分享次数。如果你用了评论和喜欢功能，也可以在SDK得到评论、喜欢数字和在报表看到相应的评论、喜欢行为和次数。</p>
 
 <h2><a name="error_code" id="error_code" style="color:black">5. 附录</a></h2>
 

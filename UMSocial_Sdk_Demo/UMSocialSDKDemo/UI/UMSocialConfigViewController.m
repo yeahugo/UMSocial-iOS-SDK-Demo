@@ -57,6 +57,25 @@
 #endif
 }
 
+/*
+- (UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName
+{
+    UMSocialSnsPlatform *customSnsPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:snsName];
+    SAFE_ARC_AUTORELEASE(customSnsPlatform);
+    if ([snsName isEqualToString:@"copy"]) {
+        customSnsPlatform.bigImageName = @"Icon.png";
+        customSnsPlatform.smallImageName = @"Icon.png";
+        customSnsPlatform.displayName = @"复制文本";
+        customSnsPlatform.loginName = @"复制文本";
+        customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
+            NSLog(@"点击复制文本");
+        };
+    }
+    return customSnsPlatform;
+}
+*/
+
+
 /*设置分享编辑页面是否等待完成之后再关闭页面还是立即关闭，如果设置成YES，就是等待分享完成之后再关闭，否则立即关闭。默认等待分享完成之后再关闭。
  */
 -(BOOL)shouldShareSynchronous
@@ -66,13 +85,12 @@
 
 /*设置出现的sns平台
  如果你自己设置可以参照下面的写法
-
-- (NSArray *)shareToPlatforms
-{
-    NSArray *shareToArray = @[@[UMShareToWechat,UMShareToSina,UMShareToQzone,UMShareToTencent],@[UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter]];
-    return shareToArray;
-}
 */
+//- (NSArray *)shareToPlatforms
+//{
+//    NSArray *shareToArray = @[@[@"copy",UMShareToWechat,UMShareToSina,UMShareToQzone,UMShareToTencent],@[UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter]];
+//    return shareToArray;
+//}
 - (NSArray *)shareToPlatforms
 {
     NSMutableArray *shareToPlatforms = [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithArray:[_shareToPlatforms objectAtIndex:0]],[NSMutableArray arrayWithArray:[_shareToPlatforms objectAtIndex:1]],nil];

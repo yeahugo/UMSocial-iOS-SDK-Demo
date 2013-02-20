@@ -40,7 +40,7 @@
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:descriptor withTitle:@"socialBarTest"];
         _socialBar = [[UMSocialBar alloc] initWithUMSocialData:socialData withViewController:self];
         _socialBar.socialBarDelegate = self;
-        _socialBar.socialBarView.themeColor = UMSBarColorBlack;
+//        _socialBar.socialBarView.themeColor = UMSBarColorWhite;
         SAFE_ARC_RELEASE(socialData);
         
         _socialBar.socialData.shareText = text;
@@ -55,25 +55,12 @@
         _textLabel.text = text;
         [self.view addSubview:_textLabel];
         
-//        UIButton *chageSocialBarButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//        [chageSocialBarButton setFrame:CGRectMake(70, 100, 180, 50)];
-//        [chageSocialBarButton setTitle:@"更改操作栏的identifier" forState:UIControlStateNormal];
-//        [chageSocialBarButton addTarget:self action:@selector(changeSocialBarIdentifier:) forControlEvents:UIControlEventTouchUpInside];
-//        [self.view addSubview:chageSocialBarButton];
-        
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 150, 320, 200)];
         imageView.image = image;
         [self.view addSubview:imageView];
         SAFE_ARC_RELEASE(imageView);
     }
     return self;
-}
-
--(void)changeSocialBarIdentifier:(id)sender
-{
-    UIImage *image = _socialBar.socialData.shareImage;
-    [_socialBar updateButtonNumberWithIdentifier:@"testNewSocialBar"];
-    _socialBar.socialData.shareImage = image;
 }
 
 - (void)viewDidLoad

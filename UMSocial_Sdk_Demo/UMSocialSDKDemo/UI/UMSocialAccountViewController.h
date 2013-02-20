@@ -28,7 +28,6 @@ typedef enum
     UMSocialUIDelegate
 >
 {
-    UIActionSheet *_actionSheet;
     UMSocialData *_socialData;
     UMSocialControllerService *_socialUIController;
     UIActivityIndicatorView * _activityIndicatorView;
