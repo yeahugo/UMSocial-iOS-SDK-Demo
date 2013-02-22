@@ -16,6 +16,8 @@
 #import "UMSocialIconActionSheet.h"
 #import "UMSocialAccountManager.h"
 
+#define kTagWithUMSnsAction 100
+
 @interface UMSocialShareViewController ()
 
 @end
@@ -36,7 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tabBarController.view.bounds.size.width, 100)];
     textLabel.numberOfLines = 4;
     textLabel.text = [UMStringMock commentMockString];
     [self.view addSubview:textLabel];
@@ -55,7 +57,14 @@
     _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
     _socialController.socialUIDelegate = self;
     SAFE_ARC_RELEASE(socialData);
-    _shareTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 190, 320, 220)];
+    CGRect rect ;
+    if (self.tabBarController != nil) {
+        rect = CGRectMake(0, 190, self.tabBarController.view.bounds.size.width, 220);
+    }
+    else{
+        rect = CGRectMake(0, 190, self.view.frame.size.width, 220);
+    }
+    _shareTableView = [[UITableView alloc] initWithFrame:rect];
     _shareTableView.dataSource = self;
     _shareTableView.delegate = self;
     [self.view addSubview:_shareTableView];
@@ -146,6 +155,7 @@
     //分享列表页面新样式
     else if (indexPath.row == UMShareIconActionSheet) {
         UMSocialIconActionSheet *snsIconSheet = (UMSocialIconActionSheet *)[_socialController getSocialIconActionSheetInController:self];
+        snsIconSheet.tag = kTagWithUMSnsAction;
         [snsIconSheet showInView:self.view];
 
         /*或者用快速分享接口*/
@@ -253,6 +263,26 @@
         SAFE_ARC_RELEASE(alertView);
     }
 }
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    UIInterfaceOrientation currentOrientation = self.interfaceOrientation;
+    if (UIInterfaceOrientationIsLandscape(currentOrientation)) {
+        _shareTableView.frame = CGRectMake(_shareTableView.frame.origin.x, _shareTableView.frame.origin.y, self.tabBarController.view.bounds.size.width, _shareTableView.frame.size.height);
+          if (_shareTableView.frame.origin.y + _shareTableView.frame.size.height > self.tabBarController.view.bounds.size.height) {
+            _shareTableView.center = CGPointMake(50 + _shareTableView.frame.size.width,_shareTableView.frame.size.height/2);
+        }
+    }
+    else{
+        _shareTableView.frame = CGRectMake(0, 190, self.tabBarController.view.bounds.size.width, _shareTableView.frame.size.height);
+    }
+    
+    if ([self.view viewWithTag:kTagWithUMSnsAction]) {
+        UMSocialIconActionSheet *socialIconActionSheet = (UMSocialIconActionSheet *)[self.view viewWithTag:kTagWithUMSnsAction];
+        [socialIconActionSheet setNeedsDisplay];
+    }
+}
+
 
 #pragma mark - UMSocialUIDelegate
 -(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType

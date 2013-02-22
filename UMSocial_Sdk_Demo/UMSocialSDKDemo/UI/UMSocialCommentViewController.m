@@ -29,41 +29,43 @@
     SAFE_ARC_SUPER_DEALLOC();
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
-        textLabel.numberOfLines = 4;
-        textLabel.text = [UMStringMock commentMockString];
-        [self.view addSubview:textLabel];
-        SAFE_ARC_RELEASE(textLabel);
-        
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,90 , 150, 120)];
-        NSString *imageName = [NSString stringWithFormat:@"yinxing%d.jpg",rand()%4];
-        _imageView.image = [UIImage imageNamed:imageName];
-        [self.view addSubview:_imageView];
-        
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
-        _socialController = [[UMSocialControllerServiceComment alloc] initWithUMSocialData:socialData];
-        _socialController.socialDataService.socialData.commentText = textLabel.text;        //作为分享到微博内容"//"之后的文字
-        _socialController.socialDataService.socialData.commentImage = _imageView.image;
-        
-        SAFE_ARC_RELEASE(socialData);
-        _commentTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 190, 320, 250)];
-        _commentTableView.dataSource = self;
-        _commentTableView.delegate = self;
-        [self.view addSubview:_commentTableView];
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    textLabel.numberOfLines = 4;
+    textLabel.text = [UMStringMock commentMockString];
+    [self.view addSubview:textLabel];
+    SAFE_ARC_RELEASE(textLabel);
+    
+    _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,90 , 150, 120)];
+    NSString *imageName = [NSString stringWithFormat:@"yinxing%d.jpg",rand()%4];
+    _imageView.image = [UIImage imageNamed:imageName];
+    [self.view addSubview:_imageView];
+    
+    UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
+    _socialController = [[UMSocialControllerServiceComment alloc] initWithUMSocialData:socialData];
+    _socialController.socialDataService.socialData.commentText = textLabel.text;        //作为分享到微博内容"//"之后的文字
+    _socialController.socialDataService.socialData.commentImage = _imageView.image;
+    
+    SAFE_ARC_RELEASE(socialData);
+
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _activityIndicatorView.center = CGPointMake(160, 150);
     [self.view addSubview:_activityIndicatorView];
 
+    CGRect rect;
+    if (self.tabBarController != nil) {
+        rect = CGRectMake(0, 200, self.tabBarController.view.bounds.size.width, 220);
+    }
+    else{
+        rect = CGRectMake(0, 200, self.view.frame.size.width, 220);
+    }
+    _commentTableView = [[UITableView alloc] initWithFrame:rect];
+    _commentTableView.dataSource = self;
+    _commentTableView.delegate = self;
+    [self.view addSubview:_commentTableView];
+
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -169,6 +171,20 @@
     UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
     [alertView show];
     SAFE_ARC_RELEASE(alertView);
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    UIInterfaceOrientation currentOrientation = self.interfaceOrientation;
+    if (UIInterfaceOrientationIsLandscape(currentOrientation)) {
+        _commentTableView.frame = CGRectMake(_commentTableView.frame.origin.x, _commentTableView.frame.origin.y, self.tabBarController.view.bounds.size.width, _commentTableView.frame.size.height);
+        if (_commentTableView.frame.origin.y + _commentTableView.frame.size.height > self.tabBarController.view.bounds.size.height) {
+            _commentTableView.center = CGPointMake(50 + _commentTableView.frame.size.width,_commentTableView.frame.size.height/2);
+        }
+    }
+    else{
+        _commentTableView.frame = CGRectMake(0, 200, self.tabBarController.view.bounds.size.width, _commentTableView.frame.size.height);
+    }
 }
 
 //- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

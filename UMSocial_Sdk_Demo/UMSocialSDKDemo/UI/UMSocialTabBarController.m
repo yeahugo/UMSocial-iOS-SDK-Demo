@@ -54,10 +54,17 @@
     [super viewDidLoad];
 }
 
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    for (UIViewController *viewController in self.viewControllers) {
+        [viewController didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    }
+}
+
 - (NSUInteger)supportedInterfaceOrientations
 {
     UMSocialConfigViewController *configViewController = [self.viewControllers objectAtIndex:4];
-//    UMLog(@"support orientations is %d",configViewController.supportOrientationMask);
     return configViewController.supportOrientationMask;
 }
 

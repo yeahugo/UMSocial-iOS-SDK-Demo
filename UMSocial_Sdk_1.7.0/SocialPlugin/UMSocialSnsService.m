@@ -19,6 +19,9 @@
 #define SLServiceTypeFacebook @"com.apple.social.facebook"
 #define SLServiceTypeTwitter @"com.apple.social.twitter"
 
+#define UMShareToWechatSession @"wxsession"
+#define UMShareToWechatTimeline @"wxtimeline"
+
 -(void)dealloc
 {
     SAFE_ARC_RELEASE(_socialControllerService);
@@ -125,17 +128,18 @@
                         slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
                             [presentingController dismissModalViewControllerAnimated:YES];
                         };
+                        [presentingController presentModalViewController:slcomposeViewController animated:YES];
                     }
-                    [presentingController presentModalViewController:slcomposeViewController animated:YES];
+                    
                 }
                 else{
-                    UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"账号未登录" message:[NSString stringWithFormat:@"您的Facebook账号尚未登录，请在系统设置中登录"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"账号未登录" message:[NSString stringWithFormat:@"您的Facebook账号尚未登录，请在系统设置中登录"] delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
                     [loginAlert show];
                     SAFE_ARC_RELEASE(loginAlert);
                 }
             }
             else{
-                UIAlertView *osAlert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[NSString stringWithFormat:@"您的设备系统不支持分享到Facebook的功能"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                UIAlertView *osAlert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[NSString stringWithFormat:@"您的设备系统不支持分享到Facebook的功能"] delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
                 [osAlert show];
                 SAFE_ARC_RELEASE(osAlert);
             }
@@ -158,17 +162,17 @@
                         slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
                             [presentingController.presentingViewController dismissModalViewControllerAnimated:YES];
                         };
+                        [presentingController presentModalViewController:slcomposeViewController animated:YES];
                     }
-                    [presentingController presentModalViewController:slcomposeViewController animated:YES];
                 }
                 else{
-                    UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"账号未登录" message:[NSString stringWithFormat:@"您的Twitter账号尚未登录，请在系统设置中登录"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"账号未登录" message:[NSString stringWithFormat:@"您的Twitter账号尚未登录，请在系统设置中登录"] delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
                     [loginAlert show];
                     SAFE_ARC_RELEASE(loginAlert);
                 }                
             }
             else{
-                UIAlertView *osAlert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[NSString stringWithFormat:@"您的设备系统不支持分享到Twitter的功能"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                UIAlertView *osAlert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[NSString stringWithFormat:@"您的设备系统不支持分享到Twitter的功能"] delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
                 [osAlert show];
                 SAFE_ARC_RELEASE(osAlert);
             }
@@ -202,13 +206,13 @@
             [showViewController presentModalViewController:slcomposeViewController animated:YES];
         }
         else{
-            UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[NSString stringWithFormat:@"您的%@账号尚未登录，请在系统设置中登录",slName] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[NSString stringWithFormat:@"您的%@账号尚未登录，请在系统设置中登录",slName] delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
             [loginAlert show];
             SAFE_ARC_RELEASE(loginAlert);
         }
     }
     else{
-        UIAlertView *osAlert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[NSString stringWithFormat:@"您的设备系统不支持分享到%@的功能",slName] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView *osAlert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[NSString stringWithFormat:@"您的设备系统不支持分享到%@的功能",slName] delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
         [osAlert show];
         SAFE_ARC_RELEASE(osAlert);
     }
@@ -243,9 +247,11 @@
         
         if (buttonIndex == 0) {
             req.scene = WXSceneSession;
+            [_socialControllerService.socialDataService postSNSWithTypes:@[UMShareToWechatSession] content:req.text image:nil location:nil];
         }
         if (buttonIndex == 1) {
             req.scene = WXSceneTimeline;
+            [_socialControllerService.socialDataService postSNSWithTypes:@[UMShareToWechatTimeline] content:req.text image:nil location:nil];
         }
         [WXApi sendReq:req];
         SAFE_ARC_RELEASE(req);

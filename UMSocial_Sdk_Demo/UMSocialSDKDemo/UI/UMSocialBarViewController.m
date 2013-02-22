@@ -37,19 +37,8 @@
 {
     self = [super initWithNibName:@"UMSocialBarViewController" bundle:nil];
     if (self) {
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:descriptor withTitle:@"socialBarTest"];
-        _socialBar = [[UMSocialBar alloc] initWithUMSocialData:socialData withViewController:self];
-        _socialBar.socialBarDelegate = self;
-//        _socialBar.socialBarView.themeColor = UMSBarColorWhite;
-        SAFE_ARC_RELEASE(socialData);
-        
-        _socialBar.socialData.shareText = text;
-        _socialBar.socialData.shareImage = image;
-        _socialBar.socialData.commentImage = image;
-        _socialBar.socialData.commentText = text;
-        [self.view addSubview:_socialBar];
         CGRect rect = [[UIApplication sharedApplication] keyWindow].bounds;
-        _socialBar.center = CGPointMake(160, rect.size.height - 94);
+        
         _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 150)];
         _textLabel.numberOfLines = 4;
         _textLabel.text = text;
@@ -59,6 +48,19 @@
         imageView.image = image;
         [self.view addSubview:imageView];
         SAFE_ARC_RELEASE(imageView);
+        
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:descriptor withTitle:@"socialBarTest"];
+        _socialBar = [[UMSocialBar alloc] initWithUMSocialData:socialData withViewController:self];
+        _socialBar.socialBarDelegate = self;
+        //        _socialBar.socialBarView.themeColor = UMSBarColorWhite;
+        SAFE_ARC_RELEASE(socialData);
+        
+        _socialBar.socialData.shareText = text;
+        _socialBar.socialData.shareImage = image;
+        _socialBar.socialData.commentImage = image;
+        _socialBar.socialData.commentText = text;
+        _socialBar.center = CGPointMake(rect.size.width/2, rect.size.height - 94);
+        [self.view addSubview:_socialBar];
     }
     return self;
 }
@@ -85,6 +87,11 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    _socialBar.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, self.tabBarController.view.bounds.size.height - self.tabBarController.tabBar.frame.size.height - _socialBar.frame.size.height + 5);
 }
 
 //- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

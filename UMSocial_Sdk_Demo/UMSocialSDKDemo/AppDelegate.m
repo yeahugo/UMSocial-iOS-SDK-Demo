@@ -27,18 +27,10 @@
     [UMSocialData openLog:YES];
     //向微信注册
     [WXApi registerApp:@"wxd9a39c7122aa6516"];
+    
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-{
-    return  [WXApi handleOpenURL:url delegate:self];
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    return  [WXApi handleOpenURL:url delegate:self];
-}
 
 -(void) onReq:(BaseReq*)req
 {
@@ -56,12 +48,12 @@
         if (resp.errCode == WXSuccess) {
             message = @"成功";
         }
-        else if (resp.errCode == WXErrCodeCommon) {
-            message = @"其他";
-        }
-        else if (resp.errCode == WXErrCodeUserCancel) {
-            message = @"用户取消";
-        }
+//        else if (resp.errCode == WXErrCodeCommon) {
+//            message = @"其他";
+//        }
+//        else if (resp.errCode == WXErrCodeUserCancel) {
+//            message = @"用户取消";
+//        }
         else if (resp.errCode == WXErrCodeSentFail) {
             message = @"发送失败";
         }
@@ -95,10 +87,6 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {

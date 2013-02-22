@@ -17,5 +17,4 @@
 
 -(id)initWithDescriptor:(NSString *)descriptor withText:(NSString *)text withImage:(UIImage *)image;
 
--(IBAction)changeSocialBarIdentifier:(id)sender;
 @end

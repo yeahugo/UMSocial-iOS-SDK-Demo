@@ -12,11 +12,13 @@
 typedef void (^UMIconActionSheetButtonClickHandler)(UMSocialSnsType snsType);
 
 /*
- 自定义的类似iOS6.0中`UIActivityViewController`样式的列表，每个sns平台由对应图片和名称组成。
+ 自定义的类似iOS6.0中`UIActivityViewController`样式的列表，每个sns平台由对应图片和名称组成。注意：如果你要此控件支持多方向，需要在自己的UIViewController中屏幕旋转的`didRotateFromInterfaceOrientation`调用`UMSocialIconActionSheet`的`setNeedsDisplay`方法，来重新布局。
  */
 @interface UMSocialIconActionSheet : UIView
 {
     UMIconActionSheetButtonClickHandler _actionSheetHandler;
+    UIImageView *_actionSheetBackground;
+    UIButton *_cancelButton;
     NSArray *_snsNames;
 }
 

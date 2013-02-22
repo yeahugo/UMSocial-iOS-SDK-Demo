@@ -11,7 +11,7 @@
 /**
  此类用于自定义sdk出现的样式，例如导航栏和导航栏上的按钮。自定义的方式是需要写一个UMUIHelper的分类，然后覆盖你要自定义的方法。
  
- 例如定义一个UMUIHelper(UMSocial)，覆盖的方法是：
+ 例如定义一个UMSocialUIHelper(UMSocial)，覆盖的方法是：
  
 ```
 

@@ -57,14 +57,14 @@
 #endif
 }
 
-/*
+
 - (UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName
 {
     UMSocialSnsPlatform *customSnsPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:snsName];
     SAFE_ARC_AUTORELEASE(customSnsPlatform);
     if ([snsName isEqualToString:@"copy"]) {
-        customSnsPlatform.bigImageName = @"Icon.png";
-        customSnsPlatform.smallImageName = @"Icon.png";
+        customSnsPlatform.bigImageName = @"icon.png";
+        customSnsPlatform.smallImageName = @"icon.png";
         customSnsPlatform.displayName = @"复制文本";
         customSnsPlatform.loginName = @"复制文本";
         customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
@@ -73,7 +73,7 @@
     }
     return customSnsPlatform;
 }
-*/
+
 
 
 /*设置分享编辑页面是否等待完成之后再关闭页面还是立即关闭，如果设置成YES，就是等待分享完成之后再关闭，否则立即关闭。默认等待分享完成之后再关闭。
@@ -88,7 +88,7 @@
 */
 //- (NSArray *)shareToPlatforms
 //{
-//    NSArray *shareToArray = @[@[@"copy",UMShareToWechat,UMShareToSina,UMShareToQzone,UMShareToTencent],@[UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter]];
+//    NSArray *shareToArray = @[@[@"copy",UMShareToWechat,UMShareToSina,UMShareToQzone,UMShareToTencent,UMShareToTencent,UMShareToDouban,UMShareToRenren],@[UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter]];
 //    return shareToArray;
 //}
 - (NSArray *)shareToPlatforms
@@ -113,6 +113,12 @@
     return dictionary;
 }
 
+/*设置所有页面的背景颜色
+ */
+//-(UIColor *)defaultColor
+//{
+//    return [UIColor blueColor];
+//}
 
 - (void)didReceiveMemoryWarning
 {

@@ -46,7 +46,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>UMSocialSDKDemo</string>
+			<string>weixin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wxd9a39c7122aa6516</string>
@@ -64,6 +64,7 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
