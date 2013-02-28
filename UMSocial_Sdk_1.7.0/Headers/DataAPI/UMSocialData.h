@@ -17,6 +17,57 @@ typedef enum{
     UMSNumberComment
 }UMSNumberType;
 
+typedef enum {
+    UMSocialUrlResourceTypeImage,
+    UMSocialUrlResourceTypeVideo,
+    UMSocialUrlResourceTypeMusic
+}UMSocialUrlResourceType;
+
+/**
+ 分享到微博的多媒体资源，包括指定url的图片、音乐、视频
+ */
+@interface UMSocialUrlResource : NSObject
+{
+    NSString *_url;
+    UMSocialUrlResourceType _resourceType;
+    NSString *_title;
+    NSString *_author;
+}
+
+/**
+ url地址
+ 
+ */
+@property (nonatomic, copy) NSString *url;
+
+
+/**
+ 资源类型，图片（UMSocialUrlResourceTypeImage）、视频（UMSocialUrlResourceTypeVideo），音乐（UMSocialUrlResourceTypeMusic）
+ 
+ */
+@property (nonatomic, assign) UMSocialUrlResourceType resourceType;
+
+/**
+ 如果传入音乐的话，腾讯微博可以指定音乐标题
+ 
+ */
+@property (nonatomic, copy) NSString *title;
+
+/**
+ 如果传入音乐的话，腾讯微博可以指定音乐作者
+ 
+ */
+@property (nonatomic, copy) NSString *author;
+
+/**
+ 初始化对象，指定一种资源和资源URL
+ 
+ @param resourceType 多媒体资源类型，图片、音乐或者视频
+ @param urlString url字符串
+ */
+-(id)initWithSnsResourceType:(UMSocialUrlResourceType)resourceType url:(NSString *)url;
+
+@end
 
 /**
  一个`UMSocialData`对象标识一个分享资源，用一个*identifier*字符串作为标识，你可以为此对象设置分享内嵌文字、分享图片等，可以获取到对应的分享数、评论数。同时`UMSocialData`类方法用来设置appKey和打开log等全局设置。
@@ -86,6 +137,13 @@ typedef enum{
 @property (nonatomic, readonly) NSDictionary *socialAccount;
 
 
+/**
+ 分享到微博多媒体资源，包括指定url的图片、音乐、视频
+ 
+ */
+@property (nonatomic, retain)  UMSocialUrlResource *urlResource;
+
+
 ///---------------------------------------
 /// @name 对所有对象都起作用的类方法
 ///---------------------------------------
@@ -106,7 +164,7 @@ typedef enum{
 + (void)openLog:(BOOL)openLog;
 
 /**
- 获取默认的`UMSocialData`对象，此对象的identifier为""
+ 获取默认的`UMSocialData`对象，此对象的identifier为"UMSocialDefault"
   
  */
 + (UMSocialData *)defaultData;

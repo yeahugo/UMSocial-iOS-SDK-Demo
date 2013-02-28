@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UMSocialEnum.h"
 
-typedef void (^UMIconActionSheetButtonClickHandler)(UMSocialSnsType snsType);
+typedef void (^UMIconActionSheetButtonClickHandler)(NSString * platformType);
 
 /*
  自定义的类似iOS6.0中`UIActivityViewController`样式的列表，每个sns平台由对应图片和名称组成。注意：如果你要此控件支持多方向，需要在自己的UIViewController中屏幕旋转的`didRotateFromInterfaceOrientation`调用`UMSocialIconActionSheet`的`setNeedsDisplay`方法，来重新布局。
@@ -37,7 +37,7 @@ typedef void (^UMIconActionSheetButtonClickHandler)(UMSocialSnsType snsType);
  @param snsNames 每小格对应的sns平台名，在`UMSocialEnum.h`定义
  @param handler 处理点击之后的block处理对象
  */
--(id)initWithItems:(NSArray *)items withButtonHandler:(void (^)(UMSocialSnsType snsType))handler;
+-(id)initWithItems:(NSArray *)items withButtonHandler:(void (^)(NSString * platformType))handler;
 
 /**
  讲自己自下往上弹出来

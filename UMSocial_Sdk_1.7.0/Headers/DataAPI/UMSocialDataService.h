@@ -69,25 +69,26 @@
 /**
  发送微博内容到微博平台
  
- @param shareType 分享到的平台，为枚举变量类型
+ @param platformType   分享到的平台名，在`UMSocialEnum.h`中定义好的字符串常量
  @param content   分享的文字内容
  @param image     分享的图片
  @param location  分享的地理位置信息
  
  */
-- (void)postSNSWithType:(UMSocialSnsType)shareType content:(NSString *)content image:(UIImage *)image location:(CLLocation *)location;
+- (void)postSNSWithType:(NSString *)platformType content:(NSString *)content image:(UIImage *)image location:(CLLocation *)location;
 
 
 /**
  发送微博内容到多个微博平台
  
- @param shareTypes 分享到的平台
+ @param platformTypes 分享到的平台
  @param content   分享的文字内容
  @param image     分享的图片
  @param location  分享的地理位置信息
+ @param 
  
  */
-- (void)postSNSWithTypes:(NSArray *)shareTypes content:(NSString *)content image:(UIImage *)image location:(CLLocation *)location;
+- (void)postSNSWithTypes:(NSArray *)platformTypes content:(NSString *)content image:(UIImage *)image location:(CLLocation *)location urlResource:(UMSocialUrlResource *)urlResource;
 
 
 /**
@@ -138,18 +139,18 @@
 /**
  请求解除授权
  
- @param shareToType 要解除授权的微博平台，此变量为枚举类型
+ @param platformType 要解除授权的微博平台
  
  */
-- (void)requestUnOauthWithType:(UMSocialSnsType)shareToType;
+- (void)requestUnOauthWithType:(NSString *)platformType;
 
 /**
  请求绑定账号
  
- @param shareToType 要绑定账号的微博平台，此变量为枚举类型
+ @param platformType 要绑定账号的微博平台
  
  */
-- (void)requestBindToSnsWithType:(UMSocialSnsType)shareToType;
+- (void)requestBindToSnsWithType:(NSString *)platformType;
 
 /**
  请求解除绑定账号
@@ -160,28 +161,28 @@
 /**
  请求获取用户微博账号的详细数据,获取返回数据和其他方法一样，在<UMSocialDataDelegate>中的`didFinishGetUMSocialDataResponse`返回的`UMSocialResponseEntity`对象，数据部分是`data`属性，为`NSDictionary`类型
  
- @param shareToType 要获取微博信息的微博平台，此变量为枚举类型
+ @param platformType 要获取微博信息的微博平台
  
  */
-- (void)requestSnsInfomation:(UMSocialSnsType)shareToType;
+- (void)requestSnsInformation:(NSString *)platformType;
 
 /**
  请求获取用户微博账号的朋友列表,获取返回数据和其他方法一样，在<UMSocialDataDelegate>中的`didFinishGetUMSocialDataResponse`返回的`UMSocialResponseEntity`对象，数据部分是`data`属性，为`NSDictionary`类型
  
- @param shareToType 要获取微博信息的微博平台，此变量为枚举类型
+ @param platformType 要获取微博信息的微博平台
  
  */
-- (void)requestSnsFriends:(UMSocialSnsType)shareToType;
+- (void)requestSnsFriends:(NSString *)platformType;
 
 /**
  请求添加关注
  
- @param shareToType 要添加关注的微博平台，目前添加关注功能只支持新浪微博和腾讯微博
+ @param platformType 要添加关注的微博平台，目前添加关注功能只支持新浪微博和腾讯微博
  
  @param usids 被关注的usid号
  
  */
-- (void)requestAddFollow:(UMSocialSnsType)shareToType followedUsid:(NSArray *)usids;
+- (void)requestAddFollow:(NSString *)platformType followedUsid:(NSArray *)usids;
 
 /**
  每个post和request方法都会把请求放到一个队列上，取消队列所有请求

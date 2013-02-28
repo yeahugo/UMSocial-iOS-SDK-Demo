@@ -152,11 +152,11 @@
 /**
  分享编辑页面
  
- @param shareToType 要编辑的微博平台,并支持UMSocialSnsTypeEmail和UMSocialSnsTypeSms返回编辑Email页面和短信页面，不支持邮箱或者短信的设备分别返回nil
+ @param platformType 要编辑的微博平台,并支持UMSocialSnsTypeEmail和UMSocialSnsTypeSms返回编辑Email页面和短信页面，不支持邮箱或者短信的设备分别返回nil
  
  @return `UINavigationController`对象
  */
-- (UINavigationController *)getSocialShareEditController:(UMSocialSnsType)shareToType;
+- (UINavigationController *)getSocialShareEditController:(NSString *)platformType;
 
 /**
  授权页面，如果你要想得到授权完成之后的事件，你可以实现`UMSocialUIDelegate`里面的`-(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType;`方法，当授权关闭页面会调用此方法。另外授权完成之后sdk会自动去取个人账户信息，你可以在回调函数里面去到刚刚授权的微博平台的账户信息。
@@ -165,7 +165,7 @@
  
  @return `UINavigationController`对象
  */
-- (UINavigationController *)getSocialOauthController:(UMSocialSnsType)shareToType;
+- (UINavigationController *)getSocialOauthController:(NSString *)platformType;
 
 /**
  登录页面,出现你配置出现的所有sns平台，授权之后设置为sdk的登录账号。使用评论功能时会取此登录账号的昵称和头像。
@@ -183,7 +183,7 @@
  */
 - (UMSocialIconActionSheet *)getSocialIconActionSheetInController:(UIViewController *)controller;
 
--(UIViewController *)getSocialViewController:(UMSViewControllerType)viewControllerType withSnsType:(UMSocialSnsType)shareToType;
+-(UIViewController *)getSocialViewController:(UMSViewControllerType)viewControllerType withSnsType:(NSString *)snsName;
 
 @end
 

@@ -10,6 +10,7 @@
 #import "WXApi.h"
 #import "UMSocialMacroDefine.h"
 #import "UMStringMock.h"
+#import "UMSocialShareViewController.h"
 
 @interface UMSocialBarViewController ()
 
@@ -25,54 +26,46 @@
     SAFE_ARC_SUPER_DEALLOC();
 }
 
-- (id)init
-{
-    NSString *imageName = [NSString stringWithFormat:@"yinxing%d.jpg",rand()%4];
-    UIImage *image = [UIImage imageNamed:imageName];
-    return [self initWithDescriptor:@"test" withText:[UMStringMock commentMockString] withImage:image];
-}
-
-
--(id)initWithDescriptor:(NSString *)descriptor withText:(NSString *)text withImage:(UIImage *)image
+-(id)initWithSocialData:(UMSocialData *)socialData withIndex:(NSInteger)index
 {
     self = [super initWithNibName:@"UMSocialBarViewController" bundle:nil];
     if (self) {
-        CGRect rect = [[UIApplication sharedApplication] keyWindow].bounds;
-        
-        _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 150)];
-        _textLabel.numberOfLines = 4;
-        _textLabel.text = text;
-        [self.view addSubview:_textLabel];
-        
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 150, 320, 200)];
-        imageView.image = image;
-        [self.view addSubview:imageView];
-        SAFE_ARC_RELEASE(imageView);
-        
-        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:descriptor withTitle:@"socialBarTest"];
+        _index = index;
         _socialBar = [[UMSocialBar alloc] initWithUMSocialData:socialData withViewController:self];
-        _socialBar.socialBarDelegate = self;
-        //        _socialBar.socialBarView.themeColor = UMSBarColorWhite;
-        SAFE_ARC_RELEASE(socialData);
-        
-        _socialBar.socialData.shareText = text;
-        _socialBar.socialData.shareImage = image;
-        _socialBar.socialData.commentImage = image;
-        _socialBar.socialData.commentText = text;
-        _socialBar.center = CGPointMake(rect.size.width/2, rect.size.height - 94);
-        [self.view addSubview:_socialBar];
     }
     return self;
 }
 
 - (void)viewDidLoad
 {
+    CGSize size = [UIScreen mainScreen].bounds.size;
+    size = UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ? size : CGSizeMake(size.height, size.width);
+    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, size.width,size.height - 110)];
+    [self.view addSubview:_webView];
+    
+    NSString *text = [UMStringMock commentMockString];
+    UIImage *image = [UIImage imageNamed:@"yinxing0"];
+    
+    _socialBar.socialBarDelegate = self;
+    //        _socialBar.socialBarView.themeColor = UMSBarColorWhite;
+    _socialBar.socialData.shareText = text;
+    _socialBar.socialData.shareImage = image;
+    _socialBar.socialData.commentImage = image;
+    _socialBar.socialData.commentText = text;
+    _socialBar.center = CGPointMake(size.width/2, size.height - 138);
+    [self.view addSubview:_socialBar];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    UMSocialShareViewController *shareViewController = [self.navigationController.tabBarController.viewControllers objectAtIndex:0];
+    if (shareViewController.postsArray != nil) {
+        [_webView loadHTMLString:[[shareViewController.postsArray objectAtIndex:_index] valueForKey:@"content"] baseURL:nil];
+        
+    }
     [_socialBar.socialControllerService.socialDataService requestSocialData];
     [super viewWillAppear:animated];
 }
@@ -89,15 +82,14 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    _socialBar.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, self.tabBarController.view.bounds.size.height - self.tabBarController.tabBar.frame.size.height - _socialBar.frame.size.height + 5);
-}
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+    CGSize size = [UIScreen mainScreen].bounds.size;
+    size = UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ? size : CGSizeMake(size.height, size.width);
 
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-//{
-//    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
-//}
+    _socialBar.center = CGPointMake(size.height/2, size.width - 90 - _socialBar.frame.size.height + 5);
+    
+    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, size.height,size.width - 44 - 44)];
+}
 
 #pragma mark - UMSocialBarDelegate
 -(void)didFinishUpdateBarNumber:(UMSButtonTypeMask)actionTypeMask

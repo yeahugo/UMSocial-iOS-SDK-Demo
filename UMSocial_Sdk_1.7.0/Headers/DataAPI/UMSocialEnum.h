@@ -59,21 +59,6 @@ extern NSString *const UMShareToFacebook;
 extern NSString *const UMShareToTwitter;
 
 /**
- 分享平台
- 
- */
-typedef enum {
-    UMSocialSnsTypeNone = 0,
-    UMSocialSnsTypeQzone = 10,
-    UMSocialSnsTypeSina,                 //sina weibo
-    UMSocialSnsTypeTenc,                 //tencent weibo
-    UMSocialSnsTypeRenr,                 //renren
-    UMSocialSnsTypeDouban,               //douban
-    UMSocialSnsTypeEmail,
-    UMSocialSnsTypeSms
-} UMSocialSnsType;
-
-/**
  网络请求结果状态码
  
  */
@@ -127,22 +112,6 @@ typedef enum{
 
 /**
  此SDK中用到的一些枚举类型和常量字符串
- 
- ## 分享平台类型 
- 
-    typedef enum {
-    UMSocialSnsTypeNone = -1,
-    UMSocialSnsTypeQzone = 10,           //QQ空间
-    UMSocialSnsTypeSina ,                //新浪微博
-    UMSocialSnsTypeTenc,                 //腾讯微博
-    UMSocialSnsTypeRenr,                 //人人网
-    UMSocialSnsTypeDouban,               //豆瓣    
-    UMSocialSnsTypeCount,                //用于得到当前分享平台个数
-    UMSocialSnsTypeEmail,                //邮件分享
-    UMSocialSnsTypeSms                   //短信分享
-    } UMSocialSnsType;
- 
- 
  
  ## 网络请求结果状态码
  

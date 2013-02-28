@@ -9,6 +9,8 @@
 #import "UMSocialTableViewController.h"
 #import "UMSocialTableViewCell.h"
 #import "UMSocialMacroDefine.h"
+#import "UMSocialShareViewController.h"
+#import "UMSocialBarViewController.h"
 
 @interface UMSocialTableViewController ()
 
@@ -60,12 +62,17 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    UMSocialShareViewController *shareViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+    if (shareViewController.postsArray != nil) {
+        NSArray *titleArray = shareViewController.postsArray;
+        [_descriptorArray removeAllObjects];
+        for (int i = 0; i < titleArray.count; i++) {
+            [_descriptorArray addObject:[[titleArray objectAtIndex:i] valueForKey:@"title"]];
+        }
+    }
+    [self.tableView reloadData];
 }
-
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-//{
-//    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
-//}
 
 #pragma mark - Table view data source
 
@@ -83,7 +90,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 200;
+    return 150;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -110,6 +117,8 @@
 
     cell.socialController = socialController;
     cell.descriptor = [_descriptorArray objectAtIndex:indexPath.row];
+    cell.index = indexPath.row;
+    
     cell.tableViewController = self;
     SAFE_ARC_RELEASE(socialController);
     return cell;
@@ -120,5 +129,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UMSocialTableViewCell *socialTableViewCell = (UMSocialTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    UMSocialBarViewController *barViewController = [[UMSocialBarViewController alloc] initWithSocialData:socialTableViewCell.socialController.socialData withIndex:indexPath.row];
+    [self.navigationController pushViewController:barViewController animated:YES];
+    SAFE_ARC_RELEASE(barViewController);
 }
 @end

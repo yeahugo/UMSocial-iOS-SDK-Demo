@@ -174,7 +174,7 @@
         NSString *snaName = [[UMSocialSnsPlatformManager sharedInstance].socialSnsArray objectAtIndex:buttonIndex];
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snaName];
         
-        UINavigationController *oauthController = [_socialUIController getSocialOauthController:snsPlatform.shareToType];
+        UINavigationController *oauthController = [_socialUIController getSocialOauthController:snsPlatform.platformName];
         [self presentModalViewController:oauthController animated:YES];
     }
 }

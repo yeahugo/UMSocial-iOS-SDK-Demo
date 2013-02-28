@@ -8,7 +8,7 @@
 
 #import "UMSocialTabBarController.h"
 #import "UMSocialMacroDefine.h"
-#import "UMSocialCommentViewController.h"
+//#import "UMSocialCommentViewController.h"
 #import "UMSocialShareViewController.h"
 #import "UMSocialAccountViewController.h"
 #import "UMSocialBarViewController.h"
@@ -20,51 +20,43 @@
 - (void)viewDidLoad
 {
     UMSocialShareViewController *shareViewController = [[UMSocialShareViewController alloc] initWithNibName:@"UMSocialShareViewController" bundle:nil];
-    shareViewController.title = @"分享";
+    shareViewController.title = @"最新文章";
     shareViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_share"];
     
+    UMSocialTableViewController *tableViewController = [[UMSocialTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    tableViewController.title = @"友盟博客";
+    tableViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_mutilBar"];
+    
+    UINavigationController *tableNavigationContrller = [[UINavigationController alloc] initWithRootViewController:tableViewController];
+    SAFE_ARC_RELEASE(tableViewController);
     UMSocialAccountViewController *accountViewController = [[UMSocialAccountViewController alloc] init];
     accountViewController.title = @"个人账号";
     accountViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_account"];
-    
-    UMSocialCommentViewController *commentViewController = [[UMSocialCommentViewController alloc] init];
-    commentViewController.title = @"评论";
-    commentViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_comment"];
-
-    UMSocialBarViewController *barViewController = [[UMSocialBarViewController alloc] init];
-    barViewController.title = @"操作栏";
-    barViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_bar"];
-    
+        
     UMSocialConfigViewController *configController = [[UMSocialConfigViewController alloc] initWithStyle:UITableViewStyleGrouped];
     configController.title = @"设置";
     configController.tabBarItem.image = [UIImage imageNamed:@"UMS_settings"];
     
     
-//    UMSocialTableViewController *tableViewController = [[UMSocialTableViewController alloc] init];
-//    tableViewController.title = @"操作栏分拆接口";
-//    tableViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_mutilBar"];
-    
-    [self setViewControllers:[NSArray arrayWithObjects:shareViewController,accountViewController,commentViewController,barViewController,configController,nil]];
+    [self setViewControllers:[NSArray arrayWithObjects:shareViewController,tableNavigationContrller,accountViewController,configController,nil]];
     SAFE_ARC_AUTORELEASE(shareViewController);
     SAFE_ARC_AUTORELEASE(accountViewController);
-    SAFE_ARC_AUTORELEASE(commentViewController);
-    SAFE_ARC_AUTORELEASE(barViewController);
+    SAFE_ARC_AUTORELEASE(tableNavigationContrller);
     SAFE_ARC_AUTORELEASE(configController);
     
     [super viewDidLoad];
 }
 
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     for (UIViewController *viewController in self.viewControllers) {
-        [viewController didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+        [viewController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
     }
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    UMSocialConfigViewController *configViewController = [self.viewControllers objectAtIndex:4];
+    UMSocialConfigViewController *configViewController = [self.viewControllers objectAtIndex:self.viewControllers.count - 1];
     return configViewController.supportOrientationMask;
 }
 

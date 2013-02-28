@@ -12,6 +12,7 @@
 #import "UMStringMock.h"
 #import "UMSocialControllerServiceComment.h"
 #import "UMSocialMacroDefine.h"
+#import "UMSocialShareViewController.h"
 
 @interface UMSocialCommentViewController ()
 
@@ -41,13 +42,20 @@
     NSString *imageName = [NSString stringWithFormat:@"yinxing%d.jpg",rand()%4];
     _imageView.image = [UIImage imageNamed:imageName];
     [self.view addSubview:_imageView];
-    
+        
     UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
     _socialController = [[UMSocialControllerServiceComment alloc] initWithUMSocialData:socialData];
     _socialController.socialDataService.socialData.commentText = textLabel.text;        //作为分享到微博内容"//"之后的文字
     _socialController.socialDataService.socialData.commentImage = _imageView.image;
     
     SAFE_ARC_RELEASE(socialData);
+    
+    UMSocialShareViewController *shareViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+    if (shareViewController.postsArray != nil) {
+        NSString *title = [[shareViewController.postsArray objectAtIndex:0] valueForKey:@"title"];
+        textLabel.text = title;
+        socialData.commentText = title;
+    }
 
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _activityIndicatorView.center = CGPointMake(160, 150);
@@ -173,12 +181,11 @@
     SAFE_ARC_RELEASE(alertView);
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    UIInterfaceOrientation currentOrientation = self.interfaceOrientation;
-    if (UIInterfaceOrientationIsLandscape(currentOrientation)) {
+    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
         _commentTableView.frame = CGRectMake(_commentTableView.frame.origin.x, _commentTableView.frame.origin.y, self.tabBarController.view.bounds.size.width, _commentTableView.frame.size.height);
-        if (_commentTableView.frame.origin.y + _commentTableView.frame.size.height > self.tabBarController.view.bounds.size.height) {
+        if (_commentTableView.frame.origin.y + _commentTableView.frame.size.height > self.tabBarController.view.bounds.size.width) {
             _commentTableView.center = CGPointMake(50 + _commentTableView.frame.size.width,_commentTableView.frame.size.height/2);
         }
     }
@@ -186,10 +193,4 @@
         _commentTableView.frame = CGRectMake(0, 200, self.tabBarController.view.bounds.size.width, _commentTableView.frame.size.height);
     }
 }
-
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-//{
-//    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
-//}
-
 @end

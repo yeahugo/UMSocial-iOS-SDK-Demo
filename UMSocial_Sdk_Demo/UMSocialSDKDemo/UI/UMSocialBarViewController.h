@@ -13,8 +13,10 @@
 {
     UMSocialBar *_socialBar;
     UILabel     *_textLabel;
+    UIWebView   *_webView;
+    NSInteger   _index;
 }
 
--(id)initWithDescriptor:(NSString *)descriptor withText:(NSString *)text withImage:(UIImage *)image;
+-(id)initWithSocialData:(UMSocialData *)socialData withIndex:(NSInteger)index;
 
 @end

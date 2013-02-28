@@ -9,6 +9,7 @@
 #import "UMSocialTableViewCell.h"
 #import "UMStringMock.h"
 #import "UMSocialMacroDefine.h"
+#import "UMSocialShareViewController.h"
 
 @implementation UMSocialTableViewCell
 
@@ -40,18 +41,22 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 50)];
+        CGSize size = [UIScreen mainScreen].bounds.size;
+        size = UIInterfaceOrientationIsPortrait(_tabelViewController.interfaceOrientation) ? size : CGSizeMake(size.height, size.width);
+
+//        self.backgroundColor = [UIColor grayColor];
+        _detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 0, size.width - 300, 100)];
+//        _detailLabel.backgroundColor = [UIColor blueColor];
         _detailLabel.numberOfLines = 4;
         _detailLabel.text = [UMStringMock shortDescriptionMockString];
         [self addSubview:_detailLabel];
         
-        _detailImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 150, 110)];
+        _detailImageView = [[UMImageView alloc] initWithFrame:CGRectMake(0, 20, 120, 80)];
         NSString *imageName = [NSString stringWithFormat:@"yinxing%d.jpg",rand()%4];
-        _detailImageView.image = [UIImage imageNamed:imageName];
+        [_detailImageView setPlaceholderImage:[UIImage imageNamed:imageName]];
         [self addSubview:_detailImageView];
 
-        
-        float yPosition = 170;
+        float yPosition = 110;
         CGSize buttonSize = CGSizeMake(100, 30);
         _likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         _likeButton.frame = CGRectMake(0, yPosition, buttonSize.width, buttonSize.height);
@@ -71,6 +76,7 @@
         [self addSubview:_commentButton];
         
         _socialController = nil;
+        _index = 0;
     }
     return self;
 }
@@ -84,8 +90,8 @@
 
 -(void)layoutSubviews
 {
-    NSLog(@"self.descriptor is %@",self.descriptor);
-
+    NSLog(@"index is %d",self.index);
+    _detailLabel.text = self.descriptor;
     NSString *likeText = [NSString stringWithFormat:@"喜欢 %d",[_socialController.socialDataService.socialData getNumber:UMSNumberLike]];
     [_likeButton setTitle:likeText forState:UIControlStateNormal];
     NSString *shareText = [NSString stringWithFormat:@"分享 %d",[_socialController.socialDataService.socialData getNumber:UMSNumberShare]];
@@ -98,6 +104,17 @@
     _socialController.socialDataService.socialData.shareText = _detailLabel.text;
     NSLog(@"share text is %@",_socialController.socialDataService.socialData.shareText);
     _socialController.socialDataService.socialData.shareImage = _detailImageView.image;
+    UMSocialShareViewController *shareViewController = [_tabelViewController.tabBarController.viewControllers objectAtIndex:0];
+    if (shareViewController.postsArray != nil) {
+        NSString *title = [[shareViewController.postsArray objectAtIndex:self.index] valueForKey:@"title"];
+        NSString *url = [[shareViewController.postsArray objectAtIndex:self.index] valueForKey:@"url"];
+        NSString *shareText = [NSString stringWithFormat:@"%@  %@",title,url];
+        _socialController.socialData.shareText = shareText;
+        
+        if ([[[shareViewController.postsArray objectAtIndex:self.index] valueForKey:@"attachments"] count] > 0) {
+            _detailImageView.imageURL = [NSURL URLWithString:[[[[[shareViewController.postsArray objectAtIndex:self.index] valueForKey:@"attachments"] objectAtIndex:0] valueForKey:@"url"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        }
+    }
     [super layoutSubviews];
 }
 
@@ -169,6 +186,7 @@
 {
     NSLog(@"self.socialController is %@",self.socialController);
     [self.socialController setSocialUIDelegate:self];
+    self.socialController.socialData.shareImage = _detailImageView.image;
     UINavigationController *shareListController = [_socialController getSocialShareListController];
     [_tabelViewController presentModalViewController:shareListController animated:YES];
 }

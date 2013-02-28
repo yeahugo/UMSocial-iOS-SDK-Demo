@@ -61,7 +61,7 @@
 	
 	<option value="//api/name/postSNSWithType:content:image:location:">&nbsp;&nbsp;&nbsp;&nbsp;- postSNSWithType:content:image:location:</option>
 	
-	<option value="//api/name/postSNSWithTypes:content:image:location:">&nbsp;&nbsp;&nbsp;&nbsp;- postSNSWithTypes:content:image:location:</option>
+	<option value="//api/name/postSNSWithTypes:content:image:location:urlResource:">&nbsp;&nbsp;&nbsp;&nbsp;- postSNSWithTypes:content:image:location:urlResource:</option>
 	
 	<option value="//api/name/requestAddFollow:followedUsid:">&nbsp;&nbsp;&nbsp;&nbsp;- requestAddFollow:followedUsid:</option>
 	
@@ -71,7 +71,7 @@
 	
 	<option value="//api/name/requestSnsFriends:">&nbsp;&nbsp;&nbsp;&nbsp;- requestSnsFriends:</option>
 	
-	<option value="//api/name/requestSnsInfomation:">&nbsp;&nbsp;&nbsp;&nbsp;- requestSnsInfomation:</option>
+	<option value="//api/name/requestSnsInformation:">&nbsp;&nbsp;&nbsp;&nbsp;- requestSnsInformation:</option>
 	
 	<option value="//api/name/requestSocialAccount">&nbsp;&nbsp;&nbsp;&nbsp;- requestSocialAccount</option>
 	
@@ -133,7 +133,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postSNSWithType:content:image:location:">postSNSWithType:content:image:location:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postSNSWithTypes:content:image:location:">postSNSWithTypes:content:image:location:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postSNSWithTypes:content:image:location:urlResource:">postSNSWithTypes:content:image:location:urlResource:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requestAddFollow:followedUsid:">requestAddFollow:followedUsid:</a></span></li>
 	
@@ -143,7 +143,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requestSnsFriends:">requestSnsFriends:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requestSnsInfomation:">requestSnsInfomation:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requestSnsInformation:">requestSnsInformation:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requestSocialAccount">requestSocialAccount</a></span></li>
 	
@@ -247,7 +247,7 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/postSNSWithTypes:content:image:location:">&ndash;&nbsp;postSNSWithTypes:content:image:location:</a></code>
+		<code><a href="#//api/name/postSNSWithTypes:content:image:location:urlResource:">&ndash;&nbsp;postSNSWithTypes:content:image:location:urlResource:</a></code>
 		<span class="tooltip"><p>发送微博内容到多个微博平台</p></span>
 	</span>
 	
@@ -310,7 +310,7 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/requestSnsInfomation:">&ndash;&nbsp;requestSnsInfomation:</a></code>
+		<code><a href="#//api/name/requestSnsInformation:">&ndash;&nbsp;requestSnsInformation:</a></code>
 		<span class="tooltip"><p>请求获取用户微博账号的详细数据,获取返回数据和其他方法一样，在<a href="../Protocols/UMSocialDataDelegate.html">UMSocialDataDelegate</a>中的<code>didFinishGetUMSocialDataResponse</code>返回的<a href="../Classes/UMSocialResponseEntity.html"><code>UMSocialResponseEntity</code></a>对象，数据部分是<code>data</code>属性，为<code>NSDictionary</code>类型</p></span>
 	</span>
 	
@@ -657,7 +657,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)postSNSWithType:(UMSocialSnsType)<em>shareType</em> content:(NSString *)<em>content</em> image:(UIImage *)<em>image</em> location:(CLLocation *)<em>location</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)postSNSWithType:(NSString *)<em>platformType</em> content:(NSString *)<em>content</em> image:(UIImage *)<em>image</em> location:(CLLocation *)<em>location</em></code></div>
 
     
 	
@@ -665,8 +665,8 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>shareType</em></dt>
-			<dd><p>分享到的平台，为枚举变量类型</p></dd>
+			<dt><em>platformType</em></dt>
+			<dd><p>分享到的平台名，在<code></code>UMSocialEnum<code>.h</code>中定义好的字符串常量</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -707,8 +707,8 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/postSNSWithTypes:content:image:location:" title="postSNSWithTypes:content:image:location:"></a>
-	<h3 class="subsubtitle method-title">postSNSWithTypes:content:image:location:</h3>
+	<a name="//api/name/postSNSWithTypes:content:image:location:urlResource:" title="postSNSWithTypes:content:image:location:urlResource:"></a>
+	<h3 class="subsubtitle method-title">postSNSWithTypes:content:image:location:urlResource:</h3>
 	
 	
 	
@@ -718,7 +718,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)postSNSWithTypes:(NSArray *)<em>shareTypes</em> content:(NSString *)<em>content</em> image:(UIImage *)<em>image</em> location:(CLLocation *)<em>location</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)postSNSWithTypes:(NSArray *)<em>platformTypes</em> content:(NSString *)<em>content</em> image:(UIImage *)<em>image</em> location:(CLLocation *)<em>location</em> urlResource:(UMSocialUrlResource *)<em>urlResource</em></code></div>
 
     
 	
@@ -726,7 +726,7 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>shareTypes</em></dt>
+			<dt><em>platformTypes</em></dt>
 			<dd><p>分享到的平台</p></dd>
 		</dl>
 		
@@ -742,7 +742,8 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>location</em></dt>
-			<dd><p>分享的地理位置信息</p></dd>
+			<dd><p>分享的地理位置信息
+@param</p></dd>
 		</dl>
 		
 	</div>
@@ -779,7 +780,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)requestAddFollow:(UMSocialSnsType)<em>shareToType</em> followedUsid:(NSArray *)<em>usids</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)requestAddFollow:(NSString *)<em>platformType</em> followedUsid:(NSArray *)<em>usids</em></code></div>
 
     
 	
@@ -787,7 +788,7 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>shareToType</em></dt>
+			<dt><em>platformType</em></dt>
 			<dd><p>要添加关注的微博平台，目前添加关注功能只支持新浪微博和腾讯微博</p></dd>
 		</dl>
 		
@@ -830,7 +831,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)requestBindToSnsWithType:(UMSocialSnsType)<em>shareToType</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)requestBindToSnsWithType:(NSString *)<em>platformType</em></code></div>
 
     
 	
@@ -838,8 +839,8 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>shareToType</em></dt>
-			<dd><p>要绑定账号的微博平台，此变量为枚举类型</p></dd>
+			<dt><em>platformType</em></dt>
+			<dd><p>要绑定账号的微博平台</p></dd>
 		</dl>
 		
 	</div>
@@ -927,7 +928,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)requestSnsFriends:(UMSocialSnsType)<em>shareToType</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)requestSnsFriends:(NSString *)<em>platformType</em></code></div>
 
     
 	
@@ -935,8 +936,8 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>shareToType</em></dt>
-			<dd><p>要获取微博信息的微博平台，此变量为枚举类型</p></dd>
+			<dt><em>platformType</em></dt>
+			<dd><p>要获取微博信息的微博平台</p></dd>
 		</dl>
 		
 	</div>
@@ -962,8 +963,8 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/requestSnsInfomation:" title="requestSnsInfomation:"></a>
-	<h3 class="subsubtitle method-title">requestSnsInfomation:</h3>
+	<a name="//api/name/requestSnsInformation:" title="requestSnsInformation:"></a>
+	<h3 class="subsubtitle method-title">requestSnsInformation:</h3>
 	
 	
 	
@@ -973,7 +974,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)requestSnsInfomation:(UMSocialSnsType)<em>shareToType</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)requestSnsInformation:(NSString *)<em>platformType</em></code></div>
 
     
 	
@@ -981,8 +982,8 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>shareToType</em></dt>
-			<dd><p>要获取微博信息的微博平台，此变量为枚举类型</p></dd>
+			<dt><em>platformType</em></dt>
+			<dd><p>要获取微博信息的微博平台</p></dd>
 		</dl>
 		
 	</div>
@@ -1127,7 +1128,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)requestUnOauthWithType:(UMSocialSnsType)<em>shareToType</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)requestUnOauthWithType:(NSString *)<em>platformType</em></code></div>
 
     
 	
@@ -1135,8 +1136,8 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>shareToType</em></dt>
-			<dd><p>要解除授权的微博平台，此变量为枚举类型</p></dd>
+			<dt><em>platformType</em></dt>
+			<dd><p>要解除授权的微博平台</p></dd>
 		</dl>
 		
 	</div>
@@ -1256,7 +1257,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-02-22)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-02-28)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

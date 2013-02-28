@@ -6,6 +6,21 @@
 //  Copyright (c) umeng.com All rights reserved.
 //
 
+/**
+ 分享平台
+ 
+ */
+typedef enum {
+    UMSocialSnsTypeNone = 0,
+    UMSocialSnsTypeQzone = 10,
+    UMSocialSnsTypeSina,                 //sina weibo
+    UMSocialSnsTypeTenc,                 //tencent weibo
+    UMSocialSnsTypeRenr,                 //renren
+    UMSocialSnsTypeDouban,               //douban
+    UMSocialSnsTypeEmail,
+    UMSocialSnsTypeSms
+} UMSocialSnsType;
+
 #import <Foundation/Foundation.h>
 #import "UMSocialEnum.h"
 

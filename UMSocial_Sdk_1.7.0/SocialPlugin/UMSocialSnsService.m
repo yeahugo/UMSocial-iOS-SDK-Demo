@@ -126,6 +126,9 @@
                         [slcomposeViewController setInitialText:socialControllerService.socialData.shareText];
                         [slcomposeViewController addImage:socialControllerService.socialData.shareImage];
                         slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
+                            if (result == SLComposeViewControllerResultDone) {
+                                [socialControllerService.socialDataService postSNSWithTypes:@[UMShareToFacebook] content:socialControllerService.socialData.shareText image:socialControllerService.socialData.shareImage location:nil urlResource:nil];
+                            }
                             [presentingController dismissModalViewControllerAnimated:YES];
                         };
                         [presentingController presentModalViewController:slcomposeViewController animated:YES];
@@ -157,11 +160,17 @@
                 if ([NSClassFromString(@"SLComposeViewController") isAvailableForServiceType:SLServiceTypeTwitter]) {
                     SLComposeViewController *slcomposeViewController =  [NSClassFromString(@"SLComposeViewController") composeViewControllerForServiceType:SLServiceTypeTwitter];
                     if (socialControllerService != nil) {
+                        [socialControllerService.socialDataService postSNSWithTypes:@[UMShareToTwitter] content:socialControllerService.socialData.shareText image:socialControllerService.socialData.shareImage location:nil urlResource:nil];
+                        
                         [slcomposeViewController setInitialText:socialControllerService.socialData.shareText];
                         [slcomposeViewController addImage:socialControllerService.socialData.shareImage];
-                        slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
-                            [presentingController.presentingViewController dismissModalViewControllerAnimated:YES];
-                        };
+//                        slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
+//                            if (result == SLComposeViewControllerResultDone) {
+//                                NSLog(@"twitter success!!");
+//                                
+//                            }
+//                            [presentingController.presentingViewController dismissModalViewControllerAnimated:YES];
+//                        };
                         [presentingController presentModalViewController:slcomposeViewController animated:YES];
                     }
                 }
@@ -247,11 +256,11 @@
         
         if (buttonIndex == 0) {
             req.scene = WXSceneSession;
-            [_socialControllerService.socialDataService postSNSWithTypes:@[UMShareToWechatSession] content:req.text image:nil location:nil];
+            [_socialControllerService.socialDataService postSNSWithTypes:@[UMShareToWechatSession] content:req.text image:nil location:nil urlResource:nil];
         }
         if (buttonIndex == 1) {
             req.scene = WXSceneTimeline;
-            [_socialControllerService.socialDataService postSNSWithTypes:@[UMShareToWechatTimeline] content:req.text image:nil location:nil];
+            [_socialControllerService.socialDataService postSNSWithTypes:@[UMShareToWechatTimeline] content:req.text image:nil location:nil urlResource:nil];
         }
         [WXApi sendReq:req];
         SAFE_ARC_RELEASE(req);

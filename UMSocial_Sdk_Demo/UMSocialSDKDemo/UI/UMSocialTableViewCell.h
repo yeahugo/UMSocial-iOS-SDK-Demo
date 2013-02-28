@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "UMSocialControllerServiceComment.h"
 #import "UMSocialTableViewController.h"
+#import "UMImageView.h"
 
 @interface UMSocialTableViewCell : UITableViewCell <UMSocialDataDelegate,UMSocialUIDelegate>
 {
-//    int _index;
+    int _index;
     NSString *_descriptor;
     UMSocialControllerServiceComment *_socialController;
     UILabel  *_detailLabel;
@@ -20,10 +21,10 @@
     UIButton *_shareButton;
     UIButton *_commentButton;
     UMSocialTableViewController *__unsafe_unretained _tabelViewController;
-    UIImageView *_detailImageView;
+    UMImageView *_detailImageView;
 }
 
-//@property (nonatomic) int index;
+@property (nonatomic) int index;
 @property (nonatomic, copy) NSString *descriptor;
 @property (nonatomic, readonly) NSString *labelText;
 @property (nonatomic, readonly) UIImage *showImage;

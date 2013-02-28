@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>UMSocialDataDelegate Protocol Reference</title>
+		<title>UMSocialUrlResource Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">UMSocialDataDelegate Protocol Reference</h1>
+				<h1 class="hideInXcode">UMSocialUrlResource Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -38,13 +38,24 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/author">&nbsp;&nbsp;&nbsp;&nbsp;author</option>
+	
+	<option value="//api/name/resourceType">&nbsp;&nbsp;&nbsp;&nbsp;resourceType</option>
+	
+	<option value="//api/name/title">&nbsp;&nbsp;&nbsp;&nbsp;title</option>
+	
+	<option value="//api/name/url">&nbsp;&nbsp;&nbsp;&nbsp;url</option>
+	
+	
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/didFinishGetUMSocialDataResponse:">&nbsp;&nbsp;&nbsp;&nbsp;- didFinishGetUMSocialDataResponse:</option>
+	<option value="//api/name/initWithSnsResourceType:url:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithSnsResourceType:url:</option>
 	
 	
 	
@@ -68,13 +79,25 @@
 
 
 
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/author">author</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resourceType">resourceType</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/title">title</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/url">url</a></span></li>
+	
+</ul></li>
+
 
 
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didFinishGetUMSocialDataResponse:">didFinishGetUMSocialDataResponse:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithSnsResourceType:url:">initWithSnsResourceType:url:</a></span></li>
 	
 </ul></li>
 
@@ -83,7 +106,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="UMSocialDataDelegate Protocol Reference" name="top"></a>
+				<a title="UMSocialUrlResource Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -92,18 +115,18 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">UMSocialDataDelegate Protocol Reference</h1>
+						<h1 class="title title-header">UMSocialUrlResource Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Conforms to</td>
+	<td class="specification-title">Inherits from</td>
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">UMSocialDataDelegate.h</td>
+	<td class="specification-value">UMSocialData.h<br />UMSocialData.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -113,7 +136,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>进行网络请求之后的回调函数，你可以通过返回的<a href="../Classes/UMSocialResponseEntity.html"><code>UMSocialResponseEntity</code></a>对象的<code>responseType</code>类型来对不同的请求来做处理。</p>
+						<p>分享到微博的多媒体资源，包括指定url的图片、音乐、视频</p>
 					</div>
 					
 					
@@ -126,16 +149,52 @@
 						
 						
 						
-						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/didFinishGetUMSocialDataResponse:">&ndash;&nbsp;didFinishGetUMSocialDataResponse:</a></code>
-		<span class="tooltip"><p>进行网络请求之后得到的回调方法</p></span>
+		<code><a href="#//api/name/initWithSnsResourceType:url:">&ndash;&nbsp;initWithSnsResourceType:url:</a></code>
+		<span class="tooltip"><p>初始化对象，指定一种资源和资源URL</p></span>
 	</span>
 	
-	<span class="task-item-suffix">required method</span>
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/url">&nbsp;&nbsp;url</a></code>
+		<span class="tooltip"><p>url地址</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/resourceType">&nbsp;&nbsp;resourceType</a></code>
+		<span class="tooltip"><p>资源类型，图片（UMSocialUrlResourceTypeImage）、视频（UMSocialUrlResourceTypeVideo），音乐（UMSocialUrlResourceTypeMusic）</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/title">&nbsp;&nbsp;title</a></code>
+		<span class="tooltip"><p>如果传入音乐的话，腾讯微博可以指定音乐标题</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/author">&nbsp;&nbsp;author</a></code>
+		<span class="tooltip"><p>如果传入音乐的话，腾讯微博可以指定音乐作者</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
 </li>
 						</ul>
 						
@@ -144,6 +203,156 @@
 					
 					
 					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/author" title="author"></a>
+	<h3 class="subsubtitle method-title">author</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>如果传入音乐的话，腾讯微博可以指定音乐作者</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *author</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialData.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/resourceType" title="resourceType"></a>
+	<h3 class="subsubtitle method-title">resourceType</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>资源类型，图片（UMSocialUrlResourceTypeImage）、视频（UMSocialUrlResourceTypeVideo），音乐（UMSocialUrlResourceTypeMusic）</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) UMSocialUrlResourceType resourceType</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialData.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/title" title="title"></a>
+	<h3 class="subsubtitle method-title">title</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>如果传入音乐的话，腾讯微博可以指定音乐标题</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *title</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialData.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/url" title="url"></a>
+	<h3 class="subsubtitle method-title">url</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>url地址</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *url</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialData.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
 					
 					
 					
@@ -154,18 +363,18 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/didFinishGetUMSocialDataResponse:" title="didFinishGetUMSocialDataResponse:"></a>
-	<h3 class="subsubtitle method-title">didFinishGetUMSocialDataResponse:</h3>
+	<a name="//api/name/initWithSnsResourceType:url:" title="initWithSnsResourceType:url:"></a>
+	<h3 class="subsubtitle method-title">initWithSnsResourceType:url:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>进行网络请求之后得到的回调方法</p>
+		<p>初始化对象，指定一种资源和资源URL</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)<em>response</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithSnsResourceType:(UMSocialUrlResourceType)<em>resourceType</em> url:(NSString *)<em>url</em></code></div>
 
     
 	
@@ -173,8 +382,13 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>response</em></dt>
-			<dd><p>回调返回一个<code>UMSResponseEntity</code>对象</p></dd>
+			<dt><em>resourceType</em></dt>
+			<dd><p>多媒体资源类型，图片、音乐或者视频</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>urlString</em></dt>
+			<dd><p>url字符串</p></dd>
 		</dl>
 		
 	</div>
@@ -193,7 +407,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialDataDelegate.h</code><br />
+		<code class="declared-in-ref">UMSocialData.h</code><br />
 	</div>				
 	
 	

@@ -18,13 +18,38 @@
 
 @optional
 
+/**
+ 设置自定义sns分享平台，需要设置返回的`UMSocialSnsPlatform`对象的icon，显示名称，点击过后的响应block对象
+ 例如下面的设置
+ ```
+ -(UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName
+ {
+    UMSocialSnsPlatform *customSnsPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:snsName];
+    if ([snsName isEqualToString:UMShareToWechat]) {
+        customSnsPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_wechart_icon";
+        customSnsPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_wechart_on.png";
+        customSnsPlatform.displayName = @"微信";
+        customSnsPlatform.loginName = @"微信账号";
+        customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
+         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"分享到微信" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"分享给好友",@"分享到朋友圈",nil];
+         if (presentingController.tabBarController != nil) {
+            [actionSheet showInView:presentingController.tabBarController.tabBar];
+         }
+         else{
+            [actionSheet showInView:presentingController.view];
+         }
+        };
+    }
+    return customSnsPlatform;
+ }
 
+ ```
+ @param snsName 设置的平台名
+ @return  返回`UMSocialSnsPlatform`对象
+ */
 -(UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName;
 
-
--(void)didSelectSnsPlatformWithSnsName:(NSString *)snsName showController:(UIViewController *)showViewController withSocialData:(UMSocialData *)socialData;
-
-/** 
+/**
  设置显示的sns平台类型
  
  @return  返回由`UMSocialEnum.h`定义的UMShareToSina、UMShareToTencent、UMShareToQzone、UMShareToRenren、UMShareToDouban、UMShareToEmail、UMShareToSms组成的NSArray
@@ -39,13 +64,13 @@
  */
 -(NSDictionary *)followSnsUids;
 
-/** 
+/**
  设置评论页面是否出现分享按钮,默认为出现所有支持的平台，可以用shareToPlatforms设置
 
  */
 - (BOOL)shouldCommentWithShare;
 
-/** 
+/**
  设置评论页面是否出现分享地理位置信息的按钮，默认出现
  
  */
