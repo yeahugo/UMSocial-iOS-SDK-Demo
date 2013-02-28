@@ -20,6 +20,8 @@
 #import "UMSocialAFHTTPClient.h"
 #import "UMUtils.h"
 
+#import "UMSocialBarViewController.h"
+
 #define kTagWithUMSnsAction 100
 
 @interface UMSocialShareViewController ()
@@ -47,7 +49,7 @@
     UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
 //  下面发送视频到微博，可以发送url的视频、音乐和图片
     UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:
-                                        UMSocialUrlResourceTypeMusic url:@"http://music.sina.com.cn/yueku/i/710822.html"];
+                                        UMSocialUrlResourceTypeMusic url:@"http://www.xiami.com/song/2100097"];
     socialData.urlResource = urlResource;
     SAFE_ARC_RELEASE(urlResource);
     
