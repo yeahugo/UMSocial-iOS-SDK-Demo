@@ -42,11 +42,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         CGSize size = [UIScreen mainScreen].bounds.size;
-        size = UIInterfaceOrientationIsPortrait(_tabelViewController.interfaceOrientation) ? size : CGSizeMake(size.height, size.width);
-
-//        self.backgroundColor = [UIColor grayColor];
-        _detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 0, size.width - 300, 100)];
-//        _detailLabel.backgroundColor = [UIColor blueColor];
+        size = UIInterfaceOrientationIsLandscape(_tabelViewController.interfaceOrientation) ? CGSizeMake(size.height, size.width) : size;
+        
+        _detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 0, size.width - 150, 100)];
         _detailLabel.numberOfLines = 4;
         _detailLabel.text = [UMStringMock shortDescriptionMockString];
         [self addSubview:_detailLabel];
@@ -91,6 +89,9 @@
 -(void)layoutSubviews
 {
     NSLog(@"index is %d",self.index);
+    CGSize size = [UIScreen mainScreen].bounds.size;
+    size = UIInterfaceOrientationIsLandscape(_tabelViewController.interfaceOrientation) ? CGSizeMake(size.height, size.width) : size;
+    _detailLabel.frame = CGRectMake(130, 0, size.width - 150, 100);
     _detailLabel.text = self.descriptor;
     NSString *likeText = [NSString stringWithFormat:@"喜欢 %d",[_socialController.socialDataService.socialData getNumber:UMSNumberLike]];
     [_likeButton setTitle:likeText forState:UIControlStateNormal];

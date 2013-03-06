@@ -189,6 +189,7 @@
     return customSnsPlatform;
 }
 
+#ifdef __IPHONE_6_0
 -(void)didSelectSLComposeViewController:(NSString *)snsName showController:(UIViewController *)showViewController withSocialData:(UMSocialData *)socialData
 {
     NSString *slServiceType = nil;
@@ -202,7 +203,6 @@
         slName = @"Twitter";
     }
 
-#ifdef __IPHONE_6_0
     if([NSClassFromString(@"SLComposeViewController") class] != nil)
     {
         if ([NSClassFromString(@"SLComposeViewController") isAvailableForServiceType:slServiceType]) {
@@ -224,8 +224,8 @@
         [osAlert show];
         SAFE_ARC_RELEASE(osAlert);
     }
-#endif
 }
+#endif
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {

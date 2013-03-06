@@ -307,7 +307,7 @@ pre {
 
 <blockquote><p><a href="#sign_in_umengkey" style="text-decoration:none">2.1 申请友盟应用标识</a></p>
 
-<p><a href="#binding_config" style="text-decoration:none">2.2 申请友盟应用标识</a></p>
+<p><a href="#binding_config" style="text-decoration:none">2.2 绑定友盟应用标识与各开放平台</a></p>
 
 <p><a href="#quick_use" style="text-decoration:none">2.3 快速集成分享功能</a></p></blockquote>
 
@@ -366,7 +366,7 @@ pre {
 
 <p>   获得appkey后，你还需要将你的应用和我们支持的分享平台注册时获取的appkey和appsecret进行绑定。由于QQ空间、新浪微博、腾讯微博、人人网、豆瓣各个平台注册app的方法很有可能有变化，你可以参考我们线上版本的开发文档有关各个平台注册方法：</p>
 
-<p> <a href="http://dev.umeng.com/doc/document_social_ios.html" title="开发文档">iOS Social SDK 在线文档</a></p>
+<p> <a href="http://dev.umeng.com/doc/document_social_ios.html#binding_config" title="开发文档">iOS Social SDK 在线文档</a></p>
 
 <h3>2.3 <a name="quick_use" id="quick_use" style="color:black">快速集成分享功能</a></h3>
 
@@ -760,23 +760,29 @@ NSDictionary *shareToSNS = [NSDictionary dictionaryWithObjectsAndKeys:@"weiboid"
         };
     }
     return customSnsPlatform;
+}
 </code></pre>
 
 <h3>2. <a name="faq_wechat" id="faq_wechat" style="color:black">如何集成微信？</a></h3>
 
-<p>因为当前微信还不能通过网站的开放接口来分享给微信好友，所以我们只能利用微信的iOS SDK来做分享。使用我们当前版本的SDK集成微信的方式，步骤如下：
-1. 在微信网站注册，得到微信开发者id，并在<code>AppDelegate</code>引入头文件<code>#import "WXApi.h"</code>，然后注册，例如<code>[WXApi registerApp:@"wxd9a39c7122aa6516"];</code>.
-2. 在FAQ的问题1，设置出现微信，你可以指定微信出现在分享列表的任意位置，例如问题1中的示例代码，微信将出现在第一个分组的第二个单元格。
-3. 在你的<code>AppDelegate</code>文件里面实现代理方法<code>- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-</code>,调用微信SDK处理此url<code>[WXApi handleOpenURL:url delegate:self];</code>
-如果你需要处理微信回调的状态，你还需要实现这个回调方法
-<code>
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+<p>因为当前微信还不能通过网站的开放接口来分享给微信好友，所以我们只能利用微信的iOS SDK来做分享。使用我们当前版本的SDK集成微信的方式，步骤如下：</p>
+
+<ol>
+<li>在微信网站注册，得到微信开发者id，并在<code>AppDelegate</code>引入头文件<code>#import "WXApi.h"</code>，然后注册，例如<code>[WXApi registerApp:@"wxd9a39c7122aa6516"];</code>.</li>
+<li>在FAQ的问题1，设置出现微信，你可以指定微信出现在分享列表的任意位置，例如问题1中的示例代码，微信将出现在第一个分组的第二个单元格。</li>
+<li>在你的<code>AppDelegate</code>文件里面实现代理方法
+<code>- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url</code>,调用微信SDK处理此url<code>[WXApi handleOpenURL:url delegate:self];</code>
+如果你需要处理微信回调的状态，你还需要实现这个回调方法</li>
+</ol>
+
+
+<pre><code>- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     return  [WXApi handleOpenURL:url delegate:self];
 }
-</code>
-并在微信定义的回调方法中处理，例如</p>
+</code></pre>
+
+<p>并在微信定义的回调方法中处理，例如</p>
 
 <pre><code>-(void) onResp:(BaseResp*)resp
 {

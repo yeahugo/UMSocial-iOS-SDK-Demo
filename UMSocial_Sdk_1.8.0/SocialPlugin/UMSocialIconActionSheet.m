@@ -10,6 +10,8 @@
 #import "UMSocialSnsPlatformManager.h"
 #import "UMSocialMacroDefine.h"
 
+#define kTagPageController 1000
+
 @implementation UMSocialIconActionSheet
 
 @synthesize actionSheetHandler = _actionSheetHandler;
@@ -132,7 +134,7 @@
             _cancelButton.center = CGPointMake(self.frame.size.width/2,self.frame.size.height - buttomHeight + _cancelButton.frame.size.height + 10);
             pageController.numberOfPages = 2;
             pageController.currentPage = 0;
-            pageController.tag = 1000;
+            pageController.tag = kTagPageController;
             [_actionSheetBackground.superview addSubview:pageController];
             SAFE_ARC_RELEASE(pageController);
         }
@@ -189,12 +191,12 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     float page = scrollView.contentOffset.x / scrollView.frame.size.width;
     if (page == 1) {
-        UIPageControl * pageControler = (UIPageControl *)[_actionSheetBackground.superview viewWithTag:1000];
+        UIPageControl * pageControler = (UIPageControl *)[_actionSheetBackground.superview viewWithTag:kTagPageController];
         pageControler.currentPage = 1;
     }
     else if (page == 0)
     {
-        UIPageControl * pageControler = (UIPageControl *)[_actionSheetBackground.superview viewWithTag:1000];
+        UIPageControl * pageControler = (UIPageControl *)[_actionSheetBackground.superview viewWithTag:kTagPageController];
         pageControler.currentPage = 0;
     }
 }

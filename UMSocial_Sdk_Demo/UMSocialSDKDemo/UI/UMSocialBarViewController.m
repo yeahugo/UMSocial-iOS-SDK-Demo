@@ -42,7 +42,7 @@
 {
     CGSize size = [UIScreen mainScreen].bounds.size;
     size = UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ? size : CGSizeMake(size.height, size.width);
-    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, size.width,size.height - 110)];
+    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, size.width,size.height - 130)];
     [self.view addSubview:_webView];
     
     NSString *text = [UMStringMock commentMockString];
@@ -87,10 +87,10 @@
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     CGSize size = [UIScreen mainScreen].bounds.size;
     size = UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ? size : CGSizeMake(size.height, size.width);
-
-    _socialBar.center = CGPointMake(size.height/2, size.width - 90 - _socialBar.frame.size.height + 5);
+    float barHeight = 44;
+    _socialBar.center = CGPointMake(size.height/2, size.width - 44 - barHeight - _socialBar.frame.size.height );
     
-    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, size.height,size.width - 44 - 44)];
+    _webView.frame = CGRectMake(0, 0, size.height, size.width - 44 - barHeight - _socialBar.frame.size.height);
 }
 
 #pragma mark - UMSocialBarDelegate
