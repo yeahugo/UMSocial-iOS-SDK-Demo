@@ -75,9 +75,7 @@
             numPerPage = numPerRow * maxRowNum;
             break;
         }
-        UMLog(@"deltaX is %f",deltaX);
     }
-    UMLog(@"numPerRow is %d numPerPage is %d width is %f height is %f",numPerRow,numPerPage,width,height);
     
     CGRect frame = CGRectMake(0, fullFrame.size.height - height,fullFrame.size.width,height);
     self.frame = frame;
@@ -94,7 +92,6 @@
         _backgroundImageView.frame = CGRectMake(0, 0, width, height);
         _actionSheetBackground = [[UIScrollView alloc] initWithFrame:frame];
         _actionSheetBackground.showsHorizontalScrollIndicator = YES;
-        UMLog(@"contentSize is %@",NSStringFromCGSize(CGSizeMake(width, height)));
         _actionSheetBackground.contentSize = CGSizeMake(width, height);
         _actionSheetBackground.pagingEnabled = YES;
         _actionSheetBackground.scrollEnabled = YES;
@@ -149,7 +146,7 @@
     }
     
     for (int i = 0 ; i < self.snsNames.count ; i++) {
-        NSString *snsName = self.snsNames[i];
+        NSString *snsName = [self.snsNames objectAtIndex:i];
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
         NSString *snsDisplayName = snsPlatform.displayName;
         

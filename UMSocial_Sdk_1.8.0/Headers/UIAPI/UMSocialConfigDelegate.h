@@ -11,6 +11,18 @@
 #import <UIKit/UIKit.h>
 #import "UMSocialData.h"
 
+#ifndef __IPHONE_6_0
+typedef NS_OPTIONS(NSUInteger, UIInterfaceOrientationMask) {
+    UIInterfaceOrientationMaskPortrait = (1 << UIInterfaceOrientationPortrait),
+    UIInterfaceOrientationMaskLandscapeLeft = (1 << UIInterfaceOrientationLandscapeLeft),
+    UIInterfaceOrientationMaskLandscapeRight = (1 << UIInterfaceOrientationLandscapeRight),
+    UIInterfaceOrientationMaskPortraitUpsideDown = (1 << UIInterfaceOrientationPortraitUpsideDown),
+    UIInterfaceOrientationMaskLandscape = (UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight),
+    UIInterfaceOrientationMaskAll = (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight | UIInterfaceOrientationMaskPortraitUpsideDown),
+    UIInterfaceOrientationMaskAllButUpsideDown = (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight),
+};
+#endif
+
 /**
  在UI层的api中进行的一些设置，例如出现的分享平台等。
  */

@@ -28,31 +28,6 @@
     SAFE_ARC_SUPER_DEALLOC();
 }
 
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        closeButton.frame = CGRectMake(10, 10, 50, 30);
-        closeButton.titleLabel.text = @"title";
-        [closeButton addTarget:self action:@selector(closeMyself) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:closeButton];
-    }
-    return self;
-}
-
--(void)closeMyself
-{
-    [self dismissViewControllerAnimated:YES completion:^{
-        UIViewController *viewController = [UIApplication sharedApplication].delegate.window.rootViewController;
-        UMSocialControllerService *controllerService = [[UMSocialControllerService alloc] initWithUMSocialData:[UMSocialData defaultData]];
-        controllerService.socialData.shareText = @"亲们，分享一个好东东——#养生厨神iPhone版# 养生专家，尽在掌握！http://www.sythealth.com";
-        controllerService.socialData.shareImage = [UIImage imageNamed:@"Icon@2x.png"];
-        UINavigationController *navigationController = [controllerService getSocialShareListController];
-        [controllerService release];
-        [viewController presentModalViewController:navigationController animated:YES];
-    }];
-}
-
 -(id)initWithSocialData:(UMSocialData *)socialData withIndex:(NSInteger)index
 {
     self = [super initWithNibName:@"UMSocialBarViewController" bundle:nil];
