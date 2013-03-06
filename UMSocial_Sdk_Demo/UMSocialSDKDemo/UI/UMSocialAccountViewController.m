@@ -201,7 +201,9 @@
 
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
-    NSLog(@"socialData is %@",_socialUIController.socialData.socialAccount);
+    if (response.viewControllerType == UMSViewControllerOauth) {
+        NSLog(@"socialData is %@",_socialUIController.socialData.socialAccount);        
+    }
     NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);
 }
 

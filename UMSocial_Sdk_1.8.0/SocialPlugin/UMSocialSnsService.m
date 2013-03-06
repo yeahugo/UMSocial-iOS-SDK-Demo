@@ -13,7 +13,9 @@
 #import "UMSocialSnsPlatformManager.h"
 #import "WXApi.h"
 
+#ifdef __IPHONE_6_0
 #import <Social/Social.h>
+#endif
 
 @implementation UMSocialSnsService
 #define SLServiceTypeFacebook @"com.apple.social.facebook"
@@ -111,6 +113,7 @@
             SAFE_ARC_RELEASE(actionSheet);
         };
     }
+#ifdef __IPHONE_6_0
     else if ([snsName isEqualToString:UMShareToFacebook]) {
         customSnsPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_facebook_icon";
         customSnsPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_facebook_on.png";
@@ -127,7 +130,7 @@
                         [slcomposeViewController addImage:socialControllerService.socialData.shareImage];
                         slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
                             if (result == SLComposeViewControllerResultDone) {
-                                [socialControllerService.socialDataService postSNSWithTypes:@[UMShareToFacebook] content:socialControllerService.socialData.shareText image:socialControllerService.socialData.shareImage location:nil urlResource:nil];
+                                [socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToFacebook] content:socialControllerService.socialData.shareText image:socialControllerService.socialData.shareImage location:nil urlResource:nil];
                             }
                             [presentingController dismissModalViewControllerAnimated:YES];
                         };
@@ -160,17 +163,11 @@
                 if ([NSClassFromString(@"SLComposeViewController") isAvailableForServiceType:SLServiceTypeTwitter]) {
                     SLComposeViewController *slcomposeViewController =  [NSClassFromString(@"SLComposeViewController") composeViewControllerForServiceType:SLServiceTypeTwitter];
                     if (socialControllerService != nil) {
-                        [socialControllerService.socialDataService postSNSWithTypes:@[UMShareToTwitter] content:socialControllerService.socialData.shareText image:socialControllerService.socialData.shareImage location:nil urlResource:nil];
+                        [socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToTwitter] content:socialControllerService.socialData.shareText image:socialControllerService.socialData.shareImage location:nil urlResource:nil];
                         
                         [slcomposeViewController setInitialText:socialControllerService.socialData.shareText];
                         [slcomposeViewController addImage:socialControllerService.socialData.shareImage];
-//                        slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
-//                            if (result == SLComposeViewControllerResultDone) {
-//                                NSLog(@"twitter success!!");
-//                                
-//                            }
-//                            [presentingController.presentingViewController dismissModalViewControllerAnimated:YES];
-//                        };
+
                         [presentingController presentModalViewController:slcomposeViewController animated:YES];
                     }
                 }
@@ -187,6 +184,7 @@
             }
         };
     }
+#endif
     SAFE_ARC_AUTORELEASE(customSnsPlatform);
     return customSnsPlatform;
 }
@@ -204,6 +202,7 @@
         slName = @"Twitter";
     }
 
+#ifdef __IPHONE_6_0
     if([NSClassFromString(@"SLComposeViewController") class] != nil)
     {
         if ([NSClassFromString(@"SLComposeViewController") isAvailableForServiceType:slServiceType]) {
@@ -225,6 +224,7 @@
         [osAlert show];
         SAFE_ARC_RELEASE(osAlert);
     }
+#endif
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -256,11 +256,11 @@
         
         if (buttonIndex == 0) {
             req.scene = WXSceneSession;
-            [_socialControllerService.socialDataService postSNSWithTypes:@[UMShareToWechatSession] content:req.text image:nil location:nil urlResource:nil];
+            [_socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToWechatSession] content:req.text image:nil location:nil urlResource:nil];
         }
         if (buttonIndex == 1) {
             req.scene = WXSceneTimeline;
-            [_socialControllerService.socialDataService postSNSWithTypes:@[UMShareToWechatTimeline] content:req.text image:nil location:nil urlResource:nil];
+            [_socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToWechatTimeline] content:req.text image:nil location:nil urlResource:nil];
         }
         [WXApi sendReq:req];
         SAFE_ARC_RELEASE(req);

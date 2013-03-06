@@ -37,12 +37,12 @@
 -(void)drawRect:(CGRect)rect
 {
     float deltaY = 85.0;
-    CGPoint startPoint = CGPointMake(20, 20);
+    CGPoint startPoint = CGPointMake(20, 15);
     CGSize buttonSize = CGSizeMake(57, 57);
     CGSize labelSize = CGSizeMake(55, 20);
-    float actionSheetHeight = 480;
+    float actionSheetHeight = 400;
     
-    float buttomHeight = 130 + [UIApplication sharedApplication].statusBarFrame.size.height;
+    float buttomHeight = 125 + [UIApplication sharedApplication].statusBarFrame.size.height;
     
     int numPerRow = 3;  
   
@@ -56,15 +56,30 @@
     float deltaX = (fullFrame.size.width - 2*startPoint.x)/numPerRow;
     
     float height = buttomHeight + ceil((float)self.snsNames.count/numPerRow) * deltaY;
- 
+    float width  = fullFrame.size.width;
+    
     //处理iPhone5横屏的时候，自己的高度有可能超出屏幕高度
+    int numPerPage = self.snsNames.count;
+    
+    int maxRowNum = UIInterfaceOrientationIsPortrait(orientation) ? 3 : 2;
+    
     while (height > fullFrame.size.height || height > actionSheetHeight) {
         numPerRow ++;
         deltaX = (fullFrame.size.width - 2*startPoint.x)/numPerRow;
         height = buttomHeight  + ceil((float)self.snsNames.count/numPerRow) * deltaY;
+        if (deltaX <  70) {
+            width =  2 * width;
+            height = (actionSheetHeight < fullFrame.size.height ) ? actionSheetHeight : (fullFrame.size.height );
+            numPerRow --;
+            deltaX = 70;
+            numPerPage = numPerRow * maxRowNum;
+            break;
+        }
+        UMLog(@"deltaX is %f",deltaX);
     }
+    UMLog(@"numPerRow is %d numPerPage is %d width is %f height is %f",numPerRow,numPerPage,width,height);
     
-    CGRect frame = CGRectMake(0, fullFrame.size.height - height,fullFrame.size.width ,height);
+    CGRect frame = CGRectMake(0, fullFrame.size.height - height,fullFrame.size.width,height);
     self.frame = frame;
     
     if (self.superview != nil) {
@@ -75,15 +90,27 @@
     if (_actionSheetBackground == nil) {
         UIImage * backgroundImage = [UIImage imageNamed:@"UMSocialSDKResources.bundle/UMS_actionsheet_panel"];
         backgroundImage = [backgroundImage stretchableImageWithLeftCapWidth:0 topCapHeight:30];
-
-        _actionSheetBackground = [[UIImageView alloc] initWithImage:backgroundImage];
-        _actionSheetBackground.image = backgroundImage;
-        _actionSheetBackground.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+        _backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
+        _backgroundImageView.frame = CGRectMake(0, 0, width, height);
+        _actionSheetBackground = [[UIScrollView alloc] initWithFrame:frame];
+        _actionSheetBackground.showsHorizontalScrollIndicator = YES;
+        UMLog(@"contentSize is %@",NSStringFromCGSize(CGSizeMake(width, height)));
+        _actionSheetBackground.contentSize = CGSizeMake(width, height);
+        _actionSheetBackground.pagingEnabled = YES;
+        _actionSheetBackground.scrollEnabled = YES;
+        _actionSheetBackground.delegate = self;
+        _actionSheetBackground.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+        [_actionSheetBackground addSubview:_backgroundImageView];
+        SAFE_ARC_RELEASE(_backgroundImageView);
+        
+        _actionSheetBackground.frame = CGRectMake(0, 0, fullFrame.size.width, fullFrame.size.height);
         [self addSubview:_actionSheetBackground];
         SAFE_ARC_RELEASE(_actionSheetBackground);
     }
     else{
-        _actionSheetBackground.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+        _actionSheetBackground.frame = CGRectMake(0, 0, fullFrame.size.width, fullFrame.size.height);
+        _actionSheetBackground.contentSize = CGSizeMake(width, height);
+        _backgroundImageView.frame = CGRectMake(0, 0, width, height);
     }
     
     if (_cancelButton == nil) {
@@ -95,16 +122,30 @@
 
         _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _cancelButton.frame = CGRectMake(0, 0, 200, 40);
-        _cancelButton.center = CGPointMake(self.frame.size.width/2,self.frame.size.height - buttomHeight + _cancelButton.frame.size.height);
+        _cancelButton.center = CGPointMake(self.frame.size.width/2,self.frame.size.height - buttomHeight + _cancelButton.frame.size.height + 5);
         [_cancelButton setBackgroundImage:image forState:UIControlStateNormal];
         [_cancelButton setBackgroundImage:selectImage forState:UIControlStateSelected];
         
         [_cancelButton setTitle:@"取  消" forState:UIControlStateNormal];
-        [_cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+        [_cancelButton addTarget:self action:@selector(dismiss)  forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_cancelButton];
+        
+        if (width == 2 * fullFrame.size.width) {
+            UIPageControl *pageController = [[UIPageControl alloc] initWithFrame:CGRectMake(fullFrame.size.width/2 - 50, height - 140, 100, 30)];
+            _cancelButton.center = CGPointMake(self.frame.size.width/2,self.frame.size.height - buttomHeight + _cancelButton.frame.size.height + 10);
+            pageController.numberOfPages = 2;
+            pageController.currentPage = 0;
+            pageController.tag = 1000;
+            [_actionSheetBackground.superview addSubview:pageController];
+            SAFE_ARC_RELEASE(pageController);
+        }
     }
     else{
-        _cancelButton.center = CGPointMake(self.frame.size.width/2,self.frame.size.height - buttomHeight + _cancelButton.frame.size.height);
+        _cancelButton.center = CGPointMake(self.frame.size.width/2,self.frame.size.height - buttomHeight + _cancelButton.frame.size.height + 5);
+        if (width == 2 * fullFrame.size.width) {
+            UIPageControl *pageController = (UIPageControl *)[_actionSheetBackground.superview viewWithTag:1000];
+            pageController.center = CGPointMake(_cancelButton.center.x, _cancelButton.center.y - 30);
+        }
     }
     
     for (int i = 0 ; i < self.snsNames.count ; i++) {
@@ -113,37 +154,52 @@
         NSString *snsDisplayName = snsPlatform.displayName;
         
         UILabel *snsNamelabel = (UILabel *)[self viewWithTag:snsPlatform.shareToType];
+        CGRect labelRect = CGRectMake(startPoint.x + deltaX * (i%numPerRow) + (deltaX-buttonSize.width)/2 + (i/numPerPage) * self.frame.size.width, buttonSize.height + startPoint.y + ((i%numPerPage)/numPerRow)*deltaY, labelSize.width, labelSize.height);
         if (snsNamelabel == nil) {
-            UILabel *snsNamelabel = [[UILabel alloc] initWithFrame:CGRectMake(startPoint.x + deltaX * (i%numPerRow) + (deltaX-buttonSize.width)/2, buttonSize.height + startPoint.y + (i/numPerRow)*deltaY, labelSize.width, labelSize.height)];
+            UILabel *snsNamelabel = [[UILabel alloc] initWithFrame:labelRect];
             snsNamelabel.tag = snsPlatform.shareToType;
             snsNamelabel.textAlignment = UITextAlignmentCenter;
             [snsNamelabel setBackgroundColor:[UIColor clearColor]];
             [snsNamelabel setTextColor:[UIColor whiteColor]];
             [snsNamelabel setFont:[UIFont systemFontOfSize:12]];
             [snsNamelabel setText:snsDisplayName];
-            [self addSubview:snsNamelabel];
+            [_actionSheetBackground addSubview:snsNamelabel];
             SAFE_ARC_RELEASE(snsNamelabel);
         }
         else{
-            snsNamelabel.frame = CGRectMake(startPoint.x + deltaX * (i%numPerRow) + (deltaX-labelSize.width)/2, buttonSize.height + startPoint.y + (i/numPerRow)*deltaY , labelSize.width, labelSize.height);
+            snsNamelabel.frame = labelRect;
         }
         
         UIButton *snsButton = (UIButton *)[self viewWithTag:snsPlatform.shareToType + 100];
+        CGRect buttonRect = CGRectMake(startPoint.x + deltaX * (i%numPerRow) + (deltaX-buttonSize.width)/2 + (i/numPerPage) * self.frame.size.width, startPoint.y + ((i%numPerPage)/numPerRow)*deltaY , buttonSize.width, buttonSize.height);
         if (snsButton == nil) {
             UIButton *snsButton = [UIButton buttonWithType:UIButtonTypeCustom];
             UIImage *snsImage = [UIImage imageNamed:snsPlatform.bigImageName];
             [snsButton setBackgroundImage:snsImage forState:UIControlStateNormal];
-            snsButton.frame = CGRectMake(startPoint.x + deltaX * (i%numPerRow) + (deltaX-buttonSize.width)/2, startPoint.y + (i/numPerRow)*deltaY , buttonSize.width, buttonSize.height);
+            snsButton.frame = buttonRect;
             snsButton.tag = snsPlatform.shareToType + 100;
             [snsButton addTarget:self action:@selector(actionToSnsButton:) forControlEvents:UIControlEventTouchUpInside];
-            [self addSubview:snsButton];
+            [_actionSheetBackground addSubview:snsButton];
         }
         else{
-            snsButton.frame = CGRectMake(startPoint.x + deltaX * (i%numPerRow) + (deltaX-buttonSize.width)/2, startPoint.y + (i/numPerRow)*deltaY , buttonSize.width, buttonSize.height);
+            snsButton.frame = buttonRect;
         }
     }
     
     [super drawRect:self.frame];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    float page = scrollView.contentOffset.x / scrollView.frame.size.width;
+    if (page == 1) {
+        UIPageControl * pageControler = (UIPageControl *)[_actionSheetBackground.superview viewWithTag:1000];
+        pageControler.currentPage = 1;
+    }
+    else if (page == 0)
+    {
+        UIPageControl * pageControler = (UIPageControl *)[_actionSheetBackground.superview viewWithTag:1000];
+        pageControler.currentPage = 0;
+    }
 }
 
 -(void)actionToSnsButton:(UIButton *)snsButton
@@ -182,6 +238,8 @@
         self.center = CGPointMake(showView.frame.size.width/2, showView.frame.size.height + self.frame.size.height/2);
     } completion:^(BOOL finished){
         [self.superview removeFromSuperview];
+        self.dismissCompletion();
+//        [self performSelector:@selector(dismissCompletion) withObject:nil afterDelay:1];
     }];
 }
 @end

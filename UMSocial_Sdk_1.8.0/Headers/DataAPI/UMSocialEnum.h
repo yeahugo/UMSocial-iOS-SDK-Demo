@@ -107,7 +107,8 @@ typedef enum{
     UMSViewControllerLoginAccount,       //登录账号页面
     UMSViewControllerOauth,              //oath授权页面
     UMSViewControllerLogin,              //登录页面，登录的可选平台为sdk所支持的sns平台
-    UMSViewControllerFriendList          //好友列表页面
+    UMSViewControllerFriendList,         //好友列表页面
+    UMSViewControllerActionSheet         //icon平铺排列的分享列表页面
 }UMSViewControllerType;
 
 /**
@@ -154,6 +155,7 @@ typedef enum{
     UMSViewControllerOauth,              //oath授权页面
     UMSViewControllerLogin,              //登录页面，登录的可选平台为sdk所支持的sns平台
     UMSViewControllerFriendList          //好友列表页面
+    UMSViewControllerActionSheet         //icon平铺排列的分享列表页面
     }UMSViewControllerType;
 
  

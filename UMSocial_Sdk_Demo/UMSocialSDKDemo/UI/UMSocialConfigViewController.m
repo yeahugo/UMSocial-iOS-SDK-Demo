@@ -88,7 +88,7 @@
 */
 //- (NSArray *)shareToPlatforms
 //{
-//    NSArray *shareToArray = @[@[@"copy",UMShareToWechat,UMShareToSina,UMShareToQzone,UMShareToTencent,UMShareToTencent,UMShareToDouban,UMShareToRenren],@[UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter]];
+//    NSArray *shareToArray = @[@[@"copy",UMShareToWechat,UMShareToWechat,UMShareToWechat,UMShareToWechat,UMShareToWechat,UMShareToSina,UMShareToQzone,UMShareToTencent,UMShareToTencent,UMShareToDouban,UMShareToRenren],@[UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter]];
 //    return shareToArray;
 //}
 - (NSArray *)shareToPlatforms
