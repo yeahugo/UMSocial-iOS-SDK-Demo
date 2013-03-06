@@ -33,7 +33,11 @@
         self.supportOrientationMask = UIInterfaceOrientationMaskAllButUpsideDown;
         _shareToPlatforms = [[NSMutableArray alloc] initWithObjects:[NSMutableArray  arrayWithObjects:UMShareToQzone,UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToDouban,nil],[NSMutableArray arrayWithObjects:UMShareToEmail,UMShareToSms,UMShareToWechat,UMShareToFacebook,UMShareToTwitter,nil],nil];
         _shareToPlatformsValues = [[NSArray alloc] initWithObjects:UMShareToQzone,UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToDouban,UMShareToEmail,UMShareToSms,UMShareToWechat,UMShareToFacebook,UMShareToTwitter, nil];
-        _shareToPlatformDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:UMShareToQzone,UMShareToQzone,UMShareToSina,UMShareToSina,UMShareToTencent,UMShareToTencent,UMShareToRenren,UMShareToRenren,UMShareToDouban,UMShareToDouban,UMShareToWechat,UMShareToWechat,UMShareToEmail,UMShareToEmail,UMShareToSms,UMShareToSms,UMShareToFacebook,UMShareToFacebook,UMShareToTwitter,UMShareToTwitter, nil];
+#ifdef __IPHONE_6_0
+            _shareToPlatformDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:UMShareToQzone,UMShareToQzone,UMShareToSina,UMShareToSina,UMShareToTencent,UMShareToTencent,UMShareToRenren,UMShareToRenren,UMShareToDouban,UMShareToDouban,UMShareToWechat,UMShareToWechat,UMShareToEmail,UMShareToEmail,UMShareToSms,UMShareToSms,UMShareToFacebook,UMShareToFacebook,UMShareToTwitter,UMShareToTwitter, nil];
+#else
+            _shareToPlatformDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:UMShareToQzone,UMShareToQzone,UMShareToSina,UMShareToSina,UMShareToTencent,UMShareToTencent,UMShareToRenren,UMShareToRenren,UMShareToDouban,UMShareToDouban,UMShareToWechat,UMShareToWechat,UMShareToEmail,UMShareToEmail,UMShareToSms,UMShareToSms, nil];
+#endif
         [UMSocialControllerService setSocialConfigDelegate:self];
     }
     return self;
@@ -152,7 +156,7 @@
         number = 4;
     }
     else if (section == 1){
-        number = 10;
+        number = [_shareToPlatformDic allKeys].count;
     }
     return number;
 }
