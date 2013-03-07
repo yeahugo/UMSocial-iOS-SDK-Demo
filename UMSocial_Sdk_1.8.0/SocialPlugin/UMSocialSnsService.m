@@ -98,7 +98,6 @@
 -(UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName
 {
     if (![snsName isKindOfClass:[NSString class]]) {
-        UMLog(@"error snsName is %@",snsName);
         NSLog(@"you must set snsName as a NSString!!");
         return nil;
     }

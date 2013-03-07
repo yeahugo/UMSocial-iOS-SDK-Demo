@@ -8,7 +8,7 @@
 
 #import "UMSocialTabBarController.h"
 #import "UMSocialMacroDefine.h"
-//#import "UMSocialCommentViewController.h"
+//#import "UMSocialDataServiceViewController.h"
 #import "UMSocialShareViewController.h"
 #import "UMSocialAccountViewController.h"
 #import "UMSocialBarViewController.h"
@@ -20,12 +20,14 @@
 - (void)viewDidLoad
 {
     UMSocialShareViewController *shareViewController = [[UMSocialShareViewController alloc] initWithNibName:@"UMSocialShareViewController" bundle:nil];
-    shareViewController.title = @"最新文章";
+    shareViewController.title = @"分享";
     shareViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_share"];
     
     UMSocialTableViewController *tableViewController = [[UMSocialTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    tableViewController.title = @"友盟博客";
+    tableViewController.title = @"分享和评论";
     tableViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_mutilBar"];
+    
+//    UMSocialDataServiceViewController *dataServiceViewController = [[UMSocialDataServiceViewController alloc] initWithNibName:@"UMSocailDataServcieViewController" bundle:nil];
     
     UINavigationController *tableNavigationContrller = [[UINavigationController alloc] initWithRootViewController:tableViewController];
     SAFE_ARC_RELEASE(tableViewController);
