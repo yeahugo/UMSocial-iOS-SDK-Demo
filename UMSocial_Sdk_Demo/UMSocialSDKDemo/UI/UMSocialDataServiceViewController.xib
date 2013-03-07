@@ -36,10 +36,10 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUITableView" id="653519178">
+					<object class="IBUITableView" id="335382336">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{0, 78}, {320, 241}}</string>
+						<int key="NSvFlags">314</int>
+						<string key="NSFrameSize">{320, 266}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -57,9 +57,9 @@
 						<float key="IBUISectionHeaderHeight">22</float>
 						<float key="IBUISectionFooterHeight">22</float>
 					</object>
-					<object class="IBUITextView" id="487813175">
+					<object class="IBUITextView" id="739111532">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">300</int>
 						<string key="NSFrame">{{0, 274}, {320, 201}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
@@ -133,7 +133,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">_tableView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="653519178"/>
+						<reference key="destination" ref="335382336"/>
 					</object>
 					<int key="connectionID">10</int>
 				</object>
@@ -141,7 +141,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">_textView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="487813175"/>
+						<reference key="destination" ref="739111532"/>
 					</object>
 					<int key="connectionID">12</int>
 				</object>
@@ -158,8 +158,8 @@
 						<int key="objectID">1</int>
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="487813175"/>
-							<reference ref="653519178"/>
+							<reference ref="739111532"/>
+							<reference ref="335382336"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -176,12 +176,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">9</int>
-						<reference key="object" ref="653519178"/>
+						<reference key="object" ref="335382336"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">11</int>
-						<reference key="object" ref="487813175"/>
+						<reference key="object" ref="739111532"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
