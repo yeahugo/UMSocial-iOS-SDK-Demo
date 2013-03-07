@@ -88,7 +88,7 @@
 
 -(void)layoutSubviews
 {
-    NSLog(@"index is %d",self.index);
+//    NSLog(@"index is %d",self.index);
     CGSize size = [UIScreen mainScreen].bounds.size;
     size = UIInterfaceOrientationIsLandscape(_tabelViewController.interfaceOrientation) ? CGSizeMake(size.height, size.width) : size;
     _detailLabel.frame = CGRectMake(130, 0, size.width - 150, 100);
@@ -98,12 +98,12 @@
     NSString *shareText = [NSString stringWithFormat:@"分享 %d",[_socialController.socialDataService.socialData getNumber:UMSNumberShare]];
     [_shareButton setTitle:shareText forState:UIControlStateNormal];
     NSString *commentText = [NSString stringWithFormat:@"评论 %d",[_socialController.socialDataService.socialData getNumber:UMSNumberComment]];
-    NSLog(@"commment text is %@",commentText);
+//    NSLog(@"commment text is %@",commentText);
     [_commentButton setTitle:commentText forState:UIControlStateNormal];
     [self changeLikeButtonImage];
-    NSLog(@"_detailLabel.text is %@",_detailLabel.text);
+//    NSLog(@"_detailLabel.text is %@",_detailLabel.text);
     _socialController.socialDataService.socialData.shareText = _detailLabel.text;
-    NSLog(@"share text is %@",_socialController.socialDataService.socialData.shareText);
+//    NSLog(@"share text is %@",_socialController.socialDataService.socialData.shareText);
     _socialController.socialDataService.socialData.shareImage = _detailImageView.image;
     UMSocialShareViewController *shareViewController = [_tabelViewController.tabBarController.viewControllers objectAtIndex:0];
     if (shareViewController.postsArray != nil) {
@@ -163,7 +163,7 @@
 {
     [_likeButton setEnabled:NO];
     [_socialController.socialDataService setUMSocialDelegate:self];
-    [_socialController.socialDataService postAddLikeOrCancel];
+    [_socialController.socialDataService postAddLikeOrCancelWithCompletion:nil];
 }
 
 
@@ -196,7 +196,7 @@
 {
     if (response.viewControllerType == UMSViewControllerShareEdit) {
         [self.socialController.socialDataService setUMSocialDelegate:self];
-        [self.socialController.socialDataService requestSocialData];
+        [self.socialController.socialDataService requestSocialDataWithCompletion:nil];
     }
     if (response.viewControllerType == UMSViewControllerCommentEdit) {
         [self handleGetSocilaInformation:response];

@@ -62,21 +62,21 @@
 }
 
 
-- (UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName
-{
-    UMSocialSnsPlatform *customSnsPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:snsName];
-    SAFE_ARC_AUTORELEASE(customSnsPlatform);
-    if ([snsName isEqualToString:@"copy"]) {
-        customSnsPlatform.bigImageName = @"icon.png";
-        customSnsPlatform.smallImageName = @"icon.png";
-        customSnsPlatform.displayName = @"复制文本";
-        customSnsPlatform.loginName = @"复制文本";
-        customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
-            NSLog(@"点击复制文本");
-        };
-    }
-    return customSnsPlatform;
-}
+//- (UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName
+//{
+//    UMSocialSnsPlatform *customSnsPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:snsName];
+//    SAFE_ARC_AUTORELEASE(customSnsPlatform);
+//    if ([snsName isEqualToString:@"copy"]) {
+//        customSnsPlatform.bigImageName = @"icon.png";
+//        customSnsPlatform.smallImageName = @"icon.png";
+//        customSnsPlatform.displayName = @"复制文本";
+//        customSnsPlatform.loginName = @"复制文本";
+//        customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
+//            NSLog(@"点击复制文本");
+//        };
+//    }
+//    return customSnsPlatform;
+//}
 
 
 
@@ -111,11 +111,11 @@
 }
 
 //设置关注的官方微博，可以设置新浪微博和腾讯微博，将会出现在授权页面下面“关注官方微博”的小勾
--(NSDictionary *)followSnsUids
-{
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"2937537507",UMShareToSina,nil];
-    return dictionary;
-}
+//-(NSDictionary *)followSnsUids
+//{
+//    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"2937537507",UMShareToSina,nil];
+//    return dictionary;
+//}
 
 /*设置所有页面的背景颜色
  */

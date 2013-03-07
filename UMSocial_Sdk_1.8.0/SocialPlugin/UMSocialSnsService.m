@@ -72,7 +72,9 @@
 {
     [self setSocialDataWithController:controller appKey:appKey shareText:shareText shareImage:shareImage delegate:delegate];
     UINavigationController *snsListController = [_socialControllerService getSocialShareListController];
-    [snsListController.visibleViewController performSelector:@selector(setAllSnsArray:) withObject:snsStrings];
+    if (snsStrings != nil) {
+        [snsListController.visibleViewController performSelector:@selector(setAllSnsArray:) withObject:snsStrings];        
+    }
     [_presentingViewController presentModalViewController:snsListController animated:YES];
 }
 
@@ -95,6 +97,12 @@
 
 -(UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName
 {
+    if (![snsName isKindOfClass:[NSString class]]) {
+        UMLog(@"error snsName is %@",snsName);
+        NSLog(@"you must set snsName as a NSString!!");
+        return nil;
+    }
+    
     UMSocialSnsPlatform *customSnsPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:snsName];
     if ([snsName isEqualToString:UMShareToWechat]) {
         customSnsPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_wechart_icon";
@@ -130,7 +138,7 @@
                         [slcomposeViewController addImage:socialControllerService.socialData.shareImage];
                         slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
                             if (result == SLComposeViewControllerResultDone) {
-                                [socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToFacebook] content:socialControllerService.socialData.shareText image:socialControllerService.socialData.shareImage location:nil urlResource:nil];
+                                [socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToFacebook] content:socialControllerService.socialData.shareText image:socialControllerService.socialData.shareImage location:nil urlResource:nil completion:nil];
                             }
                             [presentingController dismissModalViewControllerAnimated:YES];
                         };
@@ -163,7 +171,7 @@
                 if ([NSClassFromString(@"SLComposeViewController") isAvailableForServiceType:SLServiceTypeTwitter]) {
                     SLComposeViewController *slcomposeViewController =  [NSClassFromString(@"SLComposeViewController") composeViewControllerForServiceType:SLServiceTypeTwitter];
                     if (socialControllerService != nil) {
-                        [socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToTwitter] content:socialControllerService.socialData.shareText image:socialControllerService.socialData.shareImage location:nil urlResource:nil];
+                        [socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToTwitter] content:socialControllerService.socialData.shareText image:socialControllerService.socialData.shareImage location:nil urlResource:nil completion:nil];
                         
                         [slcomposeViewController setInitialText:socialControllerService.socialData.shareText];
                         [slcomposeViewController addImage:socialControllerService.socialData.shareImage];
@@ -235,7 +243,7 @@
     
     if ([WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi]) {
         if (_socialControllerService.currentNavigationController != nil) {
-            [_socialControllerService.currentNavigationController dismissModalViewControllerAnimated:YES];
+            [_socialControllerService performSelector:@selector(close)];
         }
         
         SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
@@ -256,11 +264,11 @@
         
         if (buttonIndex == 0) {
             req.scene = WXSceneSession;
-            [_socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToWechatSession] content:req.text image:nil location:nil urlResource:nil];
+            [_socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToWechatSession] content:req.text image:nil location:nil urlResource:nil completion:nil];
         }
         if (buttonIndex == 1) {
             req.scene = WXSceneTimeline;
-            [_socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToWechatTimeline] content:req.text image:nil location:nil urlResource:nil];
+            [_socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToWechatTimeline] content:req.text image:nil location:nil urlResource:nil completion:nil];
         }
         [WXApi sendReq:req];
         SAFE_ARC_RELEASE(req);

@@ -127,13 +127,13 @@
         [_activityIndicatorView startAnimating];
         
         [_socialController.socialDataService setUMSocialDelegate:self];
-        [_socialController.socialDataService requestCommentList:(-1)];
+        [_socialController.socialDataService requestCommentList:(-1) completion:nil];
     }
     if (indexPath.row == 2) {
         [_activityIndicatorView startAnimating];
         
         [_socialController.socialDataService setUMSocialDelegate:self];
-        [_socialController.socialDataService postCommentWithContent:[UMStringMock commentMockString]];
+        [_socialController.socialDataService postCommentWithContent:[UMStringMock commentMockString] completion:nil];
     }
     if (indexPath.row == 3) {
         [_activityIndicatorView startAnimating];
@@ -148,7 +148,7 @@
             }
         }
         [_socialController.socialDataService setUMSocialDelegate:self];
-        [_socialController.socialDataService postCommentWithContent:[UMStringMock commentMockString] image:_socialController.socialData.commentImage templateText:_socialController.socialData.commentText  location:location shareToSNSWithUsid:shareToSNSDictionary];
+        [_socialController.socialDataService postCommentWithContent:[UMStringMock commentMockString] image:_socialController.socialData.commentImage templateText:_socialController.socialData.commentText  location:location shareToSNSWithUsid:shareToSNSDictionary completion:nil];
         SAFE_ARC_RELEASE(location);
         SAFE_ARC_RELEASE(shareToSNSDictionary);
     }

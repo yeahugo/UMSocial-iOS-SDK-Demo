@@ -45,12 +45,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _socialData = [[UMSocialData alloc] initWithIdentifier:@"abc"];
-    _socialUIController = [[UMSocialControllerService alloc] initWithUMSocialData:_socialData];
+    _socialUIController = [[UMSocialControllerService alloc] initWithUMSocialData:[UMSocialData defaultData]];
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _activityIndicatorView.center = CGPointMake(160, 200);
     [self.view addSubview:_activityIndicatorView];
-    _socialUIController.socialUIDelegate = self;
+//    _socialUIController.socialUIDelegate = self;
 }
 
 - (void)viewDidUnload
@@ -113,7 +112,7 @@
     
     if (indexPath.row == UMAccountUnOauth) {
         [_socialUIController.socialDataService setUMSocialDelegate:self];
-        [_socialUIController.socialDataService requestUnBindToSns];
+        [_socialUIController.socialDataService requestUnBindToSnsWithCompletion:nil];
         [_activityIndicatorView startAnimating];
     }
     else if (indexPath.row == UMAccountSocialAccount) {

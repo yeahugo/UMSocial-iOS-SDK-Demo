@@ -54,6 +54,22 @@
     }
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    BOOL supportInterface = NO;
+        
+    UMSocialConfigViewController *configViewController = [self.viewControllers objectAtIndex:self.viewControllers.count - 1];
+    
+    NSUInteger mask = 1 << interfaceOrientation & configViewController.supportOrientationMask;
+    
+    mask = mask >> interfaceOrientation;
+    
+    if (mask == 1) {
+        supportInterface = YES;
+    }
+    return supportInterface;
+}
+
 - (NSUInteger)supportedInterfaceOrientations
 {
     UMSocialConfigViewController *configViewController = [self.viewControllers objectAtIndex:self.viewControllers.count - 1];

@@ -34,11 +34,13 @@
 
 -(void)dealloc
 {
-    [_socialController.socialDataService setUMSocialDelegate:nil];
     SAFE_ARC_RELEASE(_socialController);
     SAFE_ARC_RELEASE(_postsArray);
     SAFE_ARC_RELEASE(_locationManager);
     SAFE_ARC_RELEASE(_activityIndicatorView);
+    SAFE_ARC_RELEASE(_shareButton1);
+    SAFE_ARC_RELEASE(_shareButton2);
+    SAFE_ARC_RELEASE(_shareButton3);
     SAFE_ARC_SUPER_DEALLOC();
 }
 
@@ -71,18 +73,21 @@
     [self.view addSubview:_webView];
     
     _shareButton1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    SAFE_ARC_RETAIN(_shareButton1);
     _shareButton1.frame = CGRectMake(0, size.height - 110, 100, 40);
     [_shareButton1 setTitle:@"分享列表1" forState:UIControlStateNormal];
     [_shareButton1 addTarget:self action:@selector(presentShareList) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_shareButton1];
     
     _shareButton2 =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    SAFE_ARC_RETAIN(_shareButton2);
     _shareButton2.frame = CGRectMake(110, size.height - 110, 100, 40);
     [_shareButton2 setTitle:@"分享列表2" forState:UIControlStateNormal];
     [_shareButton2 addTarget:self action:@selector(showSnsActionSheet) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_shareButton2];
     
     _shareButton3 =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    SAFE_ARC_RETAIN(_shareButton3);
     _shareButton3.frame = CGRectMake(220, size.height - 110, 100, 40);
     [_shareButton3 setTitle:@"分享列表3" forState:UIControlStateNormal];
     [_shareButton3 addTarget:self action:@selector(showSnsEditSheet) forControlEvents:UIControlEventTouchUpInside];
@@ -151,9 +156,18 @@
 
 -(void)showSnsActionSheet
 {
-    UMSocialIconActionSheet *iconActionSheet = [_socialController getSocialIconActionSheetInController:self];
-    iconActionSheet.tag = kTagWithUMSnsAction;
-    [iconActionSheet showInView:self.view];
+    @try {
+        UMSocialIconActionSheet *iconActionSheet = [_socialController getSocialIconActionSheetInController:self];
+        iconActionSheet.tag = kTagWithUMSnsAction;
+
+        [iconActionSheet showInView:self.view];
+    }
+    @catch (NSException *exception) {
+        UMLog(@"you must set the snsName as a NSString not a NSNumber !");
+    }
+    @finally {
+        
+    }
 }
 
 -(void)showSnsEditSheet
@@ -176,11 +190,6 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

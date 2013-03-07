@@ -22,9 +22,9 @@
 
 -(void)dealloc
 {
-    SAFE_ARC_RELEASE(_socialBar);
     SAFE_ARC_RELEASE(_textLabel);
     _socialBar.socialBarDelegate = nil;
+    SAFE_ARC_RELEASE(_socialBar);
     SAFE_ARC_SUPER_DEALLOC();
 }
 
@@ -68,7 +68,7 @@
         [_webView loadHTMLString:[[shareViewController.postsArray objectAtIndex:_index] valueForKey:@"content"] baseURL:nil];
         
     }
-    [_socialBar.socialControllerService.socialDataService requestSocialData];
+    [_socialBar.socialControllerService.socialDataService requestSocialDataWithCompletion:nil];
     [super viewWillAppear:animated];
 }
 
