@@ -156,7 +156,7 @@
         number = 4;
     }
     else if (section == 1){
-        number = [_shareToPlatformDic allKeys].count;
+        number = 10;
     }
     return number;
 }

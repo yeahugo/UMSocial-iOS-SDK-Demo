@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UMSocialDataService.h"
 
-@interface UMSocialDataServiceViewController : UIViewController
-
+@interface UMSocialDataServiceViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+{
+    IBOutlet UITableView *_tableView;
+    UMSocialDataService *_socialDataService;
+    IBOutlet UITextView *_textView;
+}
 @end

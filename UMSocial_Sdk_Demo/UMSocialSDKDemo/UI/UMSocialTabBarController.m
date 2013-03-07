@@ -8,7 +8,7 @@
 
 #import "UMSocialTabBarController.h"
 #import "UMSocialMacroDefine.h"
-//#import "UMSocialDataServiceViewController.h"
+#import "UMSocialDataServiceViewController.h"
 #import "UMSocialShareViewController.h"
 #import "UMSocialAccountViewController.h"
 #import "UMSocialBarViewController.h"
@@ -27,7 +27,9 @@
     tableViewController.title = @"分享和评论";
     tableViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_mutilBar"];
     
-//    UMSocialDataServiceViewController *dataServiceViewController = [[UMSocialDataServiceViewController alloc] initWithNibName:@"UMSocailDataServcieViewController" bundle:nil];
+    UMSocialDataServiceViewController *dataServiceViewController = [[UMSocialDataServiceViewController alloc] initWithNibName:@"UMSocialDataServiceViewController" bundle:nil];
+    dataServiceViewController.title = @"数据级接口";
+    dataServiceViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_bar"];
     
     UINavigationController *tableNavigationContrller = [[UINavigationController alloc] initWithRootViewController:tableViewController];
     SAFE_ARC_RELEASE(tableViewController);
@@ -40,8 +42,9 @@
     configController.tabBarItem.image = [UIImage imageNamed:@"UMS_settings"];
     
     
-    [self setViewControllers:[NSArray arrayWithObjects:shareViewController,tableNavigationContrller,accountViewController,configController,nil]];
+    [self setViewControllers:[NSArray arrayWithObjects:shareViewController,tableNavigationContrller,dataServiceViewController,accountViewController,configController,nil]];
     SAFE_ARC_AUTORELEASE(shareViewController);
+    SAFE_ARC_AUTORELEASE(dataServiceViewController);
     SAFE_ARC_AUTORELEASE(accountViewController);
     SAFE_ARC_AUTORELEASE(tableNavigationContrller);
     SAFE_ARC_AUTORELEASE(configController);
