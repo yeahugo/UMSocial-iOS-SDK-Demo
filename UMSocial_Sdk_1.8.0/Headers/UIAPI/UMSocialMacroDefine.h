@@ -10,7 +10,7 @@
 
 #if __has_feature(objc_arc)
 #define SAFE_ARC_PROP_RETAIN strong
-#define SAFE_ARC_RETAIN(x) (x)
+#define SAFE_ARC_RETAIN(x)
 #define SAFE_ARC_RELEASE(x)
 #define SAFE_ARC_AUTORELEASE(x)
 #define SAFE_ARC_BLOCK_COPY(x) (x)

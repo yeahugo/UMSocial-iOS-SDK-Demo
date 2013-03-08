@@ -31,6 +31,7 @@
 @implementation UMSocialShareViewController
 
 @synthesize postsArray = _postsArray;
+@synthesize socialController = _socialController;
 
 -(void)dealloc
 {

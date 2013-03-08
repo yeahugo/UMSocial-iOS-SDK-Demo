@@ -40,4 +40,6 @@ typedef enum
 }
 
 @property (nonatomic, retain) NSArray *postsArray;
+@property (nonatomic, retain) UMSocialControllerService *socialController;
+
 @end
