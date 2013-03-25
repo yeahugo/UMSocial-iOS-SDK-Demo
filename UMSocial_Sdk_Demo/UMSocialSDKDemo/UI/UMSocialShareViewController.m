@@ -57,12 +57,12 @@
     socialData.urlResource = urlResource;
     SAFE_ARC_RELEASE(urlResource);
     socialData.extConfig.wxMessageType = UMSocialWXMessageTypeApp;
-//    UMSocialExtConfig *extConfig = [[UMSocialExtConfig alloc] init];
+    UMSocialExtConfig *extConfig = [[UMSocialExtConfig alloc] init];
 //    extConfig.wxMessageType = UMSocialWXMessageTypeApp;
-//    extConfig.thumbUrl = @"http://www.umeng.com/images/pic/eg/icon_skisafari_55_55.png";
-//    extConfig.title = @"分享给你";
-//    socialData.extConfig = extConfig;
-//    SAFE_ARC_RELEASE(extConfig);
+    extConfig.thumbUrl = @"http://www.umeng.com/images/pic/eg/icon_skisafari_55_55.png";
+    extConfig.title = @"分享给你";
+    socialData.extConfig = extConfig;
+    SAFE_ARC_RELEASE(extConfig);
     _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
     _socialController.socialUIDelegate = self;
     SAFE_ARC_RELEASE(socialData); 
