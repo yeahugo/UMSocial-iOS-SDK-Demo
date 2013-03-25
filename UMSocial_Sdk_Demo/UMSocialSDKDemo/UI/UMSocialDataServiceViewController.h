@@ -19,6 +19,7 @@
     IBOutlet UILabel *_socialPlatformLabel;
     IBOutlet UILabel *_oauthDescriptionLabel;
     UMSocialDataService *_socialDataService;
+    UIButton *_addUrlResourceButton;
     UMSocialSnsPlatform *_socialPlatform;
     UIActivityIndicatorView * _activityIndicatorView;
 }

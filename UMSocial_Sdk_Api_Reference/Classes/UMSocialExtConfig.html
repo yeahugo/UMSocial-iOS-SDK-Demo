@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>UMSocialUIDelegate Protocol Reference</title>
+		<title>UMSocialExtConfig Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">UMSocialUIDelegate Protocol Reference</h1>
+				<h1 class="hideInXcode">UMSocialExtConfig Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -38,17 +38,19 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/appUrl">&nbsp;&nbsp;&nbsp;&nbsp;appUrl</option>
+	
+	<option value="//api/name/thumbUrl">&nbsp;&nbsp;&nbsp;&nbsp;thumbUrl</option>
+	
+	<option value="//api/name/title">&nbsp;&nbsp;&nbsp;&nbsp;title</option>
+	
+	<option value="//api/name/wxMessageType">&nbsp;&nbsp;&nbsp;&nbsp;wxMessageType</option>
 	
 	
 	
 	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/didCloseUIViewController:">&nbsp;&nbsp;&nbsp;&nbsp;- didCloseUIViewController:</option>
-	
-	<option value="//api/name/didFinishGetUMSocialDataInViewController:">&nbsp;&nbsp;&nbsp;&nbsp;- didFinishGetUMSocialDataInViewController:</option>
-	
-	<option value="//api/name/willCloseUIViewController:">&nbsp;&nbsp;&nbsp;&nbsp;- willCloseUIViewController:</option>
 	
 	
 	
@@ -72,26 +74,28 @@
 
 
 
-
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didCloseUIViewController:">didCloseUIViewController:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/appUrl">appUrl</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didFinishGetUMSocialDataInViewController:">didFinishGetUMSocialDataInViewController:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/thumbUrl">thumbUrl</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/willCloseUIViewController:">willCloseUIViewController:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/title">title</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/wxMessageType">wxMessageType</a></span></li>
 	
 </ul></li>
+
+
+
+
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="UMSocialUIDelegate Protocol Reference" name="top"></a>
+				<a title="UMSocialExtConfig Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -100,18 +104,18 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">UMSocialUIDelegate Protocol Reference</h1>
+						<h1 class="title title-header">UMSocialExtConfig Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Conforms to</td>
+	<td class="specification-title">Inherits from</td>
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">UMSocialControllerService.h</td>
+	<td class="specification-value">UMSocialData.h<br />UMSocialData.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -121,7 +125,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p><a href="../Classes/UMSocialControllerService.html"><code>UMSocialControllerService</code></a>对象用到的一些回调方法，包括分享完成、授权完成、评论完成等事件，和关闭授权页面、分享页面、评论页面等事件。</p>
+						<p>分享到各个平台的扩展设置</p>
 					</div>
 					
 					
@@ -139,24 +143,31 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/willCloseUIViewController:">&ndash;&nbsp;willCloseUIViewController:</a></code>
-		<span class="tooltip"><p>关闭当前页面之前</p></span>
+		<code><a href="#//api/name/appUrl">&nbsp;&nbsp;appUrl</a></code>
+		<span class="tooltip"><p>用于分享到微信用的，url地址。分享给微信好友如果对方装有app的话可以直接跳转，没有的话跳转到此url</p></span>
 	</span>
-	
+	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/didCloseUIViewController:">&ndash;&nbsp;didCloseUIViewController:</a></code>
-		<span class="tooltip"><p>关闭当前页面之后</p></span>
+		<code><a href="#//api/name/title">&nbsp;&nbsp;title</a></code>
+		<span class="tooltip"><p>标题，用于指定微信分享标题，qzone分享的标题和邮件分享的标题。</p></span>
 	</span>
-	
+	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/didFinishGetUMSocialDataInViewController:">&ndash;&nbsp;didFinishGetUMSocialDataInViewController:</a></code>
-		<span class="tooltip"><p>各个页面执行授权完成、分享完成、或者评论完成时的回调函数</p></span>
+		<code><a href="#//api/name/thumbUrl">&nbsp;&nbsp;thumbUrl</a></code>
+		<span class="tooltip"><p>缩略图的url，用于指定qzone分享，如果有分享视频的话可以指定一张视频的缩略图</p></span>
 	</span>
+	<span class="task-item-suffix">property</span>
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/wxMessageType">&nbsp;&nbsp;wxMessageType</a></code>
+		<span class="tooltip"><p>分享到微信的消息类型，分别有文字类型，图片类型，app类型（文字和图片都有，点击可以返回app或者到指定url，不过不能全部显示所有文字内容）</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
 	
 </li>
 						</ul>
@@ -167,39 +178,25 @@
 					
 					
 					
-					
-					
-					
-					
 					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/didCloseUIViewController:" title="didCloseUIViewController:"></a>
-	<h3 class="subsubtitle method-title">didCloseUIViewController:</h3>
+	<a name="//api/name/appUrl" title="appUrl"></a>
+	<h3 class="subsubtitle method-title">appUrl</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>关闭当前页面之后</p>
+		<p>用于分享到微信用的，url地址。分享给微信好友如果对方装有app的话可以直接跳转，没有的话跳转到此url</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)didCloseUIViewController:(UMSViewControllerType)<em>fromViewControllerType</em></code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *appUrl</code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>fromViewControllerType</em></dt>
-			<dd><p>关闭的页面类型</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -215,37 +212,27 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+		<code class="declared-in-ref">UMSocialData.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/didFinishGetUMSocialDataInViewController:" title="didFinishGetUMSocialDataInViewController:"></a>
-	<h3 class="subsubtitle method-title">didFinishGetUMSocialDataInViewController:</h3>
+	<a name="//api/name/thumbUrl" title="thumbUrl"></a>
+	<h3 class="subsubtitle method-title">thumbUrl</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>各个页面执行授权完成、分享完成、或者评论完成时的回调函数</p>
+		<p>缩略图的url，用于指定qzone分享，如果有分享视频的话可以指定一张视频的缩略图</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)<em>response</em></code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *thumbUrl</code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>response</em></dt>
-			<dd><p>返回<a href="../Classes/UMSocialResponseEntity.html"><code>UMSocialResponseEntity</code></a>对象，<a href="../Classes/UMSocialResponseEntity.html"><code>UMSocialResponseEntity</code></a>里面的viewControllerType属性可以获得页面类型</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -261,37 +248,27 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+		<code class="declared-in-ref">UMSocialData.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/willCloseUIViewController:" title="willCloseUIViewController:"></a>
-	<h3 class="subsubtitle method-title">willCloseUIViewController:</h3>
+	<a name="//api/name/title" title="title"></a>
+	<h3 class="subsubtitle method-title">title</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>关闭当前页面之前</p>
+		<p>标题，用于指定微信分享标题，qzone分享的标题和邮件分享的标题。</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)willCloseUIViewController:(UMSViewControllerType)<em>fromViewControllerType</em></code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *title</code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>fromViewControllerType</em></dt>
-			<dd><p>关闭的页面类型</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -307,13 +284,53 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
+		<code class="declared-in-ref">UMSocialData.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/wxMessageType" title="wxMessageType"></a>
+	<h3 class="subsubtitle method-title">wxMessageType</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>分享到微信的消息类型，分别有文字类型，图片类型，app类型（文字和图片都有，点击可以返回app或者到指定url，不过不能全部显示所有文字内容）</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) UMSocialWXMessageType wxMessageType</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialData.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 					</div>
+					
+					
+					
+					
 					
 					
 				</div>

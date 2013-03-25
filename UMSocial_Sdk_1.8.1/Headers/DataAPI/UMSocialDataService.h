@@ -32,7 +32,7 @@ typedef void (^UMSocialDataServiceCompletion)(UMSocialResponseEntity * response)
 /**
  通过`UMSocialData`对象，可以设置分享文字、图片，并获取到分享数、微博账号等属性
  */
-@property (nonatomic, readonly) UMSocialData *socialData;
+@property (nonatomic, retain) UMSocialData *socialData;
 
 /**
  设置实现了`<UMSocialDataDelegate>`的对象
@@ -42,6 +42,14 @@ typedef void (^UMSocialDataServiceCompletion)(UMSocialResponseEntity * response)
 ///---------------------------------------
 /// @name 对象初始化和设置方法
 ///---------------------------------------
+
+
+/**
+ 返回一个以[UMSocialData defaultData]来做初始化参数的`UMSocialDataService`对象
+ 
+ @return `UMSocialDataService`的默认初始化对象
+ */
++(UMSocialDataService *)defaultDataService;
 
 /**
  初始化一个`UMSocialDataService`对象

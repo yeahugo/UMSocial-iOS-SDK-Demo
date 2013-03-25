@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "UMSocialTabBarController.h"
+#import "UMSocialSnsService.h"
 #import "UMSocialData.h"
 #import "WXApi.h"
 
@@ -31,43 +32,11 @@
     return YES;
 }
 
-
--(void) onReq:(BaseReq*)req
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    NSLog(@"req type is %d",req.type);
+    return  [UMSocialSnsService handleOpenURL:url];
 }
 
-
--(void) onResp:(BaseResp*)resp
-{
-    NSLog(@"req type is %d",resp.type);
-    if([resp isKindOfClass:[SendMessageToWXResp class]])
-    {
-        NSString * message = nil;
-        message = [NSString stringWithFormat:@"%d",resp.errCode];
-        if (resp.errCode == WXSuccess) {
-            message = @"成功";
-        }
-//        else if (resp.errCode == WXErrCodeCommon) {
-//            message = @"其他";
-//        }
-//        else if (resp.errCode == WXErrCodeUserCancel) {
-//            message = @"用户取消";
-//        }
-        else if (resp.errCode == WXErrCodeSentFail) {
-            message = @"发送失败";
-        }
-        else if (resp.errCode == WXErrCodeAuthDeny)
-        {
-            message = @"授权失败";
-        }
-        else if (resp.errCode == WXErrCodeUnsupport){
-            message = @"不支持";
-        }
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"微信分享结果" message:message delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
-        [alertView show];
-    }
-}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application

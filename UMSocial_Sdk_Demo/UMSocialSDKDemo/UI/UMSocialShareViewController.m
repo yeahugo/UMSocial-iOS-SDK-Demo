@@ -51,11 +51,18 @@
 
     UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
 //  下面发送视频到微博，可以发送url的视频、音乐和图片
+    
     UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:
-                                        UMSocialUrlResourceTypeMusic url:@"http://www.xiami.com/song/2100097"];
+                                        UMSocialUrlResourceTypeImage url:@"http://www.umeng.com/images/pic/eg/icon_skisafari_55_55.png"];
     socialData.urlResource = urlResource;
     SAFE_ARC_RELEASE(urlResource);
-    
+    socialData.extConfig.wxMessageType = UMSocialWXMessageTypeApp;
+//    UMSocialExtConfig *extConfig = [[UMSocialExtConfig alloc] init];
+//    extConfig.wxMessageType = UMSocialWXMessageTypeApp;
+//    extConfig.thumbUrl = @"http://www.umeng.com/images/pic/eg/icon_skisafari_55_55.png";
+//    extConfig.title = @"分享给你";
+//    socialData.extConfig = extConfig;
+//    SAFE_ARC_RELEASE(extConfig);
     _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
     _socialController.socialUIDelegate = self;
     SAFE_ARC_RELEASE(socialData); 
@@ -160,8 +167,13 @@
     @try {
         UMSocialIconActionSheet *iconActionSheet = [_socialController getSocialIconActionSheetInController:self];
         iconActionSheet.tag = kTagWithUMSnsAction;
+        
+        UIViewController *rootViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
+        [iconActionSheet showInView:rootViewController.view];
 
-        [iconActionSheet showInView:self.view];
+//        UMSocialIconActionSheet *iconActionSheet = [_socialController getSocialIconActionSheetInController:self];
+//        iconActionSheet.tag = kTagWithUMSnsAction;
+//        [iconActionSheet showInView:self.view];
     }
     @catch (NSException *exception) {
         UMLog(@"you must set the snsName as a NSString not a NSNumber !");
@@ -206,34 +218,6 @@
     snsPlatform.snsClickHandler(self,_socialController,YES);
 }
 
--(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
-{
-    NSLog(@"response is %@",response);
-    UIAlertView *alertView;
-    [_activityIndicatorView stopAnimating];
-    if (response.responseCode == UMSResponseCodeSuccess) {
-        if (response.responseType == UMSResponseShareToSNS) {
-            if (response.responseCode == UMSResponseCodeSuccess) {
-                alertView = [[UIAlertView alloc] initWithTitle:@"成功" message:@"亲，您刚才调用的是数据级的发送微博接口，如果要获取发送状态需要像demo这样实现回调方法~" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
-                [alertView show];
-                SAFE_ARC_RELEASE(alertView);
-            }
-        }
-        if (response.responseType == UMSResponseShareToMutilSNS) {
-            if (response.responseCode == UMSResponseCodeSuccess) {
-                alertView = [[UIAlertView alloc] initWithTitle:@"成功" message:@"亲，您刚才调用的是发送到多个微博平台的数据级接口，如果要获取发送状态需要像demo这样实现回调方法~" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
-                [alertView show];
-                SAFE_ARC_RELEASE(alertView);
-            }
-        }        
-    }
-    else {
-        alertView = [[UIAlertView alloc] initWithTitle:@"失败" message:@"亲，您刚才调用的发送微博接口发送失败了，具体原因请看到回调方法response对象的responseCode和message~" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
-        [alertView show];
-        SAFE_ARC_RELEASE(alertView);
-    }
-}
-
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     _webView.frame = CGRectMake(0, 0, self.tabBarController.view.bounds.size.height , self.tabBarController.view.bounds.size.width - 90);
@@ -241,8 +225,8 @@
     _shareButton2.frame = CGRectMake(_shareButton2.frame.origin.x, self.tabBarController.view.bounds.size.width - 110, _shareButton2.frame.size.width, 40);
     _shareButton3.frame = CGRectMake(_shareButton3.frame.origin.x, self.tabBarController.view.bounds.size.width - 110, _shareButton3.frame.size.width, 40);
     
-    if ([self.view viewWithTag:kTagWithUMSnsAction]) {
-        UMSocialIconActionSheet *socialIconActionSheet = (UMSocialIconActionSheet *)[self.view viewWithTag:kTagWithUMSnsAction];
+    if ([self.view.window viewWithTag:kTagWithUMSnsAction]) {
+        UMSocialIconActionSheet *socialIconActionSheet = (UMSocialIconActionSheet *)[self.view.window viewWithTag:kTagWithUMSnsAction];
         [socialIconActionSheet setNeedsDisplay];
     }
 }

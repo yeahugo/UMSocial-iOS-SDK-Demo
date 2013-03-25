@@ -17,7 +17,7 @@ typedef enum
     UMAccountSocialLogin,
     UMAccountOauth,
     UMAccountUnOauth,
-    UMAccountAddCustomAccount
+    UMAccountSSO
 }UMAccountAction;
 
 
@@ -28,7 +28,6 @@ typedef enum
     UMSocialUIDelegate
 >
 {
-    UMSocialData *_socialData;
     UMSocialControllerService *_socialUIController;
     UIActivityIndicatorView * _activityIndicatorView;
     UMSocialSnsType _selectOauthType;

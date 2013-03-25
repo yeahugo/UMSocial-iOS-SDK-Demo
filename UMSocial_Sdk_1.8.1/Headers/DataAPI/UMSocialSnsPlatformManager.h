@@ -37,6 +37,8 @@
 @property (nonatomic, readonly) NSArray *socialSnsArray;
 
 
+@property (nonatomic, retain) NSDictionary *allSnsPlatformDictionary;
+
 + (UMSocialSnsPlatformManager *)sharedInstance;
 
 /**

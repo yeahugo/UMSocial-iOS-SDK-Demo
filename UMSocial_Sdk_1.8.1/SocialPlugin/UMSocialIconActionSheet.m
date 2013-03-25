@@ -44,7 +44,7 @@
     CGSize labelSize = CGSizeMake(55, 20);
     float actionSheetHeight = 400;
     
-    float buttomHeight = 125 + [UIApplication sharedApplication].statusBarFrame.size.height;
+    float buttomHeight = 70 + [UIApplication sharedApplication].statusBarFrame.size.height;
     
     int numPerRow = 3;  
   
@@ -52,7 +52,7 @@
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     if (UIInterfaceOrientationIsLandscape(orientation)) {
         fullFrame.size = CGSizeMake(fullFrame.size.height, fullFrame.size.width);
-        buttomHeight = 130 + [UIApplication sharedApplication].statusBarFrame.size.width;
+        buttomHeight = 70 + [UIApplication sharedApplication].statusBarFrame.size.width;
     }
     
     float deltaX = (fullFrame.size.width - 2*startPoint.x)/numPerRow;
@@ -168,7 +168,6 @@
         else{
             snsNamelabel.frame = labelRect;
         }
-        
         UIButton *snsButton = (UIButton *)[self viewWithTag:snsPlatform.shareToType + 100];
         CGRect buttonRect = CGRectMake(startPoint.x + deltaX * (i%numPerRow) + (deltaX-buttonSize.width)/2 + (i/numPerPage) * self.frame.size.width, startPoint.y + ((i%numPerPage)/numPerRow)*deltaY , buttonSize.width, buttonSize.height);
         if (snsButton == nil) {
@@ -210,9 +209,15 @@
 
 -(void)showInView:(UIView *)showView
 {
+    CGRect fullFrame = [[UIScreen mainScreen] bounds];
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    if (UIInterfaceOrientationIsLandscape(orientation)) {
+        fullFrame.size = CGSizeMake(fullFrame.size.height, fullFrame.size.width);
+    }
+    
     if ([self superview] == nil) {
-        [showView addSubview:self];
-        self.center = CGPointMake(showView.frame.size.width/2, showView.frame.size.height + self.frame.size.height/2 );
+        [showView.window addSubview:self];
+        self.center = CGPointMake(fullFrame.size.width/2, fullFrame.size.height + fullFrame.size.height/2 );
         UIView *backgroundView = [[UIView alloc] initWithFrame:self.superview.frame];
         backgroundView.backgroundColor = [UIColor blackColor];
         backgroundView.alpha = 0.8;
@@ -224,21 +229,25 @@
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
-                         self.center = CGPointMake(showView.frame.size.width/2, showView.frame.size.height - self.frame.size.height/2 );
+                         self.center = CGPointMake(fullFrame.size.width/2, fullFrame.size.height - fullFrame.size.height/2 );
                      } completion:^(BOOL finished) {
                      }];
 }
 
 -(void)dismiss
 {
+    CGRect fullFrame = [[UIScreen mainScreen] bounds];
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    if (UIInterfaceOrientationIsLandscape(orientation)) {
+        fullFrame.size = CGSizeMake(fullFrame.size.height, fullFrame.size.width);
+    }
+
     [UIView animateWithDuration:0.3 animations:^{
         [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-        UIView *showView = [[self superview] superview];
-        self.center = CGPointMake(showView.frame.size.width/2, showView.frame.size.height + self.frame.size.height/2);
+        self.center = CGPointMake(fullFrame.size.width/2, fullFrame.size.height + self.frame.size.height/2);
     } completion:^(BOOL finished){
         [self.superview removeFromSuperview];
         self.dismissCompletion();
-//        [self performSelector:@selector(dismissCompletion) withObject:nil afterDelay:1];
     }];
 }
 @end

@@ -60,12 +60,12 @@
     UIColor *_defaultColor;
 }
 
-@property (nonatomic, retain) UIColor *defaultColor;
+@property (nonatomic, assign) UIColor *defaultColor;
 
 /**
  与`UMSocialControllerService`对象对应的`UMSocialData`对象，可以通过该对象设置分享内嵌文字、图片，获取分享数等属性
  */
-@property (nonatomic, readonly) UMSocialData *socialData;
+@property (nonatomic, retain) UMSocialData *socialData;
 
 /**
  用`UMSocialDataService`对象，可以调用发送微博、评论等数据级的方法
@@ -95,6 +95,13 @@
 
 @property (nonatomic, assign) UMSViewControllerType nextViewController;
 
+/**
+ 返回一个以[UMSocialData defaultData]来做初始化参数的`UMSocialControllerService`对象
+ 
+ @return `UMSocialControllerService`的默认初始化对象
+ */
++(UMSocialControllerService *)defaultControllerService;
+
 ///---------------------------------------
 /// @name 初始化方法和设置
 ///---------------------------------------
@@ -114,7 +121,7 @@
  @param delegate 实现了`<UMSocialConfigDelegate>`的对象
  
  */
-+ (void)setSocialConfigDelegate:(id <UMSocialConfigDelegate>)delegate;
+//+ (void)setSocialConfigDelegate:(id <UMSocialConfigDelegate>)delegate;
 
 ///---------------------------------------
 /// @name 获得评论列表、分享列表等UINavigationController

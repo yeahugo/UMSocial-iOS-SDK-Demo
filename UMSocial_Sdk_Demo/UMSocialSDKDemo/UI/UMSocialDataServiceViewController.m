@@ -32,16 +32,20 @@
     _tableView.delegate = self;
     UMSocialShareViewController *shareViewController = [[self.tabBarController viewControllers] objectAtIndex:0];
     UMSocialData *socialData = shareViewController.socialController.socialData;
+
     _socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
-    
+        
     _shareTextView.text = socialData.shareText;
     
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    _activityIndicatorView.center = CGPointMake(160, 200);
+    _activityIndicatorView.center = CGPointMake(160, _textView.frame.origin.y);
     [self.view addSubview:_activityIndicatorView];
     
     self.socialPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
     [self updateOauthDescriptrionLabel];
+        
+    [self.view addSubview:_activityIndicatorView];
+    
     [super viewDidLoad];
 }
 
@@ -54,7 +58,7 @@
     }
     else{
         _oauthDescriptionLabel.textColor = [UIColor redColor];
-        _oauthDescriptionLabel.text = @"此平台没有授权，不能直接用数据接口发送微博，和获取个人账号等操作。请先在个人中心授权。";
+        _oauthDescriptionLabel.text = @"此平台没有授权，不能直接用数据接口发送微博，和获取获取好友数据等操作。请先在个人中心授权。";
     }
 }
 
@@ -74,8 +78,6 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"button index is %d",buttonIndex);
-    
     if (buttonIndex >= actionSheet.numberOfButtons - 1) {
         return;
     }
@@ -89,11 +91,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return 13;
 }
-
-// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -117,7 +116,7 @@
         cell.textLabel.text = @"获取sns账号详细信息";
     }
     if (indexPath.row == 4) {
-        cell.textLabel.text = @"获取朋友账号信息";
+        cell.textLabel.text = @"获取好友数据";
     }
     if (indexPath.row == 5) {
         cell.textLabel.text = @"解除授权";
@@ -136,6 +135,12 @@
     }
     if (indexPath.row == 10) {
         cell.textLabel.text = @"解除登录";
+    }
+    if (indexPath.row == 11) {
+        cell.textLabel.text = @"关注“友盟SDK”新浪微博";
+    }
+    if (indexPath.row == 12) {
+        cell.textLabel.text = @"添加授权账号";
     }
     return cell;
 }
@@ -186,6 +191,14 @@
     }
     else if (indexPath.row == 10) {
         [_socialDataService requestUnBindToSnsWithCompletion:completion];
+    }
+    else if (indexPath.row == 11){
+        //关注新浪微博账号：友盟SDK
+        [_socialDataService requestAddFollow:_socialPlatform.platformName followedUsid:@[@"2937537507"] completion:completion];
+    }
+    else if (indexPath.row == 12){
+        UMSocialCustomAccount *customAccount = [[UMSocialCustomAccount alloc] initWithUserName:@"sinaid"];
+        [UMSocialAccountManager addCustomAccount:customAccount completion:completion];
     }
 }
 

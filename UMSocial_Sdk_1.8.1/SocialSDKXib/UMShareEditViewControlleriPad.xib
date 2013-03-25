@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1536</int>
+		<int key="IBDocument.SystemTarget">1552</int>
 		<string key="IBDocument.SystemVersion">12C60</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
 		<string key="IBDocument.AppKitVersion">1187.34</string>
 		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1930</string>
+			<string key="NS.object.0">2083</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -40,7 +40,7 @@
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUITextView" id="591832945">
 						<reference key="NSNextResponder" ref="881598442"/>
-						<int key="NSvFlags">274</int>
+						<int key="NSvFlags">290</int>
 						<string key="NSFrameSize">{533, 269}</string>
 						<reference key="NSSuperview" ref="881598442"/>
 						<reference key="NSWindow"/>
@@ -92,13 +92,13 @@
 								<string key="NSFrame">{{13, 5}, {55, 37}}</string>
 								<reference key="NSSuperview" ref="897695717"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="334377629"/>
+								<reference key="NSNextKeyView" ref="277165164"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
-								<object class="NSColor" key="IBUIHighlightedTitleColor">
+								<object class="NSColor" key="IBUIHighlightedTitleColor" id="596239935">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
@@ -106,7 +106,7 @@
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
-								<object class="NSColor" key="IBUINormalTitleShadowColor">
+								<object class="NSColor" key="IBUINormalTitleShadowColor" id="281341361">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC41AA</bytes>
 								</object>
@@ -114,11 +114,11 @@
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">UMSocialSDKResources.bundle/UMS_umeng_share_at.png</string>
 								</object>
-								<object class="IBUIFontDescription" key="IBUIFontDescription">
+								<object class="IBUIFontDescription" key="IBUIFontDescription" id="45552088">
 									<int key="type">2</int>
 									<double key="pointSize">15</double>
 								</object>
-								<object class="NSFont" key="IBUIFont">
+								<object class="NSFont" key="IBUIFont" id="49706774">
 									<string key="NSName">Helvetica-Bold</string>
 									<double key="NSSize">15</double>
 									<int key="NSfFlags">16</int>
@@ -130,6 +130,7 @@
 								<string key="NSFrame">{{471, 13}, {42, 21}}</string>
 								<reference key="NSSuperview" ref="897695717"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -155,8 +156,29 @@
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
+							<object class="IBUIButton" id="277165164">
+								<reference key="NSNextResponder" ref="897695717"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{76, 6}, {65, 36}}</string>
+								<reference key="NSSuperview" ref="897695717"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="334377629"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIOpaque">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentVerticalAlignment">0</int>
+								<reference key="IBUIHighlightedTitleColor" ref="596239935"/>
+								<object class="NSColor" key="IBUINormalTitleColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+								</object>
+								<reference key="IBUINormalTitleShadowColor" ref="281341361"/>
+								<reference key="IBUIFontDescription" ref="45552088"/>
+								<reference key="IBUIFont" ref="49706774"/>
+							</object>
 						</array>
-						<string key="NSFrame">{{0, 268}, {533, 47}}</string>
+						<string key="NSFrame">{{0, 248}, {533, 47}}</string>
 						<reference key="NSSuperview" ref="881598442"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="977397581"/>
@@ -171,7 +193,7 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
 				</array>
-				<string key="NSFrameSize">{533, 315}</string>
+				<string key="NSFrameSize">{533, 295}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="591832945"/>
@@ -234,6 +256,14 @@
 					</object>
 					<int key="connectionID">328</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">changeAccountButton</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="277165164"/>
+					</object>
+					<int key="connectionID">503</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -276,6 +306,7 @@
 							<reference ref="977397581"/>
 							<reference ref="69129035"/>
 							<reference ref="334377629"/>
+							<reference ref="277165164"/>
 						</array>
 						<reference key="parent" ref="881598442"/>
 					</object>
@@ -296,6 +327,11 @@
 						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="897695717"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">502</int>
+						<reference key="object" ref="277165164"/>
+						<reference key="parent" ref="897695717"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -309,12 +345,13 @@
 				<string key="206.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="207.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="227.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="502.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">501</int>
+			<int key="maxID">503</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -334,6 +371,7 @@
 					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="atButton">UIButton</string>
+						<string key="changeAccountButton">UIButton</string>
 						<string key="countLabel">UILabel</string>
 						<string key="faceButton">UIButton</string>
 						<string key="textView">UITextView</string>
@@ -343,6 +381,10 @@
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="atButton">
 							<string key="name">atButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="changeAccountButton">
+							<string key="name">changeAccountButton</string>
 							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="countLabel">
@@ -381,6 +423,6 @@
 			<string key="NS.key.0">UMSocialSDKResources.bundle/UMS_umeng_share_at.png</string>
 			<string key="NS.object.0">{16, 16}</string>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">1930</string>
+		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
 </archive>

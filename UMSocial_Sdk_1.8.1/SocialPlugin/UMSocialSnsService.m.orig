@@ -12,17 +12,26 @@
 #import "UMSocialIconActionSheet.h"
 #import "UMSocialSnsPlatformManager.h"
 #import "WXApi.h"
+#import "AppDelegate.h"
 
 #ifdef __IPHONE_6_0
 #import <Social/Social.h>
 #endif
 
-@implementation UMSocialSnsService
 #define SLServiceTypeFacebook @"com.apple.social.facebook"
 #define SLServiceTypeTwitter @"com.apple.social.twitter"
 
+<<<<<<< HEAD
+
+@implementation UMSocialSnsService
+
+@synthesize sinaWeibo = _sinaWeibo;
+@synthesize completion = _completion;
+@synthesize socialControllerService = _socialControllerService;
+=======
 #define UMShareToWechatSession @"wxsession"
 #define UMShareToWechatTimeline @"wxtimeline"
+>>>>>>> refs/heads/develop
 
 -(void)dealloc
 {
@@ -43,6 +52,85 @@
 	}
     
 	return _instance;
+}
+
++(BOOL)handleOpenURL:(NSURL *)url
+{
+    if ([url.description hasPrefix:@"sinaweibosso"]) {
+        return [[UMSocialSnsService sharedInstance].sinaWeibo handleOpenURL:url];
+    }
+    else{
+        return [WXApi handleOpenURL:url delegate:[UMSocialSnsService sharedInstance]];
+    }    
+}
+
++(void)handleOauthWithSnsName:(NSString *)snsName controller:(UIViewController *)controller completion:(void (^)(void))completion
+{
+    [UMSocialSnsService sharedInstance].completion = completion;
+    if ([snsName isEqualToString:UMShareToSina]) {
+        [[UMSocialSnsService sharedInstance].sinaWeibo logIn];
+        [UMSocialSnsService sharedInstance].sinaWeibo.delegate = [UMSocialSnsService sharedInstance];
+    }
+    else{
+        [UMSocialSnsService sharedInstance].socialControllerService.socialUIDelegate = [UMSocialSnsService sharedInstance];
+        UINavigationController *oauthController = [[UMSocialSnsService sharedInstance].socialControllerService getSocialOauthController:[UMSocialSnsPlatformManager getSnsPlatformType:snsName]];
+        [controller presentModalViewController:oauthController animated:YES];
+    }
+}
+
+-(void)willCloseUIViewController:(UMSViewControllerType)fromViewControllerType
+{
+    self.completion();
+}
+
+-(void) onResp:(BaseResp*)resp
+{
+    NSLog(@"req type is %d",resp.type);
+    if([resp isKindOfClass:[SendMessageToWXResp class]])
+    {
+        NSString * message = nil;
+        message = [NSString stringWithFormat:@"%d",resp.errCode];
+        if (resp.errCode == WXSuccess) {
+            message = @"成功";
+        }
+//        else if (resp.errCode == WXErrCodeCommon) {
+//            message = @"其他";
+//        }
+//        else if (resp.errCode == WXErrCodeUserCancel) {
+//            message = @"用户取消";
+//        }
+        else if (resp.errCode == WXErrCodeSentFail) {
+            message = @"发送失败";
+        }
+        else if (resp.errCode == WXErrCodeAuthDeny)
+        {
+            message = @"授权失败";
+        }
+        else if (resp.errCode == WXErrCodeUnsupport){
+            message = @"不支持";
+        }
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"微信分享结果" message:message delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+        [alertView show];
+    }
+}
+
+
+-(id)init
+{
+    if (self = [super init]) {
+        _sinaWeibo = [[SinaWeibo alloc] initWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:kAppRedirectURI andDelegate:self];
+        _sinaWeibo.delegate = self;
+        _socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+    }
+    return self;
+}
+
+- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
+{
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"success" message:sinaweibo.userID delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+//    [alertView show];
+    self.completion();
+    UMLog(@"uid is %@ token is %@",sinaweibo.userID,sinaweibo.accessToken);
 }
 
 +(void)presentSnsController:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage shareToSnsNames:(NSArray *)snsNames delegate:(id <UMSocialUIDelegate>)delegate

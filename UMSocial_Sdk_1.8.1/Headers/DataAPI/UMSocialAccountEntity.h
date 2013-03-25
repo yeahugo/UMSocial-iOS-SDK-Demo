@@ -20,7 +20,6 @@
     NSString *_iconURL;
     NSString *_accessToken;
     NSString *_profileURL;
-//    UMSocialSnsType _shareToType;
     BOOL     _isFirstOauth;
 }
 

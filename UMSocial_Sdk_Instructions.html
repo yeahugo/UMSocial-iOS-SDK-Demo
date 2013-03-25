@@ -301,6 +301,8 @@ pre {
 
 <p> <font color="red">重要通知：原“SNS分享组件”已全面升级，并更名为“友盟社会化组件”。除原有功能外，新组件还支持分享至QQ空间、豆瓣、微信等新功能，并新增了“登录”、“评论”、“喜欢”等社会化功能。</font></p>
 
+<p><font color="red">注意：线上集成文档的示例代码对应的是最新版本的SDK，如果你所用的SDK版本类名或者方法名与此文档不符合，请看随包里面的线下文档或者下载使用最新版本的SDK。</font></p>
+
 <h3><a href="#product_guide" style="text-decoration:none">1. 产品概述</a></h3>
 
 <h3><a href="#quick_guide" style="text-decoration:none">2. 快速集成指南</a></h3>
@@ -409,7 +411,7 @@ pre {
 </tr>
 <tr>
 <td>shareImage</td>
-<td>分享编辑页面的内嵌图片，用户可以删除</td>
+<td>分享编辑页面的内嵌图片，用户可以在编辑页面中删除。如果你不需要分享图片，可以传入<code>nil</code></td>
 </tr>
 <tr>
 <td>snsNames</td>
@@ -460,7 +462,18 @@ pre {
 
 <h4>2 用户中心（界面级接口）</h4>
 
-<p>个人中心页面，个人中心页面，上面是绑定一个微博账号作为SDK的登录账号，简称为登录账号，下面是各个已经授权的微博账号，包括我们支持的所有平台，可以对各个平台进行授权和解除授权。</p>
+<p><strong>授权信息页面</strong>，显示各个微博平台的授权情况。用户可以新增、更改、删除授权账号。</p>
+
+<p><img src="http://dev.umeng.com/images/ios/socical_user_oauth.png" title="socical_user_oauth" alt="socialbar" /></p>
+
+<p>实现代码是</p>
+
+<pre><code>UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+UINavigationController *accountViewController =[socialControllerService getSnsAccountController];
+[self presentModalViewController:accountViewController animated:YES];
+</code></pre>
+
+<p><strong>个人中心页面</strong>，上面是绑定一个微博账号作为SDK的登录账号，简称为登录账号，下面是各个已经授权的微博账号，包括我们支持的所有平台，可以对各个平台进行授权和解除授权。登录账号和授权账号的关系可以看FAQ。</p>
 
 <p><img src="http://dev.umeng.com/images/ios/social_user_account.png" title="socical_user_account" alt="socialbar" /></p>
 
@@ -473,25 +486,22 @@ UINavigationController *accountViewController =[socialControllerService getSocia
 
 <h4>3 获取用户微博账号信息（数据级的接口）</h4>
 
-<p>获取用户微博基本信息的接口</p>
+<p>获取用户微博基本信息的接口,用户的微博信息在回调的Block对象的形参<code>response</code>中的<code>data</code>属性，包括性别、头像、页面url、用户名、用户id。示例代码如下：</p>
 
-<pre><code>//如上对socialControllerService进行初始化
-[socialControllerService.socialDataService requestSocialAccount];
+<pre><code>UMSocialDataService * socialDataService = [UMSocialDataService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+[socialDataService requestSocialAccountWithCompletion:^(UMSocialResponseEntity *response){
+    NSLog(@"user account is %@",response.data);
+    }];
 </code></pre>
-
-<p>并设置实现回调函数的对象</p>
-
-<pre><code>[socialControllerService.socialDataService setUMSocialDelegate:self];
-</code></pre>
-
-<p>在<code>-(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
-</code>方法内的<code>response</code>对象的<code>data</code>属性可以获取到各个授权的微博账号的基本信息，包括性别、头像、页面url、用户名、用户id。</p>
-
-<p><strong>注意</strong> 如果你在一个视图设置了<code>setUMSocialDelegate</code>为self，在离开此视图的时候要用<code>setUMSocialDelegate</code>设置为nil，否则会出现离开视图被释放找不到delegate的情况。</p>
 
 <p>如果想获取本地缓存的用户信息，可以直接用<code>UMSocialData</code>的<code>socialAccount</code>属性，它是一个<code>NSDictionary</code>对象。键为各个微博平台名称，我们把他们定义好为常量字符串<code>UMShareToSina</code>、<code>UMShareToTencent</code>……值为<code>UMSocialAccountEntity</code>对象。</p>
 
-<p>如果想获取各个微博账号详细的信息，可以调用<code>UMSocialDataService</code>的<code>- (void)requestSnsInfomation:(UMShareToType)shareToType;</code>方法。同样在回调方法来得到用户微博数据。</p>
+<p>如果想获取各个微博账号详细的信息，可以调用<code>UMSocialDataService</code>这个方法：</p>
+
+<pre><code>- (void)requestSnsInformation:(NSString *)platformType completion:(UMSocialDataServiceCompletion)completion;
+</code></pre>
+
+<p>同样在回调对象来得到用户微博数据。</p>
 
 <h4>4 授权页面（界面级接口）</h4>
 
@@ -499,10 +509,10 @@ UINavigationController *accountViewController =[socialControllerService getSocia
 
 <p><img src="http://dev.umeng.com/images/ios/social_oauth.png" title="socical_oauth" alt="socialbar" /></p>
 
-<p>实现代码是</p>
+<p>例如下面授权到新浪微博的实现代码是</p>
 
-<pre><code>//如上对socialControllerService进行初始化
-UINavigationController *oauthController = [socialControllerService getSocialOauthController:shareToType];
+<pre><code>UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+UINavigationController *oauthController = [socialControllerService getSocialOauthController:UMShareToSina];
 [self presentModalViewController:oauthController animated:YES];
 </code></pre>
 
@@ -521,41 +531,46 @@ UINavigationController *oauthController = [socialControllerService getSocialOaut
 
 <h4>5 其他用户操作 （数据级接口）</h4>
 
-<p>实现解除授权</p>
+<p>实现解除授权,如果想获取解除授权结果同样在completion的回调对象中的形参<code>response</code>中得到。下面是解除绑定新浪微博的代码：</p>
 
-<pre><code>//如上对socialControllerService进行初始化
-[socialControllerService.socialDataService requestUnOauthWithType:shareToType];
+<pre><code>UMSocialDataService * socialDataService = [UMSocialDataService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+[socialDataService requestUnOauthWithType:UMShareToSina  completion:^(UMSocialResponseEntity *response){
+            NSLog(@"response is %@",response);
+        }];
 </code></pre>
 
-<p>实现绑定一个登录账号，此登录账号为sdk内用户评论时使用的昵称和头像。如果要绑定的平台一定为已经授权的微博平台，否则无法正常绑定</p>
+<p>实现绑定一个登录账号，此登录账号为sdk内用户评论时使用的昵称和头像。如果要绑定的平台一定为已经授权的微博平台，否则无法正常绑定。如果想获取绑定的结果同样在completion的回调对象中的形参<code>response</code>中得到。下面是绑定新浪微博的代码：</p>
 
-<pre><code>//如上对socialControllerService进行初始化
-[socialControllerService.socialDataService requestBindToSnsWithType:shareToType];
+<pre><code>UMSocialDataService * socialDataService = [UMSocialDataService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+[socialDataService requestBindToSnsWithType:UMShareToSina completion:nil];
 </code></pre>
 
-<p>实现解除绑定此登陆
-账号</p>
+<p>实现解除绑定此登陆账号。如果想获取解除绑定的结果同样在completion的回调对象中的形参<code>response</code>中得到。下面是解除授权新浪微博账号的代码：</p>
 
-<pre><code>//如上对socialControllerService进行初始化
-[socialControllerService.socialDataService requestUnOauthWithType:shareToType];
+<pre><code>UMSocialDataService * socialDataService = [UMSocialDataService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+ [socialDataService requestUnOauthWithType:UMShareToSina completion:nil];
 </code></pre>
 
-<p>获取用户微博账号详细信息，包括各平台的uid和accestoken，各个平台不一样，腾讯微博有openid</p>
+<p>获取用户微博账号详细信息，包括各平台的uid和accestoken，各个平台不一样，腾讯微博有openid。得到的数据在回调Block对象形参respone的data属性。</p>
 
-<pre><code>//如上对socialControllerService进行初始化
-[socialControllerService.socialDataService requestSnsInfomation:shareToType];
+<pre><code>UMSocialDataService * socialDataService = [UMSocialDataService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+[socialDataService requestSnsInformation:UMShareToTencent  completion:^(UMSocialResponseEntity *response){
+            NSLog(@"SnsInformation is %@",response.data);
+        }];
 </code></pre>
 
-<p>获取用户好友列表，支持新浪微博、腾讯微博、人人网</p>
+<p>获取用户好友列表，支持新浪微博、腾讯微博、人人网。得到的数据在回调Block对象形参<code>respone</code>的<code>data</code>属性。</p>
 
-<pre><code>//如上对socialControllerService进行初始化
-[socialControllerService.socialDataService requestSnsFriends:shareToType];
+<pre><code>UMSocialDataService * socialDataService = [UMSocialDataService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+[socialDataService requestSnsFriends:UMShareToTencent  completion:^(UMSocialResponseEntity *response){
+            NSLog(@"SnsFriends is %@",response.data);
+        }];
 </code></pre>
 
 <p>添加关注，支持新浪微博、腾讯微博，可以同时传多个关注微博账号</p>
 
-<pre><code>//如上对socialControllerService进行初始化
-[socialControllerService requestAddFollow:shareToType followedUsid:[NSArray arrayWithObjects:@"1920318374", nil]];
+<pre><code>UMSocialDataService * socialDataService = [UMSocialDataService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+[socialControllerService requestAddFollow:UMShareToSina followedUsid:@[@"2937537507"] completion:nil];
 </code></pre>
 
 <h3>3.3 <a name="social_share" id="social_share" style="color:black">分享</a></h3>
@@ -568,8 +583,7 @@ UINavigationController *oauthController = [socialControllerService getSocialOaut
 
 <p>实现代码是</p>
 
-<pre><code>UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test"];
-UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+<pre><code>UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:[UMSocialData defaultData]];
 UINavigationController *shareListController = [socialControllerService getSocialShareListController];
 [self presentModalViewController:shareListController animated:YES];
 </code></pre>
@@ -578,9 +592,12 @@ UINavigationController *shareListController = [socialControllerService getSocial
 <code>
 socialData.shareText = @"分享内嵌文字";
 socialData.image = [UIImage imageNamed:@"icon.png"];
-</code></p>
+</code>
+如果你想分享url资源，支持url定义的图片、视频、音乐。下面是分享一个音乐的url页面，也可以指定音乐文件url。如果设置了内嵌图片就不能设置url资源，同理设置了url资源就不能设置内嵌图片。</p>
 
-<blockquote><p><strong>注意</strong>:如上面截图所示表格的最后一个单元格，的微信分享不是SDK提供的分享功能，不过利用SDK提供了一个<code>&lt;UMSocialUIDelegate&gt;</code>的协议，并用此方法<code>- (void)setUMSocialUIDelegate:(id &lt;UMSocialUIDelegate&gt;)soicalUIDelegate;</code>设置实现了此协议的对象。其中实现<code>-(UITableViewCell *)customCellForShareListTableView;</code>方法可以自定义如图所示的效果，实现<code>-(void)didSelectShareListTableViewCell;</code>方法是点击此单元格的操作。如果要实现微信的分享，可以参见我们的demo。</p></blockquote>
+<pre><code>UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeMusic url:@"http://www.xiami.com/song/2100097"];
+socialData.urlResource = urlResource;
+</code></pre>
 
 <p>分享微博编辑页面</p>
 
@@ -607,39 +624,22 @@ UINavigationController *shareEditController = [socialControllerService getSocial
 
 <h4>2 数据级接口</h4>
 
-<p>直接发送微博到对应的微博平台</p>
+<p>直接发送微博到对应的微博平台,支持一次分享到多平台，可以传入文字、图片、地理位置、url资源。如果不需要图片、地理位置和url资源都可以指定为nil。如果想得到分享结果，可以在回调Block对象形参response得到。</p>
 
-<pre><code>//如上对socialControllerService进行初始化
-[socialControllerService.socialDataService postSNSWithType:shareToType usid:nil content:@"shareContent" image:nil location:nil];
+<pre><code>UMSocialDataService * socialDataService = [UMSocialDataService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+[socialDataService postSNSWithTypes:@[UMShareToSina] content:@"分享内嵌文字" image:nil location:nil urlResource:nil completion:^(UMSocialResponseEntity *response){
+            NSLog(@"SnsFriends is %@",response.data);
+        }];
 </code></pre>
 
-<p>其中<code>usid</code>为分享用的相应的微博平台的id号，如果不传的话而此微博平台使用了sdk来进行授权过的话，会自动用授权后的usid进行发送，如果传过来会优先用此usid号。<code>image</code>为分享的图片，<code>location</code>为分享地理位置对象。这三个参数可以为空。</p>
+<p>可以获取缓存在本地的分享数</p>
 
-<p>同获取微博账号数据一样，如果要得到发送微博完成的事件，要实现<code>&lt;UMSocialDataDelegate&gt;</code>的<code>-(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
-</code>方法。你需要判断回调类型<code>responseTye</code>是否是分享的回调，如果要判断微博分享成功与否，要对<code>response</code>里面<code>responseCode</code>作判断，如果你需要知道错误具体原因可以查看<code>response</code>的<code>message</code>信息。<code>responseCode</code>、<code>responseType</code>类型见头文件和API文档。</p>
-
-<p>同时发送到多个微博平台,传入各个平台类型和分享到的用户uid，如果使用我们sdk授权过的平台也可以不传uid</p>
-
-<pre><code>[socialControllerService.socialDataService postSNSWithType:allSnsArray usids:nil  content:shareContent image:image location:location];
+<pre><code>[[UMSocialData defaultData] getNumber:UMSNumberShare];
 </code></pre>
 
-<p>获取分享数</p>
+<h4>3 处理分享错误</h4>
 
-<pre><code>//如上对socialControllerService进行初始化
-[socialControllerService.socialDataService.socialData requestSocialData];
-</code></pre>
-
-<p>同样在回调方法中可以<code>response</code>对象的类型是<code>NSDictioanry</code>的<code>data</code>属性中，其中键为<code>sn</code>的代表分享数。</p>
-
-<p>你也可以获取缓存在本地的分享数</p>
-
-<pre><code>[socialControllerService.socialDataService.socialData getNumber:UMSNumberShare];
-</code></pre>
-
-<h4>3 分享常见错误</h4>
-
-<p>在回调方法<code>-(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
-</code>中的<code>response</code>中的<code>responseCode</code>和<code>message</code>可以得到返回状态码，和错误消息。</p>
+<p>在回调对象形参中<code>response</code>中的<code>responseCode</code>和<code>message</code>可以得到返回状态码，和错误消息。</p>
 
 <p>注意如果<code>responseCode</code>为<code>5027</code>的话，<code>message</code>是<code>Sina access token expired, please do oauth(rebind account) again</code>,表示授权过期，需要重新打开授权页面进行授权。</p>
 
@@ -647,7 +647,7 @@ UINavigationController *shareEditController = [socialControllerService getSocial
 
 <h4>1 界面级接口</h4>
 
-<p>用到评论的界面级功能，需要使用<code>UMSocialCommentLibrary.a</code>,对应的头文件是<code>UMSocialControllerServiceComment.h</code>。</p>
+<p>用到评论的界面级功能，需要使用<code>UMSocial_Sdk_Comment_x.x.x.a</code>,对应的头文件是<code>UMSocialControllerServiceComment.h</code>。</p>
 
 <p>评论列表</p>
 
@@ -666,64 +666,51 @@ socialControllerComment.socilaData.commentImage = [UIImage imageNamed:@"icon.png
 
 <h4>2 数据级接口</h4>
 
-<p>评论的数据级接口不需要<code>UMSocialCommentLibrary.a</code>。获取最近的评论数据：</p>
+<p>评论的数据级接口不需要<code>UMSocial_Sdk_Comment_x.x.x.a</code>。获取最近的评论数据，<code>lastCommentTime</code>传入<code>-1</code>。如果评论数据比较多，想获取之前的评论，可以在<code>lastCommentTime</code>中传入指定时间戳。传入评论数据在回调Block对象形参response里的属性<code>data</code>中得到：</p>
 
-<pre><code>//如上对socialControllerService进行初始化
-[socialControllerService.socialDataService requestCommentList:(-1)];
+<pre><code>UMSocialDataService * socialDataService = [UMSocialDataService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+[socialDataService requestCommentList:(-1) completion:^(UMSocialResponseEntity *response){
+            NSLog(@"comment data is %@",response.data);
+        }];
 </code></pre>
 
-<p>如果评论数据比较多，想获取之前的评论，可以在<code>- (void)requestCommentList:(long long)lastCommentTime;</code>中传入指定时间戳之前的评论，具体每条评论的时间戳可以在回调方法<code>-(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
-</code>中的<code>response</code>中得到。</p>
+<p>添加一条文本评论,可以在</p>
 
-<p>添加一条文本评论</p>
-
-<pre><code>//如上对socialControllerService进行初始化
-[socialControllerService.socialDataService postCommentWithContent:@“comment content”];
+<pre><code>UMSocialDataService * socialDataService = [UMSocialDataService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+[socialDataService postCommentWithContent:@"comment text" completion:^(UMSocialResponseEntity *response){
+   NSLog(@"comment result is %@",response);
+        }];
 </code></pre>
 
 <p>添加一条评论，并添加地理位置信息，或者分享到微博平台，可以带有图片</p>
 
 <pre><code>//如上对socialControllerService进行初始化
 NSDictionary *shareToSNS = [NSDictionary dictionaryWithObjectsAndKeys:@"weiboid",@"sina",nil];
-[socialControllerService.socialDataService postCommentWithContent:@"comment content" location:location shareToSNSWithUsid:shareToSNS];
+[socialDataService postCommentWithContent:@"comment content" location:location shareToSNSWithUsid:shareToSNS completion:^(UMSocialResponseEntity *response){
+    NSLog(@"comment result is %@",response);
+        }];
 </code></pre>
 
-<p>获取评论数</p>
+<p>获取保存在本地的评论数</p>
 
-<pre><code>//如上对socialControllerService进行初始化
-[socialControllerService.socialDataService.socialData requestSocialData];
-</code></pre>
-
-<p>同样在回调方法中可以<code>response</code>对象的类型是<code>NSDictioanry</code>的<code>data</code>属性中，其中键为<code>cm</code>的代表分享数。</p>
-
-<p>你也可以获取缓存在本地的评论数</p>
-
-<pre><code>[socialControllerService.socialDataService.socialData getNumber:UMSNumberComment]
+<pre><code>[socialDataService.socialData getNumber:UMSNumberComment]
 </code></pre>
 
 <h3>3.5 <a name="social_like" id="social_like" style="color:black">喜欢</a></h3>
 
 <h4>1.不带界面的接口</h4>
 
-<p>发送一个喜欢的请求，或者如果已经喜欢过的话，发送取消喜欢的请求</p>
+<p>发送一个喜欢的请求，或者如果已经喜欢过的话，发送取消喜欢的请求。如果要获取发送结果状态，同样在回调Block对象的形参response。</p>
 
-<pre><code>//如上对socialControllerService进行初始化
-[socialControllerService.socialDataService postAddLikeOrCancel];
+<pre><code>UMSocialDataService * socialDataService = [UMSocialDataService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+[socialDataService postAddLikeOrCancelWithCompletion:^(UMSocialResponseEntity *response){
+    NSLog(@"resposne is %@",response);
+        }];
 </code></pre>
 
-<p>同样发送喜欢之后的回调函数实现和其他操作一样，实现<code>-(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response</code>方法并根据<code>response</code>的<code>responseCode</code>和<code>responseType</code>判断回调结果和回调类型</p>
+<p>获取缓存在本地的评论数</p>
 
-<p>获取喜欢数</p>
-
-<pre><code>//如上对socialControllerService进行初始化
-[socialControllerService.socialDataService.socialData requestSocialData];
-</code></pre>
-
-<p>同样在回调方法中可以<code>response</code>对象的类型是<code>NSDictioanry</code>的<code>data</code>属性中，其中键为<code>lk</code>的代表分享数。</p>
-
-<p>你也可以获取缓存在本地的评论数</p>
-
-<pre><code>[socialControllerService.socialDataService.socialData getNumber:UMSNumberLike]
+<pre><code>[socialDataService.socialData getNumber:UMSNumberLike]
 </code></pre>
 
 <h2><a name="FAQ" id="FAQ" style="color:black">4. FAQ</a></h2>

@@ -68,7 +68,8 @@ typedef enum {
     UMSResponseCodeShareRepeated      = 5016,
     UMSResponseCodeGetNoUidFromOauth  = 5020,
     UMSResponseCodeAccessTokenExpired = 5027,
-    UMSResponseCodeNetworkError       = 5050
+    UMSResponseCodeNetworkError       = 5050,
+    UMSResponseCodeGetProfileFailed   = 5051
 } UMSResponseCode;
 
 /**

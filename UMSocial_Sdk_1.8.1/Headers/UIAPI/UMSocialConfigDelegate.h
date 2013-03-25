@@ -106,4 +106,10 @@ typedef enum {
  */
 - (NSUInteger)supportedInterfaceOrientationsForUMSocialSDK;
 
+/**
+ 设置sdk在iPad上的rect.
+ 
+ @return 所有界面在iPad上的frame大小
+ */
+-(CGSize)boundSizeForiPad;
 @end

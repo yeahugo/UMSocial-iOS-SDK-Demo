@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "UMSocialEnum.h"
+#import "UMSocialAccountEntity.h"
+#import "UMSocialDataService.h"
 
 extern NSString *const UMSCustomAccountGenderMale;
 
@@ -25,6 +27,7 @@ extern NSString *const UMSCustomAccountGenderFeMale;
     NSString *_profileUrl;
     NSString *_iconUrl;
     NSDictionary *_customData;
+    NSString *_platformName;
 }
 
 @property (nonatomic, copy) NSString *userName;
@@ -34,6 +37,7 @@ extern NSString *const UMSCustomAccountGenderFeMale;
 @property (nonatomic, copy) NSString *profileUrl;
 @property (nonatomic, copy) NSString *iconUrl;
 @property (nonatomic, retain) NSDictionary *customData;
+@property (nonatomic, copy) NSString *platformName;
 
 -(id)initWithUserName:(NSString *)userName;
 
@@ -44,13 +48,24 @@ extern NSString *const UMSCustomAccountGenderFeMale;
  */
 @interface UMSocialAccountManager : NSObject
 
++(NSDictionary *)socialAccountDictionary;
+
 /**
  添加自有账号到友盟的账号体系，一般是用户在使用自有账号登录之后，再利用此方法上传账号，然后利用我们评论和个人中心的接口就会显示自有账号的昵称和头像等信息
  
  @param customAccount 自有账号对象
-
+ @param completion 回调Block对象
+ 
  */
-+(void)addCustomAccount:(UMSocialCustomAccount *)customAccount;
++(void)addCustomAccount:(UMSocialCustomAccount *)customAccount completion:(UMSocialDataServiceCompletion)completion;
+/**
+ 设置sns账号信息
+ 
+ @param customAccount 自有账号对象
+ 
+ */
++(void)setSnsAccount:(UMSocialAccountEntity *)snsAccount;
+
 
 /**
  判断是否登录，此登录包括以游客身份登录，如果已经登录评论编辑页面点击发送就不会提示登录。

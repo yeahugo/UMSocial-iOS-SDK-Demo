@@ -31,10 +31,10 @@
 @implementation UMSocialShareViewController
 
 @synthesize postsArray = _postsArray;
+@synthesize socialController = _socialController;
 
 -(void)dealloc
 {
-    [_socialController.socialDataService setUMSocialDelegate:nil];
     SAFE_ARC_RELEASE(_socialController);
     SAFE_ARC_RELEASE(_postsArray);
     SAFE_ARC_RELEASE(_locationManager);
@@ -51,14 +51,25 @@
 
     UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
 //  下面发送视频到微博，可以发送url的视频、音乐和图片
+    /*
     UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:
                                         UMSocialUrlResourceTypeMusic url:@"http://www.xiami.com/song/2100097"];
     socialData.urlResource = urlResource;
     SAFE_ARC_RELEASE(urlResource);
+    */
     
     _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+<<<<<<< HEAD
+//    _socialController.socialUIDelegate = self;
+    SAFE_ARC_RELEASE(socialData);
+    _shareTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 190, 320, 220)];
+    _shareTableView.dataSource = self;
+    _shareTableView.delegate = self;
+    [self.view addSubview:_shareTableView];
+=======
     _socialController.socialUIDelegate = self;
     SAFE_ARC_RELEASE(socialData); 
+>>>>>>> refs/heads/develop
 
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [_activityIndicatorView startAnimating];
@@ -151,13 +162,8 @@
 
 -(void)presentShareList
 {
-<<<<<<< HEAD
-    [UMSocialSnsService presentSnsController:self appKey:nil shareText:_socialController.socialData.shareText shareImage:_socialController.socialData.shareImage shareToSnsNames:@[UMShareToTencent,UMShareToRenren] delegate:nil];
-=======
-    [UMSocialSnsService presentSnsController:self appKey:nil shareText:_socialController.socialData.shareText shareImage:nil shareToSnsNames:nil delegate:nil];
->>>>>>> refs/heads/develop
-//    UINavigationController *shareNavigationController = [_socialController getSocialShareListController];
-//    [self presentModalViewController:shareNavigationController animated:YES];
+    UINavigationController *shareNavigationController = [_socialController getSocialShareListController];
+    [self presentModalViewController:shareNavigationController animated:YES];
 }
 
 -(void)showSnsActionSheet
@@ -165,8 +171,13 @@
     @try {
         UMSocialIconActionSheet *iconActionSheet = [_socialController getSocialIconActionSheetInController:self];
         iconActionSheet.tag = kTagWithUMSnsAction;
+        
+        UIViewController *rootViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
+        [iconActionSheet showInView:rootViewController.view];
 
-        [iconActionSheet showInView:self.view];
+//        UMSocialIconActionSheet *iconActionSheet = [_socialController getSocialIconActionSheetInController:self];
+//        iconActionSheet.tag = kTagWithUMSnsAction;
+//        [iconActionSheet showInView:self.view];
     }
     @catch (NSException *exception) {
         UMLog(@"you must set the snsName as a NSString not a NSNumber !");
@@ -196,11 +207,6 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -251,8 +257,8 @@
     _shareButton2.frame = CGRectMake(_shareButton2.frame.origin.x, self.tabBarController.view.bounds.size.width - 110, _shareButton2.frame.size.width, 40);
     _shareButton3.frame = CGRectMake(_shareButton3.frame.origin.x, self.tabBarController.view.bounds.size.width - 110, _shareButton3.frame.size.width, 40);
     
-    if ([self.view viewWithTag:kTagWithUMSnsAction]) {
-        UMSocialIconActionSheet *socialIconActionSheet = (UMSocialIconActionSheet *)[self.view viewWithTag:kTagWithUMSnsAction];
+    if ([self.view.window viewWithTag:kTagWithUMSnsAction]) {
+        UMSocialIconActionSheet *socialIconActionSheet = (UMSocialIconActionSheet *)[self.view.window viewWithTag:kTagWithUMSnsAction];
         [socialIconActionSheet setNeedsDisplay];
     }
 }

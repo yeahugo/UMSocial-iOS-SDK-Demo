@@ -9,6 +9,7 @@
 #import "UMSocialConfigViewController.h"
 #import "UMSocialMacroDefine.h"
 #import "UMSocialSnsPlatformManager.h"
+#import "UMSocialConfig.h"
 
 @interface UMSocialConfigViewController ()
 
@@ -31,6 +32,11 @@
     self = [super initWithStyle:style];
     if (self) {
         self.supportOrientationMask = UIInterfaceOrientationMaskAllButUpsideDown;
+        [UMSocialConfig setSupportedInterfaceOrientations:self.supportOrientationMask];
+        //设置关注的官方微博，可以设置新浪微博和腾讯微博，将会出现在授权页面下面“关注官方微博”的小勾
+        [UMSocialConfig setFollowWeiboUids:[NSDictionary dictionaryWithObjectsAndKeys:@"2937537507",UMShareToSina,nil]];
+        //设置异步分享
+//        [UMSocialConfig setShouldShareSynchronous:NO];
         _shareToPlatforms = [[NSMutableArray alloc] initWithObjects:[NSMutableArray  arrayWithObjects:UMShareToQzone,UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToDouban,nil],[NSMutableArray arrayWithObjects:UMShareToEmail,UMShareToSms,UMShareToWechat,UMShareToFacebook,UMShareToTwitter,nil],nil];
         _shareToPlatformsValues = [[NSArray alloc] initWithObjects:UMShareToQzone,UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToDouban,UMShareToEmail,UMShareToSms,UMShareToWechat,UMShareToFacebook,UMShareToTwitter, nil];
 #ifdef __IPHONE_6_0
@@ -38,7 +44,7 @@
 #else
             _shareToPlatformDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:UMShareToQzone,UMShareToQzone,UMShareToSina,UMShareToSina,UMShareToTencent,UMShareToTencent,UMShareToRenren,UMShareToRenren,UMShareToDouban,UMShareToDouban,UMShareToWechat,UMShareToWechat,UMShareToEmail,UMShareToEmail,UMShareToSms,UMShareToSms, nil];
 #endif
-        [UMSocialControllerService setSocialConfigDelegate:self];
+//        [UMSocialControllerService setSocialConfigDelegate:self];
     }
     return self;
 }
@@ -49,52 +55,6 @@
 }
 
 #pragma mark - UMSocialConfigDelegate
-
-/*设置支持的屏幕方向，iPhone设备默认只支持UIInterfaceOrientationPortrait，iPad设备默认支持4个方向
- */
-- (NSUInteger)supportedInterfaceOrientationsForUMSocialSDK
-{
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 60000
-    return _supportOrientationMask;
-#else
-    return 1 << UIInterfaceOrientationPortrait | 1 << UIInterfaceOrientationLandscapeLeft | 1 << UIInterfaceOrientationLandscapeRight;
-#endif
-}
-
-
-//- (UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName
-//{
-//    UMSocialSnsPlatform *customSnsPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:snsName];
-//    SAFE_ARC_AUTORELEASE(customSnsPlatform);
-//    if ([snsName isEqualToString:@"copy"]) {
-//        customSnsPlatform.bigImageName = @"icon.png";
-//        customSnsPlatform.smallImageName = @"icon.png";
-//        customSnsPlatform.displayName = @"复制文本";
-//        customSnsPlatform.loginName = @"复制文本";
-//        customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
-//            NSLog(@"点击复制文本");
-//        };
-//    }
-//    return customSnsPlatform;
-//}
-
-
-
-/*设置分享编辑页面是否等待完成之后再关闭页面还是立即关闭，如果设置成YES，就是等待分享完成之后再关闭，否则立即关闭。默认等待分享完成之后再关闭。
- */
--(BOOL)shouldShareSynchronous
-{
-    return YES;
-}
-
-/*设置出现的sns平台
- 如果你自己设置可以参照下面的写法
-*/
-//- (NSArray *)shareToPlatforms
-//{
-//    NSArray *shareToArray = @[@[@"copy",UMShareToWechat,UMShareToWechat,UMShareToWechat,UMShareToWechat,UMShareToWechat,UMShareToSina,UMShareToQzone,UMShareToTencent,UMShareToTencent,UMShareToDouban,UMShareToRenren],@[UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter]];
-//    return shareToArray;
-//}
 - (NSArray *)shareToPlatforms
 {
     NSMutableArray *shareToPlatforms = [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithArray:[_shareToPlatforms objectAtIndex:0]],[NSMutableArray arrayWithArray:[_shareToPlatforms objectAtIndex:1]],nil];
@@ -110,19 +70,11 @@
     return shareToPlatforms;
 }
 
-//设置关注的官方微博，可以设置新浪微博和腾讯微博，将会出现在授权页面下面“关注官方微博”的小勾
-//-(NSDictionary *)followSnsUids
-//{
-//    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"2937537507",UMShareToSina,nil];
-//    return dictionary;
-//}
+-(CGSize)boundSizeForiPad
+{
+    return CGSizeMake(500, 300);
+}
 
-/*设置所有页面的背景颜色
- */
-//-(UIColor *)defaultColor
-//{
-//    return [UIColor blueColor];
-//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -324,17 +276,18 @@
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            _supportOrientationMask = UIInterfaceOrientationMaskPortrait;
+            self.supportOrientationMask = UIInterfaceOrientationMaskPortrait;
         }
         else if (indexPath.row == 1){
-            _supportOrientationMask = UIInterfaceOrientationMaskAllButUpsideDown;
+            self.supportOrientationMask = UIInterfaceOrientationMaskAllButUpsideDown;
         }
         else if (indexPath.row == 2){
-            _supportOrientationMask = UIInterfaceOrientationMaskLandscape;
+            self.supportOrientationMask = UIInterfaceOrientationMaskLandscape;
         }
         else if (indexPath.row == 3){
-            _supportOrientationMask = UIInterfaceOrientationMaskAll;
-        }        
+            self.supportOrientationMask = UIInterfaceOrientationMaskAll;
+        }
+        [UMSocialConfig setSupportedInterfaceOrientations:self.supportOrientationMask];
     }
     else if (indexPath.section == 1){
         BOOL isSelect = cellView.selected;
@@ -345,6 +298,7 @@
         else{
             [_shareToPlatformDic removeObjectForKey:snsName];
         }
+        [UMSocialConfig setSnsPlatformNames:[self shareToPlatforms]];
     }
 }
 

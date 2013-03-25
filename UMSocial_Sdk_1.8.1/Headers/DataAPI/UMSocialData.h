@@ -12,6 +12,49 @@
 #import "UMSocialDataDelegate.h"
 
 typedef enum{
+    UMSocialWXMessageTypeText,
+    UMSocialWXMessageTypeImage,
+    UMSocialWXMessageTypeApp
+}UMSocialWXMessageType;
+
+/**
+ 分享到各个平台的扩展设置
+ */
+@interface UMSocialExtConfig : NSObject
+{
+    NSString *_appUrl;
+    NSString *_title;
+    NSString *_thumbUrl;
+    UMSocialWXMessageType _wxMessageType;
+}
+
+/**
+ 用于分享到微信用的，url地址。分享给微信好友如果对方装有app的话可以直接跳转，没有的话跳转到此url
+ 
+ */
+@property (nonatomic, copy) NSString *appUrl;
+
+/**
+ 标题，用于指定微信分享标题，qzone分享的标题和邮件分享的标题。
+ 
+ */
+@property (nonatomic, copy) NSString *title;
+
+/**
+ 缩略图的url，用于指定qzone分享，如果有分享视频的话可以指定一张视频的缩略图
+ 
+ */
+@property (nonatomic, copy) NSString *thumbUrl;
+
+/**
+ 分享到微信的消息类型，分别有文字类型，图片类型，app类型（文字和图片都有，点击可以返回app或者到指定url，不过不能全部显示所有文字内容）
+ 
+ */
+@property (nonatomic, assign) UMSocialWXMessageType wxMessageType;
+@end
+
+
+typedef enum{
     UMSNumberLike=0,
     UMSNumberShare,
     UMSNumberComment
@@ -143,7 +186,11 @@ typedef enum {
  */
 @property (nonatomic, retain)  UMSocialUrlResource *urlResource;
 
-
+/**
+ 分享到各个微博的扩展设置
+ 
+ */
+@property (nonatomic, retain)  UMSocialExtConfig *extConfig;
 ///---------------------------------------
 /// @name 对所有对象都起作用的类方法
 ///---------------------------------------

@@ -25,7 +25,6 @@ typedef enum
     UITableViewDelegate,
     UITableViewDataSource,
     UIActionSheetDelegate,
-    UMSocialDataDelegate,
     UMSocialUIDelegate
 >
 {

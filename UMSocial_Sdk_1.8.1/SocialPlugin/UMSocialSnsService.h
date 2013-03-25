@@ -6,8 +6,19 @@
 //  Copyright (c) 2013年 Umeng. All rights reserved.
 //
 
+#define __UMSocial__Support__SSO 0
+
 #import <Foundation/Foundation.h>
 #import "UMSocialControllerService.h"
+#import "WXApi.h"
+#if __UMSocial__Support__SSO
+#import "SinaWeibo.h"
+#endif
+
+#define UMShareToWechatSession @"wxsession"
+#define UMShareToWechatTimeline @"wxtimeline"
+
+typedef void (^OauthCompletion)(void);
 
 /*
  实现快速分享，类方法传入相应的参数，既可以弹出分享列表。现在提供两种列表样式。
@@ -16,13 +27,35 @@
 <
     UIActionSheetDelegate,
     UMSocialConfigDelegate,
-    UIActionSheetDelegate
+    UIActionSheetDelegate,
+    UMSocialUIDelegate,
+#if __UMSocial__Support__SSO
+    SinaWeiboDelegate,
+#endif
+    WXApiDelegate
+
 >
 {
     UMSocialControllerService *_socialControllerService;
     UIViewController *_presentingViewController;
     NSMutableArray *_snsArray;
+    OauthCompletion  _completion;
+#if __UMSocial__Support__SSO
+    SinaWeibo *_sinaWeibo;
+#endif
 }
+
+#if __UMSocial__Support__SSO
+@property (nonatomic, retain) SinaWeibo *sinaWeibo;
+
++(void)handleOauthWithSnsName:(NSString *)snsName controller:(UIViewController *)controller completion:(void (^)(void))completion;
+#endif
+
++(BOOL)handleOpenURL:(NSURL *)url;
+
+@property (nonatomic, copy) OauthCompletion completion;
+
+@property (nonatomic, retain) UMSocialControllerService *socialControllerService;
 
 + (UMSocialSnsService *)sharedInstance;
 
@@ -53,4 +86,6 @@
  @param delegate 实现分享完成后的回调对象，如果不关注分享完成的状态，可以设为nil
  */
 +(void)presentSnsIconSheetView:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage shareToSnsNames:(NSArray *)snsNames delegate:(id <UMSocialUIDelegate>)delegate;
+
+
 @end
