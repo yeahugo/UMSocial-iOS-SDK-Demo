@@ -54,11 +54,10 @@
     
     UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:
                                         UMSocialUrlResourceTypeImage url:@"http://www.umeng.com/images/pic/eg/icon_skisafari_55_55.png"];
-    socialData.urlResource = urlResource;
+//    socialData.urlResource = urlResource;
     SAFE_ARC_RELEASE(urlResource);
-    socialData.extConfig.wxMessageType = UMSocialWXMessageTypeApp;
     UMSocialExtConfig *extConfig = [[UMSocialExtConfig alloc] init];
-//    extConfig.wxMessageType = UMSocialWXMessageTypeApp;
+    extConfig.wxMessageType = UMSocialWXMessageTypeApp;
     extConfig.thumbUrl = @"http://www.umeng.com/images/pic/eg/icon_skisafari_55_55.png";
     extConfig.title = @"分享给你";
     socialData.extConfig = extConfig;
@@ -170,10 +169,6 @@
         
         UIViewController *rootViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
         [iconActionSheet showInView:rootViewController.view];
-
-//        UMSocialIconActionSheet *iconActionSheet = [_socialController getSocialIconActionSheetInController:self];
-//        iconActionSheet.tag = kTagWithUMSnsAction;
-//        [iconActionSheet showInView:self.view];
     }
     @catch (NSException *exception) {
         UMLog(@"you must set the snsName as a NSString not a NSNumber !");

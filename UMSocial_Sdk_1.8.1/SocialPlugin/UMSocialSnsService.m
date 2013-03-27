@@ -235,7 +235,7 @@
             }
         };
 #endif
-        [UMSocialConfig setSocialSnsPlatformArray:[NSArray arrayWithObjects:wechatPlatform,facebookPlatform,twitterPlatform,nil]];
+        [UMSocialConfig addSocialSnsPlatform:[NSArray arrayWithObjects:wechatPlatform,facebookPlatform,twitterPlatform,nil]];
 
     }
     return self;
@@ -283,7 +283,18 @@
     if (snsStrings != nil) {
         [snsIconSheet setSnsNames:snsStrings];        
     }
-    [snsIconSheet showInView:controller.view];
+    UIViewController *presentingViewController = nil;
+    @try {
+        presentingViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
+    }
+    @catch (NSException *exception) {
+        presentingViewController = controller;
+    }
+    @finally {
+        
+    }
+
+    [snsIconSheet showInView:presentingViewController.view];
 }
 
 #ifdef __IPHONE_6_0

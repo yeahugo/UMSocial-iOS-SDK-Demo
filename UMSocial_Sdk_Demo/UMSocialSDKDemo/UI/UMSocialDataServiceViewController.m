@@ -34,6 +34,7 @@
     UMSocialData *socialData = shareViewController.socialController.socialData;
 
     _socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
+    _socialDataService = [UMSocialDataService defaultDataService];
         
     _shareTextView.text = socialData.shareText;
     

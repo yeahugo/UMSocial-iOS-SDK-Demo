@@ -54,7 +54,7 @@ typedef enum {
 
 @param interfaceOrientations 一个bit map（位掩码），ios 6定义的`UIInterfaceOrientationMask`
 */
-+ (void)setSupportedInterfaceOrientations:(NSUInteger)interfaceOrientations;
++ (void)setSupportedInterfaceOrientations:(UIInterfaceOrientationMask)interfaceOrientations;
 
 /**
  设置官方微博账号,设置之后可以在授权页面有关注微博的选项，默认勾选，授权之后用户即关注官方微博，仅支持新浪微博和腾讯微博
@@ -68,7 +68,7 @@ typedef enum {
  @param snsPlatformArray `UMSocialSnsPlatform`组成的数组对象
  
  */
-+ (void)setSocialSnsPlatformArray:(NSArray *)snsPlatformArray;
++ (void)addSocialSnsPlatform:(NSArray *)snsPlatformArray;
 
 /**
  设置页面的背景颜色
@@ -110,7 +110,4 @@ typedef enum {
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
 
-//-(UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName;
-
-//-(CGRect)boundsForiPad;
 @end
