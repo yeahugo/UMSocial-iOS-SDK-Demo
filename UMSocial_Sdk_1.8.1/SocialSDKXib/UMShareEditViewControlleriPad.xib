@@ -130,7 +130,6 @@
 								<string key="NSFrame">{{471, 13}, {42, 21}}</string>
 								<reference key="NSSuperview" ref="897695717"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -192,17 +191,16 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
-					<object class="IBUIImageView" id="433937643">
+					<object class="IBUIImageView" id="834913286">
 						<reference key="NSNextResponder" ref="881598442"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 149}, {533, 146}}</string>
 						<reference key="NSSuperview" ref="881598442"/>
 						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
-					<object class="IBUIView" id="832439396">
+					<object class="IBUIView" id="540046627">
 						<reference key="NSNextResponder" ref="881598442"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{159, 165}, {215, 110}}</string>
@@ -291,7 +289,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">changeAccountBackgroundView</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="433937643"/>
+						<reference key="destination" ref="834913286"/>
 					</object>
 					<int key="connectionID">506</int>
 				</object>
@@ -299,7 +297,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">changeAccountView</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="832439396"/>
+						<reference key="destination" ref="540046627"/>
 					</object>
 					<int key="connectionID">507</int>
 				</object>
@@ -329,8 +327,8 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="591832945"/>
 							<reference ref="897695717"/>
-							<reference ref="433937643"/>
-							<reference ref="832439396"/>
+							<reference ref="834913286"/>
+							<reference ref="540046627"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -375,12 +373,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">504</int>
-						<reference key="object" ref="433937643"/>
+						<reference key="object" ref="834913286"/>
 						<reference key="parent" ref="881598442"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">505</int>
-						<reference key="object" ref="832439396"/>
+						<reference key="object" ref="540046627"/>
 						<reference key="parent" ref="881598442"/>
 					</object>
 				</array>
