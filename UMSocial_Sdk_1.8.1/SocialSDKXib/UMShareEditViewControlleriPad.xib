@@ -192,6 +192,29 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
+					<object class="IBUIImageView" id="433937643">
+						<reference key="NSNextResponder" ref="881598442"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{0, 149}, {533, 146}}</string>
+						<reference key="NSSuperview" ref="881598442"/>
+						<reference key="NSWindow"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+					</object>
+					<object class="IBUIView" id="832439396">
+						<reference key="NSNextResponder" ref="881598442"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{159, 165}, {215, 110}}</string>
+						<reference key="NSSuperview" ref="881598442"/>
+						<reference key="NSWindow"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MCAwAA</bytes>
+						</object>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+					</object>
 				</array>
 				<string key="NSFrameSize">{533, 295}</string>
 				<reference key="NSSuperview"/>
@@ -264,6 +287,22 @@
 					</object>
 					<int key="connectionID">503</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">changeAccountBackgroundView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="433937643"/>
+					</object>
+					<int key="connectionID">506</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">changeAccountView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="832439396"/>
+					</object>
+					<int key="connectionID">507</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -290,6 +329,8 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="591832945"/>
 							<reference ref="897695717"/>
+							<reference ref="433937643"/>
+							<reference ref="832439396"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -332,6 +373,16 @@
 						<reference key="object" ref="277165164"/>
 						<reference key="parent" ref="897695717"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">504</int>
+						<reference key="object" ref="433937643"/>
+						<reference key="parent" ref="881598442"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">505</int>
+						<reference key="object" ref="832439396"/>
+						<reference key="parent" ref="881598442"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -346,12 +397,14 @@
 				<string key="207.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="227.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="502.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="504.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="505.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">503</int>
+			<int key="maxID">507</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -371,7 +424,9 @@
 					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="atButton">UIButton</string>
+						<string key="changeAccountBackgroundView">UIImageView</string>
 						<string key="changeAccountButton">UIButton</string>
+						<string key="changeAccountView">UIView</string>
 						<string key="countLabel">UILabel</string>
 						<string key="faceButton">UIButton</string>
 						<string key="textView">UITextView</string>
@@ -383,9 +438,17 @@
 							<string key="name">atButton</string>
 							<string key="candidateClassName">UIButton</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="changeAccountBackgroundView">
+							<string key="name">changeAccountBackgroundView</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="changeAccountButton">
 							<string key="name">changeAccountButton</string>
 							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="changeAccountView">
+							<string key="name">changeAccountView</string>
+							<string key="candidateClassName">UIView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="countLabel">
 							<string key="name">countLabel</string>
