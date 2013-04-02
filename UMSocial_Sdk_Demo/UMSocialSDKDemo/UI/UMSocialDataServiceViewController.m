@@ -33,8 +33,9 @@
     UMSocialShareViewController *shareViewController = [[self.tabBarController viewControllers] objectAtIndex:0];
     UMSocialData *socialData = shareViewController.socialController.socialData;
 
-    _socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
     _socialDataService = [UMSocialDataService defaultDataService];
+    SAFE_ARC_RETAIN(_socialDataService);
+    _socialDataService.socialData = socialData;
         
     _shareTextView.text = socialData.shareText;
     

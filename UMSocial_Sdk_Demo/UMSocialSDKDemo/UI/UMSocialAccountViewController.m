@@ -149,7 +149,7 @@
         [oauthActionSheet showFromTabBar:self.tabBarController.tabBar];
         UMAccountAction accountAction  = indexPath.row;
         oauthActionSheet.tag = accountAction;
-        [oauthActionSheet release];
+        SAFE_ARC_RELEASE(oauthActionSheet);
     }
     else if (indexPath.row == UMAccountSSO){
 #if __UMSocial__Support__SSO

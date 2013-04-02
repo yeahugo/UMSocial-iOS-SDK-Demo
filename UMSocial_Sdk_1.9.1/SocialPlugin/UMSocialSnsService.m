@@ -138,7 +138,7 @@
         }
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"微信分享结果" message:message delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
         [alertView show];
-        [alertView release];
+        SAFE_ARC_RELEASE(alertView);
     }
 }
 
@@ -185,15 +185,14 @@
                         [slcomposeViewController addImage:socialControllerService.socialData.shareImage];
                         slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
                             if (result == SLComposeViewControllerResultDone) {
-                                [socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToFacebook] content:socialControllerService.socialData.shareText image:socialControllerService.socialData.shareImage location:nil urlResource:nil completion:nil];
-                                if ([socialControllerService.socialUIDelegate respondsToSelector:@selector(didFinishGetUMSocialDataInViewController:)])
-                                {
-                                    UMSocialResponseEntity *response = [[UMSocialResponseEntity alloc] init];
-                                    response.responseCode = UMSResponseCodeSuccess;
-                                    response.responseType = UMSViewControllerShareEdit;
-                                    [socialControllerService.socialUIDelegate didFinishGetUMSocialDataInViewController:response];
-                                    SAFE_ARC_RELEASE(response);
-                                }
+                                [socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToFacebook] content:socialControllerService.socialData.shareText image:socialControllerService.socialData.shareImage location:nil urlResource:nil completion:^(UMSocialResponseEntity *response){
+                                    if ([socialControllerService.socialUIDelegate respondsToSelector:@selector(didFinishGetUMSocialDataInViewController:)])
+                                    {
+                                        response.viewControllerType = UMSViewControllerShareEdit;
+                                        [socialControllerService.socialUIDelegate didFinishGetUMSocialDataInViewController:response];
+                                    }
+                                }];
+
                             }
                             [presentingController dismissModalViewControllerAnimated:YES];
                         };
@@ -225,25 +224,23 @@
                 if ([NSClassFromString(@"SLComposeViewController") isAvailableForServiceType:SLServiceTypeTwitter]) {
                     SLComposeViewController *slcomposeViewController =  [NSClassFromString(@"SLComposeViewController") composeViewControllerForServiceType:SLServiceTypeTwitter];
                     if (socialControllerService != nil) {
+                        [slcomposeViewController setInitialText:socialControllerService.socialData.shareText];
+                        [slcomposeViewController addImage:socialControllerService.socialData.shareImage];
+
                         slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
                             if (result == SLComposeViewControllerResultDone) {
-                                if ([socialControllerService.socialUIDelegate respondsToSelector:@selector(didFinishGetUMSocialDataInViewController:)])
-                                {
-                                    UMSocialResponseEntity *response = [[UMSocialResponseEntity alloc] init];
-                                    response.responseCode = UMSResponseCodeSuccess;
-                                    response.responseType = UMSViewControllerShareEdit;
-                                    [socialControllerService.socialUIDelegate didFinishGetUMSocialDataInViewController:response];
-                                    SAFE_ARC_RELEASE(response);
-                                }
+                                [socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToTwitter] content:socialControllerService.socialData.shareText image:socialControllerService.socialData.shareImage location:nil urlResource:nil completion:^(UMSocialResponseEntity *response){
+                                    if ([socialControllerService.socialUIDelegate respondsToSelector:@selector(didFinishGetUMSocialDataInViewController:)])
+                                    {
+                                        response.viewControllerType = UMSViewControllerShareEdit;
+                                        [socialControllerService.socialUIDelegate didFinishGetUMSocialDataInViewController:response];
+                                    }
+                                }];
+                                
                             }
                             [presentingController dismissModalViewControllerAnimated:YES];
                         };
-                        
-                        [socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToTwitter] content:socialControllerService.socialData.shareText image:socialControllerService.socialData.shareImage location:nil urlResource:nil completion:nil];
-                        
-                        [slcomposeViewController setInitialText:socialControllerService.socialData.shareText];
-                        [slcomposeViewController addImage:socialControllerService.socialData.shareImage];
-                        
+                                            
                         [presentingController presentModalViewController:slcomposeViewController animated:YES];
                     }
                 }
