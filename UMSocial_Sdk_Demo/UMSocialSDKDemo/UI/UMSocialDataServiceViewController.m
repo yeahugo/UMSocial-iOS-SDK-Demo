@@ -75,6 +75,7 @@
     [socialPlatformActionSheet addButtonWithTitle:@"取消"];
     socialPlatformActionSheet.cancelButtonIndex = socialPlatformActionSheet.numberOfButtons - 1;
     [socialPlatformActionSheet showFromTabBar:self.tabBarController.tabBar];
+    SAFE_ARC_RELEASE(socialPlatformActionSheet);
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -198,8 +199,9 @@
         [_socialDataService requestAddFollow:_socialPlatform.platformName followedUsid:[NSArray arrayWithObject:@"2937537507"] completion:completion];
     }
     else if (indexPath.row == 12){
-        UMSocialCustomAccount *customAccount = [[UMSocialCustomAccount alloc] initWithUserName:@"sinaid"];
+        UMSocialCustomAccount *customAccount = [[UMSocialCustomAccount alloc] initWithUserName:@"customUserName"];
         [UMSocialAccountManager addCustomAccount:customAccount completion:completion];
+        SAFE_ARC_RELEASE(customAccount);
     }
 }
 

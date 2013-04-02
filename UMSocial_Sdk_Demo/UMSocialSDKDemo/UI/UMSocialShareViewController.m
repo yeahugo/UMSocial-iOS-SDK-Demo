@@ -42,6 +42,7 @@
     SAFE_ARC_RELEASE(_shareButton1);
     SAFE_ARC_RELEASE(_shareButton2);
     SAFE_ARC_RELEASE(_shareButton3);
+    SAFE_ARC_RELEASE(_activityIndicatorView);
     SAFE_ARC_SUPER_DEALLOC();
 }
 
@@ -155,6 +156,7 @@
         if (error.code == -1009) {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"获取数据失败" message:@"当前设备的网络状态不正常，请稍后重试" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
             [alertView show];
+            SAFE_ARC_RELEASE(alertView);
         }
         else{
             NSLog(@"connect to the umeng blog server fail!!");        

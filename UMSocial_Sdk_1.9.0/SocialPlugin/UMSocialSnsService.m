@@ -138,6 +138,7 @@
         }
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"微信分享结果" message:message delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
         [alertView show];
+        [alertView release];
     }
 }
 
@@ -167,15 +168,16 @@
             _socialControllerService = socialControllerService;
             SAFE_ARC_RELEASE(actionSheet);
         };
-        
-#ifdef __IPHONE_6_0
+
         UMSocialSnsPlatform *facebookPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:UMShareToFacebook];
         facebookPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_facebook_icon";
         facebookPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_facebook_on.png";
         facebookPlatform.displayName = @"Facebook";
+
         facebookPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
             if([NSClassFromString(@"SLComposeViewController") class] != nil)
             {
+                #ifdef __IPHONE_6_0
                 if ([NSClassFromString(@"SLComposeViewController") isAvailableForServiceType:SLServiceTypeFacebook]) {
                     SLComposeViewController *slcomposeViewController =  [NSClassFromString(@"SLComposeViewController") composeViewControllerForServiceType:SLServiceTypeFacebook];
                     if (socialControllerService != nil) {
@@ -197,28 +199,29 @@
                         };
                         [presentingController presentModalViewController:slcomposeViewController animated:YES];
                     }
-                    
                 }
                 else{
                     UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"账号未登录" message:[NSString stringWithFormat:@"您的Facebook账号尚未登录，请在系统设置中登录"] delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
                     [loginAlert show];
                     SAFE_ARC_RELEASE(loginAlert);
                 }
+                #endif
             }
             else{
-                UIAlertView *osAlert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[NSString stringWithFormat:@"您的设备系统不支持分享到Facebook的功能"] delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
+                UIAlertView *osAlert = [[UIAlertView alloc] initWithTitle:@"系统不支持此功能" message:[NSString stringWithFormat:@"您的设备系统不支持分享到Facebook的功能"] delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
                 [osAlert show];
                 SAFE_ARC_RELEASE(osAlert);
             }
         };
+
         
         UMSocialSnsPlatform *twitterPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:UMShareToTwitter];
         twitterPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_twitter_icon";
         twitterPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_twitter_on.png";
-        twitterPlatform.displayName = @"Twitter";       
+        twitterPlatform.displayName = @"Twitter";
         twitterPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
-            
             if([NSClassFromString(@"SLComposeViewController") class] != nil){
+                #ifdef __IPHONE_6_0
                 if ([NSClassFromString(@"SLComposeViewController") isAvailableForServiceType:SLServiceTypeTwitter]) {
                     SLComposeViewController *slcomposeViewController =  [NSClassFromString(@"SLComposeViewController") composeViewControllerForServiceType:SLServiceTypeTwitter];
                     if (socialControllerService != nil) {
@@ -249,19 +252,19 @@
                     [loginAlert show];
                     SAFE_ARC_RELEASE(loginAlert);
                 }
+                #endif
             }
             else{
-                UIAlertView *osAlert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[NSString stringWithFormat:@"您的设备系统不支持分享到Twitter的功能"] delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
+                UIAlertView *osAlert = [[UIAlertView alloc] initWithTitle:@"系统不支持此功能" message:[NSString stringWithFormat:@"您的设备系统不支持分享到Twitter的功能"] delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
                 [osAlert show];
                 SAFE_ARC_RELEASE(osAlert);
             }
         };
-        
-        [UMSocialConfig addSocialSnsPlatform:[NSArray arrayWithObjects:wechatPlatform,facebookPlatform,twitterPlatform,nil]];
-#else
-        [UMSocialConfig addSocialSnsPlatform:[NSArray arrayWithObjects:wechatPlatform,nil]];        
-#endif
 
+        [UMSocialConfig addSocialSnsPlatform:[NSArray arrayWithObjects:wechatPlatform,facebookPlatform,twitterPlatform,nil]];
+        SAFE_ARC_RELEASE(wechatPlatform);
+        SAFE_ARC_RELEASE(facebookPlatform);
+        SAFE_ARC_RELEASE(twitterPlatform);
     }
     return self;
 }

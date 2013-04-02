@@ -148,7 +148,8 @@
         oauthActionSheet.cancelButtonIndex = oauthActionSheet.numberOfButtons - 1;
         [oauthActionSheet showFromTabBar:self.tabBarController.tabBar];
         UMAccountAction accountAction  = indexPath.row;
-        oauthActionSheet.tag = accountAction;    
+        oauthActionSheet.tag = accountAction;
+        [oauthActionSheet release];
     }
     else if (indexPath.row == UMAccountSSO){
 #if __UMSocial__Support__SSO

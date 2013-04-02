@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UMSocialControllerService.h"
+#import "UMSocialConfig.h"
 
 @interface UMSocialConfigViewController : UITableViewController
 {
