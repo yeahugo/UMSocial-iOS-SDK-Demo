@@ -15,9 +15,8 @@
 @interface AppDelegate : UIResponder
 <
     UIApplicationDelegate,
-    WXApiDelegate
-    ,UMSocialConfigDelegate
-    ,UIActionSheetDelegate
+    WXApiDelegate,
+    UIActionSheetDelegate
 >
 
 @property (strong, nonatomic) UIWindow *window;

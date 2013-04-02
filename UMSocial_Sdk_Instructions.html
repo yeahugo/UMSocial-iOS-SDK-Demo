@@ -368,7 +368,7 @@ pre {
 
 <p>   获得appkey后，你还需要将你的应用和我们支持的分享平台注册时获取的appkey和appsecret进行绑定。由于QQ空间、新浪微博、腾讯微博、人人网、豆瓣各个平台注册app的方法很有可能有变化，你可以参考我们线上版本的开发文档有关各个平台注册方法：</p>
 
-<p> <a href="http://dev.umeng.com/doc/document_social_ios.html#binding_config" title="开发文档">iOS Social SDK 在线文档</a></p>
+<p> <a href="http://dev.umeng.com/doc/document_social_ios.html" title="开发文档">iOS Social SDK 在线文档</a></p>
 
 <h3>2.3 <a name="quick_use" id="quick_use" style="color:black">快速集成分享功能</a></h3>
 
@@ -376,7 +376,7 @@ pre {
 
 <p><img src="http://dev.umeng.com/images/ios/social_add_files.png" title="Add_files" alt="alt text" /></p>
 
-<p>下载SDKzip包，并解压。在你的Xcode工程选择添“Add Files to xxxx”，选择解压文件夹中<code>UMSocial_Sdk_x.x.x/</code>(x.x.x是具体版本号），勾上下面的"Copy items ……"，还有选择你要添加到target。如果你只集成分享功能的话，可以把<code>UMSocialCommentLibrary.a</code>从你的工程删除。</p>
+<p>下载SDKzip包，并解压。在你的Xcode工程选择添“Add Files to xxxx”，选择解压文件夹中<code>UMSocial_Sdk_x.x.x/</code>(x.x.x是具体版本号），勾上下面的"Copy items ……"，还有选择你要添加到target。如果你只集成分享功能的话，可以把<code>libUMSocial_Sdk_Comment_x.x.x.a</code>从你的工程删除。</p>
 
 <h4>Step2: 调用友盟社会化组件</h4>
 
@@ -476,7 +476,7 @@ UIViewController *rootViewController = [[[UIApplication sharedApplication] deleg
 
 <p>获得界面级回调函数</p>
 
-<p>设置回调对象<code>s[UMSocialControllerService defaultControllerService].soicalUIDelegate = self;</code>
+<p>设置回调对象<code>[UMSocialControllerService defaultControllerService].soicalUIDelegate = self;</code>
 实现回调方法,根据<code>response</code>的<code>viewControllerType</code>判断页面类型，根据<code>responseCode</code>判断成功与否，<code>viewControllerType</code>和<code>responseCode</code>的定义见头文件和API文档，如果你需要知道错误具体原因可以查看<code>response</code>的<code>message</code>信息。</p>
 
 <pre><code>-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
@@ -507,6 +507,9 @@ UIViewController *rootViewController = [[[UIApplication sharedApplication] deleg
 <p>在回调对象形参中<code>response</code>中的<code>responseCode</code>和<code>message</code>可以得到返回状态码，和错误消息。</p>
 
 <p>注意如果<code>responseCode</code>为<code>5027</code>的话，<code>message</code>是<code>Sina access token expired, please do oauth(rebind account) again</code>,表示授权过期，需要重新打开授权页面进行授权。</p>
+
+<p>如果新浪微博授权之后出现<code>message</code>为<code>applications over the unaudited use restrictions</code>的错误，原因是没有应用没有通过新浪微博审核，需要添加登录账号到开发者账号。
+添加方法：登录开发者帐号，点击进入http://open.weibo.com/apps/30871<strong><strong><em>/info/advanced （30871</em></strong></strong>替换成你应用的AppKey），在底部添加测试用户即可，最多只能添加15位且添加后不能修改。注意：修改后约半小时左右时间生效。</p>
 
 <h3>3.2 <a name="social_user" id="social_user" style="color:black">用户账号</a></h3>
 
@@ -624,7 +627,7 @@ UIViewController *rootViewController = [[[UIApplication sharedApplication] deleg
 
 <h4>1 界面级接口</h4>
 
-<p>用到评论的界面级功能，需要使用<code>UMSocial_Sdk_Comment_x.x.x.a</code>,对应的头文件是<code>UMSocialControllerServiceComment.h</code>。</p>
+<p>用到评论的界面级功能，需要使用<code>libUMSocial_Sdk_Comment_x.x.x.a</code>,对应的头文件是<code>UMSocialControllerServiceComment.h</code>。</p>
 
 <p>评论列表</p>
 
@@ -642,7 +645,7 @@ UIViewController *rootViewController = [[[UIApplication sharedApplication] deleg
 
 <h4>2 数据级接口</h4>
 
-<p>评论的数据级接口不需要<code>UMSocial_Sdk_Comment_x.x.x.a</code>。获取最近的评论数据，<code>lastCommentTime</code>传入<code>-1</code>。如果评论数据比较多，想获取之前的评论，可以在<code>lastCommentTime</code>中传入指定时间戳。传入评论数据在回调Block对象形参response里的属性<code>data</code>中得到：</p>
+<p>评论的数据级接口不需要<code>libUMSocial_Sdk_Comment_x.x.x.a</code>。获取最近的评论数据，<code>lastCommentTime</code>传入<code>-1</code>。如果评论数据比较多，想获取之前的评论，可以在<code>lastCommentTime</code>中传入指定时间戳。传入评论数据在回调Block对象形参response里的属性<code>data</code>中得到：</p>
 
 <pre><code>[[UMSocialDataService defaultDataService] requestCommentList:(-1) completion:^(UMSocialResponseEntity *response){
             NSLog(@"comment data is %@",response.data);

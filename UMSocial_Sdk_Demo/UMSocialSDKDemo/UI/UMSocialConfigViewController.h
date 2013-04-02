@@ -10,7 +10,6 @@
 #import "UMSocialControllerService.h"
 
 @interface UMSocialConfigViewController : UITableViewController
-<UMSocialConfigDelegate>
 {
     UIInterfaceOrientationMask _supportOrientationMask;
     NSMutableArray *_shareToPlatforms;

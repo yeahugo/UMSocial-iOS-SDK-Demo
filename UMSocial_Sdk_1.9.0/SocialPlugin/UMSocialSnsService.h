@@ -26,8 +26,6 @@ typedef void (^OauthCompletion)(void);
 @interface UMSocialSnsService : NSObject
 <
     UIActionSheetDelegate,
-    UMSocialConfigDelegate,
-    UIActionSheetDelegate,
     UMSocialUIDelegate,
 #if __UMSocial__Support__SSO
     SinaWeiboDelegate,

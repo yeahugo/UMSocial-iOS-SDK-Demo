@@ -184,6 +184,14 @@
                         slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
                             if (result == SLComposeViewControllerResultDone) {
                                 [socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToFacebook] content:socialControllerService.socialData.shareText image:socialControllerService.socialData.shareImage location:nil urlResource:nil completion:nil];
+                                if ([socialControllerService.socialUIDelegate respondsToSelector:@selector(didFinishGetUMSocialDataInViewController:)])
+                                {
+                                    UMSocialResponseEntity *response = [[UMSocialResponseEntity alloc] init];
+                                    response.responseCode = UMSResponseCodeSuccess;
+                                    response.responseType = UMSViewControllerShareEdit;
+                                    [socialControllerService.socialUIDelegate didFinishGetUMSocialDataInViewController:response];
+                                    SAFE_ARC_RELEASE(response);
+                                }
                             }
                             [presentingController dismissModalViewControllerAnimated:YES];
                         };
@@ -214,6 +222,20 @@
                 if ([NSClassFromString(@"SLComposeViewController") isAvailableForServiceType:SLServiceTypeTwitter]) {
                     SLComposeViewController *slcomposeViewController =  [NSClassFromString(@"SLComposeViewController") composeViewControllerForServiceType:SLServiceTypeTwitter];
                     if (socialControllerService != nil) {
+                        slcomposeViewController.completionHandler = ^(SLComposeViewControllerResult result){
+                            if (result == SLComposeViewControllerResultDone) {
+                                if ([socialControllerService.socialUIDelegate respondsToSelector:@selector(didFinishGetUMSocialDataInViewController:)])
+                                {
+                                    UMSocialResponseEntity *response = [[UMSocialResponseEntity alloc] init];
+                                    response.responseCode = UMSResponseCodeSuccess;
+                                    response.responseType = UMSViewControllerShareEdit;
+                                    [socialControllerService.socialUIDelegate didFinishGetUMSocialDataInViewController:response];
+                                    SAFE_ARC_RELEASE(response);
+                                }
+                            }
+                            [presentingController dismissModalViewControllerAnimated:YES];
+                        };
+                        
                         [socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToTwitter] content:socialControllerService.socialData.shareText image:socialControllerService.socialData.shareImage location:nil urlResource:nil completion:nil];
                         
                         [slcomposeViewController setInitialText:socialControllerService.socialData.shareText];
@@ -234,8 +256,11 @@
                 SAFE_ARC_RELEASE(osAlert);
             }
         };
-#endif
+        
         [UMSocialConfig addSocialSnsPlatform:[NSArray arrayWithObjects:wechatPlatform,facebookPlatform,twitterPlatform,nil]];
+#else
+        [UMSocialConfig addSocialSnsPlatform:[NSArray arrayWithObjects:wechatPlatform,nil]];        
+#endif
 
     }
     return self;

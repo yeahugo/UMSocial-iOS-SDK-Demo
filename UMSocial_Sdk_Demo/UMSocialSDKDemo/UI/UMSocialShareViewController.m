@@ -50,18 +50,26 @@
     [super viewDidLoad];
 
     UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
+
+/*
 //  下面发送视频到微博，可以发送url的视频、音乐和图片
     
     UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:
                                         UMSocialUrlResourceTypeImage url:@"http://www.umeng.com/images/pic/eg/icon_skisafari_55_55.png"];
-//    socialData.urlResource = urlResource;
+    socialData.urlResource = urlResource;
     SAFE_ARC_RELEASE(urlResource);
+ */
+    
+/*  
+//  下面进行设置微信分享类型，缩略图，标题等
     UMSocialExtConfig *extConfig = [[UMSocialExtConfig alloc] init];
     extConfig.wxMessageType = UMSocialWXMessageTypeApp;
     extConfig.thumbUrl = @"http://www.umeng.com/images/pic/eg/icon_skisafari_55_55.png";
     extConfig.title = @"分享给你";
     socialData.extConfig = extConfig;
     SAFE_ARC_RELEASE(extConfig);
+ */
+     
     _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
     _socialController.socialUIDelegate = self;
     SAFE_ARC_RELEASE(socialData); 

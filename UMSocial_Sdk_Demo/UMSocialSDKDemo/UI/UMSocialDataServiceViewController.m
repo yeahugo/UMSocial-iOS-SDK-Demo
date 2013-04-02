@@ -162,7 +162,7 @@
         [_socialDataService requestSocialAccountWithCompletion:completion];
     }
     else if (indexPath.row == 2) {
-        [_socialDataService postSNSWithTypes:@[_socialPlatform.platformName] content:_socialDataService.socialData.shareText image:_socialDataService.socialData.shareImage location:nil urlResource:nil completion:completion];
+        [_socialDataService postSNSWithTypes:[NSArray arrayWithObject:_socialPlatform.platformName] content:_socialDataService.socialData.shareText image:_socialDataService.socialData.shareImage location:nil urlResource:nil completion:completion];
     }
     else if (indexPath.row == 3){
         [_socialDataService requestSnsInformation:_socialPlatform.platformName completion:completion];
@@ -195,7 +195,7 @@
     }
     else if (indexPath.row == 11){
         //关注新浪微博账号：友盟SDK
-        [_socialDataService requestAddFollow:_socialPlatform.platformName followedUsid:@[@"2937537507"] completion:completion];
+        [_socialDataService requestAddFollow:_socialPlatform.platformName followedUsid:[NSArray arrayWithObject:@"2937537507"] completion:completion];
     }
     else if (indexPath.row == 12){
         UMSocialCustomAccount *customAccount = [[UMSocialCustomAccount alloc] initWithUserName:@"sinaid"];
