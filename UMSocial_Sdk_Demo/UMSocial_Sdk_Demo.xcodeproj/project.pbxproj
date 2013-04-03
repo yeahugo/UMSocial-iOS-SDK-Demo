@@ -17,9 +17,7 @@
 		D570ED46170AE43500BF85CF /* libUMSocial_Sdk_Comment_1.9.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D570ED31170AE43400BF85CF /* libUMSocial_Sdk_Comment_1.9.1.a */; };
 		D570ED47170AE43500BF85CF /* UMSocialBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D570ED34170AE43400BF85CF /* UMSocialBarView.m */; };
 		D570ED48170AE43500BF85CF /* UMSocialIconActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D570ED36170AE43400BF85CF /* UMSocialIconActionSheet.m */; };
-		D570ED49170AE43500BF85CF /* UMSocialIconActionSheet.m.orig in Resources */ = {isa = PBXBuildFile; fileRef = D570ED37170AE43400BF85CF /* UMSocialIconActionSheet.m.orig */; };
 		D570ED4A170AE43500BF85CF /* UMSocialSnsService.m in Sources */ = {isa = PBXBuildFile; fileRef = D570ED39170AE43400BF85CF /* UMSocialSnsService.m */; };
-		D570ED4B170AE43500BF85CF /* UMSocialSnsService.m.orig in Resources */ = {isa = PBXBuildFile; fileRef = D570ED3A170AE43400BF85CF /* UMSocialSnsService.m.orig */; };
 		D570ED4C170AE43500BF85CF /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D570ED3C170AE43400BF85CF /* UMSCommentDetailController.xib */; };
 		D570ED4D170AE43500BF85CF /* UMSCommentInputController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D570ED3D170AE43400BF85CF /* UMSCommentInputController.xib */; };
 		D570ED4E170AE43500BF85CF /* UMSCommentInputControlleriPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D570ED3E170AE43500BF85CF /* UMSCommentInputControlleriPad.xib */; };
@@ -94,10 +92,8 @@
 		D570ED34170AE43400BF85CF /* UMSocialBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSocialBarView.m; sourceTree = "<group>"; };
 		D570ED35170AE43400BF85CF /* UMSocialIconActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialIconActionSheet.h; sourceTree = "<group>"; };
 		D570ED36170AE43400BF85CF /* UMSocialIconActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSocialIconActionSheet.m; sourceTree = "<group>"; };
-		D570ED37170AE43400BF85CF /* UMSocialIconActionSheet.m.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UMSocialIconActionSheet.m.orig; sourceTree = "<group>"; };
 		D570ED38170AE43400BF85CF /* UMSocialSnsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialSnsService.h; sourceTree = "<group>"; };
 		D570ED39170AE43400BF85CF /* UMSocialSnsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSocialSnsService.m; sourceTree = "<group>"; };
-		D570ED3A170AE43400BF85CF /* UMSocialSnsService.m.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UMSocialSnsService.m.orig; sourceTree = "<group>"; };
 		D570ED3C170AE43400BF85CF /* UMSCommentDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSCommentDetailController.xib; sourceTree = "<group>"; };
 		D570ED3D170AE43400BF85CF /* UMSCommentInputController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSCommentInputController.xib; sourceTree = "<group>"; };
 		D570ED3E170AE43500BF85CF /* UMSCommentInputControlleriPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSCommentInputControlleriPad.xib; sourceTree = "<group>"; };
@@ -258,10 +254,8 @@
 				D570ED34170AE43400BF85CF /* UMSocialBarView.m */,
 				D570ED35170AE43400BF85CF /* UMSocialIconActionSheet.h */,
 				D570ED36170AE43400BF85CF /* UMSocialIconActionSheet.m */,
-				D570ED37170AE43400BF85CF /* UMSocialIconActionSheet.m.orig */,
 				D570ED38170AE43400BF85CF /* UMSocialSnsService.h */,
 				D570ED39170AE43400BF85CF /* UMSocialSnsService.m */,
-				D570ED3A170AE43400BF85CF /* UMSocialSnsService.m.orig */,
 			);
 			path = SocialPlugin;
 			sourceTree = "<group>";
@@ -474,8 +468,6 @@
 				D580B33B16B3BB7100BF3481 /* UMS_share@2x.png in Resources */,
 				D518A99916D39A5100893507 /* UMS_settings@2x.png in Resources */,
 				D5480E1416E8A60E006DCF1D /* UMSocialDataServiceViewController.xib in Resources */,
-				D570ED49170AE43500BF85CF /* UMSocialIconActionSheet.m.orig in Resources */,
-				D570ED4B170AE43500BF85CF /* UMSocialSnsService.m.orig in Resources */,
 				D570ED4C170AE43500BF85CF /* UMSCommentDetailController.xib in Resources */,
 				D570ED4D170AE43500BF85CF /* UMSCommentInputController.xib in Resources */,
 				D570ED4E170AE43500BF85CF /* UMSCommentInputControlleriPad.xib in Resources */,
