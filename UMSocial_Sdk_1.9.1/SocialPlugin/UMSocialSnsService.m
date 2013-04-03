@@ -81,7 +81,6 @@
 
 - (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
 {
-    UMLog(@"account is %@",[UMSocialAccountManager socialAccountDictionary]);
     UMSocialAccountEntity *snsAccount = [[UMSocialAccountEntity alloc] initWithPlatformName:UMShareToSina];
     snsAccount.usid = sinaweibo.userID;
     snsAccount.accessToken = sinaweibo.accessToken;
@@ -99,7 +98,6 @@
     }];
     SAFE_ARC_RELEASE(customAccount);
     
-    UMLog(@"uid is %@ token is %@",sinaweibo.userID,sinaweibo.accessToken);
 }
 
 #else
@@ -157,6 +155,7 @@
         wechatPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_wechart_on.png";
         wechatPlatform.displayName = @"微信";
         wechatPlatform.loginName = @"微信账号";
+        wechatPlatform.shareToType = UMSocialSnsTypeSms + 1;
         wechatPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
             UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"分享到微信" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"分享给好友",@"分享到朋友圈",nil];
             if (presentingController.tabBarController != nil) {
@@ -173,6 +172,7 @@
         facebookPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_facebook_icon";
         facebookPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_facebook_on.png";
         facebookPlatform.displayName = @"Facebook";
+        facebookPlatform.shareToType = UMSocialSnsTypeSms + 2;
 
         facebookPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
             if([NSClassFromString(@"SLComposeViewController") class] != nil)
@@ -218,6 +218,7 @@
         twitterPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_twitter_icon";
         twitterPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_twitter_on.png";
         twitterPlatform.displayName = @"Twitter";
+        twitterPlatform.shareToType = UMSocialSnsTypeSms + 3;
         twitterPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
             if([NSClassFromString(@"SLComposeViewController") class] != nil){
                 #ifdef __IPHONE_6_0

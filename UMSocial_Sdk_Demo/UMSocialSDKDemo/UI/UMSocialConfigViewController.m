@@ -44,7 +44,7 @@
 #else
             _shareToPlatformDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:UMShareToQzone,UMShareToQzone,UMShareToSina,UMShareToSina,UMShareToTencent,UMShareToTencent,UMShareToRenren,UMShareToRenren,UMShareToDouban,UMShareToDouban,UMShareToWechat,UMShareToWechat,UMShareToEmail,UMShareToEmail,UMShareToSms,UMShareToSms, nil];
 #endif
-//        [UMSocialConfig setSnsPlatformNames:@[@[UMShareToSina,UMShareToTencent],@[UMShareToWechat,@"copy",UMShareToFacebook]]];
+
 //        UMSocialSnsPlatform *copyPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:@"copy"];
 //        copyPlatform.displayName = @"复制";
 //        copyPlatform.smallImageName = @"icon"; //用于tableView样式的分享列表
@@ -52,7 +52,18 @@
 //        copyPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
 //            NSLog(@"copy!");
 //        };
-//        [UMSocialConfig addSocialSnsPlatform:@[copyPlatform]];
+//        
+//        UMSocialSnsPlatform *pastePlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:@"paste"];
+//        pastePlatform.displayName = @"粘贴";
+//        pastePlatform.smallImageName = @"icon"; //用于tableView样式的分享列表
+//        pastePlatform.bigImageName = @"icon";   //用于actionsheet样式的分享列表
+//        pastePlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
+//            NSLog(@"paste!");
+//        };
+//        
+//        [UMSocialConfig addSocialSnsPlatform:@[copyPlatform,pastePlatform]];
+//        
+//        [UMSocialConfig setSnsPlatformNames:@[@[@"copy",@"paste",UMShareToQzone,UMShareToSina,UMShareToWechat,UMShareToTencent],@[UMShareToFacebook,UMShareToTwitter,UMShareToEmail,UMShareToSms]]];
     }
     return self;
 }
