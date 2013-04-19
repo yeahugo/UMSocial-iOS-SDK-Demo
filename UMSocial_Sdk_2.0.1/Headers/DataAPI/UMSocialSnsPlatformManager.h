@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "UMSocialSnsPlatform.h"
+#import "UMSocialDataService.h"
+#import "UMSocialSnsService.h"
 
 /*
  Sns平台类管理者类
@@ -19,7 +21,13 @@
     NSArray *_allSnsArray;
     NSArray *_allSnsValuesArray;
     NSArray *_socialSnsArray;
+    NSDictionary        *_appInfo;
 }
+
+/**
+ 友盟应用对应各个平台的appkey和appsecret
+ */
+@property (nonatomic, retain) NSDictionary *appInfo;
 
 /**
  sns平台配置数组，此数组可由调用者配置，可以在数组内嵌套数组设置分享列表页面多个分组
@@ -40,6 +48,7 @@
 @property (nonatomic, retain) NSDictionary *allSnsPlatformDictionary;
 
 + (UMSocialSnsPlatformManager *)sharedInstance;
+
 
 /**
  根据平台名，返回平台对象

@@ -69,7 +69,8 @@ typedef enum {
     UMSResponseCodeGetNoUidFromOauth  = 5020,
     UMSResponseCodeAccessTokenExpired = 5027,
     UMSResponseCodeNetworkError       = 5050,
-    UMSResponseCodeGetProfileFailed   = 5051
+    UMSResponseCodeGetProfileFailed   = 5051,
+    UMSResponseCodeCancel
 } UMSResponseCode;
 
 /**
@@ -91,7 +92,9 @@ typedef enum {
     UMSResponseGetSnsInfo,
     UMSResponseGetFriends,
     UMSResponseAddFollow,
-    UMSResponseAddCustomAccount
+    UMSResponseAddCustomAccount,
+    UMSResponseAddSnsAccount,
+    UMSResponseGetAppInfo
 } UMSResponse;
 
 /**

@@ -44,7 +44,7 @@ typedef void (^DismissCompletion)(void);
  初始化方法
  
  @param snsNames 每小格对应的sns平台名，在`UMSocialEnum.h`定义
- @param handler 处理点击之后的block处理对象
+ @param authorization 处理点击之后的block处理对象
  */
 -(id)initWithItems:(NSArray *)items withButtonHandler:(void (^)(NSString * platformType))handler;
 

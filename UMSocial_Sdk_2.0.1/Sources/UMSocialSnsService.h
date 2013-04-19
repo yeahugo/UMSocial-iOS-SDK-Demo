@@ -10,15 +10,19 @@
 
 #import <Foundation/Foundation.h>
 #import "UMSocialControllerService.h"
+#import "UMSocialConfig.h"
 #import "WXApi.h"
 #if __UMSocial__Support__SSO
 #import "SinaWeibo.h"
+
+#define kAppRedirectURI     @"http://sns.whalecloud.com/sina2/callback"
+
 #endif
 
 #define UMShareToWechatSession @"wxsession"
 #define UMShareToWechatTimeline @"wxtimeline"
 
-typedef void (^OauthCompletion)(void);
+typedef void (^UMSocailAuthorization)(void);
 
 /*
  实现快速分享，类方法传入相应的参数，既可以弹出分享列表。现在提供两种列表样式。
@@ -31,13 +35,13 @@ typedef void (^OauthCompletion)(void);
     SinaWeiboDelegate,
 #endif
     WXApiDelegate
-
 >
 {
     UMSocialControllerService *_socialControllerService;
     UIViewController *_presentingViewController;
     NSMutableArray *_snsArray;
-    OauthCompletion  _completion;
+    UMSocailAuthorization _authorization;
+    UMSocialDataServiceCompletion _completion;
 #if __UMSocial__Support__SSO
     SinaWeibo *_sinaWeibo;
 #endif
@@ -45,13 +49,14 @@ typedef void (^OauthCompletion)(void);
 
 #if __UMSocial__Support__SSO
 @property (nonatomic, retain) SinaWeibo *sinaWeibo;
-
-+(void)handleOauthWithSnsName:(NSString *)snsName controller:(UIViewController *)controller completion:(void (^)(void))completion;
 #endif
 
-+(BOOL)handleOpenURL:(NSURL *)url;
++(BOOL)handleOpenURL:(NSURL *)url wxApiDelegate:(id<WXApiDelegate>)wxApiDelegate;
 
-@property (nonatomic, copy) OauthCompletion completion;
+
+@property (nonatomic, copy) UMSocailAuthorization authorization;
+
+@property (nonatomic, copy) UMSocialDataServiceCompletion completion;
 
 @property (nonatomic, retain) UMSocialControllerService *socialControllerService;
 

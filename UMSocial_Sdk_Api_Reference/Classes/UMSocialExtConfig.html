@@ -42,9 +42,15 @@
 	
 	<option value="//api/name/appUrl">&nbsp;&nbsp;&nbsp;&nbsp;appUrl</option>
 	
+	<option value="//api/name/mailMessage">&nbsp;&nbsp;&nbsp;&nbsp;mailMessage</option>
+	
 	<option value="//api/name/thumbUrl">&nbsp;&nbsp;&nbsp;&nbsp;thumbUrl</option>
 	
 	<option value="//api/name/title">&nbsp;&nbsp;&nbsp;&nbsp;title</option>
+	
+	<option value="//api/name/wxDescription">&nbsp;&nbsp;&nbsp;&nbsp;wxDescription</option>
+	
+	<option value="//api/name/wxMediaObject">&nbsp;&nbsp;&nbsp;&nbsp;wxMediaObject</option>
 	
 	<option value="//api/name/wxMessageType">&nbsp;&nbsp;&nbsp;&nbsp;wxMessageType</option>
 	
@@ -78,9 +84,15 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/appUrl">appUrl</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/mailMessage">mailMessage</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/thumbUrl">thumbUrl</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/title">title</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/wxDescription">wxDescription</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/wxMediaObject">wxMediaObject</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/wxMessageType">wxMessageType</a></span></li>
 	
@@ -169,6 +181,27 @@
 	</span>
 	<span class="task-item-suffix">property</span>
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/wxDescription">&nbsp;&nbsp;wxDescription</a></code>
+		<span class="tooltip"><p>微信分享的正文内容，如果不设置的话，默认用UMSocialData的shareText</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/wxMediaObject">&nbsp;&nbsp;wxMediaObject</a></code>
+		<span class="tooltip"><p>微信多媒体资源的分享</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/mailMessage">&nbsp;&nbsp;mailMessage</a></code>
+		<span class="tooltip"><p>邮件分享的正文内容,如果不设置的话，默认用UMSocialData的shareText</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
 </li>
 						</ul>
 						
@@ -195,6 +228,42 @@
     
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *appUrl</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialData.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/mailMessage" title="mailMessage"></a>
+	<h3 class="subsubtitle method-title">mailMessage</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>邮件分享的正文内容,如果不设置的话，默认用UMSocialData的shareText</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *mailMessage</code></div>
 
     
 	
@@ -291,6 +360,78 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/wxDescription" title="wxDescription"></a>
+	<h3 class="subsubtitle method-title">wxDescription</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>微信分享的正文内容，如果不设置的话，默认用UMSocialData的shareText</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *wxDescription</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialData.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/wxMediaObject" title="wxMediaObject"></a>
+	<h3 class="subsubtitle method-title">wxMediaObject</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>微信多媒体资源的分享</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) id wxMediaObject</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialData.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/wxMessageType" title="wxMessageType"></a>
 	<h3 class="subsubtitle method-title">wxMessageType</h3>
 	
@@ -343,7 +484,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-04-03)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-04-19)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

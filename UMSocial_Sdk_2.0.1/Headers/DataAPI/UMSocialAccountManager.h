@@ -51,13 +51,30 @@ extern NSString *const UMSCustomAccountGenderFeMale;
 +(NSDictionary *)socialAccountDictionary;
 
 /**
+ 添加自己获取到的sns账号，必须要有sns用户的usid和accessToken
+ 
+ @param snsAccount 已经授权的sns账号对象
+ @param completion 回调Block对象
+ 
+ */
++(void)postSnsAccount:(UMSocialAccountEntity *)snsAccount completion:(UMSocialDataServiceCompletion)completion;
+
+/**
+ 获取友盟Appkey对应的各个平台的appkey和appsecret
+ 
+ @param completion 回调Block对象
+ 
+ */
++(void)requestAppInfo:(UMSocialDataServiceCompletion)completion;
+
+/**
  添加自有账号到友盟的账号体系，一般是用户在使用自有账号登录之后，再利用此方法上传账号，然后利用我们评论和个人中心的接口就会显示自有账号的昵称和头像等信息
  
  @param customAccount 自有账号对象
  @param completion 回调Block对象
  
  */
-+(void)addCustomAccount:(UMSocialCustomAccount *)customAccount completion:(UMSocialDataServiceCompletion)completion;
++(void)postCustomAccount:(UMSocialCustomAccount *)customAccount completion:(UMSocialDataServiceCompletion)completion;
 /**
  设置sns账号信息
  

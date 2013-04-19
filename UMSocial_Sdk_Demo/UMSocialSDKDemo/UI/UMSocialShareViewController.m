@@ -22,6 +22,8 @@
 
 #import "UMSocialBarViewController.h"
 
+#import "WXApiObject.h"
+
 #define kTagWithUMSnsAction 100
 
 @interface UMSocialShareViewController ()
@@ -50,30 +52,36 @@
 {
     [super viewDidLoad];
 
-    UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
+    _socialController = [[UMSocialControllerService alloc] init];
 
 /*
 //  下面发送视频到微博，可以发送url的视频、音乐和图片
     
     UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:
                                         UMSocialUrlResourceTypeImage url:@"http://www.umeng.com/images/pic/eg/icon_skisafari_55_55.png"];
-    socialData.urlResource = urlResource;
+    _socialController.socialData.urlResource = urlResource;
     SAFE_ARC_RELEASE(urlResource);
- */
+ 
     
-/*  
+ 
 //  下面进行设置微信分享类型，缩略图，标题等
+    
     UMSocialExtConfig *extConfig = [[UMSocialExtConfig alloc] init];
     extConfig.wxMessageType = UMSocialWXMessageTypeApp;
     extConfig.thumbUrl = @"http://www.umeng.com/images/pic/eg/icon_skisafari_55_55.png";
     extConfig.title = @"分享给你";
-    socialData.extConfig = extConfig;
+    extConfig.appUrl= @"http://www.umeng.com";
+    extConfig.wxDescription = @"微信分享测试";
+    extConfig.mailMessage = @"<br>邮件正文</br><p>";
+    _socialController.socialData.extConfig = extConfig;
     SAFE_ARC_RELEASE(extConfig);
+
+    WXVideoObject *videoObject = [WXVideoObject object];
+    videoObject.videoUrl = @"http://v.youku.com/v_show/id_XNTQwNDk1MzM2.html";
+    extConfig.wxMediaObject = videoObject;   //如果设置视频分享需要设置extConfig.wxMessageType = UMSocialWXMessageTypeOther;
+
  */
-     
-    _socialController = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
     _socialController.socialUIDelegate = self;
-    SAFE_ARC_RELEASE(socialData); 
 
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [_activityIndicatorView startAnimating];
@@ -118,10 +126,10 @@
         NSString *title = [[self.postsArray objectAtIndex:0] valueForKey:@"title"];
         NSString *url = [[self.postsArray objectAtIndex:0] valueForKey:@"url"];
         NSString *shareText = [NSString stringWithFormat:@"%@ %@",title,url];
-        socialData.shareText = shareText;
+        _socialController.socialData.shareText = shareText;
     }
     else{
-        socialData.shareText = [UMStringMock commentMockString];
+        _socialController.socialData.shareText = [UMStringMock commentMockString];
     }
     
     UMSocialAFHTTPClient *httpClient = [UMSocialAFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"http://blog.umeng.com/"]];
@@ -139,7 +147,7 @@
         NSString *title = [[self.postsArray objectAtIndex:0] valueForKey:@"title"];
         NSString *url = [[self.postsArray objectAtIndex:0] valueForKey:@"url"];
         NSString *shareText = [NSString stringWithFormat:@"%@  %@",title,url];
-        socialData.shareText = shareText;
+        _socialController.socialData.shareText = shareText;
         
         [_webView loadHTMLString:[[self.postsArray objectAtIndex:0] valueForKey:@"content"] baseURL:nil];
         
@@ -147,7 +155,7 @@
             NSString *imageUrl = [[[[self.postsArray objectAtIndex:0] valueForKey:@"attachments"] objectAtIndex:0] valueForKey:@"url"];
             UMImageView *imageView = [[UMImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"yinxing0"]];
             imageView.imageURL = [NSURL URLWithString:[imageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-            socialData.shareImage = imageView.image;
+            _socialController.socialData.shareImage = imageView.image;
             SAFE_ARC_RELEASE(imageView);
         }
 
@@ -167,6 +175,8 @@
 
 -(void)presentShareList
 {
+//    _socialController.socialData.shareText = @"test";
+    NSLog(@"shareText is %@",_socialController.socialData.shareText);
     UINavigationController *shareNavigationController = [_socialController getSocialShareListController];
     [self presentModalViewController:shareNavigationController animated:YES];
 }
@@ -217,8 +227,8 @@
     }
     
     //分享编辑页面的接口
-    NSString *snaName = [[UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray objectAtIndex:buttonIndex];
-    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snaName];
+    NSString *snsName = [[UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray objectAtIndex:buttonIndex];
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
     
     snsPlatform.snsClickHandler(self,_socialController,YES);
 }

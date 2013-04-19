@@ -99,7 +99,7 @@
     UMSocialTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     NSString *identifierString = [_descriptorArray objectAtIndex:indexPath.row];
-    UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:identifierString withTitle:nil];
+    UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:identifierString];
     UMSocialControllerServiceComment *socialController = [[UMSocialControllerServiceComment alloc] initWithUMSocialData:socialData];
     SAFE_ARC_RELEASE(socialData);
     

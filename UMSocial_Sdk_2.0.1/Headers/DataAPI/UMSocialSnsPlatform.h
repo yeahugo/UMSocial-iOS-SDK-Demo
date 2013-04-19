@@ -23,6 +23,7 @@ typedef enum {
 
 #import <Foundation/Foundation.h>
 #import "UMSocialEnum.h"
+#import "UMSocialDataService.h"
 
 @class UMSocialControllerService;
 
@@ -33,6 +34,15 @@ typedef enum {
  
  */
 typedef void (^UMSocialSnsPlatformClickHandler)(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController);
+
+/** 定义响应点击各平台授权登录后的block对象
+ @param presentingController 点击后弹出的分享页面或者授权页面所在的UIViewController对象
+ @param socialControllerService 可以用此对象的socialControllerService.socialData可以获取分享内嵌文字、内嵌图片，分享次数等
+ @param isPresentInController 如果YES代表弹出(present)到当前UIViewController，否则push到UIViewController的navigationController
+ @param completion 授权完成之后的回调对象，返回的response参数表示成功与否和拿到的授权信息
+ 
+ */
+typedef void (^UMSocialSnsPlatformLoginHandler)(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController, UMSocialDataServiceCompletion completion);
 
 /*
  Sns平台类，用`platformName`作为标识，指定显示名称、显示的图片，点击之后的响应。
@@ -49,6 +59,7 @@ typedef void (^UMSocialSnsPlatformClickHandler)(UIViewController *presentingCont
     NSString    *_smallImageOffName;    // 无色的小图片文件名，用于评论编辑页面显示没有授权状态
 	UMSocialSnsType _shareToType;
     UMSocialSnsPlatformClickHandler _snsClickHandler;
+    UMSocialSnsPlatformLoginHandler _loginClickHandler;
 }
 
 ///---------------------------------------
@@ -101,9 +112,14 @@ typedef void (^UMSocialSnsPlatformClickHandler)(UIViewController *presentingCont
 @property (nonatomic, copy) NSString	*oauthCallBackPath;
 
 /**
- 处理点击事件后的block对象
+ 处理点击分享事件后的block对象
  */
 @property(nonatomic, copy) UMSocialSnsPlatformClickHandler snsClickHandler;
+
+/**
+ 处理点击登录事件后的block对象
+ */
+@property(nonatomic, copy) UMSocialSnsPlatformLoginHandler loginClickHandler;
 
 /**
  初始化方法

@@ -14,7 +14,8 @@
 typedef enum{
     UMSocialWXMessageTypeText,
     UMSocialWXMessageTypeImage,
-    UMSocialWXMessageTypeApp
+    UMSocialWXMessageTypeApp,
+    UMSocialWXMessageTypeOther
 }UMSocialWXMessageType;
 
 /**
@@ -26,6 +27,9 @@ typedef enum{
     NSString *_title;
     NSString *_thumbUrl;
     UMSocialWXMessageType _wxMessageType;
+    id _wxMediaObject;
+    NSString *_wxDescription;
+    NSString *_mailMessage;
 }
 
 /**
@@ -51,6 +55,24 @@ typedef enum{
  
  */
 @property (nonatomic, assign) UMSocialWXMessageType wxMessageType;
+
+/**
+ 微信分享的正文内容，如果不设置的话，默认用UMSocialData的shareText
+ 
+ */
+@property (nonatomic, copy) NSString *wxDescription;
+
+/**
+ 微信多媒体资源的分享
+ 
+ */
+@property (nonatomic, retain) id wxMediaObject;
+
+/**
+ 邮件分享的正文内容,如果不设置的话，默认用UMSocialData的shareText
+ 
+ */
+@property (nonatomic, copy) NSString *mailMessage;
 @end
 
 

@@ -331,15 +331,17 @@ pre {
 
 <p><a href="#faq_wechat" style="text-decoration:none">2. 如何集成微信？</a></p>
 
-<p><a href="#faq_orientation" style="text-decoration:none">3. 如何指定页面支持的某一屏幕方向？</a></p>
+<p><a href="#faq_sinasso" style="text-decoration:none">3. 如何使新浪微博支持SSO授权？</a></p>
 
-<p><a href="#faq_debug" style="text-decoration:none">4. 如何处理SDK出现的错误？</a></p>
+<p><a href="#faq_orientation" style="text-decoration:none">4. 如何指定页面支持的某一屏幕方向？</a></p>
 
-<p><a href="#faq_oauth" style="text-decoration:none">5. 如何判断用户有没有授权到一个微博平台？</a></p>
+<p><a href="#faq_debug" style="text-decoration:none">5. 如何处理SDK出现的错误？</a></p>
 
-<p><a href="#faq_usercenter" style="text-decoration:none">6. 个人中心页面上面的登录账号和下面的授权账号有什么关系？</a></p>
+<p><a href="#faq_oauth" style="text-decoration:none">6. 如何判断用户有没有授权到一个微博平台？</a></p>
 
-<p><a href="#faq_identifer" style="text-decoration:none">7. 在报表看到的分享次数、评论次数、喜欢数等，如何根据不同资源作区分，例如统计不同页面按钮各自的分享次数</a></p></blockquote>
+<p><a href="#faq_usercenter" style="text-decoration:none">7. 个人中心页面上面的登录账号和下面的授权账号有什么关系？</a></p>
+
+<p><a href="#faq_identifer" style="text-decoration:none">8. 在报表看到的分享次数、评论次数、喜欢数等，如何根据不同资源作区分，例如统计不同页面按钮各自的分享次数</a></p></blockquote>
 
 <h3><a href="#error_code" style="text-decoration:none">5. 附录</a></h3>
 
@@ -368,7 +370,7 @@ pre {
 
 <p>   获得appkey后，你还需要将你的应用和我们支持的分享平台注册时获取的appkey和appsecret进行绑定。由于QQ空间、新浪微博、腾讯微博、人人网、豆瓣各个平台注册app的方法很有可能有变化，你可以参考我们线上版本的开发文档有关各个平台注册方法：</p>
 
-<p> <a href="http://dev.umeng.com/doc/document_social_ios.html" title="开发文档">iOS Social SDK 在线文档</a></p>
+<p> <a href="http://dev.umeng.com/doc/document_social_ios.html#binding_config" title="开发文档">iOS Social SDK 在线文档</a></p>
 
 <h3>2.3 <a name="quick_use" id="quick_use" style="color:black">快速集成分享功能</a></h3>
 
@@ -474,9 +476,15 @@ UIViewController *rootViewController = [[[UIApplication sharedApplication] deleg
 [self presentModalViewController:shareEditController animated:YES];
 </code></pre>
 
-<p>获得界面级回调函数</p>
+<p>上面的方法是得到一个编辑页面，开发者需要把该对象添加到你的页面上。如果想支持点击微信、Facebook、和Twitter的方式，并且支持新浪微博SSO方式授权，可以调用下面的代码：</p>
 
-<p>设置回调对象<code>[UMSocialControllerService defaultControllerService].soicalUIDelegate = self;</code>
+<pre><code>UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
+snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);
+</code></pre>
+
+<p>上面是点击分享到新浪微博代码。如果要到其他平台可以把<code>UMShareToSina</code>换成在<code>UMSocialEnum.h</code>里面设定的其他分享平台名称。如果要设置内嵌文字等，可以像分享列表页面方法那里介绍一样设置内嵌文字。</p>
+
+<p>获得界面级回调方法，设置回调对象<code>[UMSocialControllerService defaultControllerService].soicalUIDelegate = self;</code>
 实现回调方法,根据<code>response</code>的<code>viewControllerType</code>判断页面类型，根据<code>responseCode</code>判断成功与否，<code>viewControllerType</code>和<code>responseCode</code>的定义见头文件和API文档，如果你需要知道错误具体原因可以查看<code>response</code>的<code>message</code>信息。</p>
 
 <pre><code>-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
@@ -584,6 +592,16 @@ UIViewController *rootViewController = [[[UIApplication sharedApplication] deleg
     }
 }
 </code></pre>
+
+<p>支持SSO授权的实现代码是</p>
+
+<pre><code>  UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snaName];
+  snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+      NSLog(@"response is %@",response);
+  });
+</code></pre>
+
+<p><code>snaName</code> 代表各个支持云端分享的平台名，有<code>UMShareToSina</code>,<code>UMShareToTencent</code>等五个。</p>
 
 <h4>5 其他用户操作 （数据级接口）</h4>
 
@@ -742,20 +760,50 @@ copyPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocia
 
 <pre><code> - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
  {
-     return  [WXApi handleOpenURL:url delegate:self];
+     return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
  }
-</code></pre></li>
-<li><p>需要添加URL scheme，在Xcode4中，选择你的工程设置项，选中“TARGETS”一栏，在“info”标签栏的“URL type“添加“URL scheme”为你所注册的应用程序id。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。见 <a href="http://open.weixin.qq.com/document/gettingstart/ios/?lang=zh_CN" title="微信集成文档">微信使用指南</a> 介绍。</p></li>
+</code></pre>
+
+<p>如果你要自己实现微信的回调，可以把相应的回调对象传入到上面的<code>wxApiDelegate</code>。如果你除了使用我们sdk之外还要处理另外的url，你可以把<code>handleOpenURL:wxApiDelegate:</code>的实现复制到你的代码里面，再添加你要处理的url。</p></li>
+<li><p>添加URL scheme，在Xcode4中，选择你的工程设置项，选中“TARGETS”一栏，在“info”标签栏的“URL type“添加“URL scheme”为你所注册的应用程序id。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。参考新浪微博SSO设置URL scheme的截图，或者见 <a href="http://open.weixin.qq.com/document/gettingstart/ios/?lang=zh_CN" title="微信集成文档">微信使用指南</a> 介绍。</p></li>
 <li><p>我们分享到微信默认只支持文字分享，如果你要想分享图文分享的话，分享出来的文字可能会显示不全，改变<code>UMSocialData</code>对象的ext属性的<code>wxMessageType</code>为<code>UMSocialWXMessageTypeApp</code>，如果是图片分享则指定为<code>UMSocialWXMessageTypeImage</code>，图片分享就不能出现文字。分享的文字和图片内容还是<code>UMSocialData</code>设置的<code>shareText</code>和<code>shareImage</code>。</p></li>
 </ol>
 
 
-<h3>3. <a name="faq_orientation" id="faq_orientation" style="color:black">如何指定页面支持的某一屏幕方向？</a></h3>
+<h3>3. <a name="faq_sinasso" id="faq_sinasso" style="color:black">如何使新浪微博支持SSO授权？</a></h3>
+
+<p>本SDK默认支持新浪微博SSO登录，即需要新浪微博授权的时候会判断设备是否安装新浪微博客户端，如果有的话就跳到客户端再回来。如果你不想支持新浪微博SSO，需要对代码做如下修改：
+在<code>UMSocialSnsService.h</code>最上面修改
+把<code>#define __UMSocial__Support__SSO 1</code>改为
+<code>#define __UMSocial__Support__SSO 0</code></p>
+
+<p>支持新浪微博SSO授权，您还需要下面两步：</p>
+
+<ol>
+<li>添加URL scheme，在你的工程设置项,targets 一栏下,选中自己的 target,在 Info->URL Types 中添加 URL Schemes,此值是 sso 登录时回调时所用。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。本例采用默认格式:”sinaweibosso.”+” <b>新浪微博</b>应用的 app key”,如下图。</li>
+</ol>
+
+
+<p><img src="http://dev.umeng.com/images/ios/social_sso.png" title="social_sso" alt="socialbar" /></p>
+
+<p>2.在你的<code>AppDelegate</code>文件里面调用我们处理URL的实现代理方法</p>
+
+<pre><code>```
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+}
+```
+</code></pre>
+
+<p>如果你除了使用我们sdk之外还要处理另外的url，你可以把<code>handleOpenURL:wxApiDelegate:</code>的实现复制到你的代码里面，再添加你要处理的url。</p>
+
+<h3>4. <a name="faq_orientation" id="faq_orientation" style="color:black">如何指定页面支持的某一屏幕方向？</a></h3>
 
 <p><code>UMSocialConfig</code>的类方法<code>+ (void)setSupportedInterfaceOrientations:(NSUInteger)interfaceOrientations;</code>传入形参为iOS6定义的<code>UIInterfaceOrientationMask</code>类型。
 例如设置只有横屏显示：<code>[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];</code></p>
 
-<h3>4. <a name="faq_debug" id="faq_debug" style="color:black">如何处理SDK出现的错误？</a></h3>
+<h3>5. <a name="faq_debug" id="faq_debug" style="color:black">如何处理SDK出现的错误？</a></h3>
 
 <p>由于社会化组件功能需要依赖新浪微博、腾讯微博、QQ空间、人人网和友盟服务器的服务，和微信等SDK的功能，还有SDK本身也在不断地改进升级，出现各种错误在所难免。</p>
 
@@ -770,11 +818,11 @@ copyPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocia
 </ol>
 
 
-<h3>5. <a name="faq_oauth" id="faq_oauth" style="color:black">如何判断用户有没有授权到一个微博平台</a></h3>
+<h3>6. <a name="faq_oauth" id="faq_oauth" style="color:black">如何判断用户有没有授权到一个微博平台</a></h3>
 
 <p>如果利用SDK授权用户，我们会把用户的授权信息保存在SDK本地，你可利用<code>UMSocialAccountManager</code>,的类方法<code>+ (BOOL)isOauthWithPlatform:(NSString *)platformName;</code>,传入在<code>UMSocialEnum.h</code>定义的平台名，就可以返回是否已经授权。例如<code>[UMSocialAccountManager isOauthWithPlatform:UMShareToSina];</code>就能返回是否已经授权新浪微博。</p>
 
-<h3>6. <a name="faq_usercenter" id="faq_usercenter" style="color:black">个人中心页面上面的登录账号和下面的授权账号有什么关系？</a></h3>
+<h3>7. <a name="faq_usercenter" id="faq_usercenter" style="color:black">个人中心页面上面的登录账号和下面的授权账号有什么关系？</a></h3>
 
 <ol>
 <li>个人中上半部分是登录账号、下半部分是授权账号。所谓登录账号，即我们SDK讲一个sns的授权账号作为绑定账号，我们在评论时候就会使用此登录账号的用户名和头像。下半部分就是各个sns平台的授权信息，可以显示每个平台是否授权和昵称。</li>
@@ -784,7 +832,7 @@ copyPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocia
 </ol>
 
 
-<h3>7. <a name="faq_identifer" id="faq_identifier" style="color:black">在报表看到的分享次数、评论次数、喜欢数等，如何根据不同资源作区分，例如统计不同页面按钮各自的分享次数</a></h3>
+<h3>8. <a name="faq_identifer" id="faq_identifier" style="color:black">在报表看到的分享次数、评论次数、喜欢数等，如何根据不同资源作区分，例如统计不同页面按钮各自的分享次数？</a></h3>
 
 <p>调用数据级接口和界面级接口需要一个<code>UMSocialData</code>对象，一个<code>UMSocialData</code>对象标识一个分享资源，而<code>UMSocialData</code>对象用一个<code>identifier</code>字符串来初始化并标识这个对象，你可以为此对象设置分享内嵌文字、分享图片等，可以在SDK获取到对应的分享数。也可以在后台报表，很清楚地看到每个分享资源的分享次数，和每个用户在分享次数。如果你用了评论和喜欢功能，也可以在SDK得到评论、喜欢数字和在报表看到相应的评论、喜欢行为和次数。</p>
 

@@ -32,10 +32,9 @@
     _tableView.delegate = self;
     UMSocialShareViewController *shareViewController = [[self.tabBarController viewControllers] objectAtIndex:0];
     UMSocialData *socialData = shareViewController.socialController.socialData;
-
-    _socialDataService = [UMSocialDataService defaultDataService];
-    SAFE_ARC_RETAIN(_socialDataService);
-    _socialDataService.socialData = socialData;
+//    SAFE_ARC_RETAIN(socialData);
+//    UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test"];
+    _socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
         
     _shareTextView.text = socialData.shareText;
     
@@ -94,7 +93,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 13;
+    return 15;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -144,6 +143,12 @@
     }
     if (indexPath.row == 12) {
         cell.textLabel.text = @"添加授权账号";
+    }
+    if (indexPath.row == 13) {
+        cell.textLabel.text = @"获取app信息";
+    }
+    if (indexPath.row == 14) {
+        cell.textLabel.text = @"添加自定义账户";
     }
     return cell;
 }
@@ -200,8 +205,17 @@
         [_socialDataService requestAddFollow:_socialPlatform.platformName followedUsid:[NSArray arrayWithObject:@"2937537507"] completion:completion];
     }
     else if (indexPath.row == 12){
-        UMSocialCustomAccount *customAccount = [[UMSocialCustomAccount alloc] initWithUserName:@"customUserName"];
-        [UMSocialAccountManager addCustomAccount:customAccount completion:completion];
+        UMSocialAccountEntity *snsAccount = [[UMSocialAccountEntity alloc] initWithPlatformName:UMShareToSina];
+        snsAccount.usid = @"2575014582";
+        snsAccount.accessToken = @"2.00QvUQoC0idO6ta487efea98Sb8S6C";
+        [UMSocialAccountManager postSnsAccount:snsAccount completion:completion];
+    }
+    else if (indexPath.row == 13){
+        [UMSocialAccountManager requestAppInfo:completion];
+    }
+    else if (indexPath.row == 14){
+        UMSocialCustomAccount *customAccount = [[UMSocialCustomAccount alloc] initWithUserName:@"customName"];
+        [UMSocialAccountManager postCustomAccount:customAccount completion:completion];
         SAFE_ARC_RELEASE(customAccount);
     }
 }

@@ -20,6 +20,8 @@
 {
     SAFE_ARC_RELEASE(_snsNames);
     SAFE_ARC_BLOCK_RELEASE(_actionSheetHandler);
+    SAFE_ARC_RELEASE(_backgroundImageView);
+    SAFE_ARC_RELEASE(_actionSheetBackground);
     SAFE_ARC_SUPER_DEALLOC();
 }
 
@@ -100,11 +102,9 @@
         _actionSheetBackground.delegate = self;
         _actionSheetBackground.indicatorStyle = UIScrollViewIndicatorStyleWhite;
         [_actionSheetBackground addSubview:_backgroundImageView];
-        SAFE_ARC_RELEASE(_backgroundImageView);
-        
         _actionSheetBackground.frame = CGRectMake(0, 0, fullFrame.size.width, fullFrame.size.height);
         [self addSubview:_actionSheetBackground];
-        SAFE_ARC_RELEASE(_actionSheetBackground);
+        
     }
     else{
         _actionSheetBackground.frame = CGRectMake(0, 0, fullFrame.size.width, fullFrame.size.height);

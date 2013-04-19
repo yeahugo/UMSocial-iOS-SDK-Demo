@@ -42,8 +42,6 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
-	<option value="//api/name/addCustomAccount:completion:">&nbsp;&nbsp;&nbsp;&nbsp;+ addCustomAccount:completion:</option>
-	
 	<option value="//api/name/isLogin">&nbsp;&nbsp;&nbsp;&nbsp;+ isLogin</option>
 	
 	<option value="//api/name/isLoginWithAnonymous">&nbsp;&nbsp;&nbsp;&nbsp;+ isLoginWithAnonymous</option>
@@ -51,6 +49,12 @@
 	<option value="//api/name/isLoginWithSnsAccount">&nbsp;&nbsp;&nbsp;&nbsp;+ isLoginWithSnsAccount</option>
 	
 	<option value="//api/name/isOauthWithPlatform:">&nbsp;&nbsp;&nbsp;&nbsp;+ isOauthWithPlatform:</option>
+	
+	<option value="//api/name/postCustomAccount:completion:">&nbsp;&nbsp;&nbsp;&nbsp;+ postCustomAccount:completion:</option>
+	
+	<option value="//api/name/postSnsAccount:completion:">&nbsp;&nbsp;&nbsp;&nbsp;+ postSnsAccount:completion:</option>
+	
+	<option value="//api/name/requestAppInfo:">&nbsp;&nbsp;&nbsp;&nbsp;+ requestAppInfo:</option>
 	
 	<option value="//api/name/setIsLoginWithAnonymous:">&nbsp;&nbsp;&nbsp;&nbsp;+ setIsLoginWithAnonymous:</option>
 	
@@ -84,8 +88,6 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addCustomAccount:completion:">addCustomAccount:completion:</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isLogin">isLogin</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isLoginWithAnonymous">isLoginWithAnonymous</a></span></li>
@@ -93,6 +95,12 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isLoginWithSnsAccount">isLoginWithSnsAccount</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isOauthWithPlatform:">isOauthWithPlatform:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postCustomAccount:completion:">postCustomAccount:completion:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postSnsAccount:completion:">postSnsAccount:completion:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requestAppInfo:">requestAppInfo:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setIsLoginWithAnonymous:">setIsLoginWithAnonymous:</a></span></li>
 	
@@ -155,7 +163,21 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/addCustomAccount:completion:">+&nbsp;addCustomAccount:completion:</a></code>
+		<code><a href="#//api/name/postSnsAccount:completion:">+&nbsp;postSnsAccount:completion:</a></code>
+		<span class="tooltip"><p>添加自己获取到的sns账号，必须要有sns用户的usid和accessToken</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/requestAppInfo:">+&nbsp;requestAppInfo:</a></code>
+		<span class="tooltip"><p>获取友盟Appkey对应的各个平台的appkey和appsecret</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/postCustomAccount:completion:">+&nbsp;postCustomAccount:completion:</a></code>
 		<span class="tooltip"><p>添加自有账号到友盟的账号体系，一般是用户在使用自有账号登录之后，再利用此方法上传账号，然后利用我们评论和个人中心的接口就会显示自有账号的昵称和头像等信息</p></span>
 	</span>
 	
@@ -216,57 +238,6 @@
 					<div class="section section-methods">
 						<a title="Class Methods" name="class_methods"></a>
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/addCustomAccount:completion:" title="addCustomAccount:completion:"></a>
-	<h3 class="subsubtitle method-title">addCustomAccount:completion:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>添加自有账号到友盟的账号体系，一般是用户在使用自有账号登录之后，再利用此方法上传账号，然后利用我们评论和个人中心的接口就会显示自有账号的昵称和头像等信息</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (void)addCustomAccount:(UMSocialCustomAccount *)<em>customAccount</em> completion:(UMSocialDataServiceCompletion)<em>completion</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>customAccount</em></dt>
-			<dd><p>自有账号对象</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>completion</em></dt>
-			<dd><p>回调Block对象</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialAccountManager.h</code><br />
-	</div>				
-	
-	
-</div>
 						
 						<div class="section-method">
 	<a name="//api/name/isLogin" title="isLogin"></a>
@@ -423,6 +394,154 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/postCustomAccount:completion:" title="postCustomAccount:completion:"></a>
+	<h3 class="subsubtitle method-title">postCustomAccount:completion:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>添加自有账号到友盟的账号体系，一般是用户在使用自有账号登录之后，再利用此方法上传账号，然后利用我们评论和个人中心的接口就会显示自有账号的昵称和头像等信息</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)postCustomAccount:(UMSocialCustomAccount *)<em>customAccount</em> completion:(UMSocialDataServiceCompletion)<em>completion</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>customAccount</em></dt>
+			<dd><p>自有账号对象</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completion</em></dt>
+			<dd><p>回调Block对象</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialAccountManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/postSnsAccount:completion:" title="postSnsAccount:completion:"></a>
+	<h3 class="subsubtitle method-title">postSnsAccount:completion:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>添加自己获取到的sns账号，必须要有sns用户的usid和accessToken</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)postSnsAccount:(UMSocialAccountEntity *)<em>snsAccount</em> completion:(UMSocialDataServiceCompletion)<em>completion</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>snsAccount</em></dt>
+			<dd><p>已经授权的sns账号对象</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completion</em></dt>
+			<dd><p>回调Block对象</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialAccountManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/requestAppInfo:" title="requestAppInfo:"></a>
+	<h3 class="subsubtitle method-title">requestAppInfo:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>获取友盟Appkey对应的各个平台的appkey和appsecret</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)requestAppInfo:(UMSocialDataServiceCompletion)<em>completion</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completion</em></dt>
+			<dd><p>回调Block对象</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialAccountManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/setIsLoginWithAnonymous:" title="setIsLoginWithAnonymous:"></a>
 	<h3 class="subsubtitle method-title">setIsLoginWithAnonymous:</h3>
 	
@@ -519,7 +638,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-04-03)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-04-19)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

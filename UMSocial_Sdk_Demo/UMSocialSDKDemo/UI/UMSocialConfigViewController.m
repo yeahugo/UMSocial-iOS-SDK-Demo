@@ -37,33 +37,14 @@
         [UMSocialConfig setFollowWeiboUids:[NSDictionary dictionaryWithObjectsAndKeys:@"2937537507",UMShareToSina,nil]];
         //设置异步分享
 //        [UMSocialConfig setShouldShareSynchronous:NO];
-        _shareToPlatforms = [[NSMutableArray alloc] initWithObjects:[NSMutableArray  arrayWithObjects:UMShareToQzone,UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToDouban,nil],[NSMutableArray arrayWithObjects:UMShareToEmail,UMShareToSms,UMShareToWechat,UMShareToFacebook,UMShareToTwitter,nil],nil];
+        _shareToPlatforms = [[NSMutableArray alloc] initWithObjects:[NSMutableArray  arrayWithObjects:UMShareToQzone,UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToDouban,nil],[NSMutableArray arrayWithObjects:UMShareToEmail,UMShareToSms,UMShareToWechat,UMShareToFacebook,UMShareToTwitter,@"copy",nil],nil];
         _shareToPlatformsValues = [[NSArray alloc] initWithObjects:UMShareToQzone,UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToDouban,UMShareToEmail,UMShareToSms,UMShareToWechat,UMShareToFacebook,UMShareToTwitter, nil];
 #ifdef __IPHONE_6_0
-            _shareToPlatformDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:UMShareToQzone,UMShareToQzone,UMShareToSina,UMShareToSina,UMShareToTencent,UMShareToTencent,UMShareToRenren,UMShareToRenren,UMShareToDouban,UMShareToDouban,UMShareToWechat,UMShareToWechat,UMShareToEmail,UMShareToEmail,UMShareToSms,UMShareToSms,UMShareToFacebook,UMShareToFacebook,UMShareToTwitter,UMShareToTwitter, nil];
+            _shareToPlatformDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:UMShareToQzone,UMShareToQzone,UMShareToSina,UMShareToSina,UMShareToTencent,UMShareToTencent,UMShareToRenren,UMShareToRenren,UMShareToDouban,UMShareToDouban,UMShareToWechat,UMShareToWechat,UMShareToEmail,UMShareToEmail,UMShareToSms,UMShareToSms,UMShareToFacebook,UMShareToFacebook,UMShareToTwitter,UMShareToTwitter,nil];
 #else
             _shareToPlatformDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:UMShareToQzone,UMShareToQzone,UMShareToSina,UMShareToSina,UMShareToTencent,UMShareToTencent,UMShareToRenren,UMShareToRenren,UMShareToDouban,UMShareToDouban,UMShareToWechat,UMShareToWechat,UMShareToEmail,UMShareToEmail,UMShareToSms,UMShareToSms, nil];
 #endif
 
-//        UMSocialSnsPlatform *copyPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:@"copy"];
-//        copyPlatform.displayName = @"复制";
-//        copyPlatform.smallImageName = @"icon"; //用于tableView样式的分享列表
-//        copyPlatform.bigImageName = @"icon";   //用于actionsheet样式的分享列表
-//        copyPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
-//            NSLog(@"copy!");
-//        };
-//        
-//        UMSocialSnsPlatform *pastePlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:@"paste"];
-//        pastePlatform.displayName = @"粘贴";
-//        pastePlatform.smallImageName = @"icon"; //用于tableView样式的分享列表
-//        pastePlatform.bigImageName = @"icon";   //用于actionsheet样式的分享列表
-//        pastePlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
-//            NSLog(@"paste!");
-//        };
-//        
-//        [UMSocialConfig addSocialSnsPlatform:@[copyPlatform,pastePlatform]];
-//        
-//        [UMSocialConfig setSnsPlatformNames:@[@[@"copy",@"paste",UMShareToQzone,UMShareToSina,UMShareToWechat,UMShareToTencent],@[UMShareToFacebook,UMShareToTwitter,UMShareToEmail,UMShareToSms]]];
     }
     return self;
 }
@@ -105,7 +86,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -128,6 +109,9 @@
     }
     else if (section == 1){
         number = 10;
+    }
+    else if(section == 2){
+        number = 1;
     }
     return number;
 }
@@ -261,6 +245,11 @@
             }
         }
     }
+    else if (indexPath.section == 2)
+    {
+        cell.textLabel.text = @"增加自定义渠道--复制";
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
 }
@@ -317,6 +306,24 @@
         else{
             [_shareToPlatformDic removeObjectForKey:snsName];
         }
+        [UMSocialConfig setSnsPlatformNames:[self shareToPlatforms]];
+    }
+    else if (indexPath.section == 2){
+        UMSocialSnsPlatform *copyPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:@"copy"];
+        copyPlatform.displayName = @"复制";
+        copyPlatform.smallImageName = @"icon"; //用于tableView样式的分享列表
+        copyPlatform.bigImageName = @"icon";   //用于actionsheet样式的分享列表
+        copyPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
+            NSLog(@"copy!");
+        };
+        BOOL isSelect = cellView.selected;
+        if (isSelect) {
+            [_shareToPlatformDic setObject:copyPlatform.platformName forKey:copyPlatform.platformName];
+        }
+        else if([_shareToPlatformDic objectForKey:copyPlatform.platformName]){
+            [_shareToPlatformDic removeObjectForKey:copyPlatform.platformName];
+        }
+        [UMSocialConfig addSocialSnsPlatform:[NSArray arrayWithObject:copyPlatform]];
         [UMSocialConfig setSnsPlatformNames:[self shareToPlatforms]];
     }
 }

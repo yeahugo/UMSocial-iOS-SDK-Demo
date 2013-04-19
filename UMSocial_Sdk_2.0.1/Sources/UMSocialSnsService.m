@@ -28,6 +28,7 @@
 @synthesize sinaWeibo = _sinaWeibo;
 #endif
 @synthesize completion = _completion;
+@synthesize authorization = _authorization;
 @synthesize socialControllerService = _socialControllerService;
 -(void)dealloc
 {
@@ -51,68 +52,84 @@
 }
 
 #if __UMSocial__Support__SSO
-+(BOOL)handleOpenURL:(NSURL *)url
++(BOOL)handleOpenURL:(NSURL *)url wxApiDelegate:(id<WXApiDelegate>)wxApiDelegate
 {
     if ([url.description hasPrefix:@"sinaweibosso"]) {
         return [[UMSocialSnsService sharedInstance].sinaWeibo handleOpenURL:url];
     }
     else if([url.description hasPrefix:@"wx"]){
-        return [WXApi handleOpenURL:url delegate:[UMSocialSnsService sharedInstance]];
-    }    
+        id delegate = wxApiDelegate;
+        if (delegate == nil) {
+            delegate = [UMSocialSnsService sharedInstance];
+        }
+        return [WXApi handleOpenURL:url delegate:delegate];
+    }
+    return NO;
 }
 
-
-+(void)handleOauthWithSnsName:(NSString *)snsName controller:(UIViewController *)controller completion:(void (^)(void))completion
-{
-    [UMSocialSnsService sharedInstance].completion = completion;
-    if ([snsName isEqualToString:UMShareToSina] && ![UMSocialAccountManager isOauthWithPlatform:snsName]) {
-        [[UMSocialSnsService sharedInstance].sinaWeibo logIn];
-        [UMSocialSnsService sharedInstance].sinaWeibo.delegate = [UMSocialSnsService sharedInstance];
-    }
-    else{
-        completion();
-    }
-}
 
 -(void)sinaweibo:(SinaWeibo *)sinaweibo logInDidFailWithError:(NSError *)error
 {
-    self.completion();
+    self.authorization();
+}
+
+- (void)sinaweiboLogInDidCancel:(SinaWeibo *)sinaweibo
+{
+    if (self.completion != nil) {
+        UMSocialResponseEntity *response = [[UMSocialResponseEntity alloc] init];
+        response.responseType = UMSResponseOauth;
+        response.responseCode = UMSResponseCodeCancel;
+        response.data = [NSDictionary dictionaryWithObject:@"" forKey:UMShareToSina];
+        self.completion(response);
+        SAFE_ARC_RELEASE(response);
+    }
 }
 
 - (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
 {
-    UMSocialAccountEntity *snsAccount = [[UMSocialAccountEntity alloc] initWithPlatformName:UMShareToSina];
-    snsAccount.usid = sinaweibo.userID;
-    snsAccount.accessToken = sinaweibo.accessToken;
-    [UMSocialAccountManager setSnsAccount:snsAccount];
-    SAFE_ARC_RELEASE(snsAccount);
+    UMSocialAccountEntity *sinaAccount = [[UMSocialAccountEntity alloc] initWithPlatformName:UMShareToSina];
+    sinaAccount.usid = sinaweibo.userID;
+    sinaAccount.accessToken = sinaweibo.accessToken;
     
-    UMSocialCustomAccount *customAccount = [[UMSocialCustomAccount alloc] initWithUserName:sinaweibo.userID];
-    customAccount.platformName = UMShareToSina;
-    customAccount.usid = sinaweibo.userID;
-    customAccount.customData = [NSDictionary dictionaryWithObject:sinaweibo.accessToken forKey:@"accessToken"];
-    [UMSocialAccountManager addCustomAccount:customAccount completion:^(UMSocialResponseEntity * response){
-        if (response.responseCode == UMSResponseCodeSuccess && self.completion!= nil) {
-            self.completion();
+    [UMSocialAccountManager postSnsAccount:sinaAccount completion:^(UMSocialResponseEntity * response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            [UMSocialAccountManager setSnsAccount:sinaAccount];
+        }
+        if (self.completion!= nil) {
+            response.responseType = UMSResponseOauth;
+            response.data = [NSDictionary dictionaryWithObject:[NSDictionary dictionaryWithObjectsAndKeys:sinaAccount.usid,@"usid",sinaAccount.accessToken,@"accessToken",nil] forKey:UMShareToSina];
+            self.completion(response);
         }
     }];
-    SAFE_ARC_RELEASE(customAccount);
-    
+    SAFE_ARC_RELEASE(sinaAccount);
+}
+
+-(void)resetSinaWeibo
+{
+    self.sinaWeibo.userID = nil;
 }
 
 #else
 
-+(BOOL)handleOpenURL:(NSURL *)url
++(BOOL)handleOpenURL:(NSURL *)url wxApiDelegate:(id<WXApiDelegate>)wxApiDelegate
 {
-    return [WXApi handleOpenURL:url delegate:[UMSocialSnsService sharedInstance]];
+    if([url.description hasPrefix:@"wx"]){
+        id delegate = wxApiDelegate;
+        if (delegate == nil) {
+            delegate = [UMSocialSnsService sharedInstance];
+        }
+        return [WXApi handleOpenURL:url delegate:delegate];
+    }
+    return NO;
 }
+
 
 #endif
 
--(void)willCloseUIViewController:(UMSViewControllerType)fromViewControllerType
-{
-    self.completion();
-}
+//-(void)willCloseUIViewController:(UMSViewControllerType)fromViewControllerType
+//{
+//    self.completion();
+//}
 
 -(void) onResp:(BaseResp*)resp
 {
@@ -120,7 +137,6 @@
     if([resp isKindOfClass:[SendMessageToWXResp class]])
     {
         NSString * message = nil;
-        message = [NSString stringWithFormat:@"%d",resp.errCode];
         if (resp.errCode == WXSuccess) {
             message = @"成功";
         }
@@ -134,9 +150,12 @@
         else if (resp.errCode == WXErrCodeUnsupport){
             message = @"不支持";
         }
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"微信分享结果" message:message delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
-        [alertView show];
-        SAFE_ARC_RELEASE(alertView);
+        
+        if (message != nil) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"微信分享结果" message:message delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+            [alertView show];
+            SAFE_ARC_RELEASE(alertView);
+        }
     }
 }
 
@@ -145,7 +164,7 @@
 {
     if (self = [super init]) {
 #if __UMSocial__Support__SSO
-        _sinaWeibo = [[SinaWeibo alloc] initWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:kAppRedirectURI andDelegate:self];
+        _sinaWeibo = [[SinaWeibo alloc] initWithAppKey:@"appkey" appSecret:@"appsecret" appRedirectURI:kAppRedirectURI andDelegate:self];
         _sinaWeibo.delegate = self;
 #endif
         _socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:[UMSocialData defaultData]];
@@ -428,25 +447,40 @@
         }
         
         SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
-        req.text = _socialControllerService.socialData.shareText;
         
         req.bText = YES;
+        
+        WXMediaMessage *message = [WXMediaMessage message];
+        NSString *shareText = nil;
+        if (_socialControllerService.socialData.extConfig.wxDescription != nil) {
+            shareText = _socialControllerService.socialData.extConfig.wxDescription;
+        }
+        else{
+            shareText = _socialControllerService.socialData.shareText;
+        }
+        req.text = shareText;
+        
+        NSInteger length = shareText.length > 10 ? 10:shareText.length;
+        NSString *title = [NSString stringWithFormat:@"%@……",[shareText substringToIndex:length]];
+        
+        message.title = title;
+        
+        message.description = shareText;
+
+        UIImage *thumbImage = _socialControllerService.socialData.shareImage;
+        if (thumbImage != nil) {
+            thumbImage = [self imageByScalingAndCroppingFromImage:thumbImage size:CGSizeMake(100, 100)];
+            [message setThumbImage:thumbImage];
+        }
+        else{
+            [message setThumbImage:[UIImage imageNamed:@"icon"]];
+        }
+
         
         if (_socialControllerService.socialData.extConfig != nil) {
             if (_socialControllerService.socialData.extConfig.wxMessageType == UMSocialWXMessageTypeApp) {
                 
                 WXAppExtendObject *ext = [WXAppExtendObject object];
-                int buffer_size = 10;
-                Byte *pBuffer = (Byte *)malloc(buffer_size);
-                memset(pBuffer, 0, buffer_size);
-                NSData *data = [NSData dataWithBytes:pBuffer length:buffer_size];
-                free(pBuffer);
-                
-                ext.fileData = data;
-                
-                WXMediaMessage *message = [WXMediaMessage message];
-                NSString *shareText = _socialControllerService.socialData.shareText;
-                NSString *title = [NSString stringWithFormat:@"%@……",[shareText substringToIndex:10]];
                 
                 if (_socialControllerService.socialData.extConfig != nil) {
                     if(_socialControllerService.socialData.extConfig.title != nil){
@@ -456,24 +490,33 @@
                         ext.url = _socialControllerService.socialData.extConfig.appUrl;
                     }
                 }
-                message.title = title;
                 
-                message.description = _socialControllerService.socialData.shareText;
-                UIImage *thumbImage = _socialControllerService.socialData.shareImage;
-                thumbImage = [self imageByScalingAndCroppingFromImage:thumbImage size:CGSizeMake(100, 100)];
-                [message setThumbImage:thumbImage];
+                
+                int buffer_size = 10;
+                Byte *pBuffer = (Byte *)malloc(buffer_size);
+                memset(pBuffer, 0, buffer_size);
+                NSData *data = [NSData dataWithBytes:pBuffer length:buffer_size];
+                free(pBuffer);
+                ext.fileData = data;
+                
                 message.mediaObject = ext;
-                
+                message.title = title;
                 req.message = message;
                 req.bText = NO;
             }
             else if (_socialControllerService.socialData.extConfig.wxMessageType == UMSocialWXMessageTypeImage){
                 WXImageObject *imageObject = [WXImageObject object];
                 [imageObject setImageData:UIImagePNGRepresentation(_socialControllerService.socialData.shareImage)];
-                WXMediaMessage *message = [WXMediaMessage message];
-                [message setThumbImage:[self imageByScalingAndCroppingFromImage:_socialControllerService.socialData.shareImage size:CGSizeMake(100, 100)]];
                 message.mediaObject = imageObject;
 
+                req.message = message;
+                req.bText = NO;
+            }
+            else if(_socialControllerService.socialData.extConfig.wxMessageType == UMSocialWXMessageTypeOther){
+                if (self.socialControllerService.socialData.extConfig.wxMediaObject != nil) {
+                    message.mediaObject = self.socialControllerService.socialData.extConfig.wxMediaObject;
+                }
+                
                 req.message = message;
                 req.bText = NO;
             }

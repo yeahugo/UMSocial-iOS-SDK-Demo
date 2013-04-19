@@ -48,6 +48,10 @@
     [self.view addSubview:_activityIndicatorView];
     _socialUIController.socialUIDelegate = self;
     [_socialUIController.socialDataService setUMSocialDelegate:self];
+    
+    NSDictionary *socialDic = [UMSocialAccountManager socialAccountDictionary];
+    UMSocialAccountEntity *sinaAccount= [socialDic objectForKey:UMShareToSina];
+    NSLog(@"username is %@",sinaAccount.userName);
 }
 
 - (void)viewDidUnload
@@ -66,7 +70,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -158,15 +162,6 @@
     }
 }
 
-#if __UMSocial__Support__SSO
-- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
-{
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"success" message:sinaweibo.userID delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-    [alertView show];
-    UMLog(@"uid is %@ token is %@",sinaweibo.userID,sinaweibo.accessToken);
-}
-#endif
-
 #pragma mark - UIActionSheet
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -177,14 +172,14 @@
     if (actionSheet.tag == UMAccountOauth) {
         NSString *snaName = [[UMSocialSnsPlatformManager sharedInstance].socialSnsArray objectAtIndex:buttonIndex];
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snaName];
-        
-        UINavigationController *oauthController = [_socialUIController getSocialOauthController:snsPlatform.platformName];
-        [self presentModalViewController:oauthController animated:YES];
+        snsPlatform.loginClickHandler(self,_socialUIController,YES,^(UMSocialResponseEntity *response){
+            NSLog(@"response is %@",response);
+            NSLog(@"snsType is %@",[[response.data allKeys] objectAtIndex:0]);
+        });
     }
 }
 
 #pragma mark - UMSocialDelegate
-
 -(void)didFinishGetUMSocialDataResponse:(UMSocialResponseEntity *)response
 {
     NSLog(@"social Account response is %@",response);
