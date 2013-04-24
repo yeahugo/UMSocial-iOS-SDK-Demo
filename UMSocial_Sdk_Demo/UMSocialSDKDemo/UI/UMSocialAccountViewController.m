@@ -42,7 +42,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _socialUIController = [[UMSocialControllerService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+    _socialUIController = [UMSocialControllerService defaultControllerService];
+//    _socialUIController = [[UMSocialControllerService alloc] initWithUMSocialData:[UMSocialData defaultData]];
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _activityIndicatorView.center = CGPointMake(160, 200);
     [self.view addSubview:_activityIndicatorView];

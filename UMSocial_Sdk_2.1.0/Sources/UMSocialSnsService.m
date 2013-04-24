@@ -97,6 +97,7 @@
         }
         if (self.completion!= nil) {
             response.responseType = UMSResponseOauth;
+            response.viewControllerType = UMSViewControllerOauth;
             response.data = [NSDictionary dictionaryWithObject:[NSDictionary dictionaryWithObjectsAndKeys:sinaAccount.usid,@"usid",sinaAccount.accessToken,@"accessToken",nil] forKey:UMShareToSina];
             self.completion(response);
         }
@@ -167,7 +168,9 @@
         _sinaWeibo = [[SinaWeibo alloc] initWithAppKey:@"appkey" appSecret:@"appsecret" appRedirectURI:kAppRedirectURI andDelegate:self];
         _sinaWeibo.delegate = self;
 #endif
-        _socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+//        _socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:[UMSocialData defaultData]];
+        _socialControllerService = nil;
+        
         
         UMSocialSnsPlatform *wechatPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:UMShareToWechat];
         wechatPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_wechart_icon";
@@ -303,10 +306,9 @@
     if (appKey != nil) {
         [UMSocialData setAppKey:appKey];        
     }
-    UMSocialData *socialData = [UMSocialData defaultData];
-    socialData.shareText = shareText;
-    socialData.shareImage = shareImage;
-    _socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+    _socialControllerService = [[UMSocialControllerService alloc] init];
+    _socialControllerService.socialData.shareText = shareText;
+    _socialControllerService.socialData.shareImage = shareImage;
     _socialControllerService.socialUIDelegate = delegate;
 }
 

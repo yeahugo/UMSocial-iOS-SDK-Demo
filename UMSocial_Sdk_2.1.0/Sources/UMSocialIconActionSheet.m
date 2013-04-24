@@ -41,7 +41,7 @@
 -(void)drawRect:(CGRect)rect
 {
     float deltaY = 85.0;
-    CGPoint startPoint = CGPointMake(20, 15);
+    CGPoint startPoint = CGPointMake(20, 25);
     CGSize buttonSize = CGSizeMake(57, 57);
     CGSize labelSize = CGSizeMake(55, 20);
     float actionSheetHeight = 400;
@@ -121,7 +121,7 @@
 
         _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _cancelButton.frame = CGRectMake(0, 0, 200, 40);
-        _cancelButton.center = CGPointMake(self.frame.size.width/2,self.frame.size.height - buttomHeight + _cancelButton.frame.size.height + 5);
+        _cancelButton.center = CGPointMake(self.frame.size.width/2,self.frame.size.height - buttomHeight + _cancelButton.frame.size.height + 10);
         [_cancelButton setBackgroundImage:image forState:UIControlStateNormal];
         [_cancelButton setBackgroundImage:selectImage forState:UIControlStateSelected];
         

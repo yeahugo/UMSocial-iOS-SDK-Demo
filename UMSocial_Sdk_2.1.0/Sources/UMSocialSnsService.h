@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 Umeng. All rights reserved.
 //
 
-#define __UMSocial__Support__SSO 0
+#define __UMSocial__Support__SSO 1
 
 #import <Foundation/Foundation.h>
 #import "UMSocialControllerService.h"

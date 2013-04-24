@@ -20,6 +20,7 @@
     NSString *_iconURL;
     NSString *_accessToken;
     NSString *_profileURL;
+    NSString *_openId;
     BOOL     _isFirstOauth;
 }
 
@@ -62,6 +63,12 @@
  是否首次授权，sdk内使用
  */
 @property (nonatomic) BOOL isFirstOauth;
+
+
+/**
+ 添加已授权的腾讯微博和qq空间账号，需要用到的openId
+ */
+@property (nonatomic, copy) NSString *openId;
 
 /**
  初始化方法

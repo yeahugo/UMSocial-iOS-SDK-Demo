@@ -53,16 +53,15 @@
     [super viewDidLoad];
 
     _socialController = [[UMSocialControllerService alloc] init];
-
-/*
-//  下面发送视频到微博，可以发送url的视频、音乐和图片
+    _socialController.socialData.extConfig.wxMessageType = UMSocialWXMessageTypeApp;
     
+
+//  下面发送视频到微博，可以发送url的视频、音乐和图片
+    /*
     UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:
                                         UMSocialUrlResourceTypeImage url:@"http://www.umeng.com/images/pic/eg/icon_skisafari_55_55.png"];
     _socialController.socialData.urlResource = urlResource;
     SAFE_ARC_RELEASE(urlResource);
- 
-    
  
 //  下面进行设置微信分享类型，缩略图，标题等
     
@@ -175,10 +174,9 @@
 
 -(void)presentShareList
 {
-//    _socialController.socialData.shareText = @"test";
-    NSLog(@"shareText is %@",_socialController.socialData.shareText);
     UINavigationController *shareNavigationController = [_socialController getSocialShareListController];
     [self presentModalViewController:shareNavigationController animated:YES];
+//    [UMSocialSnsService presentSnsController:self appKey:nil shareText:@"shareText" shareImage:nil shareToSnsNames:nil delegate:nil];
 }
 
 -(void)showSnsActionSheet
@@ -189,6 +187,8 @@
         
         UIViewController *rootViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
         [iconActionSheet showInView:rootViewController.view];
+        
+//    [UMSocialSnsService presentSnsIconSheetView:self appKey:nil shareText:@"你的分享文字" shareImage:[UIImage imageNamed:@"icon.png"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechat,nil] delegate:nil];
     }
     @catch (NSException *exception) {
         UMLog(@"you must set the snsName as a NSString not a NSNumber !");
@@ -255,6 +255,7 @@
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
     NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);
+    NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
 }
 
 @end

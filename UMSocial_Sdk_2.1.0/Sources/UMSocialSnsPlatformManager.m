@@ -8,7 +8,6 @@
 
 #import "UMSocialSnsPlatformManager.h"
 #import "UMSocialConfig.h"
-//#import "UMUtils.h"
 #import "UMSocialAccountManager.h"
 #import "UMSocialControllerService.h"
 #import "UMSocialSnsService.h"
@@ -146,7 +145,7 @@
     UMSocialSnsPlatform *wxSessionPlatform = [self makeSNSDescriptorWithType:UMSocialSnsTypeSms + 1];
     wxSessionPlatform.platformName = UMShareToWechatSession;
     [_allSnsPlatformDictionary setObject:wxSessionPlatform forKey:UMShareToWechatSession];
-    UMSocialSnsPlatform *wxTimelinePlatform = [self makeSNSDescriptorWithType:UMSocialSnsTypeSms + 2];
+    UMSocialSnsPlatform *wxTimelinePlatform = [self makeSNSDescriptorWithType:UMSocialSnsTypeSms + 2 ];
     wxTimelinePlatform.platformName = UMShareToWechatTimeline;
     [_allSnsPlatformDictionary setObject:wxTimelinePlatform forKey:UMShareToWechatTimeline];
     [self makeSnsHandler];
@@ -218,11 +217,13 @@
     }
 }
 
-#if __UMSocial__Support__SSO
+
 +(void)handleOauthWithSnsName:(NSString *)snsName controllerService:(UMSocialControllerService *)controllerService controller:(UIViewController *)controller authorization:(void (^)(void))authorization completion:(UMSocialDataServiceCompletion)completion
 {
     [UMSocialSnsService sharedInstance].completion = completion;
     [UMSocialSnsService sharedInstance].authorization = authorization;
+    
+#if __UMSocial__Support__SSO    
     if ([snsName isEqualToString:UMShareToSina]) {
         if ([UMSocialSnsPlatformManager sharedInstance].appInfo != nil && [[UMSocialSnsPlatformManager sharedInstance].appInfo valueForKey:UMShareToSina]) {
             NSString *appkey = [[[UMSocialSnsPlatformManager sharedInstance].appInfo valueForKey:UMShareToSina] valueForKey:@"key"];
@@ -263,8 +264,13 @@
             authorization();
         }
     }
-}
+#else
+    if (authorization != nil) {
+        authorization();
+    }
 #endif
+}
+
 
 
 -(void)makeDefaultSnsHandlerWithName:(NSString *)snsName
@@ -284,7 +290,6 @@
            
             void (^handleOauth)() = ^(void){
                 UIViewController *oauthViewController = [controllerService getSocialViewController:UMSViewControllerOauth withSnsType:snsName];
-                
                 if (isPresentInController == NO) {
                     [presentingController.navigationController pushViewController:oauthViewController animated:YES];
                 }
@@ -292,13 +297,18 @@
                     UINavigationController *oauthNavigationController = [controllerService getSocialOauthController:snsName];
                     [presentingController presentModalViewController:oauthNavigationController animated:YES];
                 }
+
             };
-#if __UMSocial__Support__SSO
             void (^completion)(UMSocialResponseEntity *response) =^(UMSocialResponseEntity *response){
                 if ([presentingController.view viewWithTag:1000]) {
                     UIView *maskView = [presentingController.view viewWithTag:1000];
                     [maskView removeFromSuperview];                    
                 }
+                
+                if (controllerService.socialUIDelegate != nil && [controllerService.socialUIDelegate respondsToSelector:@selector(didFinishGetUMSocialDataInViewController:)]) {
+                    [controllerService.socialUIDelegate didFinishGetUMSocialDataInViewController:response];
+                }
+                
                 if (controllerService.socialUIDelegate != nil && [controllerService.socialUIDelegate respondsToSelector:@selector(didCloseUIViewController:)]) {
                     [controllerService.socialUIDelegate didCloseUIViewController:UMSViewControllerOauth];
                 }
@@ -308,9 +318,6 @@
             
 
             [UMSocialSnsPlatformManager handleOauthWithSnsName:snsName controllerService:[UMSocialControllerService defaultControllerService] controller:presentingController authorization:handleOauth completion:completion];
-#else
-            handleOauth();
-#endif
         }
         else if(snsType == UMSocialSnsTypeEmail){
             NSLog(@"UMSocial----%@ platform is not support login!",snsPlatform.platformName);

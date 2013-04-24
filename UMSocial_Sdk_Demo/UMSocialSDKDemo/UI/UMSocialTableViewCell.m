@@ -16,7 +16,7 @@
 @synthesize descriptor = _descriptor;
 @synthesize tableViewController =_tabelViewController;
 @synthesize socialController = _socialController;
-//@synthesize index = _index;
+@synthesize index = _index;
 
 -(void)dealloc
 {
@@ -88,7 +88,6 @@
 
 -(void)layoutSubviews
 {
-//    NSLog(@"index is %d",self.index);
     CGSize size = [UIScreen mainScreen].bounds.size;
     size = UIInterfaceOrientationIsLandscape(_tabelViewController.interfaceOrientation) ? CGSizeMake(size.height, size.width) : size;
     _detailLabel.frame = CGRectMake(130, 0, size.width - 150, 100);

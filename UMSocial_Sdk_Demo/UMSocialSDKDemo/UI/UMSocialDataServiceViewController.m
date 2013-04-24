@@ -32,10 +32,9 @@
     _tableView.delegate = self;
     UMSocialShareViewController *shareViewController = [[self.tabBarController viewControllers] objectAtIndex:0];
     UMSocialData *socialData = shareViewController.socialController.socialData;
-//    SAFE_ARC_RETAIN(socialData);
-//    UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"test"];
+
     _socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
-        
+    
     _shareTextView.text = socialData.shareText;
     
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -205,9 +204,10 @@
         [_socialDataService requestAddFollow:_socialPlatform.platformName followedUsid:[NSArray arrayWithObject:@"2937537507"] completion:completion];
     }
     else if (indexPath.row == 12){
-        UMSocialAccountEntity *snsAccount = [[UMSocialAccountEntity alloc] initWithPlatformName:UMShareToSina];
-        snsAccount.usid = @"2575014582";
-        snsAccount.accessToken = @"2.00QvUQoC0idO6ta487efea98Sb8S6C";
+        UMSocialAccountEntity *snsAccount = [[UMSocialAccountEntity alloc] initWithPlatformName:UMShareToTencent];
+        snsAccount.usid = @"MaJiaforTest";
+        snsAccount.accessToken = @"2e11f88cda3dfeecd7c1e364582168ae";
+        snsAccount.openId = @"CC71DDD36F48BD9065FA38EFD4E05CBD";
         [UMSocialAccountManager postSnsAccount:snsAccount completion:completion];
     }
     else if (indexPath.row == 13){
