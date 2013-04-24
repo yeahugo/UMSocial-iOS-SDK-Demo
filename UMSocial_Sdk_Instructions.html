@@ -299,19 +299,11 @@ pre {
 <body>
 <h1><strong>iOS Social SDK使用指南</strong></h1>
 
-<p> <font color="red">重要通知：原“SNS分享组件”已全面升级，并更名为“友盟社会化组件”。除原有功能外，新组件还支持分享至QQ空间、豆瓣、微信等新功能，并新增了“登录”、“评论”、“喜欢”等社会化功能。</font></p>
-
 <p><font color="red">注意：线上集成文档的示例代码对应的是最新版本的SDK，如果你所用的SDK版本类名或者方法名与此文档不符合，请看随包里面的线下文档或者下载使用最新版本的SDK。</font></p>
 
 <h3><a href="#product_guide" style="text-decoration:none">1. 产品概述</a></h3>
 
-<h3><a href="#quick_guide" style="text-decoration:none">2. 快速集成指南</a></h3>
-
-<blockquote><p><a href="#sign_in_umengkey" style="text-decoration:none">2.1 申请友盟应用标识</a></p>
-
-<p><a href="#binding_config" style="text-decoration:none">2.2 绑定友盟应用标识与各开放平台</a></p>
-
-<p><a href="#quick_use" style="text-decoration:none">2.3 快速集成分享功能</a></p></blockquote>
+<h3><a href="#sign_in_umengkey" style="text-decoration:none">2. 申请友盟应用标识</a></h3>
 
 <h3><a href="#develop_guide" style="text-decoration:none">3. 开发指南</a></h3>
 
@@ -325,25 +317,9 @@ pre {
 
 <p><a href="#social_bar" style="text-decoration:none">3.5 社会化操作栏</a></p></blockquote>
 
-<h3><a href="#faq" style="text-decoration:none">4. FAQ</a></h3>
+<h3><a href="#binding_config" style="text-decoration:none">4 绑定友盟应用标识与各开放平台</a></h3>
 
-<blockquote><p><a href="#social_config" style="text-decoration:none">1. 分享列表页面或者登录页面，如何不显示不想要的sns平台或者增加平台？</a></p>
-
-<p><a href="#faq_wechat" style="text-decoration:none">2. 如何集成微信？</a></p>
-
-<p><a href="#faq_sinasso" style="text-decoration:none">3. 如何使新浪微博支持SSO授权？</a></p>
-
-<p><a href="#faq_orientation" style="text-decoration:none">4. 如何指定页面支持的某一屏幕方向？</a></p>
-
-<p><a href="#faq_debug" style="text-decoration:none">5. 如何处理SDK出现的错误？</a></p>
-
-<p><a href="#faq_oauth" style="text-decoration:none">6. 如何判断用户有没有授权到一个微博平台？</a></p>
-
-<p><a href="#faq_usercenter" style="text-decoration:none">7. 个人中心页面上面的登录账号和下面的授权账号有什么关系？</a></p>
-
-<p><a href="#faq_identifer" style="text-decoration:none">8. 在报表看到的分享次数、评论次数、喜欢数等，如何根据不同资源作区分，例如统计不同页面按钮各自的分享次数</a></p></blockquote>
-
-<h3><a href="#error_code" style="text-decoration:none">5. 附录</a></h3>
+<h3><a href="#FAQ" style="text-decoration:none">5 FAQ</a></h3>
 
 <h2><a name="product_guide" id="product_guide" style="color:black">1.产品概述</a></h2>
 
@@ -357,83 +333,25 @@ pre {
 </ol>
 
 
-<h2><a name="quick_guide" id="quick_guide" style="color:black">2.快速集成指南</a></h2>
+<h2><a name="sign_in_umengkey" id="sign_in_umengkey" style="color:black">2.申请友盟应用标识</a></h2>
 
-<p>社会化组件iOS版<a href="http://v.youku.com/v_show/id_XNDg4MTQ2MDMy.html">集成视频</a>，请将播放器的清晰度切换为超清。</p>
+<ul>
+<li><p>获取友盟Appkey。如果你之前已经在友盟注册了应用，获得了Appkey，可以继续使用之前获得Appkey。</p>
 
-<h3>2.1 <a name="sign_in_umengkey" id="sign_in_umengkey" style="color:black">申请友盟应用标识</a></h3>
+<p>   如果你尚未在友盟注册账号，需要先<a href="http://www.umeng.com/users/sign_up" style="text-decoration:none">注册</a>，注册之后登录你的账号，点击<strong>添加新应用</strong>，完成新应用填写之后，讲进入应用管理页面。在该页面就能得到<code>Appkey</code>。</p></li>
+<li><p>在代码中设置你的友盟Appkey，在 <code>AppDelegate</code>文件<code>#import "UMSocialData.h"</code>然后在<code>didFinishLaunchingWithOptions</code>方法内设置你的AppKey：</p>
 
-<p>   如果你之前已经在友盟注册了应用，获得了<code>UMENG_APPKEY</code>，可以继续使用之前获得<code>UMENG_APPKEY</code>。 <br/>
-   如果你尚未在友盟注册应用，你可以登录你的账号，点击<strong>添加新应用</strong>，完成新应用填写之后，讲进入应用管理页面。在该页面就能得到<code>Appkey</code>。</p>
+<pre><code>[UMSocialData setAppKey:@"507fcab25270157b37000010"];
+</code></pre></li>
+<li>设置了友盟Appkey之后，您还需要在我们后台对这个Appkey下面各个开放平台进行绑定，参考详细使用文档最后部分。如果还没有绑定过的话，可以先用我们的demo应用的Appkey,<code>507fcab25270157b37000010</code>，这样的话你可以分享到QQ空间、新浪微博、腾讯微博、人人网、豆瓣，不过用户分享的微博看到的来源应用不能显示你想要的应用名称，也不能在我们报表端看到分享的数据。如果你要分享到微信的话，还需要对微信进行额外的步骤，详见分享部分微信集成章节。</li>
+</ul>
 
-<h3>2.2 <a name="biding_config" style="color:black">绑定友盟应用标识与各开放平台</a></h3>
-
-<p>   获得appkey后，你还需要将你的应用和我们支持的分享平台注册时获取的appkey和appsecret进行绑定。由于QQ空间、新浪微博、腾讯微博、人人网、豆瓣各个平台注册app的方法很有可能有变化，你可以参考我们线上版本的开发文档有关各个平台注册方法：</p>
-
-<p> <a href="http://dev.umeng.com/doc/document_social_ios.html#binding_config" title="开发文档">iOS Social SDK 在线文档</a></p>
-
-<h3>2.3 <a name="quick_use" id="quick_use" style="color:black">快速集成分享功能</a></h3>
-
-<h4>Step1: 添加SDK到你的工程</h4>
-
-<p><img src="http://dev.umeng.com/images/ios/social_add_files.png" title="Add_files" alt="alt text" /></p>
-
-<p>下载SDKzip包，并解压。在你的Xcode工程选择添“Add Files to xxxx”，选择解压文件夹中<code>UMSocial_Sdk_x.x.x/</code>(x.x.x是具体版本号），勾上下面的"Copy items ……"，还有选择你要添加到target。如果你只集成分享功能的话，可以把<code>libUMSocial_Sdk_Comment_x.x.x.a</code>从你的工程删除。</p>
-
-<h4>Step2: 调用友盟社会化组件</h4>
-
-<p>在你要出现分享列表的地方<code>#import "UMSocialSnsService.h"</code>并调用 <code>UMSocialSnsService</code>的这个方法：</p>
-
-<pre><code>+(void)presentSnsController:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage shareToSnsNames:(NSArray *)snsNames delegate:(id &lt;UMSocialUIDelegate&gt;)delegate;
-</code></pre>
-
-<p>即会弹出一个分享列表页面</p>
-
-<p><img src="http://dev.umeng.com/images/ios/social_sharelist.png" title="ShareList" alt="alt text" /></p>
-
-<table>
-<thead>
-<tr>
-<th>形参名</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>controller</td>
-<td>分享列表页面所在的UIViewController对象</td>
-</tr>
-<tr>
-<td>appKey</td>
-<td>友盟appKey，如果你在其他地方用<code>UMSocialData</code>设置了appKey，这里也可以传nil</td>
-</tr>
-<tr>
-<td>shareText</td>
-<td>分享编辑页面的内嵌文字</td>
-</tr>
-<tr>
-<td>shareImage</td>
-<td>分享编辑页面的内嵌图片，用户可以在编辑页面中删除。如果你不需要分享图片，可以传入<code>nil</code></td>
-</tr>
-<tr>
-<td>snsNames</td>
-<td>定义列表出现的sns平台，由SDK中定义好的平台名字符串组成的数组，可以定义列表视图中分组中的每个列表项，例如传入的数组是<code>@[@[UMShareToSina,UMShareToTencent],@[UMShareToWechat]];</code>上面分组是新浪微博、腾讯微博、下面分组是微信。如果设为nil的话出现所有平台</td>
-</tr>
-<tr>
-<td>delegate</td>
-<td>实现分享状态回调方法的对象，如果你不需要回调的话，可以设为<code>nil</code></td>
-</tr>
-</tbody>
-</table>
-
-
-<p>如果您希望单独使用友盟社会化组件提供的功能，或者希望更深层次的功能和UI定制，请移步至下一章节——“开发指南”部分。</p>
 
 <h2><a name="develop_guide" id="develop_guide" style="color:black">3.开发指南</a></h2>
 
 <h3>3.1 <a name="social_share" id="social_share" style="color:black">分享</a></h3>
 
-<h4>1 界面级的接口</h4>
+<h4>1 分享列表页面</h4>
 
 <p><strong>分享列表页面</strong>（TableView样式）</p>
 
@@ -452,69 +370,145 @@ UIViewController *rootViewController = [[[UIApplication sharedApplication] deleg
 [iconActionSheet showInView:rootViewController.view];
 </code></pre>
 
-<p>如果你要设置在分享编辑页面出现的内嵌文字和图片</p>
+<p>下面是分享的相关设置：</p>
+
+<ul>
+<li><p>设置在分享编辑页面出现的内嵌文字和图片</p>
 
 <pre><code>[UMSocialData defaultData].shareImage = [UIImage imageNamed:@"icon"];
 [UMSocialData defaultData].shareText = @"内嵌分享文字";
 </code></pre>
 
-<p>如果你想分享url资源，支持url定义的图片、视频、音乐。下面是分享一个音乐的url页面，也可以指定音乐文件url。如果设置了内嵌图片就不能设置url资源，同理设置了url资源就不能设置内嵌图片。</p>
+<p>   如果你想分享url资源，支持url定义的图片、视频、音乐。下面是分享一个音乐的url页面，也可以指定音乐文件url。如果设置了内嵌图片就不能设置url资源，同理设置了url资源就不能设置内嵌图片。</p>
 
 <pre><code>UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeMusic url:@"http://www.xiami.com/song/2100097"];
 [UMSocialData defaultData].urlResource = urlResource;
+</code></pre></li>
+<li><p>显示你指定的分享平台，或者在列表增加其他平台或者功能的按钮</p>
+
+<p>  本SDK的分享列表默认显示新浪微博、腾讯微博、QQ空间、人人网和豆瓣，短信和邮箱分享。如果你想分享到修改分享平台，可以用<code>UMSocialConfig</code>的方法<code>+ (void)setSnsPlatformNames:(NSArray *)platformNames</code>,形参数组<code>platformNames</code>的元素是由SDK里面定义的常量字符串,有   <code>UMShareToSina</code>,<code>UMShareToTencent</code>,<code>UMShareToRenren</code>,<code>UMShareToDouban</code>,<code>UMShareToQzone</code>,<code>UMShareToEmail</code>,<code>UMShareToSms</code>,<code>UMShareToWechat</code>,<code>UMShareToFacebook</code>,<code>UMShareToTwitter</code>分别对应新浪微博、腾讯微博、人人网、豆瓣、QQ空间、邮箱、短信、微信、Facebook、Twitter。</p>
+
+<p>  例如设置分享列表上面分组有新浪微博和腾讯微博，下面是微信，出现的平台次序和你所指定的平台次序保持一致。你在代码里面只要调用一次，出现SDK的所有页面都会生效。</p>
+
+<pre><code>  [UMSocialConfig setSnsPlatformNames:@[@[UMShareToSina,UMShareToTencent],@[UMShareToWechat]]];
 </code></pre>
 
-<p>如何显示你指定的分享平台，或者在列表增加其他平台或者功能的按钮，参见FAQ问题<a href="#social_config" style="text-decoration:none">分享列表页面或者登录页面，如何不显示不想要的sns平台或者增加平台？</a></p>
+<p>  如果你想要在分享列表新增一个按钮，可以按上面的设置方式增加一个<code>[UMSocialConfig setSnsPlatformNames:@[@[UMShareToSina,UMShareToTencent],@[@"copy",UMShareToWechat]]];</code>并且定义复制的显示方式和点击等，tableView样式和actionSheet样式都会出现。例如下面增加一个复制的按钮。</p>
 
-<p>如果想要增加微信分享参见FAQ问题<a href="#faq_wechat" style="text-decoration:none">如何集成微信？</a></p>
+<pre><code>  UMSocialSnsPlatform *copyPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:@"copy"];
+  copyPlatform.displayName = @"复制";
+  copyPlatform.smallImageName = @"icon"; //用于tableView样式的分享列表
+  copyPlatform.bigImageName = @"icon";   //用于actionsheet样式的分享列表
+  copyPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
+      NSLog(@"copy!");
+  };
+  [UMSocialConfig addSocialSnsPlatform:@[copyPlatform]];
+</code></pre></li>
+<li><p>设置新浪微博支持SSO方式授权</p>
 
-<p><strong>分享编辑页面</strong></p>
+<p>  本SDK默认不支持新浪微博SSO授权，SSO即需要新浪微博授权的时候会判断设备是否安装新浪微博客户端，如果有的话就跳到客户端再回来。如果你想支持新浪微博SSO，方法如下：</p>
 
-<p><img src="http://dev.umeng.com/images/ios/social_shareedit.png" title="social_share_edit" alt="socialbar" /></p>
+<ol>
+<li><p> 在<code>UMSocialSnsService.h</code>最上面修改把<code>#define __UMSocial__Support__SSO 0</code>改为<code>#define __UMSocial__Support__SSO 1</code></p></li>
+<li><p> 添加URL scheme，在你的工程设置项,targets 一栏下,选中自己的 target,在 Info->URL Types 中添加 URL Schemes,此值是 sso 登录时回调时所用。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。本例采用默认格式:”sinaweibosso.”+” <b>新浪微博</b>应用的 app key”,如下图。
+<img src="http://dev.umeng.com/images/ios/social_sso.png" title="social_sso" alt="socialbar" /></p></li>
+<li><p> 在你的<code>AppDelegate</code>文件里面实现下面的方法：</p>
+
+<pre><code>- (BOOL)application:(UIApplication *)application 
+openURL:(NSURL *)url 
+sourceApplication:(NSString *)sourceApplication
+annotation:(id)annotation
+{
+// 如果你除了使用我们sdk之外还要处理另外的url，你可以把`handleOpenURL:wxApiDelegate:`的实现复制到你的代码里面，再添加你要处理的url。
+return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+}  
+</code></pre></li>
+</ol>
+</li>
+<li><p>设置分享到微信</p>
+
+<p>  因为当前微信还不能通过网站的开放接口来分享给微信好友，所以我们只能利用微信的iOS SDK来做分享。使用我们当前版本的SDK集成微信的方式，步骤如下：</p>
+
+<ol>
+<li><p> 在微信网站注册，得到微信开发者id，并在<code>AppDelegate</code>引入头文件<code>#import "WXApi.h"</code>，然后注册，例如<code>[WXApi registerApp:@"wxd9a39c7122aa6516"];</code>。</p></li>
+<li><p> 添加URL scheme，在Xcode4中，选择你的工程设置项，选中“TARGETS”一栏，在“info”标签栏的“URL type“添加“URL scheme”为你所注册的应用程序id。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。参考新浪微博SSO设置URL scheme的截图，或者见 <a href="http://open.weixin.qq.com/document/gettingstart/ios/?lang=zh_CN" title="微信集成文档">微信使用指南</a> 介绍。</p>
+
+<p>我们分享到微信默认只支持文字分享，如果你要想分享图文分享的话，分享出来的文字可能会显示不全，改变<code>UMSocialData</code>对象的ext属性的<code>wxMessageType</code>为<code>UMSocialWXMessageTypeApp</code>，如果是图片分享则指定为<code>UMSocialWXMessageTypeImage</code>，图片分享就不能出现文字。分享的文字和图片内容还是<code>UMSocialData</code>设置的<code>shareText</code>和<code>shareImage</code>。</p></li>
+<li><p>   在你的<code>AppDelegate</code>文件里面实现下面的方法：</p>
+
+<pre><code>- (BOOL)application:(UIApplication *)application 
+openURL:(NSURL *)url 
+sourceApplication:(NSString *)sourceApplication
+annotation:(id)annotation
+{
+// 如果你要自己实现微信的回调，可以把相应的回调对象传入到上面的`wxApiDelegate`。如果你除了使用我们sdk之外还要处理另外的url，你可以把`handleOpenURL:wxApiDelegate:`的实现复制到你的代码里面，再添加你要处理的url。
+return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+}  
+</code></pre></li>
+</ol>
+</li>
+<li><p>设置SDK的页面支持某一屏幕方向</p>
+
+<p>  <code>UMSocialConfig</code>的类方法<code>setSupportedInterfaceOrientations:</code>传入形参为iOS6定义的<code>UIInterfaceOrientationMask</code>类型。</p>
+
+<p>  例如设置只有横屏显示：</p>
+
+<p>  <code>[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];
+ </code></p></li>
+</ul>
+
+
+<h4>2 分享编辑页面</h4>
+
+<ul>
+<li><p><strong>方式1</strong> 支持点击微信、Facebook、和Twitter的方式，并且支持新浪微博SSO方式授权。例如点击分享到新浪微博代码。如果要到其他平台可以把<code>UMShareToSina</code>换成在<code>UMSocialEnum.h</code>里面设定的其他分享平台名称。如果要设置内嵌文字等，可以像分享列表页面方法那里介绍一样设置内嵌文字。</p>
+
+<pre><code>UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
+snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);
+</code></pre></li>
+<li><p><strong>方法2</strong> 也可以获得到一个编辑页面，需要自己把该页面对象添加到你的页面上：</p>
 
 <pre><code>UINavigationController *shareEditController = [[UMSocialControllerService defaultControllerService] getSocialShareEditController:shareToType];
 [self presentModalViewController:shareEditController animated:YES];
 </code></pre>
 
-<p>上面的方法是得到一个编辑页面，开发者需要把该对象添加到你的页面上。如果想支持点击微信、Facebook、和Twitter的方式，并且支持新浪微博SSO方式授权，可以调用下面的代码：</p>
-
-<pre><code>UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
-snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);
-</code></pre>
-
-<p>上面是点击分享到新浪微博代码。如果要到其他平台可以把<code>UMShareToSina</code>换成在<code>UMSocialEnum.h</code>里面设定的其他分享平台名称。如果要设置内嵌文字等，可以像分享列表页面方法那里介绍一样设置内嵌文字。</p>
-
-<p>获得界面级回调方法，设置回调对象<code>[UMSocialControllerService defaultControllerService].soicalUIDelegate = self;</code>
+<p>  <img src="http://dev.umeng.com/images/ios/social_shareedit.png" title="social_share_edit" alt="socialbar" /></p></li>
+<li><p><strong>回调方法</strong> 获得分享完成的回调方法，设置回调对象<code>[UMSocialControllerService defaultControllerService].soicalUIDelegate = self;</code>
 实现回调方法,根据<code>response</code>的<code>viewControllerType</code>判断页面类型，根据<code>responseCode</code>判断成功与否，<code>viewControllerType</code>和<code>responseCode</code>的定义见头文件和API文档，如果你需要知道错误具体原因可以查看<code>response</code>的<code>message</code>信息。</p>
 
 <pre><code>-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
-    if (response.viewControllerType == UMSViewControllerShareEdit) {
-        ……
-        NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);        
-    }
+  if (response.viewControllerType == UMSViewControllerShareEdit) {
+      ……
+      NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);        
+  }
 }
-</code></pre>
+</code></pre></li>
+</ul>
 
-<h4>2 数据级接口</h4>
 
-<p>直接发送微博到对应的微博平台,支持一次分享到多平台，可以传入文字、图片、地理位置、url资源。如果不需要图片、地理位置和url资源都可以指定为nil。如果想得到分享结果，可以在回调Block对象形参response得到。</p>
+<h4>3 直接发送微博的数据级接口</h4>
+
+<ul>
+<li><p>直接发送微博到对应的微博平台,支持一次分享到多平台，可以传入文字、图片、地理位置、url资源。如果不需要图片、地理位置和url资源都可以指定为nil。如果想得到分享结果，可以在回调Block对象形参response得到。</p>
 
 <pre><code>[[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:@"分享内嵌文字" image:nil location:nil urlResource:nil completion:^(UMSocialResponseEntity *response){
-            NSLog(@"SnsFriends is %@",response.data);
-        }];
+          NSLog(@"SnsFriends is %@",response.data);
+      }];
+</code></pre></li>
+<li><p>获取保存在本地的评论数</p>
+
+<pre><code>[[UMSocialData defaultData] getNumber:UMSNumberComment]
+</code></pre></li>
+</ul>
+
+
+<h4>4 处理分享错误</h4>
+
+<p>在回调对象形参中<code>response</code>中的<code>responseCode</code>和<code>message</code>可以得到返回状态码，和错误消息。或者用下面的代码打开我们SDK在控制台的输出后也能看到错误码。</p>
+
+<pre><code>[UMSocialData openLog:YES];
 </code></pre>
-
-<p>可以获取缓存在本地的分享数</p>
-
-<pre><code>[[UMSocialData defaultData] getNumber:UMSNumberShare];
-</code></pre>
-
-<h4>3 处理分享错误</h4>
-
-<p>在回调对象形参中<code>response</code>中的<code>responseCode</code>和<code>message</code>可以得到返回状态码，和错误消息。</p>
-
-<p>注意如果<code>responseCode</code>为<code>5027</code>的话，<code>message</code>是<code>Sina access token expired, please do oauth(rebind account) again</code>,表示授权过期，需要重新打开授权页面进行授权。</p>
 
 <p>如果新浪微博授权之后出现<code>message</code>为<code>applications over the unaudited use restrictions</code>的错误，原因是没有应用没有通过新浪微博审核，需要添加登录账号到开发者账号。
 添加方法：登录开发者帐号，点击进入http://open.weibo.com/apps/30871<strong><strong><em>/info/advanced （30871</em></strong></strong>替换成你应用的AppKey），在底部添加测试用户即可，最多只能添加15位且添加后不能修改。注意：修改后约半小时左右时间生效。</p>
@@ -530,181 +524,181 @@ snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerSer
 
 <h4>2 用户中心（界面级接口）</h4>
 
-<p><strong>授权信息页面</strong>，显示各个微博平台的授权情况。用户可以新增、更改、删除授权账号。</p>
-
-<p><img src="http://dev.umeng.com/images/ios/social_user_oauth.png" title="socical_user_oauth" alt="socialbar" /></p>
-
-<p>实现代码是</p>
+<ul>
+<li><p><strong>授权信息页面</strong>，显示各个微博平台的授权情况。用户可以新增、更改、删除授权账号。</p>
 
 <pre><code>UINavigationController *accountViewController =[[UMSocialControllerService defaultControllerService] getSnsAccountController];
 [self presentModalViewController:accountViewController animated:YES];
 </code></pre>
 
-<p><strong>个人中心页面</strong>，上面是绑定一个微博账号作为SDK的登录账号，简称为登录账号，下面是各个已经授权的微博账号，包括我们支持的所有平台，可以对各个平台进行授权和解除授权。登录账号和授权账号的关系可以看FAQ。</p>
-
-<p><img src="http://dev.umeng.com/images/ios/social_user_account.png" title="socical_user_account" alt="socialbar" /></p>
-
-<p>实现的代码是</p>
+<p> <img src="http://dev.umeng.com/images/ios/social_user_oauth.png" title="socical_user_oauth" alt="socialbar" /></p></li>
+<li><p><strong>个人中心页面</strong>，上面是绑定一个微博账号作为SDK的登录账号，简称为登录账号，下面是各个已经授权的微博账号，包括我们支持的所有平台，可以对各个平台进行授权和解除授权。登录账号和授权账号的关系可以看FAQ。</p>
 
 <pre><code>UINavigationController *accountViewController =[[UMSocialControllerService defaultControllerService] getSocialAccountController];
 [self presentModalViewController:accountViewController animated:YES];
 </code></pre>
 
+<p> <img src="http://dev.umeng.com/images/ios/social_user_account.png" title="socical_user_account" alt="socialbar" /></p></li>
+</ul>
+
+
 <h4>3 获取用户微博账号信息（数据级的接口）</h4>
 
-<p>获取用户微博基本信息的接口,用户的微博信息在回调的Block对象的形参<code>response</code>中的<code>data</code>属性，包括性别、头像、页面url、用户名、用户id。示例代码如下：</p>
+<ul>
+<li><p>获取保存在客户端的用户授权各个平台的信息，可以直接用<code>socialAccountDictionary</code>的类方法<code>+(NSDictionary *)socialAccountDictionary;</code>，返回一个<code>NSDictionary</code>对象。键为各个微博平台名称，我们把他们定义好为常量字符串<code>UMShareToSina</code>、<code>UMShareToTencent</code>……值为<code>UMSocialAccountEntity</code>对象。
+例如想获取新浪微博用户的昵称和头像可以用下面的代码</p>
+
+<pre><code>NSDictionary *snsAccountDic = [UMSocialAccountManager socialAccountDictionary];
+UMSocialAccountEntity *sinaAccount = [snsAccountDic valueForKey:UMShareToSina];
+UMLog(@"sina nickName is %@, iconURL is %@",sinaAccount.userName,sinaAccount.iconURL);
+</code></pre></li>
+<li><p>获取服务器上保存的用户账户信息,可以用下面的方法，用户的微博信息在回调的Block对象的形参<code>response</code>中的<code>data</code>属性：</p>
 
 <pre><code>[[UMSocialDataService defaultDataService] requestSocialAccountWithCompletion:^(UMSocialResponseEntity *response){
-    NSLog(@"user account is %@",response.data);
-    }];
-</code></pre>
-
-<p>如果想获取本地缓存的用户信息，可以直接用<code>UMSocialData</code>的<code>socialAccount</code>属性，它是一个<code>NSDictionary</code>对象。键为各个微博平台名称，我们把他们定义好为常量字符串<code>UMShareToSina</code>、<code>UMShareToTencent</code>……值为<code>UMSocialAccountEntity</code>对象。</p>
-
-<p>如果想获取各个微博账号详细的信息，可以调用<code>UMSocialDataService</code>这个方法：</p>
+  NSLog(@"user account is %@",response.data);
+  }];
+</code></pre></li>
+<li><p>获取各个微博账号详细的信息，同样在回调对象来得到用户微博数据，可以调用<code>UMSocialDataService</code>这个方法：</p>
 
 <pre><code>- (void)requestSnsInformation:(NSString *)platformType completion:(UMSocialDataServiceCompletion)completion;
-</code></pre>
+</code></pre></li>
+</ul>
 
-<p>同样在回调对象来得到用户微博数据。</p>
 
 <h4>4 授权页面（界面级接口）</h4>
 
-<p>sdk实现调用微博授权页面</p>
+<ul>
+<li><p>支持SSO授权的实现代码是</p>
 
-<p><img src="http://dev.umeng.com/images/ios/social_oauth.png" title="socical_oauth" alt="socialbar" /></p>
+<pre><code>UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snaName];
+snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+    NSLog(@"response is %@",response);
+});
+</code></pre>
 
-<p>例如下面授权到新浪微博的实现代码是</p>
+<p> <code>snaName</code> 代表各个支持云端分享的平台名，有<code>UMShareToSina</code>,<code>UMShareToTencent</code>等五个。</p></li>
+<li><p>得到新浪微博授权页面授权的实现代码是</p>
 
 <pre><code>UINavigationController *oauthController = [[UMSocialControllerService defaultControllerService] getSocialOauthController:UMShareToSina];
 [self presentModalViewController:oauthController animated:YES];
 </code></pre>
 
-<p>授权完成的回调函数</p>
+<p>  <img src="http://dev.umeng.com/images/ios/social_oauth.png" title="socical_oauth" alt="socialbar" /></p></li>
+<li><p>授权完成的回调函数</p>
 
 <pre><code>[UMSocialControllerService defaultControllerService].soicalUIDelegate = self;      //设置回调对象
 //实现回调方法
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
-    if (response.viewControllerType == UMSViewControllerOauth) {
-        ……
-        NSLog(@"didFinishOauthAndGetAccount response is %@",response);
-    }
+ if (response.viewControllerType == UMSViewControllerOauth) {
+     ……
+     NSLog(@"didFinishOauthAndGetAccount response is %@",response);
+ }
 }
-</code></pre>
+</code></pre></li>
+</ul>
 
-<p>支持SSO授权的实现代码是</p>
-
-<pre><code>  UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snaName];
-  snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
-      NSLog(@"response is %@",response);
-  });
-</code></pre>
-
-<p><code>snaName</code> 代表各个支持云端分享的平台名，有<code>UMShareToSina</code>,<code>UMShareToTencent</code>等五个。</p>
 
 <h4>5 其他用户操作 （数据级接口）</h4>
 
-<p>实现解除授权,如果想获取解除授权结果同样在completion的回调对象中的形参<code>response</code>中得到。下面是解除绑定新浪微博的代码：</p>
+<ul>
+<li><p>解除授权,如果想获取解除授权结果同样在completion的回调对象中的形参<code>response</code>中得到。下面是解除绑定新浪微博的代码：</p>
 
 <pre><code>[[UMSocialDataService defaultDataService] requestUnOauthWithType:UMShareToSina  completion:^(UMSocialResponseEntity *response){
-            NSLog(@"response is %@",response);
-        }];
-</code></pre>
-
-<p>实现绑定一个登录账号，此登录账号为sdk内用户评论时使用的昵称和头像。如果要绑定的平台一定为已经授权的微博平台，否则无法正常绑定。如果想获取绑定的结果同样在completion的回调对象中的形参<code>response</code>中得到。下面是绑定新浪微博的代码：</p>
+          NSLog(@"response is %@",response);
+      }];
+</code></pre></li>
+<li><p>绑定一个登录账号，此登录账号为sdk内用户评论时使用的昵称和头像。如果要绑定的平台一定为已经授权的微博平台，否则无法正常绑定。如果想获取绑定的结果同样在completion的回调对象中的形参<code>response</code>中得到。下面是绑定新浪微博的代码：</p>
 
 <pre><code>[[UMSocialDataService defaultDataService] requestBindToSnsWithType:UMShareToSina completion:nil];
-</code></pre>
+</code></pre></li>
+<li><p>解除绑定此登陆账号。如果想获取解除绑定的结果同样在completion的回调对象中的形参<code>response</code>中得到。下面是解除授权新浪微博账号的代码：</p>
 
-<p>实现解除绑定此登陆账号。如果想获取解除绑定的结果同样在completion的回调对象中的形参<code>response</code>中得到。下面是解除授权新浪微博账号的代码：</p>
-
-<pre><code> [[UMSocialDataService defaultDataService] requestUnOauthWithType:UMShareToSina completion:nil];
-</code></pre>
-
-<p>获取用户微博账号详细信息，包括各平台的uid和accestoken，各个平台不一样，腾讯微博有openid。得到的数据在回调Block对象形参respone的data属性。</p>
+<pre><code>[[UMSocialDataService defaultDataService] requestUnOauthWithType:UMShareToSina completion:nil];
+</code></pre></li>
+<li><p>获取用户微博账号详细信息，包括各平台的uid和accestoken，各个平台不一样，腾讯微博有openid。得到的数据在回调Block对象形参respone的data属性。</p>
 
 <pre><code>[[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToTencent  completion:^(UMSocialResponseEntity *response){
-            NSLog(@"SnsInformation is %@",response.data);
-        }];
-</code></pre>
-
-<p>获取用户好友列表，支持新浪微博、腾讯微博、人人网。得到的数据在回调Block对象形参<code>respone</code>的<code>data</code>属性。</p>
+          NSLog(@"SnsInformation is %@",response.data);
+      }];
+</code></pre></li>
+<li><p>获取用户好友列表，支持新浪微博、腾讯微博、人人网。得到的数据在回调Block对象形参<code>respone</code>的<code>data</code>属性。</p>
 
 <pre><code>[[UMSocialDataService defaultDataService] requestSnsFriends:UMShareToTencent  completion:^(UMSocialResponseEntity *response){
-            NSLog(@"SnsFriends is %@",response.data);
-        }];
-</code></pre>
-
-<p>添加关注，支持新浪微博、腾讯微博，可以同时传多个关注微博账号</p>
+          NSLog(@"SnsFriends is %@",response.data);
+      }];
+</code></pre></li>
+<li><p>添加关注，支持新浪微博、腾讯微博，可以同时传多个关注微博账号</p>
 
 <pre><code>[[UMSocialDataService defaultDataService] requestAddFollow:UMShareToSina followedUsid:@[@"2937537507"] completion:nil];
-</code></pre>
+</code></pre></li>
+</ul>
+
 
 <h3>3.3 <a name="social_comment" id="social_comment" style="color:black">评论</a></h3>
 
 <h4>1 界面级接口</h4>
 
-<p>用到评论的界面级功能，需要使用<code>libUMSocial_Sdk_Comment_x.x.x.a</code>,对应的头文件是<code>UMSocialControllerServiceComment.h</code>。</p>
-
-<p>评论列表</p>
-
-<p><img src="http://dev.umeng.com/images/ios/social_commentlist.png" title="socical_comment_list" alt="socialbar" /></p>
+<ul>
+<li><p>用到评论的界面级功能，需要使用<code>libUMSocial_Sdk_Comment_x.x.x.a</code>,对应的头文件是<code>UMSocialControllerServiceComment.h</code>，得到一个评论列表：</p>
 
 <pre><code>UINavigationController *commentList = [[UMSocialControllerService defaultControllerService] getSocialCommentListController];
 [self presentModalViewController:commentList animated:YES];
 </code></pre>
 
-<p>由于我们发送评论还提供了同步分享到各个微博的功能。你可以设置评论并分享到微博的内嵌文字和图片，此文字出现在微博正文之后以<code>//</code>分隔,例如下面的设置，用户发送了“评论内容”并分享到微博之后效果是“评论内容//评论内嵌文字"
+<p>  <img src="http://dev.umeng.com/images/ios/social_commentlist.png" title="socical_comment_list" alt="socialbar" /></p></li>
+<li><p>由于我们发送评论还提供了同步分享到各个微博的功能。你可以设置评论并分享到微博的内嵌文字和图片，此文字出现在微博正文之后以<code>//</code>分隔,例如下面的设置，用户发送了“评论内容”并分享到微博之后效果是“评论内容//评论内嵌文字"
 <code>
 [UMSocialData defaultData].commentText = @"评论内嵌文字";
 [UMSocialData defaultData].commentImage = [UIImage imageNamed:@"icon.png"];
-</code></p>
+</code></p></li>
+</ul>
+
 
 <h4>2 数据级接口</h4>
 
-<p>评论的数据级接口不需要<code>libUMSocial_Sdk_Comment_x.x.x.a</code>。获取最近的评论数据，<code>lastCommentTime</code>传入<code>-1</code>。如果评论数据比较多，想获取之前的评论，可以在<code>lastCommentTime</code>中传入指定时间戳。传入评论数据在回调Block对象形参response里的属性<code>data</code>中得到：</p>
+<ul>
+<li><p>评论的数据级接口不需要<code>libUMSocial_Sdk_Comment_x.x.x.a</code>。获取最近的评论数据，<code>lastCommentTime</code>传入<code>-1</code>。如果评论数据比较多，想获取之前的评论，可以在<code>lastCommentTime</code>中传入指定时间戳。传入评论数据在回调Block对象形参response里的属性<code>data</code>中得到：</p>
 
 <pre><code>[[UMSocialDataService defaultDataService] requestCommentList:(-1) completion:^(UMSocialResponseEntity *response){
-            NSLog(@"comment data is %@",response.data);
-        }];
-</code></pre>
-
-<p>添加一条文本评论,可以在</p>
+          NSLog(@"comment data is %@",response.data);
+      }];
+</code></pre></li>
+<li><p>添加一条文本评论：</p>
 
 <pre><code>[[UMSocialDataService defaultDataService] postCommentWithContent:@"comment text" completion:^(UMSocialResponseEntity *response){
-   NSLog(@"comment result is %@",response);
-        }];
-</code></pre>
-
-<p>添加一条评论，并添加地理位置信息，或者分享到微博平台，可以带有图片</p>
+ NSLog(@"comment result is %@",response);
+      }];
+</code></pre></li>
+<li><p>添加一条评论，并添加地理位置信息，或者分享到微博平台，可以带有图片</p>
 
 <pre><code>NSDictionary *shareToSNS = [NSDictionary dictionaryWithObjectsAndKeys:@"weiboid",@"sina",nil];
 [[UMSocialDataService defaultDataService] postCommentWithContent:@"comment content" location:location shareToSNSWithUsid:shareToSNS completion:^(UMSocialResponseEntity *response){
-    NSLog(@"comment result is %@",response);
-        }];
-</code></pre>
-
-<p>获取保存在本地的评论数</p>
+  NSLog(@"comment result is %@",response);
+      }];
+</code></pre></li>
+<li><p>获取保存在本地的评论数</p>
 
 <pre><code>[[UMSocialData defaultData] getNumber:UMSNumberComment]
-</code></pre>
+</code></pre></li>
+</ul>
+
 
 <h3>3.4 <a name="social_like" id="social_like" style="color:black">喜欢</a></h3>
 
-<h4>1.不带界面的接口</h4>
-
-<p>发送一个喜欢的请求，或者如果已经喜欢过的话，发送取消喜欢的请求。如果要获取发送结果状态，同样在回调Block对象的形参response。</p>
+<ul>
+<li><p>发送一个喜欢的请求，或者如果已经喜欢过的话，发送取消喜欢的请求。如果要获取发送结果状态，同样在回调Block对象的形参response。</p>
 
 <pre><code>[[UMSocialDataService defaultDataService]  postAddLikeOrCancelWithCompletion:^(UMSocialResponseEntity *response){
-    NSLog(@"resposne is %@",response);
-        }];
-</code></pre>
-
-<p>获取缓存在本地的评论数</p>
+  NSLog(@"resposne is %@",response);
+      }];
+</code></pre></li>
+<li><p>获取缓存在本地的评论数</p>
 
 <pre><code>[[UMSocialData defaultData] getNumber:UMSNumberLike]
-</code></pre>
+</code></pre></li>
+</ul>
+
 
 <h3>3.5 <a name="social_bar" id="social_bar" style="color:black">社会化操作栏</a></h3>
 
@@ -712,133 +706,108 @@ snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerSer
 
 <p>这是个放置在APP底部的通用工具栏，它为用户提供了针对特定内容页的一站式社会化功能（评论、喜欢、分享、个人中心4个功能）。</p>
 
-<p>1.设置SDK的<code>UMENG_APPKEY</code>，在 <code>AppDelegate</code>文件<code>#import "UMSocialData.h"</code>然后在<code>didFinishLaunchingWithOptions</code>方法内设置你的友盟AppKey：
-<code>[UMSocialData setAppKey:UMENG_APPKEY];</code></p>
-
-<p>2.使用社会化操作栏非常简单——实例化一个“社会化操作服务”，并将其“社会化操作栏”变量添加到您的视图控制器中即可。代码如下：</p>
+<ul>
+<li><p>使用社会化操作栏非常简单——实例化一个“社会化操作服务”，并将其“社会化操作栏”变量添加到您的视图控制器中即可。代码如下：</p>
 
 <pre><code>- (void)viewDidLoad{
-    [super viewDidLoad];
-    UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"your identifier"];
-    UMSocialBar *socialBar = [[UMSocialBar alloc] initWithUMSocialData:socialData withViewController:self];
-    socialBar.center = CGPointMake(160, 390);
-    [self.view addSubview:socialBar];
+  [super viewDidLoad];
+  UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"your identifier"];
+  UMSocialBar *socialBar = [[UMSocialBar alloc] initWithUMSocialData:socialData withViewController:self];
+  socialBar.center = CGPointMake(160, 390);
+  [self.view addSubview:socialBar];
 }  
+</code></pre></li>
+<li><p>我们提供了黑色和白色两套主题，默认是黑色，下面可以将其修改成白色<code>socialBar.socialBarView.themeColor = UMSBarColorWhite;</code>。如果想修改操作栏的按钮样式和响应事件等，可以直接修改<code>UMSocialBarView.m</code>的源代码。</p></li>
+</ul>
+
+
+<h2>4 <a name="binding_config" id="binding_config" style="color:black">绑定友盟应用标识与各开放平台</a></h2>
+
+<p>   获得appkey后，你还需要将你的应用和我们支持的分享平台注册时获取的appkey和appsecret绑定。具体操作：登录友盟网站->左上角选择你们的产品->组件->社会化组件->设置,菜单项下进行绑定配置。如果你尚未在我们支持的分享平台注册你的应用，注册过程可以参考如下：</p>
+
+<p> <strong>新浪微博</strong></p>
+
+<pre><code>方式一：快捷申请方式（适用条件：新应用推荐使用此方式。优点是直接在友盟后台，即可从新浪申请到处于审核通过状态的APP）
+
+1. 生成封装链接。如果还未配置应用地址的封装链接，需要在友盟后台对应应用的组件 -&gt; 社会化组件 -&gt; 设置页 中生成封装链接；
+
+2. 填写快捷申请表单。在新浪微博APP绑定信息部分，点击填写“新浪快捷申请通道”表单中的相应信息，并提交；
+
+3. 申请成功验证。提交成功后，我们会将新建APP的Key和Secret回填到此页面，这也表明新浪微博的配置成功了。
+
+方式二：自主配置方式（适用条件：希望或已经在开放平台为APP自行申请Key和Secret的情况）
+
+1. 在新浪开放平台后台创建移动应用：http://open.weibo.com -&gt; 应用开发 -&gt; 移动应用 -&gt; 创建应用
+
+2. 在创建新应用表单中，域名绑定选择“是”，绑定域名填写"sns.whalecloud.com"，其余字段按需填写；（如果是已有应用，可以在应用信息-&gt;高级设置-&gt;安全设置中做上述两项域名绑定修改）
+
+3. 如果应用尚未通过审核，则需要指定测试用户，该阶段只有指定的测试用户才可以分享信息到新浪微博，应用通过审核后此限制自动失效。
+
+4. 将获取到的Key和Secret手工填写到友盟后台对应应用的组件 -&gt; 社会化组件 -&gt; 设置页 -&gt; 新浪微博APP绑定信息部分。
 </code></pre>
 
-<p>3.我们提供了黑色和白色两套主题，默认是黑色，下面可以将其修改成白色<code>socialBar.socialBarView.themeColor = UMSBarColorWhite;</code>。如果想修改操作栏的按钮样式和响应事件等，可以直接修改<code>UMSocialBarView.m</code>的源代码。</p>
+<p><strong>腾讯微博</strong></p>
 
-<h2><a name="FAQ" id="FAQ" style="color:black">4. FAQ</a></h2>
+<pre><code>1. 生成封装链接。如果还未配置应用地址的封装链接，需要在友盟后台对应应用的组件 -&gt;社会化组件 -&gt;设置页 中生成封装链接；
+![appurl_socialurl](http://dev.umeng.com/images/ios/appurl_socialurl.png)
 
-<h3>1. <a name="faq_config" id="social_config" style="color:black">分享列表页面或者登录页面，如何不显示不想要的sns平台或者增加平台？</a></h3>
+2. 在腾讯开放平台后台创建无线应用：http://dev.t.qq.com/ -&gt; 应用开发 -&gt; 创建应用 -&gt; “无线应用”；
 
-<p>本SDK的分享列表默认显示新浪微博、腾讯微博、QQ空间、人人网和豆瓣，短信和邮箱分享。如果你想分享到修改分享平台，可以用<code>UMSocialConfig</code>的方法<code>+ (void)setSnsPlatformNames:(NSArray *)platformNames</code>,形参数组<code>platformNames</code>的元素是由SDK里面定义的常量字符串，有<code>UMShareToSina</code>（新浪微博),<code>UMShareToTencent</code>（腾讯微博）,<code>UMShareToRenren</code>（人人网）,<code>UMShareToDouban</code>（豆瓣）,<code>UMShareToQzone</code>（QQ空间）,<code>UMShareToEmail</code>（邮件）,<code>UMShareToSms</code>（短信）,<code>UMShareToWechat</code>（微信）,<code>UMShareToFacebook</code>（Facebook）,<code>UMShareToTwitter</code>（Twitter）
-例如设置分享列表上面分组有新浪微博和腾讯微博，下面是微信，出现的平台次序和你所指定的平台次序保持一致。你在代码里面只要调用一次，出现SDK的所有页面都会生效。</p>
+3. 在创建无线应用表单中，“应用网址”需要填写步骤1生成的应用网址的封装链接，其余字段按需填写；
 
-<p><code>[UMSocialConfig setSnsPlatformNames:@[@[UMShareToSina,UMShareToTencent],@[UMShareToWechat]]];</code></p>
+（如果是已有应用，可以在基本信息-》应用网址中填写上述的封装链接）
 
-<p>如果你想要在分享列表新增一个按钮，可以按上面的设置方式增加一个<code>[UMSocialConfig setSnsPlatformNames:@[@[UMShareToSina,UMShareToTencent],@[@"copy",UMShareToWechat]]];</code>并且定义复制的显示方式和点击等，tableView样式和actionSheet样式都会出现。例如下面增加一个复制的按钮。</p>
-
-<pre><code>UMSocialSnsPlatform *copyPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:@"copy"];
-copyPlatform.displayName = @"复制";
-copyPlatform.smallImageName = @"icon"; //用于tableView样式的分享列表
-copyPlatform.bigImageName = @"icon";   //用于actionsheet样式的分享列表
-copyPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
-    NSLog(@"copy!");
-};
-[UMSocialConfig addSocialSnsPlatform:@[copyPlatform]];
+4. 将获取到的Key和Secret手工填写到友盟后台对应应用的组件 -》社会化组件 - 》设置页 -》腾讯微博APP绑定信息部分。
 </code></pre>
 
-<h3>2. <a name="faq_wechat" id="faq_wechat" style="color:black">如何集成微信？</a></h3>
+<p><strong>人人网</strong></p>
 
-<p>因为当前微信还不能通过网站的开放接口来分享给微信好友，所以我们只能利用微信的iOS SDK来做分享。使用我们当前版本的SDK集成微信的方式，步骤如下：</p>
+<pre><code>目前人人分为两个平台：开放平台、移动开发者中心。
 
-<ol>
-<li>在微信网站注册，得到微信开发者id，并在<code>AppDelegate</code>引入头文件<code>#import "WXApi.h"</code>，然后注册，例如<code>[WXApi registerApp:@"wxd9a39c7122aa6516"];</code>.</li>
-<li>在FAQ的问题1，设置出现微信，你可以指定微信出现在分享列表的任意位置，例如问题1中的示例代码，微信将出现在第一个分组的第二个单元格。</li>
-<li><p>在你的<code>AppDelegate</code>文件里面调用微信SDK处理URL实现代理方法</p>
+方式一：人人移动开发者中心（推荐使用，针对移动应用提供更完善的功能及推广支持）
 
-<pre><code> - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
- {
-     return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
- }
+1. 在如下位置创建应用：http://dev.mobile.renren.com/ -》我的应用 -》创建应用，填写必要的应用信息；
+
+2. 应用处于“开发中”状态（未审核通过前），需要在用户管理页面中添加测试用户，这些特定用户才能分享成功。应用通过审核后此限制自动失效。
+
+3. 将获取到的App ID、API Key、Secret手工填写到友盟后台对应应用的组件 -》社会化组件 - 》设置页 -》人人网APP绑定信息部分，并勾选“移动开发者中心”。  
+
+方式二：人人网开放平台（不推荐继续使用，两种接入方式的区别详见，http://wiki.mobile.renren.com/zh/index.php/接入流程指南#.E5.B7.B2.E6.8E.A5.E5.85.A5.E8.BF.87.E4.BA.BA.E4.BA.BA）
+
+1. 在如下位置创建应用：http://dev.renren.com/ -》应用开发-》创建客户端应用-》填写应用名称；
+
+2. 在已创建应用的基本信息-》应用根域名字段填写为“sns.whalecloud.com”；
+
+3. 应用处于“开发中”状态（未审核通过前），需要在用户管理页面中添加测试用户，这些特定用户才能分享成功。应用通过审核后此限制自动失效。
+
+4. 将获取到的App ID、API Key、Secret手工填写到友盟后台对应应用的组件 -》社会化组件 - 》设置页 -》人人网APP绑定信息部分，并勾选“开放平台”。
 </code></pre>
 
-<p>如果你要自己实现微信的回调，可以把相应的回调对象传入到上面的<code>wxApiDelegate</code>。如果你除了使用我们sdk之外还要处理另外的url，你可以把<code>handleOpenURL:wxApiDelegate:</code>的实现复制到你的代码里面，再添加你要处理的url。</p></li>
-<li><p>添加URL scheme，在Xcode4中，选择你的工程设置项，选中“TARGETS”一栏，在“info”标签栏的“URL type“添加“URL scheme”为你所注册的应用程序id。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。参考新浪微博SSO设置URL scheme的截图，或者见 <a href="http://open.weixin.qq.com/document/gettingstart/ios/?lang=zh_CN" title="微信集成文档">微信使用指南</a> 介绍。</p></li>
-<li><p>我们分享到微信默认只支持文字分享，如果你要想分享图文分享的话，分享出来的文字可能会显示不全，改变<code>UMSocialData</code>对象的ext属性的<code>wxMessageType</code>为<code>UMSocialWXMessageTypeApp</code>，如果是图片分享则指定为<code>UMSocialWXMessageTypeImage</code>，图片分享就不能出现文字。分享的文字和图片内容还是<code>UMSocialData</code>设置的<code>shareText</code>和<code>shareImage</code>。</p></li>
-</ol>
+<p><strong>豆瓣</strong></p>
 
+<pre><code>与人人网的申请、配置方式基本一致，开放平台链接如下：http://developers.douban.com/
 
-<h3>3. <a name="faq_sinasso" id="faq_sinasso" style="color:black">如何使新浪微博支持SSO授权？</a></h3>
-
-<p>本SDK默认支持新浪微博SSO登录，即需要新浪微博授权的时候会判断设备是否安装新浪微博客户端，如果有的话就跳到客户端再回来。如果你不想支持新浪微博SSO，需要对代码做如下修改：
-在<code>UMSocialSnsService.h</code>最上面修改
-把<code>#define __UMSocial__Support__SSO 1</code>改为
-<code>#define __UMSocial__Support__SSO 0</code></p>
-
-<p>支持新浪微博SSO授权，您还需要下面两步：</p>
-
-<ol>
-<li>添加URL scheme，在你的工程设置项,targets 一栏下,选中自己的 target,在 Info->URL Types 中添加 URL Schemes,此值是 sso 登录时回调时所用。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。本例采用默认格式:”sinaweibosso.”+” <b>新浪微博</b>应用的 app key”,如下图。</li>
-</ol>
-
-
-<p><img src="http://dev.umeng.com/images/ios/social_sso.png" title="social_sso" alt="socialbar" /></p>
-
-<p>2.在你的<code>AppDelegate</code>文件里面调用我们处理URL的实现代理方法</p>
-
-<pre><code>```
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
-}
-```
+回调地址为：http://sns.whalecloud.com/douban/callback
 </code></pre>
 
-<p>如果你除了使用我们sdk之外还要处理另外的url，你可以把<code>handleOpenURL:wxApiDelegate:</code>的实现复制到你的代码里面，再添加你要处理的url。</p>
+<p><strong>QQ空间</strong></p>
 
-<h3>4. <a name="faq_orientation" id="faq_orientation" style="color:black">如何指定页面支持的某一屏幕方向？</a></h3>
+<pre><code>1. 在如下位置创建应用：http://connect.qq.com/manage/-》添加移动应用-》填写应用名称，确定；
 
-<p><code>UMSocialConfig</code>的类方法<code>+ (void)setSupportedInterfaceOrientations:(NSUInteger)interfaceOrientations;</code>传入形参为iOS6定义的<code>UIInterfaceOrientationMask</code>类型。
-例如设置只有横屏显示：<code>[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];</code></p>
+2. 在接下来的应用控制台-&gt;基本信息-&gt;点击编辑按钮，填写必要的应用信息，并保存。（不做有可能授权失败）
 
-<h3>5. <a name="faq_debug" id="faq_debug" style="color:black">如何处理SDK出现的错误？</a></h3>
+3. 将获取到的APP ID、Key手工填写到友盟后台对应应用的组件 -》社会化组件 - 》设置页 -》QQ空间APP绑定信息部分。
 
-<p>由于社会化组件功能需要依赖新浪微博、腾讯微博、QQ空间、人人网和友盟服务器的服务，和微信等SDK的功能，还有SDK本身也在不断地改进升级，出现各种错误在所难免。</p>
+4. 按照以上配置可以满足大部分的图片分享需求，即指定图片URL进行图片分享；如需支持上传图片内容并分享，要在此页面另行申请upload_pic权限：http://wiki.opensns.qq.com/wiki/【QQ登录】API文档）
+</code></pre>
 
-<ol>
-<li><p>不管出现什么错误，为了方便看到错误原因，都可以先打开log，<code>[UMSocialData openLog:YES];</code>。在log的输出中，我们可以看到每次网络请求状态，如果是失败的话，可以看到状态码，失败原因，还有每次网络请求的url。</p></li>
-<li><p>如果是分享失败的话，除了已知错误，例如授权过期会自动处理之外，其他错误界面上都只会弹出对话框显示“由于网络原因，信息发送失败”，而分享失败的原因，你可以通过在log中看到，或者在回调方法里的<code>responseCode</code>和<code>message</code>得到错误码和错误原因。错误的原因主要有以下几种：</p>
+<h2><a name="FAQ" id="FAQ" style="color:black">5. FAQ</a></h2>
 
-<blockquote><p>a.和平台设置相关的原因，例如QQ空间需要开通相应的权限、没有通过新浪微博审核通过的应用，需要添加测试用户等。</p>
-
-<p>b.各平台定义的发送方式错误，例如新浪微博和腾讯微博返回发送微博太频繁。</p></blockquote></li>
-<li><p>如果是sdk出现crash等异常，可以发送邮件到social-support@umeng.com，我们会尽快回复您。</p></li>
-</ol>
-
-
-<h3>6. <a name="faq_oauth" id="faq_oauth" style="color:black">如何判断用户有没有授权到一个微博平台</a></h3>
-
-<p>如果利用SDK授权用户，我们会把用户的授权信息保存在SDK本地，你可利用<code>UMSocialAccountManager</code>,的类方法<code>+ (BOOL)isOauthWithPlatform:(NSString *)platformName;</code>,传入在<code>UMSocialEnum.h</code>定义的平台名，就可以返回是否已经授权。例如<code>[UMSocialAccountManager isOauthWithPlatform:UMShareToSina];</code>就能返回是否已经授权新浪微博。</p>
-
-<h3>7. <a name="faq_usercenter" id="faq_usercenter" style="color:black">个人中心页面上面的登录账号和下面的授权账号有什么关系？</a></h3>
-
-<ol>
-<li>个人中上半部分是登录账号、下半部分是授权账号。所谓登录账号，即我们SDK讲一个sns的授权账号作为绑定账号，我们在评论时候就会使用此登录账号的用户名和头像。下半部分就是各个sns平台的授权信息，可以显示每个平台是否授权和昵称。</li>
-<li>用户即使在下面解授权，也不会影响到上面的登录状态，而如果你需要解除登录，可以调用我们的数据级接口。</li>
-<li>如果你不想出现个人中心上面部分，只想要下面的授权信息，可以调用<code>UMSocialControllerService</code>的<code>- (UINavigationController *)getSnsAccountController;</code>方法。</li>
-<li>如果你想设置个人中心出现哪些sns平台，请参见问题1，即那里设置的出现平台就会影响到个人中心出现的平台和登录页面出现的平台。</li>
-</ol>
-
-
-<h3>8. <a name="faq_identifer" id="faq_identifier" style="color:black">在报表看到的分享次数、评论次数、喜欢数等，如何根据不同资源作区分，例如统计不同页面按钮各自的分享次数？</a></h3>
-
-<p>调用数据级接口和界面级接口需要一个<code>UMSocialData</code>对象，一个<code>UMSocialData</code>对象标识一个分享资源，而<code>UMSocialData</code>对象用一个<code>identifier</code>字符串来初始化并标识这个对象，你可以为此对象设置分享内嵌文字、分享图片等，可以在SDK获取到对应的分享数。也可以在后台报表，很清楚地看到每个分享资源的分享次数，和每个用户在分享次数。如果你用了评论和喜欢功能，也可以在SDK得到评论、喜欢数字和在报表看到相应的评论、喜欢行为和次数。</p>
+<p>请到<a href="http://support.umeng.com/?qa=ios-sdk-%E9%9B%86-%E6%88%90" style="text-decoration:none">友盟社会化组件的帮助与支持页面</a></p>
 
 <h2><a name="error_code" id="error_code" style="color:black">5. 附录</a></h2>
 
-<h3>1常见错误代码含义</h3>
+<h3>1 常见错误代码含义</h3>
 
 <table>
 <thead>
@@ -920,7 +889,7 @@ copyPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocia
 </table>
 
 
-<h3>2分享错误代码</h3>
+<h3>2 分享错误代码</h3>
 
 <table>
 <thead>
