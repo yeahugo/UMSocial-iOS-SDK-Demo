@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>baseURL</key>
+	<string>http://test.log.umsns.com/</string>
+	<key>testCase</key>
+	<array>
+		<dict>
+			<key>oauthTestSina</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>oauthTestRenren</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>oauthTestTencent</key>
+			<string>1</string>
+		</dict>
+		<dict>
+			<key>shareTest</key>
+			<string>1</string>
+		</dict>
+		<dict>
+			<key>New item</key>
+			<string></string>
+			<key>loginTest</key>
+			<string>1</string>
+		</dict>
+		<dict>
+			<key>commentTest</key>
+			<string>1</string>
+		</dict>
+	</array>
+</dict>
+</plist>

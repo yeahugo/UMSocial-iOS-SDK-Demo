@@ -297,22 +297,25 @@
                     UINavigationController *oauthNavigationController = [controllerService getSocialOauthController:snsName];
                     [presentingController presentModalViewController:oauthNavigationController animated:YES];
                 }
-
             };
+            
             void (^completion)(UMSocialResponseEntity *response) =^(UMSocialResponseEntity *response){
                 if ([presentingController.view viewWithTag:1000]) {
                     UIView *maskView = [presentingController.view viewWithTag:1000];
                     [maskView removeFromSuperview];                    
                 }
                 
-                if (controllerService.socialUIDelegate != nil && [controllerService.socialUIDelegate respondsToSelector:@selector(didFinishGetUMSocialDataInViewController:)]) {
-                    [controllerService.socialUIDelegate didFinishGetUMSocialDataInViewController:response];
+#if __UMSocial__Support__SSO
+                if ([[UMSocialSnsService sharedInstance].sinaWeibo isAuthValid]) {
+                    if (controllerService.socialUIDelegate != nil && [controllerService.socialUIDelegate respondsToSelector:@selector(didFinishGetUMSocialDataInViewController:)]) {
+                        [controllerService.socialUIDelegate didFinishGetUMSocialDataInViewController:response];
+                    }
+                    
+                    if (controllerService.socialUIDelegate != nil && [controllerService.socialUIDelegate respondsToSelector:@selector(didCloseUIViewController:)]) {
+                        [controllerService.socialUIDelegate didCloseUIViewController:UMSViewControllerOauth];
+                    }                    
                 }
-                
-                if (controllerService.socialUIDelegate != nil && [controllerService.socialUIDelegate respondsToSelector:@selector(didCloseUIViewController:)]) {
-                    [controllerService.socialUIDelegate didCloseUIViewController:UMSViewControllerOauth];
-                }
-                
+#endif
                 loginCompletion(response);
             };
             
@@ -328,6 +331,7 @@
     UMSocialSnsPlatformClickHandler snsHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController)
     {
         UMSocialSnsType snsType = snsPlatform.shareToType;
+        
         if (snsType >= UMSocialSnsTypeQzone && snsType <  UMSocialSnsTypeEmail) {
             UIView *maskView = [[NSClassFromString(@"UMMaskView") alloc] performSelector:@selector(initWithRoundedView)];
             [presentingController.view addSubview:maskView];

@@ -53,7 +53,6 @@
     [super viewDidLoad];
 
     _socialController = [[UMSocialControllerService alloc] init];
-    _socialController.socialData.extConfig.wxMessageType = UMSocialWXMessageTypeApp;
     
 
 //  下面发送视频到微博，可以发送url的视频、音乐和图片
@@ -64,22 +63,23 @@
     SAFE_ARC_RELEASE(urlResource);
  
 //  下面进行设置微信分享类型，缩略图，标题等
+     
     
     UMSocialExtConfig *extConfig = [[UMSocialExtConfig alloc] init];
     extConfig.wxMessageType = UMSocialWXMessageTypeApp;
     extConfig.thumbUrl = @"http://www.umeng.com/images/pic/eg/icon_skisafari_55_55.png";
-    extConfig.title = @"分享给你";
+    extConfig.title = @"分享标题";
     extConfig.appUrl= @"http://www.umeng.com";
     extConfig.wxDescription = @"微信分享测试";
     extConfig.mailMessage = @"<br>邮件正文</br><p>";
     _socialController.socialData.extConfig = extConfig;
-    SAFE_ARC_RELEASE(extConfig);
 
     WXVideoObject *videoObject = [WXVideoObject object];
     videoObject.videoUrl = @"http://v.youku.com/v_show/id_XNTQwNDk1MzM2.html";
     extConfig.wxMediaObject = videoObject;   //如果设置视频分享需要设置extConfig.wxMessageType = UMSocialWXMessageTypeOther;
 
- */
+    SAFE_ARC_RELEASE(extConfig);
+    */
     _socialController.socialUIDelegate = self;
 
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];

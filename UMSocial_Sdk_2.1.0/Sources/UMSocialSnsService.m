@@ -127,11 +127,6 @@
 
 #endif
 
-//-(void)willCloseUIViewController:(UMSViewControllerType)fromViewControllerType
-//{
-//    self.completion();
-//}
-
 -(void) onResp:(BaseResp*)resp
 {
     NSLog(@"req type is %d",resp.type);
@@ -168,9 +163,7 @@
         _sinaWeibo = [[SinaWeibo alloc] initWithAppKey:@"appkey" appSecret:@"appsecret" appRedirectURI:kAppRedirectURI andDelegate:self];
         _sinaWeibo.delegate = self;
 #endif
-//        _socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:[UMSocialData defaultData]];
         _socialControllerService = nil;
-        
         
         UMSocialSnsPlatform *wechatPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:UMShareToWechat];
         wechatPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_wechart_icon";
@@ -480,19 +473,18 @@
 
         
         if (_socialControllerService.socialData.extConfig != nil) {
+            if(_socialControllerService.socialData.extConfig.title != nil){
+                title = _socialControllerService.socialData.extConfig.title;
+                message.title = title;
+            }
+            
             if (_socialControllerService.socialData.extConfig.wxMessageType == UMSocialWXMessageTypeApp) {
                 
                 WXAppExtendObject *ext = [WXAppExtendObject object];
                 
-                if (_socialControllerService.socialData.extConfig != nil) {
-                    if(_socialControllerService.socialData.extConfig.title != nil){
-                        title = _socialControllerService.socialData.extConfig.title;
-                    }
-                    if (_socialControllerService.socialData.extConfig.appUrl != nil) {
-                        ext.url = _socialControllerService.socialData.extConfig.appUrl;
-                    }
+                if (_socialControllerService.socialData.extConfig.appUrl != nil) {
+                    ext.url = _socialControllerService.socialData.extConfig.appUrl;
                 }
-                
                 
                 int buffer_size = 10;
                 Byte *pBuffer = (Byte *)malloc(buffer_size);
@@ -502,13 +494,12 @@
                 ext.fileData = data;
                 
                 message.mediaObject = ext;
-                message.title = title;
                 req.message = message;
                 req.bText = NO;
             }
             else if (_socialControllerService.socialData.extConfig.wxMessageType == UMSocialWXMessageTypeImage){
                 WXImageObject *imageObject = [WXImageObject object];
-                [imageObject setImageData:UIImagePNGRepresentation(_socialControllerService.socialData.shareImage)];
+                [imageObject setImageData:UIImageJPEGRepresentation(_socialControllerService.socialData.shareImage, 0.9)];
                 message.mediaObject = imageObject;
 
                 req.message = message;
