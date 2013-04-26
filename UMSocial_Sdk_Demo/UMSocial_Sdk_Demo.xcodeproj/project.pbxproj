@@ -59,7 +59,6 @@
 		D5F80C6B1727E57900D915A4 /* UMSocialSnsPlatformManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F80C581727E57900D915A4 /* UMSocialSnsPlatformManager.m */; };
 		D5F80C6C1727E57900D915A4 /* UMSocialSnsService.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F80C5A1727E57900D915A4 /* UMSocialSnsService.m */; };
 		D5F80C6D1727E57900D915A4 /* UMSocialSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D5F80C5B1727E57900D915A4 /* UMSocialSDKResources.bundle */; };
-		D5F80CB8172A5EF900D915A4 /* SocialSDK-config.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5F80CB7172A5EF900D915A4 /* SocialSDK-config.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -165,7 +164,6 @@
 		D5F80C591727E57900D915A4 /* UMSocialSnsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialSnsService.h; sourceTree = "<group>"; };
 		D5F80C5A1727E57900D915A4 /* UMSocialSnsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSocialSnsService.m; sourceTree = "<group>"; };
 		D5F80C5B1727E57900D915A4 /* UMSocialSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResources.bundle; sourceTree = "<group>"; };
-		D5F80CB7172A5EF900D915A4 /* SocialSDK-config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SocialSDK-config.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,7 +234,6 @@
 		D574370116082B1200C7AD07 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D5F80CB7172A5EF900D915A4 /* SocialSDK-config.plist */,
 				D5EF8990166DF3E200B2068D /* Default-568h@2x.png */,
 				D5EF898F166DF21A00B2068D /* UMSocial_Sdk_Demo-Prefix.pch */,
 				D5EF898D166DF1E600B2068D /* UMSocial_Sdk_Demo-Info.plist */,
@@ -502,7 +499,6 @@
 				D5F80C671727E57900D915A4 /* UMSnsAccountViewController.xib in Resources */,
 				D5F80C681727E57900D915A4 /* UMSShareListController.xib in Resources */,
 				D5F80C6D1727E57900D915A4 /* UMSocialSDKResources.bundle in Resources */,
-				D5F80CB8172A5EF900D915A4 /* SocialSDK-config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
