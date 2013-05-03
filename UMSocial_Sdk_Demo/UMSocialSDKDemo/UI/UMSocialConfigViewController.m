@@ -34,7 +34,7 @@
         self.supportOrientationMask = UIInterfaceOrientationMaskAllButUpsideDown;
         [UMSocialConfig setSupportedInterfaceOrientations:self.supportOrientationMask];
         //设置关注的官方微博，可以设置新浪微博和腾讯微博，将会出现在授权页面下面“关注官方微博”的小勾
-        [UMSocialConfig setFollowWeiboUids:[NSDictionary dictionaryWithObjectsAndKeys:@"2937537507",UMShareToSina,nil]];
+//        [UMSocialConfig setFollowWeiboUids:[NSDictionary dictionaryWithObjectsAndKeys:@"2937537507",UMShareToSina,nil]];
         //设置异步分享
 //        [UMSocialConfig setShouldShareSynchronous:NO];
         _shareToPlatforms = [[NSMutableArray alloc] initWithObjects:[NSMutableArray  arrayWithObjects:UMShareToQzone,UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToDouban,nil],[NSMutableArray arrayWithObjects:UMShareToEmail,UMShareToSms,UMShareToWechat,UMShareToFacebook,UMShareToTwitter,@"copy",nil],nil];

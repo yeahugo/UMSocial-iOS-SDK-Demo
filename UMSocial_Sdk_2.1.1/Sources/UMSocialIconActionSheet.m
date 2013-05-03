@@ -121,7 +121,7 @@
 
         _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _cancelButton.frame = CGRectMake(0, 0, 200, 40);
-        _cancelButton.center = CGPointMake(self.frame.size.width/2,self.frame.size.height - buttomHeight + _cancelButton.frame.size.height + 10);
+        _cancelButton.center = CGPointMake(self.frame.size.width/2,self.frame.size.height - buttomHeight + _cancelButton.frame.size.height);
         [_cancelButton setBackgroundImage:image forState:UIControlStateNormal];
         [_cancelButton setBackgroundImage:selectImage forState:UIControlStateSelected];
         

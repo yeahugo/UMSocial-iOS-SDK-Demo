@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "UMSocialDataService.h"
 #import "UMSocialSnsPlatform.h"
+#import "UMSocialIconActionSheet.h"
 
 /**
  `UMSocialControllerService`对象用到的一些回调方法，包括分享完成、授权完成、评论完成等事件，和关闭授权页面、分享页面、评论页面等事件。

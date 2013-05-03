@@ -28,6 +28,8 @@
     [UMSocialData openLog:YES];
     //向微信注册
     [WXApi registerApp:@"wxd9a39c7122aa6516"];
+    
+
     return YES;
 }
 

@@ -48,38 +48,38 @@
     SAFE_ARC_SUPER_DEALLOC();
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     _socialController = [[UMSocialControllerService alloc] init];
     
-
-//  下面发送视频到微博，可以发送url的视频、音乐和图片
+/* 
+ 下面发送视频到微博，可以发送url的视频、音乐和图片
+ */
     /*
     UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:
                                         UMSocialUrlResourceTypeImage url:@"http://www.umeng.com/images/pic/eg/icon_skisafari_55_55.png"];
     _socialController.socialData.urlResource = urlResource;
     SAFE_ARC_RELEASE(urlResource);
- 
-//  下面进行设置微信分享类型，缩略图，标题等
+ */
      
+/*
+    下面进行设置微信分享类型，缩略图，标题等
+ */
+//    UMSocialExtConfig *extConfig = [[UMSocialExtConfig alloc] init];
+//    extConfig.wxMessageType = UMSocialWXMessageTypeApp;
+//    extConfig.thumbUrl = @"http://www.umeng.com/images/pic/eg/icon_skisafari_55_55.png";
+//    extConfig.title = @"分享标题";
+//    extConfig.appUrl= @"http://www.umeng.com";
+//    extConfig.wxDescription = @"微信分享测试";
+//    extConfig.mailMessage = @"<br>邮件正文</br><p>";
+//    extConfig.appUrl = @"http://www.umeng.com";
+//    _socialController.socialData.extConfig = extConfig;
+//
+//    SAFE_ARC_RELEASE(extConfig);
     
-    UMSocialExtConfig *extConfig = [[UMSocialExtConfig alloc] init];
-    extConfig.wxMessageType = UMSocialWXMessageTypeApp;
-    extConfig.thumbUrl = @"http://www.umeng.com/images/pic/eg/icon_skisafari_55_55.png";
-    extConfig.title = @"分享标题";
-    extConfig.appUrl= @"http://www.umeng.com";
-    extConfig.wxDescription = @"微信分享测试";
-    extConfig.mailMessage = @"<br>邮件正文</br><p>";
-    _socialController.socialData.extConfig = extConfig;
-
-    WXVideoObject *videoObject = [WXVideoObject object];
-    videoObject.videoUrl = @"http://v.youku.com/v_show/id_XNTQwNDk1MzM2.html";
-    extConfig.wxMediaObject = videoObject;   //如果设置视频分享需要设置extConfig.wxMessageType = UMSocialWXMessageTypeOther;
-
-    SAFE_ARC_RELEASE(extConfig);
-    */
     _socialController.socialUIDelegate = self;
 
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -170,25 +170,32 @@
         }
         [_activityIndicatorView stopAnimating];
     }];
+    
 }
 
 -(void)presentShareList
 {
     UINavigationController *shareNavigationController = [_socialController getSocialShareListController];
     [self presentModalViewController:shareNavigationController animated:YES];
+    /*
+     你可以用下面的写法
+     */
 //    [UMSocialSnsService presentSnsController:self appKey:nil shareText:@"shareText" shareImage:nil shareToSnsNames:nil delegate:nil];
 }
 
 -(void)showSnsActionSheet
 {
     @try {
-        UMSocialIconActionSheet *iconActionSheet = [_socialController getSocialIconActionSheetInController:self];
-        iconActionSheet.tag = kTagWithUMSnsAction;
-        
+        UMSocialIconActionSheet *iconActionSheet = [[UMSocialControllerService defaultControllerService] getSocialIconActionSheetInController:self];
+        iconActionSheet.tag = kTagWithUMSnsAction; //这句只是demo需要
         UIViewController *rootViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
         [iconActionSheet showInView:rootViewController.view];
-        
-//    [UMSocialSnsService presentSnsIconSheetView:self appKey:nil shareText:@"你的分享文字" shareImage:[UIImage imageNamed:@"icon.png"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechat,nil] delegate:nil];
+/*
+ 你可以用下面的写法
+ */
+/*
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"4fe11bd85270156dd8000014" shareText:@"你的分享文字" shareImage:[UIImage imageNamed:@"icon.png"] shareToSnsNames:nil delegate:nil];
+  */
     }
     @catch (NSException *exception) {
         UMLog(@"you must set the snsName as a NSString not a NSNumber !");
@@ -196,6 +203,7 @@
     @finally {
         
     }
+
 }
 
 -(void)showSnsEditSheet

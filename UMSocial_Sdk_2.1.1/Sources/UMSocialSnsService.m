@@ -129,7 +129,6 @@
 
 -(void) onResp:(BaseResp*)resp
 {
-    NSLog(@"req type is %d",resp.type);
     if([resp isKindOfClass:[SendMessageToWXResp class]])
     {
         NSString * message = nil;
@@ -296,10 +295,13 @@
 -(void)setSocialDataWithController:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage delegate:(id <UMSocialUIDelegate>)delegate
 {
     _presentingViewController = controller;
-    if (appKey != nil) {
+    if (appKey != nil && [[UMSocialData appKey] isEqualToString:@""]) {
         [UMSocialData setAppKey:appKey];        
     }
-    _socialControllerService = [[UMSocialControllerService alloc] init];
+    if (_socialControllerService == nil) {
+        _socialControllerService = [[UMSocialControllerService alloc] init];
+    }
+
     _socialControllerService.socialData.shareText = shareText;
     _socialControllerService.socialData.shareImage = shareImage;
     _socialControllerService.socialUIDelegate = delegate;
@@ -464,13 +466,12 @@
 
         UIImage *thumbImage = _socialControllerService.socialData.shareImage;
         if (thumbImage != nil) {
-            thumbImage = [self imageByScalingAndCroppingFromImage:thumbImage size:CGSizeMake(100, 100)];
-            [message setThumbImage:thumbImage];
+            UIImage *scaleImage = [self imageByScalingAndCroppingFromImage:thumbImage size:CGSizeMake(100, 100)];
+            [message setThumbImage:scaleImage];
         }
         else{
             [message setThumbImage:[UIImage imageNamed:@"icon"]];
         }
-
         
         if (_socialControllerService.socialData.extConfig != nil) {
             if(_socialControllerService.socialData.extConfig.title != nil){
@@ -481,9 +482,11 @@
             if (_socialControllerService.socialData.extConfig.wxMessageType == UMSocialWXMessageTypeApp) {
                 
                 WXAppExtendObject *ext = [WXAppExtendObject object];
-                
                 if (_socialControllerService.socialData.extConfig.appUrl != nil) {
                     ext.url = _socialControllerService.socialData.extConfig.appUrl;
+                }
+                else if(buttonIndex == 1){ //如果分享应用类型到朋友圈，必须带url，否则分享失败
+                    ext.url = @"http://www.umeng.com";
                 }
                 
                 int buffer_size = 10;

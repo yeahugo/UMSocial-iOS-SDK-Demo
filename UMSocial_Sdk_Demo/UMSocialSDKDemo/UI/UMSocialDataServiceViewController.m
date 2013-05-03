@@ -34,7 +34,6 @@
     UMSocialData *socialData = shareViewController.socialController.socialData;
 
     _socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
-    
     _shareTextView.text = socialData.shareText;
     
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];

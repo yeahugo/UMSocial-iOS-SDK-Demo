@@ -4,290 +4,150 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
 body {
-  font-family: Helvetica, arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;
-  padding: 30px; }
-
-body > *:first-child {
-  margin-top: 0 !important; }
-body > *:last-child {
-  margin-bottom: 0 !important; }
-
-a {
-  color: #4183C4; }
-a.absent {
-  color: #cc0000; }
-a.anchor {
-  display: block;
-  padding-left: 30px;
-  margin-left: -30px;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0; }
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px;
-  padding: 0;
-  font-weight: bold;
-  -webkit-font-smoothing: antialiased;
-  cursor: text;
-  position: relative; }
-
-h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
-  text-decoration: none; }
-
-h1 tt, h1 code {
-  font-size: inherit; }
-
-h2 tt, h2 code {
-  font-size: inherit; }
-
-h3 tt, h3 code {
-  font-size: inherit; }
-
-h4 tt, h4 code {
-  font-size: inherit; }
-
-h5 tt, h5 code {
-  font-size: inherit; }
-
-h6 tt, h6 code {
-  font-size: inherit; }
-
-h1 {
-  font-size: 28px;
-  color: black; }
-
-h2 {
-  font-size: 24px;
-  border-bottom: 1px solid #cccccc;
-  color: black; }
-
-h3 {
-  font-size: 18px; }
-
-h4 {
-  font-size: 16px; }
-
-h5 {
-  font-size: 14px; }
-
-h6 {
-  color: #777777;
-  font-size: 14px; }
-
-p, blockquote, ul, ol, dl, li, table, pre {
-  margin: 15px 0; }
-
-hr {
-  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
-  border: 0 none;
-  color: #cccccc;
-  height: 4px;
-  padding: 0;
+    font-family: helvetica,"Microsoft Yahei",sans-serif;    
+    font-size: 14px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
 }
 
-body > h2:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-body > h1:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-  body > h1:first-child + h2 {
-    margin-top: 0;
-    padding-top: 0; }
-body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
-  margin-top: 0;
-  padding-top: 0; }
+a {
+    color: #2a5295;
+    text-decoration: none;
+}
+a:hover {
+    color: #2a5295;
+    text-decoration: underline;
 
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-  margin-top: 0;
-  padding-top: 0; }
-
-h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
-  margin-top: 0; }
-
-li p.first {
-  display: inline-block; }
-li {
-  margin: 0; }
-ul, ol {
-  padding-left: 30px; }
-
-ul :first-child, ol :first-child {
-  margin-top: 0; }
-
-dl {
-  padding: 0; }
-  dl dt {
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #333;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 20px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
     font-size: 14px;
-    font-weight: bold;
-    font-style: italic;
-    padding: 0;
-    margin: 15px 0 5px; }
-    dl dt:first-child {
-      padding: 0; }
-    dl dt > :first-child {
-      margin-top: 0; }
-    dl dt > :last-child {
-      margin-bottom: 0; }
-  dl dd {
-    margin: 0 0 15px;
-    padding: 0 15px; }
-    dl dd > :first-child {
-      margin-top: 0; }
-    dl dd > :last-child {
-      margin-bottom: 0; }
+}
+h6 {
+    font-size: 12px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+b{
+    color:#F00;
+    text-indent: 28px;
+    display: block;
+    margin: 10px 0px;
+}
 
+li, ul li {
+    list-style-type:disc;
+}
 blockquote {
-  border-left: 4px solid #dddddd;
-  padding: 0 15px;
-  color: #777777; }
-  blockquote > :first-child {
-    margin-top: 0; }
-  blockquote > :last-child {
-    margin-bottom: 0; }
+    padding: 13px 13px 21px 15px;
+}
 
-table {
-  padding: 0;border-collapse: collapse; }
-  table tr {
-    border-top: 1px solid #cccccc;
-    background-color: white;
-    margin: 0;
-    padding: 0; }
-    table tr:nth-child(2n) {
-      background-color: #f8f8f8; }
-    table tr th {
-      font-weight: bold;
-      border: 1px solid #cccccc;
-      text-align: left;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr td {
-      border: 1px solid #cccccc;
-      text-align: left;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr th :first-child, table tr td :first-child {
-      margin-top: 0; }
-    table tr th :last-child, table tr td :last-child {
-      margin-bottom: 0; }
-
-img {
-  max-width: 100%; }
-
-span.frame {
-  display: block;
-  overflow: hidden; }
-  span.frame > span {
-    border: 1px solid #dddddd;
-    display: block;
-    float: left;
-    overflow: hidden;
-    margin: 13px 0 0;
-    padding: 7px;
-    width: auto; }
-  span.frame span img {
-    display: block;
-    float: left; }
-  span.frame span span {
-    clear: both;
-    color: #333333;
-    display: block;
-    padding: 5px 0 0; }
-span.align-center {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-center > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: center; }
-  span.align-center span img {
-    margin: 0 auto;
-    text-align: center; }
-span.align-right {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px 0 0;
-    text-align: right; }
-  span.align-right span img {
-    margin: 0;
-    text-align: right; }
-span.float-left {
-  display: block;
-  margin-right: 13px;
-  overflow: hidden;
-  float: left; }
-  span.float-left span {
-    margin: 13px 0 0; }
-span.float-right {
-  display: block;
-  margin-left: 13px;
-  overflow: hidden;
-  float: right; }
-  span.float-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: right; }
-
-code, tt {
-  margin: 0 2px;
-  padding: 0 5px;
-  white-space: nowrap;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px; }
-
-pre code {
-  margin: 0;
-  padding: 0;
-  white-space: pre;
-  border: none;
-  background: transparent; }
-
-.highlight pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #2a5295;
+    color: #FFF;
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    display: inline-block;
+    margin: auto 5px;
+}
 pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-  pre code, pre tt {
-    background-color: transparent;
-    border: none; }
-
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 12px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #bfcbdf;
+    color: #333;
+}
+pre code {
+    background-color: #bfcbdf;
+    color: #333;
+    font-size: 12px;
+    padding: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break:break-all; 
+}
 @media screen and (min-width: 914px) {
     body {
         width: 854px;
-        margin:0 auto;
+        margin:10px auto;
     }
 }
 @media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
 	table, pre {
 		page-break-inside: avoid;
 	}
@@ -343,7 +203,6 @@ pre {
 
 <pre><code>[UMSocialData setAppKey:@"507fcab25270157b37000010"];
 </code></pre></li>
-<li>设置了友盟Appkey之后，你就可以分享到各个微博平台了，你也能在我们报表端看到分享的数据，不过用户分享的微博看到的来源应用不能显示你想要的应用名称。如果你想要显示你的应用名称和链接到你的网站，需要在我们网站的社会化设置对我们应用对各个平台的appkey进行绑定，见<a href="#binding_config" style="text-decoration:none">4 绑定友盟应用标识与各开放平台</a></li>
 </ul>
 
 
@@ -351,7 +210,7 @@ pre {
 
 <h3>3.1 <a name="social_share" id="social_share" style="color:black">分享</a></h3>
 
-<h4>1 分享列表页面</h4>
+<h4>3.1.1 分享列表页面</h4>
 
 <p><strong>分享列表页面</strong>（TableView样式）</p>
 
@@ -406,19 +265,17 @@ UIViewController *rootViewController = [[[UIApplication sharedApplication] deleg
   };
   [UMSocialConfig addSocialSnsPlatform:@[neteasePlatform]];
 </code></pre></li>
-<li><p>设置新浪微博支持SSO方式授权。本SDK默认不支持新浪微博SSO授权，SSO即需要新浪微博授权的时候会判断设备是否安装新浪微博客户端，如果有的话就跳到客户端再回来。如果你想支持新浪微博SSO，方法如下：</p>
+<li><p>设置新浪微博支持SSO方式授权。本SDK默认支持新浪微博SSO授权，SSO即需要新浪微博授权的时候会判断设备是否安装新浪微博客户端，如果有的话就跳到客户端再回来。如果你想支持新浪微博SSO，方法如下：</p>
 
-<pre><code>1. 在`UMSocialSnsService.h`最上面修改把`#define __UMSocial__Support__SSO 0`改为`#define __UMSocial__Support__SSO 1`
-
-2. 添加URL scheme，在你的工程设置项,targets 一栏下,选中自己的 target,在 Info-&gt;URL Types 中添加 URL Schemes,此值是 sso 登录时回调时所用。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。本例采用默认格式:”sinaweibosso.”+” &lt;b&gt;新浪微博&lt;/b&gt;应用的 app key”,如下图。
-</code></pre>
-
-<p>  <img src="http://dev.umeng.com/images/ios/social_sso.png" title="social_sso" alt="socialbar" /></p>
-
-<pre><code>3. 在你的`AppDelegate`文件里面实现下面的方法：
+<pre><code>1. 添加URL scheme，在你的工程设置项,targets 一栏下,选中自己的 target,在 Info-&gt;URL Types 中添加 URL Schemes,此值是 sso 登录时回调时所用。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。如果你使用我们默认的新浪微博账号的话，将url scheme修改为“sinaweibosso.126663232”，否则是“sinaweibosso.你的新浪微博appkey”如下图。
 </code></pre></li>
 </ul>
 
+
+<p><img src="http://dev.umeng.com/images/ios/social_sso.png" title="social_sso" alt="socialbar" /></p>
+
+<pre><code>  2. 在你的`AppDelegate`文件里面`#import "UMSocialSnsService.h"`并实现下面的方法：
+</code></pre>
 
 <pre><code>  - (BOOL)application:(UIApplication *)application 
 openURL:(NSURL *)url 
@@ -431,14 +288,14 @@ sourceApplication:(NSString *)sourceApplication
 </code></pre>
 
 <ul>
-<li><p>设置分享到微信,步骤如下：</p>
+<li><p><span name="wechat_config" id="wechat_config"> 设置分享到微信,步骤如下：</span></p>
 
-<ol>
-<li><p> 在微信网站注册，得到微信开发者id，并在<code>AppDelegate</code>引入头文件<code>#import "WXApi.h"</code>，然后注册，例如<code>[WXApi registerApp:@"wxd9a39c7122aa6516"];</code>。</p></li>
-<li><p> 添加URL scheme，在Xcode4中，选择你的工程设置项，选中“TARGETS”一栏，在“info”标签栏的“URL type“添加“URL scheme”为你所注册的应用程序id。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。参考新浪微博SSO设置URL scheme的截图。</p></li>
-<li><p> 设置图文分享，因为使用微信分享图文的话，文字会被截断，所以我们默认只分享文字，下面设置图文分享。</p></li>
-</ol>
-</li>
+<pre><code>1. 在微信网站注册，得到微信开发者id，并在`AppDelegate`引入头文件`#import "WXApi.h"`，然后注册，例如`[WXApi registerApp:@"wxd9a39c7122aa6516"];`。
+
+2. 添加URL scheme，在Xcode4中，选择你的工程设置项，选中“TARGETS”一栏，在“info”标签栏的“URL type“添加“URL scheme”为你所注册的应用程序id。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。参考新浪微博SSO设置URL scheme的截图。
+
+3. 设置图文分享，因为使用微信分享图文的话，文字会被截断，所以我们默认只分享文字，下面设置图文分享。
+</code></pre></li>
 </ul>
 
 
@@ -446,7 +303,7 @@ sourceApplication:(NSString *)sourceApplication
 //可以指定音乐类型或者视频类型          
 </code></pre>
 
-<pre><code>4. 在你的`AppDelegate`文件里面实现下面的方法：
+<pre><code>   4. 在你的`AppDelegate`文件里面实现下面的方法：
 </code></pre>
 
 <pre><code>   - (BOOL)application:(UIApplication *)application 
@@ -460,7 +317,8 @@ sourceApplication:(NSString *)sourceApplication
 </code></pre>
 
 <ul>
-<li>设置SDK的页面支持某一屏幕方向,例如设置只有横屏显示：</li>
+<li><p>如果你想自定义分享来源，可以在友盟后台对应APP-》组件-》社会化组件-》设置页中绑定各平台的appkey，见<a href="#binding_config" style="text-decoration:none">4 绑定友盟应用标识与各开放平台</a></p></li>
+<li><p>设置SDK的页面支持某一屏幕方向,例如设置只有横屏显示：</p></li>
 </ul>
 
 
@@ -468,7 +326,7 @@ sourceApplication:(NSString *)sourceApplication
 [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];
 </code></pre>
 
-<h4>2 分享编辑页面</h4>
+<h4>3.1.2 分享编辑页面</h4>
 
 <ul>
 <li><p><strong>方式1</strong> 支持点击微信、Facebook、和Twitter的方式，并且支持新浪微博SSO方式授权。例如点击分享到新浪微博代码。如果要到其他平台可以把<code>UMShareToSina</code>换成在<code>UMSocialEnum.h</code>里面设定的其他分享平台名称。如果要设置内嵌文字等，可以像分享列表页面方法那里介绍一样设置内嵌文字。</p>
@@ -505,7 +363,7 @@ snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerSer
 </ul>
 
 
-<h4>3 直接发送微博的数据级接口</h4>
+<h4>3.1.3 直接发送微博的数据级接口</h4>
 
 <ul>
 <li><p>直接发送微博到对应的微博平台,支持一次分享到多平台，可以传入文字、图片、地理位置、url资源。如果不需要图片、地理位置和url资源都可以指定为nil。如果想得到分享结果，可以在回调Block对象形参response得到。</p>
@@ -521,7 +379,7 @@ snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerSer
 </ul>
 
 
-<h4>4 处理分享错误</h4>
+<h4>3.1.4 处理分享错误</h4>
 
 <p>在回调对象形参中<code>response</code>中的<code>responseCode</code>和<code>message</code>可以得到返回状态码，和错误消息。或者用下面的代码打开我们SDK在控制台的输出后也能看到错误码。</p>
 
@@ -533,14 +391,14 @@ snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerSer
 
 <h3>3.2 <a name="social_user" id="social_user" style="color:black">用户账号</a></h3>
 
-<h4>1 简介</h4>
+<h4>3.2.1 简介</h4>
 
 <p>每个使用社会化组件的设备都会对应一个“用户”，但是组件会为您自动处理“用户”对象，您无需显式创建它。
     用户信息分两部分：
 登录信息： APP内部展示给其他用户的个人信息。系统会将用户登录时选择的默认平台上的授权信息，作为用户的登录信息；
 授权信息：从各开放平台上获得的个人资料，如昵称、头像等。</p>
 
-<h4>2 用户中心（界面级接口）</h4>
+<h4>3.2.2 用户中心（界面级接口）</h4>
 
 <ul>
 <li><p><strong>授权信息页面</strong>，显示各个微博平台的授权情况。用户可以新增、更改、删除授权账号。</p>
@@ -560,7 +418,7 @@ snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerSer
 </ul>
 
 
-<h4>3 获取用户微博账号信息（数据级的接口）</h4>
+<h4>3.2.3 获取用户微博账号信息（数据级的接口）</h4>
 
 <ul>
 <li><p>使用本SDK对个微博平台授权过后，我们提供方法查询用户授权到各个微博平台的信息。</p>
@@ -573,7 +431,7 @@ UMLog(@"sina nickName is %@, iconURL is %@",sinaAccount.userName,sinaAccount.ico
 </ul>
 
 
-<h4>4 授权页面（界面级接口）</h4>
+<h4>3.2.4 授权页面（界面级接口）</h4>
 
 <ul>
 <li><p>SSO授权即如果用户设备安装了新浪微博客户端，就会跳转到那里进行授权，好处是用户不需要输入用户名和密码，如果没有安装新浪微博客户端的话还会使用原来的webview来授权，参看分享部分对SSO的设置。支持SSO授权的实现代码是</p>
@@ -606,7 +464,7 @@ snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerS
 </ul>
 
 
-<h4>5 其他用户操作 （数据级接口）</h4>
+<h4>3.2.5 其他用户操作 （数据级接口）</h4>
 
 <ul>
 <li><p>判断是否授权到某个微博平台，例如有没有授权到新浪微博
@@ -654,7 +512,7 @@ snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerS
 
 <h3>3.3 <a name="social_comment" id="social_comment" style="color:black">评论</a></h3>
 
-<h4>1 界面级接口</h4>
+<h4>3.3.1 界面级接口</h4>
 
 <ul>
 <li><p>用到评论的界面级功能，需要使用<code>libUMSocial_Sdk_Comment_x.x.x.a</code>,对应的头文件是<code>UMSocialControllerServiceComment.h</code>，得到一个评论列表：</p>
@@ -672,7 +530,7 @@ snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerS
 </ul>
 
 
-<h4>2 数据级接口</h4>
+<h4>3.3.2 数据级接口</h4>
 
 <ul>
 <li><p>评论的数据级接口不需要<code>libUMSocial_Sdk_Comment_x.x.x.a</code>。获取最近的评论数据，<code>lastCommentTime</code>传入<code>-1</code>。如果评论数据比较多，想获取之前的评论，可以在<code>lastCommentTime</code>中传入指定时间戳。传入评论数据在回调Block对象形参response里的属性<code>data</code>中得到：</p>
@@ -742,7 +600,7 @@ snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerS
 
 <p>   获得appkey后，为了方便您可以快速集成我们的社会化分享的服务，我们会为你对各个平台提供一个默认的appkey和appsecret，如果你想使用自己的微博平台的应用，您需在在我们网站更改默认的微博appkey，具体操作是：登录友盟网站->左上角选择你们的产品->组件->社会化组件->设置,菜单项下进行绑定配置。如果你尚未在我们支持的分享平台注册你的应用，注册过程可以参考如下：</p>
 
-<p> <strong>新浪微博</strong></p>
+<h3><strong>新浪微博</strong></h3>
 
 <pre><code>方式一：快捷申请方式（适用条件：新应用推荐使用此方式。优点是直接在友盟后台，即可从新浪申请到处于审核通过状态的APP）
 
@@ -763,7 +621,7 @@ snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerS
 4. 将获取到的Key和Secret手工填写到友盟后台对应应用的组件 -&gt; 社会化组件 -&gt; 设置页 -&gt; 新浪微博APP绑定信息部分。
 </code></pre>
 
-<p><strong>腾讯微博</strong></p>
+<h3><strong>腾讯微博</strong></h3>
 
 <pre><code>1. 生成封装链接。如果还未配置应用地址的封装链接，需要在友盟后台对应应用的组件 -&gt;社会化组件 -&gt;设置页 中生成封装链接；
 ![appurl_socialurl](http://dev.umeng.com/images/ios/appurl_socialurl.png)
@@ -777,7 +635,7 @@ snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerS
 4. 将获取到的Key和Secret手工填写到友盟后台对应应用的组件 -》社会化组件 - 》设置页 -》腾讯微博APP绑定信息部分。
 </code></pre>
 
-<p><strong>人人网</strong></p>
+<h3><strong>人人网</strong></h3>
 
 <pre><code>目前人人分为两个平台：开放平台、移动开发者中心。
 
@@ -800,7 +658,7 @@ snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerS
 4. 将获取到的App ID、API Key、Secret手工填写到友盟后台对应应用的组件 -》社会化组件 - 》设置页 -》人人网APP绑定信息部分，并勾选“开放平台”。
 </code></pre>
 
-<p><strong>豆瓣</strong></p>
+<h3><strong>豆瓣</strong></h3>
 
 <pre><code>与人人网的申请、配置方式基本一致，开放平台链接如下：http://developers.douban.com/
 
@@ -809,7 +667,7 @@ snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerS
 权限必须选择豆瓣广播
 </code></pre>
 
-<p><strong>QQ空间</strong></p>
+<h3><strong>QQ空间</strong></h3>
 
 <pre><code>1. 在如下位置创建应用：http://connect.qq.com/manage/ -》添加移动应用-》填写应用名称，确定；
 
@@ -824,7 +682,7 @@ snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerS
 
 <p>请到<a href="http://support.umeng.com/?qa=ios-sdk-%E9%9B%86-%E6%88%90" style="text-decoration:none">友盟社会化组件的帮助与支持页面</a></p>
 
-<h2><a name="error_code" id="error_code" style="color:black">5. 附录</a></h2>
+<h2><a name="error_code" id="error_code" style="color:black">6. 附录</a></h2>
 
 <h3>1 常见错误代码含义</h3>
 

@@ -102,8 +102,8 @@
     [self changeLikeButtonImage];
 //    NSLog(@"_detailLabel.text is %@",_detailLabel.text);
     _socialController.socialDataService.socialData.shareText = _detailLabel.text;
-//    NSLog(@"share text is %@",_socialController.socialDataService.socialData.shareText);
     _socialController.socialDataService.socialData.shareImage = _detailImageView.image;
+    _socialController.socialData.extConfig.wxMessageType = UMSocialWXMessageTypeApp;
     UMSocialShareViewController *shareViewController = [_tabelViewController.tabBarController.viewControllers objectAtIndex:0];
     if (shareViewController.postsArray != nil) {
         NSString *title = [[shareViewController.postsArray objectAtIndex:self.index] valueForKey:@"title"];

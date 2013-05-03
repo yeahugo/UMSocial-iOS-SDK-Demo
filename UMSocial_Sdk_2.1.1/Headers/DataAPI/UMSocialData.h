@@ -33,7 +33,7 @@ typedef enum{
 }
 
 /**
- 用于分享到微信用的，url地址。分享给微信好友如果对方装有app的话可以直接跳转，没有的话跳转到此url
+ 用于分享到微信用的，url地址。分享给微信好友如果对方装有app的话可以直接跳转，没有的话跳转到此url。如果分享到应用类型（图文）到微信朋友圈，微信要求必须有url，否则分享失败。没有设置的话，默认使用友盟主页。
  
  */
 @property (nonatomic, copy) NSString *appUrl;
@@ -213,6 +213,8 @@ typedef enum {
  
  */
 @property (nonatomic, retain)  UMSocialExtConfig *extConfig;
+
+
 ///---------------------------------------
 /// @name 对所有对象都起作用的类方法
 ///---------------------------------------
@@ -223,6 +225,11 @@ typedef enum {
  */
 
 + (void)setAppKey:(NSString *)appKey;
+
+/**获取设置的友盟appKey
+ 
+ */
++ (NSString *)appKey;
 
 /**
  设置是否打开log输出，默认不打开，如果打开的话可以看到此sdk网络或者其他操作，有利于调试
