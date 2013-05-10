@@ -244,7 +244,6 @@
 
             [UMSocialAccountManager requestAppInfo:^(UMSocialResponseEntity * response){
                 [maskView removeFromSuperview];
-//                SAFE_ARC_RELEASE(maskView);
                 if (response.responseCode == UMSResponseCodeSuccess) {
                     [self sharedInstance].appInfo = response.data;
                     if ([response.data  valueForKey:UMShareToSina]) {
@@ -262,9 +261,6 @@
                 }
                 else{
                     completion(response);
-//                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"网络错误" message:@"当前设备的网络状态不正常，请稍后重试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//                    [alertView show];
-//                    SAFE_ARC_RELEASE(alertView);
                 }
             }];
         }
