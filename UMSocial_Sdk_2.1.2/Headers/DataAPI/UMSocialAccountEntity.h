@@ -55,11 +55,6 @@
 @property (nonatomic, copy) NSString *profileURL;
 
 /**
- 微博平台类型
- */
-//@property (nonatomic, readonly) UMSocialSnsType shareToType;
-
-/**
  是否首次授权，sdk内使用
  */
 @property (nonatomic) BOOL isFirstOauth;

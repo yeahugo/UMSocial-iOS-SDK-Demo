@@ -44,9 +44,16 @@
  */
 @property (nonatomic, readonly) NSArray *socialSnsArray;
 
-
+/**
+ 该NSDictionary以各个平台名为key，UMSocialPlatform对象为value
+ */
 @property (nonatomic, retain) NSDictionary *allSnsPlatformDictionary;
 
+/**
+ `UMSocialSnsPlatformManager`的单例方法
+ 
+ @return `UMSocialSnsPlatformManager`的单例对象
+ */
 + (UMSocialSnsPlatformManager *)sharedInstance;
 
 

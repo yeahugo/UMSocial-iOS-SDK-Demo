@@ -11,6 +11,7 @@
 
 /**
  返回的状态对象，可以通过此对象获取返回类型、返回结果、返回数据等。
+ 
  */
 @interface UMSocialResponseEntity : NSObject
 {
@@ -45,16 +46,19 @@
 
 /**
  错误原因
+ 
  */
 @property (nonatomic, retain) NSString *message;
 
 /**
  返回数据
+ 
  */
 @property (nonatomic, retain) NSDictionary *data;
 
 /**
  客户端发送出现的错误
+ 
  */
 @property (nonatomic, retain) NSError *error;
 

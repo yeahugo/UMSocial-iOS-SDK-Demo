@@ -51,15 +51,32 @@ typedef void (^UMSocailAuthorization)(void);
 @property (nonatomic, retain) SinaWeibo *sinaWeibo;
 #endif
 
+/**
+ 处理app的URL方法
+ 
+ @param url 传入的url
+ 
+ @return wxApiDelegate 实现微信代理对象
+ */
 +(BOOL)handleOpenURL:(NSURL *)url wxApiDelegate:(id<WXApiDelegate>)wxApiDelegate;
 
-
+/**
+ 处理授权的Block对象
+ 
+ */
 @property (nonatomic, copy) UMSocailAuthorization authorization;
 
+/**
+ 处理授权完成Block对象
+ 
+ */
 @property (nonatomic, copy) UMSocialDataServiceCompletion completion;
 
-@property (nonatomic, retain) UMSocialControllerService *socialControllerService;
-
+/**
+ 得到单例对象的类方法
+  
+ @return `UMSocialSnsService`的单例对象
+ */
 + (UMSocialSnsService *)sharedInstance;
 
 ///---------------------------------------

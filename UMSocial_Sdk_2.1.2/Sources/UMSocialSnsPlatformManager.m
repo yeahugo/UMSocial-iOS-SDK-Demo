@@ -237,14 +237,18 @@
             sinaWeibo.delegate = [UMSocialSnsService sharedInstance];
         }
         else{
+
             UIView *maskView = [[NSClassFromString(@"UMMaskView") alloc] performSelector:@selector(initWithRoundedView)];
             [controller.view addSubview:maskView];
-            SAFE_ARC_RELEASE(maskView);
+            maskView.tag = 10001;
+
             [UMSocialAccountManager requestAppInfo:^(UMSocialResponseEntity * response){
+                [maskView removeFromSuperview];
+//                SAFE_ARC_RELEASE(maskView);
                 if (response.responseCode == UMSResponseCodeSuccess) {
                     [self sharedInstance].appInfo = response.data;
                     if ([response.data  valueForKey:UMShareToSina]) {
-                        [maskView removeFromSuperview];
+                        
                         NSString *appkey = [[[self sharedInstance].appInfo valueForKey:UMShareToSina] valueForKey:@"key"];
                         NSString *secret = [[[self sharedInstance].appInfo valueForKey:UMShareToSina] valueForKey:@"secret"];
                         SinaWeibo * sinaWeibo = [UMSocialSnsService sharedInstance].sinaWeibo;
@@ -255,6 +259,12 @@
                         [sinaWeibo logIn];
                         sinaWeibo.delegate = [UMSocialSnsService sharedInstance];
                     }
+                }
+                else{
+                    completion(response);
+//                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"网络错误" message:@"当前设备的网络状态不正常，请稍后重试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//                    [alertView show];
+//                    SAFE_ARC_RELEASE(alertView);
                 }
             }];
         }
@@ -294,8 +304,10 @@
                     [presentingController.navigationController pushViewController:oauthViewController animated:YES];
                 }
                 else{
+                    #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
                     UINavigationController *oauthNavigationController = [controllerService getSocialOauthController:snsName];
                     [presentingController presentModalViewController:oauthNavigationController animated:YES];
+                    #pragma GCC diagnostic warning "-Wdeprecated-declarations"
                 }
             };
             
@@ -346,12 +358,14 @@
                         [presentingController.navigationController pushViewController:shareEditViewController animated:YES];
                     }
                     else{
+                        #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
                         UINavigationController *shareEditNavigationController = [socialControllerService getSocialShareEditController:snsName];
                         [presentingController presentModalViewController:shareEditNavigationController animated:YES];
+                        #pragma GCC diagnostic warning "-Wdeprecated-declarations"
                     }
                 }
                 else if(response != nil && response.responseCode != UMSResponseCodeCancel){
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"失败" message:@"服务器繁忙，请稍后再试" delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"网络错误" message:@"网络连接失败，请稍后再试" delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
                     [alertView show];
                 }
                 
@@ -372,6 +386,7 @@
             finishOauth(nil);
 #endif
         }
+        
         else if(snsType == UMSocialSnsTypeEmail){
             if (![NSClassFromString(@"MFMailComposeViewController") canSendMail]) {
                 UIAlertView *servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"邮件功能未开启" message:@"您当前设备的邮件服务处于未启用状态，若想通过邮件分享，请到设置中设置邮件服务后，再进行分享" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
@@ -379,8 +394,10 @@
                 SAFE_ARC_RELEASE(servicesDisabledAlert);
             }
             else{
+                #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
                 UINavigationController *emailController = [socialControllerService getSocialShareEditController:snsName];
                 [presentingController presentModalViewController:emailController animated:YES];
+                #pragma GCC diagnostic warning "-Wdeprecated-declarations"
             }
         }
         else if (snsType == UMSocialSnsTypeSms){
@@ -390,10 +407,13 @@
                 SAFE_ARC_RELEASE(servicesDisabledAlert);
             }
             else{
+                #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
                 UINavigationController *smsController = [socialControllerService getSocialShareEditController:snsName];
                 [presentingController presentModalViewController:smsController animated:YES];
+                #pragma GCC diagnostic warning "-Wdeprecated-declarations"
             }
         }
+        
     };
     snsPlatform.snsClickHandler = snsHandler;
 }

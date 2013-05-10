@@ -26,7 +26,10 @@ typedef void (^DismissCompletion)(void);
     DismissCompletion _dismissCompletion;
 }
 
-
+/**
+ 平台数组
+ 
+ */
 @property (nonatomic, retain) NSArray *snsNames;
 
 /**
@@ -40,6 +43,7 @@ typedef void (^DismissCompletion)(void);
  
  */
 @property (nonatomic, copy) DismissCompletion dismissCompletion;
+
 /**
  初始化方法
  

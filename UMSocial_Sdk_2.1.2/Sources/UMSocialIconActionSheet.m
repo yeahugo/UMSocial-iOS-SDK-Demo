@@ -157,7 +157,9 @@
         if (snsNamelabel == nil) {
             UILabel *snsNamelabel = [[UILabel alloc] initWithFrame:labelRect];
             snsNamelabel.tag = snsPlatform.shareToType;
+            #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
             snsNamelabel.textAlignment = UITextAlignmentCenter;
+            #pragma GCC diagnostic warning "-Wdeprecated-declarations"
             [snsNamelabel setBackgroundColor:[UIColor clearColor]];
             [snsNamelabel setTextColor:[UIColor whiteColor]];
             [snsNamelabel setFont:[UIFont systemFontOfSize:12]];

@@ -11,11 +11,14 @@
 #import "UMSocialEnum.h"
 #import "UMSocialDataDelegate.h"
 
+/**
+ 微信内容类型
+ */
 typedef enum{
-    UMSocialWXMessageTypeText,
-    UMSocialWXMessageTypeImage,
-    UMSocialWXMessageTypeApp,
-    UMSocialWXMessageTypeOther
+    UMSocialWXMessageTypeText,      //微信文本内容
+    UMSocialWXMessageTypeImage,     //微信图片类型
+    UMSocialWXMessageTypeApp,       //微信应用类型
+    UMSocialWXMessageTypeOther      //微信其他多媒体类型
 }UMSocialWXMessageType;
 
 /**

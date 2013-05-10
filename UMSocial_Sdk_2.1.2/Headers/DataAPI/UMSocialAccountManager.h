@@ -11,12 +11,21 @@
 #import "UMSocialAccountEntity.h"
 #import "UMSocialDataService.h"
 
+/**
+ 男性用户
+ 
+ */
 extern NSString *const UMSCustomAccountGenderMale;
 
+/**
+ 女性用户
+ 
+ */
 extern NSString *const UMSCustomAccountGenderFeMale;
 
 /**
  开发者自有账户对象，在app登录或者注册完成之后用用户名来初始化这样的对象，可以指定头像等，然后用`UMSocialAccountManager`来添加到友盟的账户体系上，使用我们的评论列表和个人中心的页面时就会显示自有账号的用户名和头像
+ 
  */
 @interface UMSocialCustomAccount : NSObject
 {
@@ -27,27 +36,71 @@ extern NSString *const UMSCustomAccountGenderFeMale;
     NSString *_profileUrl;
     NSString *_iconUrl;
     NSDictionary *_customData;
-    NSString *_platformName;
 }
 
+/**
+ 用户名
+ 
+ */
 @property (nonatomic, copy) NSString *userName;
-@property (nonatomic, copy) NSString *usid;
-@property (nonatomic, copy) NSString *gender;
-@property (nonatomic, retain) NSDate *birthday;
-@property (nonatomic, copy) NSString *profileUrl;
-@property (nonatomic, copy) NSString *iconUrl;
-@property (nonatomic, retain) NSDictionary *customData;
-@property (nonatomic, copy) NSString *platformName;
 
+/**
+ 用户id
+ 
+ */
+@property (nonatomic, copy) NSString *usid;
+
+/**
+ 性别
+ 
+ */
+@property (nonatomic, copy) NSString *gender;
+
+/**
+ 生日
+ 
+ */
+@property (nonatomic, retain) NSDate *birthday;
+
+/**
+ 个人页面地址
+ 
+ */
+@property (nonatomic, copy) NSString *profileUrl;
+
+/**
+ 头像url
+ 
+ */
+@property (nonatomic, copy) NSString *iconUrl;
+
+/**
+ 自定义数据
+ 
+ */
+@property (nonatomic, retain) NSDictionary *customData;
+
+/**
+ 初始化自定义用户
+ 
+ @param userName 用户名
+ 
+ @return 自定义用户对象
+ */
 -(id)initWithUserName:(NSString *)userName;
 
 @end
 
 /**
  账号管理，可以添加开发者应用的自有账号到友盟的账号体系，查询此sns平台是否授权等。
+ 
  */
 @interface UMSocialAccountManager : NSObject
 
+/**
+ 存放用户在各个微博平台账户信息的哈希对象，以各个平台名为key，以`UMSocialAccountEntity`对象为value
+ 
+ */
 +(NSDictionary *)socialAccountDictionary;
 
 /**
@@ -76,9 +129,9 @@ extern NSString *const UMSCustomAccountGenderFeMale;
  */
 +(void)postCustomAccount:(UMSocialCustomAccount *)customAccount completion:(UMSocialDataServiceCompletion)completion;
 /**
- 设置sns账号信息
+ 把自由账号添加到本地账号中
  
- @param customAccount 自有账号对象
+ @param 
  
  */
 +(void)setSnsAccount:(UMSocialAccountEntity *)snsAccount;
@@ -86,11 +139,13 @@ extern NSString *const UMSCustomAccountGenderFeMale;
 
 /**
  判断是否登录，此登录包括以游客身份登录，如果已经登录评论编辑页面点击发送就不会提示登录。
+ 
  */
 + (BOOL)isLogin;
 
 /**
  判断是否用sns账号来登录，即绑定一个sns账号作为登录账号，如果是的话，个人中心页面上半部分和评论列表即显示此用户名、头像。
+ 
  */
 + (BOOL)isLoginWithSnsAccount;
 
@@ -103,11 +158,13 @@ extern NSString *const UMSCustomAccountGenderFeMale;
 
 /**
  判断是否以游客身份登录。游客身份的过程是用户进入登录页面，并且选以游客身份登录，如果用户选择其他平台登录或者没有进入登录页面都是非游客身份登录。
+ 
  */
 + (BOOL)isLoginWithAnonymous;
 
 /**
  设置是否已经以游客身份来登录，如果以游客身份登录，评论会显示匿名和使用默认头像，如果没有使用游客身份，会弹出登录界面，选择一个sns平台作为登录账号之后再评论。
+ 
  */
 + (void)setIsLoginWithAnonymous:(BOOL)anonymous;
 

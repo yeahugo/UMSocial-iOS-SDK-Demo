@@ -45,6 +45,7 @@ typedef enum {
     UMSBarColorBlack,                  //黑色
 } UMSBarColor;
 
+
 @protocol UMSocialBarActionDelegate <NSObject>
 
 -(void)likeButtonTouched;
@@ -83,7 +84,6 @@ typedef enum {
     } UMSButtonTypeMask;
 
  */
-
 @interface UMSocialBarView : UIView
 {
     id<UMSocialBarActionDelegate> __unsafe_unretained _socialBarDelegate;
@@ -96,10 +96,15 @@ typedef enum {
     UMSBarColor _themeColor;
 }
 
+/**
+ 操作栏回调对象
+ 
+ */
 @property (nonatomic, unsafe_unretained) id<UMSocialBarActionDelegate> socialBarActionDelegate;
 
 /**
  操作栏主题颜色，有白色和黑色
+ 
  */
 @property (nonatomic, assign) UMSBarColor themeColor;
 

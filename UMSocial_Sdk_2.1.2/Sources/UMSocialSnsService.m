@@ -29,7 +29,7 @@
 #endif
 @synthesize completion = _completion;
 @synthesize authorization = _authorization;
-@synthesize socialControllerService = _socialControllerService;
+//@synthesize socialControllerService = _socialControllerService;
 -(void)dealloc
 {
     SAFE_ARC_RELEASE(_socialControllerService);
@@ -208,9 +208,13 @@
                                 }];
 
                             }
+                            #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
                             [presentingController dismissModalViewControllerAnimated:YES];
+                            #pragma GCC diagnostic warning "-Wdeprecated-declarations"
                         };
+                        #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
                         [presentingController presentModalViewController:slcomposeViewController animated:YES];
+                        #pragma GCC diagnostic warning "-Wdeprecated-declarations"
                     }
                 }
                 else{
@@ -253,10 +257,13 @@
                                 }];
                                 
                             }
+                            #pragma GCC diagnostic ignored "-Wdeprecated-declarations" 
                             [presentingController dismissModalViewControllerAnimated:YES];
+                            #pragma GCC diagnostic warning "-Wdeprecated-declarations"
                         };
-                                            
+                         #pragma GCC diagnostic ignored "-Wdeprecated-declarations"                   
                         [presentingController presentModalViewController:slcomposeViewController animated:YES];
+                        #pragma GCC diagnostic warning "-Wdeprecated-declarations"
                     }
                 }
                 else{
@@ -314,7 +321,9 @@
     if (snsStrings != nil) {
         [snsListController.visibleViewController performSelector:@selector(setAllSnsArray:) withObject:snsStrings];        
     }
+    #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
     [_presentingViewController presentModalViewController:snsListController animated:YES];
+    #pragma GCC diagnostic warning "-Wdeprecated-declarations"
 }
 
 -(void)showSnsIconSheetView:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage shareToSnsStrings:(NSArray *)snsStrings delegate:(id <UMSocialUIDelegate>)delegate
@@ -361,7 +370,9 @@
                 [slcomposeViewController setInitialText:socialData.shareText];
                 [slcomposeViewController addImage:socialData.shareImage];                
             }
+            #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
             [showViewController presentModalViewController:slcomposeViewController animated:YES];
+            #pragma GCC diagnostic warning "-Wdeprecated-declarations"
         }
         else{
             UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[NSString stringWithFormat:@"您的%@账号尚未登录，请在系统设置中登录",slName] delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
@@ -509,8 +520,8 @@
                 req.bText = NO;
             }
             else if(_socialControllerService.socialData.extConfig.wxMessageType == UMSocialWXMessageTypeOther){
-                if (self.socialControllerService.socialData.extConfig.wxMediaObject != nil) {
-                    message.mediaObject = self.socialControllerService.socialData.extConfig.wxMediaObject;
+                if (_socialControllerService.socialData.extConfig.wxMediaObject != nil) {
+                    message.mediaObject = _socialControllerService.socialData.extConfig.wxMediaObject;
                 }
                 
                 req.message = message;

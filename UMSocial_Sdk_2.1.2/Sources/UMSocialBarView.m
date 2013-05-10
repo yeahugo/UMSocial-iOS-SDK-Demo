@@ -75,7 +75,9 @@
         _statusLabel.font =[UIFont systemFontOfSize:13];
         _statusLabel.text = nil;
         _statusLabel.textColor = [UIColor lightGrayColor];
+        #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         _statusLabel.textAlignment = UITextAlignmentCenter;
+        #pragma GCC diagnostic warning "-Wdeprecated-declarations"
         _statusLabel.alpha = 0;
         [self addSubview:_statusLabel];
     }

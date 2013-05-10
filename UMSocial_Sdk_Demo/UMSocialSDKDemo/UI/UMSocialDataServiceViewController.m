@@ -206,16 +206,7 @@
         UMSocialAccountEntity *snsAccount = [[UMSocialAccountEntity alloc] initWithPlatformName:UMShareToTencent];
         snsAccount.usid = @"MaJiaforTest";
         snsAccount.accessToken = @"388bf526bc74351d1f99a2ce3f57d4c5";
-        snsAccount.openId = @"F492672A5DD8027AEEB6FEFE5CCC1139";
-
-//        UMSocialAccountEntity *snsAccount = [[UMSocialAccountEntity alloc] initWithPlatformName:UMShareToQzone];
-//        snsAccount.openId = @"0ED65EE80151F087669AB09E94763A2F";
-//        snsAccount.accessToken = @"296B9F09B8D6078C1C4722A4DFE98953";
-        
-//        UMSocialAccountEntity *snsAccount = [[UMSocialAccountEntity alloc] initWithPlatformName:UMShareToSina];
-//        snsAccount.usid = @"2575014582123";
-//        snsAccount.accessToken = @"2.00QvUQoC0idO6ta487efea98Sb8S6C";
-  
+        snsAccount.openId = @"F492672A5DD8027AEEB6FEFE5CCC1139";  
         
         [UMSocialAccountManager postSnsAccount:snsAccount completion:completion];
     }

@@ -52,7 +52,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     _socialController = [[UMSocialControllerService alloc] init];
     
 /* 
@@ -79,7 +79,6 @@
 //    _socialController.socialData.extConfig = extConfig;
 //
 //    SAFE_ARC_RELEASE(extConfig);
-    
     _socialController.socialUIDelegate = self;
 
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -193,9 +192,8 @@
 /*
  你可以用下面的写法
  */
-/*
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"4fe11bd85270156dd8000014" shareText:@"你的分享文字" shareImage:[UIImage imageNamed:@"icon.png"] shareToSnsNames:nil delegate:nil];
-  */
+
+//    [UMSocialSnsService presentSnsIconSheetView:self appKey:nil shareText:@"你的分享文字" shareImage:[UIImage imageNamed:@"icon.png"] shareToSnsNames:nil delegate:nil];
     }
     @catch (NSException *exception) {
         UMLog(@"you must set the snsName as a NSString not a NSNumber !");
@@ -233,7 +231,6 @@
     if (buttonIndex + 1 >= actionSheet.numberOfButtons ) {
         return;
     }
-    
     //分享编辑页面的接口
     NSString *snsName = [[UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray objectAtIndex:buttonIndex];
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];

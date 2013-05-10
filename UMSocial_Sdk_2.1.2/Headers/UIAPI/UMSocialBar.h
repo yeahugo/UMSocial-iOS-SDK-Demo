@@ -74,6 +74,17 @@
 /// @name 初始化方法
 ///---------------------------------------
 
+
+/**
+ 初始化方法
+ 
+ @param viewController `UMSocialBar`出现的分享列表、评论列表等`UINavigationCtroller`要添加到的`UIViewController`
+ 
+ @return 初始化对象
+ */
+- (id)initWithViewController:(UIViewController *)viewController;
+
+
 /**
  初始化方法
  

@@ -28,6 +28,7 @@ typedef enum {
 @class UMSocialControllerService;
 
 /** 定义响应点击平台后的block对象
+ 
  @param presentingController 点击后弹出的分享页面或者授权页面所在的UIViewController对象
  @param socialControllerService 可以用此对象的socialControllerService.socialData可以获取分享内嵌文字、内嵌图片，分享次数等
  @param isPresentInController 如果YES代表弹出(present)到当前UIViewController，否则push到UIViewController的navigationController
@@ -36,6 +37,7 @@ typedef enum {
 typedef void (^UMSocialSnsPlatformClickHandler)(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController);
 
 /** 定义响应点击各平台授权登录后的block对象
+ 
  @param presentingController 点击后弹出的分享页面或者授权页面所在的UIViewController对象
  @param socialControllerService 可以用此对象的socialControllerService.socialData可以获取分享内嵌文字、内嵌图片，分享次数等
  @param isPresentInController 如果YES代表弹出(present)到当前UIViewController，否则push到UIViewController的navigationController
@@ -44,8 +46,8 @@ typedef void (^UMSocialSnsPlatformClickHandler)(UIViewController *presentingCont
  */
 typedef void (^UMSocialSnsPlatformLoginHandler)(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController, UMSocialDataServiceCompletion completion);
 
-/*
- Sns平台类，用`platformName`作为标识，指定显示名称、显示的图片，点击之后的响应。
+/**
+    Sns平台类，用`platformName`作为标识，指定显示名称、显示的图片，点击之后的响应。
  */
 @interface UMSocialSnsPlatform : NSObject
 {
