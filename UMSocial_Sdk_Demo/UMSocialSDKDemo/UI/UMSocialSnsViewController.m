@@ -32,21 +32,41 @@
 
 -(IBAction)showShareList1:(id)sender
 {
-    NSString *shareText = [UMSocialData defaultData].shareText;
-    UIImage *image = [UMSocialData defaultData].shareImage;
+    NSString *shareText = [UMSocialData defaultData].shareText;      //分享内嵌文字
+    UIImage *image = [UMSocialData defaultData].shareImage;          //分享内嵌图片
     [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:shareText shareImage:image shareToSnsNames:nil delegate:nil];
+    
+    /*
+     //你也可以用下面的写法
+     
+     [UMSocialData defaultData].shareText = @"分享内嵌文字";
+     [UMSocialData defaultData].shareImage =  [UIImage imageNamed:@"icon.png"];
+     UMSocialIconActionSheet *iconActionSheet = [[UMSocialControllerService defaultControllerService] getSocialIconActionSheetInController:self];
+     [iconActionSheet showInView:self.view];
+     */
 }
 
 -(IBAction)showShareList2:(id)sender
 {
-//    NSString *shareText = [UMSocialData defaultData].shareText;
-//    UIImage *image = [UMSocialData defaultData].shareImage;
-//    [UMSocialSnsService presentSnsController:self appKey:useAppkey shareText:shareText shareImage:image shareToSnsNames:nil delegate:nil];
-    
-    UINavigationController *navigationController = [[UMSocialControllerService defaultControllerService] getSocialShareListController];
-    [self presentModalViewController:navigationController animated:YES];
+    NSString *shareText = [UMSocialData defaultData].shareText;
+    UIImage *image = [UMSocialData defaultData].shareImage;
+    [UMSocialSnsService presentSnsController:self appKey:useAppkey shareText:shareText shareImage:image shareToSnsNames:nil delegate:nil];
+
+    /*
+     //你也可以用下面的写法
+     [UMSocialData defaultData].shareText = @"分享内嵌文字";
+     [UMSocialData defaultData].shareImage =  [UIImage imageNamed:@"icon.png"];
+     UINavigationController *navigationController = [[UMSocialControllerService defaultControllerService] getSocialShareListController];
+     [self presentModalViewController:navigationController animated:YES];
+
+     */
 }
 
+
+/*
+ 自定义分享样式，可以自己构造分享列表页面
+ 
+ */
 -(IBAction)showShareList3:(id)sender
 {
     UIActionSheet * editActionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
@@ -60,25 +80,36 @@
     editActionSheet.delegate = self;
 }
 
+
+/*
+ 在自定义分享样式中，根据点击不同的点击来处理不同的的动作
+ 
+ */
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex + 1 >= actionSheet.numberOfButtons ) {
         return;
     }
-    //分享编辑页面的接口
-    NSString *snsName = [[UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray objectAtIndex:buttonIndex];
-    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
     
+    /*
     //你可以这样根据不同的平台指定不同的内容
     if (buttonIndex == 1) {
         [UMSocialData defaultData].shareText = @"分享文字";
     }
+     */
+    //分享编辑页面的接口
+    NSString *snsName = [[UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray objectAtIndex:buttonIndex];
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
     snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);
 }
 
 - (void)viewDidLoad
 {
-    
+    [UMSocialData defaultData].shareText = @"友盟社会化分享 http://www.umeng.com/";
+    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    _activityIndicatorView.center = CGPointMake(160, 170);
+    [self.view addSubview:_activityIndicatorView];
+    [_activityIndicatorView startAnimating];
     UMSocialAFHTTPClient *httpClient = [UMSocialAFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"http://blog.umeng.com/"]];
     [httpClient getPath:@"/api/get_recent_posts/" parameters:nil success:^(UMSocialAFHTTPRequestOperation *operation, id responseObject){
         NSString *jsonString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -113,8 +144,6 @@
         }
         [_activityIndicatorView stopAnimating];
     }];
-
-    
     [super viewDidLoad];
     self.title = @"分享";
     self.tabBarItem.image = [UIImage imageNamed:@"UMS_share"];

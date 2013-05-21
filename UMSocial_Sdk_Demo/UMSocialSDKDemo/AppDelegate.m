@@ -23,7 +23,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
 
-    [UMSocialData setAppKey:useAppkey];
+    
     
     UMSocialTabBarController *tabViewController = [[UMSocialTabBarController alloc] init];
     self.window.rootViewController = tabViewController;
