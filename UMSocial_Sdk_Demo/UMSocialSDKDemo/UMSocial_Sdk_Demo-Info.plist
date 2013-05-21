@@ -45,19 +45,19 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>weixin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wxd9a39c7122aa6516</string>
+				<string>sina.507fcab25270157b37000010</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>weixin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>sinaweibosso.1917566200</string>
+				<string>wxd9a39c7122aa6516</string>
 			</array>
 		</dict>
 	</array>

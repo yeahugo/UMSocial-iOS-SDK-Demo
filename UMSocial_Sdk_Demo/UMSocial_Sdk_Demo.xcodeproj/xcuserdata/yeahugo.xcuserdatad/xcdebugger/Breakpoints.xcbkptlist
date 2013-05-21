@@ -13,7 +13,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "173"
          endingLineNumber = "173"
-         landmarkName = "-actionSheet:clickedButtonAtIndex:"
+         landmarkName = "-didFinishGetUMSocialDataResponse:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint

@@ -126,7 +126,7 @@
 	<td class="specification-value">UIView</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">UMSocialBarView.h<br />UMSocialBarView.m</td>
+	<td class="specification-value">UMSocialBar.h<br />UMSocialBarView.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -140,25 +140,23 @@
 
 <h2>按钮类型</h2>
 
-<pre><code>typedef enum {
-    UMSButtonTypeAddComment = 1,              //添加评论
-    UMSButtonTypeShareToSNS,                  //分享到微博
-    UMSButtonTypeAddLike,                     //添加喜欢
-    UMSButtonTypeDisLike,                     //取消喜欢
-} UMSButtonType;
-</code></pre>
+<p>typedef enum {
+UMSButtonTypeAddComment = 1,              //添加评论
+UMSButtonTypeShareToSNS,                  //分享到微博
+UMSButtonTypeAddLike,                     //添加喜欢
+UMSButtonTypeDisLike,                     //取消喜欢
+} UMSButtonType;</p>
 
 <h2>按钮类型组合</h2>
 
-<pre><code>typedef enum {
-    UMSButtonTypeMaskAddComment = (1 &lt;&lt; UMSButtonTypeAddComment),   //添加评论
-    UMSButtonTypeMaskShareToSNS = (1 &lt;&lt; UMSButtonTypeShareToSNS),   //分享到微博
-    UMSButtonTypeMaskAddLike = (1 &lt;&lt; UMSButtonTypeAddLike),         //添加喜欢
-    UMSButtonTypeMaskDisLike = (1 &lt;&lt; UMSButtonTypeDisLike),         //取消喜欢
-    UMSButtonTypeMaskCommentAndShare = (UMSButtonTypeMaskAddComment | UMSButtonTypeMaskShareToSNS),                               //评论并分享
-    UMSButtonTypeMaskAll = (UMSButtonTypeAddLike | UMSButtonTypeAddComment | UMSButtonTypeShareToSNS),                                   //喜欢、评论、分享
-} UMSButtonTypeMask;
-</code></pre>
+<p>typedef enum {
+UMSButtonTypeMaskAddComment = (1 &lt;&lt; UMSButtonTypeAddComment),   //添加评论
+UMSButtonTypeMaskShareToSNS = (1 &lt;&lt; UMSButtonTypeShareToSNS),   //分享到微博
+UMSButtonTypeMaskAddLike = (1 &lt;&lt; UMSButtonTypeAddLike),         //添加喜欢
+UMSButtonTypeMaskDisLike = (1 &lt;&lt; UMSButtonTypeDisLike),         //取消喜欢
+UMSButtonTypeMaskCommentAndShare = (UMSButtonTypeMaskAddComment | UMSButtonTypeMaskShareToSNS),                               //评论并分享
+UMSButtonTypeMaskAll = (UMSButtonTypeAddLike | UMSButtonTypeAddComment | UMSButtonTypeShareToSNS),                                   //喜欢、评论、分享
+} UMSButtonTypeMask;</p>
 					</div>
 					
 					
@@ -171,7 +169,36 @@
 						
 						
 						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/updateButtonNumber:">&ndash;&nbsp;updateButtonNumber:</a></code>
+		<span class="tooltip"><p>更新操作栏上的数字</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/changeLikeButtonImage">&ndash;&nbsp;changeLikeButtonImage</a></code>
+		<span class="tooltip"><p>修改喜欢按钮的图片</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showError">&ndash;&nbsp;showError</a></code>
+		<span class="tooltip"><p>网络错误</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
 						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
 
 						<ul class="task-list">
 							<li>
@@ -187,27 +214,6 @@
 		<span class="tooltip"><p>操作栏主题颜色，有白色和黑色</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/updateButtonNumber:">&ndash;&nbsp;updateButtonNumber:</a></code>
-		<span class="tooltip"><p>更新操作栏上的数字</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/showError">&ndash;&nbsp;showError</a></code>
-		<span class="tooltip"><p>网络错误</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/changeLikeButtonImage">&ndash;&nbsp;changeLikeButtonImage</a></code>
-		<span class="tooltip"><p>修改喜欢按钮的图片</p></span>
-	</span>
-	
 	
 </li>
 						</ul>
@@ -252,7 +258,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialBarView.h</code><br />
+		<code class="declared-in-ref">UMSocialBar.h</code><br />
 	</div>				
 	
 	
@@ -288,7 +294,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialBarView.h</code><br />
+		<code class="declared-in-ref">UMSocialBar.h</code><br />
 	</div>				
 	
 	
@@ -334,7 +340,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialBarView.h</code><br />
+		<code class="declared-in-ref">UMSocialBar.h</code><br />
 	</div>				
 	
 	
@@ -370,7 +376,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialBarView.h</code><br />
+		<code class="declared-in-ref">UMSocialBar.h</code><br />
 	</div>				
 	
 	
@@ -421,7 +427,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialBarView.h</code><br />
+		<code class="declared-in-ref">UMSocialBar.h</code><br />
 	</div>				
 	
 	
@@ -440,7 +446,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-05-10)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-05-21)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

@@ -11,6 +11,7 @@
 #import "UMSocialSnsService.h"
 #import "UMSocialData.h"
 #import "WXApi.h"
+#import "UMSocialConfig.h"
 
 @implementation AppDelegate
 
@@ -23,6 +24,7 @@
     [self.window makeKeyAndVisible];
 
     [UMSocialData setAppKey:useAppkey];
+    
     UMSocialTabBarController *tabViewController = [[UMSocialTabBarController alloc] init];
     self.window.rootViewController = tabViewController;
     [UMSocialData openLog:YES];

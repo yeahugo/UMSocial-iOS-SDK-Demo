@@ -134,7 +134,7 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">UMSocialResponseEntity.h<br />UMSocialResponseEntity.m</td>
+	<td class="specification-value">UMSocialDataService.h<br />UMSocialResponseEntity.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -178,21 +178,21 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/responseCode">&nbsp;&nbsp;responseCode</a></code>
-		<span class="tooltip"><p><code>UMSResponseCode</code>状态码,定义在<a href="../Classes/UMSocialEnum.html"><code>UMSocialEnum</code></a></p></span>
+		<span class="tooltip"><p><code>UMSResponseCode</code>状态码,定义在<code>UMSocialEnum</code></p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/responseType">&nbsp;&nbsp;responseType</a></code>
-		<span class="tooltip"><p>数据返回<code>UMSResponse</code>类型,定义在<a href="../Classes/UMSocialEnum.html"><code>UMSocialEnum</code></a></p></span>
+		<span class="tooltip"><p>数据返回<code>UMSResponse</code>类型,定义在<code>UMSocialEnum</code></p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/viewControllerType">&nbsp;&nbsp;viewControllerType</a></code>
-		<span class="tooltip"><p>数据返回<code>UMViewControllerType</code>类型,定义在<a href="../Classes/UMSocialEnum.html"><code>UMSocialEnum</code></a>,如果是UI的回调函数，表示回调函数所在的页面</p></span>
+		<span class="tooltip"><p>数据返回<code>UMViewControllerType</code>类型,定义在<code>UMSocialEnum</code>,如果是UI的回调函数，表示回调函数所在的页面</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -260,7 +260,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialResponseEntity.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.h</code><br />
 	</div>				
 	
 	
@@ -296,7 +296,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialResponseEntity.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.h</code><br />
 	</div>				
 	
 	
@@ -332,7 +332,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialResponseEntity.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.h</code><br />
 	</div>				
 	
 	
@@ -345,12 +345,12 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p><code>UMSResponseCode</code>状态码,定义在<a href="../Classes/UMSocialEnum.html"><code>UMSocialEnum</code></a></p>
+		<p><code>UMSResponseCode</code>状态码,定义在<code>UMSocialEnum</code></p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic) UMSResponseCode responseCode</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) UMSResponseCode responseCode</code></div>
 
     
 	
@@ -363,21 +363,12 @@
 	
 	
 	
-	
-	<div class="method-subsection see-also-section">
-		<h4 class="method-subtitle">See Also</h4>
-		<ul>
-			
-			<li><code><p><code>UMSocialEnum.h</code></p></code></li>
-			
-		</ul>
-	</div>
 	
 	
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialResponseEntity.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.h</code><br />
 	</div>				
 	
 	
@@ -390,12 +381,12 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>数据返回<code>UMSResponse</code>类型,定义在<a href="../Classes/UMSocialEnum.html"><code>UMSocialEnum</code></a></p>
+		<p>数据返回<code>UMSResponse</code>类型,定义在<code>UMSocialEnum</code></p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic) UMSResponse responseType</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) UMSResponse responseType</code></div>
 
     
 	
@@ -408,21 +399,12 @@
 	
 	
 	
-	
-	<div class="method-subsection see-also-section">
-		<h4 class="method-subtitle">See Also</h4>
-		<ul>
-			
-			<li><code><p><code>UMSocialEnum.h</code></p></code></li>
-			
-		</ul>
-	</div>
 	
 	
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialResponseEntity.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.h</code><br />
 	</div>				
 	
 	
@@ -435,12 +417,12 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>数据返回<code>UMViewControllerType</code>类型,定义在<a href="../Classes/UMSocialEnum.html"><code>UMSocialEnum</code></a>,如果是UI的回调函数，表示回调函数所在的页面</p>
+		<p>数据返回<code>UMViewControllerType</code>类型,定义在<code>UMSocialEnum</code>,如果是UI的回调函数，表示回调函数所在的页面</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic) UMSViewControllerType viewControllerType</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) UMSViewControllerType viewControllerType</code></div>
 
     
 	
@@ -453,21 +435,12 @@
 	
 	
 	
-	
-	<div class="method-subsection see-also-section">
-		<h4 class="method-subtitle">See Also</h4>
-		<ul>
-			
-			<li><code><p><code>UMSocialEnum.h</code></p></code></li>
-			
-		</ul>
-	</div>
 	
 	
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialResponseEntity.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.h</code><br />
 	</div>				
 	
 	
@@ -518,7 +491,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialResponseEntity.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.h</code><br />
 	</div>				
 	
 	
@@ -537,7 +510,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-05-10)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-05-21)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

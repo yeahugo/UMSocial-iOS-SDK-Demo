@@ -250,9 +250,10 @@ UIViewController *rootViewController = [[[UIApplication sharedApplication] deleg
 <pre><code>  [UMSocialConfig setSnsPlatformNames:@[UMShareToSina,UMShareToTencent,UMShareToWechat]];
   //`UMShareToSina`,`UMShareToTencent`,`UMShareToRenren`,`UMShareToDouban`,`UMShareToQzone`,`UMShareToEmail`,`UMShareToSms`,`UMShareToWechat`,`UMShareToFacebook`,`UMShareToTwitter`
   分别对应新浪微博、腾讯微博、人人网、豆瓣、QQ空间、邮箱、短信、微信、Facebook、Twitter。
-</code></pre>
+</code></pre></li>
+<li><p>增加新平台或者功能按钮。</p>
 
-<p>  如果你想要在分享列表新增一个平台或者功能按钮，例如增加分享到网易微博功能的按钮，需要自定义网易微博的显示方式和点击等。</p>
+<p>  例如增加分享到网易微博功能的按钮，需要自定义网易微博的显示方式和点击等。</p>
 
 <pre><code>  [UMSocialConfig setSnsPlatformNames:@[UMShareToSina,UMShareToTencent,UMShareToWechat,@"netease"]]; //设置在分享列表出现的平台，"netease"和下面的对应
   ……
@@ -267,14 +268,13 @@ UIViewController *rootViewController = [[[UIApplication sharedApplication] deleg
 </code></pre></li>
 <li><p>设置新浪微博支持SSO方式授权。本SDK默认支持新浪微博SSO授权，SSO即需要新浪微博授权的时候会判断设备是否安装新浪微博客户端，如果有的话就跳到客户端再回来。如果你想支持新浪微博SSO，方法如下：</p>
 
-<pre><code>1. 添加URL scheme，在你的工程设置项,targets 一栏下,选中自己的 target,在 Info-&gt;URL Types 中添加 URL Schemes,此值是 sso 登录时回调时所用。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。如果你使用我们默认的新浪微博账号的话，将url scheme修改为“sinaweibosso.126663232”，否则是“sinaweibosso.你的新浪微博appkey”如下图。
-</code></pre></li>
+<p>   1 . 添加URL scheme，在你的工程设置项,targets 一栏下,选中自己的 target,在 Info->URL Types 中添加 URL Schemes,此值是 sso 登录时回调时所用。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。将url scheme修改为“sina.你的友盟appkey”如下图。</p></li>
 </ul>
 
 
-<p><img src="http://dev.umeng.com/images/ios/social_sso.png" title="social_sso" alt="socialbar" /></p>
+<p><img src="http://dev.umeng.com/images/ios/social_sinasso.png" title="social_sso" alt="socialbar" /></p>
 
-<pre><code>  2. 在你的`AppDelegate`文件里面`#import "UMSocialSnsService.h"`并实现下面的方法：
+<pre><code> 2 . 在你的`AppDelegate`文件里面`#import "UMSocialSnsService.h"`并实现下面的方法：
 </code></pre>
 
 <pre><code>  - (BOOL)application:(UIApplication *)application 
@@ -290,20 +290,21 @@ sourceApplication:(NSString *)sourceApplication
 <ul>
 <li><p><span name="wechat_config" id="wechat_config"> 设置分享到微信,步骤如下：</span></p>
 
-<pre><code>1. 在微信网站注册，得到微信开发者id，并在`AppDelegate`引入头文件`#import "WXApi.h"`，然后注册，例如`[WXApi registerApp:@"wxd9a39c7122aa6516"];`。
+<p>  1 . 在微信网站注册，得到微信开发者id，并在<code>AppDelegate</code>引入头文件<code>#import "WXApi.h"</code>，然后注册，例如<code>[WXApi registerApp:@"wxd9a39c7122aa6516"];</code>。</p>
 
-2. 添加URL scheme，在Xcode4中，选择你的工程设置项，选中“TARGETS”一栏，在“info”标签栏的“URL type“添加“URL scheme”为你所注册的应用程序id。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。参考新浪微博SSO设置URL scheme的截图。
+<p>  2 . 添加URL scheme，在Xcode4中，选择你的工程设置项，选中“TARGETS”一栏，在“info”标签栏的“URL type“添加“URL scheme”为你所注册的应用程序id。如果使用的是Xcode3或更低版本，则需要在plist文件中添加,如下图。</p>
 
-3. 设置图文分享，因为使用微信分享图文的话，文字会被截断，所以我们默认只分享文字，下面设置图文分享。
-</code></pre></li>
+<p>  <img src="http://dev.umeng.com/images/ios/social_sso.png" title="social_sso" alt="socialbar" /></p>
+
+<p>  3 . 设置图文分享，因为使用微信分享图文的话，文字会被截断，所以我们默认只分享文字，下面设置图文分享。</p></li>
 </ul>
 
 
-<pre><code>[UMSocialControllerService defaultControllerService].socialData.extConfig.wxMessageType = UMSocialWXMessageTypeApp;     
-//可以指定音乐类型或者视频类型          
+<pre><code>[UMSocialControllerService defaultControllerService].socialData.extConfig.wxMessageType = UMSocialWXMessageTypeApp;  
+[UMSocialControllerService defaultControllerService].socialData.extConfig.appUrl = @"http://www.umeng.com";      //分享到朋友圈必须指定应用的下载地址，我们默认用了友盟网站，你可以修改想要的url地址          
 </code></pre>
 
-<pre><code>   4. 在你的`AppDelegate`文件里面实现下面的方法：
+<pre><code> 4 . 如果想要在分享完成后，跳回你原来应用时，会显示分享成功或失败，可以在在你的`AppDelegate`文件里面实现下面的方法：
 </code></pre>
 
 <pre><code>   - (BOOL)application:(UIApplication *)application 
@@ -517,7 +518,7 @@ snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerS
 <ul>
 <li><p>用到评论的界面级功能，需要使用<code>libUMSocial_Sdk_Comment_x.x.x.a</code>,对应的头文件是<code>UMSocialControllerServiceComment.h</code>，得到一个评论列表：</p>
 
-<pre><code>UINavigationController *commentList = [[UMSocialControllerService defaultControllerService] getSocialCommentListController];
+<pre><code>UINavigationController *commentList = [[UMSocialControllerServiceComment defaultControllerService] getSocialCommentListController];
 [self presentModalViewController:commentList animated:YES];
 </code></pre>
 

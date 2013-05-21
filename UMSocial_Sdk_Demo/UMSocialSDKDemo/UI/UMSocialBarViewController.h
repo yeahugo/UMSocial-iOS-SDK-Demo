@@ -12,11 +12,9 @@
 @interface UMSocialBarViewController : UIViewController<UMSocialBarDelegate>
 {
     UMSocialBar *_socialBar;
-    UILabel     *_textLabel;
     UIWebView   *_webView;
-    NSInteger   _index;
 }
 
--(id)initWithSocialData:(UMSocialData *)socialData withIndex:(NSInteger)index;
+-(IBAction)comment:(id)sender;
 
 @end

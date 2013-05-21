@@ -53,8 +53,6 @@
 	
 	<option value="//api/name/dismiss">&nbsp;&nbsp;&nbsp;&nbsp;- dismiss</option>
 	
-	<option value="//api/name/initWithItems:withButtonHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithItems:withButtonHandler:</option>
-	
 	<option value="//api/name/showInView:">&nbsp;&nbsp;&nbsp;&nbsp;- showInView:</option>
 	
 	
@@ -70,6 +68,8 @@
 
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Extension Methods">Extension Methods</a></span></li>
 	
 </ul></li>
 
@@ -94,8 +94,6 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dismiss">dismiss</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithItems:withButtonHandler:">initWithItems:withButtonHandler:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showInView:">showInView:</a></span></li>
 	
@@ -129,7 +127,7 @@
 	<td class="specification-value">UIScrollViewDelegate</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">UMSocialIconActionSheet.h<br />UMSocialIconActionSheet.m</td>
+	<td class="specification-value">UMSocialControllerService.h<br />UMSocialIconActionSheet.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -144,13 +142,35 @@
 						
 						
 						
-						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/snsNames">&nbsp;&nbsp;snsNames</a></code>
-		<span class="tooltip"><p>平台数组</p></span>
+		<code><a href="#//api/name/showInView:">&ndash;&nbsp;showInView:</a></code>
+		<span class="tooltip"><p>将自己自下往上弹出来</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dismiss">&ndash;&nbsp;dismiss</a></code>
+		<span class="tooltip"><p>将自己移除</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Extension Methods" name="task_Extension Methods"></a>
+						<h3 class="subsubtitle task-title">Extension Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dismissCompletion">&nbsp;&nbsp;dismissCompletion</a></code>
+		<span class="tooltip"><p>处理取消后的事件</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -163,31 +183,10 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/dismissCompletion">&nbsp;&nbsp;dismissCompletion</a></code>
-		<span class="tooltip"><p>处理取消后的事件</p></span>
+		<code><a href="#//api/name/snsNames">&nbsp;&nbsp;snsNames</a></code>
+		<span class="tooltip"><p>平台数组</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithItems:withButtonHandler:">&ndash;&nbsp;initWithItems:withButtonHandler:</a></code>
-		<span class="tooltip"><p>初始化方法</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/showInView:">&ndash;&nbsp;showInView:</a></code>
-		<span class="tooltip"><p>讲自己自下往上弹出来</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/dismiss">&ndash;&nbsp;dismiss</a></code>
-		<span class="tooltip"><p>将自己移除</p></span>
-	</span>
-	
 	
 </li>
 						</ul>
@@ -232,7 +231,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialIconActionSheet.h</code><br />
+		<code class="declared-in-ref">UMSocialIconActionSheet.m</code><br />
 	</div>				
 	
 	
@@ -268,7 +267,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialIconActionSheet.h</code><br />
+		<code class="declared-in-ref">UMSocialIconActionSheet.m</code><br />
 	</div>				
 	
 	
@@ -304,7 +303,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialIconActionSheet.h</code><br />
+		<code class="declared-in-ref">UMSocialIconActionSheet.m</code><br />
 	</div>				
 	
 	
@@ -350,58 +349,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialIconActionSheet.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithItems:withButtonHandler:" title="initWithItems:withButtonHandler:"></a>
-	<h3 class="subsubtitle method-title">initWithItems:withButtonHandler:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>初始化方法</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (id)initWithItems:(NSArray *)<em>items</em> withButtonHandler:(void ( ^ ) ( NSString *platformType ))<em>handler</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>authorization</em></dt>
-			<dd><p>处理点击之后的block处理对象</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>snsNames</em></dt>
-			<dd><p>每小格对应的sns平台名，在<code></code>UMSocialEnum<code>.h</code>定义</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialIconActionSheet.h</code><br />
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
 	</div>				
 	
 	
@@ -414,7 +362,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>讲自己自下往上弹出来</p>
+		<p>将自己自下往上弹出来</p>
 	</div>		
 	
     
@@ -447,7 +395,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialIconActionSheet.h</code><br />
+		<code class="declared-in-ref">UMSocialControllerService.h</code><br />
 	</div>				
 	
 	
@@ -466,7 +414,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-05-10)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-05-21)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

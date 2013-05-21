@@ -7,47 +7,24 @@
 //
 
 #import "UMSocialTabBarController.h"
-#import "UMSocialMacroDefine.h"
-#import "UMSocialDataServiceViewController.h"
-#import "UMSocialShareViewController.h"
-#import "UMSocialAccountViewController.h"
+#import "UMSocialLoginViewController.h"
+#import "UMSocialSnsViewController.h"
 #import "UMSocialBarViewController.h"
-#import "UMSocialTableViewController.h"
-#import "UMSocialConfigViewController.h"
 
 @implementation UMSocialTabBarController
 
 - (void)viewDidLoad
 {
-    UMSocialShareViewController *shareViewController = [[UMSocialShareViewController alloc] initWithNibName:@"UMSocialShareViewController" bundle:nil];
-    shareViewController.title = @"分享";
-    shareViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_share"];
-    
-    UMSocialTableViewController *tableViewController = [[UMSocialTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    tableViewController.title = @"分享和评论";
-    tableViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_mutilBar"];
-    
-    UMSocialDataServiceViewController *dataServiceViewController = [[UMSocialDataServiceViewController alloc] initWithNibName:@"UMSocialDataServiceViewController" bundle:nil];
-    dataServiceViewController.title = @"数据级接口";
-    dataServiceViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_bar"];
-    
-    UINavigationController *tableNavigationContrller = [[UINavigationController alloc] initWithRootViewController:tableViewController];
-    SAFE_ARC_RELEASE(tableViewController);
-    UMSocialAccountViewController *accountViewController = [[UMSocialAccountViewController alloc] init];
-    accountViewController.title = @"个人账号";
-    accountViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_account"];
-        
-    UMSocialConfigViewController *configController = [[UMSocialConfigViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    configController.title = @"设置";
-    configController.tabBarItem.image = [UIImage imageNamed:@"UMS_settings"];
-    
-    
-    [self setViewControllers:[NSArray arrayWithObjects:shareViewController,tableNavigationContrller,dataServiceViewController,accountViewController,configController,nil]];
-    SAFE_ARC_AUTORELEASE(shareViewController);
-    SAFE_ARC_AUTORELEASE(dataServiceViewController);
-    SAFE_ARC_AUTORELEASE(accountViewController);
-    SAFE_ARC_AUTORELEASE(tableNavigationContrller);
-    SAFE_ARC_AUTORELEASE(configController);
+    UMSocialSnsViewController *snsViewController = [[UMSocialSnsViewController alloc] initWithNibName:@"UMSocialSnsViewController" bundle:nil];
+    UMSocialLoginViewController *loginViewController = [[UMSocialLoginViewController alloc] initWithNibName:@"UMSocialLoginViewController" bundle:nil];
+    loginViewController.title = @"授权";
+    loginViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_account"];
+
+    UMSocialBarViewController *barViewController = [[UMSocialBarViewController alloc] initWithNibName:@"UMSocialBarViewController" bundle:nil];
+    barViewController.title = @"操作栏";
+    barViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_bar"];
+
+    [self setViewControllers:[NSArray arrayWithObjects:snsViewController,loginViewController,barViewController,nil]];
     
     [super viewDidLoad];
 }
@@ -57,28 +34,6 @@
     for (UIViewController *viewController in self.viewControllers) {
         [viewController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
     }
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    BOOL supportInterface = NO;
-        
-    UMSocialConfigViewController *configViewController = [self.viewControllers objectAtIndex:self.viewControllers.count - 1];
-    
-    NSUInteger mask = 1 << interfaceOrientation & configViewController.supportOrientationMask;
-    
-    mask = mask >> interfaceOrientation;
-    
-    if (mask == 1) {
-        supportInterface = YES;
-    }
-    return supportInterface;
-}
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-    UMSocialConfigViewController *configViewController = [self.viewControllers objectAtIndex:self.viewControllers.count - 1];
-    return configViewController.supportOrientationMask;
 }
 
 @end
