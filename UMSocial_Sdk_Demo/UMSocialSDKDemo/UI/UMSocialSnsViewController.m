@@ -24,6 +24,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+            
         // Custom initialization
     }
     return self;
@@ -38,12 +39,12 @@
 
 -(IBAction)showShareList2:(id)sender
 {
-    NSString *shareText = [UMSocialData defaultData].shareText;
-    UIImage *image = [UMSocialData defaultData].shareImage;
-    [UMSocialSnsService presentSnsController:self appKey:useAppkey shareText:shareText shareImage:image shareToSnsNames:nil delegate:nil];
+//    NSString *shareText = [UMSocialData defaultData].shareText;
+//    UIImage *image = [UMSocialData defaultData].shareImage;
+//    [UMSocialSnsService presentSnsController:self appKey:useAppkey shareText:shareText shareImage:image shareToSnsNames:nil delegate:nil];
     
-//    UINavigationController *navigationController = [[UMSocialControllerService defaultControllerService] getSocialShareListController];
-//    [self presentModalViewController:navigationController animated:YES];
+    UINavigationController *navigationController = [[UMSocialControllerService defaultControllerService] getSocialShareListController];
+    [self presentModalViewController:navigationController animated:YES];
 }
 
 -(IBAction)showShareList3:(id)sender
