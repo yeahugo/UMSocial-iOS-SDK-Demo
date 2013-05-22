@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad
 {
+    
     CGSize size = [UIScreen mainScreen].bounds.size;
     size = UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ? size : CGSizeMake(size.height, size.width);
     
