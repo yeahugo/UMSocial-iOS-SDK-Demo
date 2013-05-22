@@ -2,7 +2,7 @@
 //  UMSocial.h
 //  SocialSDK
 //
-//  Created by YeJiahuan on 13-5-22.
+//  Created by Jiahuan Ye on 13-5-22.
 //  Copyright (c) 2013年 Umeng. All rights reserved.
 //
 
@@ -15,3 +15,5 @@
 #import "UMSocialSnsService.h"
 #import "UMSocialBar.h"
 #import "UMSocialConfig.h"
+
+#import "WXApi.h"

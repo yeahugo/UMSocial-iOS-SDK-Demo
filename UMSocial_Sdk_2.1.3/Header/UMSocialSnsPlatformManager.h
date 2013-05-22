@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UMSocialDataService.h"
 #import "UMSocialControllerService.h"
 
 /**

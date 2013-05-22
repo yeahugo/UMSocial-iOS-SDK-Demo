@@ -7,12 +7,13 @@
 //
 
 #import "UMSocialSnsViewController.h"
-#import "UMSocialSnsService.h"
-#import "UMSocialSnsPlatformManager.h"
+
 #import "AppDelegate.h"
 #import "UMSocialAFHTTPClient.h"
 #import "UMImageView.h"
 #import "UMUtils.h"
+
+#import "UMSocial.h"
 
 @interface UMSocialSnsViewController ()
 
@@ -32,6 +33,8 @@
 
 -(IBAction)showShareList1:(id)sender
 {
+    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeApp;
+    
     NSString *shareText = [UMSocialData defaultData].shareText;      //分享内嵌文字
     UIImage *image = [UMSocialData defaultData].shareImage;          //分享内嵌图片
     [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:shareText shareImage:image shareToSnsNames:nil delegate:nil];

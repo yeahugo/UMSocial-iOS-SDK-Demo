@@ -45,6 +45,8 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
+	<option value="//api/name/applicationDidBecomeActive">&nbsp;&nbsp;&nbsp;&nbsp;+ applicationDidBecomeActive</option>
+	
 	<option value="//api/name/handleOpenURL:wxApiDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;+ handleOpenURL:wxApiDelegate:</option>
 	
 	<option value="//api/name/presentSnsController:appKey:shareText:shareImage:shareToSnsNames:delegate:">&nbsp;&nbsp;&nbsp;&nbsp;+ presentSnsController:appKey:shareText:shareImage:shareToSnsNames:delegate:</option>
@@ -86,6 +88,8 @@
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/applicationDidBecomeActive">applicationDidBecomeActive</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/handleOpenURL:wxApiDelegate:">handleOpenURL:wxApiDelegate:</a></span></li>
 	
@@ -146,6 +150,13 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/sharedInstance">+&nbsp;sharedInstance</a></code>
 		<span class="tooltip"><p>得到单例对象的类方法</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/applicationDidBecomeActive">+&nbsp;applicationDidBecomeActive</a></code>
+		<span class="tooltip"><p>当应用从后台唤起时，应调用此方法，需要完成退出当前登录状态的功能</p></span>
 	</span>
 	
 	
@@ -243,6 +254,42 @@
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/applicationDidBecomeActive" title="applicationDidBecomeActive"></a>
+	<h3 class="subsubtitle method-title">applicationDidBecomeActive</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>当应用从后台唤起时，应调用此方法，需要完成退出当前登录状态的功能</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)applicationDidBecomeActive</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialSnsService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/handleOpenURL:wxApiDelegate:" title="handleOpenURL:wxApiDelegate:"></a>
 	<h3 class="subsubtitle method-title">handleOpenURL:wxApiDelegate:</h3>
 	
@@ -278,6 +325,24 @@
 	
 	
 	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>如果你要处理自己的url，你可以把这个方法的实现，复制到你的代码中：</p>
+
+<p>if ([url.description hasPrefix:@&ldquo;sina&rdquo;]) {</p>
+
+<pre><code>return (BOOL)[[UMSocialSnsService sharedInstance] performSelector:@selector(handleSinaSsoOpenURL:) withObject:url];
+</code></pre>
+
+<p>}
+else if([url.description hasPrefix:@&ldquo;wx&rdquo;]){</p>
+
+<pre><code>return [WXApi handleOpenURL:url delegate:(id &lt;WXApiDelegate&gt;)[UMSocialSnsService sharedInstance]];
+</code></pre>
+
+<p>}</p>
+	</div>
 	
 	
 	

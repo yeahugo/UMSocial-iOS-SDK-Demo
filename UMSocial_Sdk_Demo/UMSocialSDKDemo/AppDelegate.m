@@ -22,9 +22,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-
-    
-    
+  
     UMSocialTabBarController *tabViewController = [[UMSocialTabBarController alloc] init];
     self.window.rootViewController = tabViewController;
     [UMSocialData openLog:YES];
@@ -35,12 +33,32 @@
     return YES;
 }
 
+/**
+    这里处理新浪微博SSO授权之后跳转回来，和微信分享完成之后跳转回来
+ */
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
+    /*
+     //如果你要处理自己的url，你可以把这个方法的实现，复制到你的代码中：
+     
+     if ([url.description hasPrefix:@"sina"]) {
+     return (BOOL)[[UMSocialSnsService sharedInstance] performSelector:@selector(handleSinaSsoOpenURL:) withObject:url];
+     }
+     else if([url.description hasPrefix:@"wx"]){
+     return [WXApi handleOpenURL:url delegate:(id <WXApiDelegate>)[UMSocialSnsService sharedInstance]];
+     }
+     */
+    
     return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
 }
 
-
+/**
+    这里处理新浪微博SSO授权进入新浪微博客户端后进入后台，再返回原来应用
+ */
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [UMSocialSnsService  applicationDidBecomeActive];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

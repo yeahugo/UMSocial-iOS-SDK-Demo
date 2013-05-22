@@ -7,8 +7,7 @@
 //
 
 #import "UMSocialLoginViewController.h"
-#import "UMSocialSnsPlatformManager.h"
-#import "UMSocialAccountManager.h"
+#import "UMSocial.h"
 
 @interface UMSocialLoginViewController ()
 
@@ -61,7 +60,6 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
                                        reuseIdentifier:UMSnsAccountCellIdentifier] ;
-        
     }
     
     oauthSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(0, 10, 40, 20)];
@@ -71,8 +69,11 @@
     [oauthSwitch addTarget:self action:@selector(onSwitchOauth:) forControlEvents:UIControlEventValueChanged];
     
     NSString *showUserName = nil;
-    if (accountEnitity.userName != nil) {
+    
+    //这里判断是否授权
+    if ([UMSocialAccountManager isOauthWithPlatform:snsPlatform.platformName]) {
         [oauthSwitch setOn:YES];
+        //这里获取到每个授权账户的昵称
         showUserName = accountEnitity.userName;
     }
     else {
@@ -80,18 +81,12 @@
         showUserName = [NSString stringWithFormat:@"尚未授权"];
     }
     
-    if (![showUserName isKindOfClass:[NSNull class]]) {
-        if ([showUserName isEqualToString:@""]) {
-            cell.textLabel.text = @"已授权";
-        }
-        else{
-            cell.textLabel.text = showUserName;
-        }
-    }
-    else{
+    if ([showUserName isEqualToString:@""]) {
         cell.textLabel.text = @"已授权";
     }
-    cell.backgroundColor = [UIColor clearColor];
+    else{
+        cell.textLabel.text = showUserName;
+    }
     
     cell.imageView.image = [UIImage imageNamed:snsPlatform.smallImageName];
     return cell;
@@ -107,11 +102,17 @@
     _changeSwitcher = switcher;
     if (switcher.isOn == YES) {
         [switcher setOn:NO];
+        
+        //此处调用授权的方法,你可以把下面的platformName 替换成 UMShareToSina,UMShareToTencent等
         NSString *platformName = [UMSocialSnsPlatformManager getSnsPlatformString:switcher.tag - 10];
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
         snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
             [_snsTableView reloadData];
         });
+        
+//        UINavigationController *oauthController = [[UMSocialControllerService defaultControllerService] getSocialOauthController:UMShareToSina];
+//        [self presentModalViewController:oauthController animated:YES];
+
     }
     else {
         UIActionSheet *unOauthActionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"解除授权", nil];

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UMSocialBar.h"
+#import "UMSocial.h"
 
 @interface UMSocialBarViewController : UIViewController<UMSocialBarDelegate>
 {

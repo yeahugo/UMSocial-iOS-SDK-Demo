@@ -274,15 +274,19 @@ UIViewController *rootViewController = [[[UIApplication sharedApplication] deleg
 
 <p><img src="http://dev.umeng.com/images/ios/social_sinasso.png" title="social_sso" alt="socialbar" /></p>
 
-<pre><code> 2 . 在你的`AppDelegate`文件里面`#import "UMSocialSnsService.h"`并实现下面的方法：
+<pre><code>   2 . 在你的`AppDelegate`文件里面`#import "UMSocialSnsService.h"`并实现下面两个系统的回调方法：
 </code></pre>
 
-<pre><code>  - (BOOL)application:(UIApplication *)application 
-openURL:(NSURL *)url 
-sourceApplication:(NSString *)sourceApplication
- annotation:(id)annotation
+<pre><code>  - (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [UMSocialSnsService  applicationDidBecomeActive];
+}
+
+  - (BOOL)application:(UIApplication *)application 
+              openURL:(NSURL *)url 
+    sourceApplication:(NSString *)sourceApplication
+           annotation:(id)annotation
  {
- // 如果你除了使用我们sdk之外还要处理另外的url，你可以把`handleOpenURL:wxApiDelegate:`的实现复制到你的代码里面，再添加你要处理的url。
  return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
  }  
 </code></pre>

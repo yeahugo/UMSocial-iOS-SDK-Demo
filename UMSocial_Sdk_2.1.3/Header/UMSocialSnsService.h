@@ -2,7 +2,7 @@
 //  UMSocialSnsService.h
 //  SocialSDK
 //
-//  Created by yeahugo on 13-1-8.
+//  Created by Jiahuan Ye on 13-1-8.
 //  Copyright (c) 2013年 Umeng. All rights reserved.
 //
 
@@ -17,9 +17,23 @@
  */
 @interface UMSocialSnsService : NSObject
 
+/**
+ 当应用从后台唤起时，应调用此方法，需要完成退出当前登录状态的功能
+ 
+ */
++(void)applicationDidBecomeActive;
 
 /**
  处理app的URL方法
+ 
+ 如果你要处理自己的url，你可以把这个方法的实现，复制到你的代码中：
+ 
+ if ([url.description hasPrefix:@"sina"]) {
+    return (BOOL)[[UMSocialSnsService sharedInstance] performSelector:@selector(handleSinaSsoOpenURL:) withObject:url];
+ }
+ else if([url.description hasPrefix:@"wx"]){
+    return [WXApi handleOpenURL:url delegate:(id <WXApiDelegate>)[UMSocialSnsService sharedInstance]];
+ }
  
  @param url 传入的url
  

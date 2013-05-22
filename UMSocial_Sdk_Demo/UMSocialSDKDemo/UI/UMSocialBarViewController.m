@@ -7,9 +7,6 @@
 //
 
 #import "UMSocialBarViewController.h"
-#import "WXApi.h"
-#import "UMStringMock.h"
-#import "UMSocialSnsPlatformManager.h"
 #import "AppDelegate.h"
 
 @interface UMSocialBarViewController ()
