@@ -9,10 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "UMSocialDataService.h"
 
-typedef void (^UMIconActionSheetButtonClickHandler)(NSString * platformType);
-
-typedef void (^DismissCompletion)(void);
-
 /*
  自定义的类似iOS6.0中`UIActivityViewController`样式的列表，每个sns平台由对应图片和名称组成。注意：如果你要此控件支持多方向，需要在自己的UIViewController中屏幕旋转的`didRotateFromInterfaceOrientation`调用`UMSocialIconActionSheet`的`setNeedsDisplay`方法，来重新布局。
  */
@@ -66,14 +62,11 @@ typedef void (^DismissCompletion)(void);
 
 @end
 
+
 /**
  用此类的方法可以得到分享的有关UI对象，例如分享列表、评论列表、分享编辑页、分享授权页、个人中心页面等。返回都是`UINavigationController`对象，建议把这个对象present到你要添加到的`UIViewController`上
  */
-
-@class UMSocialIconActionSheet;
 @interface UMSocialControllerService : NSObject
-
-@property (nonatomic, assign) UIColor *defaultColor;
 
 /**
  与`UMSocialControllerService`对象对应的`UMSocialData`对象，可以通过该对象设置分享内嵌文字、图片，获取分享数等属性
@@ -203,5 +196,3 @@ typedef void (^DismissCompletion)(void);
 - (UIViewController *)getSocialViewController:(UMSViewControllerType)viewControllerType withSnsType:(NSString *)snsName;
 
 @end
-
-

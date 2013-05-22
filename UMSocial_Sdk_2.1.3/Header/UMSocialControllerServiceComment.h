@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "UMSocialControllerService.h"
 
+/**
+ 用此类的方法可以得到分享的有关UI对象，例如分享列表、评论列表、分享编辑页、分享授权页、个人中心页面等。返回都是`UINavigationController`对象，建议把这个对象present到你要添加到的`UIViewController`上
+ */
 @interface UMSocialControllerServiceComment : UMSocialControllerService
 
 /**

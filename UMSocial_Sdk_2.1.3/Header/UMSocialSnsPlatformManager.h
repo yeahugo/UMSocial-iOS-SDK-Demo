@@ -8,22 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "UMSocialDataService.h"
-#import "UMSocialSnsService.h"
+#import "UMSocialControllerService.h"
 
 /**
- 分享平台
- 
+ 微信好友
  */
-typedef enum {
-    UMSocialSnsTypeNone = 0,
-    UMSocialSnsTypeQzone = 10,
-    UMSocialSnsTypeSina,                 //sina weibo
-    UMSocialSnsTypeTenc,                 //tencent weibo
-    UMSocialSnsTypeRenr,                 //renren
-    UMSocialSnsTypeDouban,               //douban
-    UMSocialSnsTypeEmail,
-    UMSocialSnsTypeSms
-} UMSocialSnsType;
+#define UMShareToWechatSession @"wxsession"
+
+/**
+ 微信朋友圈
+ */
+#define UMShareToWechatTimeline @"wxtimeline"
 
 /**
  新浪微博
@@ -74,6 +69,22 @@ extern NSString *const UMShareToFacebook;
  Twitter
  */
 extern NSString *const UMShareToTwitter;
+
+
+/**
+ 分享平台
+ 
+ */
+typedef enum {
+    UMSocialSnsTypeNone = 0,
+    UMSocialSnsTypeQzone = 10,
+    UMSocialSnsTypeSina,                 //sina weibo
+    UMSocialSnsTypeTenc,                 //tencent weibo
+    UMSocialSnsTypeRenr,                 //renren
+    UMSocialSnsTypeDouban,               //douban
+    UMSocialSnsTypeEmail,
+    UMSocialSnsTypeSms
+} UMSocialSnsType;
 
 
 @class UMSocialControllerService;

@@ -8,28 +8,15 @@
 
 
 #import <Foundation/Foundation.h>
-#import "UMSocialControllerService.h"
-#import "WXApi.h"
-#import "UMSocialSinaWeibo.h"
 
-#define kAppRedirectURI     @"http://sns.whalecloud.com/sina2/callback"
-
-
-#define UMShareToWechatSession @"wxsession"
-#define UMShareToWechatTimeline @"wxtimeline"
-
-typedef void (^UMSocailAuthorization)(void);
+@protocol WXApiDelegate ;
+@protocol UMSocialUIDelegate;
 
 /*
  实现快速分享，类方法传入相应的参数，既可以弹出分享列表。现在提供两种列表样式。
  */
 @interface UMSocialSnsService : NSObject
-<
-    UIActionSheetDelegate,
-    UMSocialUIDelegate,
-    UMSocialSinaWeiboDelegate,
-    WXApiDelegate
->
+
 
 /**
  处理app的URL方法
@@ -39,19 +26,6 @@ typedef void (^UMSocailAuthorization)(void);
  @return wxApiDelegate 实现微信代理对象
  */
 +(BOOL)handleOpenURL:(NSURL *)url wxApiDelegate:(id<WXApiDelegate>)wxApiDelegate;
-
-/**
- 处理授权完成Block对象
- 
- */
-@property (nonatomic, copy) UMSocialDataServiceCompletion completion;
-
-/**
- 得到单例对象的类方法
-  
- @return `UMSocialSnsService`的单例对象
- */
-+ (UMSocialSnsService *)sharedInstance;
 
 ///---------------------------------------
 /// @name 快速分享
@@ -80,6 +54,14 @@ typedef void (^UMSocailAuthorization)(void);
  @param delegate 实现分享完成后的回调对象，如果不关注分享完成的状态，可以设为nil
  */
 +(void)presentSnsIconSheetView:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage shareToSnsNames:(NSArray *)snsNames delegate:(id <UMSocialUIDelegate>)delegate;
+
+
+/**
+ 得到单例对象的类方法
+ 
+ @return `UMSocialSnsService`的单例对象
+ */
++ (UMSocialSnsService *)sharedInstance;
 
 
 @end
