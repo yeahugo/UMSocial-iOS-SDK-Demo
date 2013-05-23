@@ -14,6 +14,7 @@
 #import "UMUtils.h"
 
 #import "UMSocial.h"
+#import "WXApiObject.h"
 
 @interface UMSocialSnsViewController ()
 
@@ -33,7 +34,9 @@
 
 -(IBAction)showShareList1:(id)sender
 {
+    //这里设置微信图文分享,需要另外设置应用下载地址，否则点击朋友圈进入友盟主页
     [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeApp;
+    [UMSocialData defaultData].extConfig.appUrl = @"http://www.umeng.com";
     
     NSString *shareText = [UMSocialData defaultData].shareText;      //分享内嵌文字
     UIImage *image = [UMSocialData defaultData].shareImage;          //分享内嵌图片

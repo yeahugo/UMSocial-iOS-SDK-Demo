@@ -13,14 +13,14 @@
  
  */
 typedef enum {
-    UMSResponseCodeSuccess            = 200,
-    UMSResponseCodeBaned              = 505,
-    UMSResponseCodeShareRepeated      = 5016,
-    UMSResponseCodeGetNoUidFromOauth  = 5020,
-    UMSResponseCodeAccessTokenExpired = 5027,
-    UMSResponseCodeNetworkError       = 5050,
-    UMSResponseCodeGetProfileFailed   = 5051,
-    UMSResponseCodeCancel
+    UMSResponseCodeSuccess            = 200,        //成功
+    UMSResponseCodeBaned              = 505,        //用户被封禁
+    UMSResponseCodeShareRepeated      = 5016,       //分享内容重复
+    UMSResponseCodeGetNoUidFromOauth  = 5020,       //授权之后没有得到用户uid
+    UMSResponseCodeAccessTokenExpired = 5027,       //token过期
+    UMSResponseCodeNetworkError       = 5050,       //网络错误
+    UMSResponseCodeGetProfileFailed   = 5051,       //获取账户失败
+    UMSResponseCodeCancel             = 5052        //用户取消授权
 } UMSResponseCode;
 
 /**
@@ -28,23 +28,23 @@ typedef enum {
  
  */
 typedef enum {
-	UMSResponseAddComment = 0,
-    UMSResponseAddLike,
-    UMSResponseGetCommentList,
-    UMSResponseGetSocialData,
-    UMSResponseShareToSNS,
-    UMSResponseShareToMutilSNS,
-    UMSResponseBinding,
-    UMSResponseUnBinding,
-    UMSResponseUnOauth,
-    UMSResponseOauth,
-    UMSResponseGetAccount,
-    UMSResponseGetSnsInfo,
-    UMSResponseGetFriends,
-    UMSResponseAddFollow,
-    UMSResponseAddCustomAccount,
-    UMSResponseAddSnsAccount,
-    UMSResponseGetAppInfo
+	UMSResponseAddComment             = 0,          //添加评论
+    UMSResponseAddLike                = 1,          //添加喜欢
+    UMSResponseGetCommentList         = 2,          //获取评论列表
+    UMSResponseGetSocialData          = 3,          //获取social enitity信息
+    UMSResponseShareToSNS             = 4,          //分享到一个微博平台
+    UMSResponseShareToMutilSNS        = 5,          //分享到多个微博平台
+    UMSResponseBinding                = 6,          //绑定一个账户作为登录账户
+    UMSResponseUnBinding              = 7,          //解除绑定账户
+    UMSResponseUnOauth                = 8,          //解除授权
+    UMSResponseOauth                  = 9,          //授权
+    UMSResponseGetAccount             = 10,         //获取账户信息
+    UMSResponseGetSnsInfo             = 11,         //获取sns详细信息
+    UMSResponseGetFriends             = 12,         //获取朋友列表
+    UMSResponseAddFollow              = 13,         //添加关注
+    UMSResponseAddCustomAccount       = 14,         //添加自定义账户
+    UMSResponseAddSnsAccount          = 15,         //添加已经授权的账户
+    UMSResponseGetAppInfo             = 16          //获取各个sns绑定app 信息
 } UMSResponse;
 
 /**
