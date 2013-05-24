@@ -55,7 +55,12 @@
  @param snsNames 你要分享到的sns平台类型，该NSArray值是`UMSocialEnum.h`定义的平台名的字符串常量，有UMShareToSina，UMShareToTencent，UMShareToRenren，UMShareToDouban，UMShareToQzone，UMShareToEmail，UMShareToSms等
  @param delegate 实现分享完成后的回调对象，如果不关注分享完成的状态，可以设为nil
  */
-+(void)presentSnsController:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage shareToSnsNames:(NSArray *)snsNames delegate:(id <UMSocialUIDelegate>)delegate;
++(void)presentSnsController:(UIViewController *)controller
+                     appKey:(NSString *)appKey
+                  shareText:(NSString *)shareText
+                 shareImage:(UIImage *)shareImage
+            shareToSnsNames:(NSArray *)snsNames
+                   delegate:(id <UMSocialUIDelegate>)delegate;
 
 /**
  弹出一个分享列表的类似iOS6的UIActivityViewController控件
@@ -67,7 +72,12 @@
  @param snsNames 你要分享到的sns平台类型，该NSArray值是`UMSocialEnum.h`定义的平台名的字符串常量，有UMShareToSina，UMShareToTencent，UMShareToRenren，UMShareToDouban，UMShareToQzone，UMShareToEmail，UMShareToSms等
  @param delegate 实现分享完成后的回调对象，如果不关注分享完成的状态，可以设为nil
  */
-+(void)presentSnsIconSheetView:(UIViewController *)controller appKey:(NSString *)appKey shareText:(NSString *)shareText shareImage:(UIImage *)shareImage shareToSnsNames:(NSArray *)snsNames delegate:(id <UMSocialUIDelegate>)delegate;
++(void)presentSnsIconSheetView:(UIViewController *)controller
+                        appKey:(NSString *)appKey
+                     shareText:(NSString *)shareText
+                    shareImage:(UIImage *)shareImage
+               shareToSnsNames:(NSArray *)snsNames
+                      delegate:(id <UMSocialUIDelegate>)delegate;
 
 
 /**

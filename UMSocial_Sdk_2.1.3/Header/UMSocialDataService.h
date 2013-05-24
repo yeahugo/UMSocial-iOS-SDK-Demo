@@ -213,7 +213,11 @@ typedef void (^UMSocialDataServiceCompletion)(UMSocialResponseEntity * response)
  @param completion 发送数据之后执行的block对象
  
  */
-- (void)postSNSWithType:(NSString *)platformType content:(NSString *)content image:(UIImage *)image location:(CLLocation *)location completion:(UMSocialDataServiceCompletion)completion;
+- (void)postSNSWithType:(NSString *)platformType
+                content:(NSString *)content
+                  image:(UIImage *)image
+               location:(CLLocation *)location
+             completion:(UMSocialDataServiceCompletion)completion;
 
 
 /**
@@ -227,7 +231,12 @@ typedef void (^UMSocialDataServiceCompletion)(UMSocialResponseEntity * response)
  @param completion 发送完成执行的block对象
  
  */
-- (void)postSNSWithTypes:(NSArray *)platformTypes content:(NSString *)content image:(UIImage *)image location:(CLLocation *)location urlResource:(UMSocialUrlResource *)urlResource  completion:(UMSocialDataServiceCompletion)completion;
+- (void)postSNSWithTypes:(NSArray *)platformTypes
+                 content:(NSString *)content
+                   image:(UIImage *)image
+                location:(CLLocation *)location
+             urlResource:(UMSocialUrlResource *)urlResource
+              completion:(UMSocialDataServiceCompletion)completion;
 
 
 /**
@@ -258,7 +267,12 @@ typedef void (^UMSocialDataServiceCompletion)(UMSocialResponseEntity * response)
  @param completion 获取到数据之后执行的block对象
  
  */
--(void)postCommentWithContent:(NSString *)content image:(UIImage *)image templateText:(NSString *)templateText location:(CLLocation *)location shareToSNSWithUsid:(NSDictionary *)shareToSNS completion:(UMSocialDataServiceCompletion)completion;
+-(void)postCommentWithContent:(NSString *)content
+                        image:(UIImage *)image
+                 templateText:(NSString *)templateText
+                     location:(CLLocation *)location
+           shareToSNSWithUsid:(NSDictionary *)shareToSNS
+                   completion:(UMSocialDataServiceCompletion)completion;
 
 /**
  获取评论

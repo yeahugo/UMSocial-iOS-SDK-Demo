@@ -111,7 +111,7 @@
 
 - (void)viewDidLoad
 {
-    [UMSocialData defaultData].shareText = @"友盟社会化分享 http://www.umeng.com/";
+//    [UMSocialData defaultData].shareText = @"友盟社会化分享 http://www.umeng.com/";
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _activityIndicatorView.center = CGPointMake(160, 170);
     [self.view addSubview:_activityIndicatorView];
