@@ -114,15 +114,29 @@
 
 - (void)viewDidLoad
 {
+    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    _activityIndicatorView.center = CGPointMake(160, 200);
+    [self.view addSubview:_activityIndicatorView];
+    [_activityIndicatorView startAnimating];
+    
     _shareButton1.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton1.center.y);
     _shareButton2.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton2.center.y);
     _shareButton3.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton3.center.y);
     
-    [UMSocialData defaultData].shareText = @"友盟社会化分享 http://www.umeng.com/";
-    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    _activityIndicatorView.center = CGPointMake(160, 170);
-    [self.view addSubview:_activityIndicatorView];
-    [_activityIndicatorView startAnimating];
+    NSDictionary *postsDic = [[NSUserDefaults standardUserDefaults] valueForKey:@"umengPost"];
+    if (postsDic != nil) {
+        self.postsDic = postsDic;
+        NSString *title = [self.postsDic  valueForKey:@"title"];
+        NSString *url = [self.postsDic  valueForKey:@"url"];
+        NSString *shareText = [NSString stringWithFormat:@"%@  %@",title,url];
+        
+        //设置分享内嵌文字
+        [UMSocialData defaultData].shareText = shareText;
+    }
+    else{
+        [UMSocialData defaultData].shareText = @"友盟社会化分享 http://www.umeng.com/";
+    }
+
     UMSocialAFHTTPClient *httpClient = [UMSocialAFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"http://blog.umeng.com/"]];
     [httpClient getPath:@"/api/get_recent_posts/" parameters:nil success:^(UMSocialAFHTTPRequestOperation *operation, id responseObject){
         NSString *jsonString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -133,7 +147,7 @@
         NSDictionary *postsDic = [[NSDictionary alloc] initWithDictionary:[[jsonDic valueForKey:@"posts"] objectAtIndex:0]];
         self.postsDic = postsDic;
 
-        [[NSUserDefaults standardUserDefaults] setValue:self.postsDic forKey:@"posts"];
+        [[NSUserDefaults standardUserDefaults] setValue:self.postsDic forKey:@"umengPost"];
         
         NSString *title = [self.postsDic  valueForKey:@"title"];
         NSString *url = [self.postsDic  valueForKey:@"url"];
@@ -162,6 +176,13 @@
     self.tabBarItem.image = [UIImage imageNamed:@"UMS_share"];
     // Do any additional setup after loading the view from its nib.
      
+}
+
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    _shareButton1.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5);
+    _shareButton2.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *2);
+    _shareButton3.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *3);
 }
 
 - (void)didReceiveMemoryWarning

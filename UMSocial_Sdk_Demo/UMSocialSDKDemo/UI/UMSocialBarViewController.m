@@ -30,7 +30,7 @@
     
     UMSocialSnsViewController *snsViewController = [self.tabBarController.viewControllers objectAtIndex:0];
     if (snsViewController.postsDic != nil) {
-        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height - 250)];
+        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height - 44 * 2 - _socialBar.frame.size.height)];
         [self.view addSubview:_webView];
         [_webView loadHTMLString:[snsViewController.postsDic  valueForKey:@"content"] baseURL:nil];
     }
@@ -65,7 +65,7 @@
     float barHeight = 44;
     _socialBar.center = CGPointMake(size.height/2, size.width  - barHeight - _socialBar.frame.size.height );
     
-    _webView.frame = CGRectMake(0, 0, size.height, size.width - 44 - barHeight - _socialBar.frame.size.height);
+    _webView.frame = CGRectMake(0, 0, size.height, size.width -  barHeight * 2 - _socialBar.frame.size.height);
 }
 
 #pragma mark - UMSocialBarDelegate
