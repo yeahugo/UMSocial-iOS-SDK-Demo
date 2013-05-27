@@ -12,6 +12,10 @@
 {
     UIActivityIndicatorView * _activityIndicatorView;
     NSDictionary *_postsDic;
+    
+    IBOutlet UIButton *_shareButton1;
+    IBOutlet UIButton *_shareButton2;
+    IBOutlet UIButton *_shareButton3;
 }
 
 @property (nonatomic, strong) NSDictionary *postsDic;

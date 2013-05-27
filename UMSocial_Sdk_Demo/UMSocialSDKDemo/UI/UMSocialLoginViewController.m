@@ -33,11 +33,16 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [_snsTableView reloadData];
+    _snsTableView.frame = CGRectMake(_snsTableView.frame.origin.x, _snsTableView.frame.origin.y, _snsTableView.frame.size.width, 220);
     [super viewWillAppear:animated];
 }
 
 #pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -55,17 +60,24 @@
     
     UMSocialAccountEntity *accountEnitity = [snsAccountDic valueForKey:snsPlatform.platformName];
     
-    UISwitch *oauthSwitch = nil;
-    
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
                                        reuseIdentifier:UMSnsAccountCellIdentifier] ;
     }
     
-    oauthSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(0, 10, 40, 20)];
-    oauthSwitch.center = CGPointMake(tableView.bounds.size.width - oauthSwitch.frame.size.width/2 - 15, oauthSwitch.center.y);
-    oauthSwitch.tag = 10 + snsPlatform.shareToType;
-    [cell addSubview:oauthSwitch];
+    UISwitch *oauthSwitch = nil;
+    NSLog(@"shareToType is %d",snsPlatform.shareToType);
+    if ([cell viewWithTag:snsPlatform.shareToType]) {
+        oauthSwitch = (UISwitch *)[cell viewWithTag:snsPlatform.shareToType];
+    }
+    else{
+        oauthSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(0, 10, 40, 20)];
+        
+        oauthSwitch.tag = snsPlatform.shareToType;
+        [cell addSubview:oauthSwitch];
+    }
+    oauthSwitch.center = CGPointMake(_snsTableView.bounds.size.width - 40, oauthSwitch.center.y);
+    
     [oauthSwitch addTarget:self action:@selector(onSwitchOauth:) forControlEvents:UIControlEventValueChanged];
     
     NSString *showUserName = nil;
@@ -104,20 +116,16 @@
         [switcher setOn:NO];
         
         //此处调用授权的方法,你可以把下面的platformName 替换成 UMShareToSina,UMShareToTencent等
-        NSString *platformName = [UMSocialSnsPlatformManager getSnsPlatformString:switcher.tag - 10];
+        NSString *platformName = [UMSocialSnsPlatformManager getSnsPlatformString:switcher.tag];
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
         snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
             [_snsTableView reloadData];
         });
-        
-//        UINavigationController *oauthController = [[UMSocialControllerService defaultControllerService] getSocialOauthController:UMShareToSina];
-//        [self presentModalViewController:oauthController animated:YES];
-
     }
     else {
         UIActionSheet *unOauthActionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"解除授权", nil];
         unOauthActionSheet.destructiveButtonIndex = 0;
-        unOauthActionSheet.tag = switcher.tag - 10;
+        unOauthActionSheet.tag = switcher.tag;
         [unOauthActionSheet showInView:self.tabBarController.tabBar];
     }
 }
@@ -139,6 +147,11 @@
     }
 }
 
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    _snsTableView.frame = CGRectMake(_snsTableView.frame.origin.x, _snsTableView.frame.origin.y, _snsTableView.frame.size.width, 220);
+    [_snsTableView reloadData];
+}
 
 
 - (void)didReceiveMemoryWarning

@@ -15,6 +15,4 @@
     UIWebView   *_webView;
 }
 
--(IBAction)comment:(id)sender;
-
 @end

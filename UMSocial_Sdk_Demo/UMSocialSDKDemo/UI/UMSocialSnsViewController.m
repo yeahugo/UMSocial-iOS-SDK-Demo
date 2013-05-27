@@ -22,6 +22,8 @@
 
 @implementation UMSocialSnsViewController
 
+@synthesize postsDic = _postsDic;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -112,7 +114,11 @@
 
 - (void)viewDidLoad
 {
-//    [UMSocialData defaultData].shareText = @"友盟社会化分享 http://www.umeng.com/";
+    _shareButton1.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton1.center.y);
+    _shareButton2.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton2.center.y);
+    _shareButton3.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton3.center.y);
+    
+    [UMSocialData defaultData].shareText = @"友盟社会化分享 http://www.umeng.com/";
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _activityIndicatorView.center = CGPointMake(160, 170);
     [self.view addSubview:_activityIndicatorView];
