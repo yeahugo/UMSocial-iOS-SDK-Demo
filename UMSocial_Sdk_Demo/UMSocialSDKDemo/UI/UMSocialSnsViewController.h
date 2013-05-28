@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UMSocialSnsViewController : UIViewController<UIActionSheetDelegate>
+@interface UMSocialSnsViewController : UIViewController
+<
+    UIActionSheetDelegate
+>
 {
     UIActivityIndicatorView * _activityIndicatorView;
     NSDictionary *_postsDic;

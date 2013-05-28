@@ -66,7 +66,6 @@
     }
     
     UISwitch *oauthSwitch = nil;
-    NSLog(@"shareToType is %d",snsPlatform.shareToType);
     if ([cell viewWithTag:snsPlatform.shareToType]) {
         oauthSwitch = (UISwitch *)[cell viewWithTag:snsPlatform.shareToType];
     }
@@ -112,6 +111,7 @@
 -(void)onSwitchOauth:(UISwitch *)switcher
 {
     _changeSwitcher = switcher;
+    
     if (switcher.isOn == YES) {
         [switcher setOn:NO];
         
@@ -119,8 +119,25 @@
         NSString *platformName = [UMSocialSnsPlatformManager getSnsPlatformString:switcher.tag];
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
         snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+            
+            //如果是授权到新浪微博，SSO之后如果想获取用户的昵称、头像等需要再次获取一次账户信息
+            if ([platformName isEqualToString:UMShareToSina]) {
+                [[UMSocialDataService defaultDataService] requestSocialAccountWithCompletion:^(UMSocialResponseEntity *accountResponse){
+                    NSLog(@"SinaWeibo's user name is %@",[[[accountResponse.data objectForKey:@"accounts"] objectForKey:UMShareToSina] objectForKey:@"username"]);
+                    [_snsTableView reloadData];
+                }];
+            }
+
+            //这里可以获取到腾讯微博openid
+            /*
+            [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToTencent completion:^(UMSocialResponseEntity *respose){
+                NSLog(@"get openid  response is %@",respose);
+            }];
+             */
+             
             [_snsTableView reloadData];
         });
+        
     }
     else {
         UIActionSheet *unOauthActionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"解除授权", nil];
@@ -129,7 +146,6 @@
         [unOauthActionSheet showInView:self.tabBarController.tabBar];
     }
 }
-
 
 #pragma UIActionSheet
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

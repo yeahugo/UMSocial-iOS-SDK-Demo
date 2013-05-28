@@ -18,5 +18,4 @@
     IBOutlet UITableView *_snsTableView;
     IBOutlet UISwitch *_changeSwitcher;
 }
-
 @end

@@ -42,7 +42,6 @@
     
     NSString *shareText = [UMSocialData defaultData].shareText;      //分享内嵌文字
     UIImage *image = [UMSocialData defaultData].shareImage;          //分享内嵌图片
-    
     [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:shareText shareImage:image shareToSnsNames:nil delegate:nil];
     
     /*
@@ -56,7 +55,7 @@
 }
 
 -(IBAction)showShareList2:(id)sender
-{
+{    
     NSString *shareText = [UMSocialData defaultData].shareText;
     UIImage *image = [UMSocialData defaultData].shareImage;
     [UMSocialSnsService presentSnsController:self appKey:useAppkey shareText:shareText shareImage:image shareToSnsNames:nil delegate:nil];
@@ -77,7 +76,7 @@
  
  */
 -(IBAction)showShareList3:(id)sender
-{
+{    
     UIActionSheet * editActionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     for (NSString *snsName in [UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray) {
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
