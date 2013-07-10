@@ -112,6 +112,7 @@
 {
     _changeSwitcher = switcher;
     
+    
     if (switcher.isOn == YES) {
         [switcher setOn:NO];
         
@@ -120,22 +121,15 @@
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
         snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
             
-            //如果是授权到新浪微博，SSO之后如果想获取用户的昵称、头像等需要再次获取一次账户信息
-            if ([platformName isEqualToString:UMShareToSina]) {
-                [[UMSocialDataService defaultDataService] requestSocialAccountWithCompletion:^(UMSocialResponseEntity *accountResponse){
-                    NSLog(@"SinaWeibo's user name is %@",[[[accountResponse.data objectForKey:@"accounts"] objectForKey:UMShareToSina] objectForKey:@"username"]);
-                    [_snsTableView reloadData];
+            //这里可以获取到腾讯微博openid,Qzone的token等
+            /*
+            else if ([platformName isEqualToString:UMShareToTencent]) {
+                [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToTencent completion:^(UMSocialResponseEntity *respose){
+                    NSLog(@"get openid  response is %@",respose);
                 }];
             }
-
-            //这里可以获取到腾讯微博openid
-            /*
-            [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToTencent completion:^(UMSocialResponseEntity *respose){
-                NSLog(@"get openid  response is %@",respose);
-            }];
              */
-             
-            [_snsTableView reloadData];
+         [_snsTableView reloadData];
         });
         
     }
@@ -152,9 +146,9 @@
 {
     if (buttonIndex == 0) {
         NSString *platformType = [UMSocialSnsPlatformManager getSnsPlatformString:actionSheet.tag];
-        [[UMSocialDataService defaultDataService] requestUnOauthWithType:platformType completion:^(UMSocialResponseEntity *response){
+        [[UMSocialDataService defaultDataService] requestUnOauthWithType:platformType completion:^(UMSocialResponseEntity *response) {
             if (response.responseType == UMSResponseGetAccount) {
-                [_snsTableView reloadData];                
+                [_snsTableView reloadData];
             }
         }];
     }

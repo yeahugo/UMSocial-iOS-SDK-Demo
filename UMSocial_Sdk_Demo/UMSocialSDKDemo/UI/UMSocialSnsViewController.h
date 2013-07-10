@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UMSocialControllerService.h"
 
 @interface UMSocialSnsViewController : UIViewController
 <
-    UIActionSheetDelegate
+    UIActionSheetDelegate,
+    UMSocialUIDelegate
 >
 {
     UIActivityIndicatorView * _activityIndicatorView;

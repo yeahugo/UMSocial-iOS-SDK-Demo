@@ -10,6 +10,7 @@
 #import "UMSocialLoginViewController.h"
 #import "UMSocialSnsViewController.h"
 #import "UMSocialBarViewController.h"
+//#import "UMSocialTableDataViewController.h"
 
 @implementation UMSocialTabBarController
 
@@ -23,7 +24,7 @@
     UMSocialBarViewController *barViewController = [[UMSocialBarViewController alloc] initWithNibName:@"UMSocialBarViewController" bundle:nil];
     barViewController.title = @"操作栏";
     barViewController.tabBarItem.image = [UIImage imageNamed:@"UMS_bar"];
-    
+        
     [self setViewControllers:[NSArray arrayWithObjects:snsViewController,loginViewController,barViewController,nil]];
     
     [super viewDidLoad];

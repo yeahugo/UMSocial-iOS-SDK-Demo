@@ -22,9 +22,10 @@
     CGSize size = [UIScreen mainScreen].bounds.size;
     size = UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ? size : CGSizeMake(size.height, size.width);
     
-    _socialBar = [[UMSocialBar alloc] initWithUMSocialData:[UMSocialData defaultData] withViewController:self];
-    _socialBar.socialBarDelegate = self;
-
+    UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialDemo"];
+    _socialBar = [[UMSocialBar alloc] initWithUMSocialData:socialData withViewController:self];
+    
+    _socialBar.socialUIDelegate = self;
     _socialBar.center = CGPointMake(size.width/2, size.height - 93);
     [self.view addSubview:_socialBar];
     
@@ -34,18 +35,15 @@
         [self.view addSubview:_webView];
         [_webView loadHTMLString:[snsViewController.postsDic  valueForKey:@"content"] baseURL:nil];
     }
-    
+
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
-//发送评论
-//-(IBAction)comment:(id)sender
-//{
-//    UINavigationController *navigationController = [[UMSocialControllerServiceComment defaultControllerService] getSocialCommentListController];
-//    [self presentModalViewController:navigationController animated:YES];
-//}
-
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);
+}
 
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -66,12 +64,6 @@
     _socialBar.center = CGPointMake(size.height/2, size.width  - barHeight - _socialBar.frame.size.height );
     
     _webView.frame = CGRectMake(0, 0, size.height, size.width -  barHeight * 2 - _socialBar.frame.size.height);
-}
-
-#pragma mark - UMSocialBarDelegate
--(void)didFinishUpdateBarNumber:(UMSButtonTypeMask)actionTypeMask
-{
-    NSLog(@"finish update bar button is %d",actionTypeMask);
 }
 
 @end

@@ -54,8 +54,6 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/cancelAllRequestInQueue">&nbsp;&nbsp;&nbsp;&nbsp;- cancelAllRequestInQueue</option>
-	
 	<option value="//api/name/initWithUMSocialData:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithUMSocialData:</option>
 	
 	<option value="//api/name/postAddLikeOrCancelWithCompletion:">&nbsp;&nbsp;&nbsp;&nbsp;- postAddLikeOrCancelWithCompletion:</option>
@@ -63,8 +61,6 @@
 	<option value="//api/name/postCommentWithContent:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- postCommentWithContent:completion:</option>
 	
 	<option value="//api/name/postCommentWithContent:image:templateText:location:shareToSNSWithUsid:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- postCommentWithContent:image:templateText:location:shareToSNSWithUsid:completion:</option>
-	
-	<option value="//api/name/postSNSWithType:content:image:location:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- postSNSWithType:content:image:location:completion:</option>
 	
 	<option value="//api/name/postSNSWithTypes:content:image:location:urlResource:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- postSNSWithTypes:content:image:location:urlResource:completion:</option>
 	
@@ -106,6 +102,8 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_用户账户信息相关网络请求">用户账户信息相关网络请求</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_属性">属性</a></span></li>
 	
 </ul></li>
@@ -132,8 +130,6 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancelAllRequestInQueue">cancelAllRequestInQueue</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithUMSocialData:">initWithUMSocialData:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postAddLikeOrCancelWithCompletion:">postAddLikeOrCancelWithCompletion:</a></span></li>
@@ -141,8 +137,6 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postCommentWithContent:completion:">postCommentWithContent:completion:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postCommentWithContent:image:templateText:location:shareToSNSWithUsid:completion:">postCommentWithContent:image:templateText:location:shareToSNSWithUsid:completion:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postSNSWithType:content:image:location:completion:">postSNSWithType:content:image:location:completion:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postSNSWithTypes:content:image:location:urlResource:completion:">postSNSWithTypes:content:image:location:urlResource:completion:</a></span></li>
 	
@@ -252,14 +246,7 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/requestSocialDataWithCompletion:">&ndash;&nbsp;requestSocialDataWithCompletion:</a></code>
-		<span class="tooltip"><p>从服务器获取分享数、评论数、喜欢数等属性</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/postSNSWithType:content:image:location:completion:">&ndash;&nbsp;postSNSWithType:content:image:location:completion:</a></code>
-		<span class="tooltip"><p>发送微博内容到微博平台</p></span>
+		<span class="tooltip"><p>获取微博分享数、评论数等数据</p></span>
 	</span>
 	
 	
@@ -298,7 +285,15 @@
 	</span>
 	
 	
-</li><li>
+</li>
+						</ul>
+						
+						
+						<a title="用户账户信息相关网络请求" name="task_用户账户信息相关网络请求"></a>
+						<h3 class="subsubtitle task-title">用户账户信息相关网络请求</h3>
+
+						<ul class="task-list">
+							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/requestSocialAccountWithCompletion:">&ndash;&nbsp;requestSocialAccountWithCompletion:</a></code>
 		<span class="tooltip"><p>请求获取用户微博账号的数据，获取到的用户数据在回调函数获得，也可以通过已经保存在本地并且更新的<a href="#//api/name/socialData"><code>socialData</code></a>属性的<code>soicalAccount</code>属性来获得</p></span>
@@ -344,13 +339,6 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/requestAddFollow:followedUsid:completion:">&ndash;&nbsp;requestAddFollow:followedUsid:completion:</a></code>
 		<span class="tooltip"><p>请求添加关注</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/cancelAllRequestInQueue">&ndash;&nbsp;cancelAllRequestInQueue</a></code>
-		<span class="tooltip"><p>每个post和request方法都会把请求放到一个队列上，取消队列所有请求</p></span>
 	</span>
 	
 	
@@ -476,42 +464,6 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/cancelAllRequestInQueue" title="cancelAllRequestInQueue"></a>
-	<h3 class="subsubtitle method-title">cancelAllRequestInQueue</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>每个post和request方法都会把请求放到一个队列上，取消队列所有请求</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)cancelAllRequestInQueue</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialDataService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/initWithUMSocialData:" title="initWithUMSocialData:"></a>
 	<h3 class="subsubtitle method-title">initWithUMSocialData:</h3>
 	
@@ -602,7 +554,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialDataService.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.m</code><br />
 	</div>				
 	
 	
@@ -653,7 +605,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialDataService.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.m</code><br />
 	</div>				
 	
 	
@@ -724,73 +676,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialDataService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/postSNSWithType:content:image:location:completion:" title="postSNSWithType:content:image:location:completion:"></a>
-	<h3 class="subsubtitle method-title">postSNSWithType:content:image:location:completion:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>发送微博内容到微博平台</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)postSNSWithType:(NSString *)<em>platformType</em> content:(NSString *)<em>content</em> image:(UIImage *)<em>image</em> location:(CLLocation *)<em>location</em> completion:(UMSocialDataServiceCompletion)<em>completion</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>platformType</em></dt>
-			<dd><p>分享到的平台名，在<code>UMSocialEnum.h</code>中定义好的字符串常量</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>content</em></dt>
-			<dd><p>分享的文字内容</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>image</em></dt>
-			<dd><p>分享的图片</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>location</em></dt>
-			<dd><p>分享的地理位置信息</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>completion</em></dt>
-			<dd><p>发送数据之后执行的block对象</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialDataService.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.m</code><br />
 	</div>				
 	
 	
@@ -861,7 +747,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialDataService.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.m</code><br />
 	</div>				
 	
 	
@@ -917,7 +803,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialDataService.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.m</code><br />
 	</div>				
 	
 	
@@ -968,7 +854,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialDataService.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.m</code><br />
 	</div>				
 	
 	
@@ -1019,7 +905,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialDataService.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.m</code><br />
 	</div>				
 	
 	
@@ -1070,7 +956,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialDataService.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.m</code><br />
 	</div>				
 	
 	
@@ -1121,7 +1007,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialDataService.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.m</code><br />
 	</div>				
 	
 	
@@ -1167,7 +1053,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialDataService.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.m</code><br />
 	</div>				
 	
 	
@@ -1180,7 +1066,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>从服务器获取分享数、评论数、喜欢数等属性</p>
+		<p>获取微博分享数、评论数等数据</p>
 	</div>		
 	
     
@@ -1194,7 +1080,7 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>completion</em></dt>
-			<dd><p>获取到数据之后执行的block对象</p></dd>
+			<dd><p>获取到数据之后执行的block对象，返回数据放在<a href="#//api/name/completion">completion</a>.data</p></dd>
 		</dl>
 		
 	</div>
@@ -1259,7 +1145,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialDataService.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.m</code><br />
 	</div>				
 	
 	
@@ -1310,7 +1196,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialDataService.h</code><br />
+		<code class="declared-in-ref">UMSocialDataService.m</code><br />
 	</div>				
 	
 	
@@ -1411,7 +1297,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-05-28)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-07-10)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
