@@ -34,6 +34,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     _snsTableView.frame = CGRectMake(_snsTableView.frame.origin.x, _snsTableView.frame.origin.y, _snsTableView.frame.size.width, 220);
+    [_snsTableView reloadData];
     [super viewWillAppear:animated];
 }
 
@@ -108,22 +109,36 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
+-(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType
+{
+    NSLog(@"close!!");
+}
+
 -(void)onSwitchOauth:(UISwitch *)switcher
 {
     _changeSwitcher = switcher;
-    
     
     if (switcher.isOn == YES) {
         [switcher setOn:NO];
         
         //此处调用授权的方法,你可以把下面的platformName 替换成 UMShareToSina,UMShareToTencent等
         NSString *platformName = [UMSocialSnsPlatformManager getSnsPlatformString:switcher.tag];
+        
+        //下面设置获取关闭页面的回调方法
+        [UMSocialControllerService defaultControllerService].socialUIDelegate = self;
+
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
         snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+
+//          获取微博用户名、uid、token等
+            if (response.responseCode == UMSResponseCodeSuccess) {
+                UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:platformName];
+                NSLog(@"username is %@, uid is %@, token is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken);                
+            }
             
             //这里可以获取到腾讯微博openid,Qzone的token等
             /*
-            else if ([platformName isEqualToString:UMShareToTencent]) {
+            if ([platformName isEqualToString:UMShareToTencent]) {
                 [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToTencent completion:^(UMSocialResponseEntity *respose){
                     NSLog(@"get openid  response is %@",respose);
                 }];
@@ -147,9 +162,7 @@
     if (buttonIndex == 0) {
         NSString *platformType = [UMSocialSnsPlatformManager getSnsPlatformString:actionSheet.tag];
         [[UMSocialDataService defaultDataService] requestUnOauthWithType:platformType completion:^(UMSocialResponseEntity *response) {
-            if (response.responseType == UMSResponseGetAccount) {
-                [_snsTableView reloadData];
-            }
+            [_snsTableView reloadData];
         }];
     }
     else {//按取消

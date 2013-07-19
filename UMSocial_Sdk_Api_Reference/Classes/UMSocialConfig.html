@@ -66,6 +66,8 @@
 	
 	<option value="//api/name/setSupportedInterfaceOrientations:">&nbsp;&nbsp;&nbsp;&nbsp;+ setSupportedInterfaceOrientations:</option>
 	
+	<option value="//api/name/setTableViewCellConfig:">&nbsp;&nbsp;&nbsp;&nbsp;+ setTableViewCellConfig:</option>
+	
 	<option value="//api/name/setTheme:">&nbsp;&nbsp;&nbsp;&nbsp;+ setTheme:</option>
 	
 	
@@ -119,6 +121,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSupportSinaSSO:">setSupportSinaSSO:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSupportedInterfaceOrientations:">setSupportedInterfaceOrientations:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setTableViewCellConfig:">setTableViewCellConfig:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setTheme:">setTheme:</a></span></li>
 	
@@ -193,6 +197,44 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/setTheme:">+&nbsp;setTheme:</a></code>
+		<span class="tooltip"><p>设置社会化组件UI主题，现在有黑色和白色两种</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setShareGridViewTheme:">+&nbsp;setShareGridViewTheme:</a></code>
+		<span class="tooltip"><p>设置分享列表页面，Block对象的形参包括有绘制当前线条的CGContex指针，icon背景视图
+例如下面写法
+[UMSocialConfig setShareGridViewTheme:^(CGContextRef ref, UIImageView *backgroundView){</p>
+
+<pre><code>CGContextSetRGBStrokeColor(ref, 0, 0, 0, 1.0);
+CGContextSetLineWidth(ref, 1.0);
+backgroundView.backgroundColor = [UIColor blackColor];
+</code></pre>
+
+<p>}];</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setNavigationBarConfig:">+&nbsp;setNavigationBarConfig:</a></code>
+		<span class="tooltip"><p>设置导航栏,包括导航栏的UINavigationBar,返回按钮，关闭按钮，发送按钮，刷新按钮和中间的UINavigationItem的样式
+例如下面写法：</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setTableViewCellConfig:">+&nbsp;setTableViewCellConfig:</a></code>
+		<span class="tooltip"><p>设置分享列表页，个人中心页面等的UITableViewCell的样式</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/setFollowWeiboUids:">+&nbsp;setFollowWeiboUids:</a></code>
 		<span class="tooltip"><p>设置官方微博账号,设置之后可以在授权页面有关注微博的选项，默认勾选，授权之后用户即关注官方微博，仅支持新浪微博和腾讯微博</p></span>
 	</span>
@@ -246,37 +288,6 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/setSupportSinaSSO:">+&nbsp;setSupportSinaSSO:</a></code>
 		<span class="tooltip"><p>设置是否支持新浪微博SSO，默认支持</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/setTheme:">+&nbsp;setTheme:</a></code>
-		<span class="tooltip"><p>设置社会化组件UI主题，现在有黑色和白色两种</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/setShareGridViewTheme:">+&nbsp;setShareGridViewTheme:</a></code>
-		<span class="tooltip"><p>设置分享列表页面，Block对象的形参包括有绘制当前线条的CGContex指针，icon背景视图
-例如下面写法
-[UMSocialConfig setShareGridViewTheme:^(CGContextRef ref, UIImageView *backgroundView){</p>
-
-<pre><code>CGContextSetRGBStrokeColor(ref, 0, 0, 0, 1.0);
-CGContextSetLineWidth(ref, 1.0);
-backgroundView.backgroundColor = [UIColor blueColor];
-</code></pre>
-
-<p>}];</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/setNavigationBarConfig:">+&nbsp;setNavigationBarConfig:</a></code>
-		<span class="tooltip"><p>设置导航栏,包括导航栏的UINavigationBar对象
-例如下面写法：</p></span>
 	</span>
 	
 	
@@ -486,13 +497,13 @@ backgroundView.backgroundColor = [UIColor blueColor];
 	
 	
 	<div class="method-subsection brief-description">
-		<p>设置导航栏,包括导航栏的UINavigationBar对象
+		<p>设置导航栏,包括导航栏的UINavigationBar,返回按钮，关闭按钮，发送按钮，刷新按钮和中间的UINavigationItem的样式
 例如下面写法：</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)setNavigationBarConfig:(UINavigationBarConfig)<em>navigationConfig</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (void)setNavigationBarConfig:(UMNavigationBarConfig)<em>navigationConfig</em></code></div>
 
     
 	
@@ -501,7 +512,38 @@ backgroundView.backgroundColor = [UIColor blueColor];
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>navigationConfig</em></dt>
-			<dd><p>设置导航栏样式的block对象</p></dd>
+			<dd><p>设置导航栏样式的block对象
+   navigationConfig 是一个Block对象，传入的参数包括：</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>bar</em></dt>
+			<dd><p>导航栏</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>closeButton</em></dt>
+			<dd><p>关闭按钮</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>backButton</em></dt>
+			<dd><p>返回按钮</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>postButton</em></dt>
+			<dd><p>发送按钮</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>refreshButton</em></dt>
+			<dd><p>刷新按钮</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>navigationItem</em></dt>
+			<dd><p>所在UINavigationController的navigationItem，可以改变相应的标题</p></dd>
 		</dl>
 		
 	</div>
@@ -514,14 +556,19 @@ backgroundView.backgroundColor = [UIColor blueColor];
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>[UMSocialConfig setNavigationBarConfig:^(UINavigationBar <em>bar,UIButton </em>closeButton,UIButton <em>backButton,UIButton </em>postButton){</p>
+		<p>[UMSocialConfig setNavigationBarConfig:^(UINavigationBar *bar,</p>
 
-<pre><code>UIImage * backgroundImage = [UIImage imageNamed:@"UMSocialSDKResourcesNew.bundle/OtherTheme/UMS_nav_bar_bg"];
+<pre><code> UIButton *closeButton,
+ UIButton *backButton,
+ UIButton *postButton,
+ UIButton *refreshButton,
+ UINavigationItem * navigationItem){
+ UIImage * backgroundImage = [UIImage imageNamed:@"UMSocialSDKResourcesNew.bundle/OtherTheme/UMS_nav_bar_bg"];
 
-if ([bar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
-[bar setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
-}
-bar.titleTextAttributes = nil;
+ if ([bar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
+     [bar setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
+ }
+ bar.titleTextAttributes = nil;
 </code></pre>
 
 <p>}];</p>
@@ -554,7 +601,7 @@ bar.titleTextAttributes = nil;
 
 <pre><code>CGContextSetRGBStrokeColor(ref, 0, 0, 0, 1.0);
 CGContextSetLineWidth(ref, 1.0);
-backgroundView.backgroundColor = [UIColor blueColor];
+backgroundView.backgroundColor = [UIColor blackColor];
 </code></pre>
 
 <p>}];</p>
@@ -562,7 +609,7 @@ backgroundView.backgroundColor = [UIColor blueColor];
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)setShareGridViewTheme:(GridViewConfig)<em>gridViewConfig</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (void)setShareGridViewTheme:(UMGridViewConfig)<em>gridViewConfig</em></code></div>
 
     
 	
@@ -845,6 +892,62 @@ backgroundView.backgroundColor = [UIColor blueColor];
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/setTableViewCellConfig:" title="setTableViewCellConfig:"></a>
+	<h3 class="subsubtitle method-title">setTableViewCellConfig:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>设置分享列表页，个人中心页面等的UITableViewCell的样式</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setTableViewCellConfig:(UMTableViewCellConfig)<em>tableViewCellConfig</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>tableViewCellConfig</em></dt>
+			<dd><p>UITableViewCell的样式配置Block</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>cell</em></dt>
+			<dd><p>UITableViewCell</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>viewControllerType</em></dt>
+			<dd><p>页面类型</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialConfig.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/setTheme:" title="setTheme:"></a>
 	<h3 class="subsubtitle method-title">setTheme:</h3>
 	
@@ -905,7 +1008,7 @@ backgroundView.backgroundColor = [UIColor blueColor];
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-07-10)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-07-19)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

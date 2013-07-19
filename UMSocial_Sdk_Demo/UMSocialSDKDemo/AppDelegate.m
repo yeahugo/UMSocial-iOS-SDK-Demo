@@ -19,18 +19,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-  
-    UMSocialTabBarController *tabViewController = [[UMSocialTabBarController alloc] init];
-    self.window.rootViewController = tabViewController;
+    
+    //打开调试log的开关
     [UMSocialData openLog:YES];
     //向微信注册
     [WXApi registerApp:@"wxd9a39c7122aa6516"];
-    
+    //设置友盟appkey
     [UMSocialData setAppKey:useAppkey];
     
+    //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
+    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
+
+    
+    UMSocialTabBarController *tabViewController = [[UMSocialTabBarController alloc] init];
+    self.window.rootViewController = tabViewController;
+
     return YES;
 }
 

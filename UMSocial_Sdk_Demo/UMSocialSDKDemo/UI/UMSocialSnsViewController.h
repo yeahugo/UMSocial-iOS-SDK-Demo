@@ -19,15 +19,12 @@
     NSDictionary *_postsDic;
     
     IBOutlet UIButton *_shareButton1;
-    IBOutlet UIButton *_shareButton2;
     IBOutlet UIButton *_shareButton3;
 }
 
 @property (nonatomic, strong) NSDictionary *postsDic;
 
 -(IBAction)showShareList1:(id)sender;
-
--(IBAction)showShareList2:(id)sender;
 
 -(IBAction)showShareList3:(id)sender;
 

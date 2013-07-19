@@ -23,8 +23,9 @@
     size = UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ? size : CGSizeMake(size.height, size.width);
     
     UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialDemo"];
+    socialData.shareText = @"友盟社会化分享 http://www.umeng.com";         //分享内嵌文字
+    socialData.shareImage = [UIImage imageNamed:@"icon.png"];           //分享内嵌图片
     _socialBar = [[UMSocialBar alloc] initWithUMSocialData:socialData withViewController:self];
-    
     _socialBar.socialUIDelegate = self;
     _socialBar.center = CGPointMake(size.width/2, size.height - 93);
     [self.view addSubview:_socialBar];

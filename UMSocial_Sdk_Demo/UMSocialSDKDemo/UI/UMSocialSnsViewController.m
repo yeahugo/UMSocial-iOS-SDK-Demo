@@ -74,14 +74,8 @@
     NSString *shareText = [UMSocialData defaultData].shareText;      //分享内嵌文字
     UIImage *shareImage = [UMSocialData defaultData].shareImage;          //分享内嵌图片
     
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:self];
-}
-
--(IBAction)showShareList2:(id)sender
-{
-    NSString *shareText = [UMSocialData defaultData].shareText;
-    UIImage *image = [UMSocialData defaultData].shareImage;
-    [UMSocialSnsService presentSnsController:self appKey:useAppkey shareText:shareText shareImage:image shareToSnsNames:nil delegate:self];
+    //如果得到分享完成回调，可以设置delegate
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:nil];
 }
 
 /*
@@ -89,7 +83,7 @@
  
  */
 -(IBAction)showShareList3:(id)sender
-{        
+{    
     UIActionSheet * editActionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     for (NSString *snsName in [UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray) {
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
@@ -126,8 +120,7 @@
     [_activityIndicatorView startAnimating];
     
     _shareButton1.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton1.center.y);
-    _shareButton2.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton2.center.y);
-    _shareButton3.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton3.center.y);
+     _shareButton3.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton3.center.y);
     
     NSDictionary *postsDic = [[NSUserDefaults standardUserDefaults] valueForKey:@"umengPost"];
     
@@ -204,7 +197,6 @@
      */
     
     _shareButton1.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5);
-    _shareButton2.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *2);
     _shareButton3.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *3);
 }
 
