@@ -1,0 +1,303 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: helvetica,"Microsoft Yahei",sans-serif;    
+    font-size: 14px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #2a5295;
+    text-decoration: none;
+}
+a:hover {
+    color: #2a5295;
+    text-decoration: underline;
+
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #333;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 20px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 12px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+b{
+    color:#F00;
+    text-indent: 28px;
+    display: block;
+    margin: 10px 0px;
+}
+
+li, ul li {
+    list-style-type:disc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+}
+
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #2a5295;
+    color: #FFF;
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    display: inline-block;
+    margin: auto 5px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 12px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #bfcbdf;
+    color: #333;
+}
+pre code {
+    background-color: #bfcbdf;
+    color: #333;
+    font-size: 12px;
+    padding: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break:break-all; 
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>登录 详细集成</title>
+
+</head>
+<body>
+<h1>登录 详细集成</h1>
+
+<h2><strong>授权信息页面</strong></h2>
+
+<p>显示各个微博平台的授权情况。用户可以新增、更改、删除授权账号。</p>
+
+<pre><code>UINavigationController *accountViewController =[[UMSocialControllerService defaultControllerService] getSnsAccountController];
+[self presentModalViewController:accountViewController animated:YES];
+</code></pre>
+
+<p><img src="http://dev.umeng.com/images/ios/social_user_oauth.png" title="socical_user_oauth" alt="socialbar" /></p>
+
+<h2><strong>个人中心页面</strong></h2>
+
+<p>上面是绑定一个微博账号作为SDK的登录账号，简称为登录账号，下面是各个已经授权的微博账号，包括我们支持的所有平台，可以对各个平台进行授权和解除授权。</p>
+
+<pre><code>UINavigationController *accountViewController =[[UMSocialControllerService defaultControllerService] getSocialAccountController];
+[self presentModalViewController:accountViewController animated:YES];
+</code></pre>
+
+<p><img src="http://dev.umeng.com/images/ios/social_user_account.png" title="socical_user_account" alt="socialbar" /></p>
+
+<h2>授权页面（界面级接口）</h2>
+
+<h3><strong>SSO授权</strong></h3>
+
+<p>SSO授权即如果用户设备安装了新浪微博客户端，就会跳转到那里进行授权，好处是用户不需要输入用户名和密码，如果没有安装新浪微博客户端的话还会使用webview授权，参看登录快速集成文档对Xcode的设置。下面是用SSO授权到新浪微博：</p>
+
+<pre><code>//`snsName` 代表各个支持云端分享的平台名，有`UMShareToSina`,`UMShareToTencent`等五个。    
+  UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
+  snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+      NSLog(@"response is %@",response);
+  });
+</code></pre>
+
+<p>这个方法是强制弹出授权，你可以根据已经授权情况来判断是否调用，，例如有没有授权到新浪微博
+<code>
+BOOL isOauth = [UMSocialAccountManager isOauthWithPlatform:UMShareToSina];
+</code></p>
+
+<h3><strong>网页授权</strong></h3>
+
+<p>获得一个授权网页，同样需要加上上面的判断是否已授权。</p>
+
+<pre><code>UINavigationController *oauthController = [[UMSocialControllerService defaultControllerService] getSocialOauthController:UMShareToSina];
+[self presentModalViewController:oauthController animated:YES];
+</code></pre>
+
+<p><img src="http://dev.umeng.com/images/ios/social_oauth.png" title="socical_oauth" alt="socialbar" /></p>
+
+<ul>
+<li><p>授权完成的回调函数</p>
+
+<pre><code>[UMSocialControllerService defaultControllerService].soicalUIDelegate = self;      //设置回调对象
+//实现回调方法
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+ if (response.viewControllerType == UMSViewControllerOauth) {
+     ……
+     NSLog(@"didFinishOauthAndGetAccount response is %@",response);
+ }
+}
+</code></pre></li>
+</ul>
+
+
+<h2>获取用户微博账号信息（数据级的接口）</h2>
+
+<p>使用本SDK对个微博平台授权过后，我们提供方法查询用户授权到各个微博平台的信息，例如想获取新浪微博用户的昵称和头像可以用下面的代码。</p>
+
+<pre><code>NSDictionary *snsAccountDic = [UMSocialAccountManager socialAccountDictionary];
+UMSocialAccountEntity *sinaAccount = [snsAccountDic valueForKey:UMShareToSina];
+UMLog(@"sina nickName is %@, iconURL is %@",sinaAccount.userName,sinaAccount.iconURL);
+</code></pre>
+
+<h2>其他用户操作 （数据级接口）</h2>
+
+<ul>
+<li><p>判断是否授权到某个微博平台，例如有没有授权到新浪微博
+<code>
+[UMSocialAccountManager isOauthWithPlatform:UMShareToSina];
+</code></p></li>
+<li><p>授权某个平台，如上面界面级接口部分。</p></li>
+<li><p>解除授权,如果想获取解除授权结果同样在completion的回调对象中的形参<code>response</code>中得到。下面是解除绑定新浪微博的代码：</p>
+
+<pre><code>[[UMSocialDataService defaultDataService] requestUnOauthWithType:UMShareToSina  completion:^(UMSocialResponseEntity *response){
+          NSLog(@"response is %@",response);
+      }];
+</code></pre></li>
+<li><p>获取用户微博账号详细信息.</p>
+
+<pre><code>//包括各平台的uid和accestoken，各个平台不一样，腾讯微博有openid。得到的数据在回调Block对象形参respone的data属性。    
+[[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToTencent  completion:^(UMSocialResponseEntity *response){
+          NSLog(@"SnsInformation is %@",response.data);
+      }];
+</code></pre></li>
+<li><p>获取用户好友列表，支持新浪微博、腾讯微博、人人网。得到的数据在回调Block对象形参<code>respone</code>的<code>data</code>属性。</p>
+
+<pre><code>[[UMSocialDataService defaultDataService] requestSnsFriends:UMShareToTencent  completion:^(UMSocialResponseEntity *response){
+          NSLog(@"SnsFriends is %@",response.data);
+      }];
+</code></pre></li>
+<li><p>添加关注，支持新浪微博、腾讯微博，可以同时传多个关注微博账号</p>
+
+<pre><code>[[UMSocialDataService defaultDataService] requestAddFollow:UMShareToSina followedUsid:@[@"2937537507"] completion:nil];
+</code></pre></li>
+<li><p>判断是否已经登录友盟账号。所谓友盟账号，即我们将绑定一个微博平台的账号作为友盟账号，用户使用SDK的评论功能和个人中心时使用友盟账号的昵称和头像。</p>
+
+<pre><code>[UMSocialAccountManager isLoginWithSnsAccount];
+</code></pre></li>
+<li><p>登录友盟账号，选择登录的平台一定为已经授权的微博平台，否则无法正常登录。下面是选择新浪微博作为友盟账号。</p>
+
+<pre><code>[[UMSocialDataService defaultDataService] requestBindToSnsWithType:UMShareToSina completion:nil];
+</code></pre></li>
+<li><p>注销友盟账号。</p>
+
+<pre><code>[[UMSocialDataService defaultDataService] requestUnBindToSnsWithCompletion:nil];
+</code></pre></li>
+</ul>
+
+
+<h3>常见错误代码含义</h3>
+
+<table>
+<thead>
+<tr>
+<th>错误码 </th>
+<th> 错误原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>503 </td>
+<td> 评论失败</td>
+</tr>
+<tr>
+<td>504 </td>
+<td> 获取评论失败</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: helvetica,"Microsoft Yahei",sans-serif;    
+    font-size: 14px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #2a5295;
+    text-decoration: none;
+}
+a:hover {
+    color: #2a5295;
+    text-decoration: underline;
+
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #333;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 20px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 12px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+b{
+    color:#F00;
+    text-indent: 28px;
+    display: block;
+    margin: 10px 0px;
+}
+
+li, ul li {
+    list-style-type:disc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+}
+
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #2a5295;
+    color: #FFF;
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    display: inline-block;
+    margin: auto 5px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 12px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #bfcbdf;
+    color: #333;
+}
+pre code {
+    background-color: #bfcbdf;
+    color: #333;
+    font-size: 12px;
+    padding: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break:break-all; 
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>评论 快速集成</title>
+
+</head>
+<body>
+<h1>评论 快速集成</h1>
+
+<h2>1. 产品概述</h2>
+
+<p>通过评论组件，用户可以针对应用中一篇文章，一首歌曲等内容发表评论，并可同步到微博。喜欢组件会增强用户和应用的交互频率，提高用户的活跃率和留存率。</p>
+
+<h2>2. 下载并安装SDK</h2>
+
+<h3>Step1</h3>
+
+<p>下载 <a href="http://dev.umeng.com/sdkdownload/sdkdownload_ios_social.html" style="text-decoration:none" target="_blank">最新版SDK</a></p>
+
+<h3>Step2</h3>
+
+<p>确认你使用的XCode版本在4.4以上，工程的Base SDK和iOS Deployment Target在iOS4.3以上</p>
+
+<h3>Step3</h3>
+
+<p>解压SDK压缩包，将其中形如UMSocial_Sdk_x.x.x的文件夹拖入工程目录：</p>
+
+<p><img src="http://dev.umeng.com/images/ios/social_drag_sdk.png" title="drag_sdk" alt="alt text" /></p>
+
+<h3>Step4</h3>
+
+<p>确认勾选了“Copy items to destination's group folder”选项，并选择你要添加到的Target:</p>
+
+<p><img src="http://dev.umeng.com/images/ios/social_check_tip.png" title="check_tip" alt="alt text" /></p>
+
+<p>现在应该是这样的效果：</p>
+
+<p><img src="http://dev.umeng.com/images/ios/social_project_structure.png" title="project_structure" alt="alt text" /></p>
+
+<h2>3.  集成代码</h2>
+
+<h3>设置友盟Appkey</h3>
+
+<pre><code>#import "UMSocial.h"
+……
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [UMSocialData setAppKey:@"507fcab25270157b37000010"];
+}
+</code></pre>
+
+<h3>得到一个评论列表</h3>
+
+<pre><code>#import UMSocialControllerServiceComment.h
+……
+UINavigationController *commentList = [[UMSocialControllerServiceComment defaultControllerService] getSocialCommentListController];
+[self presentModalViewController:commentList animated:YES];
+</code></pre>
+
+<p><img src="http://dev.umeng.com/images/ios/social_commentlist.png" title="socical_comment_list" alt="socialbar" /></p>
+
+<ul>
+<li>由于我们发送评论还提供了同步分享到各个微博的功能。你可以设置评论并分享到微博的内嵌文字和图片，此文字出现在微博正文之后以<code>//</code>分隔,例如下面的设置，用户发送了“评论内容”并分享到微博之后效果是“评论内容//评论内嵌文字"
+<code>
+[UMSocialData defaultData].commentText = @"评论内嵌文字";
+[UMSocialData defaultData].commentImage = [UIImage imageNamed:@"icon.png"];
+</code></li>
+</ul>
+
+
+<h2>4. 进阶使用</h2>
+
+<p>如果上述文档不能满足你的需求，请移步至“详细集成文档”。</p>
+</body>
+</html>
