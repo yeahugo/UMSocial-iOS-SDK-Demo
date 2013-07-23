@@ -15,6 +15,8 @@
 typedef enum {
     UMSResponseCodeSuccess            = 200,        //成功
     UMSResponseCodeBaned              = 505,        //用户被封禁
+    UMSResponseCodeFaild              = 510,        //发送失败（由于内容不符合要求或者其他原因）
+    UMSResponseCodeEmptyContent       = 5007,       //发送内容为空
     UMSResponseCodeShareRepeated      = 5016,       //分享内容重复
     UMSResponseCodeGetNoUidFromOauth  = 5020,       //授权之后没有得到用户uid
     UMSResponseCodeAccessTokenExpired = 5027,       //token过期
@@ -74,23 +76,20 @@ typedef enum{
 @interface UMSocialResponseEntity : NSObject
 
 /**
- `UMSResponseCode`状态码,定义在`UMSocialEnum`
+ 代表发送结果，UMSResponseCodeSuccess代表成功，参看上面的定义
  
- @see `UMSocialEnum.h`
  */
 @property (nonatomic, assign) UMSResponseCode responseCode;
 
 /**
- 数据返回`UMSResponse`类型,定义在`UMSocialEnum`
+ 数据类型
  
- @see `UMSocialEnum.h`
  */
 @property (nonatomic, assign) UMSResponse responseType;
 
 /**
- 数据返回`UMViewControllerType`类型,定义在`UMSocialEnum`,如果是UI的回调函数，表示回调函数所在的页面
- 
- @see `UMSocialEnum.h`
+ 数据返回`UMViewControllerType`类型,如果是UI的回调函数，表示回调函数所在的页面
+
  */
 @property (nonatomic, assign) UMSViewControllerType viewControllerType;
 
@@ -286,7 +285,7 @@ typedef void (^UMSocialDataServiceCompletion)(UMSocialResponseEntity * response)
 ///---------------------------------------
 
 /**
- 请求获取用户微博账号的数据，获取到的用户数据在回调函数获得，也可以通过已经保存在本地并且更新的`socialData`属性的`soicalAccount`属性来获得
+ 请求获取用户微博账号的数据，获取到的用户数据在回调函数获得，也可以通过已经保存在本地并且更新的`socialData`属性的`socialAccount`属性来获得
  @param completion 获取到数据之后执行的block对象，此block对象的形参带啊有请求的用户账号数据
  
  */

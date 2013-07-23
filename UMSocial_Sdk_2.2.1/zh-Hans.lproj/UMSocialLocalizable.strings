@@ -39,6 +39,8 @@
 "shareEdit_error_auth_again" = "重新授权";
 "shareEdit_error_text_repeated" = "文字重复，发送失败";
 "shareEdit_error_user_baned" = "对不起，因为违反了用户协议您已被禁言";
+"shareEdit_error_fail" = "分享失败";
+"shareEdit_error_empty_content" = "发送文字内容为空，分享失败";
 
 "share_wechat" = "分享到微信";
 "share_wechat_friend" = "分享到微信好友";
@@ -101,6 +103,7 @@
 "wechat" = "微信";
 "email" = "邮箱";
 "sms" = "短信";
+"wechat_session" = "微信好友";
 "wechat_timeline" = "朋友圈";
 "facebook" = "Facebook";
 "twitter" = "Twitter";

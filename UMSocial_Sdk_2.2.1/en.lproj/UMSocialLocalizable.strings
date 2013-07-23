@@ -39,6 +39,8 @@
 "shareEdit_error_auth_again" = "authorize again";
 "shareEdit_error_text_repeated" = "Text repeated";
 "shareEdit_error_user_baned" = "Sorry, you have been banned";
+"shareEdit_error_fail" = "Share fail";
+"shareEdit_error_empty_content" = "Share fail, for the content is empty";
 
 "share_wechat" = "Share to Wechat";
 "share_wechat_friend" = "Share to Wechat Friend";
@@ -102,6 +104,7 @@
 "wechat" = "Wechat";
 "email" = "Email";
 "sms" = "SMS";
-"wechat_timeline" = "Moments";
+"wechat_session" = "Wechat Friends";
+"wechat_timeline" = "Wechat Moments";
 "facebook" = "Facebook";
 "twitter" = "Twitter";

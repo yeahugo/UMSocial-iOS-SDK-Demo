@@ -48,11 +48,16 @@
 }
 */
 
+//下面得到分享完成的回调
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
-    NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);
+    //根据`responseCode`得到发送结果,如果分享成功
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        //得到分享到的微博平台名
+        NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+    }
 }
-
 
 /*
  注意分享到新浪微博我们使用新浪微博SSO授权，你需要在xcode工程设置url scheme，并重写AppDelegate中的`- (BOOL)application openURL sourceApplication`方法，详细见文档。否则不能跳转回来原来的app。
@@ -83,7 +88,9 @@
  
  */
 -(IBAction)showShareList3:(id)sender
-{    
+{
+    NSLog(@"allSnsValues is %@",[UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray);
+    
     UIActionSheet * editActionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     for (NSString *snsName in [UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray) {
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
@@ -106,7 +113,7 @@
         return;
     }
     
-     //分享编辑页面的接口
+     //分享编辑页面的接口,snsName可以换成你想要的任意平台，例如UMShareToSina,UMShareToWechatTimeline
     NSString *snsName = [[UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray objectAtIndex:buttonIndex];
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
     snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);
@@ -181,21 +188,20 @@
      // Do any additional setup after loading the view from its nib.
 }
 
--(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     /*
-     如果你用分享列表样式1并且想要支持旋转的话，只能在点击分享调用后下面的写法
-     UMSocialIconActionSheet *iconActionSheet = [[UMSocialControllerService defaultControllerService] getSocialIconActionSheetInController:self];
-     iconActionSheet.tag = 1000;
-     //因为demo，有tabBarController,如果你有navigationController的话用self.navigationController,否则用self.view
-     [iconActionSheet showInView:self.tabBarController.view];
-     
-     并且在这里调用下面的方法
-     //self.tabBarController.view和上面的self.tabBarController.view对应
-     UIView * iconActionSheet = [self.tabBarController.view viewWithTag:1000];
-     [iconActionSheet setNeedsDisplay];
+     如果要弹出的分享列表支持不同方向，需要在这里设置一下重新布局
+     如果当前UIViewController有UINavigationController,则用self.navigationController.view，否则用self.view
      */
-    
+    UIView *iconActionSheet = [self.tabBarController.view viewWithTag:kTagSocialIconActionSheet];
+    [iconActionSheet setNeedsDisplay];
+}
+
+
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
     _shareButton1.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5);
     _shareButton3.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *3);
 }
