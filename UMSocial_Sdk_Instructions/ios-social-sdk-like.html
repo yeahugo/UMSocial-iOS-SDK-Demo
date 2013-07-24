@@ -223,9 +223,17 @@ UMSocialDataService *socialDataService = [[UMSocialDataService alloc] initWithUM
 <pre><code>BOOL isLike = socialData.isLike;
 </code></pre>
 
-<p>获取缓存在本地的喜欢数</p>
+<ul>
+<li>从线上获取喜欢数</li>
+</ul>
 
-<pre><code>[socialData getNumber:UMSNumberLike]
+
+<pre><code>//socialDataService为设置评论内容中初始化的对象    
+    [socialDataService requestSocialDataWithCompletion:^(UMSocialResponseEntity *response){
+// 下面的方法可以获取保存在本地的评论数，如果app重新安装之后，数据会被清空，可能获取值为0
+        int likeNumber = [socialDataService.socialData getNumber:UMSNumberLike];
+        NSLog(@"likeNum is %d",likeNumber);
+    }];
 </code></pre>
 
 <h2>4. 常见错误代码</h2>

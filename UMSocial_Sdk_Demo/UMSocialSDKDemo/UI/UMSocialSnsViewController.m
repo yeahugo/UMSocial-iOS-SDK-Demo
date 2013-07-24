@@ -9,10 +9,6 @@
 #import "UMSocialSnsViewController.h"
 
 #import "AppDelegate.h"
-#import "UMSocialAFHTTPClient.h"
-#import "UMImageView.h"
-#import "UMUtils.h"
-
 #import "UMSocial.h"
 #import "WXApiObject.h"
 
@@ -21,8 +17,6 @@
 @end
 
 @implementation UMSocialSnsViewController
-
-@synthesize postsDic = _postsDic;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -76,9 +70,11 @@
      [UMSocialData defaultData].extConfig.wxMediaObject = webObject;
      */
     
-    NSString *shareText = [UMSocialData defaultData].shareText;      //分享内嵌文字
-    UIImage *shareImage = [UMSocialData defaultData].shareImage;          //分享内嵌图片
-    
+    //分享内嵌文字
+    NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。";
+    //分享内嵌图片
+    UIImage *shareImage = [UIImage imageNamed:@"UMS_social_demo"];          
+        
     //如果得到分享完成回调，可以设置delegate
     [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:nil];
 }
@@ -113,6 +109,11 @@
         return;
     }
     
+    //分享内嵌文字
+    [UMSocialData defaultData].shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。";
+    //分享内嵌图片
+    [UMSocialData defaultData].shareImage = [UIImage imageNamed:@"UMS_social_demo"];
+    
      //分享编辑页面的接口,snsName可以换成你想要的任意平台，例如UMShareToSina,UMShareToWechatTimeline
     NSString *snsName = [[UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray objectAtIndex:buttonIndex];
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
@@ -120,15 +121,11 @@
 }
 
 - (void)viewDidLoad
-{
-    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    _activityIndicatorView.center = CGPointMake(160, 200);
-    [self.view addSubview:_activityIndicatorView];
-    [_activityIndicatorView startAnimating];
-    
+{    
     _shareButton1.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton1.center.y);
      _shareButton3.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton3.center.y);
     
+    /*
     NSDictionary *postsDic = [[NSUserDefaults standardUserDefaults] valueForKey:@"umengPost"];
     
     if (postsDic != nil) {
@@ -180,7 +177,7 @@
         }
         [_activityIndicatorView stopAnimating];
     }];
-
+*/
     [super viewDidLoad];
     self.title = @"分享";
     self.tabBarItem.image = [UIImage imageNamed:@"UMS_share"];

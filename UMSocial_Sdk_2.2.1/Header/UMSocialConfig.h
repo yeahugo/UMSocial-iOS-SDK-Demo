@@ -102,8 +102,10 @@ typedef void (^UMTableViewCellConfig)(UITableViewCell *cell,UMSViewControllerTyp
  例如下面写法
  ```
  [UMSocialConfig setShareGridViewTheme:^(CGContextRef ref, UIImageView *backgroundView){
+ //改变线颜色和线宽
     CGContextSetRGBStrokeColor(ref, 0, 0, 0, 1.0);
     CGContextSetLineWidth(ref, 1.0);
+ //改变背景颜色
     backgroundView.backgroundColor = [UIColor blackColor];
  }];
  ```

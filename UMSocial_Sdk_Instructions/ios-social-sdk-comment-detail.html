@@ -228,13 +228,17 @@ UMSocialDataService *socialDataService = [[UMSocialDataService alloc] initWithUM
 //NSString *usid = [[[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToSina] usid];  //得到已经授权的usid，可以把UMShareToSina替换为代表其他平台的字符串   
 //NSDictionary *shareToSNS = [NSDictionary dictionaryWithObjectsAndKeys:usid,UMShareToSina,nil];
 </code></pre></li>
-<li><p>获取保存在本地的评论数</p>
-
-<pre><code>//socialDataService为设置评论内容中初始化的对象    
-[socialDataService getNumber:UMSNumberComment]
-</code></pre></li>
+<li><p>从线上获取评论数</p></li>
 </ul>
 
+
+<pre><code>//socialDataService为设置评论内容中初始化的对象    
+    [socialDataService requestSocialDataWithCompletion:^(UMSocialResponseEntity *response){
+// 下面的方法可以获取保存在本地的评论数，如果app重新安装之后，数据会被清空，可能获取值为0
+        int commentNumber = [socialDataService.socialData getNumber:UMSNumberComment];
+        NSLog(@"commentNum is %d",commentNumber);
+    }];
+</code></pre>
 
 <h3>常见错误代码含义</h3>
 

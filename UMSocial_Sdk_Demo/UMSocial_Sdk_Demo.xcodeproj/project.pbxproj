@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D518A99916D39A5100893507 /* UMS_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D518A99816D39A5100893507 /* UMS_settings@2x.png */; };
+		D534FA76179FC6920067BDCF /* UMS_social_demo.png in Resources */ = {isa = PBXBuildFile; fileRef = D534FA75179FC6920067BDCF /* UMS_social_demo.png */; };
 		D53746AD1738CB450093F280 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FE16082B1200C7AD07 /* CoreGraphics.framework */; };
 		D57436FB16082B1200C7AD07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FA16082B1200C7AD07 /* UIKit.framework */; };
 		D57436FD16082B1200C7AD07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FC16082B1200C7AD07 /* Foundation.framework */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		D518A99816D39A5100893507 /* UMS_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UMS_settings@2x.png"; sourceTree = "<group>"; };
+		D534FA75179FC6920067BDCF /* UMS_social_demo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UMS_social_demo.png; sourceTree = "<group>"; };
 		D57436F616082B1200C7AD07 /* UMSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UMSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57436FA16082B1200C7AD07 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D57436FC16082B1200C7AD07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -200,6 +202,7 @@
 		D5743852160836C700C7AD07 /* DemoImages */ = {
 			isa = PBXGroup;
 			children = (
+				D534FA75179FC6920067BDCF /* UMS_social_demo.png */,
 				D518A99816D39A5100893507 /* UMS_settings@2x.png */,
 				D580B33216B3BB7100BF3481 /* UMS_account@2x.png */,
 				D580B33316B3BB7100BF3481 /* UMS_bar@2x.png */,
@@ -383,6 +386,7 @@
 				D5C870641793CF5E004401CB /* UMSnsAccountViewController.xib in Resources */,
 				D5C870651793CF5E004401CB /* UMSShareListController.xib in Resources */,
 				D5C870661793CF5E004401CB /* UMSocialSDKResourcesNew.bundle in Resources */,
+				D534FA76179FC6920067BDCF /* UMS_social_demo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

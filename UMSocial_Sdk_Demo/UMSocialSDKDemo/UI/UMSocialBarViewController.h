@@ -13,7 +13,6 @@
 @interface UMSocialBarViewController : UIViewController<UMSocialUIDelegate>
 {
     UMSocialBar *_socialBar;
-    UIWebView   *_webView;
 }
 
 @end
