@@ -45,11 +45,12 @@
 //下面得到分享完成的回调
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
+    NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);
     //根据`responseCode`得到发送结果,如果分享成功
     if(response.responseCode == UMSResponseCodeSuccess)
     {
         //得到分享到的微博平台名
-        NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+//        NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
     }
 }
 
@@ -64,19 +65,18 @@
     [UMSocialData defaultData].extConfig.appUrl = @"https://www.umeng.com";//设置你应用的下载地址
     
     //2.用微信web类型，用户点击直接打开web
-    /*    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeOther;
-     WXWebpageObject *webObject = [WXWebpageObject object];
-     webObject.webpageUrl = @"https://www.umeng.com"; //设置你自己的url地址
-     [UMSocialData defaultData].extConfig.wxMediaObject = webObject;
-     */
     
-    //分享内嵌文字
-    NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。";
-    //分享内嵌图片
-    UIImage *shareImage = [UIImage imageNamed:@"UMS_social_demo"];          
+//     [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeOther;
+//     WXWebpageObject *webObject = [WXWebpageObject object];
+//     webObject.webpageUrl = @"https://www.umeng.com"; //设置你自己的url地址
+//     [UMSocialData defaultData].extConfig.wxMediaObject = webObject;
+    
+    
+    NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。";             //分享内嵌文字
+    UIImage *shareImage = [UIImage imageNamed:@"UMS_social_demo"];          //分享内嵌图片
         
     //如果得到分享完成回调，可以设置delegate
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:nil];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:self];
 }
 
 /*
@@ -125,59 +125,6 @@
     _shareButton1.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton1.center.y);
      _shareButton3.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton3.center.y);
     
-    /*
-    NSDictionary *postsDic = [[NSUserDefaults standardUserDefaults] valueForKey:@"umengPost"];
-    
-    if (postsDic != nil) {
-        self.postsDic = postsDic;
-        NSString *title = [self.postsDic  valueForKey:@"title"];
-        NSString *url = [self.postsDic  valueForKey:@"url"];
-        NSString *shareText = [NSString stringWithFormat:@"%@  %@",title,url];
-        
-        //设置分享内嵌文字
-        [UMSocialData defaultData].shareText = shareText;
-    }
-    else{
-        [UMSocialData defaultData].shareText = @"友盟社会化分享 http://www.umeng.com/";
-    }
-
-    UMSocialAFHTTPClient *httpClient = [UMSocialAFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"http://blog.umeng.com/"]];
-    [httpClient getPath:@"/api/get_recent_posts/" parameters:nil success:^(UMSocialAFHTTPRequestOperation *operation, id responseObject){
-        NSString *jsonString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSDictionary *jsonDic = [UMUtils JSONValue:jsonString];
-
-        [_activityIndicatorView stopAnimating];
-        
-        NSDictionary *postsDic = [[NSDictionary alloc] initWithDictionary:[[jsonDic valueForKey:@"posts"] objectAtIndex:0]];
-        self.postsDic = postsDic;
-
-        [[NSUserDefaults standardUserDefaults] setValue:self.postsDic forKey:@"umengPost"];
-        
-        NSString *title = [self.postsDic  valueForKey:@"title"];
-        NSString *url = [self.postsDic  valueForKey:@"url"];
-        NSString *shareText = [NSString stringWithFormat:@"%@  %@",title,url];
-        [UMSocialData defaultData].shareText = shareText;
-        if ([[self.postsDic valueForKey:@"attachments"] count] > 0) {
-            NSString *imageUrl = [[[self.postsDic valueForKey:@"attachments"] objectAtIndex:0] valueForKey:@"url"];
-            UMImageView *imageView = [[UMImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"icon"]];
-            imageView.imageURL = [NSURL URLWithString:[imageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-            [UMSocialData defaultData].shareImage = imageView.image;
-        }
-        else{
-            [UMSocialData defaultData].shareImage = [UIImage imageNamed:@"icon"];
-        }
-    } failure:^(UMSocialAFHTTPRequestOperation *operation, NSError *error){
-        NSLog(@"error is %@ %d",error,error.code);
-        if (error.code == -1009) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"获取数据失败" message:@"当前设备的网络状态不正常，请稍后重试" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
-            [alertView show];
-        }
-        else{
-            NSLog(@"connect to the umeng blog server fail!!");
-        }
-        [_activityIndicatorView stopAnimating];
-    }];
-*/
     [super viewDidLoad];
     self.title = @"分享";
     self.tabBarItem.image = [UIImage imageNamed:@"UMS_share"];

@@ -109,10 +109,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
--(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType
-{
-    NSLog(@"close!!");
-}
 
 -(void)onSwitchOauth:(UISwitch *)switcher
 {
@@ -123,10 +119,7 @@
         
         //此处调用授权的方法,你可以把下面的platformName 替换成 UMShareToSina,UMShareToTencent等
         NSString *platformName = [UMSocialSnsPlatformManager getSnsPlatformString:switcher.tag];
-        
-        //下面设置获取关闭页面的回调方法
-        [UMSocialControllerService defaultControllerService].socialUIDelegate = self;
-
+                
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
         snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
 

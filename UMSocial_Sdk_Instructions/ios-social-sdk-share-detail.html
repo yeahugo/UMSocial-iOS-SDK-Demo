@@ -236,10 +236,30 @@ pre code {
 
 <p><img src="http://dev.umeng.com/images/ios/social_sso.png" title="social_sso" alt="socialbar" /></p>
 
-<p>3 . 设置图文分享，因为使用微信分享图文的话，文字会被截断，所以我们默认只分享文字，下面设置图文分享。并且如果分享到朋友圈的话，还要设置应用网址，否则分享失败。</p>
+<p>3 . 设置图文分享。我们用微信的应用类型信息来实现图文分享。用户点击分享信息会跳到应用或者跳到应用下载地址。如果分享到朋友圈的话，还要设置应用网址，否则分享失败。</p>
 
-<pre><code>[UMSocialControllerService defaultControllerService].socialData.extConfig.wxMessageType = UMSocialWXMessageTypeApp;   //可以指定音乐类型或者视频类型
-[UMSocialData defaultData].extConfig.appUrl = @"http://www.uemng.com";         
+<pre><code>[UMSocialData defaultData].shareText = @"内嵌分享文字";  //分享内嵌文字
+[UMSocialData defaultData].shareImage = [UIImage imageNamed:@"icon"]; //分享内嵌图片
+[UMSocialData defaultData].extConfig.title = @"分享标题";  //分享标题  
+[UMSocialControllerService defaultControllerService].socialData.extConfig.wxMessageType = UMSocialWXMessageTypeApp;   //信息为应用类型
+[UMSocialData defaultData].extConfig.appUrl = @"http://www.uemng.com"; //应用的下载地址        
+</code></pre>
+
+<p>分享url链接,用户点击分享信息会打开指定url网页。也可以实现图文分享的效果</p>
+
+<pre><code>[UMSocialData defaultData].extConfig.title = @"分享标题";   //分享标题，分享到朋友圈只能显示标题内容
+[UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeOther; //设置为网页、音乐等其他类型
+WXWebpageObject *webObject = [WXWebpageObject object];    //初始化微信网页对象
+webObject.webpageUrl = @"https://www.umeng.com"; //设置网页的url地址
+[UMSocialData defaultData].extConfig.wxMediaObject = webObject; //设置网页对象
+</code></pre>
+
+<p>类似的方式可以实现音乐、视频等资源</p>
+
+<pre><code>[UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeOther; //设置为网页、音乐等其他类型
+WXMusicObject *musicObject = [WXMusicObject object];            //初始化微信音乐对象
+musicObject.musicUrl = @"http://www.xiami.com/song/2100097";    //设置音乐url地址
+[UMSocialData defaultData].extConfig.wxMediaObject = musicObject; //设置音乐对象
 </code></pre>
 
 <p>4 . 如果想要在分享完成后，跳回你原来应用时，会显示分享成功或失败，可以在在你的<code>AppDelegate</code>文件里面实现下面的方法：</p>
@@ -401,13 +421,19 @@ snsPlatform.snsClickHandler(self,socialControllerService,YES);
 <ul>
 <li><p>直接发送微博到对应的微博平台,支持一次分享到多平台，可以传入文字、图片、地理位置、url资源。如果不需要图片、地理位置和url资源都可以指定为nil。如果想得到分享结果，可以在回调Block对象形参response得到。</p>
 
-<pre><code>[[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:@"分享内嵌文字" image:nil location:nil urlResource:nil completion:^(UMSocialResponseEntity *response){
-          NSLog(@"SnsFriends is %@",response.data);
-      }];
+<pre><code>  [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:@"分享内嵌文字" image:nil location:nil urlResource:nil completion:^(UMSocialResponseEntity *response){
+      if (response.responseCode == UMSResponseCodeSuccess) {
+          NSLog(@"分享成功！");
+      }
+  }];
 </code></pre></li>
-<li><p>获取保存在本地的分享微博次数</p>
+<li><p>从线上获取分享数</p>
 
-<pre><code>[[UMSocialData defaultData] getNumber:UMSNumberShare]
+<pre><code>  [[UMSocialDataService defaultDataService] requestSocialDataWithCompletion:^(UMSocialResponseEntity *response){
+// 下面的方法可以获取保存在本地的分享数，如果app重新安装之后，数据会被清空，可能获取值为0
+      int shareNumber = [socialDataService.socialData getNumber:UMSNumberShare];
+      NSLog(@"shareNum is %d",shareNumber);
+  }];
 </code></pre></li>
 </ul>
 

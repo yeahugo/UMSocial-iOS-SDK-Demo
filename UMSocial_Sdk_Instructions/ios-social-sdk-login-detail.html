@@ -210,7 +210,7 @@ BOOL isOauth = [UMSocialAccountManager isOauthWithPlatform:UMShareToSina];
 <ul>
 <li><p>授权完成的回调函数</p>
 
-<pre><code>[UMSocialControllerService defaultControllerService].soicalUIDelegate = self;      //设置回调对象
+<pre><code>[UMSocialControllerService defaultControllerService].socialUIDelegate = self;      //设置回调对象
 //实现回调方法
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
