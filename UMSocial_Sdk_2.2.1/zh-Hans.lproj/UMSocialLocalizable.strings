@@ -74,6 +74,7 @@
 "commentEdit_noLocation_title" = "定位服务已关闭";
 "commentEdit_noLocation_message" = "您当前设备的定位服务处于关闭状态，或者没有对此应用开启地理位置服务。若想要分享地理位置信息，请到设置中开启定位服务后，进行地理位置分享";
 "commentEdit_title" = "新评论";
+"commentEdit_wait" = "评论发送中，请稍等";
 
 "ego_pull_down" = "下拉刷新";
 "ego_pull_up" = "上拉加载更多";

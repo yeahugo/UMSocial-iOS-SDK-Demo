@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1536</int>
-		<string key="IBDocument.SystemVersion">12C60</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<int key="IBDocument.SystemTarget">1552</int>
+		<string key="IBDocument.SystemVersion">12E55</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
+		<string key="IBDocument.AppKitVersion">1187.39</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1930</string>
+			<string key="NS.object.0">2083</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBMKMapView</string>
@@ -114,9 +114,9 @@
 											<int key="NSColorSpace">3</int>
 											<bytes key="NSWhite">MC41AA</bytes>
 										</object>
-										<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="845690992">
+										<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="683935189">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">UMSocialSDKResources.bundle/UMS_tencent_off.png</string>
+											<string key="NSResourceName">UMSocialSDKResourcesNew.bundle/SnsPlatform/UMS_tencent_off.png</string>
 										</object>
 										<object class="IBUIFontDescription" key="IBUIFontDescription" id="872259642">
 											<int key="type">2</int>
@@ -173,7 +173,7 @@
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
 										<reference key="IBUINormalTitleShadowColor" ref="532529066"/>
-										<reference key="IBUINormalBackgroundImage" ref="845690992"/>
+										<reference key="IBUINormalBackgroundImage" ref="683935189"/>
 										<reference key="IBUIFontDescription" ref="872259642"/>
 										<reference key="IBUIFont" ref="139538037"/>
 									</object>
@@ -203,7 +203,7 @@
 										<reference key="IBUINormalTitleShadowColor" ref="532529066"/>
 										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">UMSocialSDKResources.bundle/UMS_sina_off.png</string>
+											<string key="NSResourceName">UMSocialSDKResourcesNew.bundle/SnsPlatform/UMS_sina_off.png</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="872259642"/>
 										<reference key="IBUIFont" ref="139538037"/>
@@ -234,7 +234,7 @@
 										<reference key="IBUINormalTitleShadowColor" ref="532529066"/>
 										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">UMSocialSDKResources.bundle/UMS_renren_off.png</string>
+											<string key="NSResourceName">UMSocialSDKResourcesNew.bundle/SnsPlatform/UMS_renren_off.png</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="872259642"/>
 										<reference key="IBUIFont" ref="139538037"/>
@@ -265,7 +265,7 @@
 										<reference key="IBUINormalTitleShadowColor" ref="532529066"/>
 										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">UMSocialSDKResources.bundle/UMS_douban_off.png</string>
+											<string key="NSResourceName">UMSocialSDKResourcesNew.bundle/SnsPlatform/UMS_douban_off.png</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="872259642"/>
 										<reference key="IBUIFont" ref="139538037"/>
@@ -734,16 +734,16 @@
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1536" key="NS.object.0"/>
+			<real value="1552" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="UMSocialSDKResources.bundle/UMS_douban_off.png">{16, 16}</string>
-			<string key="UMSocialSDKResources.bundle/UMS_renren_off.png">{16, 16}</string>
-			<string key="UMSocialSDKResources.bundle/UMS_sina_off.png">{16, 16}</string>
-			<string key="UMSocialSDKResources.bundle/UMS_tencent_off.png">{16, 16}</string>
+			<string key="UMSocialSDKResourcesNew.bundle/SnsPlatform/UMS_douban_off.png">{16, 16}</string>
+			<string key="UMSocialSDKResourcesNew.bundle/SnsPlatform/UMS_renren_off.png">{16, 16}</string>
+			<string key="UMSocialSDKResourcesNew.bundle/SnsPlatform/UMS_sina_off.png">{16, 16}</string>
+			<string key="UMSocialSDKResourcesNew.bundle/SnsPlatform/UMS_tencent_off.png">{16, 16}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1930</string>
+		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
 </archive>

@@ -45,7 +45,7 @@
 //下面得到分享完成的回调
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
-    NSLog(@"didFinishGetUMSocialDataInViewController is %@",response);
+    NSLog(@"didFinishGetUMSocialDataInViewController with response is %@",response);
     //根据`responseCode`得到发送结果,如果分享成功
     if(response.responseCode == UMSResponseCodeSuccess)
     {
@@ -65,18 +65,18 @@
     [UMSocialData defaultData].extConfig.appUrl = @"https://www.umeng.com";//设置你应用的下载地址
     
     //2.用微信web类型，用户点击直接打开web
-    
-//     [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeOther;
-//     WXWebpageObject *webObject = [WXWebpageObject object];
-//     webObject.webpageUrl = @"https://www.umeng.com"; //设置你自己的url地址
-//     [UMSocialData defaultData].extConfig.wxMediaObject = webObject;
-    
+    /*
+     [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeOther;
+     WXWebpageObject *webObject = [WXWebpageObject object];
+     webObject.webpageUrl = @"https://www.umeng.com"; //设置你自己的url地址
+     [UMSocialData defaultData].extConfig.wxMediaObject = webObject;
+    */
     
     NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。";             //分享内嵌文字
     UIImage *shareImage = [UIImage imageNamed:@"UMS_social_demo"];          //分享内嵌图片
-        
-    //如果得到分享完成回调，可以设置delegate
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:self];
+
+    //如果得到分享完成回调，需要传递delegate参数
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:nil];
 }
 
 /*
@@ -85,8 +85,6 @@
  */
 -(IBAction)showShareList3:(id)sender
 {
-    NSLog(@"allSnsValues is %@",[UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray);
-    
     UIActionSheet * editActionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     for (NSString *snsName in [UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray) {
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
@@ -117,6 +115,7 @@
      //分享编辑页面的接口,snsName可以换成你想要的任意平台，例如UMShareToSina,UMShareToWechatTimeline
     NSString *snsName = [[UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray objectAtIndex:buttonIndex];
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
+    
     snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);
 }
 

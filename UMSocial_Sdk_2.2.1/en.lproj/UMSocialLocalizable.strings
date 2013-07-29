@@ -74,6 +74,7 @@
 "commentEdit_noLocation_title" = "Location service have been turned off";
 "commentEdit_noLocation_message" = "Your device's location service have been turned off, please turn on it before you share your location";
 "commentEdit_title" = "New Comment";
+"commentEdit_wait" = "Please wait";
 
 "ego_pull_down" = "Pull down, refresh";
 "ego_refresh" = "Loose to refresh";

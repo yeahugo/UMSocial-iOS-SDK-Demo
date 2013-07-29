@@ -39,8 +39,6 @@
     //设置友盟appkey
     [UMSocialData setAppKey:useAppkey];
     
-    [UMSocialConfig setBoundsSizeForiPad:CGSizeMake(700, 300)];
-
     return YES;
 }
 
