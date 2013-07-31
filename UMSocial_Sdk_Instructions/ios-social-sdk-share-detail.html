@@ -254,11 +254,17 @@ webObject.webpageUrl = @"https://www.umeng.com"; //设置网页的url地址
 [UMSocialData defaultData].extConfig.wxMediaObject = webObject; //设置网页对象
 </code></pre>
 
+<p>分享纯图片消息</p>
+
+<pre><code>    [UMSocialData defaultData].shareImage = [UIImage imageNamed:@"icon"]; //利用已经设置的分享内嵌图片
+    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeImage;
+</code></pre>
+
 <p>类似的方式可以实现音乐、视频等资源</p>
 
 <pre><code>[UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeOther; //设置为网页、音乐等其他类型
 WXMusicObject *musicObject = [WXMusicObject object];            //初始化微信音乐对象
-musicObject.musicUrl = @"http://www.xiami.com/song/2100097";    //设置音乐url地址
+musicObject.musicUrl = @"http://m1.file.xiami.com/1/794/23794/170064/2100097_222445_l.mp3";    //设置音乐url地址
 [UMSocialData defaultData].extConfig.wxMediaObject = musicObject; //设置音乐对象
 </code></pre>
 
@@ -438,7 +444,7 @@ snsPlatform.snsClickHandler(self,socialControllerService,YES);
 </ul>
 
 
-<h2>4 <a name="binding_config" id="binding_config" style="color:black">绑定友盟应用标识与各开放平台</a></h2>
+<h2>5 <a name="binding_config" id="binding_config" style="color:black">绑定友盟应用标识与各开放平台</a></h2>
 
 <p>   获得appkey后，为了方便您可以快速集成我们的社会化分享的服务，我们会为你对各个平台提供一个默认的appkey和appsecret，如果你想使用自己的微博平台的应用，您需在在我们网站更改默认的微博appkey，具体操作是：登录友盟网站->左上角选择你们的产品->组件->社会化组件->设置,菜单项下进行绑定配置。如果你尚未在我们支持的分享平台注册你的应用，注册过程可以参考如下：</p>
 
@@ -522,11 +528,11 @@ snsPlatform.snsClickHandler(self,socialControllerService,YES);
 4. 按照以上配置可以满足大部分的图片分享需求，即指定图片URL进行图片分享；如需支持上传图片内容并分享，要在此页面另行申请upload_pic权限：http://wiki.opensns.qq.com/wiki/【QQ登录】API文档）
 </code></pre>
 
-<h2><a name="FAQ" id="FAQ" style="color:black">5. FAQ</a></h2>
+<h2><a name="FAQ" id="FAQ" style="color:black">6. FAQ</a></h2>
 
 <p>请到<a href="http://support.umeng.com/?qa=ios-sdk-%E9%9B%86-%E6%88%90" style="text-decoration:none">友盟社会化组件的帮助与支持页面</a></p>
 
-<h2><a name="error_code" id="error_code" style="color:black">6. 附录</a></h2>
+<h2><a name="error_code" id="error_code" style="color:black">7. 附录</a></h2>
 
 <h3>1 常见错误代码含义</h3>
 

@@ -41,6 +41,8 @@
 "shareEdit_error_user_baned" = "对不起，因为违反了用户协议您已被禁言";
 "shareEdit_error_fail" = "分享失败";
 "shareEdit_error_empty_content" = "发送文字内容为空，分享失败";
+"shareEdit_C" = "符";
+"shareEdit_used" = "常";
 
 "share_wechat" = "分享到微信";
 "share_wechat_friend" = "分享到微信好友";

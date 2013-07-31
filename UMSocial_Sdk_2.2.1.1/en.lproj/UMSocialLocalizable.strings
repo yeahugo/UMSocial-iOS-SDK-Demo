@@ -41,6 +41,8 @@
 "shareEdit_error_user_baned" = "Sorry, you have been banned";
 "shareEdit_error_fail" = "Share fail";
 "shareEdit_error_empty_content" = "Share fail, for the content is empty";
+"shareEdit_C" = "符";
+"shareEdit_used" = "常";
 
 "share_wechat" = "Share to Wechat";
 "share_wechat_friend" = "Share to Wechat Friend";
