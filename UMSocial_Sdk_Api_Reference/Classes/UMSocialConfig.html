@@ -64,6 +64,8 @@
 	
 	<option value="//api/name/setSupportSinaSSO:">&nbsp;&nbsp;&nbsp;&nbsp;+ setSupportSinaSSO:</option>
 	
+	<option value="//api/name/setSupportTencentSSO:">&nbsp;&nbsp;&nbsp;&nbsp;+ setSupportTencentSSO:</option>
+	
 	<option value="//api/name/setSupportedInterfaceOrientations:">&nbsp;&nbsp;&nbsp;&nbsp;+ setSupportedInterfaceOrientations:</option>
 	
 	<option value="//api/name/setTableViewCellConfig:">&nbsp;&nbsp;&nbsp;&nbsp;+ setTableViewCellConfig:</option>
@@ -119,6 +121,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSnsPlatformNames:">setSnsPlatformNames:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSupportSinaSSO:">setSupportSinaSSO:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSupportTencentSSO:">setSupportTencentSSO:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSupportedInterfaceOrientations:">setSupportedInterfaceOrientations:</a></span></li>
 	
@@ -207,7 +211,7 @@
 		<code><a href="#//api/name/setShareGridViewTheme:">+&nbsp;setShareGridViewTheme:</a></code>
 		<span class="tooltip"><p>设置分享列表页面，Block对象的形参包括有绘制当前线条的CGContex指针，icon背景视图
 例如下面写法
-[UMSocialConfig setShareGridViewTheme:^(CGContextRef ref, UIImageView *backgroundView){
+[UMSocialConfig setShareGridViewTheme:^(CGContextRef ref, UIImageView <em>backgroundView,UILabel </em>label){
 //改变线颜色和线宽</p>
 
 <pre><code>CGContextSetRGBStrokeColor(ref, 0, 0, 0, 1.0);
@@ -217,9 +221,7 @@ CGContextSetLineWidth(ref, 1.0);
 <p>//改变背景颜色</p>
 
 <pre><code>backgroundView.backgroundColor = [UIColor blackColor];
-</code></pre>
-
-<p>}];</p></span>
+</code></pre></span>
 	</span>
 	
 	
@@ -293,6 +295,13 @@ CGContextSetLineWidth(ref, 1.0);
 	<span class="tooltip">
 		<code><a href="#//api/name/setSupportSinaSSO:">+&nbsp;setSupportSinaSSO:</a></code>
 		<span class="tooltip"><p>设置是否支持新浪微博SSO，默认支持</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setSupportTencentSSO:">+&nbsp;setSupportTencentSSO:</a></code>
+		<span class="tooltip"><p>设置是否支持腾讯微博SSO，默认支持</p></span>
 	</span>
 	
 	
@@ -470,7 +479,7 @@ CGContextSetLineWidth(ref, 1.0);
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>weiboUids</em></dt>
-			<dd><p>腾讯微博和新浪微博的key分别是<code>UMShareToSina</code>和<code>UMShareToTenc</code>,值分别是官方微博的uid</p></dd>
+			<dd><p>腾讯微博和新浪微博的key分别是<code>UMShareToSina</code>和<code>UMShareToTenc</code>,值分别是官方微博的uid,例如<code>[UMSocialConfig setFollowWeiboUids:[NSDictionary dictionaryWithObjectsAndKeys:UMShareToSina,@"yourSinaUid",nil]];</code></p></dd>
 		</dl>
 		
 	</div>
@@ -602,7 +611,7 @@ CGContextSetLineWidth(ref, 1.0);
 	<div class="method-subsection brief-description">
 		<p>设置分享列表页面，Block对象的形参包括有绘制当前线条的CGContex指针，icon背景视图
 例如下面写法
-[UMSocialConfig setShareGridViewTheme:^(CGContextRef ref, UIImageView *backgroundView){
+[UMSocialConfig setShareGridViewTheme:^(CGContextRef ref, UIImageView <em>backgroundView,UILabel </em>label){
 //改变线颜色和线宽</p>
 
 <pre><code>CGContextSetRGBStrokeColor(ref, 0, 0, 0, 1.0);
@@ -613,8 +622,6 @@ CGContextSetLineWidth(ref, 1.0);
 
 <pre><code>backgroundView.backgroundColor = [UIColor blackColor];
 </code></pre>
-
-<p>}];</p>
 	</div>		
 	
     
@@ -638,6 +645,27 @@ CGContextSetLineWidth(ref, 1.0);
 	
 	
 	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>//添加背景图片
+UIImageView *imageView = [[UIImageView alloc] initWithFrame:backgroundView.frame];
+imageView.image = [UIImage imageNamed:@&ldquo;share_bg.png&rdquo;];
+[backgroundView addSubview:imageView];
+backgroundView.backgroundColor = [UIColor clearColor];</p>
+
+<p>//改变文字标题的文字颜色</p>
+
+<pre><code>label.textColor = [UIColor blueColor];
+</code></pre>
+
+<p>//隐藏文字</p>
+
+<pre><code>label.hidden = YES;
+</code></pre>
+
+<p>}];</p>
+	</div>
 	
 	
 	
@@ -856,6 +884,42 @@ CGContextSetLineWidth(ref, 1.0);
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/setSupportTencentSSO:" title="setSupportTencentSSO:"></a>
+	<h3 class="subsubtitle method-title">setSupportTencentSSO:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>设置是否支持腾讯微博SSO，默认支持</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setSupportTencentSSO:(BOOL)<em>supportTencentSSO</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialConfig.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/setSupportedInterfaceOrientations:" title="setSupportedInterfaceOrientations:"></a>
 	<h3 class="subsubtitle method-title">setSupportedInterfaceOrientations:</h3>
 	
@@ -1018,7 +1082,7 @@ CGContextSetLineWidth(ref, 1.0);
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-07-31)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-08-19)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

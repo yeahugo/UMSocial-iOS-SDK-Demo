@@ -8,10 +8,12 @@
 
 #import "AppDelegate.h"
 #import "UMSocialTabBarController.h"
-#import "UMSocialSnsService.h"
-#import "UMSocialData.h"
-#import "WXApi.h"
-#import "UMSocialConfig.h"
+
+#import "UMSocial.h"
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+
+#import "MobClick.h"
 
 @implementation AppDelegate
 
@@ -30,14 +32,22 @@
     [WXApi registerApp:@"wxd9a39c7122aa6516"];
     
     //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
-    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
-
+    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];    
     
     UMSocialTabBarController *tabViewController = [[UMSocialTabBarController alloc] init];
     self.window.rootViewController = tabViewController;
 
-    //设置友盟appkey
+    //设置友盟社会化组件appkey
     [UMSocialData setAppKey:useAppkey];
+    
+    //打开新浪微博SSO开关
+    [UMSocialConfig setSupportSinaSSO:YES];
+    [UMSocialConfig setSupportTencentSSO:YES];
+    //打开手机QQ和QQ空间SSO的功能
+    [UMSocialSnsService importClasses:[QQApiInterface class] tencentAuth:[TencentOAuth class] qqAppkey:nil];
+    
+    //使用友盟统计
+    [MobClick startWithAppkey:useAppkey];
     
     return YES;
 }

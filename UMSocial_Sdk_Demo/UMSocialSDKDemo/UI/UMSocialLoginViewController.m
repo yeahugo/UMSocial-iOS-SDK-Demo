@@ -35,6 +35,7 @@
 {
     _snsTableView.frame = CGRectMake(_snsTableView.frame.origin.x, _snsTableView.frame.origin.y, _snsTableView.frame.size.width, 220);
     [_snsTableView reloadData];
+    
     [super viewWillAppear:animated];
 }
 
@@ -119,16 +120,15 @@
         
         //此处调用授权的方法,你可以把下面的platformName 替换成 UMShareToSina,UMShareToTencent等
         NSString *platformName = [UMSocialSnsPlatformManager getSnsPlatformString:switcher.tag];
-                
+        
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
         snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
-
+            NSLog(@"login response is %@",response);
 //          获取微博用户名、uid、token等
             if (response.responseCode == UMSResponseCodeSuccess) {
                 UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:platformName];
                 NSLog(@"username is %@, uid is %@, token is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken);                
             }
-            
             //这里可以获取到腾讯微博openid,Qzone的token等
             /*
             if ([platformName isEqualToString:UMShareToTencent]) {
@@ -137,6 +137,7 @@
                 }];
             }
              */
+        
          [_snsTableView reloadData];
         });
         
@@ -154,7 +155,9 @@
 {
     if (buttonIndex == 0) {
         NSString *platformType = [UMSocialSnsPlatformManager getSnsPlatformString:actionSheet.tag];
+        
         [[UMSocialDataService defaultDataService] requestUnOauthWithType:platformType completion:^(UMSocialResponseEntity *response) {
+            NSLog(@"unOauth response is %@",response);
             [_snsTableView reloadData];
         }];
     }

@@ -50,7 +50,7 @@
     if(response.responseCode == UMSResponseCodeSuccess)
     {
         //得到分享到的微博平台名
-//        NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+        NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
     }
 }
 
@@ -74,9 +74,24 @@
     
     NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。";             //分享内嵌文字
     UIImage *shareImage = [UIImage imageNamed:@"UMS_social_demo"];          //分享内嵌图片
-
+    
+    //下面设置手机QQ的图文分享
+    /*
+    NSURL *url = [NSURL URLWithString:@"http://www.umeng.com"];
+    
+    NSData* imageData = UIImageJPEGRepresentation(shareImage, 1.0);
+    
+    QQApiNewsObject* newsObject = [QQApiNewsObject objectWithURL:url title:@"友盟社会化组件" description:@"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。" previewImageData:imageData];
+    [UMSocialData defaultData].extConfig.qqMediaObject = newsObject;
+    */
+    
+//    [UMSocialConfig setShareGridViewTheme:^(CGContextRef ref, UIImageView *backgroundView, UILabel *label){
+//        label.textColor = [UIColor blueColor];
+//        label.hidden = YES;
+//    }];
+    
     //如果得到分享完成回调，需要传递delegate参数
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:nil];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:self];
 }
 
 /*
@@ -84,7 +99,7 @@
  
  */
 -(IBAction)showShareList3:(id)sender
-{
+{    
     UIActionSheet * editActionSheet = [[UIActionSheet alloc] initWithTitle:@"图文分享" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     for (NSString *snsName in [UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray) {
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];

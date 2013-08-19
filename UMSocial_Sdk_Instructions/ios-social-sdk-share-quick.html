@@ -177,21 +177,15 @@ pre code {
 
 <h2>3 <a name="quick_use" id="quick_use" style="color:black">下载并安装SDK</a></h2>
 
-<h3>Step1</h3>
+<h3>Step1 下载SDK</h3>
 
 <p>下载 <a href="http://dev.umeng.com/sdkdownload/sdkdownload_ios_social.html" style="text-decoration:none" target="_blank">最新版SDK</a></p>
 
-<h3>Step2</h3>
+<h3>Step2 加入SDK</h3>
 
-<p>确认你使用的XCode版本在4.4以上，工程的Base SDK和iOS Deployment Target在iOS4.3以上</p>
-
-<h3>Step3</h3>
-
-<p>解压SDK压缩包，将其中形如UMSocial_Sdk_x.x.x的文件夹拖入工程目录：</p>
+<p>解压SDK压缩包，将形如UMSocial_Sdk_x.x.x的文件夹拖入工程目录：</p>
 
 <p><img src="http://dev.umeng.com/images/ios/social_drag_sdk.png" title="drag_sdk" alt="alt text" /></p>
-
-<h3>Step4</h3>
 
 <p>确认勾选了“Copy items to destination's group folder”选项，并选择你要添加到的Target:</p>
 
@@ -201,7 +195,7 @@ pre code {
 
 <p><img src="http://dev.umeng.com/images/ios/social_project_structure.png" title="project_structure" alt="alt text" /></p>
 
-<h3>Step5</h3>
+<h3>Step3 设置AppKey</h3>
 
 <p>在AppDelegate内设置友盟AppKey</p>
 
@@ -213,16 +207,13 @@ pre code {
 }
 </code></pre>
 
-<h3>Step6</h3>
+<h3>Step4 添加实现代码</h3>
 
-<p>打开需要集成分享功能的视图源码<code>UIViewController.m</code>，在文件顶部添加如下语句：</p>
+<p>打开需要集成分享功能的视图源码<code>UIViewController.m</code>，把如下代码复制并粘贴到你将弹出一个分享列表的位置，例如到响应分享按钮的方法中。并且修改下面的友盟appkey，你要分享的文字、图片，你要分享到的微博平台，例如下面写的是新浪微博、腾讯微博、人人网。</p>
 
 <pre><code>#import "UMSocial.h"
-</code></pre>
-
-<p>把如下代码复制并粘贴到你将弹出一个分享列表的位置，例如到响应分享按钮的方法中。并且修改下面的友盟appkey，你要分享的文字、图片，你要分享到的微博平台，例如下面写的是新浪微博、腾讯微博、人人网。</p>
-
-<pre><code>[UMSocialSnsService presentSnsIconSheetView:self
+……
+[UMSocialSnsService presentSnsIconSheetView:self
                                      appKey:@"507fcab25270157b37000010"
                                   shareText:@"你要分享的文字"
                                  shareImage:[UIImage imageNamed:@"icon.png"]
@@ -256,7 +247,7 @@ pre code {
 </tr>
 <tr>
 <td>shareToSnsNames</td>
-<td>定义列表出现的sns平台，由SDK中定义好的平台名字符串组成的数组，例如传入的数组是<code>@[UMShareToSina,UMShareToTencent,UMShareToRenren]</code>分别是新浪微博、腾讯微博、人人网，其他平台名有UMShareToQzone,UMShareToDouban,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToEmail,UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter。分别代表QQ空间、豆瓣、微信好友、微信朋友圈、邮件、短信、Facebook、Twitter。如果设为nil的话出现所有平台。<strong>重要提示：由于微信平台特殊，在分享列表添加了微信之后还需要一些额外的设置，请参考我们<a href="http://dev.umeng.com/doc/document_social_ios_detail.html#wechat_config" target="_blank">详细集成文档微信的设置</a></strong></td>
+<td>定义列表出现的微博平台字符串构成的数组，字符变量名为UMShareToSina、UMShareToTencent、UMShareToWechatSession、UMShareToWechatTimeline、UMShareToQzone、UMShareToQQ、UMShareToRenren、UMShareToDouban、UMShareToEmail、UMShareToSms、UMShareToFacebook、UMShareToTwitter，分别代表新浪微博、腾讯微博、微信好友、微信朋友圈、QQ空间、手机QQ、人人网、豆瓣、电子邮箱、短信、Facebook、Twitter</td>
 </tr>
 <tr>
 <td>delegate</td>
@@ -267,36 +258,100 @@ pre code {
 
 
 <blockquote><p>注意：<br/>
-1. 如果弹出横屏页面必须要先设置支持横屏，再弹出分享列表页面，设置屏幕方向的代码如下：<br/>
-<code>[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];</code>
-2. 如果要支持不同的屏幕反向，例如竖屏旋转到横屏，需要在自己的方法内添加下面的方法：</p></blockquote>
+如果弹出横屏页面必须要先设置支持横屏，再弹出分享列表页面，设置屏幕方向的代码如下：<br/>
+<code>[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];</code></p></blockquote>
 
-<pre><code> -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{  
-//     如果当前UIViewController有UINavigationController,或者UITabBarController,则用self.navigationController.view，或者self.tabBarController.view，否则用self.view
-    UIView *iconActionSheet = [self.tabBarController.view viewWithTag:kTagSocialIconActionSheet];
-    [iconActionSheet setNeedsDisplay];
-}
-</code></pre>
+<h2>4 <a name="check_result" id="check_result" style="color:black">验证效果</a></h2>
 
-<h3>Step7</h3>
+<p>如果你在分享列表页面没有加入分享到微信好友、微信朋友圈、手机QQ平台，就已经集成完成。编译并运行后，如果弹出类似下图的分享列表选择页面，点击某个平台进行授权之后可以进入微博编辑页面，并可以发送微博，说明你已经集成成功了。
+如果想要在点击各平台进行SSO授权，请看下一部分。</p>
 
-<p>实现新浪微博SSO授权</p>
+<h2>5 <a name="share_wechat" id="share_wechat" style="color:black">分享到微信、QQ好友和各个平台的SSO（免登录）配置</a></h2>
 
-<p>本SDK默认支持新浪微博SSO授权，SSO即需要新浪微博授权的时候会判断设备是否安装新浪微博客户端，如果有的话就跳到客户端再回来。如果你想支持新浪微博SSO，方法如下：</p>
+<p>下面对如下的两个功能进行设置</p>
 
-<p> 1 . 添加URL scheme，在你的工程设置项,targets 一栏下,选中自己的 target,在 Info->URL Types 中添加 URL Schemes,此值是 sso 登录时回调时所用。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。将url scheme修改为“sina.你的友盟appkey”如下图。</p>
+<ol>
+<li>使用分享到微信、手机QQ的功能。</li>
+<li>新浪微博、腾讯微博、QQ空间的SSO授权（SSO即授权的时候会判断设备是否安装此授权平台的客户端，如果有安装即跳转到该客户端授权，授权完成之后返回到应用）。</li>
+</ol>
+
+
+<p>注意：如果腾讯微博、QQ空间分享使用我们默认应用账号作为分享账号，不能使用SSO授权功能，因为会导致各个应用设置的url scheme不唯一。</p>
+
+<p>这两个功能的设置方法如下：</p>
+
+<h3>步骤1. 添加URL scheme</h3>
+
+<p>在你的工程设置项,targets 一栏下,选中自己的 target,在 Info->URL Types 中添加 URL Schemes,此值是 sso 登录时回调时所用。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。获取各个平台appkey或者appid的方法可以参考分享详细文档绑定各个平台部分，各个平台的url scheme格式如下表：</p>
+
+<table>
+<thead>
+<tr>
+<th>平台 </th>
+<th> url scheme设置格式 </th>
+<th>sso默认是否打开，开关sso功能方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>微信    </td>
+<td> “wx微信应用appid”，例如“wxd9a39c7122aa6516”</td>
+<td>必须设置微信应用id：[WXApi registerApp:@"wxd9a39c7122aa6516"]</td>
+</tr>
+<tr>
+<td>手机QQ </td>
+<td> “QQ腾讯应用appkey的十六进制（不足8位前面补0）”，例如“QQ05FA957C”</td>
+<td> 必须如下打开QQ的SDK，最后一个参数如果传nil将使用在友盟设置的qq空间的应用appkey来作为手机QQ的应用appkey：[UMSocialSnsService importClasses:[QQApiInterface class] tencentAuth:[TencentOAuth class] qqAppkey:nil];</td>
+</tr>
+<tr>
+<td>新浪微博 </td>
+<td> “sina.友盟appkey”，例如“sina.507fcab25270157b37000010” </td>
+<td>默认关闭，打开方法：[UMSocialConfig setSupportSinaSSO:YES];</td>
+</tr>
+<tr>
+<td>腾讯微博 </td>
+<td> “wb腾讯微博appkey”，例如“wb801255122” </td>
+<td> 默认关闭，打开方法：[UMSocialConfig setSupportTencentSSO:YES];</td>
+</tr>
+<tr>
+<td>QQ空间 </td>
+<td> “tencentQQ空间应用appkey”，例如“tencent100308348” </td>
+<td> 默认关闭，打开方法：[UMSocialSnsService importClasses:[QQApiInterface class] tencentAuth:[TencentOAuth class] qqAppkey:nil];</td>
+</tr>
+</tbody>
+</table>
+
 
 <p><img src="http://dev.umeng.com/images/ios/social_sinasso.png" title="social_sso" alt="socialbar" /></p>
 
-<p> 2 . 在你的<code>AppDelegate</code>文件里面实现下面两个系统的回调方法：</p>
+<p>注意：</p>
+
+<ol>
+<li><p>上面打开或者关闭SSO的方法，一般写在AppDelegate文件的应用入口方法中，确保应用启动之后有且只有进行一次设置。</p></li>
+<li><p>根据你使用的平台，需要在开关方法文件添加下面的头文件</p></li>
+</ol>
+
+
+<pre><code>//使用微信、新浪微博、腾讯微博需要添加下面这一个头文件
+#import "UMSocial.h"     
+//使用QQ空间和手机QQ需要添加下面这两个头文件
+#import &lt;TencentOpenAPI/QQApiInterface.h&gt;  
+#import &lt;TencentOpenAPI/TencentOAuth.h&gt; 
+</code></pre>
+
+<h3>步骤2. 在AppDelegate文件里面实现下面三个系统回调方法：</h3>
 
 <pre><code>  - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [UMSocialSnsService  applicationDidBecomeActive];
 }
 
-  - (BOOL)application:(UIApplication *)application 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+ return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];  
+}
+
+- (BOOL)application:(UIApplication *)application 
               openURL:(NSURL *)url 
     sourceApplication:(NSString *)sourceApplication
            annotation:(id)annotation
@@ -305,16 +360,15 @@ pre code {
  }  
 </code></pre>
 
-<h2>4 验证效果</h2>
+<h3>步骤3. 添加系统库文件</h3>
 
-<p>编译并运行后，如果弹出类似下图的分享列表选择页面，那么说明你已经集成成功了！</p>
+<p>如果要使用QQ空间SSO授权和分享到手机QQ的功能，需要添加SDK依赖的系统库文件。不适用QQ空间和SSO授权的功能可以忽略此步骤。
+在Xcode中打开工程配置文件，选择“summary”一栏。在“summary”中选择“Linked Frameworks and Libraries”一栏，点击“+”图标添加下面七个库文件，分别是“libiconv.dylib”，“SystemConfiguration.framework”，“CoreGraphics.Framework”、“libsqlite3.dylib”、“CoreTelephony.framework”、“libstdc++.dylib”、“libz.dylib”。</p>
 
-<p><img src="http://dev.umeng.com/images/ios/social_sharelist_actionsheet.png" title="ShareList" alt="alt text" /></p>
+<p>另外在工程配置中的“Build Settings”一栏中找到“Linking”配置区，给“Other Linker Flags”配置项添加属性值“-fobjc-arc”。</p>
 
-<p><img src="http://dev.umeng.com/images/ios/social_shareedit.png" title="ShareEdit" alt="alt text" /></p>
+<h2>6 进阶使用</h2>
 
-<h2>5 进阶使用</h2>
-
-<p>如果上述文档不能满足你的分享需求，请移步至“详细集成文档”。</p>
+<p>如果上述文档不能满足你的分享需求，请参看“详细集成文档”。</p>
 </body>
 </html>

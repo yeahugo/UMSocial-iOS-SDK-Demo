@@ -36,11 +36,6 @@
 	
 	
 	
-	<option value="properties">Properties</option>
-	
-	<option value="//api/name/completion">&nbsp;&nbsp;&nbsp;&nbsp;completion</option>
-	
-	
 	
 	
 	<option value="class_methods">Class Methods</option>
@@ -48,6 +43,8 @@
 	<option value="//api/name/applicationDidBecomeActive">&nbsp;&nbsp;&nbsp;&nbsp;+ applicationDidBecomeActive</option>
 	
 	<option value="//api/name/handleOpenURL:wxApiDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;+ handleOpenURL:wxApiDelegate:</option>
+	
+	<option value="//api/name/importClasses:tencentAuth:qqAppkey:">&nbsp;&nbsp;&nbsp;&nbsp;+ importClasses:tencentAuth:qqAppkey:</option>
 	
 	<option value="//api/name/presentSnsController:appKey:shareText:shareImage:shareToSnsNames:delegate:">&nbsp;&nbsp;&nbsp;&nbsp;+ presentSnsController:appKey:shareText:shareImage:shareToSnsNames:delegate:</option>
 	
@@ -71,19 +68,11 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Extension Methods">Extension Methods</a></span></li>
-	
 </ul></li>
 
 
 
 
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/completion">completion</a></span></li>
-	
-</ul></li>
 
 
 
@@ -92,6 +81,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/applicationDidBecomeActive">applicationDidBecomeActive</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/handleOpenURL:wxApiDelegate:">handleOpenURL:wxApiDelegate:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/importClasses:tencentAuth:qqAppkey:">importClasses:tencentAuth:qqAppkey:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/presentSnsController:appKey:shareText:shareImage:shareToSnsNames:delegate:">presentSnsController:appKey:shareText:shareImage:shareToSnsNames:delegate:</a></span></li>
 	
@@ -143,10 +134,17 @@
 						
 						
 						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
+						
 
 						<ul class="task-list">
 							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/importClasses:tencentAuth:qqAppkey:">+&nbsp;importClasses:tencentAuth:qqAppkey:</a></code>
+		<span class="tooltip"><p>引入手机qqSDK，并设置手机qq对应的appkey</p></span>
+	</span>
+	
+	
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/sharedInstance">+&nbsp;sharedInstance</a></code>
 		<span class="tooltip"><p>得到单例对象的类方法</p></span>
@@ -184,68 +182,11 @@
 </li>
 						</ul>
 						
-						
-						<a title="Extension Methods" name="task_Extension Methods"></a>
-						<h3 class="subsubtitle task-title">Extension Methods</h3>
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/completion">&nbsp;&nbsp;completion</a></code>
-		<span class="tooltip"><p>处理授权完成Block对象</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li>
-						</ul>
-						
 					</div>
 					
 					
 					
 					
-					
-					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/completion" title="completion"></a>
-	<h3 class="subsubtitle method-title">completion</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>处理授权完成Block对象</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) UMSocialDataServiceCompletion completion</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">UMSocialSnsService.m</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
 					
 					
 					
@@ -343,6 +284,42 @@ else if([url.description hasPrefix:@&ldquo;wx&rdquo;]){</p>
 
 <p>}</p>
 	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialSnsService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/importClasses:tencentAuth:qqAppkey:" title="importClasses:tencentAuth:qqAppkey:"></a>
+	<h3 class="subsubtitle method-title">importClasses:tencentAuth:qqAppkey:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>引入手机qqSDK，并设置手机qq对应的appkey</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)importClasses:(Class)<em>qqAPI</em> tencentAuth:(Class)<em>tencentAuth</em> qqAppkey:(NSString *)<em>qqAppkey</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -556,7 +533,7 @@ else if([url.description hasPrefix:@&ldquo;wx&rdquo;]){</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-07-31)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-08-19)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
