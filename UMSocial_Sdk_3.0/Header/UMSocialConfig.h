@@ -22,6 +22,12 @@ typedef enum {
 } UIInterfaceOrientationMask;
 #endif
 
+typedef enum {
+	UMSocialiToastPositionTop = 1000001,        //提示位置在屏幕上部
+    UMSocialiToastPositionBottom,               //提示位置在屏幕下部
+    UMSocialiToastPositionCenter                //提示位置在屏幕中间
+} UMSocialiToastPosition;
+
 /**
  SDK样式主题
  
@@ -77,7 +83,7 @@ typedef void (^UMTableViewCellConfig)(UITableViewCell *cell,UMSViewControllerTyp
 /**
  设置显示的sns平台类型
  
- @param platformNames  由`UMSocialEnum.h`定义的UMShareToSina、UMShareToTencent、UMShareToQzone、UMShareToRenren、UMShareToDouban、UMShareToEmail、UMShareToSms组成的NSArray
+ @param platformNames  在`UMSocialSnsPlatformManager.h`定义的UMShareToSina、UMShareToTencent、UMShareToQzone、UMShareToRenren、UMShareToDouban、UMShareToEmail、UMShareToSms组成的NSArray
  */
 + (void)setSnsPlatformNames:(NSArray *)platformNames;
 
@@ -168,9 +174,17 @@ typedef void (^UMTableViewCellConfig)(UITableViewCell *cell,UMSViewControllerTyp
 +(void)setTableViewCellConfig:(UMTableViewCellConfig)tableViewCellConfig;
 
 /**
+ 设置分享完成时“发送完成”或者分享错误等提示
+ 
+ @param isHidden 是否隐藏该提示
+ @param toastPosition 提示的位置，可以设置成在屏幕上部、中间、下部
+ */
++(void)setFinishToastIsHidden:(BOOL)isHidden position:(UMSocialiToastPosition)toastPosition;
+
+/**
  设置官方微博账号,设置之后可以在授权页面有关注微博的选项，默认勾选，授权之后用户即关注官方微博，仅支持新浪微博和腾讯微博
  
- @param weiboUids  腾讯微博和新浪微博的key分别是`UMShareToSina`和`UMShareToTenc`,值分别是官方微博的uid,例如`[UMSocialConfig setFollowWeiboUids:[NSDictionary dictionaryWithObjectsAndKeys:UMShareToSina,@"yourSinaUid",nil]];`
+ @param weiboUids  腾讯微博和新浪微博的key分别是`UMShareToSina`和`UMShareToTenc`,值分别是官方微博的uid,例如`[UMSocialConfig setFollowWeiboUids:[NSDictionary dictionaryWithObjectsAndKeys:@"yourSinaUid",UMShareToSina,nil]];`
  */
 + (void)setFollowWeiboUids:(NSDictionary *)weiboUids;
 
@@ -220,16 +234,46 @@ typedef void (^UMTableViewCellConfig)(UITableViewCell *cell,UMSViewControllerTyp
 + (UMSocialConfig *)shareInstance;
 
 /**
- 设置是否支持新浪微博SSO，默认支持
+ 设置是否支持新浪微博SSO，默认不支持
 
  */
 + (void)setSupportSinaSSO:(BOOL)supportSinaSSO;
 
 
 /**
- 设置是否支持腾讯微博SSO，默认支持
+ 设置是否支持腾讯微博SSO，默认不支持
+ 
+ @param supportTencentSSO 是否支持腾讯微博SSO
  
  */
 + (void)setSupportTencentSSO:(BOOL)supportTencentSSO;
+
+
+/**设置微信appId和图文分享用到的url地址
+ 
+ @param appId 微信AppId
+ @param url   微信图文分享web类型，用到的url地址，如果传nil，默认使用http://www.umeng.com/social
+ */
+
++ (void)setWXAppId:(NSString *)appId url:(NSString *)url;
+
+
+/**设置手机QQ的appId和微信图文分享用到的url地址
+ 
+ @param appId 手机QQ的AppId
+ @param url   手机QQ图文分享web类型，用到的url地址，如果传nil，默认使用http://www.umeng.com/social
+ @param classes 载入手机QQ SDK，用到的两个类
+ */
+
++ (void)setQQAppId:(NSString *)appId url:(NSString *)url importClasses:(NSArray *)classes;
+
+
+/**设置支持Qzone的SSO授权
+ 
+ @param supportQzoneSSO Qzone支持SSO
+ @param classes 载入手机QQ SDK，用到的两个类
+ */
+
++ (void)setSupportQzoneSSO:(BOOL)supportQzoneSSO importClasses:(NSArray *)classes;
 
 @end

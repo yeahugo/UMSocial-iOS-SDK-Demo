@@ -11,6 +11,8 @@
 
 #define kTagSocialIconActionSheet 1013
 
+@class UMSocialControllerService;
+
 /*
  自定义的类似iOS6.0中`UIActivityViewController`样式的列表，每个sns平台由对应图片和名称组成。注意：如果你要此控件支持多方向，需要在自己的UIViewController中屏幕旋转的`didRotateFromInterfaceOrientation`调用`UMSocialIconActionSheet`的`setNeedsDisplay`方法，来重新布局。
  */
@@ -37,6 +39,14 @@
 @protocol UMSocialUIDelegate <NSObject>
 
 @optional
+
+/**
+ 自定义关闭授权页面事件
+ 
+ @param navigationCtroller 关闭当前页面的navigationCtroller对象
+ 
+ */
+-(BOOL)closeOauthWebViewController:(UINavigationController *)navigationCtroller socialControllerService:(UMSocialControllerService *)socialControllerService;
 
 /**
  关闭当前页面之前
@@ -144,6 +154,18 @@
  @return 初始化对象
  */
 - (id)initWithUMSocialData:(UMSocialData *)socialData;
+
+/**
+ 设置分享内容和回调对象
+ 
+ @param shareText 分享内嵌文字
+ 
+ @param shareImage 分享内嵌图片
+ 
+ @param socialUIDelegate 分享回调对象
+ */
+- (void)setShareText:(NSString *)shareText shareImage:(UIImage *)shareImage
+    socialUIDelegate:(id<UMSocialUIDelegate>)socialUIDelegate;
 
 ///---------------------------------------
 /// @name 获得评论列表、分享列表等UINavigationController

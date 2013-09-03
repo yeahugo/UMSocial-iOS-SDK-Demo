@@ -48,9 +48,13 @@
 	
 	<option value="//api/name/setDefaultColor:">&nbsp;&nbsp;&nbsp;&nbsp;+ setDefaultColor:</option>
 	
+	<option value="//api/name/setFinishToastIsHidden:position:">&nbsp;&nbsp;&nbsp;&nbsp;+ setFinishToastIsHidden:position:</option>
+	
 	<option value="//api/name/setFollowWeiboUids:">&nbsp;&nbsp;&nbsp;&nbsp;+ setFollowWeiboUids:</option>
 	
 	<option value="//api/name/setNavigationBarConfig:">&nbsp;&nbsp;&nbsp;&nbsp;+ setNavigationBarConfig:</option>
+	
+	<option value="//api/name/setQQAppId:url:importClasses:">&nbsp;&nbsp;&nbsp;&nbsp;+ setQQAppId:url:importClasses:</option>
 	
 	<option value="//api/name/setShareGridViewTheme:">&nbsp;&nbsp;&nbsp;&nbsp;+ setShareGridViewTheme:</option>
 	
@@ -62,6 +66,8 @@
 	
 	<option value="//api/name/setSnsPlatformNames:">&nbsp;&nbsp;&nbsp;&nbsp;+ setSnsPlatformNames:</option>
 	
+	<option value="//api/name/setSupportQzoneSSO:importClasses:">&nbsp;&nbsp;&nbsp;&nbsp;+ setSupportQzoneSSO:importClasses:</option>
+	
 	<option value="//api/name/setSupportSinaSSO:">&nbsp;&nbsp;&nbsp;&nbsp;+ setSupportSinaSSO:</option>
 	
 	<option value="//api/name/setSupportTencentSSO:">&nbsp;&nbsp;&nbsp;&nbsp;+ setSupportTencentSSO:</option>
@@ -71,6 +77,8 @@
 	<option value="//api/name/setTableViewCellConfig:">&nbsp;&nbsp;&nbsp;&nbsp;+ setTableViewCellConfig:</option>
 	
 	<option value="//api/name/setTheme:">&nbsp;&nbsp;&nbsp;&nbsp;+ setTheme:</option>
+	
+	<option value="//api/name/setWXAppId:url:">&nbsp;&nbsp;&nbsp;&nbsp;+ setWXAppId:url:</option>
 	
 	
 	
@@ -106,9 +114,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setDefaultColor:">setDefaultColor:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setFinishToastIsHidden:position:">setFinishToastIsHidden:position:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setFollowWeiboUids:">setFollowWeiboUids:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setNavigationBarConfig:">setNavigationBarConfig:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setQQAppId:url:importClasses:">setQQAppId:url:importClasses:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setShareGridViewTheme:">setShareGridViewTheme:</a></span></li>
 	
@@ -120,6 +132,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSnsPlatformNames:">setSnsPlatformNames:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSupportQzoneSSO:importClasses:">setSupportQzoneSSO:importClasses:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSupportSinaSSO:">setSupportSinaSSO:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSupportTencentSSO:">setSupportTencentSSO:</a></span></li>
@@ -129,6 +143,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setTableViewCellConfig:">setTableViewCellConfig:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setTheme:">setTheme:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setWXAppId:url:">setWXAppId:url:</a></span></li>
 	
 </ul></li>
 
@@ -242,6 +258,13 @@ CGContextSetLineWidth(ref, 1.0);
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/setFinishToastIsHidden:position:">+&nbsp;setFinishToastIsHidden:position:</a></code>
+		<span class="tooltip"><p>设置分享完成时“发送完成”或者分享错误等提示</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/setFollowWeiboUids:">+&nbsp;setFollowWeiboUids:</a></code>
 		<span class="tooltip"><p>设置官方微博账号,设置之后可以在授权页面有关注微博的选项，默认勾选，授权之后用户即关注官方微博，仅支持新浪微博和腾讯微博</p></span>
 	</span>
@@ -294,14 +317,35 @@ CGContextSetLineWidth(ref, 1.0);
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setSupportSinaSSO:">+&nbsp;setSupportSinaSSO:</a></code>
-		<span class="tooltip"><p>设置是否支持新浪微博SSO，默认支持</p></span>
+		<span class="tooltip"><p>设置是否支持新浪微博SSO，默认不支持</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setSupportTencentSSO:">+&nbsp;setSupportTencentSSO:</a></code>
-		<span class="tooltip"><p>设置是否支持腾讯微博SSO，默认支持</p></span>
+		<span class="tooltip"><p>设置是否支持腾讯微博SSO，默认不支持</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setWXAppId:url:">+&nbsp;setWXAppId:url:</a></code>
+		<span class="tooltip"><p>设置微信appId和图文分享用到的url地址</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setQQAppId:url:importClasses:">+&nbsp;setQQAppId:url:importClasses:</a></code>
+		<span class="tooltip"><p>设置手机QQ的appId和微信图文分享用到的url地址</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setSupportQzoneSSO:importClasses:">+&nbsp;setSupportQzoneSSO:importClasses:</a></code>
+		<span class="tooltip"><p>设置支持Qzone的SSO授权</p></span>
 	</span>
 	
 	
@@ -459,6 +503,57 @@ CGContextSetLineWidth(ref, 1.0);
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/setFinishToastIsHidden:position:" title="setFinishToastIsHidden:position:"></a>
+	<h3 class="subsubtitle method-title">setFinishToastIsHidden:position:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>设置分享完成时“发送完成”或者分享错误等提示</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setFinishToastIsHidden:(BOOL)<em>isHidden</em> position:(UMSocialiToastPosition)<em>toastPosition</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>isHidden</em></dt>
+			<dd><p>是否隐藏该提示</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>toastPosition</em></dt>
+			<dd><p>提示的位置，可以设置成在屏幕上部、中间、下部</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialConfig.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/setFollowWeiboUids:" title="setFollowWeiboUids:"></a>
 	<h3 class="subsubtitle method-title">setFollowWeiboUids:</h3>
 	
@@ -479,7 +574,7 @@ CGContextSetLineWidth(ref, 1.0);
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>weiboUids</em></dt>
-			<dd><p>腾讯微博和新浪微博的key分别是<code>UMShareToSina</code>和<code>UMShareToTenc</code>,值分别是官方微博的uid,例如<code>[UMSocialConfig setFollowWeiboUids:[NSDictionary dictionaryWithObjectsAndKeys:UMShareToSina,@"yourSinaUid",nil]];</code></p></dd>
+			<dd><p>腾讯微博和新浪微博的key分别是<code>UMShareToSina</code>和<code>UMShareToTenc</code>,值分别是官方微博的uid,例如<code>[UMSocialConfig setFollowWeiboUids:[NSDictionary dictionaryWithObjectsAndKeys:@"yourSinaUid",UMShareToSina,nil]];</code></p></dd>
 		</dl>
 		
 	</div>
@@ -587,6 +682,62 @@ CGContextSetLineWidth(ref, 1.0);
 
 <p>}];</p>
 	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialConfig.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setQQAppId:url:importClasses:" title="setQQAppId:url:importClasses:"></a>
+	<h3 class="subsubtitle method-title">setQQAppId:url:importClasses:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>设置手机QQ的appId和微信图文分享用到的url地址</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setQQAppId:(NSString *)<em>appId</em> url:(NSString *)<em>url</em> importClasses:(NSArray *)<em>classes</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>appId</em></dt>
+			<dd><p>手机QQ的AppId</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>url</em></dt>
+			<dd><p>手机QQ图文分享web类型，用到的url地址，如果传nil，默认使用<a href="http://www.umeng.com/social">http://www.umeng.com/social</a></p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>classes</em></dt>
+			<dd><p>载入手机QQ SDK，用到的两个类</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -822,7 +973,58 @@ backgroundView.backgroundColor = [UIColor clearColor];</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>platformNames</em></dt>
-			<dd><p>由<code>UMSocialEnum.h</code>定义的UMShareToSina、UMShareToTencent、UMShareToQzone、UMShareToRenren、UMShareToDouban、UMShareToEmail、UMShareToSms组成的NSArray</p></dd>
+			<dd><p>在<code></code>UMSocialSnsPlatformManager<code>.h</code>定义的UMShareToSina、UMShareToTencent、UMShareToQzone、UMShareToRenren、UMShareToDouban、UMShareToEmail、UMShareToSms组成的NSArray</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialConfig.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setSupportQzoneSSO:importClasses:" title="setSupportQzoneSSO:importClasses:"></a>
+	<h3 class="subsubtitle method-title">setSupportQzoneSSO:importClasses:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>设置支持Qzone的SSO授权</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setSupportQzoneSSO:(BOOL)<em>supportQzoneSSO</em> importClasses:(NSArray *)<em>classes</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>supportQzoneSSO</em></dt>
+			<dd><p>Qzone支持SSO</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>classes</em></dt>
+			<dd><p>载入手机QQ SDK，用到的两个类</p></dd>
 		</dl>
 		
 	</div>
@@ -854,7 +1056,7 @@ backgroundView.backgroundColor = [UIColor clearColor];</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>设置是否支持新浪微博SSO，默认支持</p>
+		<p>设置是否支持新浪微博SSO，默认不支持</p>
 	</div>		
 	
     
@@ -890,7 +1092,7 @@ backgroundView.backgroundColor = [UIColor clearColor];</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>设置是否支持腾讯微博SSO，默认支持</p>
+		<p>设置是否支持腾讯微博SSO，默认不支持</p>
 	</div>		
 	
     
@@ -898,6 +1100,16 @@ backgroundView.backgroundColor = [UIColor clearColor];</p>
 	<div class="method-subsection method-declaration"><code>+ (void)setSupportTencentSSO:(BOOL)<em>supportTencentSSO</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>supportTencentSSO</em></dt>
+			<dd><p>是否支持腾讯微博SSO</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -1067,6 +1279,57 @@ backgroundView.backgroundColor = [UIColor clearColor];</p>
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/setWXAppId:url:" title="setWXAppId:url:"></a>
+	<h3 class="subsubtitle method-title">setWXAppId:url:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>设置微信appId和图文分享用到的url地址</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setWXAppId:(NSString *)<em>appId</em> url:(NSString *)<em>url</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>appId</em></dt>
+			<dd><p>微信AppId</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>url</em></dt>
+			<dd><p>微信图文分享web类型，用到的url地址，如果传nil，默认使用<a href="http://www.umeng.com/social">http://www.umeng.com/social</a></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialConfig.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -1082,7 +1345,7 @@ backgroundView.backgroundColor = [UIColor clearColor];</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-08-19)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-09-03)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

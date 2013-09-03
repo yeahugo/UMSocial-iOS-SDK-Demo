@@ -17,10 +17,10 @@
  */
 @interface UMSocialSnsService : NSObject
 
-/**
- 引入手机qqSDK，并设置手机qq对应的appkey
- */
-+(void)importClasses:(Class)qqAPI tencentAuth:(Class)tencentAuth qqAppkey:(NSString *)qqAppkey;
+///**
+// 引入手机qqSDK，并设置手机qq对应的appkey
+// */
+//+(void)importClasses:(Class)qqAPI tencentAuth:(Class)tencentAuth qqAppkey:(NSString *)qqAppkey;
 
 /**
  当应用从后台唤起时，应调用此方法，需要完成退出当前登录状态的功能
@@ -57,7 +57,7 @@
  @param appKey 友盟appKey
  @param shareText  分享编辑页面的内嵌文字
  @param shareImage 分享内嵌图片,用户可以在编辑页面删除
- @param snsNames 你要分享到的sns平台类型，该NSArray值是`UMSocialEnum.h`定义的平台名的字符串常量，有UMShareToSina，UMShareToTencent，UMShareToRenren，UMShareToDouban，UMShareToQzone，UMShareToEmail，UMShareToSms等
+ @param snsNames 你要分享到的sns平台类型，该NSArray值是`UMSocialSnsPlatformManager.h`定义的平台名的字符串常量，有UMShareToSina，UMShareToTencent，UMShareToRenren，UMShareToDouban，UMShareToQzone，UMShareToEmail，UMShareToSms等
  @param delegate 实现分享完成后的回调对象，如果不关注分享完成的状态，可以设为nil
  */
 +(void)presentSnsController:(UIViewController *)controller
@@ -74,7 +74,7 @@
  @param appKey 友盟appKey
  @param shareText  分享编辑页面的内嵌文字
  @param shareImage 分享内嵌图片,用户可以在编辑页面删除
- @param snsNames 你要分享到的sns平台类型，该NSArray值是`UMSocialEnum.h`定义的平台名的字符串常量，有UMShareToSina，UMShareToTencent，UMShareToRenren，UMShareToDouban，UMShareToQzone，UMShareToEmail，UMShareToSms等
+ @param snsNames 你要分享到的sns平台类型，该NSArray值是`UMSocialSnsPlatformManager.h`定义的平台名的字符串常量，有UMShareToSina，UMShareToTencent，UMShareToRenren，UMShareToDouban，UMShareToQzone，UMShareToEmail，UMShareToSms等
  @param delegate 实现分享完成后的回调对象，如果不关注分享完成的状态，可以设为nil
  */
 +(void)presentSnsIconSheetView:(UIViewController *)controller

@@ -8,13 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D518A99916D39A5100893507 /* UMS_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D518A99816D39A5100893507 /* UMS_settings@2x.png */; };
+		D52C275517D0C77000A77926 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D52C275417D0C77000A77926 /* TencentOpenAPI.framework */; };
 		D534FA76179FC6920067BDCF /* UMS_social_demo.png in Resources */ = {isa = PBXBuildFile; fileRef = D534FA75179FC6920067BDCF /* UMS_social_demo.png */; };
 		D53746AD1738CB450093F280 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FE16082B1200C7AD07 /* CoreGraphics.framework */; };
-		D54F813B17B217A9007D73AE /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D54F813A17B217A9007D73AE /* libiconv.dylib */; };
-		D54F813D17B217AE007D73AE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D54F813C17B217AE007D73AE /* SystemConfiguration.framework */; };
-		D54F813F17B217BF007D73AE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D54F813E17B217BF007D73AE /* libsqlite3.dylib */; };
-		D54F814317B217CF007D73AE /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D54F814217B217CF007D73AE /* libstdc++.dylib */; };
-		D54F814517B217D4007D73AE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D54F814417B217D4007D73AE /* libz.dylib */; };
 		D57436FB16082B1200C7AD07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FA16082B1200C7AD07 /* UIKit.framework */; };
 		D57436FD16082B1200C7AD07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FC16082B1200C7AD07 /* Foundation.framework */; };
 		D574370516082B1200C7AD07 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D574370316082B1200C7AD07 /* InfoPlist.strings */; };
@@ -26,9 +22,7 @@
 		D580B33A16B3BB7100BF3481 /* UMS_mutilBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D580B33516B3BB7100BF3481 /* UMS_mutilBar@2x.png */; };
 		D580B33B16B3BB7100BF3481 /* UMS_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D580B33616B3BB7100BF3481 /* UMS_share@2x.png */; };
 		D58531E017C1BCE5009E2D27 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D58531DE17C1BCE5009E2D27 /* libMobClickLibrary.a */; };
-		D58531E917C1DF4D009E2D27 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58531E817C1DF4D009E2D27 /* CoreTelephony.framework */; };
 		D585321017C1E4A2009E2D27 /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D58531EB17C1E4A2009E2D27 /* UMSocialLocalizable.strings */; };
-		D585321117C1E4A2009E2D27 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58531EF17C1E4A2009E2D27 /* TencentOpenAPI.framework */; };
 		D585321217C1E4A2009E2D27 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D58531F117C1E4A2009E2D27 /* libWeiboSDK.a */; };
 		D585321317C1E4A2009E2D27 /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D58531F517C1E4A2009E2D27 /* libWeChatSDK_armv7_armv7s.a */; };
 		D585321417C1E4A2009E2D27 /* libUMSocial_Sdk_3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D585320317C1E4A2009E2D27 /* libUMSocial_Sdk_3.0.a */; };
@@ -42,6 +36,12 @@
 		D585321C17C1E4A2009E2D27 /* UMSnsAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D585320C17C1E4A2009E2D27 /* UMSnsAccountViewController.xib */; };
 		D585321D17C1E4A2009E2D27 /* UMSShareListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D585320D17C1E4A2009E2D27 /* UMSShareListController.xib */; };
 		D585321E17C1E4A2009E2D27 /* UMSocialSDKResourcesNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D585320E17C1E4A2009E2D27 /* UMSocialSDKResourcesNew.bundle */; };
+		D5962F3A17CB575C00AD9856 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D54F814417B217D4007D73AE /* libz.dylib */; };
+		D5962F4117CC523800AD9856 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D54F813A17B217A9007D73AE /* libiconv.dylib */; };
+		D5962F4217CC524000AD9856 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D54F813C17B217AE007D73AE /* SystemConfiguration.framework */; };
+		D5962F4317CC525100AD9856 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D54F813E17B217BF007D73AE /* libsqlite3.dylib */; };
+		D5962F4417CC525800AD9856 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58531E817C1DF4D009E2D27 /* CoreTelephony.framework */; };
+		D5962F4517CC526100AD9856 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D54F814217B217CF007D73AE /* libstdc++.dylib */; };
 		D5EF8983166DF07E00B2068D /* icon_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D5EF897D166DF07E00B2068D /* icon_ipad.png */; };
 		D5EF8984166DF07E00B2068D /* icon_ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5EF897E166DF07E00B2068D /* icon_ipad@2x.png */; };
 		D5EF8985166DF07E00B2068D /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D5EF897F166DF07E00B2068D /* icon.png */; };
@@ -58,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		D518A99816D39A5100893507 /* UMS_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UMS_settings@2x.png"; sourceTree = "<group>"; };
+		D52C275417D0C77000A77926 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = ../UMSocial_Sdk_3.0/frameworks/TencentOpenAPI/TencentOpenAPI.framework; sourceTree = "<group>"; };
 		D534FA75179FC6920067BDCF /* UMS_social_demo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UMS_social_demo.png; sourceTree = "<group>"; };
 		D54F813A17B217A9007D73AE /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		D54F813C17B217AE007D73AE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -86,7 +87,6 @@
 		D58531DF17C1BCE5009E2D27 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		D58531E817C1DF4D009E2D27 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		D58531EC17C1E4A2009E2D27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
-		D58531EF17C1E4A2009E2D27 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		D58531F117C1E4A2009E2D27 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		D58531F217C1E4A2009E2D27 /* WBApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBApi.h; sourceTree = "<group>"; };
 		D58531F317C1E4A2009E2D27 /* WBApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBApiObject.h; sourceTree = "<group>"; };
@@ -141,21 +141,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D58531E917C1DF4D009E2D27 /* CoreTelephony.framework in Frameworks */,
-				D54F814517B217D4007D73AE /* libz.dylib in Frameworks */,
-				D54F814317B217CF007D73AE /* libstdc++.dylib in Frameworks */,
-				D54F813F17B217BF007D73AE /* libsqlite3.dylib in Frameworks */,
+				D5962F3A17CB575C00AD9856 /* libz.dylib in Frameworks */,
+				D5962F4517CC526100AD9856 /* libstdc++.dylib in Frameworks */,
+				D5962F4417CC525800AD9856 /* CoreTelephony.framework in Frameworks */,
+				D5962F4317CC525100AD9856 /* libsqlite3.dylib in Frameworks */,
 				D53746AD1738CB450093F280 /* CoreGraphics.framework in Frameworks */,
-				D54F813D17B217AE007D73AE /* SystemConfiguration.framework in Frameworks */,
-				D54F813B17B217A9007D73AE /* libiconv.dylib in Frameworks */,
-				D57436FB16082B1200C7AD07 /* UIKit.framework in Frameworks */,
-				D57436FD16082B1200C7AD07 /* Foundation.framework in Frameworks */,
-				D58531E017C1BCE5009E2D27 /* libMobClickLibrary.a in Frameworks */,
-				D585321117C1E4A2009E2D27 /* TencentOpenAPI.framework in Frameworks */,
+				D5962F4217CC524000AD9856 /* SystemConfiguration.framework in Frameworks */,
+				D5962F4117CC523800AD9856 /* libiconv.dylib in Frameworks */,
 				D585321217C1E4A2009E2D27 /* libWeiboSDK.a in Frameworks */,
 				D585321317C1E4A2009E2D27 /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
 				D585321417C1E4A2009E2D27 /* libUMSocial_Sdk_3.0.a in Frameworks */,
 				D585321517C1E4A2009E2D27 /* libUMSocial_Sdk_Comment_3.0.a in Frameworks */,
+				D57436FB16082B1200C7AD07 /* UIKit.framework in Frameworks */,
+				D57436FD16082B1200C7AD07 /* Foundation.framework in Frameworks */,
+				D58531E017C1BCE5009E2D27 /* libMobClickLibrary.a in Frameworks */,
+				D52C275517D0C77000A77926 /* TencentOpenAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +187,7 @@
 				D54F814417B217D4007D73AE /* libz.dylib */,
 				D54F814217B217CF007D73AE /* libstdc++.dylib */,
 				D54F813E17B217BF007D73AE /* libsqlite3.dylib */,
+				D52C275417D0C77000A77926 /* TencentOpenAPI.framework */,
 				D58531E817C1DF4D009E2D27 /* CoreTelephony.framework */,
 				D54F813C17B217AE007D73AE /* SystemConfiguration.framework */,
 				D54F813A17B217A9007D73AE /* libiconv.dylib */,
@@ -282,7 +283,6 @@
 		D58531EE17C1E4A2009E2D27 /* TencentOpenAPI */ = {
 			isa = PBXGroup;
 			children = (
-				D58531EF17C1E4A2009E2D27 /* TencentOpenAPI.framework */,
 			);
 			path = TencentOpenAPI;
 			sourceTree = "<group>";
@@ -383,7 +383,7 @@
 		D57436ED16082B1200C7AD07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = yeahugo;
 			};
 			buildConfigurationList = D57436F016082B1200C7AD07 /* Build configuration list for PBXProject "UMSocial_Sdk_Demo" */;
@@ -489,9 +489,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -508,9 +509,12 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "D1A6145D-8EDC-4037-8179-CC83B9023597";
 				SDKROOT = iphoneos;
@@ -521,9 +525,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -533,7 +538,9 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

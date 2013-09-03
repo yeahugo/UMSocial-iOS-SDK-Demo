@@ -16,7 +16,7 @@
 
 
 /**
- 微博平台名称,例如"sina"、"tencent",定义在`UMSocialEnum.h`
+ 微博平台名称,例如"sina"、"tencent",定义在`UMSocialSnsPlatformManager.h`
  */
 @property (nonatomic, copy) NSString *platformName;
 
@@ -201,7 +201,7 @@ extern NSString *const UMSCustomAccountGenderFeMale;
 /**
  判断是否授权此sns平台。
  
- @param platformType sns平台名，定义在`UMSocialEnum.h`
+ @param platformType sns平台名，定义在`UMSocialSnsPlatformManager.h`
  */
 + (BOOL)isOauthWithPlatform:(NSString *)platformType;
 

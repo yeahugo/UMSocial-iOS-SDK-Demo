@@ -56,13 +56,6 @@ typedef enum{
 @property (nonatomic, retain) id wxMediaObject;
 
 /**
- 手机QQ分享对象，详细定义见`QQApiObject`
- 
- */
-@property (nonatomic, retain) id qqMediaObject;
-
-
-/**
  邮件分享的正文内容,如果不设置的话，默认用UMSocialData的shareText
  
  */
@@ -119,11 +112,22 @@ typedef enum {
  */
 @property (nonatomic, copy) NSString *author;
 
+
+/**
+ 设置url资源类型和url地址
+ 
+ @param resourceType 多媒体资源类型，图片、音乐或者视频
+ @param urlString url字符串
+ 
+ */
+-(void)setResourceType:(UMSocialUrlResourceType)resourceType url:(NSString *)url;
+
 /**
  初始化对象，指定一种资源和资源URL
  
  @param resourceType 多媒体资源类型，图片、音乐或者视频
  @param urlString url字符串
+ 
  */
 -(id)initWithSnsResourceType:(UMSocialUrlResourceType)resourceType url:(NSString *)url;
 
@@ -211,6 +215,7 @@ typedef enum {
  */
 
 + (void)setAppKey:(NSString *)appKey;
+
 
 /**获取设置的友盟appKey
  

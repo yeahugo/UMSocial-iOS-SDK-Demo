@@ -1,285 +1,103 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<style>
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote {
-    margin: 0;
-    padding: 0;
-}
-body {
-    font-family: helvetica,"Microsoft Yahei",sans-serif;    
-    font-size: 14px;
-    line-height: 18px;
-    color: #737373;
-    background-color: white;
-    margin: 10px 13px 10px 13px;
-}
-table {
-	margin: 10px 0 15px 0;
-	border-collapse: collapse;
-}
-td,th {	
-	border: 1px solid #ddd;
-	padding: 3px 10px;
-}
-th {
-	padding: 5px 10px;	
-}
-
-a {
-    color: #2a5295;
-    text-decoration: none;
-}
-a:hover {
-    color: #2a5295;
-    text-decoration: underline;
-
-}
-a img {
-    border: none;
-}
-p {
-    margin-bottom: 9px;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: #333;
-    line-height: 36px;
-}
-h1 {
-    margin-bottom: 18px;
-    font-size: 30px;
-}
-h2 {
-    font-size: 24px;
-}
-h3 {
-    font-size: 20px;
-}
-h4 {
-    font-size: 16px;
-}
-h5 {
-    font-size: 14px;
-}
-h6 {
-    font-size: 12px;
-}
-hr {
-    margin: 0 0 19px;
-    border: 0;
-    border-bottom: 1px solid #ccc;
-}
-b{
-    color:#F00;
-    text-indent: 28px;
-    display: block;
-    margin: 10px 0px;
-}
-
-li, ul li {
-    list-style-type:disc;
-}
-blockquote {
-    padding: 13px 13px 21px 15px;
-}
-
-blockquote p {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 18px;
-    margin-bottom: 0;
-}
-code, pre {
-    font-family: Monaco, Andale Mono, Courier New, monospace;
-}
-code {
-    background-color: #2a5295;
-    color: #FFF;
-    padding: 1px 3px;
-    font-size: 12px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    display: inline-block;
-    margin: auto 5px;
-}
-pre {
-    display: block;
-    padding: 14px;
-    margin: 0 0 18px;
-    line-height: 16px;
-    font-size: 12px;
-    border: 1px solid #d9d9d9;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    background-color: #bfcbdf;
-    color: #333;
-}
-pre code {
-    background-color: #bfcbdf;
-    color: #333;
-    font-size: 12px;
-    padding: 0;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    word-break:break-all; 
-}
-@media screen and (min-width: 914px) {
-    body {
-        width: 854px;
-        margin:10px auto;
-    }
-}
-@media print {
-	body,code,pre code,h1,h2,h3,h4,h5,h6 {
-		color: black;
-	}
-	table, pre {
-		page-break-inside: avoid;
-	}
-}
-</style>
-<title>分享 详细集成</title>
-
-</head>
-<body>
-<h1>分享 详细集成</h1>
-
-<p> <font color="red">注意：线上集成文档的示例代码对应的是最新版本的SDK，如果你所用的SDK版本类名或者方法名与此文档不符合，请看随包里面的线下文档或者下载使用最新版本的SDK。</font></p>
-
-<h3><a href="#social_appkey" style="text-decoration:none">1. 设置友盟appkey</a></h3>
-
-<h3><a href="#social_sso" style="text-decoration:none">2. SSO相关配置</a></h3>
-
-<h3><a href="#social_wechat" style="text-decoration:none">3. 集成微信</a></h3>
-
-<h3><a href="#social_qq" styel="text-decoration:no">4. 集成手机QQ</a></h3>
-
-<h3><a href="#social_share" style="text-decoration:none">5. 集成分享功能</a></h3>
-
-<h3><a href="#social_share_list" style="text-decoration:none">5.1 集成分享页面</a></h3>
-
-<h3><a href="#social_share_config" style="text-decoration:none">5.2 分享相关设置</a></h3>
-
-<h3><a href="#social_share_data" style="text-decoration:none">5.3 直接发送分享</a></h3>
-
-<h3><a href="#binding_config" style="text-decoration:none">6. 绑定友盟应用标识与各开放平台</a></h3>
-
-<h1><a name="social_appkey" id="social_appkey" style="color:black">1. 设置友盟appkey</a></h1>
-
+<link rel="stylesheet" type="text/css" href="markdown.css"></link>
+<h1>���� ��ϸ����</h1>
+<p><font color="red">ע�⣺���ϼ����ĵ���ʾ�������Ӧ�������°汾��SDK����������õ�SDK�汾�������߷���������ĵ������ϣ��뿴�������������ĵ���������ʹ�����°汾��SDK��</font></p>
+<h3><a href="#social_appkey" style="text-decoration:none">1. ��������appkey</a></h3>
+<h3><a href="#social_sso" style="text-decoration:none">2. ��ƽ̨SSO����</a></h3>
+<h3><a href="#social_wechat" style="text-decoration:none">3. ����΢��</a></h3>
+<h3><a href="#social_qq" styel="text-decoration:none">4. �����ֻ�QQ</a></h3>
+<h3><a href="#social_share" style="text-decoration:none">5. ���ɷ�������</a></h3>
+<h3><a href="#social_share_list" style="text-decoration:none">5.1 ���ɷ���ҳ��</a></h3>
+<h3><a href="#social_share_config" style="text-decoration:none">5.2 �����������</a></h3>
+<h3><a href="#social_share_data" style="text-decoration:none">5.3 ֱ�ӷ��ͷ���</a></h3>
+<h3><a href="#binding_config" style="text-decoration:none">6. ������Ӧ�ñ�ʶ�������ƽ̨</a></h3>
+<h1><a name="social_appkey" id="social_appkey" style="color:black">1. ��������appkey</a></h1>
 <ul>
-<li><p>获取友盟Appkey。如果你之前已经在友盟注册了应用，获得了Appkey，可以继续使用之前获得Appkey。</p></li>
-<li><p>如果你尚未在友盟注册账号，需要先<a href="http://www.umeng.com/users/sign_up" style="text-decoration:none">注册</a>，注册之后登录你的账号，点击<strong>添加新应用</strong>，完成新应用填写之后，讲进入应用管理页面。在该页面就能得到<code>Appkey</code>。</p></li>
-<li><p>在代码中设置你的友盟Appkey，在 <code>AppDelegate</code>文件内设置你的AppKey：</p></li>
+<li>
+<p>��ȡ����Appkey�������֮ǰ�Ѿ�������ע����Ӧ�ã������Appkey�����Լ���ʹ��֮ǰ���Appkey��   </p>
+</li>
+<li>
+<p>�������δ������ע���˺ţ���Ҫ��<a href="http://www.umeng.com/users/sign_up" style="text-decoration:none">ע��</a>��ע��֮���¼����˺ţ����<strong>������Ӧ��</strong>�������Ӧ����д֮�󣬽�����Ӧ�ù���ҳ�档�ڸ�ҳ����ܵõ�<code>Appkey</code>��</p>
+</li>
+<li>
+<p>�ڴ����������������Appkey���� <code>AppDelegate</code>�ļ����������AppKey��</p>
+</li>
 </ul>
-
-
-<pre><code> # import "UMSocial.h"
+<pre><code>#import &quot;UMSocial.h&quot;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [UMSocialData setAppKey:@"507fcab25270157b37000010"];
+    [UMSocialData setAppKey:@&quot;507fcab25270157b37000010&quot;];
 }
 </code></pre>
 
-<h1><a name="social_sso" id="social_sso" style="color:black">2. 分享到微信、QQ好友和各个平台的SSO（免登录）配置</a></h1>
-
-<p>下面对如下的两个功能进行设置</p>
-
-<ol>
-<li>使用分享到微信、手机QQ的功能。</li>
-<li>新浪微博、腾讯微博、QQ空间的SSO授权（SSO即授权的时候会判断设备是否安装此授权平台的客户端，如果有安装即跳转到该客户端授权，授权完成之后返回到应用）。</li>
-</ol>
-
-
-<p>注意：如果腾讯微博、QQ空间分享使用我们默认应用账号作为分享账号，不能使用SSO授权功能，因为会导致各个应用设置的url scheme不唯一。</p>
-
-<p>这两个功能的设置方法如下：</p>
-
-<h3>步骤1. 添加URL scheme</h3>
-
-<p>在你的工程设置项,targets 一栏下,选中自己的 target,在 Info->URL Types 中添加 URL Schemes,此值是 sso 登录时回调时所用。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。获取各个平台appkey或者appid的方法可以参考分享详细文档绑定各个平台部分，各个平台的url scheme格式如下表：</p>
-
+<h1><a name="social_sso" id="social_sso" style="color:black">2. ��ƽ̨SSO�����¼������</a></h1>
+<p>ע�⣺��Ѷ΢����QQ�ռ����ʹ������Ĭ��Ӧ���˺���Ϊ�����˺ţ�����ʹ��SSO��Ȩ���ܣ���Ϊ�ᵼ�¸���Ӧ�����õ�url scheme��Ψһ��    </p>
+<h3>����1. ����URL scheme</h3>
+<p>����Ĺ���������,targets һ����,ѡ���Լ��� target,�� Info-&gt;URL Types ������ URL Schemes�����ʹ�õ���Xcode3����Ͱ汾������Ҫ��plist�ļ������ӡ���ȡ����ƽ̨appkey����appid�ķ������Բο�������ϸ�ĵ��󶨸���ƽ̨���֣�����ƽ̨��url scheme��ʽ���±���</p>
 <table>
 <thead>
 <tr>
-<th>平台 </th>
-<th> url scheme设置格式 </th>
-<th>sso默认是否打开，开关sso功能方法</th>
+<th>ƽ̨</th>
+<th>url scheme���ø�ʽ</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>微信    </td>
-<td> “wx微信应用appid”，例如“wxd9a39c7122aa6516”</td>
-<td>必须设置微信应用id：[WXApi registerApp:@"wxd9a39c7122aa6516"]</td>
+<td>����΢��</td>
+<td>��sina.��+����appkey�����硰sina.507fcab25270157b37000010��</td>
+<td></td>
 </tr>
 <tr>
-<td>手机QQ </td>
-<td> “QQ腾讯应用appkey的十六进制（不足8位前面补0）”，例如“QQ05FA957C”</td>
-<td> 必须如下打开QQ的SDK，最后一个参数如果传nil将使用在友盟设置的qq空间的应用appkey来作为手机QQ的应用appkey：[UMSocialSnsService importClasses:[QQApiInterface class] tencentAuth:[TencentOAuth class] qqAppkey:nil];</td>
+<td>��Ѷ΢��</td>
+<td>��wb��+��Ѷ΢��appkey�����硰wb801255122��</td>
+<td></td>
 </tr>
 <tr>
-<td>新浪微博 </td>
-<td> “sina.友盟appkey”，例如“sina.507fcab25270157b37000010” </td>
-<td>默认关闭，打开方法：[UMSocialConfig setSupportSinaSSO:YES];</td>
+<td>QQ�ռ�</td>
+<td>��tengcent��+��ѶQQ����Ӧ��Id�����硰tencent100308348��</td>
+<td></td>
 </tr>
 <tr>
-<td>腾讯微博 </td>
-<td> “wb腾讯微博appkey”，例如“wb801255122” </td>
-<td> 默认关闭，打开方法：[UMSocialConfig setSupportTencentSSO:YES];</td>
+<td>΢��</td>
+<td>��wx��+΢��Ӧ��appId�����硰wxd9a39c7122aa6516��,΢����ϸ���ɲ���ο�<a href="http://dev.umeng.com/doc/document_social_ios_detail.html#social_wechat" style="text-decoration:none">΢�ż��ɷ���</a></td>
+<td></td>
 </tr>
 <tr>
-<td>QQ空间 </td>
-<td> “tencentQQ空间应用appkey”，例如“tencent100308348” </td>
-<td> 默认关闭，打开方法：[UMSocialSnsService importClasses:[QQApiInterface class] tencentAuth:[TencentOAuth class] qqAppkey:nil];</td>
+<td>�ֻ�QQ</td>
+<td>��QQ��+��ѶQQ����Ӧ��appIdת����ʮ�����ƣ�����8λǰ�油0�������硰QQ05FA957C��������ʮ�����Ʒ�����������������`echo 'ibase=10;obase=16;������ѶQQ����Ӧ��Id'</td>
+<td>bc`���ֻ�QQ��ϸ���ɲ���ο�<a href="http://dev.umeng.com/doc/document_social_ios_detail.html#social_qq" styel="text-decoration:no">�ֻ�QQ���ɷ���</a></td>
 </tr>
 </tbody>
 </table>
-
-
-<p><img src="http://dev.umeng.com/images/ios/social_sinasso.png" title="social_sso" alt="socialbar" /></p>
-
-<p>注意：</p>
-
-<ol>
-<li><p>上面打开或者关闭SSO的方法，一般写在AppDelegate文件的应用入口方法中，确保应用启动之后有且只有进行一次设置。</p></li>
-<li><p>根据你使用的平台，需要在开关方法文件添加下面的头文件</p></li>
-</ol>
-
-
-<pre><code>//使用微信、新浪微博、腾讯微博需要添加下面这一个头文件
-#import "UMSocial.h"     
-//使用QQ空间和手机QQ需要添加下面这两个头文件
-#import &lt;TencentOpenAPI/QQApiInterface.h&gt;  
-#import &lt;TencentOpenAPI/TencentOAuth.h&gt; 
+<p><img alt="socialbar" src="http://github.umeng.com/umeng/PicHubRes/raw/master/yeahugo/2013-09/d0d886.png" title="social_sso" />  </p>
+<ul>
+<li>��AppDelegate�ļ�������Ӧ�Ŀ��ط�����</li>
+</ul>
+<pre><code>#import &quot;UMSocial.h&quot;     
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    //����΢��AppId��url��ַ��nil����Ĭ��ʹ�����˵���ַ
+    [UMSocialConfig setWXAppId:@&quot;wxd9a39c7122aa6516&quot; url:nil];
+    //��Qzone��SSO����
+    [UMSocialConfig setSupportQzoneSSO:YES importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+    //�����ֻ�QQ��AppId��QQ AppId��nil����ʹ�����������õ�Qzone��AppId��url��nil����ʹ�����˵���ַ
+    [UMSocialConfig setQQAppId:nil url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+    //������΢����SSO����
+    [UMSocialConfig setSupportSinaSSO:YES];
+    //����Ѷ΢��SSO����
+    [UMSocialConfig setSupportTencentSSO:YES];
+}
 </code></pre>
 
-<h3>步骤2. 在AppDelegate文件里面实现下面三个系统回调方法：</h3>
-
+<h3>����2. ��AppDelegate�ļ�����ʵ����������ϵͳ�ص�������</h3>
 <pre><code>  - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [UMSocialSnsService  applicationDidBecomeActive];
 }
-
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
  return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];  
 }
-
 - (BOOL)application:(UIApplication *)application 
               openURL:(NSURL *)url 
     sourceApplication:(NSString *)sourceApplication
@@ -289,482 +107,380 @@ pre code {
  }  
 </code></pre>
 
-<h3>步骤3. 添加系统库文件</h3>
-
-<p>如果要使用QQ空间SSO授权和分享到手机QQ的功能，需要添加SDK依赖的系统库文件。不适用QQ空间和SSO授权的功能可以忽略此步骤。
-在Xcode中打开工程配置文件，选择“summary”一栏。在“summary”中选择“Linked Frameworks and Libraries”一栏，点击“+”图标添加下面七个库文件，分别是“libiconv.dylib”，“SystemConfiguration.framework”，“CoreGraphics.Framework”、“libsqlite3.dylib”、“CoreTelephony.framework”、“libstdc++.dylib”、“libz.dylib”。</p>
-
-<p>另外在工程配置中的“Build Settings”一栏中找到“Linking”配置区，给“Other Linker Flags”配置项添加属性值“-fobjc-arc”。</p>
-
-<h1><a name="social_xcode" id="social_wechat" style="color:black">3. 微信</a></h1>
-
-<p>1 . 在微信网站注册，得到微信应用id.</p>
-
-<p>2 . 根据上面SSO相关设置介绍，确保正确设置xcode的url scheme和实现系统回调方法，否则将不能正确回跳到应用。注意在Appdelegate设置微信appid。<code>[WXApi registerApp:@"wxd9a39c7122aa6516"]</code>。</p>
-
-<p>3 . 在调用分享列表页面之前设置微信分享的文字和图片。我们用微信的应用类型信息来实现图文分享。用户点击分享信息会跳到应用或者跳到应用下载地址。如果分享到朋友圈的话，还要设置应用网址，否则分享失败。</p>
-
-<pre><code>[UMSocialData defaultData].shareText = @"内嵌分享文字";  //分享内嵌文字
-[UMSocialData defaultData].shareImage = [UIImage imageNamed:@"icon"]; //分享内嵌图片
-[UMSocialData defaultData].extConfig.title = @"分享标题";  //分享标题  
-[UMSocialControllerService defaultControllerService].socialData.extConfig.wxMessageType = UMSocialWXMessageTypeApp;   //信息为应用类型
-[UMSocialData defaultData].extConfig.appUrl = @"http://www.uemng.com"; //应用的下载地址        
-</code></pre>
-
-<p>分享url链接,用户点击分享信息会打开指定url网页。也可以实现图文分享的效果</p>
-
-<pre><code>[UMSocialData defaultData].extConfig.title = @"分享标题";   //分享标题，分享到朋友圈只能显示标题内容
-[UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeOther; //设置为网页、音乐等其他类型
-WXWebpageObject *webObject = [WXWebpageObject object];    //初始化微信网页对象
-webObject.webpageUrl = @"https://www.umeng.com"; //设置网页的url地址
-[UMSocialData defaultData].extConfig.wxMediaObject = webObject; //设置网页对象
-</code></pre>
-
-<p>分享纯图片消息</p>
-
-<pre><code>    [UMSocialData defaultData].shareImage = [UIImage imageNamed:@"icon"]; //利用已经设置的分享内嵌图片
-    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeImage;
-</code></pre>
-
-<p>类似的方式可以实现音乐、视频等资源</p>
-
-<pre><code>[UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeOther; //设置为网页、音乐等其他类型
-WXMusicObject *musicObject = [WXMusicObject object];            //初始化微信音乐对象
-musicObject.musicUrl = @"http://m1.file.xiami.com/1/794/23794/170064/2100097_222445_l.mp3";    //设置音乐url地址
-[UMSocialData defaultData].extConfig.wxMediaObject = musicObject; //设置音乐对象
-</code></pre>
-
-<p>4 . 使用快速分享方法出现带微信icon的分享列表页或者用下面的方法跳转到微信好友或者朋友圈。</p>
-
-<pre><code>//跳转到微信好友
-UMSocialSnsPlatform *wechatSessionPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatSession];
-wechatSessionPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);
-//跳转到微信朋友圈UMSocialSnsPlatform *wechatTimelinePlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatTimeline];wechatTimelinePlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);
-</code></pre>
-
-<p>5 . 要得到微信分享完成的回调参考下面，分享设置的“获得分享完成的回调方法”部分</p>
-
-<h1><a name="social_share" id="social_qq" style="color:black">4. 集成手机QQ</a></h1>
-
-<p>1 . 在腾讯开放平台注册相应的应用</p>
-
-<p>2 . 根据上面SSO相关设置介绍，设置xcode的url scheme和实现系统回调方法。注意xcode中url scheme的设置格式。</p>
-
-<p>3 . 设置图文分享。可以设置QQ的网页对象来作为图文分享，此对象需要设置网页url。如果不设置下面的内容将用默认的分享文字内容进行分享。</p>
-
-<pre><code>UIImage *shareImage = [UIImage imageNamed:@"UMS_social_demo"];          //分享内嵌图片
-NSData* imageData = UIImageJPEGRepresentation(shareImage, 0.9);
-
-NSURL *url = [NSURL URLWithString:@"http://www.umeng.com"];            //分享url
-
-QQApiNewsObject* newsObject = [QQApiNewsObject objectWithURL:url title:@"友盟社会化组件" description:@"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。" previewImageData:imageData];
-[UMSocialData defaultData].extConfig.qqMediaObject = newsObject;
-</code></pre>
-
-<h1><a name="social_share" id="social_share" style="color:black">5. 集成分享功能</a></h1>
-
-<h2>5.1 <a name="social_share_list" id="social_share_list" style="color:black">集成分享页面</a></h2>
-
+<h3>����3. ����ϵͳ���ļ�����ʹ��QQ�ռ���ֻ�QQ��SSO���ܿ��Ժ��Դ˲��裩</h3>
 <ul>
-<li>分享列表页面</li>
+<li>
+<p>����SDK������ϵͳ���ļ���</p>
+<p>��Xcode�д򿪹��������ļ���ѡ��summary��һ�����ڡ�summary����ѡ��Linked Frameworks and Libraries��һ���������+��ͼ�����������߸����ļ����ֱ��ǡ�libiconv.dylib������SystemConfiguration.framework������CoreGraphics.Framework������libsqlite3.dylib������CoreTelephony.framework������libstdc++.dylib������libz.dylib����</p>
+</li>
 </ul>
-
-
-<p><img src="http://dev.umeng.com/images/ios/social_sharelist_actionsheet.png" title="ShareList" alt="alt text" /></p>
-
-<pre><code>#import "UMSocial.h"
-……
-
-UMSocialIconActionSheet *iconActionSheet = [[UMSocialControllerService defaultControllerService] getSocialIconActionSheetInController:self];
-[iconActionSheet showInView:self.view];
-//如果当前的UIViewController在一个tabBarController中的话，应该改为[iconActionSheet showInView:self.tabBarController.view];
+<h1><a name="social_xcode" id="social_wechat" style="color:black">3. ����΢��</a></h1>
+<h2>3.1 ע��΢��Ӧ��id.</h2>
+<p>��΢�ſ���ƽ̨ע��Ӧ�ã��õ�΢��Ӧ��id</p>
+<h2>3.2 ����΢��Ӧ��id</h2>
+<p>�����Appdelegate��ڷ���������΢��Appid�����ͼ����Ϣ��url��������Ϊnil����Ĭ��ʹ�����˵���ַ
+<code>[UMSocialConfig setWXAppId:@"wxd9a39c7122aa6516" url:nil];</code></p>
+<h2>3.3 ����url scheme</h2>
+<p>��ڶ�����SSO��������������xcode��url schemeΪ��wx��+΢��Ӧ��appId�����硰wxd9a39c7122aa6516����
+��ȷ��ʵ�ֵڶ����ֽ��ܵ�����ϵͳ�ص�������</p>
+<h2>3.4 ����΢�ŷ�����Ϣ����</h2>
+<pre><code>//����΢�ŷ���Ӧ�����ͣ��û������Ϣ����ת��Ӧ�ã����ߵ�����ҳ��
+//UMSocialWXMessageTypeImage Ϊ��ͼƬ����
+    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeApp;      
+//����ͼ����ʽ��΢������Ȧ��ʾ�����Ƚ��٣�ֻ��ʾ��������
+    [UMSocialData defaultData].extConfig.title = @&quot;����Ȧ��������&quot;;
 </code></pre>
 
-<blockquote><p>注意：
-1. 如果是弹出横屏的页面，必须要在出现列表页面前设置<br/>
-<code>[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];</code><br/>
-2. 如果要支持不同的屏幕反向，例如竖屏旋转到横屏，需要在自己的方法内添加下面的方法：</p></blockquote>
+<h2>3.5 ��ת��΢�ż��ص�</h2>
+<ul>
+<li>ʹ�ô�΢�ź��ѻ�������Ȧ��<a href="#social_share_list" style="text-decoration:none">�����б�ҳ��</a></li>
+<li>ʹ�õ����ť֮��<a href="#binding_config" style="text-decoration:none">ֱ�ӷ�����΢�ŵķ���</a>��</li>
+<li>΢��<a href="#binding_config" style="text-decoration:none">������ɵĻص�����</a></li>
+</ul>
+<p>�ο��������õġ���÷�����ɵĻص�����������</p>
+<h1><a name="social_share" id="social_qq" style="color:black">4. �����ֻ�QQ</a></h1>
+<h2>4.1 ����ѶQQ��������ƽ̨ע��Ӧ�á�</h2>
+<h2>4.2 �򿪼����ֻ�QQ����</h2>
+<ul>
+<li>��������SSO������ý��ܣ���AppDelegateӦ����ڷ����򿪼����ֻ�QQ���ء�</li>
+</ul>
+<pre><code>    //�����ֻ�QQ��AppId��QQ AppId��nil����ʹ�����������õ�Qzone��AppId��url��nil����ʹ�����˵���ַ
+[UMSocialConfig setQQAppId:nil url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+</code></pre>
 
+<h2>4.3 �������漸��ϵͳframework</h2>
+<p>��Xcode�д򿪹��������ļ���ѡ��summary��һ�����ڡ�summary����ѡ��Linked Frameworks and Libraries��һ���������+��ͼ�����������߸����ļ����ֱ��ǡ�libiconv.dylib������SystemConfiguration.framework������CoreGraphics.Framework������libsqlite3.dylib������CoreTelephony.framework������libstdc++.dylib������libz.dylib����</p>
+<h2>4.4 ����xcode��url scheme</h2>
+<p>��ڶ�����SSO��ؽ���url scheme�������ã�ע��xcode��url scheme�����ø�ʽΪ��QQ��+��ѶQQ����Ӧ��appIdת����ʮ�����ƣ�����8λǰ�油0�������硰QQ05FA957C��������ʮ�����Ʒ�����<code>echo 'ibase=10;obase=16;������ѶQQ����Ӧ��Id'|bc</code>��
+ȷ��ʵ�ֵڶ���������������ϵͳ�ص�����</p>
+<h2>4.5 ��ת���ֻ�QQ���ص�</h2>
+<ul>
+<li>ʹ�ô�QQ���ѵ�<a href="#social_share_list" style="text-decoration:none">�����б�ҳ��</a></li>
+<li>ʹ�õ����ť֮��<a href="#binding_config" style="text-decoration:none">ֱ�ӷ�����QQ���ѵķ���</a>��</li>
+<li>QQ<a href="#binding_config" style="text-decoration:none">������ɵĻص�����</a></li>
+</ul>
+<h1><a name="social_share" id="social_share" style="color:black">5. ���ɷ�������</a></h1>
+<h2>5.1 <a name="social_share_list" id="social_share_list" style="color:black">���ɷ���ҳ��</a></h2>
+<p><img alt="alt text" src="http://dev.umeng.com/images/ios/social_sharelist_actionsheet.png" title="ShareList" /> </p>
+<ul>
+<li><a name="social_share_list" id="social_share_list" style="color:black">�����б�ҳ��</a></li>
+</ul>
+<pre><code>    //��Ҫ������ɵĻص������Դ���delegate����Ϊself
+[UMSocialSnsService presentSnsIconSheetView:self
+                                     appKey:@&quot;507fcab25270157b37000010&quot;
+                                  shareText:@&quot;��Ҫ����������&quot;
+                                 shareImage:[UIImage imageNamed:@&quot;icon.png&quot;]
+                            shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,nil]
+                                   delegate:nil]; 
+</code></pre>
+
+<pre><code>&gt; ע�⣺
+&gt; 1. ����ǵ���������ҳ�棬����Ҫ�ڳ����б�ҳ��ǰ����  
+`[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];`  
+&gt; 2. ���Ҫ֧�ֲ�ͬ����Ļ��������������ת����������Ҫ���Լ��ķ�������������ķ�����
+</code></pre>
 <pre><code> -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {  
-//     如果当前UIViewController有UINavigationController,或者UITabBarController,则用self.navigationController.view，或者self.tabBarController.view，否则用self.view
+//     �����ǰUIViewController��UINavigationController,����UITabBarController,����self.navigationController.view������self.tabBarController.view��������self.view
     UIView *iconActionSheet = [self.tabBarController.view viewWithTag:kTagSocialIconActionSheet];
     [iconActionSheet setNeedsDisplay];
 }
 </code></pre>
 
 <ul>
-<li><p>分享编辑页面
-点击新浪微博、腾讯微博、微信、Facebook、和Twitter等微博平台，如果没有授权的话会自动进入授权页面，再进入编辑微博页面。</p>
-
-<pre><code>#import "UMSocial.h"
-……
-//如果要到其他平台可以把`UMShareToSina`换成其他分享平台名称。
-UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
-snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);
-</code></pre></li>
+<li>
+<p><a name="social_share_edit" id="social_share_edit" style="color:black">��ת���������ݱ༭ҳ��</a></p>
+<p>��������΢������Ѷ΢����΢�š�Facebook����Twitter�����ݱ༭ҳ�棬����΢�š��ֻ�QQ�ȷ���ҳ�档û����Ȩ�������Ȩҳ�棬�����Ȩ���ٽ���༭ҳ�档</p>
+</li>
 </ul>
-
-
-<blockquote><p>注意：如果是弹出横屏的页面，必须要在出现编辑页面前设置<br/>
-<code>[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];</code></p></blockquote>
-
-<h2>5.2 <a name="social_share_config" id="social_share_config" style="color:black">分享相关设置</a></h2>
-
-<h3>设置在分享编辑页面出现的内嵌文字和图片</h3>
-
-<pre><code>//在弹出分享页面之前设置分享内容
-[UMSocialData defaultData].shareImage = [UIImage imageNamed:@"icon"];
-[UMSocialData defaultData].shareText = @"内嵌分享文字";
-//弹出弹出分享列表或者分享编辑页面
+<pre><code>#import &quot;UMSocial.h&quot;
+����
+    [[UMSocialControllerService defaultControllerService] setShareText:@&quot;������Ƕ����&quot; shareImage:[UIImage imageNamed:@&quot;icon&quot;] socialUIDelegate:nil];     //���÷������ݺͻص�����
+    [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina].snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);
 </code></pre>
 
-<p>分享url资源，支持url定义的图片、视频、音乐。下面是分享一个音乐的url页面，也可以指定音乐文件url。如果设置了内嵌图片就不能设置url资源，同理设置了url资源就不能设置内嵌图片。</p>
-
-<pre><code>//在弹出分享页面之前设置分享内容
-UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeMusic url:@"http://www.xiami.com/song/2100097"];
-[UMSocialData defaultData].urlResource = urlResource;
-//弹出弹出分享列表或者分享编辑页面
+<pre><code>&gt; ע�⣺����ǵ���������ҳ�棬����Ҫ�ڳ��ֱ༭ҳ��ǰ����  
+```[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];```
 </code></pre>
-
-<h3>获得分享完成的回调方法</h3>
-
-<pre><code>  //设置实现回调方法的对象，可以将[UMSocialControllerService defaultControllerService]替换成自己对应的`UMSocialControllerService`对象
-   [UMSocialControllerService defaultControllerService].socialUIDelegate = self;
-    ……
-//实现回调方法
+<ul>
+<li><a name="social_share_delegate" id="social_share_delegate" style="color:black">��÷�����ɵĻص�����</a></li>
+</ul>
+<pre><code>//ʵ�ֻص�����
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
-    //根据`responseCode`得到发送结果,如果分享成功
+    //����`responseCode`�õ����ͽ��,��������ɹ�
     if(response.responseCode == UMSResponseCodeSuccess)
     {
-        //得到分享到的微博平台名
-        NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+        //�õ���������΢��ƽ̨��
+        NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
     }      
 }
 </code></pre>
 
-<h3>自定义分享平台</h3>
-
-<p>本SDK的分享列表默认显示新浪微博、腾讯微博、QQ空间、人人网和豆瓣，短信和邮箱分享。如果你想分享到修改分享平台，可以用<code>UMSocialConfig</code>的类方法，例如设置分享列表上面分组有新浪微博和腾讯微博，下面是微信，出现的平台次序和你所指定的平台次序保持一致。你在代码里面只要调用一次，出现SDK的所有页面都会生效。</p>
-
-<pre><code>    [UMSocialConfig setSnsPlatformNames:@[UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline]];
-    //`UMShareToSina`,`UMShareToTencent`,`UMShareToWechatSession`,`UMShareToWechatTimeline`，`UMShareToRenren`,`UMShareToDouban`,`UMShareToQzone`,`UMShareToEmail`,`UMShareToSms`,`UMShareToFacebook`,`UMShareToTwitter`
-    分别对应新浪微博、腾讯微博、微信好友、微信朋友圈、人人网、豆瓣、QQ空间、邮箱、短信、Facebook、Twitter。
+<h2>5.2 <a name="social_share_config" id="social_share_config" style="color:black">�����������</a></h2>
+<ul>
+<li>����url��Դ��֧��url�����ͼƬ����Ƶ�����֡������Ƿ���һ�����ֵ�urlҳ�棬Ҳ����ָ�������ļ�url�������������ǶͼƬ�Ͳ�������url��Դ��ͬ��������url��Դ�Ͳ���������ǶͼƬ��</li>
+</ul>
+<pre><code>//�ڵ�������ҳ��֮ǰ���÷�������
+[[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@&quot;http://www.baidu.com/img/bdlogo.gif&quot;];
 </code></pre>
 
-<p>在分享列表新增一个平台或者功能按钮，例如增加分享到网易微博功能的按钮，需要自定义网易微博的显示方式和点击之后的事件等。</p>
-
-<pre><code>    [UMSocialConfig setSnsPlatformNames:@[UMShareToSina,UMShareToTencent,UMShareToWechat,@"netease"]]; //设置在分享列表出现的平台，"netease"和下面的对应
-    ……
-    UMSocialSnsPlatform *neteasePlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:@"netease"];
-    neteasePlatform.displayName = @"网易微博";
-    neteasePlatform.smallImageName = @"icon"; //用于tableView样式的分享列表
-    neteasePlatform.bigImageName = @"icon";   //用于actionsheet样式的分享列表
-    neteasePlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
-        NSLog(@"点击网易微博的响应");
+<ul>
+<li>
+<p>�Զ������ƽ̨</p>
+<p>�޸�ƽ̨��Ӧ��ͼƬ�����ֺ͵���¼��ȣ����������޸�����΢����ͼƬ�����ֺ͵���¼�</p>
+</li>
+</ul>
+<pre><code>    UMSocialSnsPlatform *sinaPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
+    sinaPlatform.bigImageName = @&quot;icon&quot;;
+    sinaPlatform.displayName = @&quot;΢��&quot;;
+    sinaPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
+        NSLog(@&quot;�������΢������Ӧ&quot;);
     };
-    [UMSocialConfig addSocialSnsPlatform:@[neteasePlatform]];
 </code></pre>
 
-<h3>自定义分享来源</h3>
-
-<p>可以在友盟后台对应APP -> 组件 -> 社会化组件 -> 设置页中绑定各平台的appkey，见<a href="#binding_config" style="text-decoration:none">4 绑定友盟应用标识与各开放平台</a></p>
-
-<h3>设置SDK的页面支持某一屏幕方向</h3>
-
-<p>例如设置只有横屏显示：</p>
-
-<pre><code>//传入形参为iOS6定义的`UIInterfaceOrientationMask`类型
-[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];
-</code></pre>
-
-<h3>设置分享主题</h3>
-
-<p>可以为每个分享指定一个主题，例如一本书的标题、一首歌的歌名，以便让您对分享的数据统计和分析有更深入的理解。</p>
-
-<pre><code>UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"identifier"];
-UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
-//下面调用分享列表页面
-UMSocialIconActionSheet *iconActionSheet = [socialControllerService getSocialIconActionSheetInController:self];
-[iconActionSheet showInView:self.view];
-//也可以这样调用分享编辑页面
-UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
-snsPlatform.snsClickHandler(self,socialControllerService,YES);
-</code></pre>
-
-<h3>处理分享错误</h3>
-
-<p>在回调对象形参中<code>response</code>中的<code>responseCode</code>和<code>message</code>可以得到返回状态码，和错误消息。或者用下面的代码打开我们SDK在控制台的输出后也能看到错误码。</p>
-
+<ul>
+<li>
+<p>�Զ��������Դ</p>
+<p>���������˺�̨��ӦAPP -&gt; ��� -&gt; ��ữ��� -&gt; ����ҳ�а󶨸�ƽ̨��appkey����<a href="#binding_config" style="text-decoration:none">4 ������Ӧ�ñ�ʶ�������ƽ̨</a></p>
+</li>
+<li>
+<p>������������</p>
+<p>������Ĵ��������SDK�ڿ���̨��������ܿ�����Ӧ�Ĵ����롣</p>
+</li>
+</ul>
 <pre><code>[UMSocialData openLog:YES];
 </code></pre>
 
-<p>如果新浪微博授权之后出现<code>message</code>为<code>applications over the unaudited use restrictions</code>的错误，原因是没有应用没有通过新浪微博审核，需要添加登录账号到开发者账号。
-添加方法：登录开发者帐号，点击进入http://open.weibo.com/apps/30871<strong><strong><em>/info/advanced （30871</em></strong></strong>替换成你应用的AppKey），在底部添加测试用户即可，最多只能添加15位且添加后不能修改。注意：修改后约半小时左右时间生效。</p>
-
-<h2>5.3 <a name="social_share_data" id="social_share_data" style="color:black">直接发送微博的数据级接口</a></h2>
-
+<pre><code>����΢����Ȩ֮�����messageΪapplications over the unaudited use restrictions�Ĵ���ԭ����û��Ӧ��û��ͨ������΢����ˣ���Ҫ���ӵ�¼�˺ŵ��������˺š�
+</code></pre>
+<p>���ӷ�������¼�������ʺţ��������http://open.weibo.com/apps/30871<strong><em>**/info/advanced�0�2��30871</em></strong>**�滻����Ӧ�õ�AppKey�����ڵײ����Ӳ����û����ɣ����ֻ������15λ�����Ӻ����޸ġ�ע�⣺�޸ĺ�Լ��Сʱ����ʱ����Ч��</p>
+<h2>5.3 <a name="social_share_data" id="social_share_data" style="color:black">ֱ�ӷ���΢�������ݼ��ӿ�</a></h2>
 <ul>
-<li><p>直接发送微博到对应的微博平台,支持一次分享到多平台，可以传入文字、图片、地理位置、url资源。如果不需要图片、地理位置和url资源都可以指定为nil。如果想得到分享结果，可以在回调Block对象形参response得到。</p>
-
-<pre><code>  [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:@"分享内嵌文字" image:nil location:nil urlResource:nil completion:^(UMSocialResponseEntity *response){
-      if (response.responseCode == UMSResponseCodeSuccess) {
-          NSLog(@"分享成功！");
-      }
-  }];
-</code></pre></li>
-<li><p>从线上获取分享数</p>
-
-<pre><code>  [[UMSocialDataService defaultDataService] requestSocialDataWithCompletion:^(UMSocialResponseEntity *response){
-// 下面的方法可以获取保存在本地的分享数，如果app重新安装之后，数据会被清空，可能获取值为0
-      int shareNumber = [socialDataService.socialData getNumber:UMSNumberShare];
-      NSLog(@"shareNum is %d",shareNumber);
-  }];
-</code></pre></li>
+<li>ֱ�ӷ���΢������Ӧ��΢��ƽ̨,֧��һ�η�������ƽ̨�����Դ������֡�ͼƬ������λ�á�url��Դ��ͼƬ������λ�ú�url��Դ������Ϊnil��<br />
+���ֻ���͵�һ��΢��ƽ̨���Ҹ�ƽ̨û������Ȩ��SDK���Զ�����Ȩҳ�棬��Ȩ���֮���ٷ���΢����</li>
 </ul>
-
-
-<h2>6 <a name="binding_config" id="binding_config" style="color:black">绑定友盟应用标识与各开放平台</a></h2>
-
-<p>   获得appkey后，为了方便您可以快速集成我们的社会化分享的服务，我们会为你对各个平台提供一个默认的appkey和appsecret，如果你想使用自己的微博平台的应用，您需在在我们网站更改默认的微博appkey，具体操作是：登录友盟网站->左上角选择你们的产品->组件->社会化组件->设置,菜单项下进行绑定配置。如果你尚未在我们支持的分享平台注册你的应用，注册过程可以参考如下：</p>
-
-<h3><strong>新浪微博</strong></h3>
-
-<pre><code>方式一：快捷申请方式（适用条件：新应用推荐使用此方式。优点是直接在友盟后台，即可从新浪申请到处于审核通过状态的APP）
-
-1. 生成封装链接。如果还未配置应用地址的封装链接，需要在友盟后台对应应用的组件 -&gt; 社会化组件 -&gt; 设置页 中生成封装链接；
-
-2. 填写快捷申请表单。在新浪微博APP绑定信息部分，点击填写“新浪快捷申请通道”表单中的相应信息，并提交；
-
-3. 申请成功验证。提交成功后，我们会将新建APP的Key和Secret回填到此页面，这也表明新浪微博的配置成功了。
-
-方式二：自主配置方式（适用条件：希望或已经在开放平台为APP自行申请Key和Secret的情况）
-
-1. 在新浪开放平台后台创建移动应用：http://open.weibo.com -&gt; 应用开发 -&gt; 移动应用 -&gt; 创建应用
-
-2. 在创建好新应用后，选择“基本信息”，安全域名填写"whalecloud.com"，其余字段按需填写；（如果是已有应用，可以在应用信息-&gt;基本设置-&gt;安全域名中做修改）
-
-3. 如果应用尚未通过审核，则需要指定测试用户，该阶段只有指定的测试用户才可以分享信息到新浪微博，应用通过审核后此限制自动失效。
-
-4. 将获取到的Key和Secret手工填写到友盟后台对应应用的组件 -&gt; 社会化组件 -&gt; 设置页 -&gt; 新浪微博APP绑定信息部分。
+<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:@&quot;������Ƕ����&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            NSLog(@&quot;�����ɹ���&quot;);
+        }
+    }];
 </code></pre>
 
-<h3><strong>腾讯微博</strong></h3>
+<h2>6 <a name="binding_config" id="binding_config" style="color:black">������Ӧ�ñ�ʶ�������ƽ̨</a></h2>
+<p>���appkey��Ϊ�˷��������Կ��ټ������ǵ���ữ�����ķ������ǻ�Ϊ��Ը���ƽ̨�ṩһ��Ĭ�ϵ�appkey��appsecret���������ʹ���Լ���΢��ƽ̨��Ӧ�ã���������������վ����Ĭ�ϵ�΢��appkey����������ǣ���¼������վ-&gt;���Ͻ�ѡ�����ǵĲ�Ʒ-&gt;���-&gt;��ữ���-&gt;����,�˵����½��а����á��������δ������֧�ֵķ���ƽ̨ע�����Ӧ�ã�ע����̿��Բο����£�</p>
+<h3><strong>����΢��</strong></h3>
+<pre><code>��ʽһ��������뷽ʽ��������������Ӧ���Ƽ�ʹ�ô˷�ʽ���ŵ���ֱ�������˺�̨�����ɴ��������뵽�������ͨ��״̬��APP��
 
-<pre><code>1. 填写应用信息，生成封装链接。如果还未配置应用地址的封装链接，需要在友盟后台对应应用的组件 -&gt;社会化组件 -&gt;设置页填写你的腾讯微博应用对应的App Key和App Secret,完成之后即出现生成封转链接表单；
+1. ���ɷ�װ���ӡ������δ����Ӧ�õ�ַ�ķ�װ���ӣ���Ҫ�����˺�̨��ӦӦ�õ���� -&gt; ��ữ��� -&gt; ����ҳ �����ɷ�װ���ӣ�
+
+2. ��д������������������΢��APP����Ϣ���֣������д�����˿������ͨ���������е���Ӧ��Ϣ�����ύ��
+
+3. ����ɹ���֤���ύ�ɹ������ǻὫ�½�APP��Key��Secret�����ҳ�棬��Ҳ��������΢�������óɹ��ˡ�
+
+��ʽ�����������÷�ʽ������������ϣ�����Ѿ��ڿ���ƽ̨ΪAPP��������Key��Secret�������
+
+1. �����˿���ƽ̨��̨�����ƶ�Ӧ�ã�http://open.weibo.com -&gt; Ӧ�ÿ��� -&gt; �ƶ�Ӧ�� -&gt; ����Ӧ��
+
+2. �ڴ�������Ӧ�ú�ѡ�񡰻�����Ϣ������ȫ������д"whalecloud.com"�������ֶΰ�����д�������������Ӧ�ã�������Ӧ����Ϣ-&gt;��������-&gt;��ȫ���������޸ģ�
+
+3. ���Ӧ����δͨ����ˣ�����Ҫָ�������û����ý׶�ֻ��ָ���Ĳ����û��ſ��Է�����Ϣ������΢����Ӧ��ͨ����˺�������Զ�ʧЧ��
+
+4. ����ȡ����Key��Secret�ֹ���д�����˺�̨��ӦӦ�õ���� -&gt; ��ữ��� -&gt; ����ҳ -&gt; ����΢��APP����Ϣ���֡�
 </code></pre>
-
-<p><img src="http://dev.umeng.com/images/ios/appurl_socialurl.png" alt="appurl_socialurl" /></p>
-
-<pre><code>2. 在腾讯开放平台后台创建无线应用：http://dev.t.qq.com/ -&gt; 应用开发 -&gt; 创建应用 -&gt; “无线应用”；
-
-3. 在创建无线应用表单中，“应用网址”需要填写步骤1生成的应用网址的封装链接，其余字段按需填写；
-
-（如果是已有应用，可以在基本信息-》应用网址中填写上述的封装链接）
-
-4. 将获取到的Key和Secret手工填写到友盟后台对应应用的组件 -》社会化组件 - 》设置页 -》腾讯微博APP绑定信息部分。
+<h3><strong>��Ѷ΢��</strong></h3>
+<pre><code>1. ��дӦ����Ϣ�����ɷ�װ���ӡ������δ����Ӧ�õ�ַ�ķ�װ���ӣ���Ҫ�����˺�̨��ӦӦ�õ���� -&gt;��ữ��� -&gt;����ҳ��д�����Ѷ΢��Ӧ�ö�Ӧ��App Key��App Secret,���֮�󼴳������ɷ�ת���ӱ�����
 </code></pre>
+<p><img alt="appurl_socialurl" src="http://dev.umeng.com/images/ios/appurl_socialurl.png" /></p>
+<pre><code>2. ����Ѷ����ƽ̨��̨��������Ӧ�ã�http://dev.t.qq.com/ -&gt; Ӧ�ÿ��� -&gt; ����Ӧ�� -&gt; ������Ӧ�á���
 
-<h3><strong>人人网</strong></h3>
+3. �ڴ�������Ӧ�ñ����У���Ӧ����ַ����Ҫ��д����1���ɵ�Ӧ����ַ�ķ�װ���ӣ������ֶΰ�����д��
 
-<pre><code>目前人人分为两个平台：开放平台、移动开发者中心。
+�����������Ӧ�ã������ڻ�����Ϣ-��Ӧ����ַ����д�����ķ�װ���ӣ�
 
-方式一：人人移动开发者中心（推荐使用，针对移动应用提供更完善的功能及推广支持）
-
-1. 在如下位置创建应用：http://dev.mobile.renren.com/ -》我的应用 -》创建应用，填写必要的应用信息；
-
-2. 应用处于“开发中”状态（未审核通过前），需要在用户管理页面中添加测试用户，这些特定用户才能分享成功。应用通过审核后此限制自动失效。
-
-3. 将获取到的App ID、API Key、Secret手工填写到友盟后台对应应用的组件 -》社会化组件 - 》设置页 -》人人网APP绑定信息部分，并勾选“移动开发者中心”。  
-
-方式二：人人网开放平台（不推荐继续使用，两种接入方式的区别详见，http://wiki.mobile.renren.com/zh/index.php/接入流程指南#.E5.B7.B2.E6.8E.A5.E5.85.A5.E8.BF.87.E4.BA.BA.E4.BA.BA）
-
-1. 在如下位置创建应用：http://dev.renren.com/ -》应用开发-》创建客户端应用-》填写应用名称；
-
-2. 在已创建应用的基本信息-》应用根域名字段填写为“sns.whalecloud.com”；
-
-3. 应用处于“开发中”状态（未审核通过前），需要在用户管理页面中添加测试用户，这些特定用户才能分享成功。应用通过审核后此限制自动失效。
-
-4. 将获取到的App ID、API Key、Secret手工填写到友盟后台对应应用的组件 -》社会化组件 - 》设置页 -》人人网APP绑定信息部分，并勾选“开放平台”。
+4. ����ȡ����Key��Secret�ֹ���д�����˺�̨��ӦӦ�õ���� -����ữ��� - ������ҳ -����Ѷ΢��APP����Ϣ���֡�
 </code></pre>
+<h3><strong>������</strong></h3>
+<pre><code>Ŀǰ���˷�Ϊ����ƽ̨������ƽ̨���ƶ����������ġ�
 
-<h3><strong>豆瓣</strong></h3>
+��ʽһ�������ƶ����������ģ��Ƽ�ʹ�ã�����ƶ�Ӧ���ṩ�����ƵĹ��ܼ��ƹ�֧�֣�
 
-<pre><code>与人人网的申请、配置方式基本一致，开放平台链接如下：http://developers.douban.com/
+1. ������λ�ô���Ӧ�ã�http://dev.mobile.renren.com/ -���ҵ�Ӧ�� -������Ӧ�ã���д��Ҫ��Ӧ����Ϣ��
 
-回调地址为：http://sns.whalecloud.com/douban/callback
+2. Ӧ�ô��ڡ������С�״̬��δ���ͨ��ǰ������Ҫ���û�����ҳ�������Ӳ����û�����Щ�ض��û����ܷ����ɹ���Ӧ��ͨ����˺�������Զ�ʧЧ��
 
-权限必须选择豆瓣广播
+3. ����ȡ����App ID��API Key��Secret�ֹ���д�����˺�̨��ӦӦ�õ���� -����ữ��� - ������ҳ -��������APP����Ϣ���֣�����ѡ���ƶ����������ġ���
+
+��ʽ��������������ƽ̨�����Ƽ�����ʹ�ã����ֽ��뷽ʽ�����������http://wiki.mobile.renren.com/zh/index.php/��������ָ��#.E5.B7.B2.E6.8E.A5.E5.85.A5.E8.BF.87.E4.BA.BA.E4.BA.BA��
+
+1. ������λ�ô���Ӧ�ã�http://dev.renren.com/ -��Ӧ�ÿ���-�������ͻ���Ӧ��-����дӦ�����ƣ�
+
+2. ���Ѵ���Ӧ�õĻ�����Ϣ-��Ӧ�ø������ֶ���дΪ��sns.whalecloud.com����
+
+3. Ӧ�ô��ڡ������С�״̬��δ���ͨ��ǰ������Ҫ���û�����ҳ�������Ӳ����û�����Щ�ض��û����ܷ����ɹ���Ӧ��ͨ����˺�������Զ�ʧЧ��
+
+4. ����ȡ����App ID��API Key��Secret�ֹ���д�����˺�̨��ӦӦ�õ���� -����ữ��� - ������ҳ -��������APP����Ϣ���֣�����ѡ������ƽ̨����
 </code></pre>
+<h3><strong>����</strong></h3>
+<pre><code>�������������롢���÷�ʽ����һ�£�����ƽ̨�������£�http://developers.douban.com/
 
-<h3><strong>QQ空间</strong></h3>
+�ص���ַΪ��http://sns.whalecloud.com/douban/callback
 
-<pre><code>1. 在如下位置创建应用：http://connect.qq.com/manage/ -》添加移动应用-》填写应用名称，确定；
-
-2. 在接下来的应用控制台-&gt;基本信息-&gt;点击编辑按钮，填写必要的应用信息，并保存。（不做有可能授权失败）
-
-3. 将获取到的APP ID、Key手工填写到友盟后台对应应用的组件 -》社会化组件 - 》设置页 -》QQ空间APP绑定信息部分。
-
-4. 按照以上配置可以满足大部分的图片分享需求，即指定图片URL进行图片分享；如需支持上传图片内容并分享，要在此页面另行申请upload_pic权限：http://wiki.opensns.qq.com/wiki/【QQ登录】API文档）
+Ȩ�ޱ���ѡ�񶹰�㲥
 </code></pre>
+<h3><strong>QQ�ռ�</strong></h3>
+<pre><code>1. ������λ�ô���Ӧ�ã�http://connect.qq.com/manage/ -�������ƶ�Ӧ��-����дӦ�����ƣ�ȷ����
 
+2. �ڽ�������Ӧ�ÿ���̨-&gt;������Ϣ-&gt;����༭��ť����д��Ҫ��Ӧ����Ϣ�������档�������п�����Ȩʧ�ܣ�
+
+3. ����ȡ����APP ID��Key�ֹ���д�����˺�̨��ӦӦ�õ���� -����ữ��� - ������ҳ -��QQ�ռ�APP����Ϣ���֡�
+
+4. �����������ÿ�������󲿷ֵ�ͼƬ�������󣬼�ָ��ͼƬURL����ͼƬ����������֧���ϴ�ͼƬ���ݲ�������Ҫ�ڴ�ҳ����������upload_picȨ�ޣ�http://wiki.opensns.qq.com/wiki/��QQ��¼��API�ĵ���
+</code></pre>
 <h2><a name="FAQ" id="FAQ" style="color:black">7. FAQ</a></h2>
-
-<p>请到<a href="http://support.umeng.com/?qa=ios-sdk-%E9%9B%86-%E6%88%90" style="text-decoration:none">友盟社会化组件的帮助与支持页面</a></p>
-
-<h2><a name="error_code" id="error_code" style="color:black">8. 附录</a></h2>
-
-<h3>1 常见错误代码含义</h3>
-
+<p>�뵽<a href="http://support.umeng.com/?qa=ios-sdk-%E9%9B%86-%E6%88%90" style="text-decoration:none">������ữ����İ�����֧��ҳ��</a></p>
+<h2><a name="error_code" id="error_code" style="color:black">8. ��¼</a></h2>
+<h3>1 ����������뺬��</h3>
 <table>
 <thead>
 <tr>
-<th>错误码 </th>
-<th> 错误原因</th>
+<th>������</th>
+<th>����ԭ��</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>500 </td>
-<td> 给定uid的用户并不存在</td>
+<td>500</td>
+<td>����uid���û���������</td>
 </tr>
 <tr>
-<td>501 </td>
-<td> 绑定账户失败</td>
+<td>501</td>
+<td>���˻�ʧ��</td>
 </tr>
 <tr>
-<td>502 </td>
-<td> 解绑定失败</td>
+<td>502</td>
+<td>���ʧ��</td>
 </tr>
 <tr>
-<td>504 </td>
-<td> 获取评论失败</td>
+<td>504</td>
+<td>��ȡ����ʧ��</td>
 </tr>
 <tr>
-<td>505 </td>
-<td> 用户被加入黑名单</td>
+<td>505</td>
+<td>�û������������</td>
 </tr>
 <tr>
-<td>506 </td>
-<td> 获取好友失败</td>
+<td>506</td>
+<td>��ȡ����ʧ��</td>
 </tr>
 <tr>
-<td>507 </td>
-<td> 获取授权url失败</td>
+<td>507</td>
+<td>��ȡ��Ȩurlʧ��</td>
 </tr>
 <tr>
-<td>508 </td>
-<td> 解除授权失败</td>
+<td>508</td>
+<td>�����Ȩʧ��</td>
 </tr>
 <tr>
-<td>510 </td>
-<td> 分享失败</td>
+<td>510</td>
+<td>����ʧ��</td>
 </tr>
 <tr>
-<td>511 </td>
-<td> 获取bar失败</td>
+<td>511</td>
+<td>��ȡbarʧ��</td>
 </tr>
 <tr>
-<td>512 </td>
-<td> 从平台获取用户信息失败</td>
+<td>512</td>
+<td>��ƽ̨��ȡ�û���Ϣʧ��</td>
 </tr>
 <tr>
-<td>513 </td>
-<td> url跳转失败</td>
+<td>513</td>
+<td>url��תʧ��</td>
 </tr>
 <tr>
-<td>514 </td>
-<td> 从social获取用户信息失败</td>
+<td>514</td>
+<td>��social��ȡ�û���Ϣʧ��</td>
 </tr>
 <tr>
-<td>515 </td>
-<td> 请求的参数错误</td>
+<td>515</td>
+<td>����Ĳ�������</td>
 </tr>
 <tr>
-<td>517 </td>
-<td> 版本号错误</td>
+<td>517</td>
+<td>�汾�Ŵ���</td>
 </tr>
 </tbody>
 </table>
-
-
-<h3>2 分享错误代码</h3>
-
+<h3>2 �����������</h3>
 <table>
 <thead>
 <tr>
-<th>错误码 </th>
-<th> 错误原因</th>
+<th>������</th>
+<th>����ԭ��</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>5001 </td>
-<td> 错误的友盟appkey，或者此appkey没有绑定任何平台.如果开发者绑定了，依然出现这个问题，让开发者再试一下，可能是刚绑定马上就测试的原因，最好等2分钟。</td>
+<td>5001</td>
+<td>���������appkey�����ߴ�appkeyû�а��κ�ƽ̨.��������߰��ˣ���Ȼ����������⣬�ÿ���������һ�£������Ǹհ����ϾͲ��Ե�ԭ����õ�2���ӡ�</td>
 </tr>
 <tr>
-<td>5002 </td>
-<td>这个友盟appkey已经被禁止</td>
+<td>5002</td>
+<td>�������appkey�Ѿ�����ֹ</td>
 </tr>
 <tr>
-<td>5003 </td>
-<td>请求的参数中没有uid</td>
+<td>5003</td>
+<td>����Ĳ�����û��uid</td>
 </tr>
 <tr>
-<td>5004 </td>
-<td>未知的错误，具体的错误信息会在log的输出中</td>
+<td>5004</td>
+<td>δ֪�Ĵ��󣬾���Ĵ�����Ϣ����log�������</td>
 </tr>
 <tr>
-<td>5005 </td>
-<td>访问频率超限，可一会儿再试</td>
+<td>5005</td>
+<td>����Ƶ�ʳ��ޣ���һ�������</td>
 </tr>
 <tr>
-<td>5006 </td>
-<td>请求参数中没有content字段</td>
+<td>5006</td>
+<td>���������û��content�ֶ�</td>
 </tr>
 <tr>
-<td>5007 </td>
-<td>请求参数中content字段的内容为空</td>
+<td>5007</td>
+<td>���������content�ֶε�����Ϊ��</td>
 </tr>
 <tr>
-<td>5008 </td>
-<td>没有上传图片</td>
+<td>5008</td>
+<td>û���ϴ�ͼƬ</td>
 </tr>
 <tr>
-<td>5009 </td>
-<td>此友盟的appkey没有绑定对应平台的appkey和appsecret</td>
+<td>5009</td>
+<td>�����˵�appkeyû�а󶨶�Ӧƽ̨��appkey��appsecret</td>
 </tr>
 <tr>
-<td>5010 </td>
-<td>userid无效，这个用户并没有进行授权</td>
+<td>5010</td>
+<td>userid��Ч������û���û�н�����Ȩ</td>
 </tr>
 <tr>
-<td>5013 </td>
-<td>请求的参数中没有appkey这个字段</td>
+<td>5013</td>
+<td>����Ĳ�����û��appkey����ֶ�</td>
 </tr>
 <tr>
-<td>5014 </td>
-<td>没有对此用户进行授权</td>
+<td>5014</td>
+<td>û�жԴ��û�������Ȩ</td>
 </tr>
 <tr>
-<td>5024 </td>
-<td>获取access token失败，具体看log输出</td>
+<td>5024</td>
+<td>��ȡaccess tokenʧ�ܣ����忴log���</td>
 </tr>
 <tr>
-<td>5025 </td>
-<td>获取request token失败，具体看log输出</td>
+<td>5025</td>
+<td>��ȡrequest tokenʧ�ܣ����忴log���</td>
 </tr>
 <tr>
-<td>5027 </td>
-<td>授权已经过期</td>
+<td>5027</td>
+<td>��Ȩ�Ѿ�����</td>
 </tr>
 </tbody>
 </table>
-
-
-<h3>3 技术支持</h3>
-
-<p>请发邮件至social-support@umeng.com。如果您出现的问题和SDK相关，请说明您使用的是iOS的SDK，我们会尽快回复您。</p>
-</body>
-</html>
+<h3>3 ����֧��</h3>
+<p>�뷢�ʼ���social-support@umeng.com����������ֵ������SDK��أ���˵����ʹ�õ���iOS��SDK�����ǻᾡ��ظ�����</p>

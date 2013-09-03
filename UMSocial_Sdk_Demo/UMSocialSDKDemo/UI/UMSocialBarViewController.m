@@ -17,6 +17,11 @@
 
 @implementation UMSocialBarViewController
 
+-(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType
+{
+    NSLog(@"didClose is %d",fromViewControllerType);
+}
+
 - (void)viewDidLoad
 {
     CGSize size = [UIScreen mainScreen].bounds.size;
@@ -30,7 +35,11 @@
     _socialBar.socialUIDelegate = self;
     _socialBar.center = CGPointMake(size.width/2, size.height - 93);
     [self.view addSubview:_socialBar];
-
+//
+//    for (UIButton *button in _socialBar.barButtons) {
+//        button.titleLabel.adjustsFontSizeToFitWidth = YES;
+//    }
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }

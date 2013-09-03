@@ -1,222 +1,46 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<style>
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote {
-    margin: 0;
-    padding: 0;
-}
-body {
-    font-family: helvetica,"Microsoft Yahei",sans-serif;    
-    font-size: 14px;
-    line-height: 18px;
-    color: #737373;
-    background-color: white;
-    margin: 10px 13px 10px 13px;
-}
-table {
-	margin: 10px 0 15px 0;
-	border-collapse: collapse;
-}
-td,th {	
-	border: 1px solid #ddd;
-	padding: 3px 10px;
-}
-th {
-	padding: 5px 10px;	
-}
-
-a {
-    color: #2a5295;
-    text-decoration: none;
-}
-a:hover {
-    color: #2a5295;
-    text-decoration: underline;
-
-}
-a img {
-    border: none;
-}
-p {
-    margin-bottom: 9px;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: #333;
-    line-height: 36px;
-}
-h1 {
-    margin-bottom: 18px;
-    font-size: 30px;
-}
-h2 {
-    font-size: 24px;
-}
-h3 {
-    font-size: 20px;
-}
-h4 {
-    font-size: 16px;
-}
-h5 {
-    font-size: 14px;
-}
-h6 {
-    font-size: 12px;
-}
-hr {
-    margin: 0 0 19px;
-    border: 0;
-    border-bottom: 1px solid #ccc;
-}
-b{
-    color:#F00;
-    text-indent: 28px;
-    display: block;
-    margin: 10px 0px;
-}
-
-li, ul li {
-    list-style-type:disc;
-}
-blockquote {
-    padding: 13px 13px 21px 15px;
-}
-
-blockquote p {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 18px;
-    margin-bottom: 0;
-}
-code, pre {
-    font-family: Monaco, Andale Mono, Courier New, monospace;
-}
-code {
-    background-color: #2a5295;
-    color: #FFF;
-    padding: 1px 3px;
-    font-size: 12px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    display: inline-block;
-    margin: auto 5px;
-}
-pre {
-    display: block;
-    padding: 14px;
-    margin: 0 0 18px;
-    line-height: 16px;
-    font-size: 12px;
-    border: 1px solid #d9d9d9;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    background-color: #bfcbdf;
-    color: #333;
-}
-pre code {
-    background-color: #bfcbdf;
-    color: #333;
-    font-size: 12px;
-    padding: 0;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    word-break:break-all; 
-}
-@media screen and (min-width: 914px) {
-    body {
-        width: 854px;
-        margin:10px auto;
-    }
-}
-@media print {
-	body,code,pre code,h1,h2,h3,h4,h5,h6 {
-		color: black;
-	}
-	table, pre {
-		page-break-inside: avoid;
-	}
-}
-</style>
-<title>分享 快速集成</title>
-
-</head>
-<body>
-<h1>分享 快速集成</h1>
-
-<h2>1 <a name="sign_in_umengkey" id="sign_in_umengkey" style="color:black"> 产品概述</a></h2>
-
-<p>友盟社会化组件，可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。</p>
-
-<p><strong>指南将会手把手教你使用社会化组件SDK，用10分钟为APP增加新浪微博、腾讯微博、人人网分享功能。</strong></p>
-
-<p><font color="red">注意：本文示例代码均针对最新版SDK，如果你所用SDK的类名或方法名与此文不符合，请使用你所用SDK的随包文档、或者下载使用最新版SDK。</font></p>
-
-<h2>2 <a name="sign_in_umengkey" id="sign_in_umengkey" style="color:black"> 获取友盟Appkey</a></h2>
-
+<link rel="stylesheet" type="text/css" href="markdown.css"></link>
+<h1>���� ���ټ���</h1>
+<h2>1 <a name="sign_in_umengkey" id="sign_in_umengkey" style="color:black"> ��Ʒ����</a></h2>
+<p>������ữ������������ƶ�Ӧ�ÿ��پ߱���ữ��������¼�����ۡ�ϲ���ȹ��ܣ����ṩʵʱ��ȫ�����ữ����ͳ�Ʒ�������</p>
+<p><strong>ָ�Ͻ����ְ��ֽ���ʹ����ữ���SDK����10����ΪAPP��������΢������Ѷ΢�����������������ܡ�</strong></p>
+<p><font color="red">ע�⣺����ʾ�������������°�SDK�����������SDK�������򷽷�������Ĳ����ϣ���ʹ��������SDK������ĵ�����������ʹ�����°�SDK��</font></p>
+<h2>2 <a name="sign_in_umengkey" id="sign_in_umengkey" style="color:black"> ��ȡ����Appkey</a></h2>
 <ul>
-<li><p>如果你之前已经在友盟注册了应用，并获取到了Appkey，可以继续使用它。</p></li>
-<li><p>如果你尚未在友盟注册开发者账号，需要先<a href="http://www.umeng.com/users/sign_up" style="text-decoration:none" target="_blank">注册</a>，注册之后登录你的账号，点击<strong>添加新应用</strong>，填写完应用基本信息后，将进入"下载SDK并添加代码"页面，此页面即可得到<code>Appkey</code>。</p></li>
+<li>
+<p>�����֮ǰ�Ѿ�������ע����Ӧ�ã�����ȡ����Appkey�����Լ���ʹ������   </p>
+</li>
+<li>
+<p>�������δ������ע�Ὺ�����˺ţ���Ҫ��<a href="http://www.umeng.com/users/sign_up" style="text-decoration:none" target="_blank">ע��</a>��ע��֮���¼����˺ţ����<strong>������Ӧ��</strong>����д��Ӧ�û�����Ϣ�󣬽�����"����SDK�����Ӵ���"ҳ�棬��ҳ�漴�ɵõ�<code>Appkey</code>��</p>
+</li>
 </ul>
-
-
-<h2>3 <a name="quick_use" id="quick_use" style="color:black">下载并安装SDK</a></h2>
-
-<h3>Step1 下载SDK</h3>
-
-<p>下载 <a href="http://dev.umeng.com/sdkdownload/sdkdownload_ios_social.html" style="text-decoration:none" target="_blank">最新版SDK</a></p>
-
-<h3>Step2 加入SDK</h3>
-
-<p>解压SDK压缩包，将形如UMSocial_Sdk_x.x.x的文件夹拖入工程目录：</p>
-
-<p><img src="http://dev.umeng.com/images/ios/social_drag_sdk.png" title="drag_sdk" alt="alt text" /></p>
-
-<p>确认勾选了“Copy items to destination's group folder”选项，并选择你要添加到的Target:</p>
-
-<p><img src="http://dev.umeng.com/images/ios/social_check_tip.png" title="check_tip" alt="alt text" /></p>
-
-<p>现在应该是这样的效果：</p>
-
-<p><img src="http://dev.umeng.com/images/ios/social_project_structure.png" title="project_structure" alt="alt text" /></p>
-
-<h3>Step3 设置AppKey</h3>
-
-<p>在AppDelegate内设置友盟AppKey</p>
-
-<pre><code>#import "UMSocial.h"
-……
+<h2>3 <a name="quick_use" id="quick_use" style="color:black">���ز���װSDK</a></h2>
+<h3>Step1 ����SDK</h3>
+<p>���� <a href="http://dev.umeng.com/sdkdownload/sdkdownload_ios_social.html" style="text-decoration:none" target="_blank">���°�SDK</a></p>
+<h3>Step2 ����SDK</h3>
+<p>��ѹSDKѹ������������UMSocial_Sdk_x.x.x���ļ������빤��Ŀ¼��</p>
+<p><img alt="alt text" src="http://dev.umeng.com/images/ios/social_drag_sdk.png" title="drag_sdk" /> </p>
+<p>ȷ�Ϲ�ѡ�ˡ�Copy items to destination's group folder��ѡ���ѡ����Ҫ���ӵ���Target: </p>
+<p><img alt="alt text" src="http://dev.umeng.com/images/ios/social_check_tip.png" title="check_tip" /> </p>
+<p>����Ӧ����������Ч����</p>
+<p><img alt="alt text" src="http://dev.umeng.com/images/ios/social_project_structure.png" title="project_structure" /> </p>
+<h3>Step3 ����AppKey</h3>
+<p>��AppDelegate����������AppKey</p>
+<pre><code>#import &quot;UMSocial.h&quot;
+����
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [UMSocialData setAppKey:@"507fcab25270157b37000010"];
+    [UMSocialData setAppKey:@&quot;507fcab25270157b37000010&quot;];
 }
 </code></pre>
 
-<h3>Step4 添加实现代码</h3>
-
-<p>打开需要集成分享功能的视图源码<code>UIViewController.m</code>，把如下代码复制并粘贴到你将弹出一个分享列表的位置，例如到响应分享按钮的方法中。并且修改下面的友盟appkey，你要分享的文字、图片，你要分享到的微博平台，例如下面写的是新浪微博、腾讯微博、人人网。</p>
-
-<pre><code>#import "UMSocial.h"
-……
+<h3>Step4 ����ʵ�ִ���</h3>
+<p>����Ҫ���ɷ������ܵ���ͼԴ��<code>UIViewController.m</code>�������´��븴�Ʋ�ճ�����㽫����һ�������б���λ�ã����絽��Ӧ������ť�ķ����С������޸����������appkey����Ҫ���������֡�ͼƬ����Ҫ��������΢��ƽ̨����������д��������΢������Ѷ΢������������</p>
+<pre><code>#import &quot;UMSocial.h&quot;
+����
 [UMSocialSnsService presentSnsIconSheetView:self
-                                     appKey:@"507fcab25270157b37000010"
-                                  shareText:@"你要分享的文字"
-                                 shareImage:[UIImage imageNamed:@"icon.png"]
+                                     appKey:@&quot;507fcab25270157b37000010&quot;
+                                  shareText:@&quot;��Ҫ����������&quot;
+                                 shareImage:[UIImage imageNamed:@&quot;icon.png&quot;]
                             shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,nil]
                                    delegate:nil]; 
 </code></pre>
@@ -224,133 +48,127 @@ pre code {
 <table>
 <thead>
 <tr>
-<th>形参名</th>
-<th>含义</th>
+<th>�β���</th>
+<th>����</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>controller</td>
-<td>分享列表页面所在的UIViewController对象</td>
+<td>�����б�ҳ�����ڵ�UIViewController����</td>
 </tr>
 <tr>
 <td>appKey</td>
-<td>友盟appKey，如果你在其他地方用<code>UMSocialData</code>设置了appKey，这里也可以传nil</td>
+<td>����appKey��������������ط���<code>UMSocialData</code>������appKey������Ҳ���Դ�nil</td>
 </tr>
 <tr>
 <td>shareText</td>
-<td>分享编辑页面的内嵌文字</td>
+<td>�����༭ҳ�����Ƕ����</td>
 </tr>
 <tr>
 <td>shareImage</td>
-<td>分享编辑页面的内嵌图片，用户可以在编辑页面中删除。如果你不需要分享图片，可以传入<code>nil</code></td>
+<td>�����༭ҳ�����ǶͼƬ���û������ڱ༭ҳ����ɾ��������㲻��Ҫ����ͼƬ�����Դ���<code>nil</code></td>
 </tr>
 <tr>
 <td>shareToSnsNames</td>
-<td>定义列表出现的微博平台字符串构成的数组，字符变量名为UMShareToSina、UMShareToTencent、UMShareToWechatSession、UMShareToWechatTimeline、UMShareToQzone、UMShareToQQ、UMShareToRenren、UMShareToDouban、UMShareToEmail、UMShareToSms、UMShareToFacebook、UMShareToTwitter，分别代表新浪微博、腾讯微博、微信好友、微信朋友圈、QQ空间、手机QQ、人人网、豆瓣、电子邮箱、短信、Facebook、Twitter</td>
+<td>�����б����ֵ�΢��ƽ̨�ַ������ɵ����飬�ַ�������ΪUMShareToSina��UMShareToTencent��UMShareToWechatSession��UMShareToWechatTimeline��UMShareToQzone��UMShareToQQ��UMShareToRenren��UMShareToDouban��UMShareToEmail��UMShareToSms��UMShareToFacebook��UMShareToTwitter���ֱ��������΢������Ѷ΢����΢�ź��ѡ�΢������Ȧ��QQ�ռ䡢�ֻ�QQ�������������ꡢ�������䡢���š�Facebook��Twitter</td>
 </tr>
 <tr>
 <td>delegate</td>
-<td>实现分享状态回调方法的对象，回调方法的实现可以参见分享详细说明的回调方法部分。如果你不需要回调的话，可以设为<code>nil</code></td>
+<td>ʵ�ַ���״̬�ص������Ķ��󣬻ص�������ʵ�ֿ��Բμ�������ϸ˵���Ļص��������֡�����㲻��Ҫ�ص��Ļ���������Ϊ<code>nil</code></td>
 </tr>
 </tbody>
 </table>
-
-
-<blockquote><p>注意：<br/>
-如果弹出横屏页面必须要先设置支持横屏，再弹出分享列表页面，设置屏幕方向的代码如下：<br/>
-<code>[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];</code></p></blockquote>
-
-<h2>4 <a name="check_result" id="check_result" style="color:black">验证效果</a></h2>
-
-<p>如果你在分享列表页面没有加入分享到微信好友、微信朋友圈、手机QQ平台，就已经集成完成。编译并运行后，如果弹出类似下图的分享列表选择页面，点击某个平台进行授权之后可以进入微博编辑页面，并可以发送微博，说明你已经集成成功了。
-如果想要在点击各平台进行SSO授权，请看下一部分。</p>
-
-<h2>5 <a name="share_wechat" id="share_wechat" style="color:black">分享到微信、QQ好友和各个平台的SSO（免登录）配置</a></h2>
-
-<p>下面对如下的两个功能进行设置</p>
-
-<ol>
-<li>使用分享到微信、手机QQ的功能。</li>
-<li>新浪微博、腾讯微博、QQ空间的SSO授权（SSO即授权的时候会判断设备是否安装此授权平台的客户端，如果有安装即跳转到该客户端授权，授权完成之后返回到应用）。</li>
-</ol>
-
-
-<p>注意：如果腾讯微博、QQ空间分享使用我们默认应用账号作为分享账号，不能使用SSO授权功能，因为会导致各个应用设置的url scheme不唯一。</p>
-
-<p>这两个功能的设置方法如下：</p>
-
-<h3>步骤1. 添加URL scheme</h3>
-
-<p>在你的工程设置项,targets 一栏下,选中自己的 target,在 Info->URL Types 中添加 URL Schemes,此值是 sso 登录时回调时所用。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。获取各个平台appkey或者appid的方法可以参考分享详细文档绑定各个平台部分，各个平台的url scheme格式如下表：</p>
-
+<blockquote>
+<p>ע�⣺<br />
+��������ҳ�����Ҫ��ʹ������������Ļ����Ĵ��룬�ٵ��������б�ҳ�棺<br />
+<code>[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];</code></p>
+</blockquote>
+<h2>4 <a name="check_result" id="check_result" style="color:black">��֤Ч��</a></h2>
+<p>���벢���к󣬵���������ͼ�ķ����б�ѡ��ҳ�棬���ĳ��ƽ̨������Ȩ֮����Խ���΢���༭ҳ�棬�����Է���΢����˵�����Ѿ��������ɳɹ��ˡ����ǣ�Ϊ��ʹ�����û��и��õķ������飬�Լ�����Ӧ���и���ķ����������õ����罻ƽ̨�ϴ��������ǽ��������������ָ������SSO�����¼������ƽ̨�����á�</p>
 <table>
 <thead>
 <tr>
-<th>平台 </th>
-<th> url scheme设置格式 </th>
-<th>sso默认是否打开，开关sso功能方法</th>
+<th><img alt="social" src="http://github.umeng.com/umeng/PicHubRes/raw/master/yeahugo/2013-08/a8cd49.png" title="social_share_list" /></th>
+<th><img alt="social" src="http://github.umeng.com/umeng/PicHubRes/raw/master/yeahugo/2013-08/1988c3.png" title="social_share_list" /></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>微信    </td>
-<td> “wx微信应用appid”，例如“wxd9a39c7122aa6516”</td>
-<td>必须设置微信应用id：[WXApi registerApp:@"wxd9a39c7122aa6516"]</td>
-</tr>
-<tr>
-<td>手机QQ </td>
-<td> “QQ腾讯应用appkey的十六进制（不足8位前面补0）”，例如“QQ05FA957C”</td>
-<td> 必须如下打开QQ的SDK，最后一个参数如果传nil将使用在友盟设置的qq空间的应用appkey来作为手机QQ的应用appkey：[UMSocialSnsService importClasses:[QQApiInterface class] tencentAuth:[TencentOAuth class] qqAppkey:nil];</td>
-</tr>
-<tr>
-<td>新浪微博 </td>
-<td> “sina.友盟appkey”，例如“sina.507fcab25270157b37000010” </td>
-<td>默认关闭，打开方法：[UMSocialConfig setSupportSinaSSO:YES];</td>
-</tr>
-<tr>
-<td>腾讯微博 </td>
-<td> “wb腾讯微博appkey”，例如“wb801255122” </td>
-<td> 默认关闭，打开方法：[UMSocialConfig setSupportTencentSSO:YES];</td>
-</tr>
-<tr>
-<td>QQ空间 </td>
-<td> “tencentQQ空间应用appkey”，例如“tencent100308348” </td>
-<td> 默认关闭，打开方法：[UMSocialSnsService importClasses:[QQApiInterface class] tencentAuth:[TencentOAuth class] qqAppkey:nil];</td>
+<td>�б�ҳ��</td>
+<td>�༭ҳ��</td>
 </tr>
 </tbody>
 </table>
-
-
-<p><img src="http://dev.umeng.com/images/ios/social_sinasso.png" title="social_sso" alt="socialbar" /></p>
-
-<p>注意：</p>
-
-<ol>
-<li><p>上面打开或者关闭SSO的方法，一般写在AppDelegate文件的应用入口方法中，确保应用启动之后有且只有进行一次设置。</p></li>
-<li><p>根据你使用的平台，需要在开关方法文件添加下面的头文件</p></li>
-</ol>
-
-
-<pre><code>//使用微信、新浪微博、腾讯微博需要添加下面这一个头文件
-#import "UMSocial.h"     
-//使用QQ空间和手机QQ需要添加下面这两个头文件
-#import &lt;TencentOpenAPI/QQApiInterface.h&gt;  
-#import &lt;TencentOpenAPI/TencentOAuth.h&gt; 
+<h2>5 <a name="share_wechat" id="share_wechat" style="color:black">��ƽ̨SSO�����¼������</a></h2>
+<p>ע�⣺��Ѷ΢����QQ�ռ����ʹ������Ĭ��Ӧ���˺���Ϊ�����˺ţ�����ʹ��SSO��Ȩ���ܣ���Ϊ�ᵼ�¸���Ӧ�����õ�url scheme��Ψһ��    </p>
+<h3>����1. ����URL scheme</h3>
+<p>����Ĺ���������,targets һ����,ѡ���Լ��� target,�� Info-&gt;URL Types ������ URL Schemes�����ʹ�õ���Xcode3����Ͱ汾������Ҫ��plist�ļ������ӡ���ȡ����ƽ̨appkey����appid�ķ������Բο�������ϸ�ĵ��󶨸���ƽ̨���֣�����ƽ̨��url scheme��ʽ���±���</p>
+<table>
+<thead>
+<tr>
+<th>ƽ̨</th>
+<th>url scheme���ø�ʽ</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>����΢��</td>
+<td>��sina.��+����appkey�����硰sina.507fcab25270157b37000010��</td>
+<td></td>
+</tr>
+<tr>
+<td>��Ѷ΢��</td>
+<td>��wb��+��Ѷ΢��appkey�����硰wb801255122��</td>
+<td></td>
+</tr>
+<tr>
+<td>QQ�ռ�</td>
+<td>��tengcent��+��ѶQQ����Ӧ��Id�����硰tencent100308348��</td>
+<td></td>
+</tr>
+<tr>
+<td>΢��</td>
+<td>��wx��+΢��Ӧ��appId�����硰wxd9a39c7122aa6516��,΢����ϸ���ɲ���ο�<a href="http://dev.umeng.com/doc/document_social_ios_detail.html#social_wechat" style="text-decoration:none">΢�ż��ɷ���</a></td>
+<td></td>
+</tr>
+<tr>
+<td>�ֻ�QQ</td>
+<td>��QQ��+��ѶQQ����Ӧ��appIdת����ʮ�����ƣ�����8λǰ�油0�������硰QQ05FA957C��������ʮ�����Ʒ�����������������`echo 'ibase=10;obase=16;������ѶQQ����Ӧ��Id'</td>
+<td>bc`���ֻ�QQ��ϸ���ɲ���ο�<a href="http://dev.umeng.com/doc/document_social_ios_detail.html#social_qq" styel="text-decoration:no">�ֻ�QQ���ɷ���</a></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="socialbar" src="http://github.umeng.com/umeng/PicHubRes/raw/master/yeahugo/2013-09/d0d886.png" title="social_sso" /> </p>
+<ul>
+<li>��AppDelegate�ļ�������Ӧ�Ŀ��ط�����</li>
+</ul>
+<pre><code>#import &quot;UMSocial.h&quot;     
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    //����΢��AppId��url��ַΪ���ͼ�ķ�����Ϣ��ת��ַ�����õ�ַ��nil����Ĭ��ʹ�����˵���ַ
+    [UMSocialConfig setWXAppId:@&quot;wxd9a39c7122aa6516&quot; url:nil];
+    //��Qzone��SSO����
+    [UMSocialConfig setSupportQzoneSSO:YES importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+    //�����ֻ�QQ��AppId��QQ AppId��nil����ʹ�����������õ�Qzone��AppId��url��nil����ʹ�����˵���ַ
+    [UMSocialConfig setQQAppId:nil url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+    //������΢����SSO����
+    [UMSocialConfig setSupportSinaSSO:YES];
+    //����Ѷ΢��SSO����
+    [UMSocialConfig setSupportTencentSSO:YES];
+}
 </code></pre>
 
-<h3>步骤2. 在AppDelegate文件里面实现下面三个系统回调方法：</h3>
-
+<h3>����2. ��AppDelegate�ļ�����ʵ����������ϵͳ�ص�������</h3>
 <pre><code>  - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [UMSocialSnsService  applicationDidBecomeActive];
 }
-
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
  return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];  
 }
-
 - (BOOL)application:(UIApplication *)application 
               openURL:(NSURL *)url 
     sourceApplication:(NSString *)sourceApplication
@@ -360,15 +178,12 @@ pre code {
  }  
 </code></pre>
 
-<h3>步骤3. 添加系统库文件</h3>
-
-<p>如果要使用QQ空间SSO授权和分享到手机QQ的功能，需要添加SDK依赖的系统库文件。不适用QQ空间和SSO授权的功能可以忽略此步骤。
-在Xcode中打开工程配置文件，选择“summary”一栏。在“summary”中选择“Linked Frameworks and Libraries”一栏，点击“+”图标添加下面七个库文件，分别是“libiconv.dylib”，“SystemConfiguration.framework”，“CoreGraphics.Framework”、“libsqlite3.dylib”、“CoreTelephony.framework”、“libstdc++.dylib”、“libz.dylib”。</p>
-
-<p>另外在工程配置中的“Build Settings”一栏中找到“Linking”配置区，给“Other Linker Flags”配置项添加属性值“-fobjc-arc”。</p>
-
-<h2>6 进阶使用</h2>
-
-<p>如果上述文档不能满足你的分享需求，请参看“详细集成文档”。</p>
-</body>
-</html>
+<h3>����3. ����ϵͳ���ļ�����ʹ��QQ�ռ���ֻ�QQ��SSO���ܿ��Ժ��Դ˲��裩</h3>
+<ul>
+<li>
+<p>����SDK������ϵͳ���ļ���</p>
+<p>��Xcode�д򿪹��������ļ���ѡ��summary��һ�����ڡ�summary����ѡ��Linked Frameworks and Libraries��һ���������+��ͼ�����������߸����ļ����ֱ��ǡ�libiconv.dylib������SystemConfiguration.framework������CoreGraphics.Framework������libsqlite3.dylib������CoreTelephony.framework������libstdc++.dylib������libz.dylib����</p>
+</li>
+</ul>
+<h2>6 ����ʹ��</h2>
+<p>��������ĵ�����������ķ���������ο�<a href="http://dev.umeng.com/doc/document_social_ios_detail.html" style="text-decoration:none">��ϸ�����ĵ�</a>��</p>

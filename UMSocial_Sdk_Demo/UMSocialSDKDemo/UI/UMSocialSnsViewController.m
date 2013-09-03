@@ -1,4 +1,4 @@
-//
+ //
 //  UMSocialSnsViewController.m
 //  SocialSDK
 //
@@ -8,9 +8,12 @@
 
 #import "UMSocialSnsViewController.h"
 
+#import "UMSocialLoginViewController.h"
+#import "UMSocialBarViewController.h"
+
 #import "AppDelegate.h"
 #import "UMSocial.h"
-#import "WXApiObject.h"
+
 
 @interface UMSocialSnsViewController ()
 
@@ -28,7 +31,6 @@
     return self;
 }
 
-
 //下面可以设置根据点击不同的分享平台，设置不同的分享文字
 /*
 -(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
@@ -41,6 +43,11 @@
     }
 }
 */
+
+-(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType
+{
+    NSLog(@"didClose is %d",fromViewControllerType);
+}
 
 //下面得到分享完成的回调
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
@@ -58,40 +65,17 @@
  注意分享到新浪微博我们使用新浪微博SSO授权，你需要在xcode工程设置url scheme，并重写AppDelegate中的`- (BOOL)application openURL sourceApplication`方法，详细见文档。否则不能跳转回来原来的app。
  */
 -(IBAction)showShareList1:(id)sender
-{    
-    //设置微信图文分享你可以用下面两种方法
-    //1.用微信分享应用类型，用户分享给好友，对方点击跳转到手机应用或者打开url页面。需要另外设置应用下载地址，否则点击朋友圈进入友盟主页
-    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeApp;
-    [UMSocialData defaultData].extConfig.appUrl = @"https://www.umeng.com";//设置你应用的下载地址
-    
-    //2.用微信web类型，用户点击直接打开web
-    /*
-     [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeOther;
-     WXWebpageObject *webObject = [WXWebpageObject object];
-     webObject.webpageUrl = @"https://www.umeng.com"; //设置你自己的url地址
-     [UMSocialData defaultData].extConfig.wxMediaObject = webObject;
-    */
-    
+{
     NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。";             //分享内嵌文字
     UIImage *shareImage = [UIImage imageNamed:@"UMS_social_demo"];          //分享内嵌图片
-    
-    //下面设置手机QQ的图文分享
-    /*
-    NSURL *url = [NSURL URLWithString:@"http://www.umeng.com"];
-    
-    NSData* imageData = UIImageJPEGRepresentation(shareImage, 1.0);
-    
-    QQApiNewsObject* newsObject = [QQApiNewsObject objectWithURL:url title:@"友盟社会化组件" description:@"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。" previewImageData:imageData];
-    [UMSocialData defaultData].extConfig.qqMediaObject = newsObject;
-    */
-    
-//    [UMSocialConfig setShareGridViewTheme:^(CGContextRef ref, UIImageView *backgroundView, UILabel *label){
-//        label.textColor = [UIColor blueColor];
-//        label.hidden = YES;
-//    }];
+
+//    UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:@"http://www.umeng.com/images/pic/banner_spread.png"];
+//    [UMSocialData defaultData].urlResource = urlResource;
+//    
+//    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeImage;
     
     //如果得到分享完成回调，需要传递delegate参数
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:self];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:nil];
 }
 
 /*

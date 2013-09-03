@@ -17,3 +17,6 @@
 #import "UMSocialConfig.h"                      //sdk配置类
 
 #import "WXApi.h"                               //微信SDK的头文件
+
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>

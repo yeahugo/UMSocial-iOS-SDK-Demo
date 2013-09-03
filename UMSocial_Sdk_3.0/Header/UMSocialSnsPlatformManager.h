@@ -82,17 +82,17 @@ extern NSString *const UMShareToTwitter;
 typedef enum {
     UMSocialSnsTypeNone = 0,
     UMSocialSnsTypeQzone = 10,
-    UMSocialSnsTypeSina,                 //sina weibo
-    UMSocialSnsTypeTenc,                 //tencent weibo
-    UMSocialSnsTypeRenr,                 //renren
-    UMSocialSnsTypeDouban,               //douban
-    UMSocialSnsTypeEmail,
-    UMSocialSnsTypeSms,
-    UMSocialSnsTypeWechatSession,
-    UMSocialSnsTypeWechatTimeline,
-    UMSocialSnsTypeMobileQQ,
-    UMSocialSnsTypeFacebook,
-    UMSocialSnsTypeTwitter
+    UMSocialSnsTypeSina = 11,                 //sina weibo
+    UMSocialSnsTypeTenc = 12,                 //tencent weibo
+    UMSocialSnsTypeRenr = 13,                 //renren
+    UMSocialSnsTypeDouban = 14,               //douban
+    UMSocialSnsTypeEmail = 15,
+    UMSocialSnsTypeSms = 16,
+    UMSocialSnsTypeWechatSession = 17,
+    UMSocialSnsTypeWechatTimeline = 18,
+    UMSocialSnsTypeMobileQQ = 19,
+    UMSocialSnsTypeFacebook = 20,
+    UMSocialSnsTypeTwitter = 21
 } UMSocialSnsType;
 
 

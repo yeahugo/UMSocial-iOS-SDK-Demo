@@ -24,6 +24,15 @@
     return self;
 }
 
+//-(BOOL)closeOauthWebViewController:(UINavigationController *)navigationCtroller socialControllerService:(UMSocialControllerService *)socialControllerService
+//{
+//    if ([UMSocialAccountManager isOauthWithPlatform:socialControllerService.currentSnsPlatformName]) {
+//        [navigationCtroller popToRootViewControllerAnimated:YES];
+//        return YES;
+//    }
+//    return NO;
+//}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -121,6 +130,8 @@
         //此处调用授权的方法,你可以把下面的platformName 替换成 UMShareToSina,UMShareToTencent等
         NSString *platformName = [UMSocialSnsPlatformManager getSnsPlatformString:switcher.tag];
         
+        
+        [UMSocialControllerService defaultControllerService].socialUIDelegate = self;
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
         snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
             NSLog(@"login response is %@",response);

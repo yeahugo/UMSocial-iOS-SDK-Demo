@@ -8,10 +8,7 @@
 
 #import "AppDelegate.h"
 #import "UMSocialTabBarController.h"
-
 #import "UMSocial.h"
-#import <TencentOpenAPI/QQApiInterface.h>
-#import <TencentOpenAPI/TencentOAuth.h>
 
 #import "MobClick.h"
 
@@ -40,11 +37,16 @@
     //设置友盟社会化组件appkey
     [UMSocialData setAppKey:useAppkey];
     
-    //打开新浪微博SSO开关
+    //设置微信AppId
+    [UMSocialConfig setWXAppId:@"wxd9a39c7122aa6516" url:nil];
+    //打开Qzone的SSO开关
+    [UMSocialConfig setSupportQzoneSSO:YES importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+//    //设置手机QQ的AppId
+    [UMSocialConfig setQQAppId:nil url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+    //打开新浪微博的SSO开关
     [UMSocialConfig setSupportSinaSSO:YES];
+    //打开腾讯微博SSO开关
     [UMSocialConfig setSupportTencentSSO:YES];
-    //打开手机QQ和QQ空间SSO的功能
-    [UMSocialSnsService importClasses:[QQApiInterface class] tencentAuth:[TencentOAuth class] qqAppkey:nil];
     
     //使用友盟统计
     [MobClick startWithAppkey:useAppkey];
@@ -57,17 +59,6 @@
  */
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    /*
-     //如果你要处理自己的url，你可以把这个方法的实现，复制到你的代码中：
-     
-     if ([url.description hasPrefix:@"sina"]) {
-     return (BOOL)[[UMSocialSnsService sharedInstance] performSelector:@selector(handleSinaSsoOpenURL:) withObject:url];
-     }
-     else if([url.description hasPrefix:@"wx"]){
-     return [WXApi handleOpenURL:url delegate:(id <WXApiDelegate>)[UMSocialSnsService sharedInstance]];
-     }
-     */
-    
     return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
 }
 

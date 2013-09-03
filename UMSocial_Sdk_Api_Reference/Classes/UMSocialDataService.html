@@ -64,6 +64,8 @@
 	
 	<option value="//api/name/postSNSWithTypes:content:image:location:urlResource:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- postSNSWithTypes:content:image:location:urlResource:completion:</option>
 	
+	<option value="//api/name/postSNSWithTypes:content:image:location:urlResource:presentedController:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- postSNSWithTypes:content:image:location:urlResource:presentedController:completion:</option>
+	
 	<option value="//api/name/requestAddFollow:followedUsid:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- requestAddFollow:followedUsid:completion:</option>
 	
 	<option value="//api/name/requestBindToSnsWithType:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- requestBindToSnsWithType:completion:</option>
@@ -139,6 +141,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postCommentWithContent:image:templateText:location:shareToSNSWithUsid:completion:">postCommentWithContent:image:templateText:location:shareToSNSWithUsid:completion:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postSNSWithTypes:content:image:location:urlResource:completion:">postSNSWithTypes:content:image:location:urlResource:completion:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postSNSWithTypes:content:image:location:urlResource:presentedController:completion:">postSNSWithTypes:content:image:location:urlResource:presentedController:completion:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requestAddFollow:followedUsid:completion:">requestAddFollow:followedUsid:completion:</a></span></li>
 	
@@ -253,6 +257,13 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/postSNSWithTypes:content:image:location:urlResource:completion:">&ndash;&nbsp;postSNSWithTypes:content:image:location:urlResource:completion:</a></code>
+		<span class="tooltip"><p>发送微博内容到多个微博平台</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/postSNSWithTypes:content:image:location:urlResource:presentedController:completion:">&ndash;&nbsp;postSNSWithTypes:content:image:location:urlResource:presentedController:completion:</a></code>
 		<span class="tooltip"><p>发送微博内容到多个微博平台</p></span>
 	</span>
 	
@@ -652,7 +663,7 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>shareToSNS</em></dt>
-			<dd><p>评论并分享到微博平台，key为微博名，定义在<code>UMSocialEnum.h</code>中的<code>UMShareToSina</code>等，值为相应的usid</p></dd>
+			<dd><p>评论并分享到微博平台，key为微博名，定义在<code></code>UMSocialSnsPlatformManager<code>.h</code>中的<code>UMShareToSina</code>等，值为相应的usid</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -703,7 +714,7 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>platformTypes</em></dt>
-			<dd><p>分享到的平台，数组的元素是<code>UMSocialEnum.h</code>定义的平台名的常量字符串，例如<code>UMShareToSina</code>，<code>UMShareToTencent</code>等。</p></dd>
+			<dd><p>分享到的平台，数组的元素是<code></code>UMSocialSnsPlatformManager<code>.h</code>定义的平台名的常量字符串，例如<code>UMShareToSina</code>，<code>UMShareToTencent</code>等。</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -724,6 +735,82 @@
 		<dl class="argument-def parameter-def">
 			<dt><em>urlResource</em></dt>
 			<dd><p>图片、音乐、视频等url资源</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completion</em></dt>
+			<dd><p>发送完成执行的block对象</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UMSocialDataService.m</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/postSNSWithTypes:content:image:location:urlResource:presentedController:completion:" title="postSNSWithTypes:content:image:location:urlResource:presentedController:completion:"></a>
+	<h3 class="subsubtitle method-title">postSNSWithTypes:content:image:location:urlResource:presentedController:completion:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>发送微博内容到多个微博平台</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)postSNSWithTypes:(NSArray *)<em>platformTypes</em> content:(NSString *)<em>content</em> image:(UIImage *)<em>image</em> location:(CLLocation *)<em>location</em> urlResource:(UMSocialUrlResource *)<em>urlResource</em> presentedController:(UIViewController *)<em>presentedController</em> completion:(UMSocialDataServiceCompletion)<em>completion</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>platformTypes</em></dt>
+			<dd><p>分享到的平台，数组的元素是<code></code>UMSocialSnsPlatformManager<code>.h</code>定义的平台名的常量字符串，例如<code>UMShareToSina</code>，<code>UMShareToTencent</code>等。</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>content</em></dt>
+			<dd><p>分享的文字内容</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>image</em></dt>
+			<dd><p>分享的图片</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>location</em></dt>
+			<dd><p>分享的地理位置信息</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>urlResource</em></dt>
+			<dd><p>图片、音乐、视频等url资源</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>presentedController</em></dt>
+			<dd><p>展示所在的ViewController</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -1297,7 +1384,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-08-19)</span><br />
+						<p><span class="copyright">&copy; 2013 umeng. All rights reserved. (Last updated: 2013-09-03)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
