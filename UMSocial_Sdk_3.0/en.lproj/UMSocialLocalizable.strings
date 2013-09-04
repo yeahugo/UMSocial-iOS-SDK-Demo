@@ -44,6 +44,7 @@
 "shareEdit_error_text_repeated" = "Text repeated";
 "shareEdit_error_user_baned" = "Sorry, you have been banned";
 "shareEdit_error_fail" = "Share fail";
+"shareEdit_error_no_auth" = "Share fail, for no upload picture authority";
 "shareEdit_error_empty_content" = "Share fail, for the content is empty";
 "shareEdit_C" = "符";
 "shareEdit_used" = "常";

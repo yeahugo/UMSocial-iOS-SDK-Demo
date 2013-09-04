@@ -35,13 +35,15 @@
     _socialBar.socialUIDelegate = self;
     _socialBar.center = CGPointMake(size.width/2, size.height - 93);
     [self.view addSubview:_socialBar];
-//
-//    for (UIButton *button in _socialBar.barButtons) {
-//        button.titleLabel.adjustsFontSizeToFitWidth = YES;
-//    }
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [_socialBar requestUpdateButtonNumber];
+    [super viewWillAppear:animated];
 }
 
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response

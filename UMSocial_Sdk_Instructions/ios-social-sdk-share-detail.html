@@ -33,42 +33,33 @@
 <p>注意：腾讯微博、QQ空间分享使用我们默认应用账号作为分享账号，则不能使用SSO授权功能，因为会导致各个应用设置的url scheme不唯一。    </p>
 <h3>步骤1. 添加URL scheme</h3>
 <p>在你的工程设置项,targets 一栏下,选中自己的 target,在 Info-&gt;URL Types 中添加 URL Schemes。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。获取各个平台appkey或者appid的方法可以参考分享详细文档绑定各个平台部分，各个平台的url scheme格式如下表：</p>
-<table>
-<thead>
-<tr>
-<th>平台</th>
-<th>url scheme设置格式</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>新浪微博</td>
-<td>“sina.”+友盟appkey，例如“sina.507fcab25270157b37000010”</td>
-<td></td>
-</tr>
-<tr>
-<td>腾讯微博</td>
-<td>“wb”+腾讯微博appkey，例如“wb801255122”</td>
-<td></td>
-</tr>
-<tr>
-<td>QQ空间</td>
-<td>“tengcent“+腾讯QQ互联应用Id，例如“tencent100308348”</td>
-<td></td>
-</tr>
-<tr>
-<td>微信</td>
-<td>“wx”+微信应用appId，例如“wxd9a39c7122aa6516”,微信详细集成步骤参考<a href="http://dev.umeng.com/doc/document_social_ios_detail.html#social_wechat" style="text-decoration:none">微信集成方法</a></td>
-<td></td>
-</tr>
-<tr>
-<td>手机QQ</td>
-<td>“QQ”+腾讯QQ互联应用appId转换成十六进制（不足8位前面补0），例如“QQ05FA957C”。生成十六进制方法：在命令行输入`echo 'ibase=10;obase=16;您的腾讯QQ互联应用Id'</td>
-<td>bc`，手机QQ详细集成步骤参考<a href="http://dev.umeng.com/doc/document_social_ios_detail.html#social_qq" styel="text-decoration:no">手机QQ集成方法</a></td>
-</tr>
-</tbody>
+<table border="1">
+  <tr>
+    <th> 平台 </th>
+    <th>url scheme设置格式</th>
+  </tr>
+  <tr>
+    <td>新浪微博</td>
+    <td>“sina.”+友盟appkey，例如“sina.507fcab25270157b37000010”</td>
+  </tr>
+   <tr>
+    <td>腾讯微博</td>
+    <td>“wb”+腾讯微博appkey，例如“wb801255122”</td>
+  </tr>
+   <tr>
+    <td>QQ空间</td>
+    <td>“tencent“+腾讯QQ互联应用Id，例如“tencent100308348”</td>
+  </tr>
+   <tr>
+    <td>微信</td>
+    <td>“wx”+微信应用appId，例如“wxd9a39c7122aa6516”,微信详细集成步骤参考<a href="http://dev.umeng.com/doc/document_social_ios_detail.html#social_wechat" style="text-decoration:none">微信集成方法</a></td>
+  </tr>
+   <tr>
+    <td>手机QQ</td>
+    <td>“QQ”+腾讯QQ互联应用appId转换成十六进制（不足8位前面补0），例如“QQ05FA957C”。生成十六进制方法：在命令行输入<div>echo 'ibase=10;obase=16;您的腾讯QQ互联应用Id'|bc</div>，手机QQ详细集成步骤参考<a href="http://dev.umeng.com/doc/document_social_ios_detail.html#social_qq" style="text-decoration:none">手机QQ集成方法</a></td>
+  </tr>
 </table>
+
 <p><img alt="socialbar" src="http://github.umeng.com/umeng/PicHubRes/raw/master/yeahugo/2013-09/d0d886.png" title="social_sso" />  </p>
 <ul>
 <li>在AppDelegate文件集成相应的开关方法：</li>
@@ -182,7 +173,7 @@
 <pre><code> -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {  
 //     如果当前UIViewController有UINavigationController,或者UITabBarController,则用self.navigationController.view，或者self.tabBarController.view，否则用self.view
-    UIView *iconActionSheet = [self.tabBarController.view viewWithTag:kTagSocialIconActionSheet];
+    UIView *iconActionSheet = [self.view viewWithTag:kTagSocialIconActionSheet];
     [iconActionSheet setNeedsDisplay];
 }
 </code></pre>
@@ -335,7 +326,7 @@
 
 3. 将获取到的APP ID、Key手工填写到友盟后台对应应用的组件 -》社会化组件 - 》设置页 -》QQ空间APP绑定信息部分。
 
-4. 按照以上配置可以满足大部分的图片分享需求，即指定图片URL进行图片分享；如需支持上传图片内容并分享，要在此页面另行申请upload_pic权限：http://wiki.opensns.qq.com/wiki/【QQ登录】API文档）
+4. 增加图文分享权限。登录到腾讯QQ互联平台的应用管理页面http://connect.qq.com/manage/，选择你的应用-》 应用管理 -》API管理 -》未获取API-》选择 `list_album upload_pic add_album` 申请权限。
 </code></pre>
 <h2><a name="FAQ" id="FAQ" style="color:black">7. FAQ</a></h2>
 <p>请到<a href="http://support.umeng.com/?qa=ios-sdk-%E9%9B%86-%E6%88%90" style="text-decoration:none">友盟社会化组件的帮助与支持页面</a></p>

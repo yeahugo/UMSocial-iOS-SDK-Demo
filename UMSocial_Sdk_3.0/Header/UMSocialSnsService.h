@@ -17,11 +17,6 @@
  */
 @interface UMSocialSnsService : NSObject
 
-///**
-// 引入手机qqSDK，并设置手机qq对应的appkey
-// */
-//+(void)importClasses:(Class)qqAPI tencentAuth:(Class)tencentAuth qqAppkey:(NSString *)qqAppkey;
-
 /**
  当应用从后台唤起时，应调用此方法，需要完成退出当前登录状态的功能
  

@@ -149,4 +149,10 @@ typedef void (^ClickHandler)(void);
  */
 - (void)updateButtonNumber;
 
+/*
+ 从线上获取分享、评论、喜欢等个数，更新按钮文字
+ 
+ */
+- (void)requestUpdateButtonNumber;
+
 @end
