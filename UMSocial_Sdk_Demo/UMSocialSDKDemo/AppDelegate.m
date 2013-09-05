@@ -25,14 +25,10 @@
     
     //打开调试log的开关
     [UMSocialData openLog:YES];
-    //向微信注册
-    [WXApi registerApp:@"wxd9a39c7122aa6516"];
     
     //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
     [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];    
     
-    UMSocialTabBarController *tabViewController = [[UMSocialTabBarController alloc] init];
-    self.window.rootViewController = tabViewController;
 
     //设置友盟社会化组件appkey
     [UMSocialData setAppKey:useAppkey];
@@ -41,8 +37,9 @@
     [UMSocialConfig setWXAppId:@"wxd9a39c7122aa6516" url:nil];
     //打开Qzone的SSO开关
     [UMSocialConfig setSupportQzoneSSO:YES importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
-//    //设置手机QQ的AppId
-    [UMSocialConfig setQQAppId:nil url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+    //设置手机QQ的AppId，url传nil，将使用友盟的网址
+    [UMSocialConfig setQQAppId:@"100424468" url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+;
     //打开新浪微博的SSO开关
     [UMSocialConfig setSupportSinaSSO:YES];
     //打开腾讯微博SSO开关
@@ -50,6 +47,10 @@
     
     //使用友盟统计
     [MobClick startWithAppkey:useAppkey];
+    
+    UMSocialTabBarController *tabViewController = [[UMSocialTabBarController alloc] init];
+    self.window.rootViewController = tabViewController;
+
     
     return YES;
 }

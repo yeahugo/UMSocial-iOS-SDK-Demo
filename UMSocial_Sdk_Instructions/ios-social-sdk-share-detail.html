@@ -71,8 +71,12 @@
     [UMSocialConfig setWXAppId:@&quot;wxd9a39c7122aa6516&quot; url:nil];
     //打开Qzone的SSO开关
     [UMSocialConfig setSupportQzoneSSO:YES importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
-    //设置手机QQ的AppId，QQ AppId传nil，将使用在友盟配置的Qzone的AppId。url传nil，将使用友盟的网址
-    [UMSocialConfig setQQAppId:nil url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+    //设置手机QQ的AppId，url传nil，将使用友盟的网址
+    [UMSocialConfig setQQAppId:@&quot;100424468&quot; url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+    //打开新浪微博的SSO开关
+    [UMSocialConfig setSupportSinaSSO:YES];
+    //打开腾讯微博SSO开关
+    [UMSocialConfig setSupportTencentSSO:YES];
     //打开新浪微博的SSO开关
     [UMSocialConfig setSupportSinaSSO:YES];
     //打开腾讯微博SSO开关
@@ -135,8 +139,8 @@
 <ul>
 <li>根据上面SSO相关设置介绍，在AppDelegate应用入口方法打开集成手机QQ开关。</li>
 </ul>
-<pre><code>    //设置手机QQ的AppId，QQ AppId传nil，将使用在友盟配置的Qzone的AppId。url传nil，将使用友盟的网址
-[UMSocialConfig setQQAppId:nil url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+<pre><code>    //设置手机QQ的AppId，url传nil，将使用友盟的网址
+    [UMSocialConfig setQQAppId:@&quot;100424468&quot; url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
 </code></pre>
 
 <h2>4.3 添加下面几个系统framework</h2>

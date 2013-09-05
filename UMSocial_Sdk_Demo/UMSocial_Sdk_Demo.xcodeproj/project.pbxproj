@@ -12,7 +12,6 @@
 		D534FA76179FC6920067BDCF /* UMS_social_demo.png in Resources */ = {isa = PBXBuildFile; fileRef = D534FA75179FC6920067BDCF /* UMS_social_demo.png */; };
 		D53746AD1738CB450093F280 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FE16082B1200C7AD07 /* CoreGraphics.framework */; };
 		D550D5B317D6E0F700A92744 /* libUMSocial_Sdk_Comment_3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D550D5B217D6E0F700A92744 /* libUMSocial_Sdk_Comment_3.0.a */; };
-		D550D5B817D6E57100A92744 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D550D5B717D6E57100A92744 /* TencentOpenAPI.framework */; };
 		D57436FB16082B1200C7AD07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FA16082B1200C7AD07 /* UIKit.framework */; };
 		D57436FD16082B1200C7AD07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FC16082B1200C7AD07 /* Foundation.framework */; };
 		D574370516082B1200C7AD07 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D574370316082B1200C7AD07 /* InfoPlist.strings */; };
@@ -158,7 +157,6 @@
 				D58531E017C1BCE5009E2D27 /* libMobClickLibrary.a in Frameworks */,
 				D52C275517D0C77000A77926 /* TencentOpenAPI.framework in Frameworks */,
 				D550D5B317D6E0F700A92744 /* libUMSocial_Sdk_Comment_3.0.a in Frameworks */,
-				D550D5B817D6E57100A92744 /* TencentOpenAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

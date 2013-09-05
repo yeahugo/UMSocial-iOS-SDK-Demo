@@ -138,12 +138,16 @@
 <pre><code>#import &quot;UMSocial.h&quot;     
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //设置微信AppId，url地址为点击图文分享消息跳转地址，若该地址传nil，将默认使用友盟的网址
+    //设置微信AppId，url地址传nil，将默认使用友盟的网址
     [UMSocialConfig setWXAppId:@&quot;wxd9a39c7122aa6516&quot; url:nil];
     //打开Qzone的SSO开关
     [UMSocialConfig setSupportQzoneSSO:YES importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
-    //设置手机QQ的AppId，QQ AppId传nil，将使用在友盟配置的Qzone的AppId。url传nil，将使用友盟的网址
-    [UMSocialConfig setQQAppId:nil url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+    //设置手机QQ的AppId，url传nil，将使用友盟的网址
+    [UMSocialConfig setQQAppId:@&quot;100424468&quot; url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+    //打开新浪微博的SSO开关
+    [UMSocialConfig setSupportSinaSSO:YES];
+    //打开腾讯微博SSO开关
+    [UMSocialConfig setSupportTencentSSO:YES];
     //打开新浪微博的SSO开关
     [UMSocialConfig setSupportSinaSSO:YES];
     //打开腾讯微博SSO开关
