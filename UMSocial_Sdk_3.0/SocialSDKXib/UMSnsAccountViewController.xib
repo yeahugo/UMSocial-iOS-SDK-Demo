@@ -318,9 +318,9 @@
 							</object>
 							<object class="IBUITableView" id="185601277">
 								<reference key="NSNextResponder" ref="315774974"/>
-								<int key="NSvFlags">1296</int>
+								<int key="NSvFlags">1298</int>
 								<object class="NSPSMatrix" key="NSFrameMatrix"/>
-								<string key="NSFrame">{{0, 49}, {290, 272}}</string>
+								<string key="NSFrame">{{0, 49}, {295, 272}}</string>
 								<reference key="NSSuperview" ref="315774974"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
