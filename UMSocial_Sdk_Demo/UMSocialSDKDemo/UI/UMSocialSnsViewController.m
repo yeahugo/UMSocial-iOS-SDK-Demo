@@ -70,7 +70,7 @@
     UIImage *shareImage = [UIImage imageNamed:@"UMS_social_demo"];          //分享内嵌图片
     
     //如果得到分享完成回调，需要传递delegate参数
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:useAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:nil];    
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:nil];    
 }
 
 /*

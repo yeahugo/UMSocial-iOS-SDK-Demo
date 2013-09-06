@@ -17,21 +17,15 @@
 @synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{    
-
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
-    
+{        
     //打开调试log的开关
     [UMSocialData openLog:YES];
     
     //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
     [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];    
     
-
     //设置友盟社会化组件appkey
-    [UMSocialData setAppKey:useAppkey];
+    [UMSocialData setAppKey:UmengAppkey];
     
     //设置微信AppId
     [UMSocialConfig setWXAppId:@"wxd9a39c7122aa6516" url:nil];
@@ -46,7 +40,11 @@
     [UMSocialConfig setSupportTencentSSO:YES];
     
     //使用友盟统计
-    [MobClick startWithAppkey:useAppkey];
+    [MobClick startWithAppkey:UmengAppkey];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
     
     UMSocialTabBarController *tabViewController = [[UMSocialTabBarController alloc] init];
     self.window.rootViewController = tabViewController;

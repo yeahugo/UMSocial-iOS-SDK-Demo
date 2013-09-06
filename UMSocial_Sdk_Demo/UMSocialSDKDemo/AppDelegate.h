@@ -10,7 +10,7 @@
 #import "WXApi.h"
 #import "UMSocialControllerService.h"
 
-#define useAppkey @"5211818556240bc9ee01db2f"
+#define UmengAppkey @"5211818556240bc9ee01db2f"
 
 @interface AppDelegate : UIResponder
 <
