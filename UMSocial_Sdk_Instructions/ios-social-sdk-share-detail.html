@@ -30,7 +30,7 @@
 </code></pre>
 
 <h1><a name="social_sso" id="social_sso" style="color:black">2. 各平台SSO（免登录）配置</a></h1>
-<p>注意：腾讯微博、QQ空间分享使用我们默认应用账号作为分享账号，则不能使用SSO授权功能，因为会导致各个应用设置的url scheme不唯一。    </p>
+<p>注意：使用各平台SSO分享，需要到各个微博平台申请自己的应用，绑定方法可以参考<a href="#binding_config" style="text-decoration:none">绑定友盟应用标识与各开放平台</a>。    </p>
 <h3>步骤1. 添加URL scheme</h3>
 <p>在你的工程设置项,targets 一栏下,选中自己的 target,在 Info-&gt;URL Types 中添加 URL Schemes。如果使用的是Xcode3或更低版本，则需要在plist文件中添加。获取各个平台appkey或者appid的方法可以参考分享详细文档绑定各个平台部分，各个平台的url scheme格式如下表：</p>
 <table border="1">
@@ -328,9 +328,9 @@
 
 2. 在接下来的应用控制台-&gt;基本信息-&gt;点击编辑按钮，填写必要的应用信息，并保存。（不做有可能授权失败）
 
-3. 将获取到的APP ID、Key手工填写到友盟后台对应应用的组件 -》社会化组件 - 》设置页 -》QQ空间APP绑定信息部分。
+3. 增加图文分享权限。登录到腾讯QQ互联平台的应用管理页面http://connect.qq.com/manage/，选择你的应用-》 应用管理 -》API管理 -》未获取API-》选择 `list_album upload_pic add_album` 申请权限。
 
-4. 增加图文分享权限。登录到腾讯QQ互联平台的应用管理页面http://connect.qq.com/manage/，选择你的应用-》 应用管理 -》API管理 -》未获取API-》选择 `list_album upload_pic add_album` 申请权限。
+4. 将获取到的APP ID、Key手工填写到友盟后台对应应用的组件 -》社会化组件 - 》设置页 -》QQ空间APP绑定信息部分。
 </code></pre>
 <h2><a name="FAQ" id="FAQ" style="color:black">7. FAQ</a></h2>
 <p>请到<a href="http://support.umeng.com/?qa=ios-sdk-%E9%9B%86-%E6%88%90" style="text-decoration:none">友盟社会化组件的帮助与支持页面</a></p>
