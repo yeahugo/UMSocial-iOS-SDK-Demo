@@ -4,7 +4,7 @@
 <h3><a href="#social_appkey" style="text-decoration:none">1. 设置友盟appkey</a></h3>
 <h3><a href="#social_sso" style="text-decoration:none">2. 各平台SSO配置</a></h3>
 <h3><a href="#social_wechat" style="text-decoration:none">3. 集成微信</a></h3>
-<h3><a href="#social_qq" styel="text-decoration:none">4. 集成手机QQ</a></h3>
+<h3><a href="#social_qq" style="text-decoration:none">4. 集成手机QQ</a></h3>
 <h3><a href="#social_share" style="text-decoration:none">5. 集成分享功能</a></h3>
 <h3><a href="#social_share_list" style="text-decoration:none">5.1 集成分享页面</a></h3>
 <h3><a href="#social_share_config" style="text-decoration:none">5.2 分享相关设置</a></h3>
@@ -60,7 +60,7 @@
   </tr>
 </table>
 
-<p><img alt="socialbar" src="http://github.umeng.com/umeng/PicHubRes/raw/master/yeahugo/2013-09/d0d886.png" title="social_sso" />  </p>
+<p><img alt="socialbar" src="http://apf.umeng.com:8888/show?path=yeahugo/2013-09/d0d886.png" title="social_sso" />  </p>
 <ul>
 <li>在AppDelegate文件集成相应的开关方法：</li>
 </ul>
@@ -76,11 +76,7 @@
     //打开新浪微博的SSO开关
     [UMSocialConfig setSupportSinaSSO:YES];
     //打开腾讯微博SSO开关
-    [UMSocialConfig setSupportTencentSSO:YES];
-    //打开新浪微博的SSO开关
-    [UMSocialConfig setSupportSinaSSO:YES];
-    //打开腾讯微博SSO开关
-    [UMSocialConfig setSupportTencentSSO:YES];
+    [UMSocialConfig setSupportTencentSSO:YES importClass:[WBApi class]];
 }
 </code></pre>
 
@@ -106,7 +102,14 @@
 <ul>
 <li>
 <p>添加SDK依赖的系统库文件。</p>
-<p>在Xcode中打开工程配置文件，选择“summary”一栏。在“summary”中选择“Linked Frameworks and Libraries”一栏，点击“+”图标添加下面七个库文件，分别是“libiconv.dylib”，“SystemConfiguration.framework”，“CoreGraphics.Framework”、“libsqlite3.dylib”、“CoreTelephony.framework”、“libstdc++.dylib”、“libz.dylib”。</p>
+<p>在Xcode中打开工程配置文件，选择“summary”一栏。在“summary”中选择“Linked Frameworks and Libraries”一栏，点击“+”图标添加下面七个库文件，分别是
+<em> libiconv.dylib
+</em> SystemConfiguration.framework
+<em> CoreGraphics.Framework
+</em> libsqlite3.dylib
+<em> CoreTelephony.framework
+</em> libstdc++.dylib
+* libz.dylib</p>
 </li>
 </ul>
 <h1><a name="social_xcode" id="social_wechat" style="color:black">3. 集成微信</a></h1>
@@ -156,7 +159,7 @@
 </ul>
 <h1><a name="social_share" id="social_share" style="color:black">5. 集成分享功能</a></h1>
 <h2>5.1 <a name="social_share_list" id="social_share_list" style="color:black">集成分享页面</a></h2>
-<p><img alt="alt text" src="http://dev.umeng.com/images/ios/social_sharelist_actionsheet.png" title="ShareList" /> </p>
+<p><img alt="social" src="http://apf.umeng.com:8888/show?path=yeahugo/2013-08/a8cd49.png" title="social_share_list" /> </p>
 <ul>
 <li><a name="social_share_list" id="social_share_list" style="color:black">分享列表页面</a></li>
 </ul>

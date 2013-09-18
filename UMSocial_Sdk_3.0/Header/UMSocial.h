@@ -16,7 +16,9 @@
 #import "UMSocialBar.h"                         //社会化操作栏
 #import "UMSocialConfig.h"                      //sdk配置类
 
-#import "WXApi.h"                               //微信SDK的头文件
+#import "WXApi.h"                               //微信SDK
 
-#import <TencentOpenAPI/QQApiInterface.h>
+#import "WBApi.h"                               //腾讯微博SDK
+
+#import <TencentOpenAPI/QQApiInterface.h>       //手机QQ SDk
 #import <TencentOpenAPI/TencentOAuth.h>

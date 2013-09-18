@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>282079DE-7B84-4379-BB5F-41BFEBCFF07E</string>
+	<string>80784E5F-19EF-4BF9-9B29-630A2727BF9E</string>
 	<key>IDESourceControlProjectName</key>
 	<string>UMSocial_Sdk_Demo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>DE28DD8A-7270-4FFA-992D-BF02D25346DA</key>
+		<key>035C9708-DC42-443E-A944-90FD5FA1D5CA</key>
 		<string>http://github.umeng.com/yeahugo/Social-SDK-Demo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>UMSocial_Sdk_Demo/UMSocial_Sdk_Demo.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>DE28DD8A-7270-4FFA-992D-BF02D25346DA</key>
+		<key>035C9708-DC42-443E-A944-90FD5FA1D5CA</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>DE28DD8A-7270-4FFA-992D-BF02D25346DA</string>
+	<string>035C9708-DC42-443E-A944-90FD5FA1D5CA</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>DE28DD8A-7270-4FFA-992D-BF02D25346DA</string>
+			<string>035C9708-DC42-443E-A944-90FD5FA1D5CA</string>
 			<key>IDESourceControlWCCName</key>
 			<string>SocialiOSSDK</string>
 		</dict>

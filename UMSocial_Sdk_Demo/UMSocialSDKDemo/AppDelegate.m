@@ -36,8 +36,9 @@
 ;
     //打开新浪微博的SSO开关
     [UMSocialConfig setSupportSinaSSO:YES];
+
     //打开腾讯微博SSO开关
-    [UMSocialConfig setSupportTencentSSO:YES];
+    [UMSocialConfig setSupportTencentSSO:YES importClass:[WBApi class]];
     
     //使用友盟统计
     [MobClick startWithAppkey:UmengAppkey];

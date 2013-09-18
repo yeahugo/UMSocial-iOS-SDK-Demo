@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+
 typedef enum{
     WBSuccess           = 0,
     WBErrCodeCommon     = -1,

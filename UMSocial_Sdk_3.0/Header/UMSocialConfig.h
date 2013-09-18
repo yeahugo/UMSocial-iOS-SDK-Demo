@@ -244,9 +244,10 @@ typedef void (^UMTableViewCellConfig)(UITableViewCell *cell,UMSViewControllerTyp
  设置是否支持腾讯微博SSO，默认不支持
  
  @param supportTencentSSO 是否支持腾讯微博SSO
+ @param class 载入腾讯微博SDK
  
  */
-+ (void)setSupportTencentSSO:(BOOL)supportTencentSSO;
++ (void)setSupportTencentSSO:(BOOL)supportTencentSSO importClass:(Class)tencentWBClass;
 
 
 /**设置微信appId和图文分享用到的url地址
