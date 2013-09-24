@@ -15,7 +15,7 @@
 </ul>
 <h2>3 <a name="quick_use" id="quick_use" style="color:black">下载并安装SDK</a></h2>
 <h3>Step1 下载SDK</h3>
-<p>下载 <a href="http://dev.umeng.com/sdkdownload/sdkdownload_ios_social.html" style="text-decoration:none" target="_blank">最新版SDK</a></p>
+<p>下载 <a href="http://dev.umeng.com/social/ios/sdk-download" style="text-decoration:none" target="_blank">最新版SDK</a></p>
 <h3>Step2 加入SDK</h3>
 <p>解压SDK压缩包，将形如UMSocial_Sdk_x.x.x的文件夹拖入工程目录：</p>
 <p><img alt="alt text" src="http://dev.umeng.com/images/ios/social_drag_sdk.png" title="drag_sdk" /> </p>
@@ -23,6 +23,42 @@
 <p><img alt="alt text" src="http://dev.umeng.com/images/ios/social_check_tip.png" title="check_tip" /> </p>
 <p>现在应该是这样的效果：</p>
 <p><img alt="alt text" src="http://dev.umeng.com/images/ios/social_project_structure.png" title="project_structure" /> </p>
+<p>UMSocial_Sdk_x.x.x 文件夹的目录结构</p>
+<table>
+<thead>
+<tr>
+<th>文件或文件夹</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>libUMSocial_Sdk_x.x.x.a, libUMSocial_Sdk_Comment_3.0.a</td>
+<td>库文件</td>
+</tr>
+<tr>
+<td>Header</td>
+<td>头文件</td>
+</tr>
+<tr>
+<td>SocialSDKXib</td>
+<td>xib文件</td>
+</tr>
+<tr>
+<td>en.lproj，zh-Hans.lproj</td>
+<td>英文和中文语言文件</td>
+</tr>
+<tr>
+<td>frameworks</td>
+<td>使用的第三方SDK，里面的Wechat,TencentOpenAPI,TencentWeiboSSO,分别代表微信、手机QQ和腾讯微博SDK</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：<br />
+1. 若你的工程设置了all_load，需要添加手机QQ SDK需要的系统framework:libiconv.dylib,SystemConfiguration.framework,CoreGraphics.framework，libsqlite3.dylib，CoreTelephony.framework,libstdc++.dylib,libz.dylib。详情请参考<a http://dev.umeng.com/social/ios/share/specific-integration#binding_config" style="text-decoration:none">SSO（免登录）和新平台的设置</a><br />
+2. 若不使用手机QQ和腾讯微博SSO的功能，可以在Xcode删除这两个文件夹的引用，并在UMSocial.h 删除对这个两个SDK头文件的引用。</p>
+</blockquote>
 <h3>Step3 设置AppKey</h3>
 <p>在AppDelegate内设置友盟AppKey</p>
 <pre><code>#import &quot;UMSocial.h&quot;
