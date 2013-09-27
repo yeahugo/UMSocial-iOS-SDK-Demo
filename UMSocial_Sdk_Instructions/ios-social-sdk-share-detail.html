@@ -43,10 +43,6 @@
     <td>“sina.”+友盟appkey，例如“sina.507fcab25270157b37000010”</td>
   </tr>
    <tr>
-    <td>腾讯微博</td>
-    <td>“wb”+腾讯微博appkey，例如“wb801255122”</td>
-  </tr>
-   <tr>
     <td>QQ空间</td>
     <td>“tencent“+腾讯QQ互联应用Id，例如“tencent100308348”</td>
   </tr>
@@ -58,9 +54,13 @@
     <td>手机QQ</td>
     <td>“QQ”+腾讯QQ互联应用appId转换成十六进制（不足8位前面补0），例如“QQ05FA957C”。生成十六进制方法：在命令行输入<div>echo 'ibase=10;obase=16;您的腾讯QQ互联应用Id'|bc</div>，手机QQ详细集成步骤参考<a href="http://dev.umeng.com/doc/document_social_ios_detail.html#social_qq" style="text-decoration:none">手机QQ集成方法</a></td>
   </tr>
+     <tr>
+    <td>腾讯微博</td>
+    <td>“wb”+腾讯微博appkey，例如“wb801255122”</td>
+  </tr>
 </table>
 
-<p><img alt="socialbar" src="http://apf.umeng.com:8888/show?path=yeahugo/2013-09/d0d886.png" title="social_sso" />  </p>
+<p><img alt="social" src="http://apf.umeng.com:8888/show?path=yeahugo/2013-09/d0d886.png" title="social_share_list" /> </p>
 <ul>
 <li>在AppDelegate文件集成相应的开关方法：</li>
 </ul>
@@ -75,7 +75,7 @@
     [UMSocialConfig setQQAppId:@&quot;100424468&quot; url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
     //打开新浪微博的SSO开关
     [UMSocialConfig setSupportSinaSSO:YES];
-    //打开腾讯微博SSO开关
+    //打开腾讯微博的SSO开关
     [UMSocialConfig setSupportTencentSSO:YES importClass:[WBApi class]];
 }
 </code></pre>
