@@ -40,6 +40,7 @@
 		D5962F4217CC524000AD9856 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D54F813C17B217AE007D73AE /* SystemConfiguration.framework */; };
 		D5962F4417CC525800AD9856 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58531E817C1DF4D009E2D27 /* CoreTelephony.framework */; };
 		D5962F4517CC526100AD9856 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D54F814217B217CF007D73AE /* libstdc++.dylib */; };
+		D5BBEAAC18053DA500C60868 /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5BBEAAA18053DA500C60868 /* UMSocialLocalizable.strings */; };
 		D5E35B4017E994920032AB69 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D54F813E17B217BF007D73AE /* libsqlite3.dylib */; };
 		D5EF8983166DF07E00B2068D /* icon_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D5EF897D166DF07E00B2068D /* icon_ipad.png */; };
 		D5EF8984166DF07E00B2068D /* icon_ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5EF897E166DF07E00B2068D /* icon_ipad@2x.png */; };
@@ -113,6 +114,8 @@
 		D58531DF17C1BCE5009E2D27 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		D58531E817C1DF4D009E2D27 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		D596D9B417A8F30F008102DD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Supporting Files/zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D5BBEAAB18053DA500C60868 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ../UMSocial_Sdk_3.1/en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
+		D5BBEAAD18053DBE00C60868 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "../UMSocial_Sdk_3.1/zh-Hans.lproj/UMSocialLocalizable.strings"; sourceTree = "<group>"; };
 		D5E35B3B17E982AD0032AB69 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		D5EF897B166DEE7A00B2068D /* UMSocialSDKDemo copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "UMSocialSDKDemo copy-Info.plist"; path = "/Users/yeahugo/Documents/project/SocialiOSSDK/UMSocialSDKDemo/UMSocialSDKDemo copy-Info.plist"; sourceTree = "<absolute>"; };
 		D5EF897D166DF07E00B2068D /* icon_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_ipad.png; path = "Supporting Files/icon_ipad.png"; sourceTree = "<group>"; };
@@ -163,6 +166,7 @@
 		D50A35BE17F16DD800883E9B /* UMSocial_Sdk_3.1 */ = {
 			isa = PBXGroup;
 			children = (
+				D5BBEAAA18053DA500C60868 /* UMSocialLocalizable.strings */,
 				D50A35BF17F16DD800883E9B /* frameworks */,
 				D50A35CA17F16DD800883E9B /* Header */,
 				D50A35D517F16DD800883E9B /* libUMSocial_Sdk_3.1.a */,
@@ -407,6 +411,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5BBEAAC18053DA500C60868 /* UMSocialLocalizable.strings in Resources */,
 				D574370516082B1200C7AD07 /* InfoPlist.strings in Resources */,
 				D5EF8983166DF07E00B2068D /* icon_ipad.png in Resources */,
 				D5EF8984166DF07E00B2068D /* icon_ipad@2x.png in Resources */,
@@ -468,6 +473,16 @@
 				D596D9B417A8F30F008102DD /* zh-Hans */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		D5BBEAAA18053DA500C60868 /* UMSocialLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D5BBEAAB18053DA500C60868 /* en */,
+				D5BBEAAD18053DBE00C60868 /* zh-Hans */,
+			);
+			name = UMSocialLocalizable.strings;
+			path = ../UMSocial_Sdk_Demo;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

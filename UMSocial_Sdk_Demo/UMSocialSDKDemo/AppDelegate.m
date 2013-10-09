@@ -33,7 +33,6 @@
     [UMSocialConfig setSupportQzoneSSO:YES importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
     //设置手机QQ的AppId，指定你的分享url，若传nil，将使用友盟的网址
     [UMSocialConfig setQQAppId:@"100424468" url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
-;
     //打开新浪微博的SSO开关
     [UMSocialConfig setSupportSinaSSO:YES];
     
