@@ -9,6 +9,7 @@
 <h3><a href="#social_share_list" style="text-decoration:none">5.1 集成分享页面</a></h3>
 <h3><a href="#social_share_config" style="text-decoration:none">5.2 分享相关设置</a></h3>
 <h3><a href="#social_share_data" style="text-decoration:none">5.3 直接发送分享</a></h3>
+<h3><a href="#social_oauth_share" style="text-decoration:none">5.4 授权+直接分享</a></h3>
 <h3><a href="#binding_config" style="text-decoration:none">6. 绑定友盟应用标识与各开放平台</a></h3>
 <h1><a name="social_appkey" id="social_appkey" style="color:black">1. 设置友盟appkey</a></h1>
 <ul>
@@ -48,19 +49,15 @@
   </tr>
    <tr>
     <td>微信</td>
-    <td>“wx”+微信应用appId，例如“wxd9a39c7122aa6516”,微信详细集成步骤参考<a href="http://dev.umeng.com/doc/document_social_ios_detail.html#social_wechat" style="text-decoration:none">微信集成方法</a></td>
+    <td>“wx”+微信应用appId，例如“wxd9a39c7122aa6516”,微信详细集成步骤参考<a href="#social_wechat" style="text-decoration:none">微信集成方法</a></td>
   </tr>
    <tr>
     <td>手机QQ</td>
-    <td>“QQ”+腾讯QQ互联应用appId转换成十六进制（不足8位前面补0），例如“QQ05FA957C”。生成十六进制方法：在命令行输入<div>echo 'ibase=10;obase=16;您的腾讯QQ互联应用Id'|bc</div>，手机QQ详细集成步骤参考<a href="http://dev.umeng.com/doc/document_social_ios_detail.html#social_qq" style="text-decoration:none">手机QQ集成方法</a></td>
-  </tr>
-     <tr>
-    <td>腾讯微博</td>
-    <td>“wb”+腾讯微博appkey，例如“wb801255122”</td>
+    <td>“QQ”+腾讯QQ互联应用appId转换成十六进制（不足8位前面补0），例如“QQ05FA957C”。生成十六进制方法：在命令行输入<div>echo 'ibase=10;obase=16;您的腾讯QQ互联应用Id'|bc</div>，手机QQ详细集成步骤参考<a href="#social_qq" style="text-decoration:none">手机QQ集成方法</a></td>
   </tr>
 </table>
 
-<p><img alt="social" src="http://apf.umeng.com:8888/show?path=yeahugo/2013-09/d0d886.png" title="social_share_list" /> </p>
+<p><img alt="socialbar" src="http://apf.umeng.com:8888/show?path=yeahugo/2013-09/d0d886.png" title="social_sso" /> </p>
 <ul>
 <li>在AppDelegate文件集成相应的开关方法：</li>
 </ul>
@@ -75,8 +72,6 @@
     [UMSocialConfig setQQAppId:@&quot;100424468&quot; url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
     //打开新浪微博的SSO开关
     [UMSocialConfig setSupportSinaSSO:YES];
-    //打开腾讯微博的SSO开关
-    [UMSocialConfig setSupportTencentSSO:YES importClass:[WBApi class]];
 }
 </code></pre>
 
@@ -262,6 +257,61 @@
         if (response.responseCode == UMSResponseCodeSuccess) {
             NSLog(@&quot;分享成功！&quot;);
         }
+    }];
+</code></pre>
+
+<h2>5.4 <a name="social_oauth_share" id="social_oauth_share" style="color:black">授权+直接分享</a></h2>
+<ul>
+<li>
+<p>开发者可以自己构造分享内容编辑页面，利用我们提供的授权方法和直接分享方法来实现分享</p>
+</li>
+<li>
+<p><strong>Step1</strong> 授权</p>
+</li>
+<li>
+<p>判断是否授权，若没有授权，调用授权方法，成功后可以获取到用户的usid和token，打开你自定义的分享内容编辑页面</p>
+</li>
+</ul>
+<pre><code>    //判断是否授权
+    [UMSocialAccountManager isOauthWithPlatform:snsPlatform.platformName]
+    //进入授权页面
+    [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina].loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            //获取微博用户名、uid、token等
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:platformName];
+            NSLog(@&quot;username is %@, uid is %@, token is %@&quot;,snsAccount.userName,snsAccount.usid,snsAccount.accessToken); 
+            //进入你的分享内容编辑页面  
+        }
+    });
+</code></pre>
+
+<ul>
+<li>也可以自己实现授权，授权完成之后发送用户账户信息到友盟服务器</li>
+</ul>
+<pre><code>UMSocialAccountEntity *sinaAccount = [[UMSocialAccountEntity alloc] initWithPlatformName:UMShareToSina];
+    sinaAccount.usid = @&quot;your usid&quot;;
+    sinaAccount.accessToken = @&quot;your accesstoken&quot;;
+// 把已经得到的用户账户信息上传给友盟服务器
+    [UMSocialAccountManager postSnsAccount:sinaAccount completion:^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            //在本地缓存设置得到的账户信息
+            [UMSocialAccountManager setSnsAccount:sinaAccount];
+            //进入你自定义的分享内容编辑页面或者使用我们的内容编辑页面
+    }];
+</code></pre>
+
+<ul>
+<li>
+<p><strong>Step3</strong> 发送微博</p>
+</li>
+<li>
+<p>在内容编辑页面，点击发送微博后调用直接发送微博方法 </p>
+</li>
+</ul>
+<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:@&quot;分享内嵌文字&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *shareResponse){
+       if (shareResponse.responseCode == UMSResponseCodeSuccess) {
+           NSLog(@&quot;分享成功！&quot;);
+       }
     }];
 </code></pre>
 
