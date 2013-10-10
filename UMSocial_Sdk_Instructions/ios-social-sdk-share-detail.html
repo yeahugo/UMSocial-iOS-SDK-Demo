@@ -269,16 +269,16 @@
 <p><strong>Step1</strong> 授权</p>
 </li>
 <li>
-<p>判断是否授权，若没有授权，调用授权方法，成功后可以获取到用户的usid和token，打开你自定义的分享内容编辑页面</p>
+<p>判断是否授权，若没有授权，调用授权方法，成功后可以获取到用户的usid和token，打开你自定义的分享内容编辑页面,下面的代码以授权到新浪微博为例</p>
 </li>
 </ul>
 <pre><code>    //判断是否授权
-    [UMSocialAccountManager isOauthWithPlatform:snsPlatform.platformName]
+    [UMSocialAccountManager isOauthWithPlatform:UMShareToSina]
     //进入授权页面
     [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina].loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
         if (response.responseCode == UMSResponseCodeSuccess) {
             //获取微博用户名、uid、token等
-            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:platformName];
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToSina];
             NSLog(@&quot;username is %@, uid is %@, token is %@&quot;,snsAccount.userName,snsAccount.usid,snsAccount.accessToken); 
             //进入你的分享内容编辑页面  
         }
@@ -297,12 +297,12 @@
             //在本地缓存设置得到的账户信息
             [UMSocialAccountManager setSnsAccount:sinaAccount];
             //进入你自定义的分享内容编辑页面或者使用我们的内容编辑页面
-    }];
+    }}];
 </code></pre>
 
 <ul>
 <li>
-<p><strong>Step3</strong> 发送微博</p>
+<p><strong>Step2</strong> 发送微博</p>
 </li>
 <li>
 <p>在内容编辑页面，点击发送微博后调用直接发送微博方法 </p>

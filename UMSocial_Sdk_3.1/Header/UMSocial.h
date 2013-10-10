@@ -18,7 +18,5 @@
 
 #import "WXApi.h"                               //微信SDK
 
-#import "WBApi.h"                               //腾讯微博SDK
-
 #import <TencentOpenAPI/QQApiInterface.h>       //手机QQ SDk
 #import <TencentOpenAPI/TencentOAuth.h>
