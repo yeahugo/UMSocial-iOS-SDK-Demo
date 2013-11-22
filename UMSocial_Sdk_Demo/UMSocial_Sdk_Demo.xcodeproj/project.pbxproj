@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D518A99916D39A5100893507 /* UMS_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D518A99816D39A5100893507 /* UMS_settings@2x.png */; };
+		D5269D4A182A216900B01AB1 /* NextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5269D46182A216900B01AB1 /* NextViewController.m */; };
+		D5269D4B182A216900B01AB1 /* CrashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5269D47182A216900B01AB1 /* CrashViewController.m */; };
 		D534FA76179FC6920067BDCF /* UMS_social_demo.png in Resources */ = {isa = PBXBuildFile; fileRef = D534FA75179FC6920067BDCF /* UMS_social_demo.png */; };
 		D53746AD1738CB450093F280 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FE16082B1200C7AD07 /* CoreGraphics.framework */; };
 		D57436FB16082B1200C7AD07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57436FA16082B1200C7AD07 /* UIKit.framework */; };
@@ -57,6 +59,10 @@
 
 /* Begin PBXFileReference section */
 		D518A99816D39A5100893507 /* UMS_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UMS_settings@2x.png"; sourceTree = "<group>"; };
+		D5269D46182A216900B01AB1 /* NextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NextViewController.m; path = ../../../../../Downloads/UMSocialSDKDemo/NextViewController.m; sourceTree = "<group>"; };
+		D5269D47182A216900B01AB1 /* CrashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CrashViewController.m; path = ../../../../../Downloads/UMSocialSDKDemo/CrashViewController.m; sourceTree = "<group>"; };
+		D5269D48182A216900B01AB1 /* NextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NextViewController.h; path = ../../../../../Downloads/UMSocialSDKDemo/NextViewController.h; sourceTree = "<group>"; };
+		D5269D49182A216900B01AB1 /* CrashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CrashViewController.h; path = ../../../../../Downloads/UMSocialSDKDemo/CrashViewController.h; sourceTree = "<group>"; };
 		D534FA75179FC6920067BDCF /* UMS_social_demo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UMS_social_demo.png; sourceTree = "<group>"; };
 		D54F813A17B217A9007D73AE /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		D54F813C17B217AE007D73AE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -201,6 +207,10 @@
 		D574370016082B1200C7AD07 /* UMSocialSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				D5269D46182A216900B01AB1 /* NextViewController.m */,
+				D5269D47182A216900B01AB1 /* CrashViewController.m */,
+				D5269D48182A216900B01AB1 /* NextViewController.h */,
+				D5269D49182A216900B01AB1 /* CrashViewController.h */,
 				D5798EC918065D7E00B3000E /* UMSocial_Sdk_3.1 */,
 				D5EF897C166DF04300B2068D /* UI */,
 				D5743852160836C700C7AD07 /* DemoImages */,
@@ -371,6 +381,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = yeahugo;
+				TargetAttributes = {
+					D57436F516082B1200C7AD07 = {
+						DevelopmentTeam = 486K7NX823;
+					};
+				};
 			};
 			buildConfigurationList = D57436F016082B1200C7AD07 /* Build configuration list for PBXProject "UMSocial_Sdk_Demo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -431,10 +446,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5269D4B182A216900B01AB1 /* CrashViewController.m in Sources */,
 				D574370B16082B1200C7AD07 /* AppDelegate.m in Sources */,
 				D5EF898C166DF1AF00B2068D /* main.m in Sources */,
 				D580B31316B3B73A00BF3481 /* UMSocialTabBarController.m in Sources */,
 				D5F92E701749B8AF00EC4F53 /* UMSocialBarViewController.m in Sources */,
+				D5269D4A182A216900B01AB1 /* NextViewController.m in Sources */,
 				D5F92E721749B8AF00EC4F53 /* UMSocialSnsViewController.m in Sources */,
 				D5F92E771749B8F500EC4F53 /* UMSocialLoginViewController.m in Sources */,
 			);
@@ -483,7 +500,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ray Tap (87EFZF7UQV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ray Tap (87EFZF7UQV)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -504,7 +521,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
-				PROVISIONING_PROFILE = "D1A6145D-8EDC-4037-8179-CC83B9023597";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -521,7 +538,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ray Tap (87EFZF7UQV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ray Tap (87EFZF7UQV)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -535,7 +552,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
-				PROVISIONING_PROFILE = "D1A6145D-8EDC-4037-8179-CC83B9023597";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -545,6 +562,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../UMSocial_Sdk_3.1/frameworks/TencentOpenAPI\"",
@@ -565,6 +584,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = UMSocial;
+				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
@@ -576,6 +596,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../UMSocial_Sdk_3.1/frameworks/TencentOpenAPI\"",
@@ -596,6 +618,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = UMSocial;
+				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";

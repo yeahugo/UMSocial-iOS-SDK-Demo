@@ -10,6 +10,7 @@
 #import "UMSocialDataService.h"
 
 #define kTagSocialIconActionSheet 1013
+#define kTagSocialShakeView 1014
 
 @class UMSocialControllerService;
 
@@ -91,6 +92,7 @@
  @prarm socialData   分享内容
  */
 -(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData;
+
 @end
 
 

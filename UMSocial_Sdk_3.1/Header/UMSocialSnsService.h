@@ -79,13 +79,11 @@
                shareToSnsNames:(NSArray *)snsNames
                       delegate:(id <UMSocialUIDelegate>)delegate;
 
-
 /**
  得到单例对象的类方法
  
  @return `UMSocialSnsService`的单例对象
  */
 + (UMSocialSnsService *)sharedInstance;
-
 
 @end

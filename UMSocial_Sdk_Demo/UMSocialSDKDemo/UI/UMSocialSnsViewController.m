@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 #import "UMSocial.h"
 
+#import "UMSocialScreenShoter.h"
 
 @interface UMSocialSnsViewController ()
 
@@ -61,6 +62,21 @@
     }
 }
 
+-(UMSocialShakeConfig)didShakeWithSocialData:(UMSocialData *)socialData
+{
+    return UMSocialShakeConfigDefault;
+}
+
+-(void)didCloseShakeView
+{
+    NSLog(@"didCloseShakeView");
+}
+
+-(void)didFinishShareInShakeView:(UMSocialResponseEntity *)response
+{
+    NSLog(@"finish share with response is %@",response);
+}
+
 /*
  注意分享到新浪微博我们使用新浪微博SSO授权，你需要在xcode工程设置url scheme，并重写AppDelegate中的`- (BOOL)application openURL sourceApplication`方法，详细见文档。否则不能跳转回来原来的app。
  */
@@ -70,7 +86,25 @@
     UIImage *shareImage = [UIImage imageNamed:@"UMS_social_demo"];          //分享内嵌图片
     
     //如果得到分享完成回调，需要传递delegate参数
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:nil];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:self];
+}
+
+-(IBAction)setShakeSns:(id)sender
+{
+    NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。 http://www.umeng.com/social";             //分享内嵌文字
+    
+    [UMSocialShakeService setShakeToShareWithTypes:nil
+                                         shareText:nil
+                                      screenShoter:[UMSocialScreenShoterDefault screenShoter]
+                                  inViewController:self
+                                          delegate:self];
+    
+//    [UMSocialShakeService setShakeToShareWithTypes:@[UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline]
+//                                         shareText:shareText
+//                                      screenShoter:[UMSocialScreenShoterDefault screenShoter]
+//                                  inViewController:self
+//                                          delegate:self];
+    
 }
 
 /*
@@ -114,7 +148,7 @@
 }
 
 - (void)viewDidLoad
-{    
+{
     _shareButton1.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton1.center.y);
      _shareButton3.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton3.center.y);
     
@@ -132,8 +166,10 @@
      如果要弹出的分享列表支持不同方向，需要在这里设置一下重新布局
      如果当前UIViewController有UINavigationController,则用self.navigationController.view，否则用self.view
      */
-    UIView *iconActionSheet = [self.tabBarController.view viewWithTag:kTagSocialIconActionSheet];
+    UIView * iconActionSheet = [self.tabBarController.view viewWithTag:kTagSocialIconActionSheet];
     [iconActionSheet setNeedsDisplay];
+    UIView * shakeView = [self.tabBarController.view viewWithTag:kTagSocialShakeView];
+    [shakeView setNeedsDisplay];
 }
 
 
@@ -141,6 +177,7 @@
 {
     _shareButton1.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5);
     _shareButton3.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *3);
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -46,6 +46,7 @@
 "shareEdit_error_fail" = "分享失败";
 "shareEdit_error_no_auth" = "没有上传图片权限，分享失败";
 "shareEdit_error_empty_content" = "发送文字内容为空，分享失败";
+"shareEdit_addFollow" = "关注官方微博";
 "shareEdit_C" = "符";
 "shareEdit_used" = "常";
 

@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "UMSocialControllerService.h"
+#import "UMSocialShakeService.h"
 
 @interface UMSocialSnsViewController : UIViewController
 <
     UIActionSheetDelegate,
-    UMSocialUIDelegate
+    UMSocialUIDelegate,
+    UMSocialShakeDelegate
 >
 {
     IBOutlet UIButton *_shareButton1;
@@ -22,5 +24,7 @@
 -(IBAction)showShareList1:(id)sender;
 
 -(IBAction)showShareList3:(id)sender;
+
+-(IBAction)setShakeSns:(id)sender;
 
 @end
