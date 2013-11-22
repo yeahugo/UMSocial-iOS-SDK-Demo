@@ -10,12 +10,12 @@
 #import "UMSocial.h"
 
 typedef NS_OPTIONS(NSUInteger, UMSocialShakeConfig) {
-    UMSocialShakeConfigNone                    = 0,
-    UMSocialShakeConfigShowScreenShot          = 1 << 0,
-    UMSocialShakeConfigShowShareEdit           = 1 << 1,
-    UMSocialShakeConfigSound                   = 1 << 2,
+    UMSocialShakeConfigNone                    = 0,               //摇一摇之后不显示任何效果和发出声音
+    UMSocialShakeConfigShowScreenShot          = 1 << 0,          //显示截屏图片
+    UMSocialShakeConfigShowShareEdit           = 1 << 1,          //显示分享编辑框
+    UMSocialShakeConfigSound                   = 1 << 2,          //发出摇一摇音效
     UMSocialShakeConfigDefault                 = UMSocialShakeConfigShowScreenShot | UMSocialShakeConfigShowShareEdit
-    | UMSocialShakeConfigSound
+    | UMSocialShakeConfigSound                                    //默认显示截屏图片、显示分享编辑框，发出摇一摇音效
 };
 
 @protocol UMSocialShakeDelegate <NSObject>
