@@ -50,6 +50,8 @@
 "shareEdit_C" = "符";
 "shareEdit_used" = "常";
 
+"shareShake_button" = "Share";
+
 "share_wechat" = "Share to Wechat";
 "share_wechat_friend" = "Share to Wechat Friend";
 "share_wechat_moments" = "Share to Wechat Moments";

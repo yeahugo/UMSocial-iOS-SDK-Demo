@@ -49,6 +49,7 @@
 "shareEdit_addFollow" = "关注官方微博";
 "shareEdit_C" = "符";
 "shareEdit_used" = "常";
+"shareShake_button" = "分享";
 
 "share_wechat" = "分享到微信";
 "share_wechat_friend" = "分享到微信好友";

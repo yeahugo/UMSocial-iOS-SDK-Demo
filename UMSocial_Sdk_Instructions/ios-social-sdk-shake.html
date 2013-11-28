@@ -13,8 +13,8 @@
 </ul>
 </li>
 <li>2.2 <a href="#social_shake_openshare">摇一摇打开分享面板</a></li>
-<li>2.3 <a href="#social_shake_scrshot">摇一摇截图接口</a></li>
-<li>2.4 <a href="#social_shake_unregister">注销摇一摇监听</a></li>
+<li>2.3 <a href="#social_shake_unregister">注销摇一摇监听</a></li>
+<li>2.4 <a href="#social_shake_scrshot">摇一摇接口</a></li>
 <li>2.5 <a href="#social_scrshot">屏幕截图接口</a></li>
 <li>2.6 <a href="#social_scrshot_share">截图后分享</a></li>
 </ul>
@@ -51,12 +51,6 @@
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">摇一摇截屏</td>
-<td align="center"></td>
-<td align="center">是</td>
-<td align="center">是</td>
-</tr>
-<tr>
 <td align="center">直接截屏</td>
 <td align="center"></td>
 <td align="center"></td>
@@ -74,16 +68,14 @@
 <h2>2.1 摇一摇截图分享 <b id=social_shake_func></b></h2>
 <h3>2.1.1 注册监听摇一摇事件，默认摇一摇后，自动截屏并弹出分享页面 <b id=social_shake_register></b></h3>
 <pre><code>/**
- 注册监听摇一摇事件，默认摇一摇后，自动截屏并弹出分享页面
+ 设置响应摇一摇事件，并且弹出分享页面
 
  @param snsTypes 要分享的平台类型名，例如@[UMShareToSina,UMShareToTencent,UMShareToWechatSession]
  @param shareText 分享内嵌文字
+ @param screenShoter 摇一摇分享用到的截屏对象
  @param controller  出现分享界面所在的ViewController
- @param socialUIDelegate
- @param snsNames 你要分享到的sns平台类型，该NSArray值是`UMSocialSnsPlatformManager.h`定义的平台名的字符串常量，有UMShareToSina，UMShareToTencent，UMShareToRenren，UMShareToDouban，UMShareToQzone，UMShareToEmail，UMShareToSms等
  @param delegate 实现摇一摇后，或者分享完成后的回调对象，如果不处理这些事件，可以设置为nil
  */
-
 +(void)setShakeToShareWithTypes:(NSArray *)snsTypes
                       shareText:(NSString *)shareText
                    screenShoter:(UMSocialScreenShoter *)screenShoter
@@ -100,7 +92,7 @@
                                           delegate:nil];  
 </code></pre>
 
-<p>注意在离开此视图时解除监听摇一摇事件。</p>
+<p><a href="#social_shake_unregister"><strong>注意在离开此视图时解除监听摇一摇事件</strong></a></p>
 <h3>2.1.3 使用Cocos2d开发的游戏注册摇一摇截图分享   <b id=social_shake_game></b></h3>
 <p>[UMSocialScreenShoterCocos2d screenShoter]为cocos2d游戏的截屏适配器，负责截屏操作，示例代码如下:</p>
 <pre><code>  [UMSocialShakeService setShakeToShareWithTypes:@[UMShareToSina,UMShareToWechatSession]
@@ -121,8 +113,8 @@
                                           delegate:nil]; 
 </code></pre>
 
-<p>如果需要截取流媒体图像，则需开发者自行获取到视频图像，并且通过自定义截图适配器的方式将图像返回. <br />
-注意在离开此视图时解除监听摇一摇事件。      </p>
+<p>若需要截取流媒体图像，则需开发者自行获取到视频图像，并且通过自定义截图适配器的方式将图像返回. <br />
+<a href="#social_shake_unregister"><strong>注意在离开此视图时解除监听摇一摇事件</strong></a>      </p>
 <h3>2.1.5 其他使用场景实现摇一摇截图分享   <b id=social_shake_others></b></h3>
 <p>其他类型的截图实现同上文原理一致，继承自UMSocialScreenShoter来定义一个截图适配器，
 然后实现'-(UIImage *)getScreenShot;'方法将图像返回，最后将该适配器给友盟分享sdk即可。如下所示:    </p>
@@ -138,7 +130,7 @@
                                           delegate:nil];  
 </code></pre>
 
-<p>注意在离开此视图时解除监听摇一摇事件。  </p>
+<p><a href="#social_shake_unregister"><strong>注意在离开此视图时解除监听摇一摇事件</strong></a>  </p>
 <h3>2.1.6 摇一摇截图分享效果图   <b id=social_shake_done></b></h3>
 <p><img src="http://dev.umeng.com/system/images/W1siZiIsIjIwMTMvMTAvMjkvMTdfMjlfMzFfMTQ1X3NoYWtlXzIucG5nIl1d/shake_2.png" width="640" height="400" style="border:3 solid #ffCCCC">   </p>
 <h2>2.2 摇一摇打开分享面板   <b id=social_shake_openshare></b></h2>
@@ -158,26 +150,30 @@
 }
 </code></pre>
 
-<h2>2.3 摇一摇截图接口   <b id=social_shake_scrshot></b></h2>
-<p>注册该功能后，用户只需要摇一摇手机，即可获取到当前屏幕的截图。如下所示:        </p>
-<pre><code>  [UMSocialShakeService setShakeToShareWithTypes:nil
-                                         shareText:nil
-                                      screenShoter:nil
-                                  inViewController:self
-                                          delegate:self];  
-//在摇一摇的回调方法得到屏幕截图
--(UMSocialShakeConfig)didShakeWithSocialData:(UMSocialData *)socialData
-{
-//下面使用应用类型截屏，如果是cocos2d游戏或者其他类型，使用相应的截屏对象
-    UIImage *image = [[UMSocialScreenShoterDefault screenShoter] getScreenShot];
-//下面返回值控制是否显示分享编辑页面、是否显示截图、是否有音效，UMSocialShakeConfigNone表示都不显示
-    return UMSocialShakeConfigNone;
-}                                          
-</code></pre>
-
-<h2>2.4  注销摇一摇监听 <b id=social_shake_unregister></b></h2>
+<h2>2.3  注销摇一摇监听 <b id=social_shake_unregister></b></h2>
 <p>不需要响应摇一摇动作调用如下代码：        </p>
 <pre><code>   [UMSocialShakeService unShakeToSns];
+</code></pre>
+
+<h2>2.4 摇一摇接口   <b id=social_shake_scrshot></b></h2>
+<p>若使用摇一摇功能，可以用下面的方法来得到摇一摇事件的回调，如下所示:        </p>
+<p>在你的当前ViewController视图控制器中加入下面的代码，设置第一响应者</p>
+<pre><code>-(BOOL)canBecomeFirstResponder {
+    return YES;
+}
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self becomeFirstResponder];
+}
+//在响应摇一摇动作方法内得到屏幕截图
+-(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent*)event
+{
+    if(motion == UIEventSubtypeMotionShake)
+    {
+        //下面使用应用类型截屏，如果是cocos2d游戏或者其他类型，使用相应的截屏对象
+        //UIImage *image = [[UMSocialScreenShoterDefault screenShoter] getScreenShot];
+    }
+}
 </code></pre>
 
 <h2>2.5 屏幕截图接口   <b id=social_scrshot></b></h2>

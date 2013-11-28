@@ -45,6 +45,7 @@
 }
 */
 
+
 -(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType
 {
     NSLog(@"didClose is %d",fromViewControllerType);
@@ -84,6 +85,13 @@
 {
     NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。 http://www.umeng.com/social";             //分享内嵌文字
     UIImage *shareImage = [UIImage imageNamed:@"UMS_social_demo"];          //分享内嵌图片
+
+    [UMSocialData defaultData].extConfig.sinaData.shareText = @"分享到新浪微博内容";
+    [UMSocialData defaultData].extConfig.sinaData.shareImage = [UIImage imageNamed:@"icon"];
+    [UMSocialData defaultData].extConfig.tencentData.shareText = @"分享到腾讯微博内容";
+    [UMSocialData defaultData].extConfig.wechatSessionData.shareText = @"分享到微信好友微博内容";
+    [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = @"分享到微信朋友圈内容";
+    [UMSocialData defaultData].extConfig.qqData.shareText = @"分享到QQ内容";
     
     //如果得到分享完成回调，需要传递delegate参数
     [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:self];
@@ -93,17 +101,11 @@
 {
     NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。 http://www.umeng.com/social";             //分享内嵌文字
     
-    [UMSocialShakeService setShakeToShareWithTypes:nil
-                                         shareText:nil
+    [UMSocialShakeService setShakeToShareWithTypes:@[UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline]
+                                         shareText:shareText
                                       screenShoter:[UMSocialScreenShoterDefault screenShoter]
                                   inViewController:self
                                           delegate:self];
-    
-//    [UMSocialShakeService setShakeToShareWithTypes:@[UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline]
-//                                         shareText:shareText
-//                                      screenShoter:[UMSocialScreenShoterDefault screenShoter]
-//                                  inViewController:self
-//                                          delegate:self];
     
 }
 
@@ -176,6 +178,7 @@
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     _shareButton1.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5);
+    _shakeButton2.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *2);
     _shareButton3.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *3);
     
 }

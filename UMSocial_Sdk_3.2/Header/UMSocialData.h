@@ -8,131 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
-/**
- 微信内容类型
- */
-typedef enum{
-    UMSocialWXMessageTypeText,      //微信文本内容
-    UMSocialWXMessageTypeImage,     //微信图片类型
-    UMSocialWXMessageTypeApp,       //微信应用类型
-    UMSocialWXMessageTypeOther      //微信其他多媒体类型
-}UMSocialWXMessageType;
-
-/**
- 分享到各个平台的扩展设置
- */
-@interface UMSocialExtConfig : NSObject
-
-
-/**
- 标题，用于指定微信分享标题，qzone分享的标题和邮件分享的标题。
- 
- */
-@property (nonatomic, copy) NSString *title;
-
-/**
- 缩略图的url，用于指定qzone分享，如果有分享视频的话可以指定一张视频的缩略图
- 
- */
-@property (nonatomic, copy) NSString *thumbUrl;
-
-/**
- 分享到微信的消息类型，分别有文字类型，图片类型，app类型（文字和图片都有，点击可以返回app或者到指定url，不过不能全部显示所有文字内容）
- 
- */
-@property (nonatomic, assign) UMSocialWXMessageType wxMessageType;
-
-/**
- 微信分享的正文内容，如果不设置的话，默认用UMSocialData的shareText
- 
- */
-@property (nonatomic, copy) NSString *wxDescription;
-
-/**
- 微信多媒体资源的分享，详细定义见`WXApiObject.h`
- 
- */
-@property (nonatomic, retain) id wxMediaObject;
-
-/**
- 邮件分享的正文内容,如果不设置的话，默认用UMSocialData的shareText
- 
- */
-@property (nonatomic, copy) NSString *mailMessage;
-
-/**
- app下载地址
-
- */
-@property(nonatomic, copy) NSString *appUrl;
-@end
-
-
-typedef enum{
-    UMSNumberLike=0,            //喜欢
-    UMSNumberShare,             //分享
-    UMSNumberComment            //评论
-}UMSNumberType;
-
-typedef enum {
-    UMSocialUrlResourceTypeDefault,             //无
-    UMSocialUrlResourceTypeImage,               //图片
-    UMSocialUrlResourceTypeVideo,               //视频
-    UMSocialUrlResourceTypeMusic                //音乐
-}UMSocialUrlResourceType;
-
-/**
- 分享到微博的多媒体资源，包括指定url的图片、音乐、视频
- */
-@interface UMSocialUrlResource : NSObject
-
-
-/**
- url地址
- 
- */
-@property (nonatomic, copy) NSString *url;
-
-
-/**
- 资源类型，图片（UMSocialUrlResourceTypeImage）、视频（UMSocialUrlResourceTypeVideo），音乐（UMSocialUrlResourceTypeMusic）
- 
- */
-@property (nonatomic, assign) UMSocialUrlResourceType resourceType;
-
-/**
- 如果传入音乐的话，腾讯微博可以指定音乐标题
- 
- */
-@property (nonatomic, copy) NSString *title;
-
-/**
- 如果传入音乐的话，腾讯微博可以指定音乐作者
- 
- */
-@property (nonatomic, copy) NSString *author;
-
-
-/**
- 设置url资源类型和url地址
- 
- @param resourceType 多媒体资源类型，图片、音乐或者视频
- @param urlString url字符串
- 
- */
--(void)setResourceType:(UMSocialUrlResourceType)resourceType url:(NSString *)url;
-
-/**
- 初始化对象，指定一种资源和资源URL
- 
- @param resourceType 多媒体资源类型，图片、音乐或者视频
- @param urlString url字符串
- 
- */
--(id)initWithSnsResourceType:(UMSocialUrlResourceType)resourceType url:(NSString *)url;
-
-@end
+#import "UMSocialSnsData.h"
 
 /**
  一个`UMSocialData`对象标识一个分享资源，用一个*identifier*字符串作为标识，你可以为此对象设置分享内嵌文字、分享图片等，可以获取到对应的分享数、评论数。同时`UMSocialData`类方法用来设置appKey和打开log等全局设置。
@@ -204,7 +80,6 @@ typedef enum {
  
  */
 @property (nonatomic, retain)  UMSocialExtConfig *extConfig;
-
 
 ///---------------------------------------
 /// @name 对所有对象都起作用的类方法
