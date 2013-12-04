@@ -18,9 +18,9 @@ typedef enum {
     UMSocialShakeConfigShowScreenShot          = 1 << 0,          //显示截屏图片
     UMSocialShakeConfigShowShareEdit           = 1 << 1,          //显示分享编辑框
     UMSocialShakeConfigSound                   = 1 << 2,          //发出摇一摇音效
-    UMSocialShakeConfigSupportOrientation      = 1 << 3,          //设置是否支持旋转屏幕，默认不支持
+    UMSocialShakeConfigSupportOrientation      = 1 << 3,          //设置是否支持旋转屏幕，默认支持
     UMSocialShakeConfigDefault                 = UMSocialShakeConfigShowScreenShot | UMSocialShakeConfigShowShareEdit
-    | UMSocialShakeConfigSound | UMSocialShakeConfigSupportOrientation                                   //默认显示截屏图片、显示分享编辑框，发出摇一摇音效
+    | UMSocialShakeConfigSound | UMSocialShakeConfigSupportOrientation                                   //默认显示截屏图片、显示分享编辑框，支持旋转，发出摇一摇音效
 } UMSocialShakeConfig;
 
 @class UMSocialData;

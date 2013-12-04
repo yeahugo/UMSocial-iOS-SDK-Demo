@@ -49,13 +49,13 @@
  */
 -(BOOL)closeOauthWebViewController:(UINavigationController *)navigationCtroller socialControllerService:(UMSocialControllerService *)socialControllerService;
 
-/**
- 关闭当前页面之前
- 
- @param fromViewControllerType 关闭的页面类型
- 
- */
--(void)willCloseUIViewController:(UMSViewControllerType)fromViewControllerType;
+///**
+// 关闭当前页面之前
+// 
+// @param fromViewControllerType 关闭的页面类型
+// 
+// */
+//-(void)willCloseUIViewController:(UMSViewControllerType)fromViewControllerType;
 
 
 /**

@@ -16,6 +16,8 @@
 
 #import "UMSocialScreenShoter.h"
 
+#import <MediaPlayer/MediaPlayer.h>
+
 @interface UMSocialSnsViewController ()
 
 @end
@@ -83,7 +85,6 @@
     NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。 http://www.umeng.com/social";             //分享内嵌文字
     UIImage *shareImage = [UIImage imageNamed:@"UMS_social_demo"];          //分享内嵌图片
 
-    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeImage;
 //    [UMSocialData defaultData].extConfig.sinaData.shareText = @"分享到新浪微博内容";
 //    [UMSocialData defaultData].extConfig.sinaData.shareImage = [UIImage imageNamed:@"icon"];
 //    [UMSocialData defaultData].extConfig.tencentData.shareText = @"分享到腾讯微博内容";
@@ -100,9 +101,16 @@
 {
     NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。 http://www.umeng.com/social";             //分享内嵌文字
     
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Movie" ofType:@"m4v"];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+    player.view.frame = self.view.frame;
+    [self.view addSubview:player.view];
+    [player play];
+    
     [UMSocialShakeService setShakeToShareWithTypes:nil
                                          shareText:shareText
-                                      screenShoter:[UMSocialScreenShoterDefault screenShoter]
+                                      screenShoter:[UMSocialScreenShoterMediaPlayer screenShoterFromMoviePlayer:player]
                                   inViewController:self
                                           delegate:self];
     
