@@ -26,8 +26,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        //设置黑色主题
-//        [UMSocialConfig setTheme:UMSocialThemeBlack];
     }
     return self;
 }
@@ -44,7 +42,6 @@
     }
 }
 */
-
 
 -(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType
 {
@@ -63,7 +60,7 @@
     }
 }
 
--(UMSocialShakeConfig)didShakeWithSocialData:(UMSocialData *)socialData
+-(UMSocialShakeConfig)didShakeWithShakeConfig
 {
     return UMSocialShakeConfigDefault;
 }
@@ -86,22 +83,24 @@
     NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。 http://www.umeng.com/social";             //分享内嵌文字
     UIImage *shareImage = [UIImage imageNamed:@"UMS_social_demo"];          //分享内嵌图片
 
-    [UMSocialData defaultData].extConfig.sinaData.shareText = @"分享到新浪微博内容";
-    [UMSocialData defaultData].extConfig.sinaData.shareImage = [UIImage imageNamed:@"icon"];
-    [UMSocialData defaultData].extConfig.tencentData.shareText = @"分享到腾讯微博内容";
-    [UMSocialData defaultData].extConfig.wechatSessionData.shareText = @"分享到微信好友微博内容";
-    [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = @"分享到微信朋友圈内容";
-    [UMSocialData defaultData].extConfig.qqData.shareText = @"分享到QQ内容";
+    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeImage;
+//    [UMSocialData defaultData].extConfig.sinaData.shareText = @"分享到新浪微博内容";
+//    [UMSocialData defaultData].extConfig.sinaData.shareImage = [UIImage imageNamed:@"icon"];
+//    [UMSocialData defaultData].extConfig.tencentData.shareText = @"分享到腾讯微博内容";
+//    [UMSocialData defaultData].extConfig.wechatSessionData.shareText = @"分享到微信好友微博内容";
+//    [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = @"分享到微信朋友圈内容";
+//    [UMSocialData defaultData].extConfig.qqData.shareText = @"分享到QQ内容";
     
     //如果得到分享完成回调，需要传递delegate参数
     [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:self];
+
 }
 
 -(IBAction)setShakeSns:(id)sender
 {
     NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。 http://www.umeng.com/social";             //分享内嵌文字
     
-    [UMSocialShakeService setShakeToShareWithTypes:@[UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline]
+    [UMSocialShakeService setShakeToShareWithTypes:nil
                                          shareText:shareText
                                       screenShoter:[UMSocialScreenShoterDefault screenShoter]
                                   inViewController:self
@@ -136,15 +135,17 @@
     if (buttonIndex + 1 >= actionSheet.numberOfButtons ) {
         return;
     }
+//    //分享内嵌文字
+//    [UMSocialData defaultData].shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。";
+//    //分享内嵌图片
+//    [UMSocialData defaultData].shareImage = [UIImage imageNamed:@"UMS_social_demo"];
     
-    //分享内嵌文字
-    [UMSocialData defaultData].shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。";
-    //分享内嵌图片
-    [UMSocialData defaultData].shareImage = [UIImage imageNamed:@"UMS_social_demo"];
+    [[UMSocialControllerService defaultControllerService] setShareText:@"分享内嵌文字" shareImage:[UIImage imageNamed:@"UMS_social_demo"] socialUIDelegate:self];
     
      //分享编辑页面的接口,snsName可以换成你想要的任意平台，例如UMShareToSina,UMShareToWechatTimeline
     NSString *snsName = [[UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray objectAtIndex:buttonIndex];
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
+    
     
     snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);    
 }
@@ -157,8 +158,6 @@
     [super viewDidLoad];
     self.title = @"分享";
     self.tabBarItem.image = [UIImage imageNamed:@"UMS_share"];
-    
-     // Do any additional setup after loading the view from its nib.
 }
 
 

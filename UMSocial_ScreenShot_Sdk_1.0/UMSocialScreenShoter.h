@@ -56,4 +56,6 @@
  */
 @interface UMSocialScreenShoterCocos2d : UMSocialScreenShoter
 
++(UMSocialScreenShoter *)screenShoterFromEaglView:(UIView *)eaglview;
+
 @end

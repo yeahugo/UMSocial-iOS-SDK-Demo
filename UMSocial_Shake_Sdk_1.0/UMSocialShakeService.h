@@ -18,8 +18,9 @@ typedef enum {
     UMSocialShakeConfigShowScreenShot          = 1 << 0,          //显示截屏图片
     UMSocialShakeConfigShowShareEdit           = 1 << 1,          //显示分享编辑框
     UMSocialShakeConfigSound                   = 1 << 2,          //发出摇一摇音效
+    UMSocialShakeConfigSupportOrientation      = 1 << 3,          //设置是否支持旋转屏幕，默认不支持
     UMSocialShakeConfigDefault                 = UMSocialShakeConfigShowScreenShot | UMSocialShakeConfigShowShareEdit
-    | UMSocialShakeConfigSound                                    //默认显示截屏图片、显示分享编辑框，发出摇一摇音效
+    | UMSocialShakeConfigSound | UMSocialShakeConfigSupportOrientation                                   //默认显示截屏图片、显示分享编辑框，发出摇一摇音效
 } UMSocialShakeConfig;
 
 @class UMSocialData;
@@ -53,10 +54,9 @@ typedef enum {
 /**
  摇一摇后得到的回调方法
  
- @param socialData 将要分享的内容，可以在这里设置分享图片，例如socialData.shareImage = [UIImage xxxxx];
  @return 摇一摇分享的配置，可以设置是否弹出编辑框，是否显示截图，是否有声音，见'UMSocialShakeConfig'的定义
  */
--(UMSocialShakeConfig)didShakeWithSocialData:(UMSocialData *)socialData;
+-(UMSocialShakeConfig)didShakeWithShakeConfig;
 
 @end
 
