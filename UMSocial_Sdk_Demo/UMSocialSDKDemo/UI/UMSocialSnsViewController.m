@@ -93,6 +93,7 @@
 //    [UMSocialData defaultData].extConfig.qqData.shareText = @"分享到QQ内容";
     
     //如果得到分享完成回调，需要传递delegate参数
+//    [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeMusic url:@"http://mr3.douban.com/201312051131/7617787a152d19143e63d9ac39662348/view/song/small/p149167.mp3"];
     [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:self];
 
 }
@@ -101,16 +102,16 @@
 {
     NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。 http://www.umeng.com/social";             //分享内嵌文字
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Movie" ofType:@"m4v"];
-    NSURL *url = [NSURL fileURLWithPath:path];
-    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
-    player.view.frame = self.view.frame;
-    [self.view addSubview:player.view];
-    [player play];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"IMG_0840" ofType:@"MOV"];
+//    NSURL *url = [NSURL fileURLWithPath:path];
+//    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+//    player.view.frame = self.view.frame;
+//    [self.view addSubview:player.view];
+//    [player play];
     
     [UMSocialShakeService setShakeToShareWithTypes:nil
                                          shareText:shareText
-                                      screenShoter:[UMSocialScreenShoterMediaPlayer screenShoterFromMoviePlayer:player]
+                                      screenShoter:[UMSocialScreenShoterDefault screenShoter]
                                   inViewController:self
                                           delegate:self];
     
