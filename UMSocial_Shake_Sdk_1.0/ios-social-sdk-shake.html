@@ -99,7 +99,7 @@
 
 <p><a href="#social_shake_unregister"><strong>注意在离开此视图时解除监听摇一摇事件</strong></a></p>
 <h3>2.1.3 使用Cocos2d开发的游戏注册摇一摇截图分享   <b id=social_shake_game></b></h3>
-<p>[UMSocialScreenShoterCocos2d screenShoter]为cocos2d游戏的截屏适配器，负责截屏操作，示例代码如下:</p>
+<p><code>[UMSocialScreenShoterCocos2d screenShoterFromEaglView:[CCDirector sharedDirector].view]</code>为cocos2d游戏的截屏适配器，负责截屏操作，示例代码如下:</p>
 <pre><code>   AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
    [UMSocialShakeService setShakeToShareWithTypes:@[UMShareToSina,UMShareToTencent,UMShareToWechatSession] shareText:@&quot;test&quot; screenShoter:[UMSocialScreenShoterCocos2d screenShoterFromEaglView:[CCDirector sharedDirector].view] inViewController:[app navController] delegate:nil];
 </code></pre>

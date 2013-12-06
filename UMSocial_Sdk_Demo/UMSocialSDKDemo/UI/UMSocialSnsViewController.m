@@ -94,8 +94,7 @@
     
     //如果得到分享完成回调，需要传递delegate参数
 //    [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeMusic url:@"http://mr3.douban.com/201312051131/7617787a152d19143e63d9ac39662348/view/song/small/p149167.mp3"];
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:nil shareImage:shareImage shareToSnsNames:nil delegate:self];
-
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:nil shareImage:nil shareToSnsNames:nil delegate:self];
 }
 
 -(IBAction)setShakeSns:(id)sender
@@ -157,8 +156,6 @@
      //分享编辑页面的接口,snsName可以换成你想要的任意平台，例如UMShareToSina,UMShareToWechatTimeline
     NSString *snsName = [[UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray objectAtIndex:buttonIndex];
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
-    
-    
     snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);    
 }
 
