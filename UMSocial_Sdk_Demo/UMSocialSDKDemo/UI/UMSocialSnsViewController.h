@@ -18,7 +18,7 @@
 >
 {
     IBOutlet UIButton *_shareButton1;
-    IBOutlet UIButton *_shakeButton2;
+    IBOutlet UIButton *_shareButton2;
     IBOutlet UIButton *_shareButton3;
 }
 

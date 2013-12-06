@@ -81,6 +81,7 @@ typedef enum {
                inViewController:(UIViewController *)controller
                        delegate:(id<UMSocialShakeDelegate>)delegate;
 
++(void)closeShakeView;
 /*
  解除注册响应摇一摇事件
  

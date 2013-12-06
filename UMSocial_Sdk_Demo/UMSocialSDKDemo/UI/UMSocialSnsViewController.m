@@ -94,7 +94,7 @@
     
     //如果得到分享完成回调，需要传递delegate参数
 //    [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeMusic url:@"http://mr3.douban.com/201312051131/7617787a152d19143e63d9ac39662348/view/song/small/p149167.mp3"];
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:self];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:nil shareImage:shareImage shareToSnsNames:nil delegate:self];
 
 }
 
@@ -108,13 +108,16 @@
 //    player.view.frame = self.view.frame;
 //    [self.view addSubview:player.view];
 //    [player play];
-    
+//    
     [UMSocialShakeService setShakeToShareWithTypes:nil
                                          shareText:shareText
                                       screenShoter:[UMSocialScreenShoterDefault screenShoter]
                                   inViewController:self
                                           delegate:self];
-    
+
+//    UMSocialShareEditView *shakeEditView = [[UMSocialShareEditView alloc] initWithSnsTypes:@[UMShareToSina,UMShareToTencent,UMShareToQzone,UMShareToQQ,UMShareToWechatSession,UMShareToWechatTimeline] controller:self];
+//    shakeEditView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
+//    [self.view addSubview:shakeEditView];
 }
 
 /*
@@ -162,6 +165,7 @@
 - (void)viewDidLoad
 {
     _shareButton1.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton1.center.y);
+    _shareButton2.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton2.center.y);
      _shareButton3.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton3.center.y);
     
     [super viewDidLoad];
@@ -186,7 +190,7 @@
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     _shareButton1.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5);
-    _shakeButton2.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *2);
+    _shareButton2.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *2);
     _shareButton3.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *3);
     
 }
