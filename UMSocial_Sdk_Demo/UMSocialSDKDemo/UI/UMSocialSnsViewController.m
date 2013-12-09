@@ -16,7 +16,7 @@
 
 #import "UMSocialScreenShoter.h"
 
-#import <MediaPlayer/MediaPlayer.h>
+//#import <MediaPlayer/MediaPlayer.h>
 
 @interface UMSocialSnsViewController ()
 
@@ -94,7 +94,7 @@
     
     //如果得到分享完成回调，需要传递delegate参数
 //    [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeMusic url:@"http://mr3.douban.com/201312051131/7617787a152d19143e63d9ac39662348/view/song/small/p149167.mp3"];
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:nil shareImage:nil shareToSnsNames:nil delegate:self];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:self];
 }
 
 -(IBAction)setShakeSns:(id)sender
@@ -113,10 +113,6 @@
                                       screenShoter:[UMSocialScreenShoterDefault screenShoter]
                                   inViewController:self
                                           delegate:self];
-
-//    UMSocialShareEditView *shakeEditView = [[UMSocialShareEditView alloc] initWithSnsTypes:@[UMShareToSina,UMShareToTencent,UMShareToQzone,UMShareToQQ,UMShareToWechatSession,UMShareToWechatTimeline] controller:self];
-//    shakeEditView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
-//    [self.view addSubview:shakeEditView];
 }
 
 /*
