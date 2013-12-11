@@ -188,11 +188,27 @@
 
 <h1><a name="social_share_config" id="social_share_config" style="color:black">2.5 分享相关设置</a></h1>
 <ul>
-<li>分享url资源，支持url定义的图片、视频、音乐。下面是分享一个音乐的url页面，也可以指定音乐文件url。如果设置了内嵌图片就不能设置url资源，同理设置了url资源就不能设置内嵌图片。</li>
+<li>
+<p>分享url资源，支持url定义的图片、视频、音乐。下面是分享一个音乐的url页面，也可以指定音乐文件url。如果设置了内嵌图片就不能设置url资源，同理设置了url资源就不能设置内嵌图片。</p>
+</li>
+<li>
+<p>使用UI分享接口，先设置url分享内容,然后调用弹出分享面板等分享接口，注意本地图片只能传nil</p>
+</li>
 </ul>
-<pre><code>//在弹出分享页面之前设置分享内容
-[[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@&quot;http://www.baidu.com/img/bdlogo.gif&quot;];
-// [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeImage; //分享url资源图片到微信需要设置成纯图片消息
+<pre><code>[[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@&quot;http://www.baidu.com/img/bdlogo.gif&quot;];
+//调用快速分享接口
+</code></pre>
+
+<ol>
+<li>使用底层分享接口，把urlResource对象传到分享方法</li>
+</ol>
+<pre><code>UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:
+                                        @&quot;http://www.baidu.com/img/bdlogo.gif&quot;];
+[[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:@&quot;分享内嵌文字&quot; image:nil location:nil urlResource:urlResource presentedController:self completion:^(UMSocialResponseEntity *shareResponse){
+       if (shareResponse.responseCode == UMSResponseCodeSuccess) {
+           NSLog(@&quot;分享成功！&quot;);
+       }
+    }];
 </code></pre>
 
 <ul>
@@ -207,6 +223,18 @@
     sinaPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
         NSLog(@&quot;点击新浪微博的响应&quot;);
     };
+</code></pre>
+
+<ul>
+<li>
+<p>设置不同平台分享不同内容</p>
+<p>使用[UMSocialData defaultData].extConfig下设置各个分享平台的分享文字、分享图片、分享视频、音乐等。各个平台的对象名，请参看头文件定义，例如下面设置方法：</p>
+</li>
+</ul>
+<pre><code>[UMSocialData defaultData].extConfig.sinaData.shareText = @&quot;分享到新浪微博内容&quot;;
+[UMSocialData defaultData].extConfig.tencentData.shareImage = [UIImage imageNamed:@&quot;icon&quot;]; //分享到腾讯微博图片 
+[[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeImage url:@&quot;http://www.baidu.com/img/bdlogo.gif&quot;];  //设置微信好友分享url图片
+[[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:@&quot;http://v.youku.com/v_show/id_XNjQ1NjczNzEy.html?f=21207816&amp;ev=2&quot;]; //设置微信朋友圈分享视频
 </code></pre>
 
 <ul>

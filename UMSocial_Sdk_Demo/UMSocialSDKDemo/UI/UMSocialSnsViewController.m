@@ -7,16 +7,15 @@
 //
 
 #import "UMSocialSnsViewController.h"
-
 #import "UMSocialLoginViewController.h"
 #import "UMSocialBarViewController.h"
-
 #import "AppDelegate.h"
-#import "UMSocial.h"
 
+#import "UMSocial.h"
 #import "UMSocialScreenShoter.h"
 
-//#import <MediaPlayer/MediaPlayer.h>
+#define kTagShareEdit 101
+#define kTagSharePost 102
 
 @interface UMSocialSnsViewController ()
 
@@ -28,6 +27,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
     }
     return self;
 }
@@ -84,35 +84,26 @@
 {
     NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。 http://www.umeng.com/social";             //分享内嵌文字
     UIImage *shareImage = [UIImage imageNamed:@"UMS_social_demo"];          //分享内嵌图片
-
-//    [UMSocialData defaultData].extConfig.sinaData.shareText = @"分享到新浪微博内容";
-//    [UMSocialData defaultData].extConfig.sinaData.shareImage = [UIImage imageNamed:@"icon"];
-//    [UMSocialData defaultData].extConfig.tencentData.shareText = @"分享到腾讯微博内容";
-//    [UMSocialData defaultData].extConfig.wechatSessionData.shareText = @"分享到微信好友微博内容";
-//    [UMSocialData defaultData].extConfig.wechatTimelineData.shareText = @"分享到微信朋友圈内容";
-//    [UMSocialData defaultData].extConfig.qqData.shareText = @"分享到QQ内容";
     
-    //如果得到分享完成回调，需要传递delegate参数
-//    [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeMusic url:@"http://mr3.douban.com/201312051131/7617787a152d19143e63d9ac39662348/view/song/small/p149167.mp3"];
+    [UMSocialData defaultData].extConfig.sinaData.shareText = @"分享到新浪微博内容";
+    
+//    [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.umeng.com/images/pic/launch/banner-index.png"];
+    
+    //如果得到分享完成回调，需要设置delegate为self
     [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:self];
 }
 
 -(IBAction)setShakeSns:(id)sender
 {
-    NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。 http://www.umeng.com/social";             //分享内嵌文字
+    [UMSocialConfig setFinishToastIsHidden:NO position:UMSocialiToastPositionBottom];
     
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"IMG_0840" ofType:@"MOV"];
-//    NSURL *url = [NSURL fileURLWithPath:path];
-//    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
-//    player.view.frame = self.view.frame;
-//    [self.view addSubview:player.view];
-//    [player play];
-//    
+    NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。 http://www.umeng.com/social";             //分享内嵌文字
+    //下面设置delegate为self，执行摇一摇成功的回调，不执行回调可以设为nil
     [UMSocialShakeService setShakeToShareWithTypes:nil
                                          shareText:shareText
                                       screenShoter:[UMSocialScreenShoterDefault screenShoter]
                                   inViewController:self
-                                          delegate:self];
+                                          delegate:self];    
 }
 
 /*
@@ -127,11 +118,25 @@
         [editActionSheet addButtonWithTitle:snsPlatform.displayName];
     }
     [editActionSheet addButtonWithTitle:@"取消"];
+    editActionSheet.tag = kTagShareEdit;
     editActionSheet.cancelButtonIndex = editActionSheet.numberOfButtons - 1;
     [editActionSheet showFromTabBar:self.tabBarController.tabBar];
     editActionSheet.delegate = self;
 }
 
+-(IBAction)showShareList4:(id)sender
+{
+    UIActionSheet * editActionSheet = [[UIActionSheet alloc] initWithTitle:@"直接分享到微博" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+    for (NSString *snsName in [UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray) {
+        UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
+        [editActionSheet addButtonWithTitle:snsPlatform.displayName];
+    }
+    [editActionSheet addButtonWithTitle:@"取消"];
+    editActionSheet.tag = kTagSharePost;
+    editActionSheet.cancelButtonIndex = editActionSheet.numberOfButtons - 1;
+    [editActionSheet showFromTabBar:self.tabBarController.tabBar];
+    editActionSheet.delegate = self;
+}
 
 /*
  在自定义分享样式中，根据点击不同的点击来处理不同的的动作
@@ -142,17 +147,27 @@
     if (buttonIndex + 1 >= actionSheet.numberOfButtons ) {
         return;
     }
-//    //分享内嵌文字
-//    [UMSocialData defaultData].shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。";
-//    //分享内嵌图片
-//    [UMSocialData defaultData].shareImage = [UIImage imageNamed:@"UMS_social_demo"];
     
-    [[UMSocialControllerService defaultControllerService] setShareText:@"分享内嵌文字" shareImage:[UIImage imageNamed:@"UMS_social_demo"] socialUIDelegate:self];
-    
-     //分享编辑页面的接口,snsName可以换成你想要的任意平台，例如UMShareToSina,UMShareToWechatTimeline
+    //分享编辑页面的接口,snsName可以换成你想要的任意平台，例如UMShareToSina,UMShareToWechatTimeline
     NSString *snsName = [[UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray objectAtIndex:buttonIndex];
-    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
-    snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);    
+    NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。 http://www.umeng.com/social";
+    UIImage *shareImage = [UIImage imageNamed:@"UMS_social_demo"];
+    if (actionSheet.tag == kTagShareEdit) {
+        [[UMSocialControllerService defaultControllerService] setShareText:shareText shareImage:shareImage socialUIDelegate:self];
+
+        UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
+        snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);
+    } else if (actionSheet.tag == kTagSharePost){
+        [[UMSocialDataService defaultDataService] postSNSWithTypes:@[snsName] content:shareText image:shareImage location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity * response){
+            if (response.responseCode == UMSResponseCodeSuccess) {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"成功" message:@"分享成功" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+                [alertView show];
+            } else {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"失败" message:@"分享失败" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+                [alertView show];
+            }
+        }];
+    }
 }
 
 - (void)viewDidLoad
@@ -185,7 +200,7 @@
     _shareButton1.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5);
     _shareButton2.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *2);
     _shareButton3.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *3);
-    
+    _shareButton4.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *4);
 }
 
 - (void)didReceiveMemoryWarning

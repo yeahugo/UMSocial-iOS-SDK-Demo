@@ -11,6 +11,7 @@
                 <outlet property="_shareButton1" destination="4" id="17"/>
                 <outlet property="_shareButton2" destination="xQ9-wp-1jf" id="8Il-40-X94"/>
                 <outlet property="_shareButton3" destination="10" id="19"/>
+                <outlet property="_shareButton4" destination="zhh-6B-S9u" id="gX9-u5-Dml"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -20,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4">
-                    <rect key="frame" x="114" y="74" width="69" height="30"/>
+                    <rect key="frame" x="126" y="74" width="69" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="分享样式1">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -47,6 +48,16 @@
                     </state>
                     <connections>
                         <action selector="setShakeSns:" destination="-2" eventType="touchUpInside" id="7PB-VT-ikN"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zhh-6B-S9u">
+                    <rect key="frame" x="115" y="366" width="105" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="直接分享到微博">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="showShareList4:" destination="-2" eventType="touchUpInside" id="Bzp-OT-Onw"/>
                     </connections>
                 </button>
             </subviews>

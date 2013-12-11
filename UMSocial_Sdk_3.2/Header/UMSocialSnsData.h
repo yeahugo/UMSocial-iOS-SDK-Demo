@@ -40,19 +40,6 @@ typedef enum {
 @property (nonatomic, assign) UMSocialUrlResourceType resourceType;
 
 /**
- 如果传入音乐的话，腾讯微博可以指定音乐标题
- 
- */
-@property (nonatomic, copy) NSString *title;
-
-/**
- 如果传入音乐的话，腾讯微博可以指定音乐作者
- 
- */
-@property (nonatomic, copy) NSString *author;
-
-
-/**
  设置url资源类型和url地址
  
  @param resourceType 多媒体资源类型，图片、音乐或者视频
@@ -137,6 +124,18 @@ typedef enum{
  
  */
 @interface UMSocialTencentData : UMSocialSnsData
+
+/**
+ 如果传入音乐的话，腾讯微博可以指定音乐标题
+ 
+ */
+@property (nonatomic, copy) NSString *title;
+
+/**
+ 如果传入音乐的话，腾讯微博可以指定音乐作者
+ 
+ */
+@property (nonatomic, copy) NSString *author;
 
 @end
 
