@@ -31,7 +31,7 @@
 -(UMSocialShakeConfig)didShakeWithShakeConfig
 {
     //相应摇一摇后，你分享自己的播放器得到截图
-    //    [UMSocialShakeService setScreenShotImage:[UIImage ……]];
+//    [UMSocialShakeService setScreenShotImage:[UIImage imageNamed:@"UMS_social_demo"]];
     //暂停你的播放器
     [self.moviePlayerViewController.moviePlayer pause];
     return UMSocialShakeConfigDefault;

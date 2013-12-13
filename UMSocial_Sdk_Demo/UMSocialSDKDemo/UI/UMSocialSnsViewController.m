@@ -64,6 +64,8 @@
 
 -(UMSocialShakeConfig)didShakeWithShakeConfig
 {
+    //下面可以设置你用自己的方法来得到的截屏图片
+//    [UMSocialShakeService setScreenShotImage:[UIImage imageNamed:@"UMS_social_demo"]];
     return UMSocialShakeConfigDefault;
 }
 
