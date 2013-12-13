@@ -87,16 +87,14 @@
     
     [UMSocialData defaultData].extConfig.sinaData.shareText = @"分享到新浪微博内容";
     
-//    [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.umeng.com/images/pic/launch/banner-index.png"];
+    [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.umeng.com/images/pic/launch/banner-index.png"];
     
     //如果得到分享完成回调，需要设置delegate为self
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:self];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:shareText shareImage:shareImage shareToSnsNames:nil delegate:self];    
 }
 
 -(IBAction)setShakeSns:(id)sender
 {
-    [UMSocialConfig setFinishToastIsHidden:NO position:UMSocialiToastPositionBottom];
-    
     NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。 http://www.umeng.com/social";             //分享内嵌文字
     //下面设置delegate为self，执行摇一摇成功的回调，不执行回调可以设为nil
     [UMSocialShakeService setShakeToShareWithTypes:nil
@@ -126,6 +124,8 @@
 
 -(IBAction)showShareList4:(id)sender
 {
+    [UMSocialData defaultData].extConfig.sinaData.shareText = @"分享到新浪微博内容";
+
     UIActionSheet * editActionSheet = [[UIActionSheet alloc] initWithTitle:@"直接分享到微博" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     for (NSString *snsName in [UMSocialSnsPlatformManager sharedInstance].allSnsValuesArray) {
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
@@ -153,18 +153,20 @@
     NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。 http://www.umeng.com/social";
     UIImage *shareImage = [UIImage imageNamed:@"UMS_social_demo"];
     if (actionSheet.tag == kTagShareEdit) {
+        //设置分享内容，和回调对象
         [[UMSocialControllerService defaultControllerService] setShareText:shareText shareImage:shareImage socialUIDelegate:self];
-
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
         snsPlatform.snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);
     } else if (actionSheet.tag == kTagSharePost){
         [[UMSocialDataService defaultDataService] postSNSWithTypes:@[snsName] content:shareText image:shareImage location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity * response){
             if (response.responseCode == UMSResponseCodeSuccess) {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"成功" message:@"分享成功" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+                UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"成功" message:@"分享成功" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
                 [alertView show];
-            } else {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"失败" message:@"分享失败" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
-                [alertView show];
+            } else if(response.responseCode != UMSResponseCodeCancel) {
+                if (response.responseCode == UMSResponseCodeSuccess) {
+                    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"失败" message:@"分享失败" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+                    [alertView show];
+                }
             }
         }];
     }
@@ -172,9 +174,10 @@
 
 - (void)viewDidLoad
 {
-    _shareButton1.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton1.center.y);
-    _shareButton2.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton2.center.y);
-     _shareButton3.center = CGPointMake(self.tabBarController.view.bounds.size.width/2, _shareButton3.center.y);
+    _shareButton1.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/6);
+    _shareButton2.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/6 *2);
+    _shareButton3.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/6 *3);
+    _shareButton4.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/6 *4);
     
     [super viewDidLoad];
     self.title = @"分享";
@@ -197,10 +200,10 @@
 
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    _shareButton1.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5);
-    _shareButton2.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *2);
-    _shareButton3.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *3);
-    _shareButton4.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/5 *4);
+    _shareButton1.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/6);
+    _shareButton2.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/6 *2);
+    _shareButton3.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/6 *3);
+    _shareButton4.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/6 *4);
 }
 
 - (void)didReceiveMemoryWarning

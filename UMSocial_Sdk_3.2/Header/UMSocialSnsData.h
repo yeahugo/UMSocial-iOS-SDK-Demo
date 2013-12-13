@@ -74,6 +74,15 @@ typedef enum{
     UMSocialWXMessageTypeOther      //微信消息其他多媒体类型
 }UMSocialWXMessageType;
 
+
+/**
+ QQ消息类型
+ */
+typedef enum {
+    UMSocialQQMessageTypeDefault,     //非纯图片QQ消息
+    UMSocialQQMessageTypeImage        //纯图片QQ消息
+}UMSocialQQMessageType;
+
 ///---------------------------------------------------------------------------------------
 
 /**
@@ -190,6 +199,11 @@ typedef enum{
  */
 @property (nonatomic, retain) NSData   *fileData;
 
+/** 第三方程序自定义简单数据，微信终端会回传给第三方程序处理
+ * @attention 长度不能超过2K
+ */
+@property (nonatomic, retain) NSString *extInfo;
+
 @end
 
 
@@ -238,6 +252,8 @@ typedef enum{
  
  */
 @property (nonatomic, copy) NSString *title;
+
+@property (nonatomic, assign) UMSocialQQMessageType qqMessageType;
 
 @end
 

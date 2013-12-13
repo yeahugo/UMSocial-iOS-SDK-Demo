@@ -81,44 +81,20 @@ typedef enum {
                inViewController:(UIViewController *)controller
                        delegate:(id<UMSocialShakeDelegate>)delegate;
 
-+(void)closeShakeView;
 /*
  解除注册响应摇一摇事件
  
  */
 +(void)unShakeToSns;
+
+
+/**
+ 设置你的播放器或者游戏，获取到的截图图片
+ 
+ */
++(void)setScreenShotImage:(UIImage *)shareImage;
 @end
 
 
-/*
- 分享内容编辑视图页面，需要传入分享平台数组，和所在的viewController对象
- 
- */
-@interface UMSocialShareEditView : UIView
 
-/**
- 实现摇一摇回调协议的对象
- */
-@property (nonatomic, assign) id<UMSocialShakeDelegate> shakeDelegate;
-
-/**
- 分享到的平台数组
- */
-@property (nonatomic, retain) NSArray *snsNames;
-
-/**
- 分享页面所在的viewController对象
- */
-@property (nonatomic, assign) UIViewController *controller;
-
-/**
- 编辑分享内容页面的初始化方法
- 
- @param snsTypes 显示的可分享的平台数组
- @param controller 所在的ViewController对象
- 
- */
--(id)initWithSnsTypes:(NSArray *)snsTypes controller:(UIViewController *)controller;
-
-@end
 

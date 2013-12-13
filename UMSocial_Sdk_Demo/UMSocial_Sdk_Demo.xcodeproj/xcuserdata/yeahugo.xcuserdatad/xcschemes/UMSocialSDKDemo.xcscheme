@@ -28,6 +28,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D53D04D8185AB99100CA655F"
+               BuildableName = "UMSocial_Sdk_Shake_DemoTests.xctest"
+               BlueprintName = "UMSocial_Sdk_Shake_DemoTests"
+               ReferencedContainer = "container:UMSocial_Sdk_Demo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

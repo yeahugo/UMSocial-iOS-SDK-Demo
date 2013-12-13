@@ -118,23 +118,19 @@
 <p>若需要截取流媒体图像，则需开发者自行获取到视频图像，并且通过自定义截图适配器的方式将图像返回. <br />
 <a href="#social_shake_unregister"><strong>注意在离开此视图时解除监听摇一摇事件</strong></a>      </p>
 <h3>2.1.5 其他使用场景实现摇一摇截图分享   <b id=social_shake_others></b></h3>
-<p>其他类型的截图实现同上文原理一致，继承自UMSocialScreenShoter来定义一个截图适配器，
-然后实现'-(UIImage *)getScreenShot;'方法将图像返回，最后将该适配器给友盟分享sdk即可。如下所示:    </p>
-<pre><code>@interface CustomScreenShoter : UMSocialScreenShoter
-@end
-@implementation CustomScreenShot
--(UIImage *) getScreenShot {
-……
+<p>设置响应摇一摇回调，并在回调中设置截图，示例代码如下：</p>
+<pre><code>-(UMSocialShakeConfig)didShakeWithShakeConfig
+{
+    //相应摇一摇后，你可以用自己的播放器得到截图
+    [UMSocialShakeService setScreenShotImage:[UIImage imageNamed:@&quot;UMS_social_demo&quot;]];
+    return UMSocialShakeConfigDefault;
 }
-@end
-</code></pre>
-
-<p>再将 继承自<code>UMSocialScreenShoter</code>类型的对象设置给的适配器友盟分享sdk，如下:</p>
-<pre><code>  [UMSocialShakeService setShakeToShareWithTypes:@[UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline]
+//下面注册响应摇一摇动作
+  [UMSocialShakeService setShakeToShareWithTypes:@[UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline]
                                          shareText:shareText
-                                      screenShoter:[CustomScreenShoter screenShoter]
+                                      screenShoter:nil
                                   inViewController:self
-                                          delegate:nil];  
+                                          delegate:self];  
 </code></pre>
 
 <p><a href="#social_shake_unregister"><strong>注意在离开此视图时解除监听摇一摇事件</strong></a>  </p>

@@ -228,7 +228,7 @@
 <ul>
 <li>
 <p>设置不同平台分享不同内容</p>
-<p>使用[UMSocialData defaultData].extConfig下设置各个分享平台的分享文字、分享图片、分享视频、音乐等。各个平台的对象名，请参看头文件定义，例如下面设置方法：</p>
+<p>使用[UMSocialData defaultData].extConfig下设置各个分享平台的分享文字、分享图片、分享视频、音乐等。各个平台的对象名，请参看头文件定义，此设置方法不支持直接发送分享内容的底层分享方法，只支持使用有界面的分享方法，示例代码如下：</p>
 </li>
 </ul>
 <pre><code>[UMSocialData defaultData].extConfig.sinaData.shareText = @&quot;分享到新浪微博内容&quot;;
