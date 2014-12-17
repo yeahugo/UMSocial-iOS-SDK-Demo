@@ -57,6 +57,8 @@
 		D580B33B16B3BB7100BF3481 /* UMS_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D580B33616B3BB7100BF3481 /* UMS_share@2x.png */; };
 		D58121DA188E5DB700E6B7F0 /* libUMSocial_Sdk_Shake_1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D571F736188E5C8D00B97C13 /* libUMSocial_Sdk_Shake_1.0.a */; };
 		D58121DB188E5DC100E6B7F0 /* libUMSocial_Sdk_ScreenShot_1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D571F732188E5C8D00B97C13 /* libUMSocial_Sdk_ScreenShot_1.0.a */; };
+		D587563F1A414BF900EBCA2A /* UMSocialEditDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D587563D1A414BF900EBCA2A /* UMSocialEditDemoViewController.m */; };
+		D58756401A414BF900EBCA2A /* UMSocialEditDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D587563E1A414BF900EBCA2A /* UMSocialEditDemoViewController.xib */; };
 		D5877E4E1961451D00331F08 /* libSocialSina.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5877E491961451D00331F08 /* libSocialSina.a */; };
 		D58DC8901A2C533F00A154AC /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D58DC8731A2C533E00A154AC /* UMSocialLocalizable.strings */; };
 		D58DC8911A2C533F00A154AC /* libUMSocial_Sdk_4.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D58DC8811A2C533F00A154AC /* libUMSocial_Sdk_4.2.1.a */; };
@@ -179,6 +181,9 @@
 		D580B33516B3BB7100BF3481 /* UMS_mutilBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UMS_mutilBar@2x.png"; sourceTree = "<group>"; };
 		D580B33616B3BB7100BF3481 /* UMS_share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UMS_share@2x.png"; sourceTree = "<group>"; };
 		D58531E817C1DF4D009E2D27 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		D587563C1A414BF900EBCA2A /* UMSocialEditDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UMSocialEditDemoViewController.h; path = UI/UMSocialEditDemoViewController.h; sourceTree = "<group>"; };
+		D587563D1A414BF900EBCA2A /* UMSocialEditDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UMSocialEditDemoViewController.m; path = UI/UMSocialEditDemoViewController.m; sourceTree = "<group>"; };
+		D587563E1A414BF900EBCA2A /* UMSocialEditDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UMSocialEditDemoViewController.xib; path = UI/UMSocialEditDemoViewController.xib; sourceTree = "<group>"; };
 		D5877E491961451D00331F08 /* libSocialSina.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialSina.a; sourceTree = "<group>"; };
 		D5877E4A1961451D00331F08 /* UMSocialSinaHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialSinaHandler.h; sourceTree = "<group>"; };
 		D5877E4F19616DF900331F08 /* libUMSocial_Sdk_4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMSocial_Sdk_4.0.a; path = ../UMSocial_Sdk_4.0/libUMSocial_Sdk_4.0.a; sourceTree = "<group>"; };
@@ -646,6 +651,9 @@
 		D5EF897C166DF04300B2068D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D587563C1A414BF900EBCA2A /* UMSocialEditDemoViewController.h */,
+				D587563D1A414BF900EBCA2A /* UMSocialEditDemoViewController.m */,
+				D587563E1A414BF900EBCA2A /* UMSocialEditDemoViewController.xib */,
 				D5F92E741749B8F400EC4F53 /* UMSocialLoginViewController.h */,
 				D5F92E751749B8F400EC4F53 /* UMSocialLoginViewController.m */,
 				D5F92E761749B8F400EC4F53 /* UMSocialLoginViewController.xib */,
@@ -771,6 +779,7 @@
 				D571F743188E5C8E00B97C13 /* ios-social-sdk-shake.html in Resources */,
 				D58DC89A1A2C533F00A154AC /* UMSLoginViewController.xib in Resources */,
 				D580B33B16B3BB7100BF3481 /* UMS_share@2x.png in Resources */,
+				D58756401A414BF900EBCA2A /* UMSocialEditDemoViewController.xib in Resources */,
 				D518A99916D39A5100893507 /* UMS_settings@2x.png in Resources */,
 				D5F92E711749B8AF00EC4F53 /* UMSocialBarViewController.xib in Resources */,
 				D58DC89D1A2C533F00A154AC /* UMSocialSDKResourcesNew.bundle in Resources */,
@@ -802,6 +811,7 @@
 				D5EF898C166DF1AF00B2068D /* main.m in Sources */,
 				D580B31316B3B73A00BF3481 /* UMSocialTabBarController.m in Sources */,
 				D5F92E701749B8AF00EC4F53 /* UMSocialBarViewController.m in Sources */,
+				D587563F1A414BF900EBCA2A /* UMSocialEditDemoViewController.m in Sources */,
 				D5F92E721749B8AF00EC4F53 /* UMSocialSnsViewController.m in Sources */,
 				D5F92E771749B8F500EC4F53 /* UMSocialLoginViewController.m in Sources */,
 			);
