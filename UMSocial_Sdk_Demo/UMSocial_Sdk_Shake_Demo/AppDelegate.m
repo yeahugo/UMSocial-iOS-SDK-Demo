@@ -10,6 +10,9 @@
 #import "UMSocial.h"
 #import "MediaPlayerDemoViewController.h"
 
+#import "UMSocialWechatHandler.h"
+#import "UMSocialQQHandler.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -22,19 +25,19 @@
     //设置友盟Appkey
     [UMSocialData setAppKey:UmengAppkey];
     
-    //设置微信AppId
-    [UMSocialConfig setWXAppId:@"wxd9a39c7122aa6516" url:nil];
+    //设置微信AppId，设置分享url，默认使用友盟的网址
+    [UMSocialWechatHandler setWXAppId:@"wxd930ea5d5a258f4f" appSecret:@"db426a9829e4b49a0dcac7b4162da6b6" url:@"http://www.umeng.com/social"];
     
     //设置手机QQ的AppId，指定你的分享url，若传nil，将使用友盟的网址
-    [UMSocialConfig setQQAppId:@"100424468" url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
-    
+    [UMSocialQQHandler setQQWithAppId:@"100424468" appKey:@"c7394704798a158208a74ab60104f0ba" url:@"http://www.umeng.com/social"];
+
     //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
     [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
     
     [UMSocialData defaultData].extConfig.qqData.qqMessageType = UMSocialQQMessageTypeImage; //设置QQ分享纯图片，默认分享图文消息
     [UMSocialData defaultData].extConfig.wechatSessionData.wxMessageType = UMSocialWXMessageTypeImage;  //设置微信好友分享纯图片
     [UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeImage;  //设置微信朋友圈分享纯图片
-    
+        
     MediaPlayerDemoViewController *mediaPlayer = [[MediaPlayerDemoViewController alloc] init];
     self.window.rootViewController = mediaPlayer;
 

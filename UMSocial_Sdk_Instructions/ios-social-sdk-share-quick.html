@@ -50,14 +50,48 @@
 </tr>
 <tr>
 <td>frameworks</td>
-<td>使用的第三方SDK，里面的Wechat,TencentOpenAPI,TencentWeiboSSO,分别代表微信、手机QQ和腾讯微博SDK</td>
+<td>使用的第三方SDK，里面的Wechat 代表微信SDK</td>
+</tr>
+</tbody>
+</table>
+<p>UMSocial_Sdk_Extra_Frameworks 文件夹的目录结构</p>
+<table>
+<thead>
+<tr>
+<th>文件或文件夹</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TencentOpenAPI</td>
+<td>QQ互联SDK</td>
+</tr>
+<tr>
+<td>Facebook</td>
+<td>Facebook SDK</td>
+</tr>
+<tr>
+<td>LaiWang</td>
+<td>来往 SDK</td>
+</tr>
+<tr>
+<td>UMSocialYiXin.framework</td>
+<td>易信 SDK</td>
+</tr>
+<tr>
+<td>UMSocial_ScreenShot_Sdk</td>
+<td>截屏 SDK</td>
+</tr>
+<tr>
+<td>UMSocial_Shake_Sdk</td>
+<td>摇一摇 SDK</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <p>注意：<br />
-1. 若你的工程设置了all_load，需要添加手机QQ SDK需要的系统framework:Security.framework,libiconv.dylib,SystemConfiguration.framework,CoreGraphics.framework，libsqlite3.dylib，CoreTelephony.framework,libstdc++.dylib,libz.dylib。详情请参考<a http://dev.umeng.com/social/ios/share/specific-integration#binding_config" style="text-decoration:none">SSO（免登录）和新平台的设置</a><br />
-2. 若不使用手机QQ和腾讯微博SSO的功能，可以在Xcode删除这两个文件夹的引用，并在UMSocial.h 删除对这个两个SDK头文件的引用。</p>
+1. 若你的工程设置了all_load，需要添加手机QQ SDK需要的系统framework:Security.framework,libiconv.dylib,SystemConfiguration.framework,CoreGraphics.framework，libsqlite3.dylib，CoreTelephony.framework,libstdc++.dylib,libz.dylib。详情请参考<a http://dev.umeng.com/social/ios/share/specific-integration#binding_config" style="text-decoration:none">SSO（免登录）和新平台的设置</a>  </p>
 </blockquote>
 <h3>Step3 设置AppKey</h3>
 <p>在AppDelegate内设置友盟AppKey</p>

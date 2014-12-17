@@ -35,18 +35,66 @@
 <li><a href="#social_wechat_open">跳转到微信及回调</a></li>
 </ol>
 </li>
-<li>5.<a href="#social_qq">集成手机QQ</a><ul>
+<li>
+<ol>
+<li><a href="#social_qq">集成手机QQ</a></li>
 <li><a href="#social_qq_register">在腾讯QQ互联开放平台注册应用</a></li>
 <li><a href="#social_qq_open">打开集成手机QQ开关</a></li>
 <li><a href="#social_qq_framework">添加下面几个系统framework</a></li>
 <li><a href="#social_qq_scheme">设置xcode的url scheme</a></li>
 <li><a href="#social_qq_open">跳转到手机QQ及回调</a></li>
-</ul>
+</ol>
 </li>
-<li>6.<a href="#binding_config">绑定友盟应用标识与各开放平台</a>         </li>
-<li>7.<a href="#faq">FAQ</a>         </li>
-<li>8.<a href="#error_code">常见错误</a>         </li>
-<li>10.<a href="#support">技术支持</a> </li>
+<li>
+<ol>
+<li><a href="#social_qzone">集成分享到QQ空间</a> </li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#social_laiwang">集成来往</a></li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#social_yixin">集成易信</a></li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#social_facebook">集成facebook</a></li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#social_twitter">集成Twitter</a></li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#social_instagram">集成分享到Instagram</a></li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#binding_config">绑定友盟应用标识与各开放平台</a>         </li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#faq">FAQ</a>         </li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#error_code">常见错误</a>         </li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#support">技术支持</a> </li>
+</ol>
+</li>
 </ul>
 <h1><a name="social_appkey" id="social_appkey" style="color:black">1. 设置友盟appkey</a></h1>
 <ul>
@@ -86,9 +134,17 @@
 <img alt="social" src="http://apf.umeng.com:8888/show?path=yeahugo/2013-08/a8cd49.png" title="social_share_list" /> </p>
 <blockquote>
 <p>注意：
-支持分享编辑页和授权页面横屏，必须要在出现列表页面前设置: <br />
-<code>[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];</code>  </p>
+1. 支持分享编辑页和授权页面横屏，必须要在出现列表页面前设置: <br />
+<code>[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];</code><br />
+2. 点击每个平台后默认会进入内容编辑页面，若想点击后直接分享内容，可以实现下面的回调方法。</p>
 </blockquote>
+<pre><code>//弹出列表方法presentSnsIconSheetView需要设置delegate为self
+-(BOOL)isDirectShareInIconActionSheet
+{
+    return YES;
+}
+</code></pre>
+
 <p>实现回调方法（可选）:</p>
 <pre><code>-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
@@ -114,7 +170,7 @@
 </code></pre>
 
 <blockquote>
-<p>注意：如果是弹出横屏的页面，必须要在出现编辑页面前设置<br />
+<p>注意：若弹出横屏的页面，必须要在出现编辑页面前设置<br />
 <code>[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];</code></p>
 </blockquote>
 <p>实现回调方法（可选）:</p>
@@ -189,7 +245,8 @@
 <h1><a name="social_share_config" id="social_share_config" style="color:black">2.5 分享相关设置</a></h1>
 <ul>
 <li>
-<p>分享url资源，支持url定义的图片、视频、音乐。下面是分享一个音乐的url页面，也可以指定音乐文件url。如果设置了内嵌图片就不能设置url资源，同理设置了url资源就不能设置内嵌图片。</p>
+<p><h2>分享url资源</h2></p>
+<p>支持url定义的图片、视频、音乐。下面是分享一个音乐的url页面，也可以指定音乐文件url。如果设置了内嵌图片就不能设置url资源，同理设置了url资源就不能设置内嵌图片。</p>
 </li>
 <li>
 <p>使用UI分享接口，先设置url分享内容,然后调用弹出分享面板等分享接口，注意本地图片只能传nil</p>
@@ -213,7 +270,7 @@
 
 <ul>
 <li>
-<p>自定义分享平台</p>
+<p><h2>自定义分享平台</h2></p>
 <p>修改平台相应的图片、文字和点击事件等，例如下面修改新浪微博的图片、文字和点击事件</p>
 </li>
 </ul>
@@ -227,7 +284,7 @@
 
 <ul>
 <li>
-<p>设置不同平台分享不同内容</p>
+<p><h2>设置不同平台分享不同内容</h2></p>
 <p>使用[UMSocialData defaultData].extConfig下设置各个分享平台的分享文字、分享图片、分享视频、音乐等。各个平台的对象名，请参看头文件定义，此设置方法不支持直接发送分享内容的底层分享方法，只支持使用有界面的分享方法，示例代码如下：</p>
 </li>
 </ul>
@@ -239,11 +296,11 @@
 
 <ul>
 <li>
-<p>自定义分享来源</p>
-<p>可以在友盟后台对应APP -&gt; 组件 -&gt; 社会化组件 -&gt; 设置页中绑定各平台的appkey，见<a href="#binding_config" style="text-decoration:none">4 绑定友盟应用标识与各开放平台</a></p>
+<p><h2><a style="color:red">自定义分享来源</a></h2></p>
+<p>可以在友盟后台对应APP -&gt; 组件 -&gt; 社会化组件 -&gt; 设置页中绑定各平台的appkey，见<a href="#binding_config" style="text-decoration:none">6 绑定友盟应用标识与各开放平台</a></p>
 </li>
 <li>
-<p>设置支持的屏幕方向</p>
+<p><h2>设置支持的屏幕方向</h2></p>
 <p>支持分享编辑页和授权页面横屏，必须要在出现列表页面前进行下面，并在Xcode上的xxx_info.plist文件支持屏幕方向的字段'Supported interface orientations'增加相应的横屏或者竖屏的枚举值。 </p>
 </li>
 </ul>
@@ -253,7 +310,7 @@
 
 <ul>
 <li>
-<p>处理分享错误</p>
+<p><h2>处理分享错误</h2></p>
 <p>用下面的代码打开我们SDK在控制台的输出后能看到相应的错误码。</p>
 </li>
 </ul>
@@ -288,6 +345,18 @@
     <td>手机QQ</td>
     <td>“QQ”+腾讯QQ互联应用appId转换成十六进制（不足8位前面补0），例如“QQ05FA957C”。生成十六进制方法：在命令行输入<div>echo 'ibase=10;obase=16;您的腾讯QQ互联应用Id'|bc</div>，并在QQ互联后台的URL schema中填入此字符串保持一致，手机QQ详细集成步骤参考<a href="#social_qq" style="text-decoration:none">手机QQ集成方法</a></td>
   </tr>
+  <tr>
+    <td>来往</td>
+    <td>Identifier填“Laiwang”，URL Schemes填来往AppId.注意使用来往SDK后，Xcode工程other linker flags需要添加-ObjC参数</td>
+  </tr>
+  <tr>
+    <td>易信</td>
+    <td>易信Appkey，例如“yx35664bdff4db42c2b7be1e29390c1a06”</td>
+  </tr>
+  <tr>
+    <td>Facebook</td>
+    <td>默认使用iOS自带的Facebook分享framework，在iOS 6以上有效，若要使用我们提供的facebook分享需要设置“fb”+facebook AppID，例如“fb1440390216179601”，详细集成方法见[集成facebook](#social_facebook)</td>
+  </tr>
 </table>
 
 <p><img alt="socialbar" src="http://apf.umeng.com:8888/show?path=yeahugo/2013-09/d0d886.png" title="social_sso" /> </p>
@@ -299,16 +368,25 @@
 {
     //设置微信AppId，url地址传nil，将默认使用友盟的网址
     [UMSocialConfig setWXAppId:@&quot;wxd9a39c7122aa6516&quot; url:nil];
-    //打开Qzone的SSO开关
+    //打开Qzone的SSO开关，
+    //需要#import &lt;TencentOpenAPI/QQApiInterface.h&gt;  #import &lt;TencentOpenAPI/TencentOAuth.h&gt;
     [UMSocialConfig setSupportQzoneSSO:YES importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+    //需要#import &lt;TencentOpenAPI/QQApiInterface.h&gt;  #import &lt;TencentOpenAPI/TencentOAuth.h&gt;
     //设置手机QQ的AppId，url传nil，将使用友盟的网址
     [UMSocialConfig setQQAppId:@&quot;100424468&quot; url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
     //打开新浪微博的SSO开关
     [UMSocialConfig setSupportSinaSSO:YES];
+    //设置易信Appkey和分享url地址,注意需要引用头文件 #import UMSocialYixinHandler.h
+    [UMSocialYixinHandler setYixinAppKey:@&quot;yx35664bdff4db42c2b7be1e29390c1a06&quot; url:@&quot;http://www.umeng.com/social&quot;];
+    //设置来往AppId，appscret，显示来源名称和url地址，注意需要引用头文件 #import &quot;UMSocialLaiwangHandler.h&quot;
+    [UMSocialLaiwangHandler setLaiwangAppId:@&quot;8112117817424282305&quot; appSecret:@&quot;9996ed5039e641658de7b83345fee6c9&quot; appDescription:@&quot;友盟社会化组件&quot; urlStirng:@&quot;http://www.umeng.com/social&quot;];
+    //设置Facebook，AppID和分享url，需要#import &quot;UMSocialFacebookHandler.h&quot;
+    //默认使用iOS自带的Facebook分享framework，在iOS 6以上有效。若要使用我们提供的facebook分享需要使用此开关：
+    [UMSocialFacebookHandler setFacebookAppID:@&quot;1440390216179601&quot; shareFacebookWithURL:@&quot;http://www.umeng.com/social&quot;];
 }
 </code></pre>
 
-<h3><a id="social_sso_2" >步骤2. 在AppDelegate文件里面实现下面三个系统回调方法</a></h3>
+<h2><a id="social_sso_2" >步骤2. 在AppDelegate文件里面实现下面三个系统回调方法</a></h2>
 <pre><code>  - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [UMSocialSnsService  applicationDidBecomeActive];
@@ -326,7 +404,7 @@
  }  
 </code></pre>
 
-<h3><a id="social_sso_3" >步骤3. 添加系统库文件（不使用QQ空间和手机QQ的SSO功能可以忽略此步骤）</a></h3>
+<h2><a id="social_sso_3" >步骤3. 添加系统库文件（不使用QQ空间和手机QQ的SSO功能可以忽略此步骤）</a></h2>
 <ul>
 <li>
 <p>添加SDK依赖的系统库文件。</p>
@@ -342,32 +420,34 @@
 </li>
 </ul>
 <h1><a name="social_xcode" id="social_wechat" style="color:black">4. 集成微信</a></h1>
-<h2><a id="social_wechat_register" >4.1 注册微信应用id.</a></h2>
+<h2><a id="social_wechat_register" name="social_wechat_register">4.1 注册微信应用id.</a></h2>
 <p>在微信开放平台注册应用，得到微信应用id</p>
-<h2><a id="social_wechat_id" >4.2 设置微信应用id</a></h2>
+<h2><a id="social_wechat_id" name="social_wechat_id">4.2 设置微信应用id</a></h2>
 <p>在你的Appdelegate入口方法，设置微信Appid，点击图文消息的url可以设置为nil，将默认使用友盟的网址
 <code>[UMSocialConfig setWXAppId:@"wxd9a39c7122aa6516" url:nil];</code></p>
-<h2><a id="social_wechat_scheme" >4.3 设置url scheme</a></h2>
+<h2><a id="social_wechat_scheme" name="social_wechat_scheme">4.3 设置url scheme</a></h2>
 <p>如第二部分SSO设置所述，添加xcode的url scheme为“wx”+微信应用appId，例如“wxd9a39c7122aa6516”。
 并确保实现第二部分介绍的三个系统回调方法。</p>
-<h2><a id="social_wechat_type" >4.4 设置微信分享消息类型</></h2>
+<h2><a id="social_wechat_open" name="social_wechat_open">4.4 跳转到微信及回调</a></h2>
+<ul>
+<li>使用带微信好友或者朋友圈的<a href="#social_share_list" style="text-decoration:none">分享列表页面</a></li>
+<li>使用点击按钮之后<a href="#social_share_edit" style="text-decoration:none">直接分享到微信的方法</a>。</li>
+<li>微信<a href="#social_share_edit" style="text-decoration:none">分享完成的回调方法</a></li>
+</ul>
+<p>参考分享设置的“获得分享完成的回调方法”部分</p>
+<h2><a id="social_wechat_type" name="social_wechat_type">4.5 设置微信分享消息类型（可选）</></h2>
 <pre><code>//设置微信分享应用类型，用户点击消息将跳转到应用，或者到下载页面
 //UMSocialWXMessageTypeImage 为纯图片类型
     [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeApp;      
 //分享图文样式到微信朋友圈显示字数比较少，只显示分享标题
     [UMSocialData defaultData].extConfig.title = @&quot;朋友圈分享内容&quot;;
+//设置微信好友或者朋友圈的分享url,下面是微信好友，微信朋友圈对应wechatTimelineData
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = @&quot;http://xxxx&quot;;
 </code></pre>
 
-<h2><a id="social_wechat_open" >4.5 跳转到微信及回调</a></h2>
-<ul>
-<li>使用带微信好友或者朋友圈的<a href="#social_share_list" style="text-decoration:none">分享列表页面</a></li>
-<li>使用点击按钮之后<a href="#binding_config" style="text-decoration:none">直接分享到微信的方法</a>。</li>
-<li>微信<a href="#binding_config" style="text-decoration:none">分享完成的回调方法</a></li>
-</ul>
-<p>参考分享设置的“获得分享完成的回调方法”部分</p>
-<h1><a name="social_share" id="social_qq" style="color:black">5. 集成手机QQ</a></h1>
-<h2><a id="social_qq_register" >5.1 在腾讯QQ互联开放平台注册应用</a></h2>
-<h2><a id="social_qq_open" >5.2 打开集成手机QQ开关</a></h2>
+<h1><a name="social_qq" id="social_qq" style="color:black">5. 集成手机QQ</a></h1>
+<h2><a id="social_qq_register" name="social_qq_register">5.1 在腾讯QQ互联开放平台注册应用</a></h2>
+<h2><a id="social_qq_open" name="social_qq_open">5.2 打开集成手机QQ开关</a></h2>
 <ul>
 <li>根据上面SSO相关设置介绍，在AppDelegate应用入口方法打开集成手机QQ开关。</li>
 </ul>
@@ -375,20 +455,111 @@
     [UMSocialConfig setQQAppId:@&quot;100424468&quot; url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
 </code></pre>
 
-<h2><a id="social_qq_framework" >5.3 添加下面几个系统framework</a></h2>
-<p>在Xcode中打开工程配置文件，选择“summary”一栏。在“summary”中选择“Linked Frameworks and Libraries”一栏，点击“+”图标添加下面七个库文件，分别是“libiconv.dylib”，“SystemConfiguration.framework”，“CoreGraphics.Framework”、“libsqlite3.dylib”、“CoreTelephony.framework”、“libstdc++.dylib”、“libz.dylib”。</p>
-<h2><a id="social_qq_scheme" >5.4 设置xcode的url scheme</a></h2>
+<h2><a id="social_qq_framework" name="social_qq_framework">5.3 添加下面几个系统framework</a></h2>
+<p>在Xcode中打开工程配置文件，选择“summary”一栏。在“summary”中选择“Linked Frameworks and Libraries”一栏，点击“+”图标添加下面七个库文件，分别是“Security.framework”，“libiconv.dylib”，“SystemConfiguration.framework”，“CoreGraphics.Framework”、“libsqlite3.dylib”、“CoreTelephony.framework”、“libstdc++.dylib”、“libz.dylib”。</p>
+<h2><a id="social_qq_scheme" name="social_qq_scheme">5.4 设置xcode的url scheme</a></h2>
 <p>如第二部分SSO相关进行url scheme进行设置，注意xcode中url scheme的设置格式为“QQ”+腾讯QQ互联应用appId转换成十六进制（不足8位前面补0），例如“QQ05FA957C”。生成十六进制方法：<code>echo 'ibase=10;obase=16;您的腾讯QQ互联应用Id'|bc</code>。并在QQ互联后台的URL schema中填入此字符串保持一致。
 确保实现第二部分所述的三个系统回调方法</p>
-<h2><a id="social_qq_open" >5.5 跳转到手机QQ及回调</a></h2>
+<h2><a id="social_qq_open" name="social_qq_open">5.5 跳转到手机QQ及回调</a></h2>
 <ul>
 <li>使用带QQ好友的<a href="#social_share_list" style="text-decoration:none">分享列表页面</a></li>
 <li>使用点击按钮之后<a href="#binding_config" style="text-decoration:none">直接分享到QQ好友的方法</a>。</li>
 <li>QQ<a href="#binding_config" style="text-decoration:none">分享完成的回调方法</a></li>
 </ul>
-<h2><a name="binding_config" id="binding_config" style="color:black">6 绑定友盟应用标识与各开放平台</a></h2>
+<p>注意：若分享到手机QQ后，出现崩溃提示下面报错，说明使用QQ互联SDK使用的处理base64相关类名和你的工程所使用的base64类出现重名，你需要修改一下base64相关的类名。
+<code>+[QQOpenApiUtility base64EncodedStringWithData:]</code></p>
+<h1><a name="social_qzone" id="social_qzone" style="color:black">6. 集成QQ空间</a></h1>
+<h2>6.1 使用QQ空间SSO授权（可选）：</h2>
+<ul>
+<li>在<code>UMSocial_Sdk_Extra_Frameworks</code>目录下的，添加<code>TencentOpenAPI</code>文件夹到工程</li>
+<li><a href="#social_sso_1">在Xcode工程设置相应的url scheme</a></li>
+<li><a href="#social_sso_2">在AppDelegate调用相应的开关方法，并实现回调方法</a></li>
+</ul>
+<h2>6.2 若使用自己的QQ空间账号，需要设置使用QQ互联SDK分享</h2>
+<p>若使用自己的QQ空间账号，需要使用下面的方法来进行QQ空间分享。</p>
+<ul>
+<li>
+<p>在<code>UMSocial_Sdk_Extra_Frameworks</code>目录下的，添加<code>TencentOpenAPI</code>文件夹到工程</p>
+</li>
+<li>
+<p>在appDelegate的入口方法添加下面代码：</p>
+</li>
+</ul>
+<pre><code>[UMSocialConfig setShareQzoneWithQQSDK:YES url:@&quot;http://www.umeng.com/social&quot; importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+</code></pre>
+
+<h2>6.3 选用下面两种方式分享</h2>
+<ul>
+<li><a href="#social_share_list">使用<code>UMShareToQzone</code>代表QQ空间，添加到分享列表页面</a></li>
+<li><a href="#social_share_edit">使用<code>UMShareToQzone</code>代表QQ空间传递到直接分享的方法</a></li>
+</ul>
+<h1><a name="social_laiwang" id="social_laiwang" style="color:black">7. 集成来往</a></h1>
+<p><strong> 分享到来往不支持本地图片，只支持url图片。</strong></p>
+<h2>7.1 添加Facebook相关库文件添加到工程。</h2>
+<p>解压下载文件夹，在<code>UMSocial_Sdk_Extra_Frameworks</code>目录下，把<code>LaiWang</code>文件夹添加到工程。</p>
+<h2>7.2 <a href="#social_sso_1">在Xcode工程设置相应的url scheme</a></h2>
+<h2>7.3 <a href="#social_sso_2">在AppDelegate调用相应的开关方法，并实现回调方法</a></h2>
+<h2>7.4 在Xcode工程 other linker flag设置-ObjC参数。</h2>
+<h2>7.5 选用下面两种方式分享</h2>
+<ul>
+<li><a href="#social_share_list">使用<code>UMShareToLWSession</code>，<code>UMShareToLWTimeline</code>分别代表来往好友和来往动态添加到分享列表页面</a></li>
+<li><a href="#social_share_edit">使用<code>UMShareToLWSession</code>，<code>UMShareToLWTimeline</code>分别代表来往好友和来往动态，传递到直接分享的方法</a></li>
+</ul>
+<h1><a name="social_yixin" id="social_yixin" style="color:black">8. 集成易信</a></h1>
+<h2>8.1 添加易信库文件添加到工程。</h2>
+<p>解压下载文件夹，在<code>UMSocial_Sdk_Extra_Frameworks</code>目录下，把<code>YiXin</code>文件夹添加到工程。 </p>
+<h2>8.2 <a href="#social_sso_1">在Xcode工程设置相应的url scheme</a></h2>
+<h2>8.3 <a href="#social_sso_2">在AppDelegate调用相应的开关方法，并实现回调方法</a></h2>
+<h2>8.4 选用下面两种方式分享</h2>
+<ul>
+<li><a href="#social_share_list">使用<code>UMShareToYXSession</code>，<code>UMShareToYXTimeline</code>分别代表易信好友和来往易信朋友圈添加到分享列表页面</a></li>
+<li><a href="#social_share_edit">使用<code>UMShareToLWSession</code>，<code>UMShareToLWTimeline</code>分别代表易信好友和易信朋友圈，传递到直接分享的方法</a></li>
+</ul>
+<h1><a name="social_facebook" id="social_facebook" style="color:black">9. 集成Facebook</a></h1>
+<p><strong>默认使用iOS自带的Facebook分享framework，在iOS 6以上有效，不需要额外步骤，若要使用我们提供的facebook分享需要完成下面的步骤：</strong></p>
+<h2>9.1 添加Facebook相关库文件添加到工程。</h2>
+<p>解压下载文件夹，在<code>UMSocial_Sdk_Extra_Frameworks</code>目录下，把<code>Facebook</code>文件夹添加到工程。</p>
+<h2>9.2 在https://developers.facebook.com 注册你的facebook应用，注意在你的应用Native iOS App填写Bundle ID。</h2>
+<h2>9.3 <a href="#social_sso_1">在Xcode工程设置相应的url scheme</a></h2>
+<h2>9.4 <a href="#social_sso_2">在AppDelegate调用相应的开关方法，并实现回调方法</a></h2>
+<h2>9.5 选用下面两种方式分享</h2>
+<ul>
+<li><a href="#social_share_list">使用<code>UMShareToFacebook</code>代表Facebook添加到分享列表页面</a></li>
+<li><a href="#social_share_edit">使用<code>UMShareToFacebook</code>代表Facebook传递到直接分享的方法</a></li>
+</ul>
+<h1><a name="social_twitter" id="social_twitter" style="color:black">10. 集成Twitter</a></h1>
+<h2>10.1 添加Twitter相关库文件添加到工程。</h2>
+<p><strong>默认使用iOS自带的Twitter分享，不需要额外的步骤，若使用我们提供的Twitter分享，需要完成下面的步骤</strong> </p>
+<p>解压下载文件夹，在<code>UMSocial_Sdk_Extra_Frameworks</code>目录下，把<code>Twitter</code>文件夹添加到工程。</p>
+<h2>10.2 打开Twitter开关</h2>
+<p>在AppDelegate的入口方法设置：</p>
+<pre><code>#import &quot;UMSocialTwitterHandler.h&quot;
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [UMSocialTwitterHandler openTwitter];
+}
+</code></pre>
+
+<h1><a name="social_facebook" id="social_instagram" style="color:black">11. 集成Instagram</a></h1>
+<h2>11.1 添加Instagram相关库文件添加到工程。</h2>
+<p>解压下载文件夹，在<code>UMSocial_Sdk_Extra_Frameworks</code>目录下，把<code>Instagram</code>文件夹添加到工程。</p>
+<h2>11.2 打开Instagram开关</h2>
+<p>在AppDelegate的入口方法设置：</p>
+<pre><code>#import &quot;UMSocialInstagramHandler.h&quot;
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [UMSocialInstagramHandler openInstagram];
+}
+</code></pre>
+
+<h2>11.3 选用下面两种方式分享</h2>
+<ul>
+<li><a href="#social_share_list">使用<code>UMShareToInstagram</code>代表Instagram添加到分享列表页面</a></li>
+<li><a href="#social_share_edit">使用<code>UMShareToInstagram</code>代表Instagram传递到直接分享的方法</a></li>
+</ul>
+<h2><a name="binding_config" id="binding_config" style="color:black">12. 绑定友盟应用标识与各开放平台</a></h2>
 <p>获得appkey后，为了方便您可以快速集成我们的社会化分享的服务，我们会为你对各个平台提供一个默认的appkey和appsecret，如果你想使用自己的微博平台的应用，您需在在我们网站更改默认的微博appkey，具体操作是：登录友盟网站-&gt;左上角选择你们的产品-&gt;组件-&gt;社会化组件-&gt;设置,菜单项下进行绑定配置。如果你尚未在我们支持的分享平台注册你的应用，注册过程可以参考如下：</p>
-<h3><strong>新浪微博</strong></h3>
+<h2><strong>新浪微博</strong></h2>
 <pre><code>1. 在新浪开放平台后台创建移动应用：http://open.weibo.com -&gt; 应用开发 -&gt; 移动应用 -&gt; 创建应用
 
 2. 在创建好新应用后，选择“基本信息”，安全域名填写"sns.whalecloud.com"，其余字段按需填写；（如果是已有应用，可以在应用信息-&gt;基本设置-&gt;安全域名中做修改）
@@ -397,7 +568,7 @@
 
 4. 将获取到的Key和Secret手工填写到友盟后台对应应用的组件 -&gt; 社会化组件 -&gt; 设置页 -&gt; 新浪微博APP绑定信息部分。
 </code></pre>
-<h3><strong>腾讯微博</strong></h3>
+<h2><strong>腾讯微博</strong></h2>
 <pre><code>1. 填写应用信息，生成封装链接。如果还未配置应用地址的封装链接，需要在友盟后台对应应用的组件 -&gt;社会化组件 -&gt;设置页填写你的腾讯微博应用对应的App Key和App Secret,完成之后即出现生成封转链接表单；
 </code></pre>
 <p><img alt="appurl_socialurl" src="http://dev.umeng.com/images/ios/appurl_socialurl.png" /></p>
@@ -409,7 +580,7 @@
 
 4. 将获取到的Key和Secret手工填写到友盟后台对应应用的组件 -》社会化组件 - 》设置页 -》腾讯微博APP绑定信息部分。
 </code></pre>
-<h3><strong>人人网</strong></h3>
+<h2><strong>人人网</strong></h2>
 <pre><code>1. 在如下位置创建应用：http://dev.renren.com/ -》应用开发-》创建客户端应用-》填写应用名称；
 
 2. 在已创建应用的基本信息-》应用根域名字段填写为“sns.whalecloud.com”；
@@ -418,14 +589,14 @@
 
 4. 将获取到的App ID、API Key、Secret手工填写到友盟后台对应应用的组件 -》社会化组件 - 》设置页 -》人人网APP绑定信息部分，并勾选“开放平台”。
 </code></pre>
-<h3><strong>豆瓣</strong></h3>
+<h2><strong>豆瓣</strong></h2>
 <pre><code>与人人网的申请、配置方式基本一致，开放平台链接如下：http://developers.douban.com/
 
 回调地址为：http://sns.whalecloud.com/douban/callback
 
 权限必须选择豆瓣广播
 </code></pre>
-<h3><strong>QQ空间</strong></h3>
+<h2><strong>QQ空间</strong></h2>
 <pre><code>1. 在如下位置创建应用：http://connect.qq.com/manage/ -》添加移动应用-》填写应用名称，确定；
 
 2. 在接下来的应用控制台-&gt;基本信息-&gt;点击编辑按钮，填写必要的应用信息，并保存。（不做有可能授权失败）
@@ -434,9 +605,9 @@
 
 4. 将获取到的APP ID、Key手工填写到友盟后台对应应用的组件 -》社会化组件 - 》设置页 -》QQ空间APP绑定信息部分。
 </code></pre>
-<h1><a name="FAQ" id="FAQ" style="color:black">7. FAQ</a></h1>
+<h1><a name="FAQ" id="FAQ" style="color:black">12. FAQ</a></h1>
 <p>请到<a href="http://support.umeng.com/?qa=ios-sdk-%E9%9B%86-%E6%88%90" style="text-decoration:none">友盟社会化组件的帮助与支持页面</a></p>
-<h1><a name="error_code" id="error_code" style="color:black">8. 错误码</a></h1>
+<h1><a name="error_code" id="error_code" style="color:black">13. 错误码</a></h1>
 <table>
 <thead>
 <tr>
@@ -567,5 +738,5 @@
 </tr>
 </tbody>
 </table>
-<h1><a name="error_code" id="support" style="color:black">9. 技术支持</a></h1>
+<h1><a name="error_code" id="support" style="color:black">14. 技术支持</a></h1>
 <p>请发邮件至social-support@umeng.com。如果您出现的问题和SDK相关，请说明您使用的是iOS的SDK，我们会尽快回复您。</p>

@@ -7,7 +7,7 @@
 //
 
 #import "UMSocialLoginViewController.h"
-#import "UMSocial.h"
+//#import "UMSocial.h"
 
 @interface UMSocialLoginViewController ()
 
@@ -42,7 +42,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    _snsTableView.frame = CGRectMake(_snsTableView.frame.origin.x, _snsTableView.frame.origin.y, _snsTableView.frame.size.width, 220);
+    _snsTableView.frame = CGRectMake(_snsTableView.frame.origin.x, _snsTableView.frame.origin.y, _snsTableView.frame.size.width, 350);
     [_snsTableView reloadData];
     
     [super viewWillAppear:animated];
@@ -57,7 +57,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    int snsNum = 6;
+    if ([[UMSocialSnsPlatformManager sharedInstance].allSnsPlatformDictionary valueForKey:UMShareToWechatSession]) {
+        snsNum ++;
+    }
+    return snsNum;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -67,8 +71,16 @@
     
     NSDictionary *snsAccountDic = [UMSocialAccountManager socialAccountDictionary];
     
-    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:[UMSocialSnsPlatformManager getSnsPlatformStringFromIndex:indexPath.row]];
-    
+    UMSocialSnsPlatform *snsPlatform = nil;
+    if (indexPath.row == 5) {
+        snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToQQ];
+    } else if(indexPath.row == 6){
+        snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatSession];
+    }
+    else {
+        snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:[UMSocialSnsPlatformManager getSnsPlatformStringFromIndex:indexPath.row]];
+    }
+                       
     UMSocialAccountEntity *accountEnitity = [snsAccountDic valueForKey:snsPlatform.platformName];
     
     if (cell == nil) {
@@ -82,7 +94,7 @@
     }
     else{
         oauthSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(0, 10, 40, 20)];
-        
+        oauthSwitch.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
         oauthSwitch.tag = snsPlatform.shareToType;
         [cell addSubview:oauthSwitch];
     }
@@ -93,13 +105,13 @@
     NSString *showUserName = nil;
     
     //这里判断是否授权
-    if ([UMSocialAccountManager isOauthWithPlatform:snsPlatform.platformName]) {
+    if ([UMSocialAccountManager isOauthAndTokenNotExpired:snsPlatform.platformName]) {
         [oauthSwitch setOn:YES];
         //这里获取到每个授权账户的昵称
         showUserName = accountEnitity.userName;
     }
     else {
-        [oauthSwitch setOn:NO];
+        [oauthSwitch setOn:NO animated:YES];
         showUserName = [NSString stringWithFormat:@"尚未授权"];
     }
     
@@ -130,7 +142,6 @@
         //此处调用授权的方法,你可以把下面的platformName 替换成 UMShareToSina,UMShareToTencent等
         NSString *platformName = [UMSocialSnsPlatformManager getSnsPlatformString:switcher.tag];
         
-        
         [UMSocialControllerService defaultControllerService].socialUIDelegate = self;
         UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
         snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
@@ -138,7 +149,8 @@
 //          获取微博用户名、uid、token等
             if (response.responseCode == UMSResponseCodeSuccess) {
                 UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:platformName];
-                NSLog(@"username is %@, uid is %@, token is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken);                
+                
+                NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
             }
             //这里可以获取到腾讯微博openid,Qzone的token等
             /*
@@ -164,17 +176,12 @@
 #pragma UIActionSheet
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 0) {
-        NSString *platformType = [UMSocialSnsPlatformManager getSnsPlatformString:actionSheet.tag];
-        
-        [[UMSocialDataService defaultDataService] requestUnOauthWithType:platformType completion:^(UMSocialResponseEntity *response) {
-            NSLog(@"unOauth response is %@",response);
-            [_snsTableView reloadData];
-        }];
-    }
-    else {//按取消
-        [_changeSwitcher setOn:YES animated:YES];
-    }
+    NSString *platformType = [UMSocialSnsPlatformManager getSnsPlatformString:actionSheet.tag];
+    
+    [[UMSocialDataService defaultDataService] requestUnOauthWithType:platformType completion:^(UMSocialResponseEntity *response) {
+        NSLog(@"unOauth response is %@",response);
+        [_snsTableView reloadData];
+    }];
 }
 
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation

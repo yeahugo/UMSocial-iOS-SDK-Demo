@@ -12,32 +12,78 @@
 
 #import "MobClick.h"
 
+#import "UMSocialYixinHandler.h"
+#import "UMSocialFacebookHandler.h"
+//#import "UMSocialLaiwangHandler.h"
+#import "UMSocialWechatHandler.h"
+#import "UMSocialTwitterHandler.h"
+#import "UMSocialQQHandler.h"
+#import "UMSocialSinaHandler.h"
+//#import "UMSocialTencentWeiboHandler.h"
+//#import "UMSocialRenrenHandler.h"
+
+#import "UMSocialInstagramHandler.h"
+#import "UMSocialWhatsappHandler.h"
+#import "UMSocialLineHandler.h"
+#import "UMSocialTumblrHandler.h"
+
 @implementation AppDelegate
 
 @synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{        
+{
+    //设置友盟社会化组件appkey
+    [UMSocialData setAppKey:UmengAppkey];
+    
     //打开调试log的开关
     [UMSocialData openLog:YES];
     
     //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
     [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];    
     
-    //设置友盟社会化组件appkey
-    [UMSocialData setAppKey:UmengAppkey];
-    
-    //设置微信AppId
-    [UMSocialConfig setWXAppId:@"wxd9a39c7122aa6516" url:nil];
-    //打开Qzone的SSO开关
-    [UMSocialConfig setSupportQzoneSSO:YES importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
-    //设置手机QQ的AppId，指定你的分享url，若传nil，将使用友盟的网址
-    [UMSocialConfig setQQAppId:@"100424468" url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+    //设置微信AppId，设置分享url，默认使用友盟的网址
+    [UMSocialWechatHandler setWXAppId:@"wxd930ea5d5a258f4f" appSecret:@"db426a9829e4b49a0dcac7b4162da6b6" url:@"http://www.umeng.com/social"];
+
     //打开新浪微博的SSO开关
-    [UMSocialConfig setSupportSinaSSO:YES];
+    [UMSocialSinaHandler openSSOWithRedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+    
+    //打开腾讯微博SSO开关，设置回调地址，只支持32位
+//    [UMSocialTencentWeiboHandler openSSOWithRedirectUrl:@"http://sns.whalecloud.com/tencent2/callback"];
+    
+    //打开人人网SSO开关，只支持32位
+//    [UMSocialRenrenHandler openSSO];
+    
+//    //设置分享到QQ空间的应用Id，和分享url 链接
+    [UMSocialQQHandler setQQWithAppId:@"100424468" appKey:@"c7394704798a158208a74ab60104f0ba" url:@"http://www.umeng.com/social"];
+//    //设置支持没有客户端情况下使用SSO授权
+    [UMSocialQQHandler setSupportWebView:YES];
+
+//    //设置易信Appkey和分享url地址
+    [UMSocialYixinHandler setYixinAppKey:@"yx35664bdff4db42c2b7be1e29390c1a06" url:@"http://www.umeng.com/social"];
+
+//    //设置来往AppId，appscret，显示来源名称和url地址，只支持32位
+//    [UMSocialLaiwangHandler setLaiwangAppId:@"8112117817424282305" appSecret:@"9996ed5039e641658de7b83345fee6c9" appDescription:@"友盟社会化组件" urlStirng:@"http://www.umeng.com/social"];
     
     //使用友盟统计
     [MobClick startWithAppkey:UmengAppkey];
+    
+////    设置facebook应用ID，和分享纯文字用到的url地址
+    [UMSocialFacebookHandler setFacebookAppID:@"91136964205" shareFacebookWithURL:@"http://www.umeng.com/social"];
+//
+////    下面打开Instagram的开关
+    [UMSocialInstagramHandler openInstagramWithScale:NO paddingColor:[UIColor blackColor]];
+//
+    [UMSocialTwitterHandler openTwitter];
+    
+    //打开whatsapp
+    [UMSocialWhatsappHandler openWhatsapp:UMSocialWhatsappMessageTypeImage];
+    
+    //打开Tumblr
+    [UMSocialTumblrHandler openTumblr];
+    
+    //打开line
+    [UMSocialLineHandler openLineShare:UMSocialLineMessageTypeImage];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
     self.window.backgroundColor = [UIColor whiteColor];
@@ -45,7 +91,6 @@
     
     UMSocialTabBarController *tabViewController = [[UMSocialTabBarController alloc] init];
     self.window.rootViewController = tabViewController;
-
     
     return YES;
 }

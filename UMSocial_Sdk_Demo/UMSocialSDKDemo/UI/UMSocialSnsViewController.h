@@ -30,5 +30,4 @@
 -(IBAction)showShareList4:(id)sender;
 
 -(IBAction)setShakeSns:(id)sender;
-
 @end

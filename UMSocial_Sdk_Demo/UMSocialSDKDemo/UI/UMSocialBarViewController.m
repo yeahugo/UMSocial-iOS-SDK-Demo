@@ -7,8 +7,8 @@
 //
 
 #import "UMSocialBarViewController.h"
-#import "UMSocialSnsViewController.h"
-#import "AppDelegate.h"
+//#import "UMSocialSnsViewController.h"
+//#import "AppDelegate.h"
 
 @interface UMSocialBarViewController ()
 
@@ -63,11 +63,18 @@
     // e.g. self.myOutlet = nil;
 }
 
--(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
-    CGSize size = [UIScreen mainScreen].bounds.size;
-    size = UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ? size : CGSizeMake(size.height, size.width);
-    float barHeight = 44;
-    _socialBar.center = CGPointMake(size.height/2, size.width  - barHeight - _socialBar.frame.size.height );
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    _socialBar.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height - 90);
+}
+
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    UIView * iconActionSheet = [self.tabBarController.view viewWithTag:kTagSocialIconActionSheet];
+    
+    [iconActionSheet setNeedsDisplay];
+    UIView * shakeView = [self.tabBarController.view viewWithTag:kTagSocialShakeView];
+    [shakeView setNeedsDisplay];
 }
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#define UmengAppkey @"52118fdd56240b667705922e"
+#define UmengAppkey @"5211818556240bc9ee01db2f"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
