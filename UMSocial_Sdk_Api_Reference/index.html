@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>UMSocial_SDK Reference</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="index.html">UMSocial_SDK </a></h1>
+				<a id="developerHome" href="index.html">umeng</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">UMSocial_SDK Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar"></ul>
+		</header>
+		<article>
+			<div id="overview_contents" role="main">
+				<div class="main-navigation navigation-top">
+					<a href="hierarchy.html">Next</a>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">UMSocial_SDK Reference</h1>
+					</div>		
+				</div>
+				<div id="container">
+					
+					<div class="section section-overview index-overview">
+						
+						
+						<h1>关于友盟社交组件</h1>
+
+<p>友盟社交组件（UMSocial SDK）帮助你在app中方便地集成社交功能。集成此SDK之后，你将可以在app中得到分享到五大主流sns平台、添加评论、添加喜欢、微博账号管理等功能，并能够在友盟后台报表中查看每天每个用户行为的详细统计情况。</p>
+
+<h2>组件使用</h2>
+
+<p><img src="img/class_grath.png"></p>
+
+<table>
+<thead>
+<tr>
+<th>  类   </th>
+<th>说明 </th>
+<th>对应的回调</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Classes/UMSocialData.html"><code>UMSocialData</code></a> </td>
+<td>用于设置分享内嵌文字等，获取分享个数等</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="Classes/UMSocialDataService.html"><code>UMSocialDataService</code></a></td>
+<td> 底层的数据级接口 </td>
+<td> <a href="Protocols/UMSocialDataDelegate.html"><code>UMSocialDataDelegate</code></a></td>
+</tr>
+<tr>
+<td><a href="Classes/UMSocialControllerService.html"><code>UMSocialControllerService</code></a> </td>
+<td> 带界面的接口 </td>
+<td> <a href="Protocols/UMSocialUIDelegate.html"><code>UMSocialUIDelegate</code></a></td>
+</tr>
+<tr>
+<td><a href="Classes/UMSocialControllerServiceComment.html"><code>UMSocialControllerServiceComment</code></a> </td>
+<td> 评论的界面接口 </td>
+<td> <a href="Protocols/UMSocialUIDelegate.html"><code>UMSocialUIDelegate</code></a></td>
+</tr>
+<tr>
+<td><a href="Classes/UMSocialBar.html"><code>UMSocialBar</code></a> </td>
+<td> 社会化工具栏 </td>
+<td> <code>&lt;UMSocialBarDelegate&gt;</code></td>
+</tr>
+<tr>
+<td><code>UMSocialEnum</code></td>
+<td> 一些枚举变量，和常量字符串等</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>组件功能</h2>
+
+<p>友盟社交组件主要提供下面几个功能：分享到微博和账户管理、评论、喜欢</p>
+
+<h3>分享到微博</h3>
+
+<p>客户端分享到微博一般要下载微博客户端sdk，如果要分享到多个微博则要下载多个微博平台。而我们sdk采用的是在云端做分享，即你只需要简单集成我们一个sdk即可分享到五个主流sns平台的功能。微博分享的功能有：</p>
+
+<ul>
+<li><strong>多平台</strong> 现在支持新浪微博、腾讯微博、QQ空间、人人网、豆瓣五个微博平台</li>
+<li><strong>分享内容</strong> 你可以使用不同的标示符来创建分享内容，例如在应用针对不同的文章、不同的图片、不同页面做分享</li>
+<li><strong>分享统计</strong> 你可以在我们网站看到用户对不同内容的分享的统计情况</li>
+<li><strong>各层次的分享接口</strong>  你可以使用界面API，方便地集成分享功能，也可以使用底层的数据API，自己定制UI</li>
+<li><strong>微博账户</strong> 你可以得到用户在所有平台授权之后的账户信息</li>
+</ul>
+
+
+<h3>评论</h3>
+
+<p>评论是指用户使用匿名或者微博账号来发评论到友盟的服务器，评论的主要功能有：</p>
+
+<ul>
+<li><strong>评论内容</strong> 你可以使用不同的标示符来创建评论内容，例如在应用针对不同的文章、不同的图片、不同页面做评论</li>
+<li><strong>评论统计</strong> 同样你可以在我们网站看到用户对不同内容评论的统计情况</li>
+<li><strong>各层次的评论接口</strong> 你可以使用界面API方便地集成评论，也可以利用数据API自己定制UI地方法来灵活地使用评论</li>
+</ul>
+
+
+<h3>喜欢</h3>
+
+<p>喜欢就是用户按喜欢按钮，服务器对这个喜欢内容做计数的功能，喜欢的主要功能有：</p>
+
+<ul>
+<li><strong>喜欢内容和统计</strong> 你可以像分享和评论一样，针对不同的内容来做喜欢，同样可以在网站查看用户喜欢统计情况</li>
+<li><strong>各层次的喜欢接口</strong> 你可以使用底层喜欢接口，自己定义的UI界面，显示“顶”、“踩”等等。</li>
+</ul>
+
+						
+						
+					</div>
+					
+                        
+                    
+					
+					
+					<div class="index-column">
+						<h2 class="index-title">Class References</h2>
+						<ul>
+							
+							<li><a href="Classes/UMSocialAccountEntity.html">UMSocialAccountEntity</a></li>
+							
+							<li><a href="Classes/UMSocialAccountManager.html">UMSocialAccountManager</a></li>
+							
+							<li><a href="Classes/UMSocialBar.html">UMSocialBar</a></li>
+							
+							<li><a href="Classes/UMSocialButton.html">UMSocialButton</a></li>
+							
+							<li><a href="Classes/UMSocialConfig.html">UMSocialConfig</a></li>
+							
+							<li><a href="Classes/UMSocialControllerService.html">UMSocialControllerService</a></li>
+							
+							<li><a href="Classes/UMSocialControllerServiceComment.html">UMSocialControllerServiceComment</a></li>
+							
+							<li><a href="Classes/UMSocialCustomAccount.html">UMSocialCustomAccount</a></li>
+							
+							<li><a href="Classes/UMSocialData.html">UMSocialData</a></li>
+							
+							<li><a href="Classes/UMSocialDataService.html">UMSocialDataService</a></li>
+							
+							<li><a href="Classes/UMSocialDoubanData.html">UMSocialDoubanData</a></li>
+							
+							<li><a href="Classes/UMSocialEmailData.html">UMSocialEmailData</a></li>
+							
+							<li><a href="Classes/UMSocialExtConfig.html">UMSocialExtConfig</a></li>
+							
+							<li><a href="Classes/UMSocialFacebookData.html">UMSocialFacebookData</a></li>
+							
+							<li><a href="Classes/UMSocialIconActionSheet.html">UMSocialIconActionSheet</a></li>
+							
+							<li><a href="Classes/UMSocialInstagramData.html">UMSocialInstagramData</a></li>
+							
+							<li><a href="Classes/UMSocialLWSessionData.html">UMSocialLWSessionData</a></li>
+							
+							<li><a href="Classes/UMSocialLWTimelineData.html">UMSocialLWTimelineData</a></li>
+							
+							<li><a href="Classes/UMSocialQQData.html">UMSocialQQData</a></li>
+							
+							<li><a href="Classes/UMSocialQzoneData.html">UMSocialQzoneData</a></li>
+							
+							<li><a href="Classes/UMSocialRenrenData.html">UMSocialRenrenData</a></li>
+							
+							<li><a href="Classes/UMSocialResponseEntity.html">UMSocialResponseEntity</a></li>
+							
+							<li><a href="Classes/UMSocialSinaData.html">UMSocialSinaData</a></li>
+							
+							<li><a href="Classes/UMSocialSmsData.html">UMSocialSmsData</a></li>
+							
+							<li><a href="Classes/UMSocialSnsData.html">UMSocialSnsData</a></li>
+							
+							<li><a href="Classes/UMSocialSnsPlatform.html">UMSocialSnsPlatform</a></li>
+							
+							<li><a href="Classes/UMSocialSnsPlatformManager.html">UMSocialSnsPlatformManager</a></li>
+							
+							<li><a href="Classes/UMSocialSnsService.html">UMSocialSnsService</a></li>
+							
+							<li><a href="Classes/UMSocialTencentData.html">UMSocialTencentData</a></li>
+							
+							<li><a href="Classes/UMSocialTwitterData.html">UMSocialTwitterData</a></li>
+							
+							<li><a href="Classes/UMSocialUrlResource.html">UMSocialUrlResource</a></li>
+							
+							<li><a href="Classes/UMSocialWechatSessionData.html">UMSocialWechatSessionData</a></li>
+							
+							<li><a href="Classes/UMSocialWechatTimelineData.html">UMSocialWechatTimelineData</a></li>
+							
+							<li><a href="Classes/UMSocialYXSessionData.html">UMSocialYXSessionData</a></li>
+							
+							<li><a href="Classes/UMSocialYXTimelineData.html">UMSocialYXTimelineData</a></li>
+							
+						</ul>
+					</div>
+					
+					
+						
+					<div class="index-column">
+						
+						<h2 class="index-title">Protocol References</h2>
+						<ul>
+							
+							<li><a href="Protocols/UMSocialDataDelegate.html">UMSocialDataDelegate</a></li>
+							
+							<li><a href="Protocols/UMSocialUIDelegate.html">UMSocialUIDelegate</a></li>
+							
+						</ul>
+						
+						
+					</div>
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<a href="hierarchy.html">Next</a>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2014 umeng. All rights reserved. (Last updated: 2014-02-08)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						
+	
+					</div>
+				</div>
+			</div>
+		</article>		
+	</body>
+</html>
