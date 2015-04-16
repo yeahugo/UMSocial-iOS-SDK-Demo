@@ -1,86 +1,86 @@
-<link rel="stylesheet" type="text/css" href="markdown.css"></link>
-<h1>Ò¡Ò»Ò¡½ØÆÁÏà¹Ø¹¦ÄÜ -- ¼¯³ÉÎÄµµ</h1>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" type="text/css" href="markdown.css"></link></head><body>
+</body></html><h1>æ‘‡ä¸€æ‘‡æˆªå±ç›¸å…³åŠŸèƒ½ -- é›†æˆæ–‡æ¡£</h1>
 <ul>
-<li>1.<a href="#social_shake">Ìí¼ÓÒ¡Ò»Ò¡½ØÆÁ·ÖÏíËùĞèµÄÒÀÀµ</a></li>
-<li>2.<a href="#shake_config">Ò¡Ò»Ò¡Ïà¹Ø¸÷ÖÖ¹¦ÄÜ£¬Çë°´Ğè¼¯³É</a><ul>
-<li>2.1 <a href="#social_shake_func">Ò¡Ò»Ò¡½ØÍ¼·ÖÏí</a><ul>
-<li>2.1.1 <a href="#social_shake_register">×¢²á¼àÌıÒ¡Ò»Ò¡ÊÂ¼ş</a></li>
-<li>2.1.2 <a href="#social_shake_app">ÆÕÍ¨Ó¦ÓÃ³ÌĞò</a></li>
-<li>2.1.3 <a href="#social_shake_game">Ê¹ÓÃCocos2dµÄÓÎÏ·</a></li>
-<li>2.1.4 <a href="#social_shake_player">Ê¹ÓÃMediaPlayer²¥·ÅÊÓÆµµÄÓ¦ÓÃ</a></li>
-<li>2.1.5 <a href="#social_shake_others">ÆäËûÊ¹ÓÃ³¡¾°</a></li>
-<li>2.1.6 <a href="#social_shake_done">Ğ§¹ûÍ¼</a></li>
+<li>1.<a href="#social_shake">æ·»åŠ æ‘‡ä¸€æ‘‡æˆªå±åˆ†äº«æ‰€éœ€çš„ä¾èµ–</a></li>
+<li>2.<a href="#shake_config">æ‘‡ä¸€æ‘‡ç›¸å…³å„ç§åŠŸèƒ½ï¼Œè¯·æŒ‰éœ€é›†æˆ</a><ul>
+<li>2.1 <a href="#social_shake_func">æ‘‡ä¸€æ‘‡æˆªå›¾åˆ†äº«</a><ul>
+<li>2.1.1 <a href="#social_shake_register">æ³¨å†Œç›‘å¬æ‘‡ä¸€æ‘‡äº‹ä»¶</a></li>
+<li>2.1.2 <a href="#social_shake_app">æ™®é€šåº”ç”¨ç¨‹åº</a></li>
+<li>2.1.3 <a href="#social_shake_game">ä½¿ç”¨Cocos2dçš„æ¸¸æˆ</a></li>
+<li>2.1.4 <a href="#social_shake_player">ä½¿ç”¨MediaPlayeræ’­æ”¾è§†é¢‘çš„åº”ç”¨</a></li>
+<li>2.1.5 <a href="#social_shake_others">å…¶ä»–ä½¿ç”¨åœºæ™¯</a></li>
+<li>2.1.6 <a href="#social_shake_done">æ•ˆæœå›¾</a></li>
 </ul>
 </li>
-<li>2.2 <a href="#social_shake_openshare">Ò¡Ò»Ò¡´ò¿ª·ÖÏíÃæ°å</a></li>
-<li>2.3 <a href="#social_shake_unregister">×¢ÏúÒ¡Ò»Ò¡¼àÌı</a></li>
-<li>2.4 <a href="#social_shake_scrshot">Ò¡Ò»Ò¡½Ó¿Ú</a></li>
-<li>2.5 <a href="#social_scrshot">ÆÁÄ»½ØÍ¼½Ó¿Ú</a></li>
-<li>2.6 <a href="#social_scrshot_share">½ØÍ¼ºó·ÖÏí</a></li>
-<li>2.7 <a href="#social_shake_config">Ò¡Ò»Ò¡ÁéÃô¶ÈÉèÖÃ</a></li>
+<li>2.2 <a href="#social_shake_openshare">æ‘‡ä¸€æ‘‡æ‰“å¼€åˆ†äº«é¢æ¿</a></li>
+<li>2.3 <a href="#social_shake_unregister">æ³¨é”€æ‘‡ä¸€æ‘‡ç›‘å¬</a></li>
+<li>2.4 <a href="#social_shake_scrshot">æ‘‡ä¸€æ‘‡æ¥å£</a></li>
+<li>2.5 <a href="#social_scrshot">å±å¹•æˆªå›¾æ¥å£</a></li>
+<li>2.6 <a href="#social_scrshot_share">æˆªå›¾ååˆ†äº«</a></li>
+<li>2.7 <a href="#social_shake_config">æ‘‡ä¸€æ‘‡çµæ•åº¦è®¾ç½®</a></li>
 </ul>
 </li>
-<li>3.<a href="#support">¼¼ÊõÖ§³Ö</a>  </li>
+<li>3.<a href="#support">æŠ€æœ¯æ”¯æŒ</a>  </li>
 </ul>
 <hr />
-<h1>1 Ìí¼ÓÒ¡Ò»Ò¡½ØÆÁ·ÖÏíËùĞèµÄÒÀÀµ <b id=social_shake></b></h1>
-<p>ÎÒÃÇ½«Ò¡Ò»Ò¡µÄ×ÊÔ´·Åµ½UMSocial_Sdk_Extra_Frameworks/UMSocial_Shake_SdkºÍUMSocial_Sdk_Extra_Frameworks/UMSocial_ScreenShot_SdkÕâÁ½¸öÎÄ¼ş¼ĞÏÂ£¬°üÀ¨£º    </p>
+<h1>1 æ·»åŠ æ‘‡ä¸€æ‘‡æˆªå±åˆ†äº«æ‰€éœ€çš„ä¾èµ– <b id=social_shake></b></h1>
+<p>æˆ‘ä»¬å°†æ‘‡ä¸€æ‘‡çš„èµ„æºæ”¾åˆ°UMSocial_Sdk_Extra_Frameworks/UMSocial_Shake_Sdkå’ŒUMSocial_Sdk_Extra_Frameworks/UMSocial_ScreenShot_Sdkè¿™ä¸¤ä¸ªæ–‡ä»¶å¤¹ä¸‹ï¼ŒåŒ…æ‹¬ï¼š    </p>
 <ul>
 <li>
-<p>UMSocial_Shake_SdkÏÂµÄlibUMSocial_Sdk_Shake_x.x.aºÍUMSocial_ScreenShot_SdkÏÂµÄlibUMSocial_Sdk_ScreenShot_x.x.a£¬·Ö±ğ±íÊ¾Ò¡Ò»Ò¡µÄsensorºÍ½ØÆÁ¹¤¾ß¿â£»     </p>
+<p>UMSocial_Shake_Sdkä¸‹çš„libUMSocial_Sdk_Shake_x.x.aå’ŒUMSocial_ScreenShot_Sdkä¸‹çš„libUMSocial_Sdk_ScreenShot_x.x.aï¼Œåˆ†åˆ«è¡¨ç¤ºæ‘‡ä¸€æ‘‡çš„sensorå’Œæˆªå±å·¥å…·åº“ï¼›     </p>
 </li>
 <li>
-<p>×¢Òâ£ºÊ¹ÓÃ½ØÆÁSDK£¬ĞèÒªÌí¼ÓOpenGLES.frameworkºÍMediaPlayer.framework¡£Ìí¼Ó·½·¨:Ñ¡ÄãµÄtarget-&gt;Build Phases-&gt;Link Binary With Libraries-&gt;Ìí¼ÓOpenGLES.framework¡¢MediaPlayer.framework¡£</p>
+<p>æ³¨æ„ï¼šä½¿ç”¨æˆªå±SDKï¼Œéœ€è¦æ·»åŠ OpenGLES.frameworkå’ŒMediaPlayer.frameworkã€‚æ·»åŠ æ–¹æ³•:é€‰ä½ çš„target-&gt;Build Phases-&gt;Link Binary With Libraries-&gt;æ·»åŠ OpenGLES.frameworkã€MediaPlayer.frameworkã€‚</p>
 </li>
 </ul>
-<p>Çë°´ÄúĞèÒªµÄ¹¦ÄÜÄ£¿éÌí¼Ó·ÖÏí×é¼ş£¬×ÊÔ´°ü¡£  </p>
+<p>è¯·æŒ‰æ‚¨éœ€è¦çš„åŠŸèƒ½æ¨¡å—æ·»åŠ åˆ†äº«ç»„ä»¶ï¼Œèµ„æºåŒ…ã€‚  </p>
 <table>
 <thead>
 <tr>
-<th align="center">¹¦ÄÜ</th>
-<th align="center">Ğè¼¯³É·ÖÏí×é¼ş</th>
-<th align="center">ĞèlibUMSocial_Sdk_Shake.a</th>
-<th align="center">ĞèlibUMSocial_Sdk_ScreenShot.a</th>
+<th align="center">åŠŸèƒ½</th>
+<th align="center">éœ€é›†æˆåˆ†äº«ç»„ä»¶</th>
+<th align="center">éœ€libUMSocial_Sdk_Shake.a</th>
+<th align="center">éœ€libUMSocial_Sdk_ScreenShot.a</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">Ò¡Ò»Ò¡½ØÆÁ·ÖÏí</td>
-<td align="center">ÊÇ</td>
-<td align="center">ÊÇ</td>
-<td align="center">ÊÇ</td>
+<td align="center">æ‘‡ä¸€æ‘‡æˆªå±åˆ†äº«</td>
+<td align="center">æ˜¯</td>
+<td align="center">æ˜¯</td>
+<td align="center">æ˜¯</td>
 </tr>
 <tr>
-<td align="center">Ò¡Ò»Ò¡´ò¿ª·ÖÏíÃæ°å</td>
-<td align="center">ÊÇ</td>
-<td align="center">ÊÇ</td>
+<td align="center">æ‘‡ä¸€æ‘‡æ‰“å¼€åˆ†äº«é¢æ¿</td>
+<td align="center">æ˜¯</td>
+<td align="center">æ˜¯</td>
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">Ö±½Ó½ØÆÁ</td>
+<td align="center">ç›´æ¥æˆªå±</td>
 <td align="center"></td>
 <td align="center"></td>
-<td align="center">ÊÇ</td>
+<td align="center">æ˜¯</td>
 </tr>
 <tr>
-<td align="center">½ØÆÁ-·ÖÏí</td>
-<td align="center">ÊÇ</td>
+<td align="center">æˆªå±-åˆ†äº«</td>
+<td align="center">æ˜¯</td>
 <td align="center"></td>
-<td align="center">ÊÇ</td>
+<td align="center">æ˜¯</td>
 </tr>
 </tbody>
 </table>
-<h1>2 Ò¡Ò»Ò¡Ïà¹Ø¸÷ÖÖ¹¦ÄÜ£¬Çë°´Ğè¼¯³É<b id=shake_config></b></h1>
-<h2>2.1 Ò¡Ò»Ò¡½ØÍ¼·ÖÏí <b id=social_shake_func></b></h2>
-<h3>2.1.1 ×¢²á¼àÌıÒ¡Ò»Ò¡ÊÂ¼ş£¬Ä¬ÈÏÒ¡Ò»Ò¡ºó£¬×Ô¶¯½ØÆÁ²¢µ¯³ö·ÖÏíÒ³Ãæ <b id=social_shake_register></b></h3>
+<h1>2 æ‘‡ä¸€æ‘‡ç›¸å…³å„ç§åŠŸèƒ½ï¼Œè¯·æŒ‰éœ€é›†æˆ<b id=shake_config></b></h1>
+<h2>2.1 æ‘‡ä¸€æ‘‡æˆªå›¾åˆ†äº« <b id=social_shake_func></b></h2>
+<h3>2.1.1 æ³¨å†Œç›‘å¬æ‘‡ä¸€æ‘‡äº‹ä»¶ï¼Œé»˜è®¤æ‘‡ä¸€æ‘‡åï¼Œè‡ªåŠ¨æˆªå±å¹¶å¼¹å‡ºåˆ†äº«é¡µé¢ <b id=social_shake_register></b></h3>
 <pre><code>/**
- ÉèÖÃÏìÓ¦Ò¡Ò»Ò¡ÊÂ¼ş£¬²¢ÇÒµ¯³ö·ÖÏíÒ³Ãæ
+ è®¾ç½®å“åº”æ‘‡ä¸€æ‘‡äº‹ä»¶ï¼Œå¹¶ä¸”å¼¹å‡ºåˆ†äº«é¡µé¢
 
- @param snsTypes Òª·ÖÏíµÄÆ½Ì¨ÀàĞÍÃû£¬ÀıÈç@[UMShareToSina,UMShareToTencent,UMShareToWechatSession]
- @param shareText ·ÖÏíÄÚÇ¶ÎÄ×Ö
- @param screenShoter Ò¡Ò»Ò¡·ÖÏíÓÃµ½µÄ½ØÆÁ¶ÔÏó
- @param controller  ³öÏÖ·ÖÏí½çÃæËùÔÚµÄViewController
- @param delegate ÊµÏÖÒ¡Ò»Ò¡ºó£¬»òÕß·ÖÏíÍê³ÉºóµÄ»Øµ÷¶ÔÏó£¬Èç¹û²»´¦ÀíÕâĞ©ÊÂ¼ş£¬¿ÉÒÔÉèÖÃÎªnil
+ @param snsTypes è¦åˆ†äº«çš„å¹³å°ç±»å‹åï¼Œä¾‹å¦‚@[UMShareToSina,UMShareToTencent,UMShareToWechatSession]
+ @param shareText åˆ†äº«å†…åµŒæ–‡å­—
+ @param screenShoter æ‘‡ä¸€æ‘‡åˆ†äº«ç”¨åˆ°çš„æˆªå±å¯¹è±¡
+ @param controller  å‡ºç°åˆ†äº«ç•Œé¢æ‰€åœ¨çš„ViewController
+ @param delegate å®ç°æ‘‡ä¸€æ‘‡åï¼Œæˆ–è€…åˆ†äº«å®Œæˆåçš„å›è°ƒå¯¹è±¡ï¼Œå¦‚æœä¸å¤„ç†è¿™äº›äº‹ä»¶ï¼Œå¯ä»¥è®¾ç½®ä¸ºnil
  */
 +(void)setShakeToShareWithTypes:(NSArray *)snsTypes
                       shareText:(NSString *)shareText
@@ -89,44 +89,44 @@
                        delegate:(id&lt;UMSocialShakeDelegate&gt;)delegate;
 </code></pre>
 
-<h3>2.1.2 ÆÕÍ¨Ó¦ÓÃ×¢²áÒ¡Ò»Ò¡½ØÍ¼·ÖÏí  <b id=social_shake_app></b></h3>
-<p>[UMSocialScreenShoterDefault screenShoter]ÎªÆÕÍ¨Ó¦ÓÃµÄ½ØÆÁÊÊÅäÆ÷£¬¸ºÔğ½ØÆÁ²Ù×÷£¬Ê¾Àı´úÂëÈçÏÂ:</p>
+<h3>2.1.2 æ™®é€šåº”ç”¨æ³¨å†Œæ‘‡ä¸€æ‘‡æˆªå›¾åˆ†äº«  <b id=social_shake_app></b></h3>
+<p>[UMSocialScreenShoterDefault screenShoter]ä¸ºæ™®é€šåº”ç”¨çš„æˆªå±é€‚é…å™¨ï¼Œè´Ÿè´£æˆªå±æ“ä½œï¼Œç¤ºä¾‹ä»£ç å¦‚ä¸‹:</p>
 <pre><code>  [UMSocialShakeService setShakeToShareWithTypes:@[UMShareToSina,UMShareToWechatSession]
-                                         shareText:@&quot;ÄãµÄ·ÖÏíÎÄ×Ö&quot;
+                                         shareText:@&quot;ä½ çš„åˆ†äº«æ–‡å­—&quot;
                                       screenShoter:[UMSocialScreenShoterDefault screenShoter]
                                   inViewController:self
                                           delegate:nil];  
 </code></pre>
 
-<p><a href="#social_shake_unregister"><strong>×¢ÒâÔÚÀë¿ª´ËÊÓÍ¼Ê±½â³ı¼àÌıÒ¡Ò»Ò¡ÊÂ¼ş</strong></a></p>
-<h3>2.1.3 Ê¹ÓÃCocos2d¿ª·¢µÄÓÎÏ·×¢²áÒ¡Ò»Ò¡½ØÍ¼·ÖÏí   <b id=social_shake_game></b></h3>
-<p><code>[UMSocialScreenShoterCocos2d screenShoterFromEaglView:[CCDirector sharedDirector].view]</code>Îªcocos2dÓÎÏ·µÄ½ØÆÁÊÊÅäÆ÷£¬¸ºÔğ½ØÆÁ²Ù×÷£¬Ê¾Àı´úÂëÈçÏÂ:</p>
+<p><a href="#social_shake_unregister"><strong>æ³¨æ„åœ¨ç¦»å¼€æ­¤è§†å›¾æ—¶è§£é™¤ç›‘å¬æ‘‡ä¸€æ‘‡äº‹ä»¶</strong></a></p>
+<h3>2.1.3 ä½¿ç”¨Cocos2då¼€å‘çš„æ¸¸æˆæ³¨å†Œæ‘‡ä¸€æ‘‡æˆªå›¾åˆ†äº«   <b id=social_shake_game></b></h3>
+<p><code>[UMSocialScreenShoterCocos2d screenShoterFromEaglView:[CCDirector sharedDirector].view]</code>ä¸ºcocos2dæ¸¸æˆçš„æˆªå±é€‚é…å™¨ï¼Œè´Ÿè´£æˆªå±æ“ä½œï¼Œç¤ºä¾‹ä»£ç å¦‚ä¸‹:</p>
 <pre><code>   AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
    [UMSocialShakeService setShakeToShareWithTypes:@[UMShareToSina,UMShareToTencent,UMShareToWechatSession] shareText:@&quot;test&quot; screenShoter:[UMSocialScreenShoterCocos2d screenShoterFromEaglView:[CCDirector sharedDirector].view] inViewController:[app navController] delegate:nil];
 </code></pre>
 
-<p><a href="#social_shake_unregister"><strong>×¢ÒâÔÚÀë¿ª´ËÊÓÍ¼Ê±½â³ı¼àÌıÒ¡Ò»Ò¡ÊÂ¼ş</strong></a>      </p>
-<h3>2.1.4 Ê¹ÓÃMediaPlayer²¥·ÅÊÓÆµµÄÓ¦ÓÃÊµÏÖÒ¡Ò»Ò¡½ØÍ¼·ÖÏí   <b id=social_shake_player></b></h3>
-<p>Èç¹ûÊ¹ÓÃiOSÏµÍ³µÄMediaPlayer²¥·ÅÆ÷£¬²¥·Å±¾µØÊÓÆµ£¬¿ÉÒÔÓÃÏÂÃæµÄ·½Ê½µÃµ½½ØÍ¼·ÖÏí¡£   </p>
-<pre><code>//playerÎªÄãµ±Ç°µÄ'MPMoviePlayerController'²¥·ÅÆ÷¶ÔÏó
+<p><a href="#social_shake_unregister"><strong>æ³¨æ„åœ¨ç¦»å¼€æ­¤è§†å›¾æ—¶è§£é™¤ç›‘å¬æ‘‡ä¸€æ‘‡äº‹ä»¶</strong></a>      </p>
+<h3>2.1.4 ä½¿ç”¨MediaPlayeræ’­æ”¾è§†é¢‘çš„åº”ç”¨å®ç°æ‘‡ä¸€æ‘‡æˆªå›¾åˆ†äº«   <b id=social_shake_player></b></h3>
+<p>å¦‚æœä½¿ç”¨iOSç³»ç»Ÿçš„MediaPlayeræ’­æ”¾å™¨ï¼Œæ’­æ”¾æœ¬åœ°è§†é¢‘ï¼Œå¯ä»¥ç”¨ä¸‹é¢çš„æ–¹å¼å¾—åˆ°æˆªå›¾åˆ†äº«ã€‚   </p>
+<pre><code>//playerä¸ºä½ å½“å‰çš„'MPMoviePlayerController'æ’­æ”¾å™¨å¯¹è±¡
 [UMSocialShakeService setShakeToShareWithTypes:@[UMShareToSina,UMShareToWechatSession]
-                                         shareText:@&quot;ÄãµÄ·ÖÏíÎÄ×Ö&quot;
+                                         shareText:@&quot;ä½ çš„åˆ†äº«æ–‡å­—&quot;
                                       screenShoter:[UMSocialScreenShoterMediaPlayer screenShoterFromMoviePlayer:player]
                                   inViewController:self
                                           delegate:nil]; 
 </code></pre>
 
-<p>ÈôĞèÒª½ØÈ¡Á÷Ã½ÌåÍ¼Ïñ£¬ÔòĞè¿ª·¢Õß×ÔĞĞ»ñÈ¡µ½ÊÓÆµÍ¼Ïñ£¬²¢ÇÒÍ¨¹ı×Ô¶¨Òå½ØÍ¼ÊÊÅäÆ÷µÄ·½Ê½½«Í¼Ïñ·µ»Ø. <br />
-<a href="#social_shake_unregister"><strong>×¢ÒâÔÚÀë¿ª´ËÊÓÍ¼Ê±½â³ı¼àÌıÒ¡Ò»Ò¡ÊÂ¼ş</strong></a>      </p>
-<h3>2.1.5 ÆäËûÊ¹ÓÃ³¡¾°ÊµÏÖÒ¡Ò»Ò¡½ØÍ¼·ÖÏí   <b id=social_shake_others></b></h3>
-<p>ÉèÖÃÏìÓ¦Ò¡Ò»Ò¡»Øµ÷£¬²¢ÔÚ»Øµ÷ÖĞÉèÖÃ½ØÍ¼£¬Ê¾Àı´úÂëÈçÏÂ£º</p>
+<p>è‹¥éœ€è¦æˆªå–æµåª’ä½“å›¾åƒï¼Œåˆ™éœ€å¼€å‘è€…è‡ªè¡Œè·å–åˆ°è§†é¢‘å›¾åƒï¼Œå¹¶ä¸”é€šè¿‡è‡ªå®šä¹‰æˆªå›¾é€‚é…å™¨çš„æ–¹å¼å°†å›¾åƒè¿”å›. <br />
+<a href="#social_shake_unregister"><strong>æ³¨æ„åœ¨ç¦»å¼€æ­¤è§†å›¾æ—¶è§£é™¤ç›‘å¬æ‘‡ä¸€æ‘‡äº‹ä»¶</strong></a>      </p>
+<h3>2.1.5 å…¶ä»–ä½¿ç”¨åœºæ™¯å®ç°æ‘‡ä¸€æ‘‡æˆªå›¾åˆ†äº«   <b id=social_shake_others></b></h3>
+<p>è®¾ç½®å“åº”æ‘‡ä¸€æ‘‡å›è°ƒï¼Œå¹¶åœ¨å›è°ƒä¸­è®¾ç½®æˆªå›¾ï¼Œç¤ºä¾‹ä»£ç å¦‚ä¸‹ï¼š</p>
 <pre><code>-(UMSocialShakeConfig)didShakeWithShakeConfig
 {
-    //ÏàÓ¦Ò¡Ò»Ò¡ºó£¬Äã¿ÉÒÔÓÃ×Ô¼ºµÄ²¥·ÅÆ÷µÃµ½½ØÍ¼
+    //ç›¸åº”æ‘‡ä¸€æ‘‡åï¼Œä½ å¯ä»¥ç”¨è‡ªå·±çš„æ’­æ”¾å™¨å¾—åˆ°æˆªå›¾
     [UMSocialShakeService setScreenShotImage:[UIImage imageNamed:@&quot;UMS_social_demo&quot;]];
     return UMSocialShakeConfigDefault;
 }
-//ÏÂÃæ×¢²áÏìÓ¦Ò¡Ò»Ò¡¶¯×÷
+//ä¸‹é¢æ³¨å†Œå“åº”æ‘‡ä¸€æ‘‡åŠ¨ä½œ
   [UMSocialShakeService setShakeToShareWithTypes:@[UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline]
                                          shareText:shareText
                                       screenShoter:nil
@@ -134,71 +134,71 @@
                                           delegate:self];  
 </code></pre>
 
-<p><a href="#social_shake_unregister"><strong>×¢ÒâÔÚÀë¿ª´ËÊÓÍ¼Ê±½â³ı¼àÌıÒ¡Ò»Ò¡ÊÂ¼ş</strong></a>  </p>
-<h3>2.1.6 Ò¡Ò»Ò¡½ØÍ¼·ÖÏíĞ§¹ûÍ¼   <b id=social_shake_done></b></h3>
+<p><a href="#social_shake_unregister"><strong>æ³¨æ„åœ¨ç¦»å¼€æ­¤è§†å›¾æ—¶è§£é™¤ç›‘å¬æ‘‡ä¸€æ‘‡äº‹ä»¶</strong></a>  </p>
+<h3>2.1.6 æ‘‡ä¸€æ‘‡æˆªå›¾åˆ†äº«æ•ˆæœå›¾   <b id=social_shake_done></b></h3>
 <p><img src="http://dev.umeng.com/system/images/W1siZiIsIjIwMTMvMTAvMjkvMTdfMjlfMzFfMTQ1X3NoYWtlXzIucG5nIl1d/shake_2.png" width="640" height="400" style="border:3 solid #ffCCCC">   </p>
-<h2>2.2 Ò¡Ò»Ò¡´ò¿ª·ÖÏíÃæ°å   <b id=social_shake_openshare></b></h2>
-<p>Ê¹ÓÃÉÏÃæµÄ·½·¨Ò¡Ò»Ò¡¹¦ÄÜºó£¬ÓÃ»§¿ÉÒÔĞèÒªÒ¡Ò»Ò¡ÊÖ»ú£¬¼´¿É´ò¿ªÓÑÃËµÄ·ÖÏíÃæ°å£¬²»ĞèÒªÓÃ»§µã»÷Ïà¹ØµÄ°´Å¥µ÷³ö·ÖÏíÃæ°å£¬ÓÃ»§ÌåÑé½ÏºÃ¡£
-Ê¾Àı´úÂëÈçÏÂ:    </p>
+<h2>2.2 æ‘‡ä¸€æ‘‡æ‰“å¼€åˆ†äº«é¢æ¿   <b id=social_shake_openshare></b></h2>
+<p>ä½¿ç”¨ä¸Šé¢çš„æ–¹æ³•æ‘‡ä¸€æ‘‡åŠŸèƒ½åï¼Œç”¨æˆ·å¯ä»¥éœ€è¦æ‘‡ä¸€æ‘‡æ‰‹æœºï¼Œå³å¯æ‰“å¼€å‹ç›Ÿçš„åˆ†äº«é¢æ¿ï¼Œä¸éœ€è¦ç”¨æˆ·ç‚¹å‡»ç›¸å…³çš„æŒ‰é’®è°ƒå‡ºåˆ†äº«é¢æ¿ï¼Œç”¨æˆ·ä½“éªŒè¾ƒå¥½ã€‚
+ç¤ºä¾‹ä»£ç å¦‚ä¸‹:    </p>
 <pre><code>  [UMSocialShakeService setShakeToShareWithTypes:nil
                                          shareText:nil
                                       screenShoter:nil
                                   inViewController:self
                                           delegate:self];  
-//ÔÚÒ¡Ò»Ò¡µÄ»Øµ÷·½·¨µ¯³ö·ÖÏíÃæ°å                                          
+//åœ¨æ‘‡ä¸€æ‘‡çš„å›è°ƒæ–¹æ³•å¼¹å‡ºåˆ†äº«é¢æ¿                                          
 -(UMSocialShakeConfig)didShakeWithShakeConfig
 {
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:@&quot;ÄãµÄ·ÖÏíÎÄ×Ö&quot; shareImage:shareImage shareToSnsNames:@[UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline] delegate:nil];
-//ÏÂÃæ·µ»ØÖµ¿ØÖÆÊÇ·ñÏÔÊ¾·ÖÏí±à¼­Ò³Ãæ¡¢ÊÇ·ñÏÔÊ¾½ØÍ¼¡¢ÊÇ·ñÓĞÒôĞ§£¬UMSocialShakeConfigNone±íÊ¾¶¼²»ÏÔÊ¾
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:@&quot;ä½ çš„åˆ†äº«æ–‡å­—&quot; shareImage:shareImage shareToSnsNames:@[UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline] delegate:nil];
+//ä¸‹é¢è¿”å›å€¼æ§åˆ¶æ˜¯å¦æ˜¾ç¤ºåˆ†äº«ç¼–è¾‘é¡µé¢ã€æ˜¯å¦æ˜¾ç¤ºæˆªå›¾ã€æ˜¯å¦æœ‰éŸ³æ•ˆï¼ŒUMSocialShakeConfigNoneè¡¨ç¤ºéƒ½ä¸æ˜¾ç¤º
     return UMSocialShakeConfigNone;
 }
 </code></pre>
 
-<h2>2.3  ×¢ÏúÒ¡Ò»Ò¡¼àÌı <b id=social_shake_unregister></b></h2>
-<p>²»ĞèÒªÏìÓ¦Ò¡Ò»Ò¡¶¯×÷µ÷ÓÃÈçÏÂ´úÂë£º        </p>
+<h2>2.3  æ³¨é”€æ‘‡ä¸€æ‘‡ç›‘å¬ <b id=social_shake_unregister></b></h2>
+<p>ä¸éœ€è¦å“åº”æ‘‡ä¸€æ‘‡åŠ¨ä½œè°ƒç”¨å¦‚ä¸‹ä»£ç ï¼š        </p>
 <pre><code>   [UMSocialShakeService unShakeToSns];
 </code></pre>
 
-<h2>2.4 Ò¡Ò»Ò¡½Ó¿Ú   <b id=social_shake_scrshot></b></h2>
-<p>ÈôÊ¹ÓÃÒ¡Ò»Ò¡¹¦ÄÜ£¬Ö±½ÓÊ¹ÓÃiOSÏµÍ³Ìá¹©µÄ¼àÌıÒ¡Ò»Ò¡ÊÂ¼ş»Øµ÷£¬Äã¿ÉÒÔÔÚµ±Ç°ViewControllerÊÓÍ¼¿ØÖÆÆ÷ÖĞÊ¹ÓÃÏÂÃæµÄ´úÂë:        </p>
+<h2>2.4 æ‘‡ä¸€æ‘‡æ¥å£   <b id=social_shake_scrshot></b></h2>
+<p>è‹¥ä½¿ç”¨æ‘‡ä¸€æ‘‡åŠŸèƒ½ï¼Œç›´æ¥ä½¿ç”¨iOSç³»ç»Ÿæä¾›çš„ç›‘å¬æ‘‡ä¸€æ‘‡äº‹ä»¶å›è°ƒï¼Œä½ å¯ä»¥åœ¨å½“å‰ViewControllerè§†å›¾æ§åˆ¶å™¨ä¸­ä½¿ç”¨ä¸‹é¢çš„ä»£ç :        </p>
 <pre><code>-(BOOL)canBecomeFirstResponder {
     return YES;
 }
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    //ÉèÖÃµÚÒ»ÏìÓ¦Õß
+    //è®¾ç½®ç¬¬ä¸€å“åº”è€…
     [self becomeFirstResponder];
 }
-//ÔÚÏìÓ¦Ò¡Ò»Ò¡¶¯×÷·½·¨ÄÚµÃµ½ÆÁÄ»½ØÍ¼
+//åœ¨å“åº”æ‘‡ä¸€æ‘‡åŠ¨ä½œæ–¹æ³•å†…å¾—åˆ°å±å¹•æˆªå›¾
 -(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent*)event
 {
     if(motion == UIEventSubtypeMotionShake)
     {
-        //ÏÂÃæÊ¹ÓÃÓ¦ÓÃÀàĞÍ½ØÆÁ£¬Èç¹ûÊÇcocos2dÓÎÏ·»òÕßÆäËûÀàĞÍ£¬Ê¹ÓÃÏàÓ¦µÄ½ØÆÁ¶ÔÏó
+        //ä¸‹é¢ä½¿ç”¨åº”ç”¨ç±»å‹æˆªå±ï¼Œå¦‚æœæ˜¯cocos2dæ¸¸æˆæˆ–è€…å…¶ä»–ç±»å‹ï¼Œä½¿ç”¨ç›¸åº”çš„æˆªå±å¯¹è±¡
         //UIImage *image = [[UMSocialScreenShoterDefault screenShoter] getScreenShot];
     }
 }
 </code></pre>
 
-<h2>2.5 ÆÁÄ»½ØÍ¼½Ó¿Ú   <b id=social_scrshot></b></h2>
-<p>¸Ã¹¦ÄÜÎªÖ±½Ó½ØÈ¡ÓÃ»§µÄÆÁÄ»Í¼Ïñ,ÒªÊ¹ÓÃ¸Ã¹¦ÄÜĞèÒª½«UMSocial_ScreenShot_SdkÎÄ¼ş¼ĞÏÂµÄ¿âÎÄ¼şºÍÍ·ÎÄ¼şÌí¼Óµ½¹¤³ÌÖĞ,Ê¾ÀıÈçÏÂ:</p>
-<pre><code>//ÏÂÃæÊÇÓ¦ÓÃÀàĞÍµÄ½ØÍ¼£¬Èç¹ûÊÇÓÎÏ·»òÕßÆäËû·½Ê½½ØÍ¼£¬Çë²Î¿¼2.1.4 ºÍ2.1.5 
+<h2>2.5 å±å¹•æˆªå›¾æ¥å£   <b id=social_scrshot></b></h2>
+<p>è¯¥åŠŸèƒ½ä¸ºç›´æ¥æˆªå–ç”¨æˆ·çš„å±å¹•å›¾åƒ,è¦ä½¿ç”¨è¯¥åŠŸèƒ½éœ€è¦å°†UMSocial_ScreenShot_Sdkæ–‡ä»¶å¤¹ä¸‹çš„åº“æ–‡ä»¶å’Œå¤´æ–‡ä»¶æ·»åŠ åˆ°å·¥ç¨‹ä¸­,ç¤ºä¾‹å¦‚ä¸‹:</p>
+<pre><code>//ä¸‹é¢æ˜¯åº”ç”¨ç±»å‹çš„æˆªå›¾ï¼Œå¦‚æœæ˜¯æ¸¸æˆæˆ–è€…å…¶ä»–æ–¹å¼æˆªå›¾ï¼Œè¯·å‚è€ƒ2.1.4 å’Œ2.1.5 
     UIImage *image = [[UMSocialScreenShoterDefault screenShoter] getScreenShot];
 </code></pre>
 
-<h2>2.6 ½ØÍ¼ºó·ÖÏí   <b id=social_scrshot_share></b></h2>
-<p>¸Ã¹¦ÄÜÊÇÔÚÓÃ»§´ò¿ª·ÖÏíÃæ°åÊ±£¬½«Òª·ÖÏíµÄÍ¼ÏñÄÚÈİÌæ»»Îªµ±Ç°Ó¦ÓÃ½ØÍ¼£¬ÒªÊ¹ÓÃ¸Ã¹¦ÄÜĞèÒª½«
-UMSocial_ScreenShot_SdkÎÄ¼ş¼ĞÌí¼Óµ½¹¤³ÌµÄÖĞ£¬Ê¾ÀıÈçÏÂ:</p>
+<h2>2.6 æˆªå›¾ååˆ†äº«   <b id=social_scrshot_share></b></h2>
+<p>è¯¥åŠŸèƒ½æ˜¯åœ¨ç”¨æˆ·æ‰“å¼€åˆ†äº«é¢æ¿æ—¶ï¼Œå°†è¦åˆ†äº«çš„å›¾åƒå†…å®¹æ›¿æ¢ä¸ºå½“å‰åº”ç”¨æˆªå›¾ï¼Œè¦ä½¿ç”¨è¯¥åŠŸèƒ½éœ€è¦å°†
+UMSocial_ScreenShot_Sdkæ–‡ä»¶å¤¹æ·»åŠ åˆ°å·¥ç¨‹çš„ä¸­ï¼Œç¤ºä¾‹å¦‚ä¸‹:</p>
 <pre><code>    UIImage *image = [[UMSocialScreenShoterDefault screenShoter] getScreenShot];
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:@&quot;·ÖÏíÎÄ×Ö&quot; shareImage:image shareToSnsNames:nil delegate:nil];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:@&quot;åˆ†äº«æ–‡å­—&quot; shareImage:image shareToSnsNames:nil delegate:nil];
 </code></pre>
 
-<h2>2.7 Ò¡Ò»Ò¡ÁéÃô¶ÈÉèÖÃ   <b id=social_shake_config></b></h2>
-<pre><code>¿É¸ù¾İÓ¦ÓÃÀàĞÍÁé»îÉèÖÃÏìÓ¦Ò¡Ò»Ò¡ÊÂ¼şµÄÁéÃô¶È,Ê¾ÀıÈçÏÂ£º
+<h2>2.7 æ‘‡ä¸€æ‘‡çµæ•åº¦è®¾ç½®   <b id=social_shake_config></b></h2>
+<pre><code>å¯æ ¹æ®åº”ç”¨ç±»å‹çµæ´»è®¾ç½®å“åº”æ‘‡ä¸€æ‘‡äº‹ä»¶çš„çµæ•åº¦,ç¤ºä¾‹å¦‚ä¸‹ï¼š
 </code></pre>
-<pre><code>    //¿ÉÒÔÉèÖÃÏìÓ¦Ò¡Ò»Ò¡ãĞÖµ£¬ÊıÖµÔ½µÍÔ½ÁéÃô£¬Ä¬ÈÏÊÇ0.8
+<pre><code>    //å¯ä»¥è®¾ç½®å“åº”æ‘‡ä¸€æ‘‡é˜ˆå€¼ï¼Œæ•°å€¼è¶Šä½è¶Šçµæ•ï¼Œé»˜è®¤æ˜¯0.8
     [UMSocialShakeService setShakeThreshold:1.5];
 </code></pre>
 
-<h1>3 ¼¼ÊõÖ§³Ö   <b id=support></b></h1>
-<p>Çë·¢ÓÊ¼şÖÁsocial-support@umeng.com¡£Èç¹ûÄú³öÏÖµÄÎÊÌâºÍSDKÏà¹Ø£¬ÇëËµÃ÷ÄúÊ¹ÓÃµÄÊÇiOSµÄSDK£¬ÎÒÃÇ»á¾¡¿ì»Ø¸´Äú¡£</p>
+<h1>3 æŠ€æœ¯æ”¯æŒ   <b id=support></b></h1>
+<p>è¯·å‘é‚®ä»¶è‡³social-support@umeng.comã€‚å¦‚æœæ‚¨å‡ºç°çš„é—®é¢˜å’ŒSDKç›¸å…³ï¼Œè¯·è¯´æ˜æ‚¨ä½¿ç”¨çš„æ˜¯iOSçš„SDKï¼Œæˆ‘ä»¬ä¼šå°½å¿«å›å¤æ‚¨ã€‚</p>

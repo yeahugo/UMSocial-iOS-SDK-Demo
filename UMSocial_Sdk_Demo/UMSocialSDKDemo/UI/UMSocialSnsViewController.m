@@ -10,6 +10,7 @@
 //#import "UMSocialLoginViewController.h"
 //#import "UMSocialBarViewController.h"
 #import "AppDelegate.h"
+#import "UMSocialEditDemoViewController.h"
 
 //#import "UMSocial.h"
 #import "UMSocialScreenShoter.h"
@@ -90,13 +91,13 @@
 {
     NSString *shareText = @"友盟社会化组件可以让移动应用快速具备社会化分享、登录、评论、喜欢等功能，并提供实时、全面的社会化数据统计分析服务。 http://www.umeng.com/social";             //分享内嵌文字
     UIImage *shareImage = [UIImage imageNamed:@"UMS_social_demo"];          //分享内嵌图片
-    
+
     //调用快速分享接口
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:UmengAppkey
                                       shareText:shareText
                                      shareImage:shareImage
-                                shareToSnsNames:@[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToWechatFavorite]
+                                shareToSnsNames:nil
                                        delegate:self];
 }
 
@@ -179,6 +180,15 @@
 }
 
 /*
+    显示调用底层分享api的简单demo
+ */
+- (IBAction)showShareEditDemo:(id)sender
+{
+    UMSocialEditDemoViewController *editDemoViewController = [[UMSocialEditDemoViewController alloc] initWithNibName:@"UMSocialEditDemoViewController" bundle:nil];
+    [self presentModalViewController:editDemoViewController animated:YES];
+}
+
+/*
  在自定义分享样式中，根据点击不同的点击来处理不同的的动作
  
  */
@@ -244,6 +254,7 @@
     _shareButton2.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/6 *2);
     _shareButton3.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/6 *3);
     _shareButton4.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/6 *4);
+    _shareButton5.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/6 *5);
 }
 
 - (void)didReceiveMemoryWarning

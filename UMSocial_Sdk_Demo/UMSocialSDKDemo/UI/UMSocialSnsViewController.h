@@ -21,13 +21,16 @@
     IBOutlet UIButton *_shareButton2;
     IBOutlet UIButton *_shareButton3;
     IBOutlet UIButton *_shareButton4;
+    IBOutlet UIButton *_shareButton5;
 }
 
--(IBAction)showShareList1:(id)sender;
+- (IBAction)showShareList1:(id)sender;
 
--(IBAction)showShareList3:(id)sender;
+- (IBAction)showShareList3:(id)sender;
 
--(IBAction)showShareList4:(id)sender;
+- (IBAction)showShareList4:(id)sender;
 
--(IBAction)setShakeSns:(id)sender;
+- (IBAction)setShakeSns:(id)sender;
+
+- (IBAction)showShareEditDemo:(id)sender;
 @end

@@ -18,9 +18,10 @@
 #import "UMSocialWechatHandler.h"
 #import "UMSocialTwitterHandler.h"
 #import "UMSocialQQHandler.h"
-#import "UMSocialSinaHandler.h"
+//#import "UMSocialSinaHandler.h"
+#import "UMSocialSinaSSOHandler.h"
 //#import "UMSocialTencentWeiboHandler.h"
-//#import "UMSocialRenrenHandler.h"
+#import "UMSocialRenrenHandler.h"
 
 #import "UMSocialInstagramHandler.h"
 #import "UMSocialWhatsappHandler.h"
@@ -46,13 +47,11 @@
     [UMSocialWechatHandler setWXAppId:@"wxd930ea5d5a258f4f" appSecret:@"db426a9829e4b49a0dcac7b4162da6b6" url:@"http://www.umeng.com/social"];
 
     //打开新浪微博的SSO开关
-    [UMSocialSinaHandler openSSOWithRedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+//    [UMSocialSinaHandler openSSOWithRedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+    [UMSocialSinaSSOHandler openNewSinaSSOWithRedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
     
     //打开腾讯微博SSO开关，设置回调地址，只支持32位
 //    [UMSocialTencentWeiboHandler openSSOWithRedirectUrl:@"http://sns.whalecloud.com/tencent2/callback"];
-    
-    //打开人人网SSO开关，只支持32位
-//    [UMSocialRenrenHandler openSSO];
     
 //    //设置分享到QQ空间的应用Id，和分享url 链接
     [UMSocialQQHandler setQQWithAppId:@"100424468" appKey:@"c7394704798a158208a74ab60104f0ba" url:@"http://www.umeng.com/social"];
@@ -64,6 +63,9 @@
 
 //    //设置来往AppId，appscret，显示来源名称和url地址，只支持32位
 //    [UMSocialLaiwangHandler setLaiwangAppId:@"8112117817424282305" appSecret:@"9996ed5039e641658de7b83345fee6c9" appDescription:@"友盟社会化组件" urlStirng:@"http://www.umeng.com/social"];
+    
+    //打开人人网SSO开关
+    [UMSocialRenrenHandler openSSO];
     
     //使用友盟统计
     [MobClick startWithAppkey:UmengAppkey];
