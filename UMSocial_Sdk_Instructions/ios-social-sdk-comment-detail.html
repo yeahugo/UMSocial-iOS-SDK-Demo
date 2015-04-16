@@ -1,92 +1,112 @@
-<link rel="stylesheet" type="text/css" href="markdown.css"></link>
-<h1>ÆÀÂÛ ÏêÏ¸¼¯³É</h1>
-<p><font color="red">×¢Òâ£º±¾ÎÄÊ¾Àı´úÂë¾ùÕë¶Ô×îĞÂ°æSDK£¬Èç¹ûÄãËùÓÃSDKµÄÀàÃû»ò·½·¨ÃûÓë´ËÎÄ²»·ûºÏ£¬ÇëÊ¹ÓÃÄãËùÓÃSDKµÄËæ°üÎÄµµ¡¢»òÕßÏÂÔØÊ¹ÓÃ×îĞÂ°æSDK¡£</font></p>
-<h3>ÉèÖÃÆÀÂÛÄÚÈİ</h3>
-<p>ÆÀÂÛÄÚÈİ±ÈÈçÊÇÒ»ÆªÎÄÕÂµÄ±êÌâ¡¢Ò»Ê×¸èµÄÃû×ÖµÈ¡£</p>
-<pre><code>//°ÑÄãµÄÎÄÕÂ»òÕßÒôÀÖµÄ±êÊ¶£¬×÷Îª@&quot;identifier&quot;
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" type="text/css" href="markdown.css"></link></head><body>
+</body></html><h1>è¯„è®º è¯¦ç»†é›†æˆ</h1>
+<p><font color="red">æ³¨æ„ï¼šæœ¬æ–‡ç¤ºä¾‹ä»£ç å‡é’ˆå¯¹æœ€æ–°ç‰ˆSDKï¼Œå¦‚æœä½ æ‰€ç”¨SDKçš„ç±»åæˆ–æ–¹æ³•åä¸æ­¤æ–‡ä¸ç¬¦åˆï¼Œè¯·ä½¿ç”¨ä½ æ‰€ç”¨SDKçš„éšåŒ…æ–‡æ¡£ã€æˆ–è€…ä¸‹è½½ä½¿ç”¨æœ€æ–°ç‰ˆSDKã€‚</font></p>
+<p><input name="pinList" type="hidden" value="1"/></p>
+<ul>
+<li>
+<ol>
+<li><a href="#comment_UI">è¯„è®ºç•Œé¢æ–¹æ³•</a> </li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#comment_data">è¯„è®ºæ•°æ®æ–¹æ³•</a> </li>
+</ol>
+</li>
+</ul>
+<h2>1 <a name="comment_UI" id="comment_UI" style="color:black"> è¯„è®ºç•Œé¢æ–¹æ³•</a></h2>
+<ul>
+<li>è®¾ç½®è¯„è®ºå†…å®¹
+   è¯„è®ºå†…å®¹æ¯”å¦‚æ˜¯ä¸€ç¯‡æ–‡ç« çš„æ ‡é¢˜ã€ä¸€é¦–æ­Œçš„åå­—ç­‰ã€‚</li>
+</ul>
+<pre><code>//æŠŠä½ çš„æ–‡ç« æˆ–è€…éŸ³ä¹çš„æ ‡è¯†ï¼Œä½œä¸º@&quot;identifier&quot;
 UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@&quot;identifier&quot;];
 UMSocialControllerServiceComment *socialControllerService = [[UMSocialControllerServiceComment alloc] initWithUMSocialData:socialData];
 </code></pre>
 
-<h3>µÃµ½Ò»¸öÆÀÂÛÁĞ±í</h3>
+<ul>
+<li>å¾—åˆ°ä¸€ä¸ªè¯„è®ºåˆ—è¡¨</li>
+</ul>
 <pre><code>UINavigationController *commentList = [socialControllerService getSocialCommentListController];
 [self presentModalViewController:commentList animated:YES];
 </code></pre>
 
 <p><img alt="socialbar" src="http://dev.umeng.com/images/ios/social_commentlist.png" title="socical_comment_list" /></p>
 <ul>
-<li>ÓÉÓÚÎÒÃÇ·¢ËÍÆÀÂÛ»¹Ìá¹©ÁËÍ¬²½·ÖÏíµ½¸÷¸öÎ¢²©µÄ¹¦ÄÜ¡£Äã¿ÉÒÔÉèÖÃÆÀÂÛ²¢·ÖÏíµ½Î¢²©µÄÄÚÇ¶ÎÄ×ÖºÍÍ¼Æ¬£¬´ËÎÄ×Ö³öÏÖÔÚÎ¢²©ÕıÎÄÖ®ºóÒÔ<code>//</code>·Ö¸ô,ÀıÈçÏÂÃæµÄÉèÖÃ£¬ÓÃ»§·¢ËÍÁË¡°ÆÀÂÛÄÚÈİ¡±²¢·ÖÏíµ½Î¢²©Ö®ºóĞ§¹ûÊÇ¡°ÆÀÂÛÄÚÈİ//ÆÀÂÛÄÚÇ¶ÎÄ×Ö"</li>
+<li>ç”±äºæˆ‘ä»¬å‘é€è¯„è®ºè¿˜æä¾›äº†åŒæ­¥åˆ†äº«åˆ°å„ä¸ªå¾®åšçš„åŠŸèƒ½ã€‚ä½ å¯ä»¥è®¾ç½®è¯„è®ºå¹¶åˆ†äº«åˆ°å¾®åšçš„å†…åµŒæ–‡å­—å’Œå›¾ç‰‡ï¼Œæ­¤æ–‡å­—å‡ºç°åœ¨å¾®åšæ­£æ–‡ä¹‹åä»¥<code>//</code>åˆ†éš”,ä¾‹å¦‚ä¸‹é¢çš„è®¾ç½®ï¼Œç”¨æˆ·å‘é€äº†â€œè¯„è®ºå†…å®¹â€å¹¶åˆ†äº«åˆ°å¾®åšä¹‹åæ•ˆæœæ˜¯â€œè¯„è®ºå†…å®¹//è¯„è®ºå†…åµŒæ–‡å­—"</li>
 </ul>
-<pre><code>socialData.commentText = @&quot;ÆÀÂÛÄÚÇ¶ÎÄ×Ö&quot;;
+<pre><code>socialData.commentText = @&quot;è¯„è®ºå†…åµŒæ–‡å­—&quot;;
 socialData.commentImage = [UIImage imageNamed:@&quot;icon.png&quot;];
 </code></pre>
 
-<h3>Êı¾İ¼¶½Ó¿Ú</h3>
-<h3>ÉèÖÃÆÀÂÛÄÚÈİ</h3>
-<p>ÆÀÂÛÄÚÈİ±ÈÈçÊÇÒ»ÆªÎÄÕÂµÄ±êÌâ¡¢Ò»Ê×¸èµÄÃû×ÖµÈ¡£</p>
-<pre><code>//°ÑÄãµÄÎÄÕÂ»òÕßÒôÀÖµÄ±êÊ¶£¬×÷Îª@&quot;identifier&quot;
+<h2>2 <a name="comment_data" id="comment_data" style="color:black"> è¯„è®ºæ•°æ®æ–¹æ³•</a></h2>
+<ul>
+<li>è®¾ç½®è¯„è®ºå†…å®¹
+   è¯„è®ºå†…å®¹æ¯”å¦‚æ˜¯ä¸€ç¯‡æ–‡ç« çš„æ ‡é¢˜ã€ä¸€é¦–æ­Œçš„åå­—ç­‰ã€‚</li>
+</ul>
+<pre><code>//æŠŠä½ çš„æ–‡ç« æˆ–è€…éŸ³ä¹çš„æ ‡è¯†ï¼Œä½œä¸º@&quot;identifier&quot;
 UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@&quot;identifier&quot;];
 UMSocialDataService *socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
-//Èç¹û²»Çø·ÖÆÀÂÛÄÚÈİµÄ»°¿ÉÒÔÓÃÄ¬ÈÏ³õÊ¼»¯·½·¨
+//å¦‚æœä¸åŒºåˆ†è¯„è®ºå†…å®¹çš„è¯å¯ä»¥ç”¨é»˜è®¤åˆå§‹åŒ–æ–¹æ³•
 //UMSocialDataService *socialDataService = [UMSocialDataService defaultDataService];
 </code></pre>
 
 <ul>
-<li>»ñÈ¡×îĞÂ10ÌõÆÀÂÛ£º</li>
+<li>è·å–æœ€æ–°10æ¡è¯„è®ºï¼š</li>
 </ul>
-<pre><code>//Èç¹ûÆÀÂÛÊı¾İ±È½Ï¶à£¬Ïë»ñÈ¡Ö®Ç°µÄÆÀÂÛ£¬¿ÉÒÔÔÚ`lastCommentTime`ÖĞ´«ÈëÖ¸¶¨Ê±¼ä´Á¡£´«ÈëÆÀÂÛÊı¾İÔÚ»Øµ÷Block¶ÔÏóĞÎ²ÎresponseÀïµÄÊôĞÔ`data`ÖĞµÃµ½
-//socialDataServiceÎªÉèÖÃÆÀÂÛÄÚÈİÖĞ³õÊ¼»¯µÄ¶ÔÏó
+<pre><code>//å¦‚æœè¯„è®ºæ•°æ®æ¯”è¾ƒå¤šï¼Œæƒ³è·å–ä¹‹å‰çš„è¯„è®ºï¼Œå¯ä»¥åœ¨`lastCommentTime`ä¸­ä¼ å…¥æŒ‡å®šæ—¶é—´æˆ³ã€‚ä¼ å…¥è¯„è®ºæ•°æ®åœ¨å›è°ƒBlockå¯¹è±¡å½¢å‚responseé‡Œçš„å±æ€§`data`ä¸­å¾—åˆ°
+//socialDataServiceä¸ºè®¾ç½®è¯„è®ºå†…å®¹ä¸­åˆå§‹åŒ–çš„å¯¹è±¡
 [socialDataService requestCommentList:(-1) completion:^(UMSocialResponseEntity *response){
             NSLog(@&quot;comment data is %@&quot;,response.data);
         }];
 </code></pre>
 
 <ul>
-<li>Ìí¼ÓÒ»ÌõÎÄ±¾ÆÀÂÛ£º</li>
+<li>æ·»åŠ ä¸€æ¡æ–‡æœ¬è¯„è®ºï¼š</li>
 </ul>
-<pre><code>//socialDataServiceÎªÉèÖÃÆÀÂÛÄÚÈİÖĞ³õÊ¼»¯µÄ¶ÔÏó
+<pre><code>//socialDataServiceä¸ºè®¾ç½®è¯„è®ºå†…å®¹ä¸­åˆå§‹åŒ–çš„å¯¹è±¡
 [socialDataService postCommentWithContent:@&quot;comment text&quot; completion:^(UMSocialResponseEntity *response){
    NSLog(@&quot;comment result is %@&quot;,response);
         }];
 </code></pre>
 
 <ul>
-<li>Ìí¼ÓÒ»ÌõÆÀÂÛ£¬²¢Ìí¼ÓµØÀíÎ»ÖÃĞÅÏ¢£¬»òÕß·ÖÏíµ½Î¢²©Æ½Ì¨£¬¿ÉÒÔ´øÓĞÍ¼Æ¬</li>
+<li>æ·»åŠ ä¸€æ¡è¯„è®ºï¼Œå¹¶æ·»åŠ åœ°ç†ä½ç½®ä¿¡æ¯ï¼Œæˆ–è€…åˆ†äº«åˆ°å¾®åšå¹³å°ï¼Œå¯ä»¥å¸¦æœ‰å›¾ç‰‡</li>
 </ul>
-<pre><code>//socialDataServiceÎªÉèÖÃÆÀÂÛÄÚÈİÖĞ³õÊ¼»¯µÄ¶ÔÏó
-[socialDataService postCommentWithContent:@&quot;ÆÀÂÛÄÚÈİ&quot; image:nil templateText:@&quot;ÆÀÂÛ²¢·ÖÏíµ½Î¢²©ºóÃæ´øµÄÄÚÈİ&quot; location:nil shareToSNSWithUsid:nil completion:nil];
-//Èç¹ûÒªÆÀÂÛ²¢·ÖÏíµ½Î¢²©ĞèÒªĞÎÈçÏÂÃæµÄÎ¢²©Æ½Ì¨ÃûºÍÎ¢²©ÓÃ»§usid×é³ÉµÄNSDictionary£¬´«Èëµ½ÉÏÃæµÄshareToSNSWithUsid:²ÎÊıÖĞ
-//NSString *usid = [[[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToSina] usid];  //µÃµ½ÒÑ¾­ÊÚÈ¨µÄusid£¬¿ÉÒÔ°ÑUMShareToSinaÌæ»»Îª´ú±íÆäËûÆ½Ì¨µÄ×Ö·û´®   
+<pre><code>//socialDataServiceä¸ºè®¾ç½®è¯„è®ºå†…å®¹ä¸­åˆå§‹åŒ–çš„å¯¹è±¡
+[socialDataService postCommentWithContent:@&quot;è¯„è®ºå†…å®¹&quot; image:nil templateText:@&quot;è¯„è®ºå¹¶åˆ†äº«åˆ°å¾®åšåé¢å¸¦çš„å†…å®¹&quot; location:nil shareToSNSWithUsid:nil completion:nil];
+//å¦‚æœè¦è¯„è®ºå¹¶åˆ†äº«åˆ°å¾®åšéœ€è¦å½¢å¦‚ä¸‹é¢çš„å¾®åšå¹³å°åå’Œå¾®åšç”¨æˆ·usidç»„æˆçš„NSDictionaryï¼Œä¼ å…¥åˆ°ä¸Šé¢çš„shareToSNSWithUsid:å‚æ•°ä¸­
+//NSString *usid = [[[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToSina] usid];  //å¾—åˆ°å·²ç»æˆæƒçš„usidï¼Œå¯ä»¥æŠŠUMShareToSinaæ›¿æ¢ä¸ºä»£è¡¨å…¶ä»–å¹³å°çš„å­—ç¬¦ä¸²   
 //NSDictionary *shareToSNS = [NSDictionary dictionaryWithObjectsAndKeys:usid,UMShareToSina,nil];
 </code></pre>
 
 <ul>
-<li>´ÓÏßÉÏ»ñÈ¡ÆÀÂÛÊı</li>
+<li>ä»çº¿ä¸Šè·å–è¯„è®ºæ•°</li>
 </ul>
-<pre><code>//socialDataServiceÎªÉèÖÃÆÀÂÛÄÚÈİÖĞ³õÊ¼»¯µÄ¶ÔÏó    
+<pre><code>//socialDataServiceä¸ºè®¾ç½®è¯„è®ºå†…å®¹ä¸­åˆå§‹åŒ–çš„å¯¹è±¡    
     [socialDataService requestSocialDataWithCompletion:^(UMSocialResponseEntity *response){
-// ÏÂÃæµÄ·½·¨¿ÉÒÔ»ñÈ¡±£´æÔÚ±¾µØµÄÆÀÂÛÊı£¬Èç¹ûappÖØĞÂ°²×°Ö®ºó£¬Êı¾İ»á±»Çå¿Õ£¬¿ÉÄÜ»ñÈ¡ÖµÎª0
+// ä¸‹é¢çš„æ–¹æ³•å¯ä»¥è·å–ä¿å­˜åœ¨æœ¬åœ°çš„è¯„è®ºæ•°ï¼Œå¦‚æœappé‡æ–°å®‰è£…ä¹‹åï¼Œæ•°æ®ä¼šè¢«æ¸…ç©ºï¼Œå¯èƒ½è·å–å€¼ä¸º0
         int commentNumber = [socialDataService.socialData getNumber:UMSNumberComment];
         NSLog(@&quot;commentNum is %d&quot;,commentNumber);
     }];
 </code></pre>
 
-<h3>³£¼û´íÎó´úÂëº¬Òå</h3>
+<h3>å¸¸è§é”™è¯¯ä»£ç å«ä¹‰</h3>
 <table>
 <thead>
 <tr>
-<th>´íÎóÂë</th>
-<th>´íÎóÔ­Òò</th>
+<th>é”™è¯¯ç </th>
+<th>é”™è¯¯åŸå› </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>503</td>
-<td>ÆÀÂÛÊ§°Ü</td>
+<td>è¯„è®ºå¤±è´¥</td>
 </tr>
 <tr>
 <td>504</td>
-<td>»ñÈ¡ÆÀÂÛÊ§°Ü</td>
+<td>è·å–è¯„è®ºå¤±è´¥</td>
 </tr>
 </tbody>
 </table>

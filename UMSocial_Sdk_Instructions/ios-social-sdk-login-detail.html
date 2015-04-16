@@ -1,74 +1,99 @@
-<link rel="stylesheet" type="text/css" href="markdown.css"></link>
-<h1>µÇÂ¼ ÏêÏ¸¼¯³É</h1>
-<h2><strong>ÊÚÈ¨ĞÅÏ¢Ò³Ãæ</strong></h2>
-<p>ÏÔÊ¾¸÷¸öÎ¢²©Æ½Ì¨µÄÊÚÈ¨Çé¿ö¡£ÓÃ»§¿ÉÒÔĞÂÔö¡¢¸ü¸Ä¡¢É¾³ıÊÚÈ¨ÕËºÅ¡£</p>
-<pre><code>UINavigationController *accountViewController =[[UMSocialControllerService defaultControllerService] getSnsAccountController];
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" type="text/css" href="markdown.css"></link></head><body>
+</body></html><h1>ç™»å½• è¯¦ç»†é›†æˆ</h1>
+<p><input name="pinList" type="hidden" value="1"/></p>
+<ul>
+<li>
+<ol>
+<li><a href="#umeng_oauthinfo">æˆæƒä¿¡æ¯é¡µé¢</a> </li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#umeng_account">ä¸ªäººä¸­å¿ƒé¡µé¢</a> </li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#umeng_oauth">æˆæƒé¡µé¢</a></li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#userInfo">ç”¨æˆ·è´¦æˆ·ç›¸å…³æ¥å£</a></li>
+</ol>
+</li>
+</ul>
+<h2>1 <a name="umeng_oauthinfo" id="umeng_oauthinfo" style="color:black"> æˆæƒä¿¡æ¯é¡µé¢</a></h2>
+<p>æ˜¾ç¤ºå„ä¸ªå¾®åšå¹³å°çš„æˆæƒæƒ…å†µã€‚ç”¨æˆ·å¯ä»¥æ–°å¢ã€æ›´æ”¹ã€åˆ é™¤æˆæƒè´¦å·ã€‚</p>
+<pre><code>UINavigationController *accountViewController =[[UMSocialControllerServiceComment defaultControllerService] getSnsAccountController];
 [self presentModalViewController:accountViewController animated:YES];
 </code></pre>
 
 <p><img alt="socialbar" src="http://dev.umeng.com/images/ios/social_user_oauth.png" title="socical_user_oauth" /></p>
-<h2><strong>¸öÈËÖĞĞÄÒ³Ãæ</strong></h2>
-<p>ÉÏÃæÊÇ°ó¶¨Ò»¸öÎ¢²©ÕËºÅ×÷ÎªSDKµÄµÇÂ¼ÕËºÅ£¬¼ò³ÆÎªµÇÂ¼ÕËºÅ£¬ÏÂÃæÊÇ¸÷¸öÒÑ¾­ÊÚÈ¨µÄÎ¢²©ÕËºÅ£¬°üÀ¨ÎÒÃÇÖ§³ÖµÄËùÓĞÆ½Ì¨£¬¿ÉÒÔ¶Ô¸÷¸öÆ½Ì¨½øĞĞÊÚÈ¨ºÍ½â³ıÊÚÈ¨¡£</p>
-<pre><code>UINavigationController *accountViewController =[[UMSocialControllerService defaultControllerService] getSocialAccountController];
+<h2>2 <a name="umeng_account" id="umeng_account" style="color:black"> ä¸ªäººä¸­å¿ƒé¡µé¢</a></h2>
+<p>ä¸Šé¢æ˜¯ç»‘å®šä¸€ä¸ªå¾®åšè´¦å·ä½œä¸ºSDKçš„ç™»å½•è´¦å·ï¼Œç®€ç§°ä¸ºç™»å½•è´¦å·ï¼Œä¸‹é¢æ˜¯å„ä¸ªå·²ç»æˆæƒçš„å¾®åšè´¦å·ï¼ŒåŒ…æ‹¬æˆ‘ä»¬æ”¯æŒçš„æ‰€æœ‰å¹³å°ï¼Œå¯ä»¥å¯¹å„ä¸ªå¹³å°è¿›è¡Œæˆæƒå’Œè§£é™¤æˆæƒã€‚</p>
+<pre><code>UINavigationController *accountViewController =[[UMSocialControllerServiceComment defaultControllerService] getSocialAccountController];
 [self presentModalViewController:accountViewController animated:YES];
 </code></pre>
 
 <p><img alt="socialbar" src="http://dev.umeng.com/images/ios/social_user_account.png" title="socical_user_account" /></p>
-<h2>ÊÚÈ¨Ò³Ãæ£¨½çÃæ¼¶½Ó¿Ú£©</h2>
-<h3><strong>SSOÊÚÈ¨</strong></h3>
-<p>SSOÊÚÈ¨¼´Èç¹ûÓÃ»§Éè±¸°²×°ÁËĞÂÀËÎ¢²©¿Í»§¶Ë£¬¾Í»áÌø×ªµ½ÄÇÀï½øĞĞÊÚÈ¨£¬ºÃ´¦ÊÇÓÃ»§²»ĞèÒªÊäÈëÓÃ»§ÃûºÍÃÜÂë£¬Èç¹ûÃ»ÓĞ°²×°ĞÂÀËÎ¢²©¿Í»§¶ËµÄ»°»¹»áÊ¹ÓÃwebviewÊÚÈ¨£¬²Î¿´µÇÂ¼¿ìËÙ¼¯³ÉÎÄµµ¶ÔXcodeµÄÉèÖÃ¡£ÏÂÃæÊÇÓÃSSOÊÚÈ¨µ½ĞÂÀËÎ¢²©£º</p>
-<pre><code>//`snsName` ´ú±í¸÷¸öÖ§³ÖÔÆ¶Ë·ÖÏíµÄÆ½Ì¨Ãû£¬ÓĞ`UMShareToSina`,`UMShareToTencent`µÈÎå¸ö¡£    
+<h2>3 <a name="umeng_oauth" id="umeng_oauth" style="color:black"> æˆæƒé¡µé¢ï¼ˆç•Œé¢çº§æ¥å£ï¼‰</a></h2>
+<h3><strong>SSOæˆæƒ</strong></h3>
+<p>SSOæˆæƒå³å¦‚æœç”¨æˆ·è®¾å¤‡å®‰è£…äº†æ–°æµªå¾®åšå®¢æˆ·ç«¯ï¼Œå°±ä¼šè·³è½¬åˆ°é‚£é‡Œè¿›è¡Œæˆæƒï¼Œå¥½å¤„æ˜¯ç”¨æˆ·ä¸éœ€è¦è¾“å…¥ç”¨æˆ·åå’Œå¯†ç ï¼Œå¦‚æœæ²¡æœ‰å®‰è£…æ–°æµªå¾®åšå®¢æˆ·ç«¯çš„è¯è¿˜ä¼šä½¿ç”¨webviewæˆæƒï¼Œå‚çœ‹ç™»å½•å¿«é€Ÿé›†æˆæ–‡æ¡£å¯¹Xcodeçš„è®¾ç½®ã€‚ä¸‹é¢æ˜¯ç”¨SSOæˆæƒåˆ°æ–°æµªå¾®åšï¼š</p>
+<pre><code>//`snsName` ä»£è¡¨å„ä¸ªæ”¯æŒäº‘ç«¯åˆ†äº«çš„å¹³å°åï¼Œæœ‰`UMShareToSina`,`UMShareToTencent`ç­‰äº”ä¸ªã€‚    
   UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
   snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
       NSLog(@&quot;response is %@&quot;,response);
   });
 </code></pre>
 
-<p>Õâ¸ö·½·¨ÊÇÇ¿ÖÆµ¯³öÊÚÈ¨£¬Äã¿ÉÒÔ¸ù¾İÒÑ¾­ÊÚÈ¨Çé¿öÀ´ÅĞ¶ÏÊÇ·ñµ÷ÓÃ£¬£¬ÀıÈçÓĞÃ»ÓĞÊÚÈ¨µ½ĞÂÀËÎ¢²©</p>
-<pre><code>BOOL isOauth = [UMSocialAccountManager isOauthWithPlatform:UMShareToSina];
+<p>è¿™ä¸ªæ–¹æ³•æ˜¯å¼ºåˆ¶å¼¹å‡ºæˆæƒï¼Œä½ å¯ä»¥æ ¹æ®å·²ç»æˆæƒæƒ…å†µæ¥åˆ¤æ–­æ˜¯å¦è°ƒç”¨ï¼Œä¾‹å¦‚æœ‰æ²¡æœ‰æˆæƒåˆ°æ–°æµªå¾®åš</p>
+<pre><code>BOOL isOauth = [UMSocialAccountManager isOauthAndTokenNotExpired:UMShareToSina];
 </code></pre>
 
-<h3><strong>ÍøÒ³ÊÚÈ¨</strong></h3>
-<p>»ñµÃÒ»¸öÊÚÈ¨ÍøÒ³£¬Í¬ÑùĞèÒª¼ÓÉÏÉÏÃæµÄÅĞ¶ÏÊÇ·ñÒÑÊÚÈ¨¡£</p>
+<h3><strong>ç½‘é¡µæˆæƒ</strong></h3>
+<p>è·å¾—ä¸€ä¸ªæˆæƒç½‘é¡µï¼ŒåŒæ ·éœ€è¦åŠ ä¸Šä¸Šé¢çš„åˆ¤æ–­æ˜¯å¦å·²æˆæƒã€‚</p>
 <pre><code>UINavigationController *oauthController = [[UMSocialControllerService defaultControllerService] getSocialOauthController:UMShareToSina];
 [self presentModalViewController:oauthController animated:YES];
 </code></pre>
 
 <p><img alt="socialbar" src="http://dev.umeng.com/images/ios/social_oauth.png" title="socical_oauth" /></p>
 <ul>
-<li>ÊÚÈ¨Íê³ÉµÄ»Øµ÷º¯Êı</li>
+<li>æˆæƒå®Œæˆçš„å›è°ƒå‡½æ•°</li>
 </ul>
-<pre><code>[UMSocialControllerService defaultControllerService].socialUIDelegate = self;      //ÉèÖÃ»Øµ÷¶ÔÏó
-//ÊµÏÖ»Øµ÷·½·¨
+<pre><code>[UMSocialControllerService defaultControllerService].socialUIDelegate = self;      //è®¾ç½®å›è°ƒå¯¹è±¡
+//å®ç°å›è°ƒæ–¹æ³•
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
     if (response.viewControllerType == UMSViewControllerOauth) {
-        ¡­¡­
+        â€¦â€¦
         NSLog(@&quot;didFinishOauthAndGetAccount response is %@&quot;,response);
     }
 }
 </code></pre>
 
-<h2>»ñÈ¡ÓÃ»§Î¢²©ÕËºÅĞÅÏ¢£¨Êı¾İ¼¶µÄ½Ó¿Ú£©</h2>
-<p>Ê¹ÓÃ±¾SDK¶Ô¸öÎ¢²©Æ½Ì¨ÊÚÈ¨¹ıºó£¬ÎÒÃÇÌá¹©·½·¨²éÑ¯ÓÃ»§ÊÚÈ¨µ½¸÷¸öÎ¢²©Æ½Ì¨µÄĞÅÏ¢£¬ÀıÈçÏë»ñÈ¡ĞÂÀËÎ¢²©ÓÃ»§µÄêÇ³ÆºÍÍ·Ïñ¿ÉÒÔÓÃÏÂÃæµÄ´úÂë¡£</p>
+<h2>4 <a name="userInfo" id="userInfo" style="color:black"> ç”¨æˆ·è´¦æˆ·ç›¸å…³æ¥å£</a></h2>
+<ul>
+<li>è·å–ç”¨æˆ·å¾®åšè´¦å·ä¿¡æ¯ï¼ˆæ•°æ®çº§çš„æ¥å£ï¼‰</li>
+</ul>
+<p>ä½¿ç”¨æœ¬SDKå¯¹ä¸ªå¾®åšå¹³å°æˆæƒè¿‡åï¼Œæˆ‘ä»¬æä¾›æ–¹æ³•æŸ¥è¯¢ç”¨æˆ·æˆæƒåˆ°å„ä¸ªå¾®åšå¹³å°çš„ä¿¡æ¯ï¼Œä¾‹å¦‚æƒ³è·å–æ–°æµªå¾®åšç”¨æˆ·çš„æ˜µç§°å’Œå¤´åƒå¯ä»¥ç”¨ä¸‹é¢çš„ä»£ç ã€‚</p>
 <pre><code>NSDictionary *snsAccountDic = [UMSocialAccountManager socialAccountDictionary];
 UMSocialAccountEntity *sinaAccount = [snsAccountDic valueForKey:UMShareToSina];
 UMLog(@&quot;sina nickName is %@, iconURL is %@&quot;,sinaAccount.userName,sinaAccount.iconURL);
 </code></pre>
 
-<h2>ÆäËûÓÃ»§²Ù×÷ £¨Êı¾İ¼¶½Ó¿Ú£©</h2>
 <ul>
-<li>ÅĞ¶ÏÊÇ·ñÊÚÈ¨µ½Ä³¸öÎ¢²©Æ½Ì¨£¬ÀıÈçÓĞÃ»ÓĞÊÚÈ¨µ½ĞÂÀËÎ¢²©</li>
+<li>åˆ¤æ–­æ˜¯å¦æˆæƒåˆ°æŸä¸ªå¾®åšå¹³å°ï¼Œå¹¶ä¸”Tokenæ²¡æœ‰è¿‡æœŸï¼Œä¾‹å¦‚æœ‰æ²¡æœ‰æˆæƒåˆ°æ–°æµªå¾®åš</li>
 </ul>
-<pre><code>[UMSocialAccountManager isOauthWithPlatform:UMShareToSina];
+<pre><code>[UMSocialAccountManager isOauthAndTokenNotExpired:UMShareToSina];
 </code></pre>
 
 <ul>
 <li>
-<p>ÊÚÈ¨Ä³¸öÆ½Ì¨£¬ÈçÉÏÃæ½çÃæ¼¶½Ó¿Ú²¿·Ö¡£</p>
+<p>æˆæƒæŸä¸ªå¹³å°ï¼Œå¦‚ä¸Šé¢ç•Œé¢çº§æ¥å£éƒ¨åˆ†ã€‚</p>
 </li>
 <li>
-<p>½â³ıÊÚÈ¨,Èç¹ûÏë»ñÈ¡½â³ıÊÚÈ¨½á¹ûÍ¬ÑùÔÚcompletionµÄ»Øµ÷¶ÔÏóÖĞµÄĞÎ²Î<code>response</code>ÖĞµÃµ½¡£ÏÂÃæÊÇ½â³ı°ó¶¨ĞÂÀËÎ¢²©µÄ´úÂë£º</p>
+<p>è§£é™¤æˆæƒ,å¦‚æœæƒ³è·å–è§£é™¤æˆæƒç»“æœåŒæ ·åœ¨completionçš„å›è°ƒå¯¹è±¡ä¸­çš„å½¢å‚<code>response</code>ä¸­å¾—åˆ°ã€‚ä¸‹é¢æ˜¯è§£é™¤ç»‘å®šæ–°æµªå¾®åšçš„ä»£ç ï¼š</p>
 </li>
 </ul>
 <pre><code>[[UMSocialDataService defaultDataService] requestUnOauthWithType:UMShareToSina  completion:^(UMSocialResponseEntity *response){
@@ -77,16 +102,25 @@ UMLog(@&quot;sina nickName is %@, iconURL is %@&quot;,sinaAccount.userName,sinaA
 </code></pre>
 
 <ul>
-<li>»ñÈ¡ÓÃ»§Î¢²©ÕËºÅÏêÏ¸ĞÅÏ¢.</li>
+<li>å®æ—¶åˆ¤æ–­Tokenæ˜¯å¦æœ‰æ•ˆï¼Œä»å„ä¸ªå¼€æ”¾å¹³å°è·å–ç»“æœ</li>
 </ul>
-<pre><code>//°üÀ¨¸÷Æ½Ì¨µÄuidºÍaccestoken£¬¸÷¸öÆ½Ì¨²»Ò»Ñù£¬ÌÚÑ¶Î¢²©ÓĞopenid¡£µÃµ½µÄÊı¾İÔÚ»Øµ÷Block¶ÔÏóĞÎ²ÎresponeµÄdataÊôĞÔ¡£    
+<pre><code>//åˆ¤æ–­æ–°æµªå¾®åšè´¦å·çš„tokenæ˜¯å¦æœ‰æ•ˆ
+    [[UMSocialDataService defaultDataService] requestIsTokenValid:@[UMShareToSina] completion:^(UMSocialResponseEntity *response) {
+        NSLog(@&quot;is token valid is %@&quot;,[response.data.allValues objectAtIndex:0]);
+    }];
+</code></pre>
+
+<ul>
+<li>è·å–ç”¨æˆ·å¾®åšè´¦å·è¯¦ç»†ä¿¡æ¯.</li>
+</ul>
+<pre><code>//åŒ…æ‹¬å„å¹³å°çš„uidå’Œaccestokenï¼Œå„ä¸ªå¹³å°ä¸ä¸€æ ·ï¼Œè…¾è®¯å¾®åšæœ‰openidã€‚å¾—åˆ°çš„æ•°æ®åœ¨å›è°ƒBlockå¯¹è±¡å½¢å‚responeçš„dataå±æ€§ã€‚    
 [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToTencent  completion:^(UMSocialResponseEntity *response){
             NSLog(@&quot;SnsInformation is %@&quot;,response.data);
         }];
 </code></pre>
 
 <ul>
-<li>»ñÈ¡ÓÃ»§ºÃÓÑÁĞ±í£¬Ö§³ÖĞÂÀËÎ¢²©¡¢ÌÚÑ¶Î¢²©¡¢ÈËÈËÍø¡£µÃµ½µÄÊı¾İÔÚ»Øµ÷Block¶ÔÏóĞÎ²Î<code>respone</code>µÄ<code>data</code>ÊôĞÔ¡£</li>
+<li>è·å–ç”¨æˆ·å¥½å‹åˆ—è¡¨ï¼Œæ”¯æŒæ–°æµªå¾®åšã€è…¾è®¯å¾®åšã€äººäººç½‘ã€‚å¾—åˆ°çš„æ•°æ®åœ¨å›è°ƒBlockå¯¹è±¡å½¢å‚<code>respone</code>çš„<code>data</code>å±æ€§ã€‚</li>
 </ul>
 <pre><code>[[UMSocialDataService defaultDataService] requestSnsFriends:UMShareToTencent  completion:^(UMSocialResponseEntity *response){
             NSLog(@&quot;SnsFriends is %@&quot;,response.data);
@@ -94,45 +128,45 @@ UMLog(@&quot;sina nickName is %@, iconURL is %@&quot;,sinaAccount.userName,sinaA
 </code></pre>
 
 <ul>
-<li>Ìí¼Ó¹Ø×¢£¬Ö§³ÖĞÂÀËÎ¢²©¡¢ÌÚÑ¶Î¢²©£¬¿ÉÒÔÍ¬Ê±´«¶à¸ö¹Ø×¢Î¢²©ÕËºÅ</li>
+<li>æ·»åŠ å…³æ³¨ï¼Œæ”¯æŒæ–°æµªå¾®åšã€è…¾è®¯å¾®åšï¼Œå¯ä»¥åŒæ—¶ä¼ å¤šä¸ªå…³æ³¨å¾®åšè´¦å·</li>
 </ul>
 <pre><code>[[UMSocialDataService defaultDataService] requestAddFollow:UMShareToSina followedUsid:@[@&quot;2937537507&quot;] completion:nil];
 </code></pre>
 
 <ul>
-<li>ÅĞ¶ÏÊÇ·ñÒÑ¾­µÇÂ¼ÓÑÃËÕËºÅ¡£ËùÎ½ÓÑÃËÕËºÅ£¬¼´ÎÒÃÇ½«°ó¶¨Ò»¸öÎ¢²©Æ½Ì¨µÄÕËºÅ×÷ÎªÓÑÃËÕËºÅ£¬ÓÃ»§Ê¹ÓÃSDKµÄÆÀÂÛ¹¦ÄÜºÍ¸öÈËÖĞĞÄÊ±Ê¹ÓÃÓÑÃËÕËºÅµÄêÇ³ÆºÍÍ·Ïñ¡£</li>
+<li>åˆ¤æ–­æ˜¯å¦å·²ç»ç™»å½•å‹ç›Ÿè´¦å·ã€‚æ‰€è°“å‹ç›Ÿè´¦å·ï¼Œå³æˆ‘ä»¬å°†ç»‘å®šä¸€ä¸ªå¾®åšå¹³å°çš„è´¦å·ä½œä¸ºå‹ç›Ÿè´¦å·ï¼Œç”¨æˆ·ä½¿ç”¨SDKçš„è¯„è®ºåŠŸèƒ½å’Œä¸ªäººä¸­å¿ƒæ—¶ä½¿ç”¨å‹ç›Ÿè´¦å·çš„æ˜µç§°å’Œå¤´åƒã€‚</li>
 </ul>
 <pre><code>[UMSocialAccountManager isLoginWithSnsAccount];
 </code></pre>
 
 <ul>
-<li>µÇÂ¼ÓÑÃËÕËºÅ£¬Ñ¡ÔñµÇÂ¼µÄÆ½Ì¨Ò»¶¨ÎªÒÑ¾­ÊÚÈ¨µÄÎ¢²©Æ½Ì¨£¬·ñÔòÎŞ·¨Õı³£µÇÂ¼¡£ÏÂÃæÊÇÑ¡ÔñĞÂÀËÎ¢²©×÷ÎªÓÑÃËÕËºÅ¡£</li>
+<li>ç™»å½•å‹ç›Ÿè´¦å·ï¼Œé€‰æ‹©ç™»å½•çš„å¹³å°ä¸€å®šä¸ºå·²ç»æˆæƒçš„å¾®åšå¹³å°ï¼Œå¦åˆ™æ— æ³•æ­£å¸¸ç™»å½•ã€‚ä¸‹é¢æ˜¯é€‰æ‹©æ–°æµªå¾®åšä½œä¸ºå‹ç›Ÿè´¦å·ã€‚</li>
 </ul>
 <pre><code>[[UMSocialDataService defaultDataService] requestBindToSnsWithType:UMShareToSina completion:nil];
 </code></pre>
 
 <ul>
-<li>×¢ÏúÓÑÃËÕËºÅ¡£</li>
+<li>æ³¨é”€å‹ç›Ÿè´¦å·ã€‚</li>
 </ul>
 <pre><code>[[UMSocialDataService defaultDataService] requestUnBindToSnsWithCompletion:nil];
 </code></pre>
 
-<h3>³£¼û´íÎó´úÂëº¬Òå</h3>
+<h3>å¸¸è§é”™è¯¯ä»£ç å«ä¹‰</h3>
 <table>
 <thead>
 <tr>
-<th>´íÎóÂë</th>
-<th>´íÎóÔ­Òò</th>
+<th>é”™è¯¯ç </th>
+<th>é”™è¯¯åŸå› </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>503</td>
-<td>ÆÀÂÛÊ§°Ü</td>
+<td>è¯„è®ºå¤±è´¥</td>
 </tr>
 <tr>
 <td>504</td>
-<td>»ñÈ¡ÆÀÂÛÊ§°Ü</td>
+<td>è·å–è¯„è®ºå¤±è´¥</td>
 </tr>
 </tbody>
 </table>

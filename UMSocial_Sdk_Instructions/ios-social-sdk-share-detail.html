@@ -1,111 +1,133 @@
-<link rel="stylesheet" type="text/css" href="markdown.css"></link>
-<h1>·ÖÏí ÏêÏ¸¼¯³É</h1>
-<p><font color="red">×¢Òâ£ºÏßÉÏ¼¯³ÉÎÄµµµÄÊ¾Àı´úÂë¶ÔÓ¦µÄÊÇ×îĞÂ°æ±¾µÄSDK£¬Èç¹ûÄãËùÓÃµÄSDK°æ±¾ÀàÃû»òÕß·½·¨ÃûÓë´ËÎÄµµ²»·ûºÏ£¬Çë¿´Ëæ°üÀïÃæµÄÏßÏÂÎÄµµ»òÕßÏÂÔØÊ¹ÓÃ×îĞÂ°æ±¾µÄSDK¡£</font></p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" type="text/css" href="markdown.css"></link></head><body>
+</body></html><h1>åˆ†äº« è¯¦ç»†é›†æˆ</h1>
+<p><font color="red">æ³¨æ„ï¼š1.çº¿ä¸Šé›†æˆæ–‡æ¡£çš„ç¤ºä¾‹ä»£ç å¯¹åº”çš„æ˜¯æœ€æ–°ç‰ˆæœ¬çš„SDKï¼Œå¦‚æœä½ æ‰€ç”¨çš„SDKç‰ˆæœ¬ç±»åæˆ–è€…æ–¹æ³•åä¸æ­¤æ–‡æ¡£ä¸ç¬¦åˆï¼Œè¯·çœ‹éšåŒ…é‡Œé¢çš„çº¿ä¸‹æ–‡æ¡£æˆ–è€…ä¸‹è½½ä½¿ç”¨æœ€æ–°ç‰ˆæœ¬çš„SDKã€‚<br />
+ </font></p>
+<p><input name="pinList" type="hidden" value="1"/></p>
 <ul>
 <li>
 <ol>
-<li><a href="#social_appkey">ÉèÖÃÓÑÃËappkey</a></li>
+<li><a href="#social_appkey">è®¾ç½®å‹ç›Ÿappkey</a></li>
 </ol>
 </li>
 <li>
 <ol>
-<li><a href="#social_share">¸÷ÖÖ²»Í¬µÄ·ÖÏí½Ó¿Ú£¬Çë¸ù¾İ¶¨ÖÆĞèÇó×ÔĞĞÑ¡ÔñºÏÊÊµÄÀàĞÍ</a></li>
-<li><a href="#social_share_list">Ê¹ÓÃÄ¬ÈÏUI·ç¸ñ</a></li>
-<li><a href="#social_share_edit">Ê¹ÓÃ·ÖÏíAPI£¨×Ô¶¯ÊÚÈ¨ºóÌø×ªµ½ÄÚÈİ±à¼­Ò³£©</a></li>
-<li><a href="#social_share_data">Ö±½Ó·ÖÏíµ×²ã½Ó¿Ú£¨×Ô¶¯¼ì²éÊÚÈ¨£©</a></li>
-<li><a href="#social_oauth_share">Ö±½Ó·ÖÏíµ×²ã½Ó¿Ú£¨ÊÚÈ¨ + ·ÖÏí½Ó¿Ú·ÖÀë£©</a></li>
-<li><a href="#social_share_config">·ÖÏíÏà¹ØÉèÖÃ</a></li>
+<li><a href="#social_share">å„ç§ä¸åŒçš„åˆ†äº«æ¥å£ï¼Œè¯·æ ¹æ®å®šåˆ¶éœ€æ±‚è‡ªè¡Œé€‰æ‹©åˆé€‚çš„ç±»å‹</a></li>
+<li><a href="#social_share_list">ä½¿ç”¨é»˜è®¤UIé£æ ¼</a></li>
+<li><a href="#social_share_edit">ä½¿ç”¨åˆ†äº«APIï¼ˆè‡ªåŠ¨æˆæƒåè·³è½¬åˆ°å†…å®¹ç¼–è¾‘é¡µï¼‰</a></li>
+<li><a href="#social_share_data">ç›´æ¥åˆ†äº«åº•å±‚æ¥å£ï¼ˆè‡ªåŠ¨æ£€æŸ¥æˆæƒï¼‰</a></li>
+<li><a href="#social_oauth_share">ç›´æ¥åˆ†äº«åº•å±‚æ¥å£ï¼ˆæˆæƒ + åˆ†äº«æ¥å£åˆ†ç¦»ï¼‰</a></li>
+<li><a href="#social_share_config">åˆ†äº«ç›¸å…³è®¾ç½®</a></li>
 </ol>
 </li>
 <li>
 <ol>
-<li><a href="#social_sso">¸÷Æ½Ì¨SSO£¨ÃâµÇÂ¼£©ÅäÖÃ</a></li>
-<li><a href="#social_sso_1">Ìí¼ÓURL scheme</a></li>
-<li><a href="#social_sso_2">ÔÚAppDelegateÎÄ¼şÀïÃæÊµÏÖÏµÍ³»Øµ÷</a></li>
-<li><a href="#social_sso_3">Ìí¼ÓÏµÍ³¿âÎÄ¼ş</a></li>
+<li><a href="#social_sso">å„å¹³å°SSOï¼ˆå…ç™»å½•ï¼‰é…ç½®</a></li>
+<li><a href="#social_sso_1">æ·»åŠ URL scheme</a></li>
+<li><a href="#social_sso_2">åœ¨AppDelegateæ–‡ä»¶é‡Œé¢å®ç°ç³»ç»Ÿå›è°ƒ</a></li>
+<li><a href="#social_sso_3">æ·»åŠ ç³»ç»Ÿåº“æ–‡ä»¶</a></li>
 </ol>
 </li>
 <li>
 <ol>
-<li><a href="#social_wechat">¼¯³ÉÎ¢ĞÅ</a></li>
-<li><a href="#social_wechat_register">×¢²áÎ¢ĞÅÓ¦ÓÃid</a></li>
-<li><a href="#social_wechat_id">ÉèÖÃÎ¢ĞÅÓ¦ÓÃid</a></li>
-<li><a href="#social_wechat_scheme">ÉèÖÃurl scheme</a></li>
-<li><a href="#social_wechat_type">ÉèÖÃÎ¢ĞÅ·ÖÏíÏûÏ¢ÀàĞÍ</a></li>
-<li><a href="#social_wechat_open">Ìø×ªµ½Î¢ĞÅ¼°»Øµ÷</a></li>
+<li><a href="#social_wechat">é›†æˆå¾®ä¿¡</a></li>
 </ol>
 </li>
 <li>
 <ol>
-<li><a href="#social_qq">¼¯³ÉÊÖ»úQQ</a></li>
-<li><a href="#social_qq_register">ÔÚÌÚÑ¶QQ»¥Áª¿ª·ÅÆ½Ì¨×¢²áÓ¦ÓÃ</a></li>
-<li><a href="#social_qq_open">´ò¿ª¼¯³ÉÊÖ»úQQ¿ª¹Ø</a></li>
-<li><a href="#social_qq_framework">Ìí¼ÓÏÂÃæ¼¸¸öÏµÍ³framework</a></li>
-<li><a href="#social_qq_scheme">ÉèÖÃxcodeµÄurl scheme</a></li>
-<li><a href="#social_qq_open">Ìø×ªµ½ÊÖ»úQQ¼°»Øµ÷</a></li>
+<li><a href="#social_qq">é›†æˆæ‰‹æœºQQ</a></li>
 </ol>
 </li>
 <li>
 <ol>
-<li><a href="#social_qzone">¼¯³É·ÖÏíµ½QQ¿Õ¼ä</a> </li>
+<li><a href="#social_qzone">é›†æˆåˆ†äº«åˆ°QQç©ºé—´</a> </li>
 </ol>
 </li>
 <li>
 <ol>
-<li><a href="#social_laiwang">¼¯³ÉÀ´Íù</a></li>
+<li><a href="#social_sina">é›†æˆæ–°æµªå¾®åš SSO</a></li>
 </ol>
 </li>
 <li>
 <ol>
-<li><a href="#social_yixin">¼¯³ÉÒ×ĞÅ</a></li>
+<li><a href="#social_tencent">é›†æˆè…¾è®¯å¾®åš SSO</a></li>
 </ol>
 </li>
 <li>
 <ol>
-<li><a href="#social_facebook">¼¯³Éfacebook</a></li>
+<li><a href="#social_renren">é›†æˆäººäººç½‘SSO</a>   </li>
 </ol>
 </li>
 <li>
 <ol>
-<li><a href="#social_twitter">¼¯³ÉTwitter</a></li>
+<li><a href="#social_laiwang">é›†æˆæ¥å¾€</a></li>
 </ol>
 </li>
 <li>
 <ol>
-<li><a href="#social_instagram">¼¯³É·ÖÏíµ½Instagram</a></li>
+<li><a href="#social_yixin">é›†æˆæ˜“ä¿¡</a></li>
 </ol>
 </li>
 <li>
 <ol>
-<li><a href="#binding_config">°ó¶¨ÓÑÃËÓ¦ÓÃ±êÊ¶Óë¸÷¿ª·ÅÆ½Ì¨</a>         </li>
+<li><a href="#social_facebook">é›†æˆfacebook</a></li>
 </ol>
 </li>
 <li>
 <ol>
-<li><a href="#faq">FAQ</a>         </li>
+<li><a href="#social_twitter">é›†æˆTwitter</a></li>
 </ol>
 </li>
 <li>
 <ol>
-<li><a href="#error_code">³£¼û´íÎó</a>         </li>
+<li><a href="#social_instagram">é›†æˆåˆ†äº«åˆ°Instagram</a></li>
 </ol>
 </li>
 <li>
 <ol>
-<li><a href="#support">¼¼ÊõÖ§³Ö</a> </li>
+<li><a href="#social_line">é›†æˆåˆ†äº«åˆ°Line</a></li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#social_whatsapp">é›†æˆåˆ†äº«åˆ°Whatsapp</a></li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#social_tumblr">é›†æˆåˆ†äº«åˆ°Tumblr</a></li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#binding_config">ç»‘å®šå‹ç›Ÿåº”ç”¨æ ‡è¯†ä¸å„å¼€æ”¾å¹³å°</a>         </li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#FAQ">FAQ</a>         </li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#error_code">å¸¸è§é”™è¯¯</a>         </li>
+</ol>
+</li>
+<li>
+<ol>
+<li><a href="#support">æŠ€æœ¯æ”¯æŒ</a> </li>
 </ol>
 </li>
 </ul>
-<h1><a name="social_appkey" id="social_appkey" style="color:black">1. ÉèÖÃÓÑÃËappkey</a></h1>
+<h1><a name="social_appkey" id="social_appkey" style="color:black">1. è®¾ç½®å‹ç›Ÿappkey</a></h1>
 <ul>
 <li>
-<p>»ñÈ¡ÓÑÃËAppkey¡£Èç¹ûÄãÖ®Ç°ÒÑ¾­ÔÚÓÑÃË×¢²áÁËÓ¦ÓÃ£¬»ñµÃÁËAppkey£¬¿ÉÒÔ¼ÌĞøÊ¹ÓÃÖ®Ç°»ñµÃAppkey¡£   </p>
+<p>è·å–å‹ç›ŸAppkeyã€‚å¦‚æœä½ ä¹‹å‰å·²ç»åœ¨å‹ç›Ÿæ³¨å†Œäº†åº”ç”¨ï¼Œè·å¾—äº†Appkeyï¼Œå¯ä»¥ç»§ç»­ä½¿ç”¨ä¹‹å‰è·å¾—Appkeyã€‚   </p>
 </li>
 <li>
-<p>Èç¹ûÄãÉĞÎ´ÔÚÓÑÃË×¢²áÕËºÅ£¬ĞèÒªÏÈ<a href="http://www.umeng.com/users/sign_up" style="text-decoration:none">×¢²á</a>£¬×¢²áÖ®ºóµÇÂ¼ÄãµÄÕËºÅ£¬µã»÷<strong>Ìí¼ÓĞÂÓ¦ÓÃ</strong>£¬Íê³ÉĞÂÓ¦ÓÃÌîĞ´Ö®ºó£¬½²½øÈëÓ¦ÓÃ¹ÜÀíÒ³Ãæ¡£ÔÚ¸ÃÒ³Ãæ¾ÍÄÜµÃµ½<code>Appkey</code>¡£</p>
+<p>å¦‚æœä½ å°šæœªåœ¨å‹ç›Ÿæ³¨å†Œè´¦å·ï¼Œéœ€è¦å…ˆ<a href="http://www.umeng.com/users/sign_up" style="text-decoration:none">æ³¨å†Œ</a>ï¼Œæ³¨å†Œä¹‹åç™»å½•ä½ çš„è´¦å·ï¼Œç‚¹å‡»<strong>æ·»åŠ æ–°åº”ç”¨</strong>ï¼Œå®Œæˆæ–°åº”ç”¨å¡«å†™ä¹‹åï¼Œå°†è¿›å…¥åº”ç”¨ç®¡ç†é¡µé¢ã€‚åœ¨è¯¥é¡µé¢å°±èƒ½å¾—åˆ°<code>Appkey</code>ã€‚</p>
 </li>
 <li>
-<p>ÔÚ´úÂëÖĞÉèÖÃÄãµÄÓÑÃËAppkey£¬ÔÚ <code>AppDelegate</code>ÎÄ¼şÄÚÉèÖÃÄãµÄAppKey£º</p>
+<p>åœ¨ä»£ç ä¸­è®¾ç½®ä½ çš„å‹ç›ŸAppkeyï¼Œåœ¨ <code>AppDelegate</code>æ–‡ä»¶å†…è®¾ç½®ä½ çš„AppKeyï¼š</p>
 </li>
 </ul>
 <pre><code>#import &quot;UMSocial.h&quot;
@@ -115,300 +137,350 @@
 }
 </code></pre>
 
-<h1><a name="social_share" id="social_share" style="color:black">2. Ê¹ÓÃ¸÷ÖÖ²»Í¬µÄ·ÖÏí½Ó¿Ú£¬Çë°´ĞèÑ¡È¡</a></h1>
-<h1><a name="social_share_list" id="social_share_list" style="color:red">2.1 Ê¹ÓÃÄ¬ÈÏUI·ç¸ñ</a></h1>
+<h1><a name="social_share" id="social_share" style="color:black">2. ä½¿ç”¨å„ç§ä¸åŒçš„åˆ†äº«æ¥å£ï¼Œè¯·æŒ‰éœ€é€‰å–</a></h1>
+<h1><a name="social_share_list" id="social_share_list" style="color:red">2.1 ä½¿ç”¨é»˜è®¤UIé£æ ¼</a></h1>
 <ul>
-<li>ÊÊÓÃÈËÈº£ºÏ£Íû10·ÖÖÓ¼¯³É´ÓÎŞµ½ÓĞÊµÏÖ·ÖÏíµÄ¿ª·¢Õß     </li>
-<li>½Ó¿ÚËµÃ÷£ºµ÷ÓÃ¸Ã½Ó¿Ú½«ÏÈµ¯³ö·ÖÏíÆ½Ì¨Ñ¡ÔñÒ³£¬Ñ¡ÔñÏàÓ¦µÄÆ½Ì¨½«½øĞĞÊÚÈ¨²¢·ÖÏí   </li>
+<li>é€‚ç”¨äººç¾¤ï¼šå¸Œæœ›10åˆ†é’Ÿé›†æˆä»æ— åˆ°æœ‰å®ç°åˆ†äº«çš„å¼€å‘è€…     </li>
+<li>æ¥å£è¯´æ˜ï¼šè°ƒç”¨è¯¥æ¥å£å°†å…ˆå¼¹å‡ºåˆ†äº«å¹³å°é€‰æ‹©é¡µï¼Œé€‰æ‹©ç›¸åº”çš„å¹³å°å°†è¿›è¡Œæˆæƒå¹¶åˆ†äº«   </li>
 </ul>
-<pre><code>//Èç¹ûĞèÒª·ÖÏí»Øµ÷£¬Çë½«delegate¶ÔÏóÉèÖÃself£¬²¢ÊµÏÖÏÂÃæµÄ»Øµ÷·½·¨
+<pre><code>//æ³¨æ„ï¼šåˆ†äº«åˆ°å¾®ä¿¡å¥½å‹ã€å¾®ä¿¡æœ‹å‹åœˆã€å¾®ä¿¡æ”¶è—ã€QQç©ºé—´ã€QQå¥½å‹ã€æ¥å¾€å¥½å‹ã€æ¥å¾€æœ‹å‹åœˆã€æ˜“ä¿¡å¥½å‹ã€æ˜“ä¿¡æœ‹å‹åœˆã€Facebookã€Twitterã€Instagramç­‰å¹³å°éœ€è¦å‚è€ƒå„è‡ªçš„é›†æˆæ–¹æ³•
+//å¦‚æœéœ€è¦åˆ†äº«å›è°ƒï¼Œè¯·å°†delegateå¯¹è±¡è®¾ç½®selfï¼Œå¹¶å®ç°ä¸‹é¢çš„å›è°ƒæ–¹æ³•
 [UMSocialSnsService presentSnsIconSheetView:self
                                      appKey:@&quot;507fcab25270157b37000010&quot;
-                                  shareText:@&quot;ÓÑÃËÉç»á»¯·ÖÏíÈÃÄú¿ìËÙÊµÏÖ·ÖÏíµÈÉç»á»¯¹¦ÄÜ£¬www.umeng.com/social&quot;
-                                 shareImage:[UIImage imageNamed:@&quot;http://www.umeng.com/images/pic/banner_module_social.png&quot;]
+                                  shareText:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–åˆ†äº«è®©æ‚¨å¿«é€Ÿå®ç°åˆ†äº«ç­‰ç¤¾ä¼šåŒ–åŠŸèƒ½ï¼Œwww.umeng.com/social&quot;
+                                 shareImage:[UIImage imageNamed:@&quot;icon&quot;]
                             shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,nil]
                                    delegate:nil]; 
 </code></pre>
 
-<p>ÏÖÔÚ»á³öÏÖĞ§¹û£º<br />
-<img alt="social" src="http://apf.umeng.com:8888/show?path=yeahugo/2013-08/a8cd49.png" title="social_share_list" /> </p>
+<p>ç°åœ¨ä¼šå‡ºç°æ•ˆæœï¼š<br />
+<img alt="social" src="http://dev.umeng.com/system/images/W1siZiIsIjIwMTQvMDMvMTIvMTZfMjFfNDBfNTc3X3NvY2lhbF9zaGFyZWxpc3RfYWN0aW9uc2hlZXQucG5nIl1d/social_sharelist_actionsheet.png&quot;" /> </p>
 <blockquote>
-<p>×¢Òâ£º
-1. Ö§³Ö·ÖÏí±à¼­Ò³ºÍÊÚÈ¨Ò³ÃæºáÆÁ£¬±ØĞëÒªÔÚ³öÏÖÁĞ±íÒ³ÃæÇ°ÉèÖÃ: <br />
+<p>æ³¨æ„ï¼š
+1. æ”¯æŒåˆ†äº«ç¼–è¾‘é¡µå’Œæˆæƒé¡µé¢æ¨ªå±ï¼Œå¿…é¡»è¦åœ¨å‡ºç°åˆ—è¡¨é¡µé¢å‰è®¾ç½®: <br />
 <code>[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];</code><br />
-2. µã»÷Ã¿¸öÆ½Ì¨ºóÄ¬ÈÏ»á½øÈëÄÚÈİ±à¼­Ò³Ãæ£¬ÈôÏëµã»÷ºóÖ±½Ó·ÖÏíÄÚÈİ£¬¿ÉÒÔÊµÏÖÏÂÃæµÄ»Øµ÷·½·¨¡£</p>
+2. ç‚¹å‡»æ¯ä¸ªå¹³å°åé»˜è®¤ä¼šè¿›å…¥å†…å®¹ç¼–è¾‘é¡µé¢ï¼Œè‹¥æƒ³ç‚¹å‡»åç›´æ¥åˆ†äº«å†…å®¹ï¼Œå¯ä»¥å®ç°ä¸‹é¢çš„å›è°ƒæ–¹æ³•ã€‚</p>
 </blockquote>
-<pre><code>//µ¯³öÁĞ±í·½·¨presentSnsIconSheetViewĞèÒªÉèÖÃdelegateÎªself
+<pre><code>//å¼¹å‡ºåˆ—è¡¨æ–¹æ³•presentSnsIconSheetViewéœ€è¦è®¾ç½®delegateä¸ºself
 -(BOOL)isDirectShareInIconActionSheet
 {
     return YES;
 }
 </code></pre>
 
-<p>ÊµÏÖ»Øµ÷·½·¨£¨¿ÉÑ¡£©:</p>
+<blockquote>
+<ol>
+<li>æœ‰äº›åˆ†äº«å¹³å°ï¼Œä¾‹å¦‚QQã€å¾®ä¿¡ç­‰ï¼Œéœ€è¦å®‰è£…åœ¨è®¾å¤‡ä¸Šå®‰è£…è¯¥å¹³å°å®¢æˆ·ç«¯æ‰èƒ½è¿›è¡Œåˆ†äº«.æ²¡æœ‰å®‰è£…è¯¥å®¢æˆ·ç«¯æœ¬SDKé»˜è®¤ä¼šéšè—æ˜¾ç¤ºè¯¥å¹³å°æŒ‰é’®ï¼ˆè‹¹æœå®¡æ ¸è¦æ±‚ï¼‰ï¼Œå¦‚æœéœ€è¦å¼ºåˆ¶æ˜¾ç¤ºå¯ä»¥æ‰“å¼€å¼€å…³ 
+ <code>[UMSocialConfig showAllPlatform:YES];</code></li>
+</ol>
+</blockquote>
+<p>å®ç°å›è°ƒæ–¹æ³•ï¼ˆå¯é€‰ï¼‰:</p>
 <pre><code>-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
-    //¸ù¾İ`responseCode`µÃµ½·¢ËÍ½á¹û,Èç¹û·ÖÏí³É¹¦
+    //æ ¹æ®`responseCode`å¾—åˆ°å‘é€ç»“æœ,å¦‚æœåˆ†äº«æˆåŠŸ
     if(response.responseCode == UMSResponseCodeSuccess)
     {
-        //µÃµ½·ÖÏíµ½µÄÎ¢²©Æ½Ì¨Ãû
+        //å¾—åˆ°åˆ†äº«åˆ°çš„å¾®åšå¹³å°å
         NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
     }      
 }
 </code></pre>
 
-<h1><a name="social_share_edit" id="social_share_edit" style="color:red">2.2 Ê¹ÓÃ·ÖÏíAPI£¨×Ô¶¯ÊÚÈ¨ºóÌø×ªµ½ÄÚÈİ±à¼­Ò³£©</a></h1>
+<h1><a name="social_share_edit" id="social_share_edit" style="color:red">2.2 ä½¿ç”¨åˆ†äº«APIï¼ˆè‡ªåŠ¨æˆæƒåè·³è½¬åˆ°å†…å®¹ç¼–è¾‘é¡µï¼‰</a></h1>
 <ul>
-<li>ÊÊÓÃÈËÈº£º½ÏÉî¸ûÏ¸×÷ĞÍ¿ª·¢Õß£¬Ï£Íû×Ô¶¨Òå·ÖÏíÁĞ±í£¬Ê¹ÓÃ·ÖÏíµ×²ãAPI£¬µ«ÈÔÊ¹ÓÃÓÑÃËÌá¹©µÄ·ÖÏí±à¼­Ò³¡£   </li>
-<li>½Ó¿ÚËµÃ÷£ºÈç¹ûÒÑ¾­ÊÚÈ¨£¬ÔòÖ±½ÓÌø×ªµ½·ÖÏí±à¼­Ò³£¬·ñÔò½«½øĞĞÊÚÈ¨²Ù×÷È»ºóÔÙÌø×ªµ½·ÖÏí±à¼­Ò³.Ïà±ÈopenShare£¬¸Ã½Ó¿Ú²»ĞèÒªµ¯³ö·ÖÏíÃæ°å¡£¸Ã½Ó¿ÚÖ§³ÖËùÓĞÆ½Ì¨µÄ·ÖÏí£¨QQºÃÓÑ£¬Î¢ĞÅ»áÓĞÑ¡ÔñºÃÓÑµÄ½çÃæ£©¡£  </li>
+<li>é€‚ç”¨äººç¾¤ï¼šè¾ƒæ·±è€•ç»†ä½œå‹å¼€å‘è€…ï¼Œå¸Œæœ›è‡ªå®šä¹‰åˆ†äº«åˆ—è¡¨ï¼Œä½¿ç”¨åˆ†äº«åº•å±‚APIï¼Œä½†ä»ä½¿ç”¨å‹ç›Ÿæä¾›çš„åˆ†äº«ç¼–è¾‘é¡µã€‚   </li>
+<li>æ¥å£è¯´æ˜ï¼šå¦‚æœå·²ç»æˆæƒï¼Œåˆ™ç›´æ¥è·³è½¬åˆ°åˆ†äº«ç¼–è¾‘é¡µï¼Œå¦åˆ™å°†è¿›è¡Œæˆæƒæ“ä½œç„¶åå†è·³è½¬åˆ°åˆ†äº«ç¼–è¾‘é¡µ.ç›¸æ¯”presentSnsIconSheetViewæ–¹æ³•ï¼Œè¯¥æ¥å£ä¸éœ€è¦å¼¹å‡ºåˆ†äº«é¢æ¿ã€‚è¯¥æ¥å£æ”¯æŒæ‰€æœ‰å¹³å°çš„åˆ†äº«ï¼ˆQQå¥½å‹ï¼Œå¾®ä¿¡ä¼šæœ‰é€‰æ‹©å¥½å‹çš„ç•Œé¢ï¼‰ã€‚  </li>
 </ul>
-<p>£¨Ã»ÓĞÊÚÈ¨Ôò½øÈëÊÚÈ¨Ò³Ãæ£¬Íê³ÉÊÚÈ¨ºóÔÙ½øÈë±à¼­Ò³Ãæ¡££©</p>
+<p>ï¼ˆæ²¡æœ‰æˆæƒåˆ™è¿›å…¥æˆæƒé¡µé¢ï¼Œå®Œæˆæˆæƒåå†è¿›å…¥ç¼–è¾‘é¡µé¢ã€‚ï¼‰</p>
 <pre><code>#import &quot;UMSocial.h&quot;
-¡­¡­
-    [[UMSocialControllerService defaultControllerService] setShareText:@&quot;·ÖÏíÄÚÇ¶ÎÄ×Ö&quot; shareImage:[UIImage imageNamed:@&quot;icon&quot;] socialUIDelegate:nil];     //ÉèÖÃ·ÖÏíÄÚÈİºÍ»Øµ÷¶ÔÏó
+â€¦â€¦
+//æ³¨æ„ï¼šåˆ†äº«åˆ°å¾®ä¿¡å¥½å‹ã€å¾®ä¿¡æœ‹å‹åœˆã€å¾®ä¿¡æ”¶è—ã€QQç©ºé—´ã€QQå¥½å‹ã€æ¥å¾€å¥½å‹ã€æ¥å¾€æœ‹å‹åœˆã€æ˜“ä¿¡å¥½å‹ã€æ˜“ä¿¡æœ‹å‹åœˆã€Facebookã€Twitterã€Instagramç­‰å¹³å°éœ€è¦å‚è€ƒå„è‡ªçš„é›†æˆæ–¹æ³•
+    [[UMSocialControllerService defaultControllerService] setShareText:@&quot;åˆ†äº«å†…åµŒæ–‡å­—&quot; shareImage:[UIImage imageNamed:@&quot;icon&quot;] socialUIDelegate:self];        //è®¾ç½®åˆ†äº«å†…å®¹å’Œå›è°ƒå¯¹è±¡
     [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina].snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);
 </code></pre>
 
 <blockquote>
-<p>×¢Òâ£ºÈôµ¯³öºáÆÁµÄÒ³Ãæ£¬±ØĞëÒªÔÚ³öÏÖ±à¼­Ò³ÃæÇ°ÉèÖÃ<br />
+<p>æ³¨æ„ï¼šè‹¥å¼¹å‡ºæ¨ªå±çš„é¡µé¢ï¼Œå¿…é¡»è¦åœ¨å‡ºç°ç¼–è¾‘é¡µé¢å‰è®¾ç½®<br />
 <code>[UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];</code></p>
 </blockquote>
-<p>ÊµÏÖ»Øµ÷·½·¨£¨¿ÉÑ¡£©:</p>
+<p>å®ç°å›è°ƒæ–¹æ³•ï¼ˆå¯é€‰ï¼‰:</p>
 <pre><code>-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
-    //¸ù¾İ`responseCode`µÃµ½·¢ËÍ½á¹û,Èç¹û·ÖÏí³É¹¦
+    //æ ¹æ®`responseCode`å¾—åˆ°å‘é€ç»“æœ,å¦‚æœåˆ†äº«æˆåŠŸ
     if(response.responseCode == UMSResponseCodeSuccess)
     {
-        //µÃµ½·ÖÏíµ½µÄÎ¢²©Æ½Ì¨Ãû
+        //å¾—åˆ°åˆ†äº«åˆ°çš„å¾®åšå¹³å°å
         NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
     }      
 }
 </code></pre>
 
-<h1><a name="social_share_data" id="social_share_data" style="color:red">2.3 Ö±½Ó·ÖÏíµ×²ã½Ó¿Ú£¨×Ô¶¯¼ì²éÊÚÈ¨£©</a></h1>
+<h1><a name="social_share_data" id="social_share_data" style="color:red">2.3 ç›´æ¥åˆ†äº«åº•å±‚æ¥å£ï¼ˆè‡ªåŠ¨æ£€æŸ¥æˆæƒï¼‰</a></h1>
 <ul>
-<li>ÊÊÓÃÈËÈº£º½ÏÉî¸ûÏ¸×÷ĞÍ¿ª·¢Õß£¬Ï£Íû×Ô¶¨Òå·ÖÏíÁĞ±í£¬Ï£ÍûÊÚÈ¨ºÍ·ÖÏí·¢Éú£¬Ê¹ÓÃ·ÖÏíµ×²ãAPI²¢×Ô¶¯ÊÚÈ¨¡£   </li>
-<li>Ö±½Ó·¢ËÍÎ¢²©µ½¶ÔÓ¦µÄÎ¢²©Æ½Ì¨,Ö§³ÖÒ»´Î·ÖÏíµ½¶àÆ½Ì¨£¬¿ÉÒÔ´«ÈëÎÄ×Ö¡¢Í¼Æ¬¡¢µØÀíÎ»ÖÃ¡¢url×ÊÔ´¡£Í¼Æ¬¡¢µØÀíÎ»ÖÃºÍurl×ÊÔ´¿ÉÒÔÉèÎªnil¡£<br />
-Èç¹ûÖ»·¢ËÍµ½Ò»¸öÎ¢²©Æ½Ì¨£¬ÇÒ¸ÃÆ½Ì¨Ã»ÓĞÏÈÊÚÈ¨£¬SDK»á×Ô¶¯´ò¿ªÊÚÈ¨Ò³Ãæ£¬ÊÚÈ¨Íê³ÉÖ®ºóÔÙ·¢ËÍÎ¢²©¡£</li>
+<li>é€‚ç”¨äººç¾¤ï¼šè¾ƒæ·±è€•ç»†ä½œå‹å¼€å‘è€…ï¼Œå¸Œæœ›è‡ªå®šä¹‰åˆ†äº«åˆ—è¡¨ï¼Œå¸Œæœ›æˆæƒå’Œåˆ†äº«å‘ç”Ÿï¼Œä½¿ç”¨åˆ†äº«åº•å±‚APIå¹¶è‡ªåŠ¨æˆæƒã€‚   </li>
+<li>ç›´æ¥å‘é€å¾®åšåˆ°å¯¹åº”çš„å¾®åšå¹³å°,ä»…æ”¯æŒåˆ†äº«åˆ°ä¸€ä¸ªå¹³å°ï¼Œå¯ä»¥ä¼ å…¥æ–‡å­—ã€å›¾ç‰‡ã€åœ°ç†ä½ç½®ã€urlèµ„æºã€‚å›¾ç‰‡ã€åœ°ç†ä½ç½®å’Œurlèµ„æºå¯ä»¥è®¾ä¸ºnilã€‚<br />
+åªå‘é€åˆ°ä¸€ä¸ªå¾®åšå¹³å°ï¼Œä¸”è¯¥å¹³å°æ²¡æœ‰å…ˆæˆæƒï¼ŒSDKä¼šè‡ªåŠ¨æ‰“å¼€æˆæƒé¡µé¢ï¼Œæˆæƒå®Œæˆä¹‹åå†å‘é€å¾®åšã€‚</li>
 </ul>
-<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:@&quot;·ÖÏíÄÚÇ¶ÎÄ×Ö&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+<pre><code>//æ³¨æ„ï¼šåˆ†äº«åˆ°å¾®ä¿¡å¥½å‹ã€å¾®ä¿¡æœ‹å‹åœˆã€å¾®ä¿¡æ”¶è—ã€QQç©ºé—´ã€QQå¥½å‹ã€æ¥å¾€å¥½å‹ã€æ¥å¾€æœ‹å‹åœˆã€æ˜“ä¿¡å¥½å‹ã€æ˜“ä¿¡æœ‹å‹åœˆã€Facebookã€Twitterã€Instagramç­‰å¹³å°éœ€è¦å‚è€ƒå„è‡ªçš„é›†æˆæ–¹æ³•
+    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:@&quot;åˆ†äº«å†…åµŒæ–‡å­—&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
         if (response.responseCode == UMSResponseCodeSuccess) {
-            NSLog(@&quot;·ÖÏí³É¹¦£¡&quot;);
+            NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
         }
     }];
 </code></pre>
 
-<h1><a name="social_oauth_share" id="social_oauth_share" style="color:red">2.4 Ö±½Ó·ÖÏíµ×²ã½Ó¿Ú£¨ÊÚÈ¨ + ·ÖÏí½Ó¿Ú·ÖÀë£©</a></h1>
+<h1><a name="social_oauth_share" id="social_oauth_share" style="color:red">2.4 ç›´æ¥åˆ†äº«åº•å±‚æ¥å£ï¼ˆæˆæƒ + åˆ†äº«æ¥å£åˆ†ç¦»ï¼‰</a></h1>
 <ul>
-<li>ÊÊÓÃÈËÈº£ºÉî¸ûÏ¸×÷ĞÍ¿ª·¢Õß£¬Ï£ÍûÍêÈ«×Ô¶¨Òå½çÃæ£¬Ö»Ê¹ÓÃ·ÖÏíÏà¹Øµ×²ãAPIÊµÏÖ·ÖÏí¡£  </li>
-<li>½Ó¿ÚËµÃ÷£ºÊµÏÖ"ÊÚÈ¨+Ö±½Ó·ÖÏí"£¬Äã¿ÉÒÔ½«ÊÚÈ¨½Ó¿Ú(doOauthVerify)¸úÖ±½Ó·ÖÏí½Ó¿Ú£¨directShare£©½áºÏÆğÀ´Ê¹ÓÃ¡£ÊµÏÖÖ»Ğè¼òµ¥µÄ¼¸²½£º<br />
-<strong>²½ÖèÒ»£º¶¨Òå×Ô¼ºµÄ·ÖÏíÃæ°å</strong><br />
-<strong>²½Öè¶ş£ºÊµÏÖÓÃ»§ÊÚÈ¨£¨Ê×ÏÈÅĞ¶ÏÊÇ·ñÒÑ¾­ÊÚÈ¨¹ı£¬·ñÔò»áÖØ¸´ÊÚÈ¨£©</strong>  </li>
+<li>é€‚ç”¨äººç¾¤ï¼šæ·±è€•ç»†ä½œå‹å¼€å‘è€…ï¼Œå¸Œæœ›å®Œå…¨è‡ªå®šä¹‰ç•Œé¢ï¼Œåªä½¿ç”¨åˆ†äº«ç›¸å…³åº•å±‚APIå®ç°åˆ†äº«ã€‚  </li>
+<li>æ¥å£è¯´æ˜ï¼šå®ç°"æˆæƒ+ç›´æ¥åˆ†äº«"ï¼Œä½ å¯ä»¥å°†æˆæƒæ¥å£(doOauthVerify)è·Ÿç›´æ¥åˆ†äº«æ¥å£ï¼ˆdirectShareï¼‰ç»“åˆèµ·æ¥ä½¿ç”¨ã€‚å®ç°åªéœ€ç®€å•çš„å‡ æ­¥ï¼š<br />
+<strong>æ­¥éª¤ä¸€ï¼šå®šä¹‰è‡ªå·±çš„åˆ†äº«é¢æ¿</strong><br />
+<strong>æ­¥éª¤äºŒï¼šå®ç°ç”¨æˆ·æˆæƒï¼ˆé¦–å…ˆåˆ¤æ–­æ˜¯å¦å·²ç»æˆæƒè¿‡ï¼Œå¦åˆ™ä¼šé‡å¤æˆæƒï¼‰</strong>  </li>
 </ul>
-<pre><code>    //ÅĞ¶ÏÊÇ·ñÊÚÈ¨
-    [UMSocialAccountManager isOauthWithPlatform:UMShareToSina]
-    //½øÈëÊÚÈ¨Ò³Ãæ
+<pre><code>    //åˆ¤æ–­æ˜¯å¦æˆæƒ
+//æ³¨æ„ï¼šåˆ†äº«åˆ°å¾®ä¿¡å¥½å‹ã€å¾®ä¿¡æœ‹å‹åœˆã€å¾®ä¿¡æ”¶è—ã€QQç©ºé—´ã€QQå¥½å‹ã€æ¥å¾€å¥½å‹ã€æ¥å¾€æœ‹å‹åœˆã€æ˜“ä¿¡å¥½å‹ã€æ˜“ä¿¡æœ‹å‹åœˆã€Facebookã€Twitterã€Instagramç­‰å¹³å°éœ€è¦å‚è€ƒå„è‡ªçš„é›†æˆæ–¹æ³•
+    [UMSocialAccountManager isOauthAndTokenNotExpired:UMShareToSina]
+    //è¿›å…¥æˆæƒé¡µé¢
     [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina].loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
         if (response.responseCode == UMSResponseCodeSuccess) {
-            //»ñÈ¡Î¢²©ÓÃ»§Ãû¡¢uid¡¢tokenµÈ
+            //è·å–å¾®åšç”¨æˆ·åã€uidã€tokenç­‰
             UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToSina];
             NSLog(@&quot;username is %@, uid is %@, token is %@&quot;,snsAccount.userName,snsAccount.usid,snsAccount.accessToken); 
-               //½øÈëÄãµÄ·ÖÏíÄÚÈİ±à¼­Ò³Ãæ  
+               //è¿›å…¥ä½ çš„åˆ†äº«å†…å®¹ç¼–è¾‘é¡µé¢  
         }
     });
 </code></pre>
 
-<pre><code>&gt; ²Êµ°£ºÈç¹ûÄúÒÑ¾­×Ô¼ºÊ¹ÓÃÆäËûSDKÊµÏÖÁË·ÖÏí£¬²»Ï£ÍûÓÃ»§ÖØ¸´ÊÚÈ¨£¬ÓÑÃË·ÖÏíÌá¹©ÁË¼æÈİ·½·¨¡£Ã»ÓĞÕâÖÖÆæİâĞĞÎªµÄÓÃ»§ÇëºöÂÔ´Ë¶Î£º
+<pre><code>&gt; å½©è›‹ï¼šå¦‚æœæ‚¨å·²ç»è‡ªå·±ä½¿ç”¨å…¶ä»–SDKå®ç°äº†åˆ†äº«ï¼Œä¸å¸Œæœ›ç”¨æˆ·é‡å¤æˆæƒï¼Œå‹ç›Ÿåˆ†äº«æä¾›äº†å…¼å®¹æ–¹æ³•ã€‚æ²¡æœ‰è¿™ç§å¥‡è‘©è¡Œä¸ºçš„ç”¨æˆ·è¯·å¿½ç•¥æ­¤æ®µï¼š
 </code></pre>
 <pre><code>    UMSocialAccountEntity *weiboAccount = [[UMSocialAccountEntity alloc] initWithPlatformName:UMShareToSina];
         weiboAccount.usid = @&quot;your usid&quot;;
         weiboAccount.accessToken = @&quot;your accesstoken&quot;;
-    //    weiboAccount.openId = @&quot;tencent weibo openId&quot;;          //ÌÚÑ¶Î¢²©ÕË»§±ØĞèÉèÖÃopenId
-    //Í¬²½ÓÃ»§ĞÅÏ¢
+    //    weiboAccount.openId = @&quot;tencent weibo openId&quot;;          //è…¾è®¯å¾®åšè´¦æˆ·å¿…éœ€è®¾ç½®openId
+    //åŒæ­¥ç”¨æˆ·ä¿¡æ¯
     [UMSocialAccountManager postSnsAccount:weiboAccount completion:^(UMSocialResponseEntity *response){
         if (response.responseCode == UMSResponseCodeSuccess) {
-            //ÔÚ±¾µØ»º´æÉèÖÃµÃµ½µÄÕË»§ĞÅÏ¢
+            //åœ¨æœ¬åœ°ç¼“å­˜è®¾ç½®å¾—åˆ°çš„è´¦æˆ·ä¿¡æ¯
             [UMSocialAccountManager setSnsAccount:weiboAccount];
-            //½øÈëÄã×Ô¶¨ÒåµÄ·ÖÏíÄÚÈİ±à¼­Ò³Ãæ»òÕßÊ¹ÓÃÎÒÃÇµÄÄÚÈİ±à¼­Ò³Ãæ
+            //è¿›å…¥ä½ è‡ªå®šä¹‰çš„åˆ†äº«å†…å®¹ç¼–è¾‘é¡µé¢æˆ–è€…ä½¿ç”¨æˆ‘ä»¬çš„å†…å®¹ç¼–è¾‘é¡µé¢
     }}];
 </code></pre>
 
-<pre><code>**²½ÖèÈı£ºµ÷ÓÃÖ±½Ó·ÖÏíAPI½Ó¿Ú**
+<pre><code>**æ­¥éª¤ä¸‰ï¼šè°ƒç”¨ç›´æ¥åˆ†äº«APIæ¥å£**
 </code></pre>
-<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:@&quot;·ÖÏíÄÚÇ¶ÎÄ×Ö&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *shareResponse){
+<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:@&quot;åˆ†äº«å†…åµŒæ–‡å­—&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *shareResponse){
        if (shareResponse.responseCode == UMSResponseCodeSuccess) {
-           NSLog(@&quot;·ÖÏí³É¹¦£¡&quot;);
+           NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
        }
     }];
 </code></pre>
 
-<h1><a name="social_share_config" id="social_share_config" style="color:black">2.5 ·ÖÏíÏà¹ØÉèÖÃ</a></h1>
+<h1><a name="social_share_config" id="social_share_config" style="color:black">2.5 åˆ†äº«ç›¸å…³è®¾ç½®</a></h1>
 <ul>
 <li>
-<p><h2>·ÖÏíurl×ÊÔ´</h2></p>
-<p>Ö§³Öurl¶¨ÒåµÄÍ¼Æ¬¡¢ÊÓÆµ¡¢ÒôÀÖ¡£ÏÂÃæÊÇ·ÖÏíÒ»¸öÒôÀÖµÄurlÒ³Ãæ£¬Ò²¿ÉÒÔÖ¸¶¨ÒôÀÖÎÄ¼şurl¡£Èç¹ûÉèÖÃÁËÄÚÇ¶Í¼Æ¬¾Í²»ÄÜÉèÖÃurl×ÊÔ´£¬Í¬ÀíÉèÖÃÁËurl×ÊÔ´¾Í²»ÄÜÉèÖÃÄÚÇ¶Í¼Æ¬¡£</p>
+<p><h2>åˆ†äº«urlèµ„æº</h2></p>
+<p>æ”¯æŒurlå®šä¹‰çš„å›¾ç‰‡ã€è§†é¢‘ã€éŸ³ä¹ã€‚ä¸‹é¢æ˜¯åˆ†äº«ä¸€ä¸ªéŸ³ä¹çš„urlé¡µé¢ï¼Œä¹Ÿå¯ä»¥æŒ‡å®šéŸ³ä¹æ–‡ä»¶urlã€‚å¦‚æœè®¾ç½®äº†å†…åµŒå›¾ç‰‡å°±ä¸èƒ½è®¾ç½®urlèµ„æºï¼ŒåŒç†è®¾ç½®äº†urlèµ„æºå°±ä¸èƒ½è®¾ç½®å†…åµŒå›¾ç‰‡ã€‚</p>
 </li>
 <li>
-<p>Ê¹ÓÃUI·ÖÏí½Ó¿Ú£¬ÏÈÉèÖÃurl·ÖÏíÄÚÈİ,È»ºóµ÷ÓÃµ¯³ö·ÖÏíÃæ°åµÈ·ÖÏí½Ó¿Ú£¬×¢Òâ±¾µØÍ¼Æ¬Ö»ÄÜ´«nil</p>
+<p>ä½¿ç”¨UIåˆ†äº«æ¥å£ï¼Œå…ˆè®¾ç½®urlåˆ†äº«å†…å®¹,ç„¶åè°ƒç”¨å¼¹å‡ºåˆ†äº«é¢æ¿ç­‰åˆ†äº«æ¥å£ï¼Œæ³¨æ„æœ¬åœ°å›¾ç‰‡åªèƒ½ä¼ nil</p>
 </li>
 </ul>
 <pre><code>[[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@&quot;http://www.baidu.com/img/bdlogo.gif&quot;];
-//µ÷ÓÃ¿ìËÙ·ÖÏí½Ó¿Ú
+//è°ƒç”¨å¿«é€Ÿåˆ†äº«æ¥å£
 </code></pre>
 
 <ol>
-<li>Ê¹ÓÃµ×²ã·ÖÏí½Ó¿Ú£¬°ÑurlResource¶ÔÏó´«µ½·ÖÏí·½·¨</li>
+<li>ä½¿ç”¨åº•å±‚åˆ†äº«æ¥å£ï¼ŒæŠŠurlResourceå¯¹è±¡ä¼ åˆ°åˆ†äº«æ–¹æ³•</li>
 </ol>
-<pre><code>UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:
+<pre><code>//æ³¨æ„ï¼šåˆ†äº«åˆ°å¾®ä¿¡å¥½å‹ã€å¾®ä¿¡æœ‹å‹åœˆã€å¾®ä¿¡æ”¶è—ã€QQç©ºé—´ã€QQå¥½å‹ã€æ¥å¾€å¥½å‹ã€æ¥å¾€æœ‹å‹åœˆã€æ˜“ä¿¡å¥½å‹ã€æ˜“ä¿¡æœ‹å‹åœˆã€Facebookã€Twitterã€Instagramç­‰å¹³å°éœ€è¦å‚è€ƒå„è‡ªçš„é›†æˆæ–¹æ³•
+UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:
                                         @&quot;http://www.baidu.com/img/bdlogo.gif&quot;];
-[[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:@&quot;·ÖÏíÄÚÇ¶ÎÄ×Ö&quot; image:nil location:nil urlResource:urlResource presentedController:self completion:^(UMSocialResponseEntity *shareResponse){
+[[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:@&quot;åˆ†äº«å†…åµŒæ–‡å­—&quot; image:nil location:nil urlResource:urlResource presentedController:self completion:^(UMSocialResponseEntity *shareResponse){
        if (shareResponse.responseCode == UMSResponseCodeSuccess) {
-           NSLog(@&quot;·ÖÏí³É¹¦£¡&quot;);
+           NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
        }
     }];
 </code></pre>
 
 <ul>
+<li><h2>åˆ†äº«æœ¬åœ°gifå›¾ç‰‡</h2>
+  åˆ†äº«æœ¬åœ°gifå›¾ç‰‡åˆ°å„ä¸ªå¼€æ”¾å¹³å°ï¼Œéœ€è¦ç”ŸæˆæŠŠæœ¬åœ°gifå›¾ç‰‡ç”Ÿæˆ<code>NSData</code>å¯¹è±¡,ä½œä¸ºå„ä¸ªåˆ†äº«æ–¹æ³•çš„shareImageå‚æ•°ï¼Œä¾‹å¦‚å¿«é€Ÿåˆ†äº«æ¥å£å¦‚ä¸‹å†™æ³•ã€‚ <br />
+  åˆ†äº«pngã€jpgå›¾ç‰‡åˆ™åªéœ€è¦ç”ŸæˆUIImageï¼Œä¼ å…¥åˆ°shareImageå‚æ•°ï¼Œä¸èƒ½ä½¿ç”¨è¿™ç§å†™æ³•ã€‚</li>
+</ul>
+<pre><code>    //åˆ†äº«gifå›¾ç‰‡
+    NSString *path = [[NSBundle mainBundle] pathForResource:@&quot;picName&quot;
+                                                     ofType:@&quot;gif&quot;];
+    NSData *gifData = [NSData dataWithContentsOfFile:path];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:shareText shareImage:gifData shareToSnsNames:nil delegate:self];
+    //åˆ†äº«pngã€jpgå›¾ç‰‡
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UmengAppkey shareText:shareText shareImage:[UIImage imageNamed:@&quot;picName&quot;] shareToSnsNames:nil delegate:self];
+</code></pre>
+
+<ul>
 <li>
-<p><h2>×Ô¶¨Òå·ÖÏíÆ½Ì¨</h2></p>
-<p>ĞŞ¸ÄÆ½Ì¨ÏàÓ¦µÄÍ¼Æ¬¡¢ÎÄ×ÖºÍµã»÷ÊÂ¼şµÈ£¬ÀıÈçÏÂÃæĞŞ¸ÄĞÂÀËÎ¢²©µÄÍ¼Æ¬¡¢ÎÄ×ÖºÍµã»÷ÊÂ¼ş</p>
+<p><h2>è‡ªå®šä¹‰åˆ†äº«å¹³å°</h2></p>
+<p>ä¿®æ”¹å¹³å°ç›¸åº”çš„å›¾ç‰‡ã€æ–‡å­—å’Œç‚¹å‡»äº‹ä»¶ç­‰ï¼Œä¾‹å¦‚ä¸‹é¢ä¿®æ”¹æ–°æµªå¾®åšçš„å›¾ç‰‡ã€æ–‡å­—å’Œç‚¹å‡»äº‹ä»¶</p>
 </li>
 </ul>
 <pre><code>    UMSocialSnsPlatform *sinaPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
     sinaPlatform.bigImageName = @&quot;icon&quot;;
-    sinaPlatform.displayName = @&quot;Î¢²©&quot;;
+    sinaPlatform.displayName = @&quot;å¾®åš&quot;;
     sinaPlatform.snsClickHandler = ^(UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController){
-        NSLog(@&quot;µã»÷ĞÂÀËÎ¢²©µÄÏìÓ¦&quot;);
+        NSLog(@&quot;ç‚¹å‡»æ–°æµªå¾®åšçš„å“åº”&quot;);
     };
 </code></pre>
 
 <ul>
 <li>
-<p><h2>ÉèÖÃ²»Í¬Æ½Ì¨·ÖÏí²»Í¬ÄÚÈİ</h2></p>
-<p>Ê¹ÓÃ[UMSocialData defaultData].extConfigÏÂÉèÖÃ¸÷¸ö·ÖÏíÆ½Ì¨µÄ·ÖÏíÎÄ×Ö¡¢·ÖÏíÍ¼Æ¬¡¢·ÖÏíÊÓÆµ¡¢ÒôÀÖµÈ¡£¸÷¸öÆ½Ì¨µÄ¶ÔÏóÃû£¬Çë²Î¿´Í·ÎÄ¼ş¶¨Òå£¬´ËÉèÖÃ·½·¨²»Ö§³ÖÖ±½Ó·¢ËÍ·ÖÏíÄÚÈİµÄµ×²ã·ÖÏí·½·¨£¬Ö»Ö§³ÖÊ¹ÓÃÓĞ½çÃæµÄ·ÖÏí·½·¨£¬Ê¾Àı´úÂëÈçÏÂ£º</p>
+<p><h2>è®¾ç½®ä¸åŒå¹³å°åˆ†äº«ä¸åŒå†…å®¹</h2></p>
+<p>ä½¿ç”¨[UMSocialData defaultData].extConfigä¸‹è®¾ç½®å„ä¸ªåˆ†äº«å¹³å°çš„åˆ†äº«æ–‡å­—ã€åˆ†äº«å›¾ç‰‡ã€åˆ†äº«è§†é¢‘ã€éŸ³ä¹ç­‰ã€‚å„ä¸ªå¹³å°çš„å¯¹è±¡åï¼Œè¯·å‚çœ‹å¤´æ–‡ä»¶å®šä¹‰ï¼Œæ­¤è®¾ç½®æ–¹æ³•ä¸æ”¯æŒç›´æ¥å‘é€åˆ†äº«å†…å®¹çš„åº•å±‚åˆ†äº«æ–¹æ³•ï¼Œåªæ”¯æŒä½¿ç”¨æœ‰ç•Œé¢çš„åˆ†äº«æ–¹æ³•ï¼Œç¤ºä¾‹ä»£ç å¦‚ä¸‹ï¼š</p>
 </li>
 </ul>
-<pre><code>[UMSocialData defaultData].extConfig.sinaData.shareText = @&quot;·ÖÏíµ½ĞÂÀËÎ¢²©ÄÚÈİ&quot;;
-[UMSocialData defaultData].extConfig.tencentData.shareImage = [UIImage imageNamed:@&quot;icon&quot;]; //·ÖÏíµ½ÌÚÑ¶Î¢²©Í¼Æ¬ 
-[[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeImage url:@&quot;http://www.baidu.com/img/bdlogo.gif&quot;];  //ÉèÖÃÎ¢ĞÅºÃÓÑ·ÖÏíurlÍ¼Æ¬
-[[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:@&quot;http://v.youku.com/v_show/id_XNjQ1NjczNzEy.html?f=21207816&amp;ev=2&quot;]; //ÉèÖÃÎ¢ĞÅÅóÓÑÈ¦·ÖÏíÊÓÆµ
+<pre><code>[UMSocialData defaultData].extConfig.sinaData.shareText = @&quot;åˆ†äº«åˆ°æ–°æµªå¾®åšå†…å®¹&quot;;
+[UMSocialData defaultData].extConfig.tencentData.shareImage = [UIImage imageNamed:@&quot;icon&quot;]; //åˆ†äº«åˆ°è…¾è®¯å¾®åšå›¾ç‰‡ 
+[[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeImage url:@&quot;http://www.baidu.com/img/bdlogo.gif&quot;];  //è®¾ç½®å¾®ä¿¡å¥½å‹åˆ†äº«urlå›¾ç‰‡
+[[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:@&quot;http://v.youku.com/v_show/id_XNjQ1NjczNzEy.html?f=21207816&amp;ev=2&quot;]; //è®¾ç½®å¾®ä¿¡æœ‹å‹åœˆåˆ†äº«è§†é¢‘
 </code></pre>
 
 <ul>
 <li>
-<p><h2><a style="color:red">×Ô¶¨Òå·ÖÏíÀ´Ô´</a></h2></p>
-<p>¿ÉÒÔÔÚÓÑÃËºóÌ¨¶ÔÓ¦APP -&gt; ×é¼ş -&gt; Éç»á»¯×é¼ş -&gt; ÉèÖÃÒ³ÖĞ°ó¶¨¸÷Æ½Ì¨µÄappkey£¬¼û<a href="#binding_config" style="text-decoration:none">6 °ó¶¨ÓÑÃËÓ¦ÓÃ±êÊ¶Óë¸÷¿ª·ÅÆ½Ì¨</a></p>
+<p><h2><a style="color:red">è‡ªå®šä¹‰åˆ†äº«æ¥æº</a></h2></p>
+<p>å¯ä»¥åœ¨å‹ç›Ÿåå°å¯¹åº”APP -&gt; ç»„ä»¶ -&gt; ç¤¾ä¼šåŒ–ç»„ä»¶ -&gt; è®¾ç½®é¡µä¸­ç»‘å®šå„å¹³å°çš„appkeyï¼Œè§<a href="#binding_config" style="text-decoration:none">ç»‘å®šå‹ç›Ÿåº”ç”¨æ ‡è¯†ä¸å„å¼€æ”¾å¹³å°</a></p>
 </li>
 <li>
-<p><h2>ÉèÖÃÖ§³ÖµÄÆÁÄ»·½Ïò</h2></p>
-<p>Ö§³Ö·ÖÏí±à¼­Ò³ºÍÊÚÈ¨Ò³ÃæºáÆÁ£¬±ØĞëÒªÔÚ³öÏÖÁĞ±íÒ³ÃæÇ°½øĞĞÏÂÃæ£¬²¢ÔÚXcodeÉÏµÄxxx_info.plistÎÄ¼şÖ§³ÖÆÁÄ»·½ÏòµÄ×Ö¶Î'Supported interface orientations'Ôö¼ÓÏàÓ¦µÄºáÆÁ»òÕßÊúÆÁµÄÃ¶¾ÙÖµ¡£ </p>
+<p><h2>è®¾ç½®æ”¯æŒçš„å±å¹•æ–¹å‘</h2></p>
+<p>æ”¯æŒåˆ†äº«ç¼–è¾‘é¡µå’Œæˆæƒé¡µé¢æ¨ªå±ï¼Œå¿…é¡»è¦åœ¨å‡ºç°åˆ—è¡¨é¡µé¢å‰è¿›è¡Œä¸‹é¢ï¼Œå¹¶åœ¨Xcodeä¸Šçš„xxx_info.plistæ–‡ä»¶æ”¯æŒå±å¹•æ–¹å‘çš„å­—æ®µ'Supported interface orientations'å¢åŠ ç›¸åº”çš„æ¨ªå±æˆ–è€…ç«–å±çš„æšä¸¾å€¼ã€‚ </p>
 </li>
 </ul>
-<pre><code>    //¸ù¾İÄãÒªÖ§³ÖµÄ·½Ïò£¬UIInterfaceOrientationMaskLandscapeÉèÖÃ³ÉÏàÓ¦µÄ·½Ïò
+<pre><code>    //æ ¹æ®ä½ è¦æ”¯æŒçš„æ–¹å‘ï¼ŒUIInterfaceOrientationMaskLandscapeè®¾ç½®æˆç›¸åº”çš„æ–¹å‘
 [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];
 </code></pre>
 
 <ul>
 <li>
-<p><h2>´¦Àí·ÖÏí´íÎó</h2></p>
-<p>ÓÃÏÂÃæµÄ´úÂë´ò¿ªÎÒÃÇSDKÔÚ¿ØÖÆÌ¨µÄÊä³öºóÄÜ¿´µ½ÏàÓ¦µÄ´íÎóÂë¡£</p>
+<p><h2>å¤„ç†åˆ†äº«é”™è¯¯</h2></p>
+<p>ç”¨ä¸‹é¢çš„ä»£ç æ‰“å¼€æˆ‘ä»¬SDKåœ¨æ§åˆ¶å°çš„è¾“å‡ºåèƒ½çœ‹åˆ°ç›¸åº”çš„é”™è¯¯ç ã€‚</p>
 </li>
 </ul>
 <pre><code>    [UMSocialData openLog:YES];
 </code></pre>
 
-<pre><code>ĞÂÀËÎ¢²©ÊÚÈ¨Ö®ºó³öÏÖmessageÎªapplications over the unaudited use restrictionsµÄ´íÎó£¬Ô­ÒòÊÇÃ»ÓĞÓ¦ÓÃÃ»ÓĞÍ¨¹ıĞÂÀËÎ¢²©ÉóºË£¬ĞèÒªÌí¼ÓµÇÂ¼ÕËºÅµ½¿ª·¢ÕßÕËºÅ¡£
+<pre><code>æ–°æµªå¾®åšæˆæƒä¹‹åå‡ºç°messageä¸ºapplications over the unaudited use restrictionsçš„é”™è¯¯ï¼ŒåŸå› æ˜¯æ²¡æœ‰åº”ç”¨æ²¡æœ‰é€šè¿‡æ–°æµªå¾®åšå®¡æ ¸ï¼Œéœ€è¦æ·»åŠ ç™»å½•è´¦å·åˆ°å¼€å‘è€…è´¦å·ã€‚
 </code></pre>
-<p>Ìí¼Ó·½·¨£ºµÇÂ¼¿ª·¢ÕßÕÊºÅ£¬µã»÷½øÈëhttp://open.weibo.com/apps/30871<strong><em>**/info/advanced0„2£¨30871</em></strong>**Ìæ»»³ÉÄãÓ¦ÓÃµÄAppKey£©£¬ÔÚµ×²¿Ìí¼Ó²âÊÔÓÃ»§¼´¿É£¬×î¶àÖ»ÄÜÌí¼Ó15Î»ÇÒÌí¼Óºó²»ÄÜĞŞ¸Ä¡£×¢Òâ£ºĞŞ¸ÄºóÔ¼°ëĞ¡Ê±×óÓÒÊ±¼äÉúĞ§¡£</p>
-<h1><a name="social_sso" id="social_sso" style="color:black">3. ¸÷Æ½Ì¨SSO£¨ÃâµÇÂ¼£©ÅäÖÃ</a></h1>
-<p>×¢Òâ£ºÊ¹ÓÃ¸÷Æ½Ì¨SSO·ÖÏí£¬ĞèÒªµ½¸÷¸öÎ¢²©Æ½Ì¨ÉêÇë×Ô¼ºµÄÓ¦ÓÃ£¬°ó¶¨·½·¨¿ÉÒÔ²Î¿¼<a href="#binding_config" style="text-decoration:none">°ó¶¨ÓÑÃËÓ¦ÓÃ±êÊ¶Óë¸÷¿ª·ÅÆ½Ì¨</a>¡£    </p>
-<h2><a id="social_sso_1" >²½Öè1. Ìí¼ÓURL scheme</a></h2>
-<p>ÔÚÄãµÄ¹¤³ÌÉèÖÃÏî,targets Ò»À¸ÏÂ,Ñ¡ÖĞ×Ô¼ºµÄ target,ÔÚ Info-&gt;URL Types ÖĞÌí¼Ó URL Schemes¡£Èç¹ûÊ¹ÓÃµÄÊÇXcode3»ò¸üµÍ°æ±¾£¬ÔòĞèÒªÔÚplistÎÄ¼şÖĞÌí¼Ó¡£»ñÈ¡¸÷¸öÆ½Ì¨appkey»òÕßappidµÄ·½·¨¿ÉÒÔ²Î¿¼·ÖÏíÏêÏ¸ÎÄµµ°ó¶¨¸÷¸öÆ½Ì¨²¿·Ö£¬¸÷¸öÆ½Ì¨µÄurl scheme¸ñÊ½ÈçÏÂ±í£º</p>
+<p>æ·»åŠ æ–¹æ³•ï¼šç™»å½•å¼€å‘è€…å¸å·ï¼Œç‚¹å‡»è¿›å…¥http://open.weibo.com/apps/30871<strong><em>*</em>/info/advancedÂ ï¼ˆ30871</strong>***æ›¿æ¢æˆä½ åº”ç”¨çš„AppKeyï¼‰ï¼Œåœ¨åº•éƒ¨æ·»åŠ æµ‹è¯•ç”¨æˆ·å³å¯ï¼Œæœ€å¤šåªèƒ½æ·»åŠ 15ä½ä¸”æ·»åŠ åä¸èƒ½ä¿®æ”¹ã€‚æ³¨æ„ï¼šä¿®æ”¹åçº¦åŠå°æ—¶å·¦å³æ—¶é—´ç”Ÿæ•ˆã€‚</p>
+<h1><a name="social_sso" id="social_sso" style="color:black">3. å„å¹³å°SSOï¼ˆå…ç™»å½•ï¼‰é…ç½®</a></h1>
+<p>æ³¨æ„ï¼šä½¿ç”¨å„å¹³å°SSOåˆ†äº«ï¼Œéœ€è¦åˆ°å„ä¸ªå¾®åšå¹³å°ç”³è¯·è‡ªå·±çš„åº”ç”¨ï¼Œç»‘å®šæ–¹æ³•å¯ä»¥å‚è€ƒ<a href="#binding_config" style="text-decoration:none">ç»‘å®šå‹ç›Ÿåº”ç”¨æ ‡è¯†ä¸å„å¼€æ”¾å¹³å°</a>ã€‚    </p>
+<h2><a id="social_sso_1" >æ­¥éª¤1. æ·»åŠ URL scheme</a></h2>
+<p>åœ¨ä½ çš„å·¥ç¨‹è®¾ç½®é¡¹,targets ä¸€æ ä¸‹,é€‰ä¸­è‡ªå·±çš„ target,åœ¨ Info-&gt;URL Types ä¸­æ·»åŠ  URL Schemesã€‚å¦‚æœä½¿ç”¨çš„æ˜¯Xcode3æˆ–æ›´ä½ç‰ˆæœ¬ï¼Œåˆ™éœ€è¦åœ¨plistæ–‡ä»¶ä¸­æ·»åŠ ã€‚è·å–å„ä¸ªå¹³å°appkeyæˆ–è€…appidçš„æ–¹æ³•å¯ä»¥å‚è€ƒåˆ†äº«è¯¦ç»†æ–‡æ¡£ç»‘å®šå„ä¸ªå¹³å°éƒ¨åˆ†ï¼Œå„ä¸ªå¹³å°çš„url schemeæ ¼å¼å¦‚ä¸‹è¡¨ï¼š</p>
 <table border="1">
   <tr>
-    <th> Æ½Ì¨ </th>
-    <th>url schemeÉèÖÃ¸ñÊ½</th>
+    <th> å¹³å° </th>
+    <th>url schemeè®¾ç½®æ ¼å¼</th>
   </tr>
   <tr>
-    <td>ĞÂÀËÎ¢²©</td>
-    <td>¡°sina.¡±+ÓÑÃËappkey£¬ÀıÈç¡°sina.507fcab25270157b37000010¡±</td>
-  </tr>
-   <tr>
-    <td>QQ¿Õ¼ä</td>
-    <td>¡°tencent¡°+ÌÚÑ¶QQ»¥ÁªÓ¦ÓÃId£¬ÀıÈç¡°tencent100308348¡±</td>
-  </tr>
-   <tr>
-    <td>Î¢ĞÅ</td>
-    <td>¡°wx¡±+Î¢ĞÅÓ¦ÓÃappId£¬ÀıÈç¡°wxd9a39c7122aa6516¡±,Î¢ĞÅÏêÏ¸¼¯³É²½Öè²Î¿¼<a href="#social_wechat" style="text-decoration:none">Î¢ĞÅ¼¯³É·½·¨</a></td>
-  </tr>
-   <tr>
-    <td>ÊÖ»úQQ</td>
-    <td>¡°QQ¡±+ÌÚÑ¶QQ»¥ÁªÓ¦ÓÃappId×ª»»³ÉÊ®Áù½øÖÆ£¨²»×ã8Î»Ç°Ãæ²¹0£©£¬ÀıÈç¡°QQ05FA957C¡±¡£Éú³ÉÊ®Áù½øÖÆ·½·¨£ºÔÚÃüÁîĞĞÊäÈë<div>echo 'ibase=10;obase=16;ÄúµÄÌÚÑ¶QQ»¥ÁªÓ¦ÓÃId'|bc</div>£¬²¢ÔÚQQ»¥ÁªºóÌ¨µÄURL schemaÖĞÌîÈë´Ë×Ö·û´®±£³ÖÒ»ÖÂ£¬ÊÖ»úQQÏêÏ¸¼¯³É²½Öè²Î¿¼<a href="#social_qq" style="text-decoration:none">ÊÖ»úQQ¼¯³É·½·¨</a></td>
+    <td>æ–°æµªå¾®åšï¼ˆå¾®åšåŸç”ŸSDKï¼‰</td>
+    <td>â€œwbâ€+æ–°æµªappkeyï¼Œä¾‹å¦‚â€œwb126663232â€</td>
   </tr>
   <tr>
-    <td>À´Íù</td>
-    <td>IdentifierÌî¡°Laiwang¡±£¬URL SchemesÌîÀ´ÍùAppId.×¢ÒâÊ¹ÓÃÀ´ÍùSDKºó£¬Xcode¹¤³Ìother linker flagsĞèÒªÌí¼Ó-ObjC²ÎÊı</td>
+    <td>æ–°æµªå¾®åšï¼ˆéå¾®åšåŸç”ŸSDKï¼‰</td>
+    <td>â€œsina.â€+å‹ç›Ÿappkeyï¼Œä¾‹å¦‚â€œsina.507fcab25270157b37000010â€</td>
   </tr>
   <tr>
-    <td>Ò×ĞÅ</td>
-    <td>Ò×ĞÅAppkey£¬ÀıÈç¡°yx35664bdff4db42c2b7be1e29390c1a06¡±</td>
+    <td>è…¾è®¯å¾®åš</td>
+    <td>â€œwbâ€+ä½ åœ¨å‹ç›Ÿåå°ç»‘å®šçš„è…¾è®¯å¾®åšApp Keyï¼Œä¾‹å¦‚â€œwb801345073â€</td>
+  </tr>
+   <tr>
+    <td>å¾®ä¿¡</td>
+    <td>å¾®ä¿¡åº”ç”¨appIdï¼Œä¾‹å¦‚â€œwxd9a39c7122aa6516â€,å¾®ä¿¡è¯¦ç»†é›†æˆæ­¥éª¤å‚è€ƒ<a href="#social_wechat" style="text-decoration:none">å¾®ä¿¡é›†æˆæ–¹æ³•</a></td>
+  </tr>
+   <tr>
+    <td>äººäººç½‘</td>
+    <td>â€œrmâ€+ä½ çš„åº”ç”¨bundle idï¼Œä¾‹å¦‚â€œrmcom.umeng.SocialSDKâ€</td>
+  </tr>
+   <tr>
+    <td>åˆ†äº«åˆ°æ‰‹æœºQQã€QQç©ºé—´</td>
+    <td>â€œQQâ€+è…¾è®¯QQäº’è”åº”ç”¨appIdè½¬æ¢æˆåå…­è¿›åˆ¶ï¼ˆä¸è¶³8ä½å‰é¢è¡¥0ï¼‰ï¼Œä¾‹å¦‚â€œQQ05FA957Câ€ã€‚ç”Ÿæˆåå…­è¿›åˆ¶æ–¹æ³•ï¼šåœ¨å‘½ä»¤è¡Œè¾“å…¥<div>echo 'ibase=10;obase=16;æ‚¨çš„è…¾è®¯QQäº’è”åº”ç”¨Id'|bc</div>ï¼Œå¹¶åœ¨QQäº’è”åå°çš„URL schemaä¸­å¡«å…¥æ­¤å­—ç¬¦ä¸²ä¿æŒä¸€è‡´ï¼Œæ‰‹æœºQQè¯¦ç»†é›†æˆæ­¥éª¤å‚è€ƒ<a href="#social_qq" style="text-decoration:none">æ‰‹æœºQQé›†æˆæ–¹æ³•</a></td>
+  </tr>
+  <tr>
+    <td>å•ç‹¬ç™»å½•åˆ°QQã€QQç©ºé—´ï¼ˆä¸åˆ†äº«ï¼‰</td>
+    <td>â€œtencentâ€œ+è…¾è®¯QQäº’è”åº”ç”¨Idï¼Œä¾‹å¦‚â€œtencent100308348â€<br>
+    â€œQQâ€+è…¾è®¯QQäº’è”åº”ç”¨appIdè½¬æ¢æˆåå…­è¿›åˆ¶ï¼ˆä¸è¶³8ä½å‰é¢è¡¥0ï¼‰ï¼Œä¾‹å¦‚â€œQQ05FA957Câ€ã€‚ç”Ÿæˆåå…­è¿›åˆ¶æ–¹æ³•ï¼šåœ¨å‘½ä»¤è¡Œè¾“å…¥<div>echo 'ibase=10;obase=16;æ‚¨çš„è…¾è®¯QQäº’è”åº”ç”¨Id'|bc</div>ï¼Œå¹¶åœ¨QQäº’è”åå°çš„URL schemaä¸­å¡«å…¥æ­¤å­—ç¬¦ä¸²ä¿æŒä¸€è‡´ï¼Œæ‰‹æœºQQè¯¦ç»†é›†æˆæ­¥éª¤å‚è€ƒ<a href="#social_qq" style="text-decoration:none">æ‰‹æœºQQé›†æˆæ–¹æ³•    
+    </td>
+  </tr>
+  <tr>
+    <td>æ¥å¾€</td>
+    <td>Identifierå¡«â€œLaiwangâ€ï¼ŒURL Schemeså¡«æ¥å¾€AppId.æ³¨æ„ä½¿ç”¨æ¥å¾€SDKåï¼ŒXcodeå·¥ç¨‹other linker flagséœ€è¦æ·»åŠ -ObjCå‚æ•°</td>
+  </tr>
+  <tr>
+    <td>æ˜“ä¿¡</td>
+    <td>æ˜“ä¿¡Appkeyï¼Œä¾‹å¦‚â€œyx35664bdff4db42c2b7be1e29390c1a06â€</td>
   </tr>
   <tr>
     <td>Facebook</td>
-    <td>Ä¬ÈÏÊ¹ÓÃiOS×Ô´øµÄFacebook·ÖÏíframework£¬ÔÚiOS 6ÒÔÉÏÓĞĞ§£¬ÈôÒªÊ¹ÓÃÎÒÃÇÌá¹©µÄfacebook·ÖÏíĞèÒªÉèÖÃ¡°fb¡±+facebook AppID£¬ÀıÈç¡°fb1440390216179601¡±£¬ÏêÏ¸¼¯³É·½·¨¼û[¼¯³Éfacebook](#social_facebook)</td>
+    <td>é»˜è®¤ä½¿ç”¨iOSè‡ªå¸¦çš„Facebookåˆ†äº«frameworkï¼Œåœ¨iOS 6ä»¥ä¸Šæœ‰æ•ˆï¼Œè‹¥è¦ä½¿ç”¨æˆ‘ä»¬æä¾›çš„facebookåˆ†äº«éœ€è¦è®¾ç½®â€œfbâ€+facebook AppIDï¼Œä¾‹å¦‚â€œfb1440390216179601â€ï¼Œè¯¦ç»†é›†æˆæ–¹æ³•è§[é›†æˆfacebook](#social_facebook)</td>
   </tr>
 </table>
 
-<p><img alt="socialbar" src="http://apf.umeng.com:8888/show?path=yeahugo/2013-09/d0d886.png" title="social_sso" /> </p>
+<p><img alt="socialbar" src="http://dev.umeng.com/system/images/W1siZiIsIjIwMTQvMDMvMTIvMTZfMjRfNTlfOTAxX3NvY2lhbF9zc28ucG5nIl1d/social_sso.png" title="social_sso" /> </p>
 <ul>
-<li>ÔÚAppDelegateÎÄ¼ş¼¯³ÉÏàÓ¦µÄ¿ª¹Ø·½·¨£º</li>
+<li>åœ¨AppDelegateæ–‡ä»¶é›†æˆç›¸åº”çš„å¼€å…³æ–¹æ³•ï¼š</li>
 </ul>
 <pre><code>#import &quot;UMSocial.h&quot;     
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //ÉèÖÃÎ¢ĞÅAppId£¬urlµØÖ·´«nil£¬½«Ä¬ÈÏÊ¹ÓÃÓÑÃËµÄÍøÖ·
-    [UMSocialConfig setWXAppId:@&quot;wxd9a39c7122aa6516&quot; url:nil];
-    //´ò¿ªQzoneµÄSSO¿ª¹Ø£¬
-    //ĞèÒª#import &lt;TencentOpenAPI/QQApiInterface.h&gt;  #import &lt;TencentOpenAPI/TencentOAuth.h&gt;
-    [UMSocialConfig setSupportQzoneSSO:YES importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
-    //ĞèÒª#import &lt;TencentOpenAPI/QQApiInterface.h&gt;  #import &lt;TencentOpenAPI/TencentOAuth.h&gt;
-    //ÉèÖÃÊÖ»úQQµÄAppId£¬url´«nil£¬½«Ê¹ÓÃÓÑÃËµÄÍøÖ·
-    [UMSocialConfig setQQAppId:@&quot;100424468&quot; url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
-    //´ò¿ªĞÂÀËÎ¢²©µÄSSO¿ª¹Ø
-    [UMSocialConfig setSupportSinaSSO:YES];
-    //ÉèÖÃÒ×ĞÅAppkeyºÍ·ÖÏíurlµØÖ·,×¢ÒâĞèÒªÒıÓÃÍ·ÎÄ¼ş #import UMSocialYixinHandler.h
+    //è®¾ç½®å‹ç›Ÿç¤¾ä¼šåŒ–ç»„ä»¶appkey
+    [UMSocialData setAppKey:UmengAppkey];
+    //è®¾ç½®å¾®ä¿¡AppIdã€appSecretï¼Œåˆ†äº«url
+    [UMSocialWechatHandler setWXAppId:@&quot;wxd930ea5d5a258f4f&quot; appSecret:@&quot;db426a9829e4b49a0dcac7b4162da6b6&quot; url:@&quot;http://www.umeng.com/social&quot;];
+    //è®¾ç½®æ‰‹æœºQQ çš„AppIdï¼ŒAppkeyï¼Œå’Œåˆ†äº«URLï¼Œéœ€è¦#import &quot;UMSocialQQHandler.h&quot;
+    [UMSocialQQHandler setQQWithAppId:@&quot;100424468&quot; appKey:@&quot;c7394704798a158208a74ab60104f0ba&quot; url:@&quot;http://www.umeng.com/social&quot;];
+    //æ‰“å¼€æ–°æµªå¾®åšçš„SSOå¼€å…³ï¼Œè®¾ç½®æ–°æµªå¾®åšå›è°ƒåœ°å€ï¼Œè¿™é‡Œå¿…é¡»è¦å’Œä½ åœ¨æ–°æµªå¾®åšåå°è®¾ç½®çš„å›è°ƒåœ°å€ä¸€è‡´ã€‚è‹¥åœ¨æ–°æµªåå°è®¾ç½®æˆ‘ä»¬çš„å›è°ƒåœ°å€ï¼Œâ€œhttp://sns.whalecloud.com/sina2/callbackâ€ï¼Œè¿™é‡Œå¯ä»¥ä¼ nil ,éœ€è¦ #import &quot;UMSocialSinaHandler.h&quot;
+    [UMSocialSinaHandler openSSOWithRedirectURL:@&quot;http://sns.whalecloud.com/sina2/callback&quot;];
+    //æ‰“å¼€è…¾è®¯å¾®åšSSOå¼€å…³ï¼Œè®¾ç½®å›è°ƒåœ°å€,éœ€è¦ #import &quot;UMSocialTencentWeiboHandler.h&quot;
+    [UMSocialTencentWeiboHandler openSSOWithRedirectUrl:@&quot;http://sns.whalecloud.com/tencent2/callback&quot;];
+    //æ‰“å¼€äººäººç½‘SSOå¼€å…³,éœ€è¦ #import &quot;UMSocialRenrenHandler.h&quot;
+    [UMSocialRenrenHandler openSSO];
+    //è®¾ç½®æ˜“ä¿¡Appkeyå’Œåˆ†äº«urlåœ°å€,æ³¨æ„éœ€è¦å¼•ç”¨å¤´æ–‡ä»¶ #import UMSocialYixinHandler.h
     [UMSocialYixinHandler setYixinAppKey:@&quot;yx35664bdff4db42c2b7be1e29390c1a06&quot; url:@&quot;http://www.umeng.com/social&quot;];
-    //ÉèÖÃÀ´ÍùAppId£¬appscret£¬ÏÔÊ¾À´Ô´Ãû³ÆºÍurlµØÖ·£¬×¢ÒâĞèÒªÒıÓÃÍ·ÎÄ¼ş #import &quot;UMSocialLaiwangHandler.h&quot;
-    [UMSocialLaiwangHandler setLaiwangAppId:@&quot;8112117817424282305&quot; appSecret:@&quot;9996ed5039e641658de7b83345fee6c9&quot; appDescription:@&quot;ÓÑÃËÉç»á»¯×é¼ş&quot; urlStirng:@&quot;http://www.umeng.com/social&quot;];
-    //ÉèÖÃFacebook£¬AppIDºÍ·ÖÏíurl£¬ĞèÒª#import &quot;UMSocialFacebookHandler.h&quot;
-    //Ä¬ÈÏÊ¹ÓÃiOS×Ô´øµÄFacebook·ÖÏíframework£¬ÔÚiOS 6ÒÔÉÏÓĞĞ§¡£ÈôÒªÊ¹ÓÃÎÒÃÇÌá¹©µÄfacebook·ÖÏíĞèÒªÊ¹ÓÃ´Ë¿ª¹Ø£º
+    //è®¾ç½®æ¥å¾€AppIdï¼Œappscretï¼Œæ˜¾ç¤ºæ¥æºåç§°å’Œurlåœ°å€ï¼Œæ³¨æ„éœ€è¦å¼•ç”¨å¤´æ–‡ä»¶ #import &quot;UMSocialLaiwangHandler.h&quot;
+    [UMSocialLaiwangHandler setLaiwangAppId:@&quot;8112117817424282305&quot; appSecret:@&quot;9996ed5039e641658de7b83345fee6c9&quot; appDescription:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–ç»„ä»¶&quot; urlStirng:@&quot;http://www.umeng.com/social&quot;];
+    //è®¾ç½®Facebookï¼ŒAppIDå’Œåˆ†äº«urlï¼Œéœ€è¦#import &quot;UMSocialFacebookHandler.h&quot;
+    //é»˜è®¤ä½¿ç”¨iOSè‡ªå¸¦çš„Facebookåˆ†äº«frameworkï¼Œåœ¨iOS 6ä»¥ä¸Šæœ‰æ•ˆã€‚è‹¥è¦ä½¿ç”¨æˆ‘ä»¬æä¾›çš„facebookåˆ†äº«éœ€è¦ä½¿ç”¨æ­¤å¼€å…³ï¼š
     [UMSocialFacebookHandler setFacebookAppID:@&quot;1440390216179601&quot; shareFacebookWithURL:@&quot;http://www.umeng.com/social&quot;];
+    //é»˜è®¤ä½¿ç”¨iOSè‡ªå¸¦çš„Twitteråˆ†äº«frameworkï¼Œåœ¨iOS 6ä»¥ä¸Šæœ‰æ•ˆã€‚è‹¥è¦ä½¿ç”¨æˆ‘ä»¬æä¾›çš„twitteråˆ†äº«éœ€è¦ä½¿ç”¨æ­¤å¼€å…³ï¼š
+    [UMSocialTwitterHandler openTwitter];
 }
 </code></pre>
 
-<h2><a id="social_sso_2" >²½Öè2. ÔÚAppDelegateÎÄ¼şÀïÃæÊµÏÖÏÂÃæÈı¸öÏµÍ³»Øµ÷·½·¨</a></h2>
-<pre><code>  - (void)applicationDidBecomeActive:(UIApplication *)application
+<h2><a id="social_sso_2" >æ­¥éª¤2. åœ¨AppDelegateæ–‡ä»¶é‡Œé¢å®ç°ä¸‹é¢ä¸‰ä¸ªç³»ç»Ÿå›è°ƒæ–¹æ³•</a></h2>
+<pre><code>- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    [UMSocialSnsService  applicationDidBecomeActive];
-}
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-{
- return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];  
+ return  [UMSocialSnsService handleOpenURL:url];    
 }
 - (BOOL)application:(UIApplication *)application 
               openURL:(NSURL *)url 
     sourceApplication:(NSString *)sourceApplication
            annotation:(id)annotation
  {
- return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+ return  [UMSocialSnsService handleOpenURL:url];
  }  
 </code></pre>
 
-<h2><a id="social_sso_3" >²½Öè3. Ìí¼ÓÏµÍ³¿âÎÄ¼ş£¨²»Ê¹ÓÃQQ¿Õ¼äºÍÊÖ»úQQµÄSSO¹¦ÄÜ¿ÉÒÔºöÂÔ´Ë²½Öè£©</a></h2>
+<p>è‹¥ä½ é™¤äº†ä½¿ç”¨æˆ‘ä»¬SDKå¤–ï¼Œè¿˜ç”¨äº†å…¶ä»–SDKï¼Œéœ€è¦é‡å†™æ­¤å›è°ƒæ–¹æ³•çš„ï¼Œå¯ä»¥å‚è€ƒä¸‹é¢çš„å†™æ³•ï¼š</p>
+<pre><code>- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    BOOL result = [UMSocialSnsService handleOpenURL:url];
+    if (result == FALSE) {
+        //è°ƒç”¨å…¶ä»–SDKï¼Œä¾‹å¦‚æ–°æµªå¾®åšSDKç­‰
+    }
+    return result;
+}
+</code></pre>
+
+<h2><a id="social_sso_3" >æ­¥éª¤3. æ·»åŠ ç³»ç»Ÿåº“æ–‡ä»¶ï¼ˆä¸ä½¿ç”¨QQç©ºé—´å’Œæ‰‹æœºQQçš„SSOåŠŸèƒ½å¯ä»¥å¿½ç•¥æ­¤æ­¥éª¤ï¼‰</a></h2>
 <ul>
 <li>
-<p>Ìí¼ÓSDKÒÀÀµµÄÏµÍ³¿âÎÄ¼ş¡£</p>
-<p>ÔÚXcodeÖĞ´ò¿ª¹¤³ÌÅäÖÃÎÄ¼ş£¬Ñ¡Ôñ¡°summary¡±Ò»À¸¡£ÔÚ¡°summary¡±ÖĞÑ¡Ôñ¡°Linked Frameworks and Libraries¡±Ò»À¸£¬µã»÷¡°+¡±Í¼±êÌí¼ÓÏÂÃæÆß¸ö¿âÎÄ¼ş£¬·Ö±ğÊÇ
+<p>æ·»åŠ SDKä¾èµ–çš„ç³»ç»Ÿåº“æ–‡ä»¶ã€‚</p>
+<p>åœ¨Xcodeä¸­æ‰“å¼€å·¥ç¨‹é…ç½®æ–‡ä»¶ï¼Œé€‰æ‹©â€œsummaryâ€ä¸€æ ã€‚åœ¨â€œsummaryâ€ä¸­é€‰æ‹©â€œLinked Frameworks and Librariesâ€ä¸€æ ï¼Œç‚¹å‡»â€œ+â€å›¾æ ‡æ·»åŠ ä¸‹é¢ä¸ƒä¸ªåº“æ–‡ä»¶ï¼Œåˆ†åˆ«æ˜¯
 <em> Security.framework
 </em> libiconv.dylib
 <em> SystemConfiguration.framework
@@ -419,120 +491,595 @@
 </em> libz.dylib</p>
 </li>
 </ul>
-<h1><a name="social_xcode" id="social_wechat" style="color:black">4. ¼¯³ÉÎ¢ĞÅ</a></h1>
-<h2><a id="social_wechat_register" name="social_wechat_register">4.1 ×¢²áÎ¢ĞÅÓ¦ÓÃid.</a></h2>
-<p>ÔÚÎ¢ĞÅ¿ª·ÅÆ½Ì¨×¢²áÓ¦ÓÃ£¬µÃµ½Î¢ĞÅÓ¦ÓÃid</p>
-<h2><a id="social_wechat_id" name="social_wechat_id">4.2 ÉèÖÃÎ¢ĞÅÓ¦ÓÃid</a></h2>
-<p>ÔÚÄãµÄAppdelegateÈë¿Ú·½·¨£¬ÉèÖÃÎ¢ĞÅAppid£¬µã»÷Í¼ÎÄÏûÏ¢µÄurl¿ÉÒÔÉèÖÃÎªnil£¬½«Ä¬ÈÏÊ¹ÓÃÓÑÃËµÄÍøÖ·
-<code>[UMSocialConfig setWXAppId:@"wxd9a39c7122aa6516" url:nil];</code></p>
-<h2><a id="social_wechat_scheme" name="social_wechat_scheme">4.3 ÉèÖÃurl scheme</a></h2>
-<p>ÈçµÚ¶ş²¿·ÖSSOÉèÖÃËùÊö£¬Ìí¼ÓxcodeµÄurl schemeÎª¡°wx¡±+Î¢ĞÅÓ¦ÓÃappId£¬ÀıÈç¡°wxd9a39c7122aa6516¡±¡£
-²¢È·±£ÊµÏÖµÚ¶ş²¿·Ö½éÉÜµÄÈı¸öÏµÍ³»Øµ÷·½·¨¡£</p>
-<h2><a id="social_wechat_open" name="social_wechat_open">4.4 Ìø×ªµ½Î¢ĞÅ¼°»Øµ÷</a></h2>
+<h1><a name="social_wechat" id="social_wechat" style="color:black">4. é›†æˆå¾®ä¿¡</a></h1>
+<h2><a id="social_wechat_register" name="social_wechat_register">4.1 æ³¨å†Œå¾®ä¿¡åº”ç”¨id.</a></h2>
+<p>åœ¨å¾®ä¿¡å¼€æ”¾å¹³å°æ³¨å†Œåº”ç”¨ï¼Œå¾—åˆ°å¾®ä¿¡åº”ç”¨id</p>
+<h2><a id="social_wechat_files" name="social_wechat_files">4.2 æ·»åŠ å¾®ä¿¡SDKæ–‡ä»¶.</a></h2>
 <ul>
-<li>Ê¹ÓÃ´øÎ¢ĞÅºÃÓÑ»òÕßÅóÓÑÈ¦µÄ<a href="#social_share_list" style="text-decoration:none">·ÖÏíÁĞ±íÒ³Ãæ</a></li>
-<li>Ê¹ÓÃµã»÷°´Å¥Ö®ºó<a href="#social_share_edit" style="text-decoration:none">Ö±½Ó·ÖÏíµ½Î¢ĞÅµÄ·½·¨</a>¡£</li>
-<li>Î¢ĞÅ<a href="#social_share_edit" style="text-decoration:none">·ÖÏíÍê³ÉµÄ»Øµ÷·½·¨</a></li>
+<li>åœ¨<code>UMSocial_Sdk_Extra_Frameworks</code>ç›®å½•ä¸‹ï¼Œæ·»åŠ <code>Wechat</code>æ–‡ä»¶å¤¹åˆ°å·¥ç¨‹</li>
 </ul>
-<p>²Î¿¼·ÖÏíÉèÖÃµÄ¡°»ñµÃ·ÖÏíÍê³ÉµÄ»Øµ÷·½·¨¡±²¿·Ö</p>
-<h2><a id="social_wechat_type" name="social_wechat_type">4.5 ÉèÖÃÎ¢ĞÅ·ÖÏíÏûÏ¢ÀàĞÍ£¨¿ÉÑ¡£©</></h2>
-<pre><code>//ÉèÖÃÎ¢ĞÅ·ÖÏíÓ¦ÓÃÀàĞÍ£¬ÓÃ»§µã»÷ÏûÏ¢½«Ìø×ªµ½Ó¦ÓÃ£¬»òÕßµ½ÏÂÔØÒ³Ãæ
-//UMSocialWXMessageTypeImage Îª´¿Í¼Æ¬ÀàĞÍ
+<h2><a id="social_wechat_id" name="social_wechat_id">4.3 è®¾ç½®å¾®ä¿¡åº”ç”¨id</a></h2>
+<p>åœ¨ä½ çš„Appdelegateå…¥å£æ–¹æ³•ï¼Œè®¾ç½®å¾®ä¿¡Appidï¼Œéœ€è¦è®¾ç½®ä½ çš„åˆ†äº«URL</p>
+<pre><code>  #import &quot;UMSocialWechatHandler.h&quot;
+    //è®¾ç½®å¾®ä¿¡AppIdã€appSecretï¼Œåˆ†äº«url
+    [UMSocialWechatHandler setWXAppId:@&quot;wxd930ea5d5a258f4f&quot; appSecret:@&quot;db426a9829e4b49a0dcac7b4162da6b6&quot; url:@&quot;http://www.umeng.com/social&quot;];
+</code></pre>
+
+<h2><a id="social_wechat_scheme" name="social_wechat_scheme">4.4 è®¾ç½®url scheme</a></h2>
+<ul>
+<li>æ·»åŠ xcodeçš„url schemeä¸ºâ€œwxâ€+å¾®ä¿¡åº”ç”¨appIdï¼Œä¾‹å¦‚â€œwxd9a39c7122aa6516â€ã€‚</li>
+<li>å®ç°ä¸‹é¢ä¸‰ä¸ªç³»ç»Ÿå›è°ƒæ–¹æ³•ï¼š</li>
+</ul>
+<pre><code>- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+ return  [UMSocialSnsService handleOpenURL:url];    
+}
+- (BOOL)application:(UIApplication *)application 
+              openURL:(NSURL *)url 
+    sourceApplication:(NSString *)sourceApplication
+           annotation:(id)annotation
+ {
+ return  [UMSocialSnsService handleOpenURL:url];
+ }  
+</code></pre>
+
+<h2><a id="social_wechat_open" name="social_wechat_open">4.5 åˆ†äº«åˆ°å¾®ä¿¡å¥½å‹ã€å¾®ä¿¡æœ‹å‹åœˆã€å¾®ä¿¡æ”¶è—</a></h2>
+<ul>
+<li>ä½¿ç”¨åˆ†äº«åˆ—è¡¨é¡µé¢ï¼Œåˆ†äº«åˆ°å¾®ä¿¡å¥½å‹ã€å¾®ä¿¡æœ‹å‹åœˆã€å¾®ä¿¡æ”¶è—</li>
+</ul>
+<pre><code>    [UMSocialSnsService presentSnsIconSheetView:self
+                                          appKey:ä½ çš„å‹ç›Ÿåº”ç”¨Appkey
+                                       shareText:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–åˆ†äº«è®©æ‚¨å¿«é€Ÿå®ç°åˆ†äº«ç­‰ç¤¾ä¼šåŒ–åŠŸèƒ½ï¼Œwww.umeng.com/social&quot;
+                                      shareImage:[UIImage imageNamed:@&quot;icon.png&quot;]
+                              shareToSnsNames:@[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToWechatFavorite]
+                                    delegate:self]; 
+    //å®ç°å›è°ƒæ–¹æ³•ï¼ˆå¯é€‰ï¼‰ï¼š
+    -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+    {
+            //æ ¹æ®`responseCode`å¾—åˆ°å‘é€ç»“æœ,å¦‚æœåˆ†äº«æˆåŠŸ
+            if(response.responseCode == UMSResponseCodeSuccess)
+            {
+                //å¾—åˆ°åˆ†äº«åˆ°çš„å¾®åšå¹³å°å
+                NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
+            }      
+    }
+</code></pre>
+
+<ul>
+<li>ç›´æ¥åˆ†äº«åˆ°å¾®ä¿¡</li>
+</ul>
+<pre><code>    //ä½¿ç”¨UMShareToWechatSession,UMShareToWechatTimeline,UMShareToWechatFavoriteåˆ†åˆ«ä»£è¡¨å¾®ä¿¡å¥½å‹ã€å¾®ä¿¡æœ‹å‹åœˆã€å¾®ä¿¡æ”¶è—
+    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToWechatSession] content:@&quot;åˆ†äº«å†…åµŒæ–‡å­—&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
+        }
+    }];
+</code></pre>
+
+<h2><a id="social_wechat_type" name="social_wechat_type">4.6 è®¾ç½®å¾®ä¿¡åˆ†äº«æ¶ˆæ¯ç±»å‹ï¼ˆå¯é€‰ï¼‰</h2>
+<pre><code>//åœ¨åˆ†äº«ä»£ç å‰è®¾ç½®å¾®ä¿¡åˆ†äº«åº”ç”¨ç±»å‹ï¼Œç”¨æˆ·ç‚¹å‡»æ¶ˆæ¯å°†è·³è½¬åˆ°åº”ç”¨ï¼Œæˆ–è€…åˆ°ä¸‹è½½é¡µé¢
+//UMSocialWXMessageTypeImage ä¸ºçº¯å›¾ç‰‡ç±»å‹
     [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeApp;      
-//·ÖÏíÍ¼ÎÄÑùÊ½µ½Î¢ĞÅÅóÓÑÈ¦ÏÔÊ¾×ÖÊı±È½ÏÉÙ£¬Ö»ÏÔÊ¾·ÖÏí±êÌâ
-    [UMSocialData defaultData].extConfig.title = @&quot;ÅóÓÑÈ¦·ÖÏíÄÚÈİ&quot;;
-//ÉèÖÃÎ¢ĞÅºÃÓÑ»òÕßÅóÓÑÈ¦µÄ·ÖÏíurl,ÏÂÃæÊÇÎ¢ĞÅºÃÓÑ£¬Î¢ĞÅÅóÓÑÈ¦¶ÔÓ¦wechatTimelineData
+//åˆ†äº«å›¾æ–‡æ ·å¼åˆ°å¾®ä¿¡æœ‹å‹åœˆæ˜¾ç¤ºå­—æ•°æ¯”è¾ƒå°‘ï¼Œåªæ˜¾ç¤ºåˆ†äº«æ ‡é¢˜
+    [UMSocialData defaultData].extConfig.title = @&quot;æœ‹å‹åœˆåˆ†äº«å†…å®¹&quot;;
+//è®¾ç½®å¾®ä¿¡å¥½å‹æˆ–è€…æœ‹å‹åœˆçš„åˆ†äº«url,ä¸‹é¢æ˜¯å¾®ä¿¡å¥½å‹ï¼Œå¾®ä¿¡æœ‹å‹åœˆå¯¹åº”wechatTimelineData
     [UMSocialData defaultData].extConfig.wechatSessionData.url = @&quot;http://xxxx&quot;;
 </code></pre>
 
-<h1><a name="social_qq" id="social_qq" style="color:black">5. ¼¯³ÉÊÖ»úQQ</a></h1>
-<h2><a id="social_qq_register" name="social_qq_register">5.1 ÔÚÌÚÑ¶QQ»¥Áª¿ª·ÅÆ½Ì¨×¢²áÓ¦ÓÃ</a></h2>
-<h2><a id="social_qq_open" name="social_qq_open">5.2 ´ò¿ª¼¯³ÉÊÖ»úQQ¿ª¹Ø</a></h2>
+<h1><a name="social_qq" id="social_qq" style="color:black">5. é›†æˆæ‰‹æœºQQ</a></h1>
+<h2><a id="social_qq_register" name="social_qq_register">5.1 åœ¨è…¾è®¯QQäº’è”å¼€æ”¾å¹³å°æ³¨å†Œåº”ç”¨</a></h2>
+<h2><a id="social_qq_files" name="social_qq_files">5.2 æ·»åŠ æ‰‹æœºQQSDKæ–‡ä»¶.</a></h2>
 <ul>
-<li>¸ù¾İÉÏÃæSSOÏà¹ØÉèÖÃ½éÉÜ£¬ÔÚAppDelegateÓ¦ÓÃÈë¿Ú·½·¨´ò¿ª¼¯³ÉÊÖ»úQQ¿ª¹Ø¡£</li>
+<li>åœ¨<code>UMSocial_Sdk_Extra_Frameworks</code>ç›®å½•ä¸‹çš„ï¼Œæ·»åŠ <code>TencentOpenAPI</code>æ–‡ä»¶å¤¹åˆ°å·¥ç¨‹</li>
 </ul>
-<pre><code>    //ÉèÖÃÊÖ»úQQµÄAppId£¬url´«nil£¬½«Ê¹ÓÃÓÑÃËµÄÍøÖ·
-    [UMSocialConfig setQQAppId:@&quot;100424468&quot; url:nil importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+<h2><a id="social_qq_framework" name="social_qq_framework">5.3 æ·»åŠ ä¸‹é¢å‡ ä¸ªç³»ç»Ÿframework</a></h2>
+<p>åœ¨Xcodeä¸­æ‰“å¼€å·¥ç¨‹é…ç½®æ–‡ä»¶ï¼Œé€‰æ‹©â€œsummaryâ€ä¸€æ ã€‚åœ¨â€œsummaryâ€ä¸­é€‰æ‹©â€œLinked Frameworks and Librariesâ€ä¸€æ ï¼Œç‚¹å‡»â€œ+â€å›¾æ ‡æ·»åŠ ä¸‹é¢ä¸ƒä¸ªåº“æ–‡ä»¶ï¼Œåˆ†åˆ«æ˜¯â€œSecurity.frameworkâ€ï¼Œâ€œlibiconv.dylibâ€ï¼Œâ€œSystemConfiguration.frameworkâ€ï¼Œâ€œCoreGraphics.Frameworkâ€ã€â€œlibsqlite3.dylibâ€ã€â€œCoreTelephony.frameworkâ€ã€â€œlibstdc++.dylibâ€ã€â€œlibz.dylibâ€ã€‚</p>
+<h2><a id="social_qq_scheme" name="social_qq_scheme">5.4 è®¾ç½®xcodeçš„url scheme</a></h2>
+<ul>
+<li>
+<p>è®¾ç½®xcodeçš„url schemeæ ¼å¼ä¸ºâ€œQQâ€+è…¾è®¯QQäº’è”åº”ç”¨appIdè½¬æ¢æˆåå…­è¿›åˆ¶ï¼ˆä¸è¶³8ä½å‰é¢è¡¥0ï¼‰ï¼Œä¾‹å¦‚â€œQQ05FA957Câ€ã€‚ç”Ÿæˆåå…­è¿›åˆ¶æ–¹æ³•ï¼š<code>echo 'ibase=10;obase=16;æ‚¨çš„è…¾è®¯QQäº’è”åº”ç”¨Id'|bc</code>ã€‚å¹¶åœ¨QQäº’è”åå°çš„URL schemaä¸­å¡«å…¥æ­¤å­—ç¬¦ä¸²ä¿æŒä¸€è‡´ã€‚</p>
+</li>
+<li>
+<p>å•ç‹¬ç”¨QQæˆæƒåŠŸèƒ½ï¼Œéœ€è¦é¢å¤–è®¾ç½®url schemeçš„æ ¼å¼ä¸º"tencent"+è…¾è®¯QQäº’è”åº”ç”¨appId,ä¾‹å¦‚â€œtencent100308348â€</p>
+</li>
+<li>
+<p>å®ç°ä¸‹é¢ä¸‰ä¸ªç³»ç»Ÿå›è°ƒæ–¹æ³•ï¼š</p>
+</li>
+</ul>
+<pre><code>- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+ return  [UMSocialSnsService handleOpenURL:url];    
+}
+- (BOOL)application:(UIApplication *)application 
+              openURL:(NSURL *)url 
+    sourceApplication:(NSString *)sourceApplication
+           annotation:(id)annotation
+ {
+ return  [UMSocialSnsService handleOpenURL:url];
+ }  
 </code></pre>
 
-<h2><a id="social_qq_framework" name="social_qq_framework">5.3 Ìí¼ÓÏÂÃæ¼¸¸öÏµÍ³framework</a></h2>
-<p>ÔÚXcodeÖĞ´ò¿ª¹¤³ÌÅäÖÃÎÄ¼ş£¬Ñ¡Ôñ¡°summary¡±Ò»À¸¡£ÔÚ¡°summary¡±ÖĞÑ¡Ôñ¡°Linked Frameworks and Libraries¡±Ò»À¸£¬µã»÷¡°+¡±Í¼±êÌí¼ÓÏÂÃæÆß¸ö¿âÎÄ¼ş£¬·Ö±ğÊÇ¡°Security.framework¡±£¬¡°libiconv.dylib¡±£¬¡°SystemConfiguration.framework¡±£¬¡°CoreGraphics.Framework¡±¡¢¡°libsqlite3.dylib¡±¡¢¡°CoreTelephony.framework¡±¡¢¡°libstdc++.dylib¡±¡¢¡°libz.dylib¡±¡£</p>
-<h2><a id="social_qq_scheme" name="social_qq_scheme">5.4 ÉèÖÃxcodeµÄurl scheme</a></h2>
-<p>ÈçµÚ¶ş²¿·ÖSSOÏà¹Ø½øĞĞurl scheme½øĞĞÉèÖÃ£¬×¢ÒâxcodeÖĞurl schemeµÄÉèÖÃ¸ñÊ½Îª¡°QQ¡±+ÌÚÑ¶QQ»¥ÁªÓ¦ÓÃappId×ª»»³ÉÊ®Áù½øÖÆ£¨²»×ã8Î»Ç°Ãæ²¹0£©£¬ÀıÈç¡°QQ05FA957C¡±¡£Éú³ÉÊ®Áù½øÖÆ·½·¨£º<code>echo 'ibase=10;obase=16;ÄúµÄÌÚÑ¶QQ»¥ÁªÓ¦ÓÃId'|bc</code>¡£²¢ÔÚQQ»¥ÁªºóÌ¨µÄURL schemaÖĞÌîÈë´Ë×Ö·û´®±£³ÖÒ»ÖÂ¡£
-È·±£ÊµÏÖµÚ¶ş²¿·ÖËùÊöµÄÈı¸öÏµÍ³»Øµ÷·½·¨</p>
-<h2><a id="social_qq_open" name="social_qq_open">5.5 Ìø×ªµ½ÊÖ»úQQ¼°»Øµ÷</a></h2>
+<h2><a id="social_qq_open" name="social_qq_open">5.5 æ‰“å¼€é›†æˆæ‰‹æœºQQå¼€å…³</a></h2>
 <ul>
-<li>Ê¹ÓÃ´øQQºÃÓÑµÄ<a href="#social_share_list" style="text-decoration:none">·ÖÏíÁĞ±íÒ³Ãæ</a></li>
-<li>Ê¹ÓÃµã»÷°´Å¥Ö®ºó<a href="#binding_config" style="text-decoration:none">Ö±½Ó·ÖÏíµ½QQºÃÓÑµÄ·½·¨</a>¡£</li>
-<li>QQ<a href="#binding_config" style="text-decoration:none">·ÖÏíÍê³ÉµÄ»Øµ÷·½·¨</a></li>
+<li>æ ¹æ®ä¸Šé¢SSOç›¸å…³è®¾ç½®ä»‹ç»ï¼Œåœ¨AppDelegateåº”ç”¨å…¥å£æ–¹æ³•æ‰“å¼€é›†æˆæ‰‹æœºQQå¼€å…³ã€‚</li>
 </ul>
-<p>×¢Òâ£ºÈô·ÖÏíµ½ÊÖ»úQQºó£¬³öÏÖ±ÀÀ£ÌáÊ¾ÏÂÃæ±¨´í£¬ËµÃ÷Ê¹ÓÃQQ»¥ÁªSDKÊ¹ÓÃµÄ´¦Àíbase64Ïà¹ØÀàÃûºÍÄãµÄ¹¤³ÌËùÊ¹ÓÃµÄbase64Àà³öÏÖÖØÃû£¬ÄãĞèÒªĞŞ¸ÄÒ»ÏÂbase64Ïà¹ØµÄÀàÃû¡£
+<pre><code>    //è®¾ç½®åˆ†äº«åˆ°QQç©ºé—´çš„åº”ç”¨Idï¼Œå’Œåˆ†äº«url é“¾æ¥
+    #import &quot;UMSocialQQHandler.h&quot;
+    [UMSocialQQHandler setQQWithAppId:@&quot;100424468&quot; appKey:@&quot;c7394704798a158208a74ab60104f0ba&quot; url:@&quot;http://www.umeng.com/social&quot;];
+</code></pre>
+
+<h2><a id="social_qq_use" name="social_qq_use">5.6 é€‰æ‹©ä¸‹é¢ä¸¤ç§æ–¹å¼åˆ†äº«åˆ°æ‰‹æœºQQ</a></h2>
+<ul>
+<li>ä½¿ç”¨åˆ†äº«åˆ—è¡¨é¡µé¢ï¼Œå¢åŠ åˆ†äº«åˆ°æ‰‹æœºQQ</li>
+</ul>
+<pre><code>    [UMSocialSnsService presentSnsIconSheetView:self
+                                          appKey:ä½ çš„å‹ç›Ÿåº”ç”¨Appkey
+                                       shareText:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–åˆ†äº«è®©æ‚¨å¿«é€Ÿå®ç°åˆ†äº«ç­‰ç¤¾ä¼šåŒ–åŠŸèƒ½ï¼Œwww.umeng.com/social&quot;
+                                      shareImage:[UIImage imageNamed:@&quot;icon.png&quot;]
+                                shareToSnsNames:@[UMShareToQQ]
+                                    delegate:self]; 
+    //å®ç°å›è°ƒæ–¹æ³•ï¼ˆå¯é€‰ï¼‰ï¼š
+    -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+    {
+            //æ ¹æ®`responseCode`å¾—åˆ°å‘é€ç»“æœ,å¦‚æœåˆ†äº«æˆåŠŸ
+            if(response.responseCode == UMSResponseCodeSuccess)
+            {
+                //å¾—åˆ°åˆ†äº«åˆ°çš„å¾®åšå¹³å°å
+                NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
+            }      
+    }
+</code></pre>
+
+<ul>
+<li>ç›´æ¥åˆ†äº«åˆ°æ‰‹æœºQQ</li>
+</ul>
+<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToQQ] content:@&quot;åˆ†äº«æ–‡å­—&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
+        }
+    }];
+</code></pre>
+
+<p>æ³¨æ„ï¼šè‹¥åˆ†äº«åˆ°æ‰‹æœºQQåï¼Œå‡ºç°å´©æºƒæç¤ºä¸‹é¢æŠ¥é”™ï¼Œè¯´æ˜ä½¿ç”¨QQäº’è”SDKä½¿ç”¨çš„å¤„ç†base64ç›¸å…³ç±»åå’Œä½ çš„å·¥ç¨‹æ‰€ä½¿ç”¨çš„base64ç±»å‡ºç°é‡åï¼Œä½ éœ€è¦ä¿®æ”¹ä¸€ä¸‹base64ç›¸å…³çš„ç±»åã€‚
 <code>+[QQOpenApiUtility base64EncodedStringWithData:]</code></p>
-<h1><a name="social_qzone" id="social_qzone" style="color:black">6. ¼¯³ÉQQ¿Õ¼ä</a></h1>
-<h2>6.1 Ê¹ÓÃQQ¿Õ¼äSSOÊÚÈ¨£¨¿ÉÑ¡£©£º</h2>
-<ul>
-<li>ÔÚ<code>UMSocial_Sdk_Extra_Frameworks</code>Ä¿Â¼ÏÂµÄ£¬Ìí¼Ó<code>TencentOpenAPI</code>ÎÄ¼ş¼Ğµ½¹¤³Ì</li>
-<li><a href="#social_sso_1">ÔÚXcode¹¤³ÌÉèÖÃÏàÓ¦µÄurl scheme</a></li>
-<li><a href="#social_sso_2">ÔÚAppDelegateµ÷ÓÃÏàÓ¦µÄ¿ª¹Ø·½·¨£¬²¢ÊµÏÖ»Øµ÷·½·¨</a></li>
-</ul>
-<h2>6.2 ÈôÊ¹ÓÃ×Ô¼ºµÄQQ¿Õ¼äÕËºÅ£¬ĞèÒªÉèÖÃÊ¹ÓÃQQ»¥ÁªSDK·ÖÏí</h2>
-<p>ÈôÊ¹ÓÃ×Ô¼ºµÄQQ¿Õ¼äÕËºÅ£¬ĞèÒªÊ¹ÓÃÏÂÃæµÄ·½·¨À´½øĞĞQQ¿Õ¼ä·ÖÏí¡£</p>
-<ul>
-<li>
-<p>ÔÚ<code>UMSocial_Sdk_Extra_Frameworks</code>Ä¿Â¼ÏÂµÄ£¬Ìí¼Ó<code>TencentOpenAPI</code>ÎÄ¼ş¼Ğµ½¹¤³Ì</p>
-</li>
-<li>
-<p>ÔÚappDelegateµÄÈë¿Ú·½·¨Ìí¼ÓÏÂÃæ´úÂë£º</p>
-</li>
-</ul>
-<pre><code>[UMSocialConfig setShareQzoneWithQQSDK:YES url:@&quot;http://www.umeng.com/social&quot; importClasses:@[[QQApiInterface class],[TencentOAuth class]]];
+<h2><a id="social_qq_open" name="social_qq_open">5.7 è®¾ç½®æ‰‹æœºQQåˆ†äº«æ¶ˆæ¯ç±»å‹ï¼ˆå¯é€‰ï¼‰</a></h2>
+<p>åˆ†äº«åˆ°æ‰‹æœºQQé»˜è®¤ä¸ºå›¾æ–‡æ¶ˆæ¯ï¼Œå³ç½‘é¡µç±»å‹ï¼Œå¯ä»¥è®¾ç½®ä¸ºæ— æ–‡å­—çš„çº¯å›¾ç‰‡ç±»å‹ï¼Œåœ¨è°ƒç”¨åˆ†äº«ä»£ç å‰å¢åŠ ä¸‹é¢ä»£ç </p>
+<pre><code>[UMSocialData defaultData].extConfig.qqData.qqMessageType = UMSocialQQMessageTypeImage;
 </code></pre>
 
-<h2>6.3 Ñ¡ÓÃÏÂÃæÁ½ÖÖ·½Ê½·ÖÏí</h2>
+<p>æ³¨æ„ï¼šä½¿ç”¨æ‰‹æœºQQå®¢æˆ·ç«¯åˆ†äº«åˆ°QQå¥½å‹åï¼Œç”±äºè…¾è®¯åˆ†äº«ç­–ç•¥ï¼Œè‹¥è¯¥å¥½å‹åœ¨PCç«¯æ‰“å¼€æ­¤æ¶ˆæ¯ï¼Œåªèƒ½æŸ¥çœ‹åˆ†äº«é“¾æ¥ï¼Œæ²¡æœ‰åˆ†äº«å›¾ç‰‡å’Œæ–‡å­—å†…å®¹ã€‚</p>
+<h1><a name="social_qzone" id="social_qzone" style="color:black">6. é›†æˆQQç©ºé—´</a></h1>
+<h2><a id="social_qq_register" name="social_qq_register">6.1 åœ¨è…¾è®¯QQäº’è”å¼€æ”¾å¹³å°æ³¨å†Œåº”ç”¨</a></h2>
+<h2><a id="social_qq_files" name="social_qq_files">6.2 æ·»åŠ QQç©ºé—´SDKæ–‡ä»¶.</a></h2>
 <ul>
-<li><a href="#social_share_list">Ê¹ÓÃ<code>UMShareToQzone</code>´ú±íQQ¿Õ¼ä£¬Ìí¼Óµ½·ÖÏíÁĞ±íÒ³Ãæ</a></li>
-<li><a href="#social_share_edit">Ê¹ÓÃ<code>UMShareToQzone</code>´ú±íQQ¿Õ¼ä´«µİµ½Ö±½Ó·ÖÏíµÄ·½·¨</a></li>
+<li>åœ¨<code>UMSocial_Sdk_Extra_Frameworks</code>ç›®å½•ä¸‹çš„ï¼Œæ·»åŠ <code>TencentOpenAPI</code>æ–‡ä»¶å¤¹åˆ°å·¥ç¨‹</li>
 </ul>
-<h1><a name="social_laiwang" id="social_laiwang" style="color:black">7. ¼¯³ÉÀ´Íù</a></h1>
-<p><strong> ·ÖÏíµ½À´Íù²»Ö§³Ö±¾µØÍ¼Æ¬£¬Ö»Ö§³ÖurlÍ¼Æ¬¡£</strong></p>
-<h2>7.1 Ìí¼ÓFacebookÏà¹Ø¿âÎÄ¼şÌí¼Óµ½¹¤³Ì¡£</h2>
-<p>½âÑ¹ÏÂÔØÎÄ¼ş¼Ğ£¬ÔÚ<code>UMSocial_Sdk_Extra_Frameworks</code>Ä¿Â¼ÏÂ£¬°Ñ<code>LaiWang</code>ÎÄ¼ş¼ĞÌí¼Óµ½¹¤³Ì¡£</p>
-<h2>7.2 <a href="#social_sso_1">ÔÚXcode¹¤³ÌÉèÖÃÏàÓ¦µÄurl scheme</a></h2>
-<h2>7.3 <a href="#social_sso_2">ÔÚAppDelegateµ÷ÓÃÏàÓ¦µÄ¿ª¹Ø·½·¨£¬²¢ÊµÏÖ»Øµ÷·½·¨</a></h2>
-<h2>7.4 ÔÚXcode¹¤³Ì other linker flagÉèÖÃ-ObjC²ÎÊı¡£</h2>
-<h2>7.5 Ñ¡ÓÃÏÂÃæÁ½ÖÖ·½Ê½·ÖÏí</h2>
+<h2><a id="social_qq_framework" name="social_qq_framework">6.3 æ·»åŠ ä¸‹é¢å‡ ä¸ªç³»ç»Ÿframework</a></h2>
+<p>åœ¨Xcodeä¸­æ‰“å¼€å·¥ç¨‹é…ç½®æ–‡ä»¶ï¼Œé€‰æ‹©â€œsummaryâ€ä¸€æ ã€‚åœ¨â€œsummaryâ€ä¸­é€‰æ‹©â€œLinked Frameworks and Librariesâ€ä¸€æ ï¼Œç‚¹å‡»â€œ+â€å›¾æ ‡æ·»åŠ ä¸‹é¢ä¸ƒä¸ªåº“æ–‡ä»¶ï¼Œåˆ†åˆ«æ˜¯â€œSecurity.frameworkâ€ï¼Œâ€œlibiconv.dylibâ€ï¼Œâ€œSystemConfiguration.frameworkâ€ï¼Œâ€œCoreGraphics.Frameworkâ€ã€â€œlibsqlite3.dylibâ€ã€â€œCoreTelephony.frameworkâ€ã€â€œlibstdc++.dylibâ€ã€â€œlibz.dylibâ€ã€‚</p>
+<h2>6.4 è®¾ç½®Xcode URL Scheme</h2>
 <ul>
-<li><a href="#social_share_list">Ê¹ÓÃ<code>UMShareToLWSession</code>£¬<code>UMShareToLWTimeline</code>·Ö±ğ´ú±íÀ´ÍùºÃÓÑºÍÀ´Íù¶¯Ì¬Ìí¼Óµ½·ÖÏíÁĞ±íÒ³Ãæ</a></li>
-<li><a href="#social_share_edit">Ê¹ÓÃ<code>UMShareToLWSession</code>£¬<code>UMShareToLWTimeline</code>·Ö±ğ´ú±íÀ´ÍùºÃÓÑºÍÀ´Íù¶¯Ì¬£¬´«µİµ½Ö±½Ó·ÖÏíµÄ·½·¨</a></li>
+<li>
+<p>è®¾ç½®xcodeçš„url schemeæ ¼å¼ä¸ºâ€œQQâ€+è…¾è®¯QQäº’è”åº”ç”¨appIdè½¬æ¢æˆåå…­è¿›åˆ¶ï¼ˆä¸è¶³8ä½å‰é¢è¡¥0ï¼‰ï¼Œä¾‹å¦‚â€œQQ05FA957Câ€ã€‚ç”Ÿæˆåå…­è¿›åˆ¶æ–¹æ³•ï¼š<code>echo 'ibase=10;obase=16;æ‚¨çš„è…¾è®¯QQäº’è”åº”ç”¨Id'|bc</code>ã€‚å¹¶åœ¨QQäº’è”åå°çš„URL schemaä¸­å¡«å…¥æ­¤å­—ç¬¦ä¸²ä¿æŒä¸€è‡´ã€‚</p>
+</li>
+<li>
+<p>å•ç‹¬ç”¨QQæˆæƒåŠŸèƒ½ï¼Œéœ€è¦é¢å¤–è®¾ç½®url schemeçš„æ ¼å¼ä¸º"tencent"+è…¾è®¯QQäº’è”åº”ç”¨appId,ä¾‹å¦‚â€œtencent100308348â€ </p>
+</li>
+<li>
+<p>å®ç°ä¸‹é¢ä¸‰ä¸ªç³»ç»Ÿå›è°ƒ</p>
+</li>
 </ul>
-<h1><a name="social_yixin" id="social_yixin" style="color:black">8. ¼¯³ÉÒ×ĞÅ</a></h1>
-<h2>8.1 Ìí¼ÓÒ×ĞÅ¿âÎÄ¼şÌí¼Óµ½¹¤³Ì¡£</h2>
-<p>½âÑ¹ÏÂÔØÎÄ¼ş¼Ğ£¬ÔÚ<code>UMSocial_Sdk_Extra_Frameworks</code>Ä¿Â¼ÏÂ£¬°Ñ<code>YiXin</code>ÎÄ¼ş¼ĞÌí¼Óµ½¹¤³Ì¡£ </p>
-<h2>8.2 <a href="#social_sso_1">ÔÚXcode¹¤³ÌÉèÖÃÏàÓ¦µÄurl scheme</a></h2>
-<h2>8.3 <a href="#social_sso_2">ÔÚAppDelegateµ÷ÓÃÏàÓ¦µÄ¿ª¹Ø·½·¨£¬²¢ÊµÏÖ»Øµ÷·½·¨</a></h2>
-<h2>8.4 Ñ¡ÓÃÏÂÃæÁ½ÖÖ·½Ê½·ÖÏí</h2>
+<pre><code>- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+ return  [UMSocialSnsService handleOpenURL:url];    
+}
+- (BOOL)application:(UIApplication *)application 
+              openURL:(NSURL *)url 
+    sourceApplication:(NSString *)sourceApplication
+           annotation:(id)annotation
+ {
+ return  [UMSocialSnsService handleOpenURL:url];
+ }  
+</code></pre>
+
+<h2><a id="social_qzone_open" name="social_qzone_open">6.5 æ‰“å¼€é›†æˆQQç©ºé—´å¼€å…³</a></h2>
 <ul>
-<li><a href="#social_share_list">Ê¹ÓÃ<code>UMShareToYXSession</code>£¬<code>UMShareToYXTimeline</code>·Ö±ğ´ú±íÒ×ĞÅºÃÓÑºÍÀ´ÍùÒ×ĞÅÅóÓÑÈ¦Ìí¼Óµ½·ÖÏíÁĞ±íÒ³Ãæ</a></li>
-<li><a href="#social_share_edit">Ê¹ÓÃ<code>UMShareToLWSession</code>£¬<code>UMShareToLWTimeline</code>·Ö±ğ´ú±íÒ×ĞÅºÃÓÑºÍÒ×ĞÅÅóÓÑÈ¦£¬´«µİµ½Ö±½Ó·ÖÏíµÄ·½·¨</a></li>
+<li>æ ¹æ®ä¸Šé¢SSOç›¸å…³è®¾ç½®ä»‹ç»ï¼Œåœ¨AppDelegateåº”ç”¨å…¥å£æ–¹æ³•æ‰“å¼€é›†æˆQQç©ºé—´çš„å¼€å…³ã€‚</li>
 </ul>
-<h1><a name="social_facebook" id="social_facebook" style="color:black">9. ¼¯³ÉFacebook</a></h1>
-<p><strong>Ä¬ÈÏÊ¹ÓÃiOS×Ô´øµÄFacebook·ÖÏíframework£¬ÔÚiOS 6ÒÔÉÏÓĞĞ§£¬²»ĞèÒª¶îÍâ²½Öè£¬ÈôÒªÊ¹ÓÃÎÒÃÇÌá¹©µÄfacebook·ÖÏíĞèÒªÍê³ÉÏÂÃæµÄ²½Öè£º</strong></p>
-<h2>9.1 Ìí¼ÓFacebookÏà¹Ø¿âÎÄ¼şÌí¼Óµ½¹¤³Ì¡£</h2>
-<p>½âÑ¹ÏÂÔØÎÄ¼ş¼Ğ£¬ÔÚ<code>UMSocial_Sdk_Extra_Frameworks</code>Ä¿Â¼ÏÂ£¬°Ñ<code>Facebook</code>ÎÄ¼ş¼ĞÌí¼Óµ½¹¤³Ì¡£</p>
-<h2>9.2 ÔÚhttps://developers.facebook.com ×¢²áÄãµÄfacebookÓ¦ÓÃ£¬×¢ÒâÔÚÄãµÄÓ¦ÓÃNative iOS AppÌîĞ´Bundle ID¡£</h2>
-<h2>9.3 <a href="#social_sso_1">ÔÚXcode¹¤³ÌÉèÖÃÏàÓ¦µÄurl scheme</a></h2>
-<h2>9.4 <a href="#social_sso_2">ÔÚAppDelegateµ÷ÓÃÏàÓ¦µÄ¿ª¹Ø·½·¨£¬²¢ÊµÏÖ»Øµ÷·½·¨</a></h2>
-<h2>9.5 Ñ¡ÓÃÏÂÃæÁ½ÖÖ·½Ê½·ÖÏí</h2>
+<pre><code>    //è®¾ç½®åˆ†äº«åˆ°QQç©ºé—´çš„åº”ç”¨Idï¼Œå’Œåˆ†äº«url é“¾æ¥
+    #import &quot;UMSocialQQHandler.h&quot;
+    [UMSocialQQHandler setQQWithAppId:@&quot;100424468&quot; appKey:@&quot;c7394704798a158208a74ab60104f0ba&quot; url:@&quot;http://www.umeng.com/social&quot;];
+</code></pre>
+
+<h2>6.6 é€‰æ‹©ä¸‹é¢ä¸¤ç§æ–¹å¼åˆ†äº«åˆ°QQç©ºé—´</h2>
+<p><a style="color:red">åˆ†äº«åˆ°QQç©ºé—´å¿…é¡»è¦è®¾ç½®åˆ†äº«æ–‡å­—å’Œåˆ†äº«å›¾ç‰‡ï¼Œå¦åˆ™ä¼šå‡ºç°10001çš„åˆ†äº«é”™è¯¯</a></p>
 <ul>
-<li><a href="#social_share_list">Ê¹ÓÃ<code>UMShareToFacebook</code>´ú±íFacebookÌí¼Óµ½·ÖÏíÁĞ±íÒ³Ãæ</a></li>
-<li><a href="#social_share_edit">Ê¹ÓÃ<code>UMShareToFacebook</code>´ú±íFacebook´«µİµ½Ö±½Ó·ÖÏíµÄ·½·¨</a></li>
+<li>ä½¿ç”¨åˆ†äº«åˆ—è¡¨é¡µé¢ï¼Œå¢åŠ åˆ†äº«åˆ°QQç©ºé—´</li>
 </ul>
-<h1><a name="social_twitter" id="social_twitter" style="color:black">10. ¼¯³ÉTwitter</a></h1>
-<h2>10.1 Ìí¼ÓTwitterÏà¹Ø¿âÎÄ¼şÌí¼Óµ½¹¤³Ì¡£</h2>
-<p><strong>Ä¬ÈÏÊ¹ÓÃiOS×Ô´øµÄTwitter·ÖÏí£¬²»ĞèÒª¶îÍâµÄ²½Öè£¬ÈôÊ¹ÓÃÎÒÃÇÌá¹©µÄTwitter·ÖÏí£¬ĞèÒªÍê³ÉÏÂÃæµÄ²½Öè</strong> </p>
-<p>½âÑ¹ÏÂÔØÎÄ¼ş¼Ğ£¬ÔÚ<code>UMSocial_Sdk_Extra_Frameworks</code>Ä¿Â¼ÏÂ£¬°Ñ<code>Twitter</code>ÎÄ¼ş¼ĞÌí¼Óµ½¹¤³Ì¡£</p>
-<h2>10.2 ´ò¿ªTwitter¿ª¹Ø</h2>
-<p>ÔÚAppDelegateµÄÈë¿Ú·½·¨ÉèÖÃ£º</p>
+<pre><code>    [UMSocialSnsService presentSnsIconSheetView:self
+                                          appKey:ä½ çš„å‹ç›Ÿåº”ç”¨Appkey
+                                       shareText:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–åˆ†äº«è®©æ‚¨å¿«é€Ÿå®ç°åˆ†äº«ç­‰ç¤¾ä¼šåŒ–åŠŸèƒ½ï¼Œwww.umeng.com/social&quot;
+                                      shareImage:[UIImage imageNamed:@&quot;icon.png&quot;]
+                                 shareToSnsNames:@[UMShareToQzone]
+                                    delegate:self];
+    //å®ç°å›è°ƒæ–¹æ³•ï¼ˆå¯é€‰ï¼‰ï¼š
+    -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+    {
+            //æ ¹æ®`responseCode`å¾—åˆ°å‘é€ç»“æœ,å¦‚æœåˆ†äº«æˆåŠŸ
+            if(response.responseCode == UMSResponseCodeSuccess)
+            {
+                //å¾—åˆ°åˆ†äº«åˆ°çš„å¾®åšå¹³å°å
+                NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
+            }      
+    }
+</code></pre>
+
+<ul>
+<li>ç›´æ¥åˆ†äº«åˆ°QQç©ºé—´</li>
+</ul>
+<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToQzone] content:@&quot;åˆ†äº«æ–‡å­—&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
+        }
+    }];
+</code></pre>
+
+<h1><a name="social_sina" id="social_sina" style="color:black">7. é›†æˆæ–°æµªå¾®åšSSO</a></h1>
+<h2>7.1 æ·»åŠ æ–°æµªå¾®åšç›¸å…³åº“æ–‡ä»¶æ·»åŠ åˆ°å·¥ç¨‹ã€‚</h2>
+<h3>7.1.1 ä½¿ç”¨å¾®åšåŸç”ŸSDK</h3>
+<p>è§£å‹ä¸‹è½½æ–‡ä»¶å¤¹ï¼Œå°†<code>SinaSSO_Full</code>æ–‡ä»¶å¤¹æ·»åŠ åˆ°å·¥ç¨‹ã€‚</p>
+<p>åœ¨other linker flagså¢åŠ -ObjC é€‰é¡¹ï¼Œæ·»åŠ <code>ImageIO ç³»ç»Ÿframework</code></p>
+<h3>7.1.2 ä½¿ç”¨éå¾®åšåŸç”ŸSDK</h3>
+<p>è§£å‹ä¸‹è½½æ–‡ä»¶å¤¹ï¼Œåœ¨<code>UMSocial_Sdk_Extra_Frameworks</code>ç›®å½•ä¸‹ï¼ŒæŠŠ<code>Sina</code>æ–‡ä»¶å¤¹æ·»åŠ åˆ°å·¥ç¨‹ã€‚</p>
+<h2>7.2 å¡«å†™Xcodeçš„URL Scheme</h2>
+<p>URL Schemeså¡«"sina."+ä½ çš„å‹ç›ŸAppKey.å®ç°ä¸‹é¢ä¸¤ä¸ªç³»ç»Ÿå›è°ƒï¼š</p>
+<pre><code>- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+ return  [UMSocialSnsService handleOpenURL:url];  
+}
+- (BOOL)application:(UIApplication *)application 
+              openURL:(NSURL *)url 
+    sourceApplication:(NSString *)sourceApplication
+           annotation:(id)annotation
+ {
+ return  [UMSocialSnsService handleOpenURL:url];
+ }  
+</code></pre>
+
+<h2>7.3 æ‰“å¼€æ–°æµªå¾®åšSSOå¼€å…³</h2>
+<h3>7.3.1 ä½¿ç”¨å¾®åšåŸç”ŸSDK</h3>
+<p>åœ¨ä½ çš„Appdelegateå…¥å£æ·»åŠ ä¸‹é¢çš„ä»£ç :</p>
+<pre><code>   #import &quot;UMSocialSinaSSOHandler.h&quot;
+     //æ‰“å¼€æ–°æµªå¾®åšçš„SSOå¼€å…³ï¼Œè®¾ç½®æ–°æµªå¾®åšå›è°ƒåœ°å€ï¼Œè¿™é‡Œå¿…é¡»è¦å’Œä½ åœ¨æ–°æµªå¾®åšåå°è®¾ç½®çš„å›è°ƒåœ°å€ä¸€è‡´ã€‚è‹¥åœ¨æ–°æµªåå°è®¾ç½®æˆ‘ä»¬çš„å›è°ƒåœ°å€ï¼Œâ€œhttp://sns.whalecloud.com/sina2/callbackâ€ï¼Œè¿™é‡Œå¯ä»¥ä¼ nil
+     [UMSocialSinaSSOHandler openNewSinaSSOWithRedirectURL:@&quot;http://sns.whalecloud.com/sina2/callback&quot;];
+</code></pre>
+
+<h3>7.3.2 ä½¿ç”¨éå¾®åšåŸç”ŸSDK</h3>
+<p>åœ¨ä½ çš„Appdelegateå…¥å£æ–¹æ³•ï¼Œæ·»åŠ ä¸‹é¢çš„ä»£ç </p>
+<pre><code>  #import &quot;UMSocialSinaHandler.h&quot;
+    //æ‰“å¼€æ–°æµªå¾®åšçš„SSOå¼€å…³ï¼Œè®¾ç½®æ–°æµªå¾®åšå›è°ƒåœ°å€ï¼Œè¿™é‡Œå¿…é¡»è¦å’Œä½ åœ¨æ–°æµªå¾®åšåå°è®¾ç½®çš„å›è°ƒåœ°å€ä¸€è‡´ã€‚è‹¥åœ¨æ–°æµªåå°è®¾ç½®æˆ‘ä»¬çš„å›è°ƒåœ°å€ï¼Œâ€œhttp://sns.whalecloud.com/sina2/callbackâ€ï¼Œè¿™é‡Œå¯ä»¥ä¼ nil
+    [UMSocialSinaHandler openSSOWithRedirectURL:@&quot;http://sns.whalecloud.com/sina2/callback&quot;];
+</code></pre>
+
+<h2>7.4 åˆ†äº«åˆ°æ–°æµªå¾®åš</h2>
+<ul>
+<li>æ‰“å¼€åˆ†äº«é¢æ¿ï¼Œä½¿ç”¨<code>UMShareToSina</code>ä»£è¡¨åˆ†äº«åˆ°æ–°æµªå¾®åš</li>
+</ul>
+<pre><code>    [UMSocialSnsService presentSnsIconSheetView:self
+                                          appKey:ä½ çš„å‹ç›Ÿåº”ç”¨Appkey
+                                       shareText:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–åˆ†äº«è®©æ‚¨å¿«é€Ÿå®ç°åˆ†äº«ç­‰ç¤¾ä¼šåŒ–åŠŸèƒ½ï¼Œwww.umeng.com/social&quot;
+                                      shareImage:[UIImage imageNamed:@&quot;icon.png&quot;]
+                              shareToSnsNames:@[UMShareToSina]
+                                        delegate:self];
+    //å®ç°å›è°ƒæ–¹æ³•ï¼ˆå¯é€‰ï¼‰ï¼š
+    -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+    {
+            //æ ¹æ®`responseCode`å¾—åˆ°å‘é€ç»“æœ,å¦‚æœåˆ†äº«æˆåŠŸ
+            if(response.responseCode == UMSResponseCodeSuccess)
+            {
+                //å¾—åˆ°åˆ†äº«åˆ°çš„å¾®åšå¹³å°å
+                NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
+            }      
+    }
+</code></pre>
+
+<ul>
+<li>ä½¿ç”¨<code>UMShareToSina</code>ç›´æ¥åˆ†äº«åˆ°æ–°æµªå¾®åš</li>
+</ul>
+<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:@&quot;åˆ†äº«æ–‡å­—&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
+        }
+    }];
+</code></pre>
+
+<h1><a name="social_tencent" id="social_tencent" style="color:black">8. é›†æˆè…¾è®¯å¾®åšSSO</a></h1>
+<h2>8.1 æ·»åŠ è…¾è®¯å¾®åšç›¸å…³åº“æ–‡ä»¶æ·»åŠ åˆ°å·¥ç¨‹ã€‚</h2>
+<p>è§£å‹ä¸‹è½½æ–‡ä»¶å¤¹ï¼Œåœ¨<code>UMSocial_Sdk_Extra_Frameworks</code>ç›®å½•ä¸‹ï¼ŒæŠŠ<code>TencentWeibo</code>æ–‡ä»¶å¤¹æ·»åŠ åˆ°å·¥ç¨‹ã€‚</p>
+<h2>8.2 å¡«å†™Xcodeçš„URL Scheme</h2>
+<p>URL Schemeså¡«"wb"+ä½ çš„è…¾è®¯å¾®åšApp Key.å®ç°ä¸‹é¢ä¸¤ä¸ªç³»ç»Ÿå›è°ƒï¼š</p>
+<pre><code>- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+ return  [UMSocialSnsService handleOpenURL:url];  
+}
+- (BOOL)application:(UIApplication *)application 
+              openURL:(NSURL *)url 
+    sourceApplication:(NSString *)sourceApplication
+           annotation:(id)annotation
+ {
+ return  [UMSocialSnsService handleOpenURL:url];
+ }  
+</code></pre>
+
+<h2>8.3 æ‰“å¼€è…¾è®¯å¾®åšSSOå¼€å…³</h2>
+<p>åœ¨ä½ çš„Appdelegateå…¥å£æ–¹æ³•ï¼Œéœ€è¦è®¾ç½®ä½ çš„åˆ†äº«URL</p>
+<pre><code>    //æ‰“å¼€è…¾è®¯å¾®åšSSOå¼€å…³ï¼Œè®¾ç½®å›è°ƒåœ°å€
+    [UMSocialTencentWeiboHandler openSSOWithRedirectUrl:@&quot;http://sns.whalecloud.com/tencent2/callback&quot;];
+</code></pre>
+
+<h2>8.4 åˆ†äº«åˆ°è…¾è®¯å¾®åš</h2>
+<ul>
+<li>æ‰“å¼€åˆ†äº«é¢æ¿ï¼Œä½¿ç”¨<code>UMShareToTencent</code>ä»£è¡¨åˆ†äº«åˆ°è…¾è®¯å¾®åš</li>
+</ul>
+<pre><code>    [UMSocialSnsService presentSnsIconSheetView:self
+                                          appKey:ä½ çš„å‹ç›Ÿåº”ç”¨Appkey
+                                       shareText:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–åˆ†äº«è®©æ‚¨å¿«é€Ÿå®ç°åˆ†äº«ç­‰ç¤¾ä¼šåŒ–åŠŸèƒ½ï¼Œwww.umeng.com/social&quot;
+                                      shareImage:[UIImage imageNamed:@&quot;icon.png&quot;]
+                              shareToSnsNames:@[UMShareToSina]
+                                        delegate:self];
+    //å®ç°å›è°ƒæ–¹æ³•ï¼ˆå¯é€‰ï¼‰ï¼š
+    -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+    {
+            //æ ¹æ®`responseCode`å¾—åˆ°å‘é€ç»“æœ,å¦‚æœåˆ†äº«æˆåŠŸ
+            if(response.responseCode == UMSResponseCodeSuccess)
+            {
+                //å¾—åˆ°åˆ†äº«åˆ°çš„å¾®åšå¹³å°å
+                NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
+            }      
+    }
+</code></pre>
+
+<ul>
+<li>ä½¿ç”¨<code>UMShareToTencent</code>ç›´æ¥åˆ†äº«åˆ°è…¾è®¯å¾®åš</li>
+</ul>
+<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToTencent] content:@&quot;åˆ†äº«æ–‡å­—&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
+        }
+    }];
+</code></pre>
+
+<h1><a name="social_renren" id="social_renren" style="color:black">9. é›†æˆäººäººç½‘SSO</a></h1>
+<h2>9.1 æ·»åŠ äººäººç½‘ç›¸å…³åº“æ–‡ä»¶æ·»åŠ åˆ°å·¥ç¨‹ã€‚</h2>
+<p>è§£å‹ä¸‹è½½æ–‡ä»¶å¤¹ï¼Œåœ¨<code>UMSocial_Sdk_Extra_Frameworks</code>ç›®å½•ä¸‹ï¼ŒæŠŠ<code>Renren</code>æ–‡ä»¶å¤¹æ·»åŠ åˆ°å·¥ç¨‹ã€‚</p>
+<h2>9.2 å¡«å†™Xcodeçš„URL Scheme</h2>
+<p>URL Schemeså¡«"rm"+ä½ çš„åº”ç”¨Bundle Id.å®ç°ä¸‹é¢ä¸¤ä¸ªç³»ç»Ÿå›è°ƒï¼š</p>
+<pre><code>- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+ return  [UMSocialSnsService handleOpenURL:url];  
+}
+- (BOOL)application:(UIApplication *)application 
+              openURL:(NSURL *)url 
+    sourceApplication:(NSString *)sourceApplication
+           annotation:(id)annotation
+ {
+ return  [UMSocialSnsService handleOpenURL:url];
+ }  
+</code></pre>
+
+<h2>9.3 æ‰“å¼€äººäººç½‘SSOå¼€å…³</h2>
+<p>åœ¨ä½ çš„Appdelegateå…¥å£æ–¹æ³•ï¼Œéœ€è¦è®¾ç½®ä½ çš„åˆ†äº«URL</p>
+<pre><code>    //æ‰“å¼€äººäººç½‘SSOå¼€å…³
+    [UMSocialRenrenHandler openSSO];
+</code></pre>
+
+<h2>9.4 åˆ†äº«åˆ°äººäººç½‘</h2>
+<ul>
+<li>æ‰“å¼€åˆ†äº«é¢æ¿ï¼Œä½¿ç”¨<code>UMShareToRenren</code>ä»£è¡¨åˆ†äº«åˆ°äººäººç½‘</li>
+</ul>
+<pre><code>    [UMSocialSnsService presentSnsIconSheetView:self
+                                          appKey:ä½ çš„å‹ç›Ÿåº”ç”¨Appkey
+                                       shareText:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–åˆ†äº«è®©æ‚¨å¿«é€Ÿå®ç°åˆ†äº«ç­‰ç¤¾ä¼šåŒ–åŠŸèƒ½ï¼Œwww.umeng.com/social&quot;
+                                      shareImage:[UIImage imageNamed:@&quot;icon.png&quot;]
+                              shareToSnsNames:@[UMShareToRenren]
+                                        delegate:self];
+    //å®ç°å›è°ƒæ–¹æ³•ï¼ˆå¯é€‰ï¼‰ï¼š
+    -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+    {
+            //æ ¹æ®`responseCode`å¾—åˆ°å‘é€ç»“æœ,å¦‚æœåˆ†äº«æˆåŠŸ
+            if(response.responseCode == UMSResponseCodeSuccess)
+            {
+                //å¾—åˆ°åˆ†äº«åˆ°çš„å¾®åšå¹³å°å
+                NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
+            }      
+    }
+</code></pre>
+
+<ul>
+<li>ä½¿ç”¨<code>UMShareToRenren</code>ç›´æ¥åˆ†äº«åˆ°äººäººç½‘</li>
+</ul>
+<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToRenren] content:@&quot;åˆ†äº«æ–‡å­—&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
+        }
+    }];
+</code></pre>
+
+<h1><a name="social_laiwang" id="social_laiwang" style="color:black">10. é›†æˆæ¥å¾€</a></h1>
+<h2>10.1 æ·»åŠ æ¥å¾€ç›¸å…³åº“æ–‡ä»¶æ·»åŠ åˆ°å·¥ç¨‹ã€‚</h2>
+<p>è§£å‹ä¸‹è½½æ–‡ä»¶å¤¹ï¼Œåœ¨<code>UMSocial_Sdk_Extra_Frameworks</code>ç›®å½•ä¸‹ï¼ŒæŠŠ<code>LaiWang</code>æ–‡ä»¶å¤¹æ·»åŠ åˆ°å·¥ç¨‹ã€‚</p>
+<h2>10.2 å¡«å†™Xcodeçš„URL Scheme</h2>
+<p>Identifierå¡«â€œLaiwangâ€ï¼ŒURL Schemeså¡«ä½ çš„æ¥å¾€AppId.å®ç°ä¸‹é¢ä¸‰ä¸ªç³»ç»Ÿå›è°ƒï¼š</p>
+<pre><code>- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+ return  [UMSocialSnsService handleOpenURL:url];  
+}
+- (BOOL)application:(UIApplication *)application 
+              openURL:(NSURL *)url 
+    sourceApplication:(NSString *)sourceApplication
+           annotation:(id)annotation
+ {
+ return  [UMSocialSnsService handleOpenURL:url];
+ }  
+</code></pre>
+
+<h2>10.3 åœ¨AppDelegateçš„å…¥å£æ–¹æ³•ï¼Œæ·»åŠ ä¸‹é¢ä»£ç ï¼š</h2>
+<pre><code>//è®¾ç½®æ¥å¾€AppIdï¼Œappscretï¼Œæ˜¾ç¤ºæ¥æºåç§°å’Œurlåœ°å€ï¼Œæ³¨æ„éœ€è¦å¼•ç”¨å¤´æ–‡ä»¶ #import &quot;UMSocialLaiwangHandler.h&quot;
+    [UMSocialLaiwangHandler setLaiwangAppId:@&quot;8112117817424282305&quot; appSecret:@&quot;9996ed5039e641658de7b83345fee6c9&quot; appDescription:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–ç»„ä»¶&quot; urlStirng:@&quot;http://www.umeng.com/social&quot;];
+</code></pre>
+
+<h2>10.4 åœ¨Xcodeå·¥ç¨‹ other linker flagè®¾ç½®-ObjCå‚æ•°ã€‚</h2>
+<h2>10.5 é€‰ç”¨ä¸‹é¢ä¸¤ç§æ–¹å¼åˆ†äº«åˆ°æ¥å¾€å¥½å‹å’Œæ¥å¾€åŠ¨æ€</h2>
+<ul>
+<li>ä½¿ç”¨<code>UMShareToLWSession</code>å’Œ<code>UMShareToLWTimeline</code>åˆ†åˆ«ä»£è¡¨åˆ†äº«åˆ°æ¥å¾€å¥½å‹å’Œæ¥å¾€åŠ¨æ€</li>
+</ul>
+<pre><code>    [UMSocialSnsService presentSnsIconSheetView:self
+                                          appKey:ä½ çš„å‹ç›Ÿåº”ç”¨Appkey
+                                       shareText:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–åˆ†äº«è®©æ‚¨å¿«é€Ÿå®ç°åˆ†äº«ç­‰ç¤¾ä¼šåŒ–åŠŸèƒ½ï¼Œwww.umeng.com/social&quot;
+                                      shareImage:[UIImage imageNamed:@&quot;icon.png&quot;]
+                              shareToSnsNames:@[UMShareToLWSession,UMShareToLWTimeline]
+                                        delegate:self];
+    //å®ç°å›è°ƒæ–¹æ³•ï¼ˆå¯é€‰ï¼‰ï¼š
+    -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+    {
+            //æ ¹æ®`responseCode`å¾—åˆ°å‘é€ç»“æœ,å¦‚æœåˆ†äº«æˆåŠŸ
+            if(response.responseCode == UMSResponseCodeSuccess)
+            {
+                //å¾—åˆ°åˆ†äº«åˆ°çš„å¾®åšå¹³å°å
+                NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
+            }      
+    }
+</code></pre>
+
+<ul>
+<li>ä½¿ç”¨<code>UMShareToLWSession</code>å’Œ<code>UMShareToLWTimeline</code>ç›´æ¥åˆ†äº«åˆ°æ¥å¾€å¥½å‹å’Œæ¥å¾€åŠ¨æ€</li>
+</ul>
+<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToLWSession] content:@&quot;åˆ†äº«æ–‡å­—&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
+        }
+    }];
+</code></pre>
+
+<h1><a name="social_yixin" id="social_yixin" style="color:black">11. é›†æˆæ˜“ä¿¡</a></h1>
+<h2>11.1 æ·»åŠ æ˜“ä¿¡åº“æ–‡ä»¶æ·»åŠ åˆ°å·¥ç¨‹ã€‚</h2>
+<p>è§£å‹ä¸‹è½½æ–‡ä»¶å¤¹ï¼Œåœ¨<code>UMSocial_Sdk_Extra_Frameworks</code>ç›®å½•ä¸‹ï¼ŒæŠŠ<code>YiXin</code>æ–‡ä»¶å¤¹æ·»åŠ åˆ°å·¥ç¨‹ã€‚ </p>
+<h2>11.2 å¢åŠ Xcodeçš„URL schemeï¼Œç›´æ¥å¡«å†™ä½ çš„æ˜“ä¿¡Appkey.å®ç°ä¸‹é¢ä¸‰ä¸ªç³»ç»Ÿå›è°ƒï¼š</h2>
+<pre><code>- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+ return  [UMSocialSnsService handleOpenURL:url];  
+}
+- (BOOL)application:(UIApplication *)application 
+              openURL:(NSURL *)url 
+    sourceApplication:(NSString *)sourceApplication
+           annotation:(id)annotation
+ {
+ return  [UMSocialSnsService handleOpenURL:url];
+ }  
+</code></pre>
+
+<h2>11.3 åœ¨AppDelegateå…¥å£æ–¹æ³•æ·»åŠ ä¸‹é¢çš„ä»£ç ï¼š</h2>
+<pre><code>//è®¾ç½®æ˜“ä¿¡Appkeyå’Œåˆ†äº«urlåœ°å€,æ³¨æ„éœ€è¦å¼•ç”¨å¤´æ–‡ä»¶ #import UMSocialYixinHandler.h
+[UMSocialYixinHandler setYixinAppKey:@&quot;yx35664bdff4db42c2b7be1e29390c1a06&quot; url:@&quot;http://www.umeng.com/social&quot;];
+</code></pre>
+
+<h2>11.4 åˆ†äº«åˆ°æ˜“ä¿¡å¥½å‹å’Œæ˜“ä¿¡æœ‹å‹åœˆ</h2>
+<ul>
+<li>ä½¿ç”¨<code>UMShareToYXSession</code>å’Œ<code>UMShareToYXTimeline</code>åˆ†åˆ«ä»£è¡¨åˆ†äº«åˆ°æ˜“ä¿¡å¥½å‹å’Œæ˜“ä¿¡æœ‹å‹åœˆ</li>
+</ul>
+<pre><code>    [UMSocialSnsService presentSnsIconSheetView:self
+                                          appKey:ä½ çš„å‹ç›Ÿåº”ç”¨Appkey
+                                       shareText:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–åˆ†äº«è®©æ‚¨å¿«é€Ÿå®ç°åˆ†äº«ç­‰ç¤¾ä¼šåŒ–åŠŸèƒ½ï¼Œwww.umeng.com/social&quot;
+                                      shareImage:[UIImage imageNamed:@&quot;icon.png&quot;]
+                              shareToSnsNames:@[UMShareToLWSession,UMShareToLWTimeline]
+                                    delegate:self];
+    //å®ç°å›è°ƒæ–¹æ³•ï¼ˆå¯é€‰ï¼‰ï¼š
+    -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+    {
+            //æ ¹æ®`responseCode`å¾—åˆ°å‘é€ç»“æœ,å¦‚æœåˆ†äº«æˆåŠŸ
+            if(response.responseCode == UMSResponseCodeSuccess)
+            {
+                //å¾—åˆ°åˆ†äº«åˆ°çš„å¾®åšå¹³å°å
+                NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
+            }      
+    }
+</code></pre>
+
+<ul>
+<li>ä½¿ç”¨<code>UMShareToYXSession</code>å’Œ<code>UMShareToYXTimeline</code>ç›´æ¥åˆ†äº«åˆ°æ¥å¾€å¥½å‹å’Œæ¥å¾€åŠ¨æ€</li>
+</ul>
+<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToYXSession] content:@&quot;åˆ†äº«æ–‡å­—&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
+        }
+    }];
+</code></pre>
+
+<h1><a name="social_facebook" id="social_facebook" style="color:black">12. é›†æˆFacebook</a></h1>
+<h2><strong>é»˜è®¤ä½¿ç”¨iOSè‡ªå¸¦çš„Facebookåˆ†äº«frameworkï¼Œåœ¨iOS 6ä»¥ä¸Šæœ‰æ•ˆï¼Œä¸éœ€è¦é¢å¤–æ­¥éª¤ï¼Œè‹¥è¦ä½¿ç”¨æˆ‘ä»¬æä¾›çš„facebookåˆ†äº«éœ€è¦å®Œæˆä¸‹é¢çš„æ­¥éª¤ï¼š</strong></h2>
+<h2>12.1 æ·»åŠ Facebookç›¸å…³åº“æ–‡ä»¶æ·»åŠ åˆ°å·¥ç¨‹ã€‚</h2>
+<p>è§£å‹ä¸‹è½½æ–‡ä»¶å¤¹ï¼Œåœ¨<code>UMSocial_Sdk_Extra_Frameworks</code>ç›®å½•ä¸‹ï¼ŒæŠŠ<code>Facebook</code>æ–‡ä»¶å¤¹æ·»åŠ åˆ°å·¥ç¨‹ã€‚</p>
+<h2>12.2 æ³¨å†ŒFacebookåº”ç”¨</h2>
+<p>åœ¨https://developers.facebook.com æ³¨å†Œä½ çš„facebookåº”ç”¨ï¼Œæ³¨æ„åœ¨ä½ çš„åº”ç”¨Native iOS Appå¡«å†™Bundle IDã€‚</p>
+<h2>12.3 å¢åŠ Xcode çš„URL Scheme</h2>
+<p>å¡«å†™â€œfbâ€+facebook AppIDï¼Œä¾‹å¦‚â€œfb1440390216179601â€.å®ç°ä¸‹é¢ä¸‰ä¸ªç³»ç»Ÿå›è°ƒæ–¹æ³•ï¼š</p>
+<pre><code>- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+ return  [UMSocialSnsService handleOpenURL:url];  
+}
+- (BOOL)application:(UIApplication *)application 
+              openURL:(NSURL *)url 
+    sourceApplication:(NSString *)sourceApplication
+           annotation:(id)annotation
+ {
+ return  [UMSocialSnsService handleOpenURL:url];
+ }  
+</code></pre>
+
+<h2>12.4 åœ¨AppDelegateçš„å…¥å£æ–¹æ³•å¢åŠ ä¸‹é¢ä»£ç ï¼š</h2>
+<pre><code>    //è®¾ç½®Facebookï¼ŒAppIDå’Œåˆ†äº«urlï¼Œéœ€è¦#import &quot;UMSocialFacebookHandler.h&quot;
+    [UMSocialFacebookHandler setFacebookAppID:@&quot;1440390216179601&quot; shareFacebookWithURL:@&quot;http://www.umeng.com/social&quot;];
+</code></pre>
+
+<h2>12.5 é€‰ç”¨ä¸‹é¢ä¸¤ç§æ–¹å¼åˆ†äº«åˆ°Facebook</h2>
+<ul>
+<li>åœ¨åˆ†äº«åˆ—è¡¨å¢åŠ Facebookå¹³å°</li>
+</ul>
+<pre><code>    [UMSocialSnsService presentSnsIconSheetView:self
+                                          appKey:ä½ çš„å‹ç›Ÿåº”ç”¨Appkey
+                                       shareText:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–åˆ†äº«è®©æ‚¨å¿«é€Ÿå®ç°åˆ†äº«ç­‰ç¤¾ä¼šåŒ–åŠŸèƒ½ï¼Œwww.umeng.com/social&quot;
+                                      shareImage:[UIImage imageNamed:@&quot;icon.png&quot;]
+                                 shareToSnsNames:@[UMShareToFacebook]
+                                        delegate:self];
+    //å®ç°å›è°ƒæ–¹æ³•ï¼ˆå¯é€‰ï¼‰ï¼š
+    -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+    {
+            //æ ¹æ®`responseCode`å¾—åˆ°å‘é€ç»“æœ,å¦‚æœåˆ†äº«æˆåŠŸ
+            if(response.responseCode == UMSResponseCodeSuccess)
+            {
+                //å¾—åˆ°åˆ†äº«åˆ°çš„å¾®åšå¹³å°å
+                NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
+            }      
+    }
+</code></pre>
+
+<ul>
+<li>ä½¿ç”¨<code>UMShareToFacebook</code>ç›´æ¥åˆ†äº«åˆ°Facebook</li>
+</ul>
+<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToFacebook] content:@&quot;åˆ†äº«æ–‡å­—&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
+        }
+    }];
+</code></pre>
+
+<h1><a name="social_twitter" id="social_twitter" style="color:black">13. é›†æˆTwitter</a></h1>
+<h2>13.1 æ·»åŠ Twitterç›¸å…³åº“æ–‡ä»¶æ·»åŠ åˆ°å·¥ç¨‹ã€‚</h2>
+<h2><strong>é»˜è®¤ä½¿ç”¨iOSè‡ªå¸¦çš„Twitteråˆ†äº«ï¼Œä¸éœ€è¦é¢å¤–çš„æ­¥éª¤ï¼Œè‹¥ä½¿ç”¨æˆ‘ä»¬æä¾›çš„Twitteråˆ†äº«ï¼Œéœ€è¦å®Œæˆä¸‹é¢çš„æ­¥éª¤</strong></h2>
+<p>è§£å‹ä¸‹è½½æ–‡ä»¶å¤¹ï¼Œåœ¨<code>UMSocial_Sdk_Extra_Frameworks</code>ç›®å½•ä¸‹ï¼ŒæŠŠ<code>Twitter</code>æ–‡ä»¶å¤¹æ·»åŠ åˆ°å·¥ç¨‹ã€‚</p>
+<h2>13.2 æ·»åŠ ç³»ç»ŸFramework</h2>
+<p>æ·»åŠ ç³»ç»ŸFramework:<code>Accounts.framework</code>å’Œ<code>Social.framework</code></p>
+<h2>13.3 æ‰“å¼€Twitterå¼€å…³</h2>
+<p>åœ¨AppDelegateçš„å…¥å£æ–¹æ³•è®¾ç½®ï¼š</p>
 <pre><code>#import &quot;UMSocialTwitterHandler.h&quot;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -540,203 +1087,400 @@
 }
 </code></pre>
 
-<h1><a name="social_facebook" id="social_instagram" style="color:black">11. ¼¯³ÉInstagram</a></h1>
-<h2>11.1 Ìí¼ÓInstagramÏà¹Ø¿âÎÄ¼şÌí¼Óµ½¹¤³Ì¡£</h2>
-<p>½âÑ¹ÏÂÔØÎÄ¼ş¼Ğ£¬ÔÚ<code>UMSocial_Sdk_Extra_Frameworks</code>Ä¿Â¼ÏÂ£¬°Ñ<code>Instagram</code>ÎÄ¼ş¼ĞÌí¼Óµ½¹¤³Ì¡£</p>
-<h2>11.2 ´ò¿ªInstagram¿ª¹Ø</h2>
-<p>ÔÚAppDelegateµÄÈë¿Ú·½·¨ÉèÖÃ£º</p>
+<h2>13.4 é€‰ç”¨ä¸‹é¢ä¸¤ç§æ–¹å¼åˆ†äº«åˆ°Twitter</h2>
+<ul>
+<li>åœ¨åˆ†äº«åˆ—è¡¨å¢åŠ Twitterå¹³å°</li>
+</ul>
+<pre><code>    [UMSocialSnsService presentSnsIconSheetView:self
+                                          appKey:ä½ çš„å‹ç›Ÿåº”ç”¨Appkey
+                                       shareText:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–åˆ†äº«è®©æ‚¨å¿«é€Ÿå®ç°åˆ†äº«ç­‰ç¤¾ä¼šåŒ–åŠŸèƒ½ï¼Œwww.umeng.com/social&quot;
+                                      shareImage:[UIImage imageNamed:@&quot;icon.png&quot;]
+                                 shareToSnsNames:@[UMShareToTwitter]
+                                       delegate:self];
+    //å®ç°å›è°ƒæ–¹æ³•ï¼ˆå¯é€‰ï¼‰ï¼š
+    -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+    {
+            //æ ¹æ®`responseCode`å¾—åˆ°å‘é€ç»“æœ,å¦‚æœåˆ†äº«æˆåŠŸ
+            if(response.responseCode == UMSResponseCodeSuccess)
+            {
+                //å¾—åˆ°åˆ†äº«åˆ°çš„å¾®åšå¹³å°å
+                NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
+            }      
+    }
+</code></pre>
+
+<ul>
+<li>ä½¿ç”¨<code>UMShareToTwitter</code>ç›´æ¥åˆ†äº«åˆ°Twitter</li>
+</ul>
+<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToTwitter] content:@&quot;åˆ†äº«æ–‡å­—&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
+        }
+    }];
+</code></pre>
+
+<h1><a name="social_instagram" id="social_instagram" style="color:black">14. é›†æˆInstagram</a></h1>
+<h2>14.1 æ·»åŠ Instagramç›¸å…³åº“æ–‡ä»¶æ·»åŠ åˆ°å·¥ç¨‹ã€‚</h2>
+<p>è§£å‹ä¸‹è½½æ–‡ä»¶å¤¹ï¼Œåœ¨<code>UMSocial_Sdk_Extra_Frameworks</code>ç›®å½•ä¸‹ï¼ŒæŠŠ<code>Instagram</code>æ–‡ä»¶å¤¹æ·»åŠ åˆ°å·¥ç¨‹ã€‚</p>
+<h2>14.2 æ‰“å¼€Instagramå¼€å…³</h2>
+<p>åœ¨AppDelegateçš„å…¥å£æ–¹æ³•è®¾ç½®ï¼š</p>
 <pre><code>#import &quot;UMSocialInstagramHandler.h&quot;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [UMSocialInstagramHandler openInstagram];
+    [UMSocialInstagramHandler openInstagramWithScale:NO paddingColor:[UIColor blackColor]];
 }
 </code></pre>
 
-<h2>11.3 Ñ¡ÓÃÏÂÃæÁ½ÖÖ·½Ê½·ÖÏí</h2>
+<h2>14.3 é€‰ç”¨ä¸‹é¢ä¸¤ç§æ–¹å¼åˆ†äº«</h2>
 <ul>
-<li><a href="#social_share_list">Ê¹ÓÃ<code>UMShareToInstagram</code>´ú±íInstagramÌí¼Óµ½·ÖÏíÁĞ±íÒ³Ãæ</a></li>
-<li><a href="#social_share_edit">Ê¹ÓÃ<code>UMShareToInstagram</code>´ú±íInstagram´«µİµ½Ö±½Ó·ÖÏíµÄ·½·¨</a></li>
+<li>åœ¨åˆ†äº«åˆ—è¡¨å¢åŠ Instagramå¹³å°</li>
 </ul>
-<h2><a name="binding_config" id="binding_config" style="color:black">12. °ó¶¨ÓÑÃËÓ¦ÓÃ±êÊ¶Óë¸÷¿ª·ÅÆ½Ì¨</a></h2>
-<p>»ñµÃappkeyºó£¬ÎªÁË·½±ãÄú¿ÉÒÔ¿ìËÙ¼¯³ÉÎÒÃÇµÄÉç»á»¯·ÖÏíµÄ·şÎñ£¬ÎÒÃÇ»áÎªÄã¶Ô¸÷¸öÆ½Ì¨Ìá¹©Ò»¸öÄ¬ÈÏµÄappkeyºÍappsecret£¬Èç¹ûÄãÏëÊ¹ÓÃ×Ô¼ºµÄÎ¢²©Æ½Ì¨µÄÓ¦ÓÃ£¬ÄúĞèÔÚÔÚÎÒÃÇÍøÕ¾¸ü¸ÄÄ¬ÈÏµÄÎ¢²©appkey£¬¾ßÌå²Ù×÷ÊÇ£ºµÇÂ¼ÓÑÃËÍøÕ¾-&gt;×óÉÏ½ÇÑ¡ÔñÄãÃÇµÄ²úÆ·-&gt;×é¼ş-&gt;Éç»á»¯×é¼ş-&gt;ÉèÖÃ,²Ëµ¥ÏîÏÂ½øĞĞ°ó¶¨ÅäÖÃ¡£Èç¹ûÄãÉĞÎ´ÔÚÎÒÃÇÖ§³ÖµÄ·ÖÏíÆ½Ì¨×¢²áÄãµÄÓ¦ÓÃ£¬×¢²á¹ı³Ì¿ÉÒÔ²Î¿¼ÈçÏÂ£º</p>
-<h2><strong>ĞÂÀËÎ¢²©</strong></h2>
-<pre><code>1. ÔÚĞÂÀË¿ª·ÅÆ½Ì¨ºóÌ¨´´½¨ÒÆ¶¯Ó¦ÓÃ£ºhttp://open.weibo.com -&gt; Ó¦ÓÃ¿ª·¢ -&gt; ÒÆ¶¯Ó¦ÓÃ -&gt; ´´½¨Ó¦ÓÃ
-
-2. ÔÚ´´½¨ºÃĞÂÓ¦ÓÃºó£¬Ñ¡Ôñ¡°»ù±¾ĞÅÏ¢¡±£¬°²È«ÓòÃûÌîĞ´"sns.whalecloud.com"£¬ÆäÓà×Ö¶Î°´ĞèÌîĞ´£»£¨Èç¹ûÊÇÒÑÓĞÓ¦ÓÃ£¬¿ÉÒÔÔÚÓ¦ÓÃĞÅÏ¢-&gt;»ù±¾ÉèÖÃ-&gt;°²È«ÓòÃûÖĞ×öĞŞ¸Ä£©
-
-3. Èç¹ûÓ¦ÓÃÉĞÎ´Í¨¹ıÉóºË£¬ÔòĞèÒªÖ¸¶¨²âÊÔÓÃ»§£¬¸Ã½×¶ÎÖ»ÓĞÖ¸¶¨µÄ²âÊÔÓÃ»§²Å¿ÉÒÔ·ÖÏíĞÅÏ¢µ½ĞÂÀËÎ¢²©£¬Ó¦ÓÃÍ¨¹ıÉóºËºó´ËÏŞÖÆ×Ô¶¯Ê§Ğ§¡£
-
-4. ½«»ñÈ¡µ½µÄKeyºÍSecretÊÖ¹¤ÌîĞ´µ½ÓÑÃËºóÌ¨¶ÔÓ¦Ó¦ÓÃµÄ×é¼ş -&gt; Éç»á»¯×é¼ş -&gt; ÉèÖÃÒ³ -&gt; ĞÂÀËÎ¢²©APP°ó¶¨ĞÅÏ¢²¿·Ö¡£
+<pre><code>    [UMSocialSnsService presentSnsIconSheetView:self
+                                          appKey:ä½ çš„å‹ç›Ÿåº”ç”¨Appkey
+                                       shareText:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–åˆ†äº«è®©æ‚¨å¿«é€Ÿå®ç°åˆ†äº«ç­‰ç¤¾ä¼šåŒ–åŠŸèƒ½ï¼Œwww.umeng.com/social&quot;
+                                      shareImage:[UIImage imageNamed:@&quot;icon.png&quot;]
+                                shareToSnsNames:@[UMShareToInstagram]
+                                       delegate:self];
+    //å®ç°å›è°ƒæ–¹æ³•ï¼ˆå¯é€‰ï¼‰ï¼š
+    -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+    {
+            //æ ¹æ®`responseCode`å¾—åˆ°å‘é€ç»“æœ,å¦‚æœåˆ†äº«æˆåŠŸ
+            if(response.responseCode == UMSResponseCodeSuccess)
+            {
+                //å¾—åˆ°åˆ†äº«åˆ°çš„å¾®åšå¹³å°å
+                NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
+            }      
+    }
 </code></pre>
-<h2><strong>ÌÚÑ¶Î¢²©</strong></h2>
-<pre><code>1. ÌîĞ´Ó¦ÓÃĞÅÏ¢£¬Éú³É·â×°Á´½Ó¡£Èç¹û»¹Î´ÅäÖÃÓ¦ÓÃµØÖ·µÄ·â×°Á´½Ó£¬ĞèÒªÔÚÓÑÃËºóÌ¨¶ÔÓ¦Ó¦ÓÃµÄ×é¼ş -&gt;Éç»á»¯×é¼ş -&gt;ÉèÖÃÒ³ÌîĞ´ÄãµÄÌÚÑ¶Î¢²©Ó¦ÓÃ¶ÔÓ¦µÄApp KeyºÍApp Secret,Íê³ÉÖ®ºó¼´³öÏÖÉú³É·â×ªÁ´½Ó±íµ¥£»
+
+<ul>
+<li>ä½¿ç”¨<code>UMShareToInstagram</code>ç›´æ¥åˆ†äº«åˆ°Instagram</li>
+</ul>
+<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToInstagram] content:@&quot;åˆ†äº«æ–‡å­—&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
+        }
+    }];
+</code></pre>
+
+<h1><a name="social_line" id="social_line" style="color:black">15. é›†æˆLine</a></h1>
+<h2>15.1 æ·»åŠ Lineç›¸å…³åº“æ–‡ä»¶æ·»åŠ åˆ°å·¥ç¨‹ã€‚</h2>
+<p>è§£å‹ä¸‹è½½æ–‡ä»¶å¤¹ï¼Œåœ¨<code>UMSocial_Sdk_Extra_Frameworks</code>ç›®å½•ä¸‹ï¼ŒæŠŠ<code>Line</code>æ–‡ä»¶å¤¹æ·»åŠ åˆ°å·¥ç¨‹ã€‚</p>
+<h2>15.2 æ‰“å¼€Lineå¼€å…³</h2>
+<p>åœ¨AppDelegateçš„å…¥å£æ–¹æ³•è®¾ç½®ï¼š</p>
+<pre><code>#import &quot;UMSocialLineHandler.h&quot;
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+//åˆ†äº«åˆ°lineï¼Œåªèƒ½åˆ†äº«çº¯æ–‡æœ¬æ¶ˆæ¯æˆ–è€…çº¯å›¾ç‰‡æ¶ˆæ¯
+    [UMSocialLineHandler openLineShare:UMSocialLineMessageTypeImage];
+}
+</code></pre>
+
+<h2>15.3 é€‰ç”¨ä¸‹é¢ä¸¤ç§æ–¹å¼åˆ†äº«</h2>
+<ul>
+<li>åœ¨åˆ†äº«åˆ—è¡¨å¢åŠ Lineå¹³å°</li>
+</ul>
+<pre><code>    [UMSocialSnsService presentSnsIconSheetView:self
+                                          appKey:ä½ çš„å‹ç›Ÿåº”ç”¨Appkey
+                                       shareText:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–åˆ†äº«è®©æ‚¨å¿«é€Ÿå®ç°åˆ†äº«ç­‰ç¤¾ä¼šåŒ–åŠŸèƒ½ï¼Œwww.umeng.com/social&quot;
+                                      shareImage:[UIImage imageNamed:@&quot;icon.png&quot;]
+                                shareToSnsNames:@[UMShareToLine]
+                                       delegate:self];
+    //å®ç°å›è°ƒæ–¹æ³•ï¼ˆå¯é€‰ï¼‰ï¼š
+    -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+    {
+            //æ ¹æ®`responseCode`å¾—åˆ°å‘é€ç»“æœ,å¦‚æœåˆ†äº«æˆåŠŸ
+            if(response.responseCode == UMSResponseCodeSuccess)
+            {
+                //å¾—åˆ°åˆ†äº«åˆ°çš„å¾®åšå¹³å°å
+                NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
+            }      
+    }
+</code></pre>
+
+<ul>
+<li>ä½¿ç”¨<code>UMShareToLine</code>ç›´æ¥åˆ†äº«åˆ°Line</li>
+</ul>
+<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToLine] content:@&quot;åˆ†äº«æ–‡å­—&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
+        }
+    }];
+</code></pre>
+
+<h1><a name="social_whatsapp" id="social_whatsapp" style="color:black">16. é›†æˆWhatsapp</a></h1>
+<h2>16.1 æ·»åŠ Whatsappç›¸å…³åº“æ–‡ä»¶æ·»åŠ åˆ°å·¥ç¨‹ã€‚</h2>
+<p>è§£å‹ä¸‹è½½æ–‡ä»¶å¤¹ï¼Œåœ¨<code>UMSocial_Sdk_Extra_Frameworks</code>ç›®å½•ä¸‹ï¼ŒæŠŠ<code>Whatsapp</code>æ–‡ä»¶å¤¹æ·»åŠ åˆ°å·¥ç¨‹ã€‚</p>
+<h2>16.2 æ‰“å¼€Whatsappå¼€å…³</h2>
+<p>åœ¨AppDelegateçš„å…¥å£æ–¹æ³•è®¾ç½®ï¼š</p>
+<pre><code>#import &quot;UMSocialLineHandler.h&quot;
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+//åˆ†äº«åˆ°whatsappï¼Œåªèƒ½åˆ†äº«çº¯æ–‡æœ¬æ¶ˆæ¯æˆ–è€…çº¯å›¾ç‰‡æ¶ˆæ¯
+    [UMSocialWhatsappHandler openWhatsapp:UMSocialWhatsappMessageTypeImage];
+}
+</code></pre>
+
+<h2>16.3 é€‰ç”¨ä¸‹é¢ä¸¤ç§æ–¹å¼åˆ†äº«</h2>
+<ul>
+<li>åœ¨åˆ†äº«åˆ—è¡¨å¢åŠ Whatsappå¹³å°</li>
+</ul>
+<pre><code>    [UMSocialSnsService presentSnsIconSheetView:self
+                                          appKey:ä½ çš„å‹ç›Ÿåº”ç”¨Appkey
+                                       shareText:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–åˆ†äº«è®©æ‚¨å¿«é€Ÿå®ç°åˆ†äº«ç­‰ç¤¾ä¼šåŒ–åŠŸèƒ½ï¼Œwww.umeng.com/social&quot;
+                                      shareImage:[UIImage imageNamed:@&quot;icon.png&quot;]
+                                shareToSnsNames:@[UMShareToWhatsapp]
+                                       delegate:self];
+    //å®ç°å›è°ƒæ–¹æ³•ï¼ˆå¯é€‰ï¼‰ï¼š
+    -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+    {
+            //æ ¹æ®`responseCode`å¾—åˆ°å‘é€ç»“æœ,å¦‚æœåˆ†äº«æˆåŠŸ
+            if(response.responseCode == UMSResponseCodeSuccess)
+            {
+                //å¾—åˆ°åˆ†äº«åˆ°çš„å¾®åšå¹³å°å
+                NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
+            }      
+    }
+</code></pre>
+
+<ul>
+<li>ä½¿ç”¨<code>UMShareToWhatsapp</code>ç›´æ¥åˆ†äº«åˆ°Whatsapp</li>
+</ul>
+<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToWhatsapp] content:@&quot;åˆ†äº«æ–‡å­—&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
+        }
+    }];
+</code></pre>
+
+<h1><a name="social_tumblr" id="social_tumblr" style="color:black">17. é›†æˆTumblr</a></h1>
+<h2>17.1 æ·»åŠ Tumblrç›¸å…³åº“æ–‡ä»¶æ·»åŠ åˆ°å·¥ç¨‹ã€‚</h2>
+<p>è§£å‹ä¸‹è½½æ–‡ä»¶å¤¹ï¼Œåœ¨<code>UMSocial_Sdk_Extra_Frameworks</code>ç›®å½•ä¸‹ï¼ŒæŠŠ<code>Tumblr</code>æ–‡ä»¶å¤¹æ·»åŠ åˆ°å·¥ç¨‹ã€‚</p>
+<h2>17.2 æ‰“å¼€Tumblrå¼€å…³</h2>
+<h3>æ³¨æ„ï¼šæˆ‘ä»¬é‡‡ç”¨æ‰“å¼€Tumblrå®¢æˆ·ç«¯æ–¹å¼åˆ†äº«åˆ°Tumblrï¼Œç”±äºTumblrå®¢æˆ·ç«¯æ²¡æœ‰å…¼å®¹iOS8ï¼Œå› æ­¤åœ¨iOS8ä¸Šåˆ†äº«å¤±è´¥ã€‚</h3>
+<p>åœ¨AppDelegateçš„å…¥å£æ–¹æ³•è®¾ç½®ï¼š</p>
+<pre><code>#import &quot;UMSocialTumblrHandler.h&quot;
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [UMSocialTumblrHandler openTumblr];
+}
+</code></pre>
+
+<h2>17.3 é€‰ç”¨ä¸‹é¢ä¸¤ç§æ–¹å¼åˆ†äº«</h2>
+<ul>
+<li>åœ¨åˆ†äº«åˆ—è¡¨å¢åŠ Tumblrå¹³å°</li>
+</ul>
+<pre><code>    [UMSocialSnsService presentSnsIconSheetView:self
+                                          appKey:ä½ çš„å‹ç›Ÿåº”ç”¨Appkey
+                                       shareText:@&quot;å‹ç›Ÿç¤¾ä¼šåŒ–åˆ†äº«è®©æ‚¨å¿«é€Ÿå®ç°åˆ†äº«ç­‰ç¤¾ä¼šåŒ–åŠŸèƒ½ï¼Œwww.umeng.com/social&quot;
+                                      shareImage:[UIImage imageNamed:@&quot;icon.png&quot;]
+                                shareToSnsNames:@[UMShareToTumblr]
+                                       delegate:self];
+    //å®ç°å›è°ƒæ–¹æ³•ï¼ˆå¯é€‰ï¼‰ï¼š
+    -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+    {
+            //æ ¹æ®`responseCode`å¾—åˆ°å‘é€ç»“æœ,å¦‚æœåˆ†äº«æˆåŠŸ
+            if(response.responseCode == UMSResponseCodeSuccess)
+            {
+                //å¾—åˆ°åˆ†äº«åˆ°çš„å¾®åšå¹³å°å
+                NSLog(@&quot;share to sns name is %@&quot;,[[response.data allKeys] objectAtIndex:0]);
+            }      
+    }
+</code></pre>
+
+<ul>
+<li>ä½¿ç”¨<code>UMShareToTumblr</code>ç›´æ¥åˆ†äº«åˆ°Tumblr</li>
+</ul>
+<pre><code>    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToTumblr] content:@&quot;åˆ†äº«æ–‡å­—&quot; image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            NSLog(@&quot;åˆ†äº«æˆåŠŸï¼&quot;);
+        }
+    }];
+</code></pre>
+
+<h2><a name="binding_config" id="binding_config" style="color:black">18. ç»‘å®šå‹ç›Ÿåº”ç”¨æ ‡è¯†ä¸å„å¼€æ”¾å¹³å°</a></h2>
+<p>è·å¾—appkeyåï¼Œä¸ºäº†æ–¹ä¾¿æ‚¨å¯ä»¥å¿«é€Ÿé›†æˆæˆ‘ä»¬çš„ç¤¾ä¼šåŒ–åˆ†äº«çš„æœåŠ¡ï¼Œæˆ‘ä»¬ä¼šä¸ºä½ å¯¹å„ä¸ªå¹³å°æä¾›ä¸€ä¸ªé»˜è®¤çš„appkeyå’Œappsecretï¼Œå¦‚æœä½ æƒ³ä½¿ç”¨è‡ªå·±çš„å¾®åšå¹³å°çš„åº”ç”¨ï¼Œæ‚¨éœ€åœ¨åœ¨æˆ‘ä»¬ç½‘ç«™æ›´æ”¹é»˜è®¤çš„å¾®åšappkeyï¼Œå…·ä½“æ“ä½œæ˜¯ï¼šç™»å½•å‹ç›Ÿç½‘ç«™-&gt;å·¦ä¸Šè§’é€‰æ‹©ä½ ä»¬çš„äº§å“-&gt;ç»„ä»¶-&gt;ç¤¾ä¼šåŒ–ç»„ä»¶-&gt;è®¾ç½®,èœå•é¡¹ä¸‹è¿›è¡Œç»‘å®šé…ç½®ã€‚å¦‚æœä½ å°šæœªåœ¨æˆ‘ä»¬æ”¯æŒçš„åˆ†äº«å¹³å°æ³¨å†Œä½ çš„åº”ç”¨ï¼Œæ³¨å†Œè¿‡ç¨‹å¯ä»¥å‚è€ƒå¦‚ä¸‹ï¼š</p>
+<h2><strong>æ–°æµªå¾®åš</strong></h2>
+<pre><code>1. åœ¨æ–°æµªå¼€æ”¾å¹³å°åå°åˆ›å»ºç§»åŠ¨åº”ç”¨ï¼šhttp://open.weibo.com -&gt; åº”ç”¨å¼€å‘ -&gt; ç§»åŠ¨åº”ç”¨ -&gt; åˆ›å»ºåº”ç”¨
+
+2. åœ¨åˆ›å»ºå¥½æ–°åº”ç”¨åï¼Œé€‰æ‹©â€œåŸºæœ¬ä¿¡æ¯â€ï¼Œå®‰å…¨åŸŸåå¡«å†™"sns.whalecloud.com"ï¼Œå…¶ä½™å­—æ®µæŒ‰éœ€å¡«å†™ï¼›ï¼ˆå¦‚æœæ˜¯å·²æœ‰åº”ç”¨ï¼Œå¯ä»¥åœ¨åº”ç”¨ä¿¡æ¯-&gt;åŸºæœ¬è®¾ç½®-&gt;å®‰å…¨åŸŸåä¸­åšä¿®æ”¹ï¼‰
+é«˜çº§ä¿¡æ¯ï¼Œæˆæƒå›è°ƒé¡µï¼Œå¡«å†™â€œhttp://sns.whalecloud.com/sina2/callbackâ€
+
+3. å¦‚æœåº”ç”¨å°šæœªé€šè¿‡å®¡æ ¸ï¼Œåˆ™éœ€è¦æŒ‡å®šæµ‹è¯•ç”¨æˆ·ï¼Œè¯¥é˜¶æ®µåªæœ‰æŒ‡å®šçš„æµ‹è¯•ç”¨æˆ·æ‰å¯ä»¥åˆ†äº«ä¿¡æ¯åˆ°æ–°æµªå¾®åšï¼Œåº”ç”¨é€šè¿‡å®¡æ ¸åæ­¤é™åˆ¶è‡ªåŠ¨å¤±æ•ˆã€‚
+
+4. å°†è·å–åˆ°çš„Keyå’ŒSecretæ‰‹å·¥å¡«å†™åˆ°å‹ç›Ÿåå°å¯¹åº”åº”ç”¨çš„ç»„ä»¶ -&gt; ç¤¾ä¼šåŒ–ç»„ä»¶ -&gt; è®¾ç½®é¡µ -&gt; æ–°æµªå¾®åšAPPç»‘å®šä¿¡æ¯éƒ¨åˆ†ã€‚
+</code></pre>
+<h2><strong>è…¾è®¯å¾®åš</strong></h2>
+<pre><code>1. å¡«å†™åº”ç”¨ä¿¡æ¯ï¼Œç”Ÿæˆå°è£…é“¾æ¥ã€‚å¦‚æœè¿˜æœªé…ç½®åº”ç”¨åœ°å€çš„å°è£…é“¾æ¥ï¼Œéœ€è¦åœ¨å‹ç›Ÿåå°å¯¹åº”åº”ç”¨çš„ç»„ä»¶ -&gt;ç¤¾ä¼šåŒ–ç»„ä»¶ -&gt;è®¾ç½®é¡µå¡«å†™ä½ çš„è…¾è®¯å¾®åšåº”ç”¨å¯¹åº”çš„App Keyå’ŒApp Secret,å®Œæˆä¹‹åå³å‡ºç°ç”Ÿæˆå°è½¬é“¾æ¥è¡¨å•ï¼›
 </code></pre>
 <p><img alt="appurl_socialurl" src="http://dev.umeng.com/images/ios/appurl_socialurl.png" /></p>
-<pre><code>2. ÔÚÌÚÑ¶¿ª·ÅÆ½Ì¨ºóÌ¨´´½¨ÎŞÏßÓ¦ÓÃ£ºhttp://dev.t.qq.com/ -&gt; Ó¦ÓÃ¿ª·¢ -&gt; ´´½¨Ó¦ÓÃ -&gt; ¡°ÎŞÏßÓ¦ÓÃ¡±£»
+<pre><code>2. åœ¨è…¾è®¯å¼€æ”¾å¹³å°åå°åˆ›å»ºæ— çº¿åº”ç”¨ï¼šhttp://dev.t.qq.com/ -&gt; åº”ç”¨å¼€å‘ -&gt; åˆ›å»ºåº”ç”¨ -&gt; â€œæ— çº¿åº”ç”¨â€ï¼›
 
-3. ÔÚ´´½¨ÎŞÏßÓ¦ÓÃ±íµ¥ÖĞ£¬¡°Ó¦ÓÃÍøÖ·¡±ĞèÒªÌîĞ´²½Öè1Éú³ÉµÄÓ¦ÓÃÍøÖ·µÄ·â×°Á´½Ó£¬ÆäÓà×Ö¶Î°´ĞèÌîĞ´£»
+3. åœ¨åˆ›å»ºæ— çº¿åº”ç”¨è¡¨å•ä¸­ï¼Œâ€œåº”ç”¨ç½‘å€â€éœ€è¦å¡«å†™æ­¥éª¤1ç”Ÿæˆçš„åº”ç”¨ç½‘å€çš„å°è£…é“¾æ¥ï¼Œå…¶ä½™å­—æ®µæŒ‰éœ€å¡«å†™ï¼›
 
-£¨Èç¹ûÊÇÒÑÓĞÓ¦ÓÃ£¬¿ÉÒÔÔÚ»ù±¾ĞÅÏ¢-¡·Ó¦ÓÃÍøÖ·ÖĞÌîĞ´ÉÏÊöµÄ·â×°Á´½Ó£©
+ï¼ˆå¦‚æœæ˜¯å·²æœ‰åº”ç”¨ï¼Œå¯ä»¥åœ¨åŸºæœ¬ä¿¡æ¯-ã€‹åº”ç”¨ç½‘å€ä¸­å¡«å†™ä¸Šè¿°çš„å°è£…é“¾æ¥ï¼‰
 
-4. ½«»ñÈ¡µ½µÄKeyºÍSecretÊÖ¹¤ÌîĞ´µ½ÓÑÃËºóÌ¨¶ÔÓ¦Ó¦ÓÃµÄ×é¼ş -¡·Éç»á»¯×é¼ş - ¡·ÉèÖÃÒ³ -¡·ÌÚÑ¶Î¢²©APP°ó¶¨ĞÅÏ¢²¿·Ö¡£
+4. å°†è·å–åˆ°çš„Keyå’ŒSecretæ‰‹å·¥å¡«å†™åˆ°å‹ç›Ÿåå°å¯¹åº”åº”ç”¨çš„ç»„ä»¶ -ã€‹ç¤¾ä¼šåŒ–ç»„ä»¶ - ã€‹è®¾ç½®é¡µ -ã€‹è…¾è®¯å¾®åšAPPç»‘å®šä¿¡æ¯éƒ¨åˆ†ã€‚
 </code></pre>
-<h2><strong>ÈËÈËÍø</strong></h2>
-<pre><code>1. ÔÚÈçÏÂÎ»ÖÃ´´½¨Ó¦ÓÃ£ºhttp://dev.renren.com/ -¡·Ó¦ÓÃ¿ª·¢-¡·´´½¨¿Í»§¶ËÓ¦ÓÃ-¡·ÌîĞ´Ó¦ÓÃÃû³Æ£»
+<h2><strong>äººäººç½‘</strong></h2>
+<pre><code>1. åœ¨å¦‚ä¸‹ä½ç½®åˆ›å»ºåº”ç”¨ï¼šhttp://dev.renren.com/ -ã€‹åº”ç”¨å¼€å‘-ã€‹åˆ›å»ºå®¢æˆ·ç«¯åº”ç”¨-ã€‹å¡«å†™åº”ç”¨åç§°ï¼›
 
-2. ÔÚÒÑ´´½¨Ó¦ÓÃµÄ»ù±¾ĞÅÏ¢-¡·Ó¦ÓÃ¸ùÓòÃû×Ö¶ÎÌîĞ´Îª¡°sns.whalecloud.com¡±£»
+2. åœ¨å·²åˆ›å»ºåº”ç”¨çš„åŸºæœ¬ä¿¡æ¯-ã€‹åº”ç”¨æ ¹åŸŸåå­—æ®µå¡«å†™ä¸ºâ€œsns.whalecloud.comâ€ï¼›
 
-3. Ó¦ÓÃ´¦ÓÚ¡°¿ª·¢ÖĞ¡±×´Ì¬£¨Î´ÉóºËÍ¨¹ıÇ°£©£¬ĞèÒªÔÚÓÃ»§¹ÜÀíÒ³ÃæÖĞÌí¼Ó²âÊÔÓÃ»§£¬ÕâĞ©ÌØ¶¨ÓÃ»§²ÅÄÜ·ÖÏí³É¹¦¡£Ó¦ÓÃÍ¨¹ıÉóºËºó´ËÏŞÖÆ×Ô¶¯Ê§Ğ§¡£
+3. åº”ç”¨å¤„äºâ€œå¼€å‘ä¸­â€çŠ¶æ€ï¼ˆæœªå®¡æ ¸é€šè¿‡å‰ï¼‰ï¼Œéœ€è¦åœ¨ç”¨æˆ·ç®¡ç†é¡µé¢ä¸­æ·»åŠ æµ‹è¯•ç”¨æˆ·ï¼Œè¿™äº›ç‰¹å®šç”¨æˆ·æ‰èƒ½åˆ†äº«æˆåŠŸã€‚åº”ç”¨é€šè¿‡å®¡æ ¸åæ­¤é™åˆ¶è‡ªåŠ¨å¤±æ•ˆã€‚
 
-4. ½«»ñÈ¡µ½µÄApp ID¡¢API Key¡¢SecretÊÖ¹¤ÌîĞ´µ½ÓÑÃËºóÌ¨¶ÔÓ¦Ó¦ÓÃµÄ×é¼ş -¡·Éç»á»¯×é¼ş - ¡·ÉèÖÃÒ³ -¡·ÈËÈËÍøAPP°ó¶¨ĞÅÏ¢²¿·Ö£¬²¢¹´Ñ¡¡°¿ª·ÅÆ½Ì¨¡±¡£
+4. å°†è·å–åˆ°çš„App IDã€API Keyã€Secretæ‰‹å·¥å¡«å†™åˆ°å‹ç›Ÿåå°å¯¹åº”åº”ç”¨çš„ç»„ä»¶ -ã€‹ç¤¾ä¼šåŒ–ç»„ä»¶ - ã€‹è®¾ç½®é¡µ -ã€‹äººäººç½‘APPç»‘å®šä¿¡æ¯éƒ¨åˆ†ï¼Œå¹¶å‹¾é€‰â€œå¼€æ”¾å¹³å°â€ã€‚
 </code></pre>
-<h2><strong>¶¹°ê</strong></h2>
-<pre><code>ÓëÈËÈËÍøµÄÉêÇë¡¢ÅäÖÃ·½Ê½»ù±¾Ò»ÖÂ£¬¿ª·ÅÆ½Ì¨Á´½ÓÈçÏÂ£ºhttp://developers.douban.com/
+<h2><strong>è±†ç“£</strong></h2>
+<pre><code>ä¸äººäººç½‘çš„ç”³è¯·ã€é…ç½®æ–¹å¼åŸºæœ¬ä¸€è‡´ï¼Œå¼€æ”¾å¹³å°é“¾æ¥å¦‚ä¸‹ï¼šhttp://developers.douban.com/
 
-»Øµ÷µØÖ·Îª£ºhttp://sns.whalecloud.com/douban/callback
+å›è°ƒåœ°å€ä¸ºï¼šhttp://sns.whalecloud.com/douban/callback
 
-È¨ÏŞ±ØĞëÑ¡Ôñ¶¹°ê¹ã²¥
+æƒé™å¿…é¡»é€‰æ‹©è±†ç“£å¹¿æ’­
 </code></pre>
-<h2><strong>QQ¿Õ¼ä</strong></h2>
-<pre><code>1. ÔÚÈçÏÂÎ»ÖÃ´´½¨Ó¦ÓÃ£ºhttp://connect.qq.com/manage/ -¡·Ìí¼ÓÒÆ¶¯Ó¦ÓÃ-¡·ÌîĞ´Ó¦ÓÃÃû³Æ£¬È·¶¨£»
+<h2><strong>QQç©ºé—´</strong></h2>
+<pre><code>1. åœ¨å¦‚ä¸‹ä½ç½®åˆ›å»ºåº”ç”¨ï¼šhttp://connect.qq.com/manage/ -ã€‹æ·»åŠ ç§»åŠ¨åº”ç”¨-ã€‹å¡«å†™åº”ç”¨åç§°ï¼Œç¡®å®šï¼›
 
-2. ÔÚ½ÓÏÂÀ´µÄÓ¦ÓÃ¿ØÖÆÌ¨-&gt;»ù±¾ĞÅÏ¢-&gt;µã»÷±à¼­°´Å¥£¬ÌîĞ´±ØÒªµÄÓ¦ÓÃĞÅÏ¢£¬²¢±£´æ¡££¨²»×öÓĞ¿ÉÄÜÊÚÈ¨Ê§°Ü£©
+2. åœ¨æ¥ä¸‹æ¥çš„åº”ç”¨æ§åˆ¶å°-&gt;åŸºæœ¬ä¿¡æ¯-&gt;ç‚¹å‡»ç¼–è¾‘æŒ‰é’®ï¼Œå¡«å†™å¿…è¦çš„åº”ç”¨ä¿¡æ¯ï¼Œå¹¶ä¿å­˜ã€‚ï¼ˆä¸åšæœ‰å¯èƒ½æˆæƒå¤±è´¥ï¼‰
 
-3. Ôö¼ÓÍ¼ÎÄ·ÖÏíÈ¨ÏŞ¡£µÇÂ¼µ½ÌÚÑ¶QQ»¥ÁªÆ½Ì¨µÄÓ¦ÓÃ¹ÜÀíÒ³Ãæhttp://connect.qq.com/manage/£¬Ñ¡ÔñÄãµÄÓ¦ÓÃ-¡· Ó¦ÓÃ¹ÜÀí -¡·API¹ÜÀí -¡·Î´»ñÈ¡API-¡·Ñ¡Ôñ `list_album upload_pic add_album` ÉêÇëÈ¨ÏŞ¡£
+3. å¢åŠ å›¾æ–‡åˆ†äº«æƒé™ã€‚ç™»å½•åˆ°è…¾è®¯QQäº’è”å¹³å°çš„åº”ç”¨ç®¡ç†é¡µé¢http://connect.qq.com/manage/ï¼Œé€‰æ‹©ä½ çš„åº”ç”¨-ã€‹ åº”ç”¨ç®¡ç† -ã€‹APIç®¡ç† -ã€‹æœªè·å–API-ã€‹é€‰æ‹© `list_album upload_pic add_album` ç”³è¯·æƒé™ã€‚
 
-4. ½«»ñÈ¡µ½µÄAPP ID¡¢KeyÊÖ¹¤ÌîĞ´µ½ÓÑÃËºóÌ¨¶ÔÓ¦Ó¦ÓÃµÄ×é¼ş -¡·Éç»á»¯×é¼ş - ¡·ÉèÖÃÒ³ -¡·QQ¿Õ¼äAPP°ó¶¨ĞÅÏ¢²¿·Ö¡£
+4. åœ¨ç½‘ç«™åº”ç”¨ä¿¡æ¯-&gt;å›è°ƒåœ°å€ï¼Œå¡«å†™ä¸ºï¼šhttp://sns.whalecloud.comã€‚è‹¥ä¸ºç§»åŠ¨åº”ç”¨ï¼Œåº”å…ˆæ·»åŠ ä¸ºç½‘ç«™ã€‚
+
+5. å°†è·å–åˆ°çš„APP IDã€Keyæ‰‹å·¥å¡«å†™åˆ°å‹ç›Ÿåå°å¯¹åº”åº”ç”¨çš„ç»„ä»¶ -ã€‹ç¤¾ä¼šåŒ–ç»„ä»¶ - ã€‹è®¾ç½®é¡µ -ã€‹QQç©ºé—´APPç»‘å®šä¿¡æ¯éƒ¨åˆ†ã€‚
 </code></pre>
-<h1><a name="FAQ" id="FAQ" style="color:black">12. FAQ</a></h1>
-<p>Çëµ½<a href="http://support.umeng.com/?qa=ios-sdk-%E9%9B%86-%E6%88%90" style="text-decoration:none">ÓÑÃËÉç»á»¯×é¼şµÄ°ïÖúÓëÖ§³ÖÒ³Ãæ</a></p>
-<h1><a name="error_code" id="error_code" style="color:black">13. ´íÎóÂë</a></h1>
+<h1><a name="FAQ" id="FAQ" style="color:black">19. FAQ</a></h1>
+<p>è¯·åˆ°<a href="http://support.umeng.com/?qa=ios-sdk-%E9%9B%86-%E6%88%90" style="text-decoration:none">å‹ç›Ÿç¤¾ä¼šåŒ–ç»„ä»¶çš„å¸®åŠ©ä¸æ”¯æŒé¡µé¢</a></p>
+<h1><a name="error_code" id="error_code" style="color:black">20. é”™è¯¯ç </a></h1>
 <table>
 <thead>
 <tr>
-<th>´íÎóÂë</th>
-<th>´íÎóÔ­Òò</th>
+<th>é”™è¯¯ç </th>
+<th>é”™è¯¯åŸå› </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>500</td>
-<td>¸ø¶¨uidµÄÓÃ»§²¢²»´æÔÚ</td>
+<td>ç»™å®šuidçš„ç”¨æˆ·å¹¶ä¸å­˜åœ¨</td>
 </tr>
 <tr>
 <td>501</td>
-<td>°ó¶¨ÕË»§Ê§°Ü</td>
+<td>ç»‘å®šè´¦æˆ·å¤±è´¥</td>
 </tr>
 <tr>
 <td>502</td>
-<td>½â°ó¶¨Ê§°Ü</td>
+<td>è§£ç»‘å®šå¤±è´¥</td>
 </tr>
 <tr>
 <td>504</td>
-<td>»ñÈ¡ÆÀÂÛÊ§°Ü</td>
+<td>è·å–è¯„è®ºå¤±è´¥</td>
 </tr>
 <tr>
 <td>505</td>
-<td>ÓÃ»§±»¼ÓÈëºÚÃûµ¥</td>
+<td>ç”¨æˆ·è¢«åŠ å…¥é»‘åå•</td>
 </tr>
 <tr>
 <td>506</td>
-<td>»ñÈ¡ºÃÓÑÊ§°Ü</td>
+<td>è·å–å¥½å‹å¤±è´¥</td>
 </tr>
 <tr>
 <td>507</td>
-<td>»ñÈ¡ÊÚÈ¨urlÊ§°Ü</td>
+<td>è·å–æˆæƒurlå¤±è´¥</td>
 </tr>
 <tr>
 <td>508</td>
-<td>½â³ıÊÚÈ¨Ê§°Ü</td>
+<td>è§£é™¤æˆæƒå¤±è´¥</td>
 </tr>
 <tr>
 <td>510</td>
-<td>·ÖÏíÊ§°Ü</td>
+<td>åˆ†äº«å¤±è´¥</td>
 </tr>
 <tr>
 <td>511</td>
-<td>»ñÈ¡barÊ§°Ü</td>
+<td>è·å–barå¤±è´¥</td>
 </tr>
 <tr>
 <td>512</td>
-<td>´ÓÆ½Ì¨»ñÈ¡ÓÃ»§ĞÅÏ¢Ê§°Ü</td>
+<td>ä»å¹³å°è·å–ç”¨æˆ·ä¿¡æ¯å¤±è´¥</td>
 </tr>
 <tr>
 <td>513</td>
-<td>urlÌø×ªÊ§°Ü</td>
+<td>urlè·³è½¬å¤±è´¥</td>
 </tr>
 <tr>
 <td>514</td>
-<td>´Ósocial»ñÈ¡ÓÃ»§ĞÅÏ¢Ê§°Ü</td>
+<td>ä»socialè·å–ç”¨æˆ·ä¿¡æ¯å¤±è´¥</td>
 </tr>
 <tr>
 <td>515</td>
-<td>ÇëÇóµÄ²ÎÊı´íÎó</td>
+<td>è¯·æ±‚çš„å‚æ•°é”™è¯¯</td>
 </tr>
 <tr>
 <td>517</td>
-<td>°æ±¾ºÅ´íÎó</td>
+<td>ç‰ˆæœ¬å·é”™è¯¯</td>
 </tr>
 <tr>
 <td>5001</td>
-<td>´íÎóµÄÓÑÃËappkey£¬»òÕß´ËappkeyÃ»ÓĞ°ó¶¨ÈÎºÎÆ½Ì¨.Èç¹û¿ª·¢Õß°ó¶¨ÁË£¬ÒÀÈ»³öÏÖÕâ¸öÎÊÌâ£¬ÈÃ¿ª·¢ÕßÔÙÊÔÒ»ÏÂ£¬¿ÉÄÜÊÇ¸Õ°ó¶¨ÂíÉÏ¾Í²âÊÔµÄÔ­Òò£¬×îºÃµÈ2·ÖÖÓ¡£</td>
+<td>é”™è¯¯çš„å‹ç›Ÿappkeyï¼Œæˆ–è€…æ­¤appkeyæ²¡æœ‰ç»‘å®šä»»ä½•å¹³å°.å¦‚æœå¼€å‘è€…ç»‘å®šäº†ï¼Œä¾ç„¶å‡ºç°è¿™ä¸ªé—®é¢˜ï¼Œè®©å¼€å‘è€…å†è¯•ä¸€ä¸‹ï¼Œå¯èƒ½æ˜¯åˆšç»‘å®šé©¬ä¸Šå°±æµ‹è¯•çš„åŸå› ï¼Œæœ€å¥½ç­‰2åˆ†é’Ÿã€‚</td>
 </tr>
 <tr>
 <td>5002</td>
-<td>Õâ¸öÓÑÃËappkeyÒÑ¾­±»½ûÖ¹</td>
+<td>è¿™ä¸ªå‹ç›Ÿappkeyå·²ç»è¢«ç¦æ­¢</td>
 </tr>
 <tr>
 <td>5003</td>
-<td>ÇëÇóµÄ²ÎÊıÖĞÃ»ÓĞuid</td>
+<td>è¯·æ±‚çš„å‚æ•°ä¸­æ²¡æœ‰uid</td>
 </tr>
 <tr>
 <td>5004</td>
-<td>Î´ÖªµÄ´íÎó£¬¾ßÌåµÄ´íÎóĞÅÏ¢»áÔÚlogµÄÊä³öÖĞ</td>
+<td>æœªçŸ¥çš„é”™è¯¯ï¼Œå…·ä½“çš„é”™è¯¯ä¿¡æ¯ä¼šåœ¨logçš„è¾“å‡ºä¸­</td>
 </tr>
 <tr>
 <td>5005</td>
-<td>·ÃÎÊÆµÂÊ³¬ÏŞ£¬¿ÉÒ»»á¶ùÔÙÊÔ</td>
+<td>è®¿é—®é¢‘ç‡è¶…é™ï¼Œå¯ä¸€ä¼šå„¿å†è¯•</td>
 </tr>
 <tr>
 <td>5006</td>
-<td>ÇëÇó²ÎÊıÖĞÃ»ÓĞcontent×Ö¶Î</td>
+<td>è¯·æ±‚å‚æ•°ä¸­æ²¡æœ‰contentå­—æ®µ</td>
 </tr>
 <tr>
 <td>5007</td>
-<td>ÇëÇó²ÎÊıÖĞcontent×Ö¶ÎµÄÄÚÈİÎª¿Õ</td>
+<td>è¯·æ±‚å‚æ•°ä¸­contentå­—æ®µçš„å†…å®¹ä¸ºç©º</td>
 </tr>
 <tr>
 <td>5008</td>
-<td>Ã»ÓĞÉÏ´«Í¼Æ¬</td>
+<td>æ²¡æœ‰ä¸Šä¼ å›¾ç‰‡</td>
 </tr>
 <tr>
 <td>5009</td>
-<td>´ËÓÑÃËµÄappkeyÃ»ÓĞ°ó¶¨¶ÔÓ¦Æ½Ì¨µÄappkeyºÍappsecret</td>
+<td>æ­¤å‹ç›Ÿçš„appkeyæ²¡æœ‰ç»‘å®šå¯¹åº”å¹³å°çš„appkeyå’Œappsecret</td>
 </tr>
 <tr>
 <td>5010</td>
-<td>useridÎŞĞ§£¬Õâ¸öÓÃ»§²¢Ã»ÓĞ½øĞĞÊÚÈ¨</td>
+<td>useridæ— æ•ˆï¼Œè¿™ä¸ªç”¨æˆ·å¹¶æ²¡æœ‰è¿›è¡Œæˆæƒ</td>
 </tr>
 <tr>
 <td>5013</td>
-<td>ÇëÇóµÄ²ÎÊıÖĞÃ»ÓĞappkeyÕâ¸ö×Ö¶Î</td>
+<td>è¯·æ±‚çš„å‚æ•°ä¸­æ²¡æœ‰appkeyè¿™ä¸ªå­—æ®µ</td>
 </tr>
 <tr>
 <td>5014</td>
-<td>Ã»ÓĞ¶Ô´ËÓÃ»§½øĞĞÊÚÈ¨</td>
+<td>æ²¡æœ‰å¯¹æ­¤ç”¨æˆ·è¿›è¡Œæˆæƒ</td>
 </tr>
 <tr>
 <td>5024</td>
-<td>»ñÈ¡access tokenÊ§°Ü£¬¾ßÌå¿´logÊä³ö</td>
+<td>è·å–access tokenå¤±è´¥ï¼Œå…·ä½“çœ‹logè¾“å‡º</td>
 </tr>
 <tr>
 <td>5025</td>
-<td>»ñÈ¡request tokenÊ§°Ü£¬¾ßÌå¿´logÊä³ö</td>
+<td>è·å–request tokenå¤±è´¥ï¼Œå…·ä½“çœ‹logè¾“å‡º</td>
 </tr>
 <tr>
 <td>5027</td>
-<td>ÊÚÈ¨ÒÑ¾­¹ıÆÚ</td>
+<td>æˆæƒå·²ç»è¿‡æœŸ</td>
 </tr>
 </tbody>
 </table>
-<h1><a name="error_code" id="support" style="color:black">14. ¼¼ÊõÖ§³Ö</a></h1>
-<p>Çë·¢ÓÊ¼şÖÁsocial-support@umeng.com¡£Èç¹ûÄú³öÏÖµÄÎÊÌâºÍSDKÏà¹Ø£¬ÇëËµÃ÷ÄúÊ¹ÓÃµÄÊÇiOSµÄSDK£¬ÎÒÃÇ»á¾¡¿ì»Ø¸´Äú¡£</p>
+<h1><a name="support" id="support" style="color:black">21. æŠ€æœ¯æ”¯æŒ</a></h1>
+<p>è¯·å‘é‚®ä»¶è‡³social-support@umeng.comã€‚å¦‚æœæ‚¨å‡ºç°çš„é—®é¢˜å’ŒSDKç›¸å…³ï¼Œè¯·è¯´æ˜æ‚¨ä½¿ç”¨çš„æ˜¯iOSçš„SDKï¼Œæˆ‘ä»¬ä¼šå°½å¿«å›å¤æ‚¨ã€‚</p>

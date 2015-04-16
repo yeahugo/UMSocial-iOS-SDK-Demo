@@ -9,15 +9,30 @@
 #import <UIKit/UIKit.h>
 #import "sdkdef.h"
 #import "TencentOAuthObject.h"
-#import "WeiBoAPI.h"
-#import "WeiyunAPI.h"
 
 @protocol TencentSessionDelegate;
 @protocol TencentLoginDelegate;
 @protocol TencentApiInterfaceDelegate;
+@protocol TencentWebViewDelegate;
 
 @class TencentApiReq;
 @class TencentApiResp;
+
+typedef enum
+{
+    kTencentNotAuthorizeState,
+    kTencentSSOAuthorizeState,
+    kTencentWebviewAuthorzieState,
+} TencentAuthorizeState;
+
+typedef enum
+{
+    kAuthModeClientSideToken,
+    kAuthModeServerSideCode,
+} TencentAuthMode;
+
+#pragma mark - TencentOAuth(授权登录及相关开放接口调用)
+
 /**
  * \brief TencentOpenAPI授权登录及相关开放接口调用
  *
@@ -56,14 +71,54 @@
 /** 第三方应用在互联开放平台申请的appID */
 @property(nonatomic, retain) NSString* appId;
 
+/** 主要是互娱的游戏设置uin */
+@property(nonatomic, retain) NSString* uin;
+
+/** 主要是互娱的游戏设置鉴定票据 */
+@property(nonatomic, retain) NSString* skey;
+
 /** 登陆透传的数据 */
 @property(nonatomic, copy) NSDictionary* passData;
 
+/** 授权方式(Client Side Token或者Server Side Code) */
+@property(nonatomic, assign) TencentAuthMode authMode;
 
 /**
- * 返回sdk的版本号
- */
-+ (NSString *)sdkVerison;
+ * 用来获得当前sdk的版本号
+ * \return 返回sdk版本号
+ **/
+
++ (NSString*)sdkVersion;
+
+/**
+ * 用来获得当前sdk的小版本号
+ * \return 返回sdk小版本号
+ **/
+
++ (NSString*)sdkSubVersion;
+
+/**
+ * 用来获得当前sdk的是否精简版
+ * \return 返回YES表示精简版
+ **/
+
++ (BOOL)isLiteSDK;
+
+/** 
+ * 主要是用来帮助判断是否有登陆被发起，但是还没有过返回结果 
+ * \return 
+ *          kTencentNotAuthorizeState:无授权 
+ *          kTencentSSOAuthorizeState:有人发起了sso授权但无返回
+ *          kTencentWebviewAuthorzieState:有人发起了webview授权还未返回
+ **/
+
++ (TencentAuthorizeState *)authorizeState;
+
+/**
+ * 用来获得当前手机qq的版本号
+ * \return 返回手机qq版本号
+ **/
++ (QQVersion)iphoneQQVersion;
 
 /**
  * 初始化TencentOAuth对象
@@ -100,11 +155,7 @@
 + (BOOL)iphoneQZoneSupportSSOLogin;
 
 /**
- * 登录授权 / DAU统计  <b>SDK 1.9版本以后，登录授权接口建议使用该接口，以前接口将会废弃 </b>
- *
- * if:((openid != nil) && (accesstoken != nil)) ,进行统计DAU操作，并验证token是否有效
- * esle: 进行登录授权操作
- * 如果统计DAU时，发现token失效，将自动进入登录流程
+ * 登录授权
  *
  * \param permissions 授权信息列
  */
@@ -157,7 +208,18 @@
 + (BOOL)CanHandleOpenURL:(NSURL *)url;
 
 /**
- * 退出登录
+ * (静态方法)获取TencentOAuth调用的上一次错误信息
+ */
++ (NSString *)getLastErrorMsg;
+
+/**
+ * 以Server Side Code模式授权登录时，通过此接口获取返回的code值;
+ * 以Client Side Token模式授权登录时，忽略此接口。
+ */
+- (NSString *)getServerSideCode;
+
+/**
+ * 退出登录(退出登录后，TecentOAuth失效，需要重新初始化)
  * \param delegate 第三方应用用于接收请求返回结果的委托对象
  */
 - (void)logout:(id<TencentSessionDelegate>)delegate;
@@ -173,6 +235,14 @@
  * \return 处理结果，YES表示API调用成功，NO表示API调用失败，登录态失败，重新登录
  */
 - (BOOL)getUserInfo;
+
+/**
+ * SDK内置webview实现定向分享时，第三方应用可以根据应用是否在白名单里来开启该配置开关，默认为关闭；
+ * 在白名单里的应用调用该接口后，即打开sdk内置webview的二级白名单开关（相对与sdk后台的白名单），
+ * 那么在sdk后台白名单校验请求失败的情况下，会继续先尝试采用内置webview进行分享。
+ */
+- (void)openSDKWebViewQQShareEnable;
+
 
 /**
  * 获取用户QZone相册列表
@@ -326,6 +396,7 @@
  */
 - (BOOL)sendGiftRequest:(NSString *)receiver exclude:(NSString *)exclude specified:(NSString *)specified only:(BOOL)only type:(NSString *)type title:(NSString *)title message:(NSString *)message imageURL:(NSString *)imageUrl source:(NSString *)source;
 
+
 /**
  * 退出指定API调用
  * \param userData 用户调用某条API的时候传入的保留参数
@@ -350,7 +421,11 @@
  */
 - (BOOL)sendAPIRequest:(TCAPIRequest *)request callback:(id<TCAPIRequestDelegate>)callback;
 
+- (NSString *)getUserOpenID;
+
 @end
+
+#pragma mark - TencentLoginDelegate(授权登录回调协议)
 
 /**
  * \brief TencentLoginDelegate iOS Open SDK 1.3 API回调协议
@@ -385,12 +460,16 @@
 
 @end
 
+#pragma mark - TencentSessionDelegate(开放接口回调协议)
+
 /**
  * \brief TencentSessionDelegate iOS Open SDK 1.3 API回调协议
  *
  * 第三方应用需要实现每条需要调用的API的回调协议
  */
-@protocol TencentSessionDelegate<NSObject, TencentLoginDelegate, TencentApiInterfaceDelegate>
+@protocol TencentSessionDelegate<NSObject, TencentLoginDelegate,
+                                TencentApiInterfaceDelegate,
+                                TencentWebViewDelegate>
 
 @optional
 
@@ -436,6 +515,7 @@
  *          错误返回示例: \snippet example/getUserInfoResponse.exp fail
  */
 - (void)getUserInfoResponse:(APIResponse*) response;
+
 
 /**
  * 获取用户QZone相册列表回调
@@ -546,6 +626,7 @@
  */
 - (void)sendStoryResponse:(APIResponse*) response;
 
+
 /**
  * 社交API统一回调接口
  * \param response API返回结果，具体定义参见sdkdef.h文件中\ref APIResponse
@@ -571,5 +652,18 @@
  */
 - (void)tencentOAuth:(TencentOAuth *)tencentOAuth doCloseViewController:(UIViewController *)viewController;
 
+@end
 
+#pragma mark - TencentWebViewDelegate(H5登录webview旋转方向回调)
+
+/**
+ * \brief TencentWebViewDelegate: H5登录webview旋转方向回调协议
+ *
+ * 第三方应用可以根据自己APP的旋转方向限制，通过此协议设置
+ */
+@protocol TencentWebViewDelegate <NSObject>
+@optional
+- (BOOL) tencentWebViewShouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation;
+- (NSUInteger) tencentWebViewSupportedInterfaceOrientationsWithWebkit;
+- (BOOL) tencentWebViewShouldAutorotateWithWebkit;
 @end
